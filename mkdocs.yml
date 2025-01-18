@@ -1,0 +1,77 @@
+site_name: 学习笔记
+theme: 
+  name: material
+  language: zh
+  palette: 
+  # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      accent: cyan # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      primary: white # 上方的
+      accent: cyan # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black # 上方的
+      accent: cyan # 链接等可交互元件的高亮色
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features: 
+    - navigation.instant
+    - navigation.tabs
+    - navigation.expand
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - search.suggest # 搜索输入一些字母时推荐补全整个单词
+    - search.highlight # 搜索出的文章关键词加入高亮
+    - search.share #搜索分享按钮
+    - toc.follow
+  icon: 
+    logo: fontawesome/regular/sun
+nav: 
+  - 主页: index.md
+  - 假期笔记: 
+    - PBL数字经济与智能金融: 
+      - 课程总览: 假期笔记\2025寒假\PBL数字经济与智能金融\课程总览\index.md
+  - 课程笔记: 
+    - 大二上: 
+      - 离散数学（下）: 
+        - 课程总览: 课程笔记\大二上\离散数学（下）\index.md
+markdown_extensions:
+  - attr_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight: # 代码块高亮
+      anchor_linenums: true
+      linenums: true # 显示行号
+      auto_title: true # 显示编程语言名称
+  - toc:
+      permalink: true # 固定标题位置为当前位置
+extra_javascript:
+  - javascripts/extra.js
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - stylesheets/extra.css

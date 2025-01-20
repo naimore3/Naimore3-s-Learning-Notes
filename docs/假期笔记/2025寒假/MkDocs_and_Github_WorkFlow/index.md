@@ -1,12 +1,12 @@
 #MkDocs&Github WorkFlow开发简介
 ##MkDocs
-$\qquad$MkDocs是一个快速、简单且非常华丽的静态网站生成器，该生成器旨在构建项目文档。文档源文件是用Markdown编写的，并使用单个YAML进行配置。
+$\qquad$MkDocs是一个快速、简单且非常华丽的静态网站生成器，该生成器旨在构建项目文档。文档源文件是用Markdown编写的，并使用单个YAML进行配置。![小猫摇可乐](MkDocs_and_Github_WorkFlow开发简介/小猫摇可乐.gif){align="right" width="30%"}
 ##Github Actions
 $\qquad$GitHub Actions是GitHub的持续集成服务，于2018年10月推出。持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。
 
 $\qquad$很多操作在不同项目里面是类似的，完全可以共享。GitHub 注意到了这一点，想出了一个很妙的点子，允许开发者把每个操作写成独立的脚本文件，存放到代码仓库，使得其他开发者可以引用。
 
-$\qquad$如果你需要某个action，不必自己写复杂的脚本，直接引用他人写好的action即可，整个持续集成过程，就变成了一个actions的组合。这就是GitHub Actions最特别的地方。
+![皮卡丘](MkDocs_and_Github_WorkFlow开发简介/皮卡丘.gif){align="left" width="30%"}$\qquad$如果你需要某个action，不必自己写复杂的脚本，直接引用他人写好的action即可，整个持续集成过程，就变成了一个actions的组合。这就是GitHub Actions最特别的地方。
 
 $\qquad$GitHub做了一个官方市场，可以搜索到他人提交的 actions。另外，还有一个awesome actions的仓库，也可以找到不少action。
 
@@ -20,7 +20,7 @@ actions/setup-node@v1.0    # 指向一个标签
 actions/setup-node@master  # 指向一个分支
 ```
 
-GitHub Actions有一些自己的术语。
+$\qquad$GitHub Actions有一些自己的术语。![旋转汉堡](MkDocs_and_Github_WorkFlow开发简介/旋转汉堡.gif){align="right" width="25%"}
 
 1. workflow(工作流程)：持续集成一次运行的过程，就是一个 workflow。
 
@@ -33,7 +33,7 @@ GitHub Actions有一些自己的术语。
 $\qquad$由于此处本人并未学习，而是照搬，因此不做描述。
 !!! note ""
     该部分搬运了博客[GitHub Actions入门教程](https://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html)，如有侵权请联系删除。
-##通过GitHub Actions部署MkDocs站点
+##通过GitHub Actions部署MkDocs站点![夜空](MkDocs_and_Github_WorkFlow开发简介/夜空.gif){align="right" width="50%"}
 $\qquad$基于GitHub Actions，创作者可以快速部署MkDocs站点。首先，在GitHub上创建一个仓库，然后通过MkDocs撰写网站，添加.github文件，创建workflow工作流，并通过Git工具把MkDocs项目文件上传到仓库。
 
 $\qquad$具体步骤如下：
@@ -58,7 +58,7 @@ mkdir workflows
 cd workflows
 vim PublishMySite.yml
 ```
-PublishMySite.yml文件内容如下：
+$\qquad$PublishMySite.yml文件内容如下：
 ```yaml
 name: Deploy MkDocs to GitHub Pages
 on:
@@ -96,7 +96,7 @@ git init
 git add .
 git commit -m "init" #""里的内容为上传时提交的信息
 ```
-###新建GitHub仓库
+###新建GitHub仓库![汤姆猫](MkDocs_and_Github_WorkFlow开发简介/汤姆猫.gif){align="right" width="25%"}
  - GitHub > New Repository
  - GitHub > Repository > Settings > Actions > General >
     - Actions permissions: Allow all actions and reusable workflows
@@ -109,7 +109,7 @@ git remote add origin https://github.com/naimore3/Naimore3-s-Learning-Notes# cha
 git branch -M main
 git push -u origin main
 ```
-$\qquad$此时工作流会自动运行，生成gh-pagesfensh分支，并部署到GitHub Pages。
+![美好](MkDocs_and_Github_WorkFlow开发简介/美好.gif){align="left" width="33%"}$\qquad$此时工作流会自动运行，生成gh-pagesfensh分支，并部署到GitHub Pages。
 
 $\qquad$生成完毕后，操作以下内容：
 

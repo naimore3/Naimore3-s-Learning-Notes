@@ -1,5 +1,5 @@
-#First Class PBL：教学方法
-##Thinking About Teachang and Learning
+# First Class: PBL教学方法
+## Thinking About Teachang and Learning
 
 | |Teacher Centered Learning|Leaner Centered Learning|
 |-|-|-|
@@ -9,8 +9,8 @@
 |Teaching and learning|Faithful transmission, reception|Opportunities to construet knowledge|
 |Teacher-student relationships|Authoritarian|Democratic|
 
-##Education for uncertain, diverse, rapidlychanging future
-##Challenges in technology,globalization&environment
+## Education for uncertain, diverse, rapidlychanging future
+## Challenges in technology,globalization & environment
 ![1.gif](1.gif){align="left" width="35%"}
 
  - Increasing complexity and uncertainty
@@ -19,13 +19,13 @@
  - Degradation of the ecosystem services upon which they depend
  - Greater vulnerability and exposure to natural and technological hazards
  - More possibilities and threats with technical advance
-##Challenges
+## Challenges
  - More and more information is available. but to utilize information solve problems requires creative and self-organized action
  - People must learn
      - To understand the complex world
      - To collaborate, speak up and act for positive change
  - We can call these people "sustainability citizens"(Wals, 2015: Wals and Lenglet, 2016).
-##Key competencies for "sustainability citizens"
+## Key competencies for "sustainability citizens"
  - Systems thinking competency![2.gif](2.gif){align="right" width="42%"}
  - Anticipatory
  - Normative
@@ -34,12 +34,13 @@
  - Critical thinking
  - Self-awareness
  - Integrated problem-solving
-Rote learning, multiple-choice,one right answer schooling and exam-based teaching and learning are unlikely to get us there——J Williams
-##The ideais to grow innowators
+
+> Rote learning, multiple-choice,one right answer schooling and exam-based teaching and learning are unlikely to get us there——J Williams
+## The ideais to grow innowators
 ![思维导图.png](思维导图.png)
-##Higher order thinking
+## Higher order thinking
 ![学习层级.png](学习层级.png)
-##Traditional and transformed approaches to teaching(as poles)
+## Traditional and transformed approaches to teaching(as poles)
 
 |Transformed Approach(HIGH AGENCY)||Traditional Approach(LOW AGENCY)|
 |-|-|-|
@@ -53,7 +54,7 @@ Rote learning, multiple-choice,one right answer schooling and exam-based teachin
 |Integrating curriculum|>|Teaching segmented curriculum|
 |Active leaming opportunities|>|Passive consumption|
 
-##Traditionalteachingvs student-centered teaching(also as poles)
+## Traditionalteachingvs student-centered teaching(also as poles)
 
 |In teacher/content/textbook-centered teaching,teacher:|In learner centered teaching,teacher:|
 |-|-|
@@ -65,7 +66,7 @@ Rote learning, multiple-choice,one right answer schooling and exam-based teachin
 |Concerned with right answer|Encourages good questions, challenges to answers|
 |Has formal, hierarchical relationship with students|More equal relationship with students based on trust, respect|
 
-##Control and participation
+## Control and participation
 | |Lecturing|Teaching|Facilitation|
 |-|-|-|-|
 |Control|Teacher has almost total control|Teacher has control but allows students to participate on her terms|All members have some control; teacher has a little more|

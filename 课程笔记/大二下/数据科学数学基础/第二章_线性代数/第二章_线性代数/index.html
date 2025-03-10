@@ -9,25 +9,21 @@
       
       
       
-        <link rel="prev" href="../../%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/">
       
       
-        <link rel="next" href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/">
-      
-      
-      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.7">
     
     
       
-        <title>The Physical Layer - 学习笔记</title>
+        <title>第二章 线性代数 - 学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +42,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -73,11 +69,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#the-physical-layer" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -88,7 +79,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
@@ -108,7 +99,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The Physical Layer
+              第二章 线性代数
             
           </span>
         </div>
@@ -220,7 +211,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../.." class="md-tabs__link">
+      <a href="../../../../.." class="md-tabs__link">
         
   
     
@@ -235,7 +226,11 @@
         
   
   
+  
     
+    
+      
+  
   
   
     
@@ -243,21 +238,11 @@
       
   
   
-    
-  
   
     
     
-      
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
           
   
     
@@ -295,7 +280,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+        <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
           
   
     
@@ -321,7 +306,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+        <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
           
   
     
@@ -356,7 +341,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
@@ -374,7 +359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../.." class="md-nav__link">
+      <a href="../../../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -392,10 +377,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -408,20 +391,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -433,7 +413,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             课程笔记
@@ -515,7 +495,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -549,7 +529,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -571,7 +551,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -707,7 +687,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -741,7 +721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -763,7 +743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -785,7 +765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -807,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,7 +809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -851,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -873,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -895,7 +875,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -917,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -939,7 +919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -961,7 +941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -983,7 +963,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1005,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1027,7 +1007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1049,7 +1029,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1071,7 +1051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1093,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1128,10 +1108,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1151,11 +1129,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
           <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
@@ -1170,7 +1148,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
             大二下
@@ -1181,10 +1159,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -1198,11 +1174,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
         
           
           <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
@@ -1217,7 +1193,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3_1">
             <span class="md-nav__icon md-icon"></span>
             计算机网络
@@ -1276,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1298,7 +1274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1325,8 +1301,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1344,16 +1318,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_2" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1371,7 +1345,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3_1_2">
             <span class="md-nav__icon md-icon"></span>
             课程笔记
@@ -1384,31 +1358,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    The Physical Layer
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1418,53 +1371,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fundamental-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fundamental Concepts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-theoretical-basis-for-data-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Theoretical Basis for Data Communication
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guided-transmission-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guided Transmission Media
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1561,7 +1467,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1595,7 +1501,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
+      <a href="../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1668,7 +1574,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1774,7 +1680,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1808,7 +1714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1881,7 +1787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
+      <a href="../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1962,7 +1868,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../课程笔记/大二下/计算机组成原理/课程总览/index.md" class="md-nav__link">
+      <a href="../../../../../课程笔记/大二下/计算机组成原理/课程总览/index.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2058,7 +1964,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2092,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
+      <a href="../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2256,7 +2162,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+            <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2290,7 +2196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2357,7 +2263,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
+            <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2391,7 +2297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2413,7 +2319,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2435,7 +2341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2457,7 +2363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2525,7 +2431,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+            <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2582,7 +2488,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+            <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2616,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
+      <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2663,43 +2569,6 @@
   
   
   
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#fundamental-concepts" class="md-nav__link">
-    <span class="md-ellipsis">
-      Fundamental Concepts
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-theoretical-basis-for-data-communication" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Theoretical Basis for Data Communication
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#guided-transmission-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guided Transmission Media
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -2715,172 +2584,9 @@
 
 
 
-<h1 id="the-physical-layer">The Physical Layer<a class="headerlink" href="#the-physical-layer" title="Permanent link">&para;</a></h1>
-<p>该文档围绕物理层展开，介绍了数据通信理论基础、传输介质、数字调制与复用技术，以及公共交换电话网络，旨在阐述物理层在通信系统中的关键作用与工作原理。</p>
-<ol>
-<li><strong>数据通信理论基础</strong><ul>
-<li><strong>傅里叶分析</strong>：任何周期函数可分解为正弦和余弦函数的叠加，非周期有限时长数据信号可通过想象其无限重复来进行傅里叶分析。</li>
-<li><strong>带宽</strong>：传输设施能无明显衰减传输信号的频率范围，是传输介质的物理属性，受介质构造、厚度和长度影响，不同传输介质带宽不同，如UTP - 3为1MHz，UTP - 5为100MHz。</li>
-<li><strong>信道最大数据速率</strong>：奈奎斯特定理指出低通滤波器带宽BHz的信号，每秒2B次采样可完全重构，数据速率C = 2Blog₂V；香农定理表明信道容量C = B log₂(1 + S / N) ，如语音电话线300Hz - 3300Hz，S/N为30dB时，C约30Kbps。</li>
-</ul>
-</li>
-<li><strong>传输介质</strong><ul>
-<li><strong>导向传输介质</strong>：双绞线用于模拟和数字信号传输，分为UTP和STP，不同类别带宽不同；同轴电缆可高速长距离传输，带宽高、抗噪性好；光纤电缆以光传输，带宽可达25 - 30THz，误码率低。</li>
-<li><strong>无线传输</strong>：涵盖不同频段的无线传输方式，电波特性随频率变化。无线电波在不同频段传播方式不同；微波用于长距离通信，但存在多径衰落问题。各国政府分配电磁频谱，ISM频段允许无执照使用，设备需用扩频技术。</li>
-<li><strong>通信卫星</strong>：作为空中微波中继器，含多天线和转发器，转发器接收、放大并转发信号，卫星波束有宽窄之分，寿命约10年。</li>
-</ul>
-</li>
-<li><strong>数字调制与复用技术</strong><ul>
-<li><strong>基带与通带传输</strong>：基带传输信号占用从零到最大频率的范围，常用于有线传输；通带传输通过调制载波信号传输数据，用于无线和光通信。</li>
-<li><strong>调制技术</strong>：基带传输有多种编码方式，如NRZI、曼彻斯特编码、4B/5B编码等；通带传输有调幅、调频、调相，以及QPSK和QAM等调制方式。</li>
-<li><strong>复用技术</strong>：频分复用（FDM）将不同信号分配到不同频率段；时分复用（TDM）按时间片轮流传输多路信号；码分多址（CDMA）是扩频通信，各站有独特码片序列，利用正交性区分信号。</li>
-</ul>
-</li>
-<li><strong>公共交换电话网络（PSTN）</strong>：由本地回路、干线和交换局组成。本地回路用模拟双绞线，干线用数字光纤。存在衰减、延迟畸变和噪声等问题。调制解调器用于数模转换，不同V系列协议调制方式和速率不同。DSL利用数字信号传输技术提高速率，ADSL是常见类型。 </li>
-</ol>
-<h2 id="fundamental-concepts">Fundamental Concepts<a class="headerlink" href="#fundamental-concepts" title="Permanent link">&para;</a></h2>
-<p>2.1节之前的Fundamental Concepts主要围绕数据通信中的基础概念、通信模式、传输方式及数据传输同步方式展开，为理解后续通信技术内容奠定基础。</p>
-<ol>
-<li><strong>基础概念</strong><ul>
-<li><strong>信道</strong>：传送信息的媒体。</li>
-<li><strong>带宽</strong>：信号或信道的频率范围（Hz）。</li>
-<li><strong>数据率</strong>：数据传输速率（bps）。</li>
-<li><strong>波特率</strong>：波特率是符号速率，也是码元传输速率。它用于衡量单位时间内信号传输的码元数量。其与数据传输速率（bps）的换算关系为<span class="arithmatex">\(1 Baud =(log _{2} ~V)\)</span>bps，其中<span class="arithmatex">\(V\)</span>是码元的电平级数。例如，当码元只有两种电平状态（即<span class="arithmatex">\(V = 2\)</span>）时，根据公式<span class="arithmatex">\(1 Baud =(log _{2} 2)\)</span>bps ，<span class="arithmatex">\(log _{2} 2 = 1\)</span>，所以此时波特率和比特率相等，1波特就等于1bps，像简单的二进制信号传输，只有高电平和低电平两种状态，在这种情况下，每秒传输1个码元，也就意味着每秒传输1比特的数据。再比如，若码元有4种电平状态（<span class="arithmatex">\(V = 4\)</span>） ，则<span class="arithmatex">\(1 Baud =(log _{2} 4)\)</span>bps ，因为<span class="arithmatex">\(log _{2} 4 = 2\)</span>，此时1波特就等于2bps。这表示每秒传输1个码元，但由于每个码元能携带2比特的信息，所以实际的数据传输速率为2bps。 </li>
-<li><strong>信道容量</strong>：信道的最大数据率。</li>
-<li><strong>传播速度</strong>：信号单位时间内传送的距离（米/秒），速度因媒体而异，且小于光速，同种媒体中频率不同的电磁波速度也有差异。数据率是指数据传输速率，单位为 bps（比特每秒），用于衡量单位时间内传输的数据量；传播速度是指信号在传输介质中单位时间内传送的距离，单位是米 / 秒，它描述的是信号在介质中传播的快慢程度。</li>
-<li><strong>误码率BER</strong>：信道传输可靠性指标，BER = 传送错的位数 / 传送总位数。</li>
-</ul>
-</li>
-<li><strong>时延</strong><ul>
-<li><strong>定义</strong>：从向网络中发送数据块的第一比特开始，到最后一比特被接收所经历的时间。</li>
-<li><strong>组成</strong><ul>
-<li><strong>传播时延</strong>：信号通过传输介质的时间。</li>
-<li><strong>发送时延</strong>：设备发送一个数据块所需要的时间（数据块长度/传输速率）。</li>
-<li><strong>处理时延</strong>：交换机/路由器检查数据、选路的时间。</li>
-<li><strong>排队时延</strong>：在交换机/路由器中排队等待的时间。</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>通信模式</strong><ul>
-<li><strong>单工通信</strong>：数据仅能单向传输，如FM广播，信息只能从广播电台传向听众。</li>
-<li><strong>半双工通信</strong>：数据可双向传输，但同一时刻仅能单向进行，像语音对讲机，通话双方不能同时说话。</li>
-<li><strong>全双工通信</strong>：数据能同时双向传输，例如电话通话，双方可同时交流。</li>
-</ul>
-</li>
-<li><strong>传输方式</strong><ul>
-<li><strong>并行传输</strong>：8位数据同时传输，需要8条线路，优点是传输速度快，但成本较高。</li>
-<li><strong>串行传输</strong>：数据按顺序一位一位传输，仅需1条线路 ，通过并串/串并转换器实现数据转换，虽传输速度相对较慢，但节省线路资源。</li>
-</ul>
-</li>
-<li><strong>数据传输同步方式</strong><ul>
-<li><strong>同步串行传输</strong>：依靠独立的时钟线，以时钟信号实现数据比特同步，提供恒定速率的比特流服务。</li>
-<li><strong>异步串行传输</strong>：各设备使用独立时钟，无需同步，以字符为单位传输，通过字符的起始位和停止位实现同步，字符间间隔任意。<img alt="同步异步.jpeg" src="../%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5.jpeg" /></li>
-</ul>
-</li>
-</ol>
-<h2 id="the-theoretical-basis-for-data-communication">The Theoretical Basis for Data Communication<a class="headerlink" href="#the-theoretical-basis-for-data-communication" title="Permanent link">&para;</a></h2>
-<p>2.1节主要介绍数据通信的理论基础，包括傅里叶分析、带宽、带宽受限信号以及信道最大数据率相关内容，为理解数据通信原理提供了理论依据，具体如下：</p>
-<ol>
-<li><strong>傅里叶分析</strong>：任何周期函数<span class="arithmatex">\(g(t)\)</span>都可以表示为一系列正弦和余弦函数的和，公式为<span class="arithmatex">\(g(t)=c / 2+\sum_{n=1}^{\infty} a_{n} sin (2 \pi n t f)+\sum_{n=1}^{\infty} b_{n} cos (2 \pi n t f)\)</span>，<span class="arithmatex">\(f = 1 / T\)</span>。其中，<span class="arithmatex">\(a_{n}=2 / T \int_{0}^{T} g(t) sin (2 \pi nft) dt\)</span>，<span class="arithmatex">\(b_{n}=2 / T \int_{0}^{T} g(t) cos (2 \pi n f t) d t\)</span>，<span class="arithmatex">\(c=2 / T \int_{0}^{T} g(t) dt\)</span>。对于有限时长的数据信号，可以将其看作是不断重复的周期信号来进行分析。</li>
-<li><strong>带宽</strong>：任何传输设施传输信号时都会有一定的功率损耗，且对不同的傅里叶分量的衰减程度不同。带宽指的是信号在传输过程中，能够不被强烈（0.5）衰减传输的频率范围。它是传输介质的物理属性，受传输介质的构造、厚度和长度等因素影响。例如，电话双绞线UTP - 3的带宽为1MHz，UTP - 5的带宽为100MHz。</li>
-<li>
-<p><strong>带宽受限信号</strong>：以二进制信号为例，通过傅里叶分析可知，信号的带宽越窄，需要的谐波数量越少。随着数据率的增加，所需的谐波数量增多。对于3000Hz带宽的语音级线路，当数据率达到38.4kbps及以上时，即使传输设施无噪声，二进制信号也无法正常传输。<img alt="带宽.jpeg" src="../%E5%B8%A6%E5%AE%BD.jpeg" /></p>
-<ul>
-<li>
-<table>
-<thead>
-<tr>
-<th>Bps</th>
-<th>T (msec)</th>
-<th>First harmonic (Hz)</th>
-<th># Harmonics sent</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>300</td>
-<td>26.67</td>
-<td>37.5</td>
-<td>80</td>
-</tr>
-<tr>
-<td>600</td>
-<td>13.33</td>
-<td>75</td>
-<td>40</td>
-</tr>
-<tr>
-<td>1200</td>
-<td>6.67</td>
-<td>150</td>
-<td>20</td>
-</tr>
-<tr>
-<td>2400</td>
-<td>3.33</td>
-<td>300</td>
-<td>10</td>
-</tr>
-<tr>
-<td>4800</td>
-<td>1.67</td>
-<td>600</td>
-<td>5</td>
-</tr>
-<tr>
-<td>9600</td>
-<td>0.83</td>
-<td>1200</td>
-<td>2</td>
-</tr>
-<tr>
-<td>19200</td>
-<td>0.42</td>
-<td>2400</td>
-<td>1</td>
-</tr>
-<tr>
-<td>38400</td>
-<td>0.21</td>
-<td>4800</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Bps（Bits per second）</strong>：即比特率，表示数据传输速率，单位是比特每秒。如“300”表示每秒传输300比特数据 ，数值越大，数据传输速度越快。</li>
-<li><strong>T(msec)</strong>：表示传输1比特数据所需的时间，单位为毫秒（msec）。它与Bps成反比，通过公式 <span class="arithmatex">\(T = \frac{1}{Bps}×1000\)</span> 计算得出。例如，当Bps为300时，<span class="arithmatex">\(T=\frac{1}{300}×1000≈26.67\)</span> msec。</li>
-<li><strong>First harmonic (Hz)</strong>：表示一次谐波的频率，单位为赫兹（Hz）。它与Bps存在一定关系，计算公式为 <span class="arithmatex">\(First harmonic = \frac{Bps}{8}\)</span>。例如，Bps为300时，一次谐波频率为<span class="arithmatex">\(\frac{300}{8}=37.5\)</span> Hz。</li>
-<li><strong>#Harmonics sent</strong>：表示发送的谐波数量。对于3000Hz语音级线路，其计算公式为 <span class="arithmatex">\(Number of harmonics sent=\frac{3000}{First harmonic}=\frac{24000}{Bps}\)</span>。例如，Bps为300时，发送的谐波数量为<span class="arithmatex">\(\frac{24000}{300}=80\)</span> 。随着Bps增大，一次谐波频率升高，可发送的谐波数量减少，当数据速率≥38.4kbps时，对于二进制信号，即使传输设施完全无噪声，也难以有效传输。 </li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>信道最大数据率</strong></p>
-<ul>
-<li><strong>奈奎斯特定理（1924年）</strong>：奈奎斯特定理是说，如果有一个信号，经过一个带宽是<span class="arithmatex">\(B\)</span>赫兹的低通滤波器后，想要把这个被过滤后的信号完整地还原出来，每秒准确采集<span class="arithmatex">\(2B\)</span>次样本就可以做到（这里采集样本的速率，也叫符号率，单位是波特）。而且，在这个情况下，信道能达到的最大数据传输速率（用<span class="arithmatex">\(C\)</span>表示，单位是bps）可以用公式<span class="arithmatex">\(C = 2B\log_2V\)</span>来计算 ，其中<span class="arithmatex">\(V\)</span>是码元的电平级数。打个比方，你要给一幅画拍照记录细节。带宽<span class="arithmatex">\(B\)</span>就好比这幅画的复杂程度，越复杂（带宽越大），你拍照的频率就得越高才能完整记录画面。按照奈奎斯特定理，拍照频率达到每秒<span class="arithmatex">\(2B\)</span>次，就能完整还原这幅画。而数据传输速率公式就像是根据画面的一些特性（码元电平级数<span class="arithmatex">\(V\)</span> ），来计算你记录整幅画的详细信息的速度有多快。 </li>
-<li><strong>香农定理（1948年）</strong>：公式为<span class="arithmatex">\(C = B log₂(1 + S / N)\)</span>，其中<span class="arithmatex">\(C\)</span>表示信道容量（最大数据率），<span class="arithmatex">\(B\)</span>是信道带宽，<span class="arithmatex">\(S / N\)</span>是信噪比。例如，对于语音电话线，带宽为300Hz - 3300Hz（即<span class="arithmatex">\(B = 3000Hz\)</span>），信噪比<span class="arithmatex">\(S / N\)</span>为30dB时，通过公式计算可得<span class="arithmatex">\(C = 3000 log₂(1 + 1000) \approx 30 Kbps\)</span> 。同时，信噪比的分贝表示为<span class="arithmatex">\((S / N)_{dB}=10 × log _{10}(S / N)\)</span>。 </li>
-</ul>
-</li>
-</ol>
-<h2 id="guided-transmission-media">Guided Transmission Media<a class="headerlink" href="#guided-transmission-media" title="Permanent link">&para;</a></h2>
-<p>该节主要介绍了三种有线传输介质，即双绞线、同轴电缆和光纤，具体内容如下：</p>
-<ol>
-<li><strong>双绞线</strong>：是最常用的传输介质，可用于传输模拟和数字信号。它由两根绝缘导线相互缠绕而成，通过差分传输减弱环境噪音对自身信号的影响，同时减少自身信号对环境的干扰（串扰）。双绞线分为非屏蔽双绞线（UTP）和屏蔽双绞线（STP），不同类别的UTP带宽不同，如Category 3 UTP带宽为16MHz，Category 5 UTP带宽为100MHz。<ul>
-<li>差分传输是一种信号传输方式，它传输的是差分信号，即在一对存在耦合的传输线上，传输振幅相同、相位相反的信号。其中一条传输线传输信号本身，另一条传输其互补信号。</li>
-</ul>
-</li>
-<li><strong>同轴电缆</strong>：由铜芯、绝缘材料、编织外层导体和保护塑料覆盖层组成。它能在较高速度下传输较长距离，具有高带宽和出色的抗噪声能力，现代同轴电缆带宽可达几个GHz。<img alt="同轴电缆.jpeg" src="../%E5%90%8C%E8%BD%B4%E7%94%B5%E7%BC%86.jpeg" /></li>
-<li><strong>光纤</strong>：从1981年到2000年，在CPU和数据通信领域发展迅速。它利用光在光纤中传播来传输数据，误码率低，数据传输速率高，如通过光电二极管实现的传输速率可达40Gbps。光在光纤中传输的衰减程度与光的波长有关，有三个波段用于光通信，每个波段带宽为25 - 30THz，在特定信噪比下，理论传输速率可达300Tbps。<img alt="光纤波段.jpeg" src="../%E5%85%89%E7%BA%A4%E6%B3%A2%E6%AE%B5.jpeg" /><ul>
-<li><strong>光在光纤中传输的衰减特性</strong>：光在光纤中传输时，其衰减程度取决于光的波长，不同波长的光在光纤中传播时能量损失情况不同。</li>
-<li><strong>光通信使用的波段</strong>：有3个波段被用于光通信，这3个波段是光在光纤中传输性能较好、适合承载通信信号的特定波长范围。</li>
-<li><strong>带宽及相关参数</strong>：这3个波段的带宽都在25 - 30THz之间，带宽较宽，意味着可以传输大量数据。在信噪比为30dB的情况下，理论上数据传输速率能够达到300Tbps，如此高的传输速率体现了光纤在数据传输方面的巨大优势。 </li>
-</ul>
-</li>
-</ol>
-<p><img alt="光纤1.jpeg" src="../%E5%85%89%E7%BA%A41.jpeg" width="50%" /><img alt="光纤2.jpeg" src="../%E5%85%89%E7%BA%A42.jpeg" width="50%" /></p>
+  <h1>第二章 线性代数</h1>
+
+
 
 
 
@@ -2933,14 +2639,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/extra.js"></script>
       
-        <script src="../../../../../../javascripts/mathjax.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

@@ -1485,17 +1485,59 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#design-issues-for-the-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Issues for the Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-oriented-and-connectionless-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection-Oriented and Connectionless Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Primitives
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#design-issues-for-the-layers" class="md-nav__link">
+  <a href="#reference-models" class="md-nav__link">
     <span class="md-ellipsis">
-      Design Issues for the Layers
+      Reference Models
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Reference Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-osi-reference-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The OSI Reference Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1602,7 +1644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch1_The_Physical_Layer/Ch1_The_Physical_Layer/" class="md-nav__link">
+      <a href="../../../%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2979,17 +3021,59 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#design-issues-for-the-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design Issues for the Layers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connection-oriented-and-connectionless-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection-Oriented and Connectionless Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-primitives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Primitives
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#design-issues-for-the-layers" class="md-nav__link">
+  <a href="#reference-models" class="md-nav__link">
     <span class="md-ellipsis">
-      Design Issues for the Layers
+      Reference Models
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Reference Models">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-osi-reference-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      The OSI Reference Model
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3082,12 +3166,12 @@
 <tr>
 <td>1 m</td>
 <td>Square meter</td>
-<td></td>
+<td>Personal area network</td>
 </tr>
 <tr>
 <td>10 m</td>
 <td>Room</td>
-<td></td>
+<td>Local area network</td>
 </tr>
 <tr>
 <td>100 m</td>
@@ -3097,7 +3181,7 @@
 <tr>
 <td>1 km</td>
 <td>Campus</td>
-<td></td>
+<td>Local area network</td>
 </tr>
 <tr>
 <td>10 km</td>
@@ -3117,7 +3201,7 @@
 <tr>
 <td>10,000 km</td>
 <td>Planet</td>
-<td>The Internet</td>
+<td>Wide area network(The Internet)</td>
 </tr>
 </tbody>
 </table>
@@ -3147,9 +3231,18 @@
 </ul>
 </li>
 <li><strong>有线局域网的拓扑结构</strong>：<ul>
-<li><strong>以太网（Ethernet）</strong>：IEEE 802.3以太网是最常见的有线局域网类型，采用点到点链路连接计算机和交换机，交换机依据数据包地址转发数据。多个交换机可级联构建更大的LAN，即便连接成环，协议也能确保数据包正确传输。</li>
-<li><strong>虚拟局域网（VLAN）</strong>：可将一个大型物理LAN划分为多个较小的逻辑LAN，通过给端口打标签实现不同逻辑LAN间的隔离，比如工程部门和财务部门的计算机可通过VLAN实现逻辑上的分离管理。</li>
-<li><strong>经典以太网</strong>：是交换式以太网的前身，通过单一线性电缆广播数据包，同一时间最多只有一台机器能成功传输，采用分布式仲裁机制解决冲突，即计算机在电缆空闲时传输，若发生冲突则随机等待后重试。</li>
+<li>总线型拓扑结构<ul>
+<li><strong>结构特点</strong>：如左侧图所示，所有的计算机（节点）都连接到一条共享的电缆（总线）上 ，这条电缆充当传输介质。</li>
+<li><strong>工作原理</strong>：任何一个节点发送的信号都可以沿着总线传播，并被总线上的其他所有节点接收。但在同一时刻，只能有一个节点发送数据，否则会产生信号冲突。</li>
+<li><strong>优缺点</strong>：优点是结构简单，易于布线和维护，成本较低；缺点是一旦总线出现故障，整个网络就会瘫痪，而且随着节点数量的增加，冲突的概率也会增大，导致网络性能下降。</li>
+</ul>
+</li>
+<li>环型拓扑结构<ul>
+<li><strong>结构特点</strong>：如右侧图所示，各个计算机（节点）通过通信线路依次连接，形成一个封闭的环。每个节点只与相邻的两个节点相连。</li>
+<li><strong>工作原理</strong>：数据在环中沿着一个方向逐节点传输，每个节点接收并转发数据，直到数据到达目标节点。</li>
+<li><strong>优缺点</strong>：优点是传输控制机制简单，传输延迟固定；缺点是某个节点或链路出现故障会影响整个网络的通信，并且添加或删除节点时需要中断整个网络。 </li>
+</ul>
+</li>
 </ul>
 </li>
 <li><strong>家庭局域网</strong>：未来家庭中的所有电器可能都能联网并通过互联网访问，但它与其他网络相比有不同特性，包括设备安装要简单、操作要傻瓜式、价格要低、可扩展性强、安全可靠等。家庭局域网在选择有线还是无线连接上存在争议，也可考虑利用家庭现有的电线网络，但面临同时传输电力和数据信号的难题，不过可通过使用不同频段来解决。</li>
@@ -3282,7 +3375,46 @@
 <li><strong>第一层（物理层）</strong>：负责将数据链路层传来的信息进行实际的物理传输，在接收端，消息从物理层开始向上逐层传递，各层在传递过程中会去除相应的首部信息。</li>
 </ol>
 <p>此外，虽然本节主要讨论网络软件，但协议层次结构的较低层（如第一、二层）常由硬件或固件实现，即便如此，其中也涉及复杂的协议算法 。 </p>
-<h2 id="design-issues-for-the-layers">Design Issues for the Layers<a class="headerlink" href="#design-issues-for-the-layers" title="Permanent link">&para;</a></h2>
+<h3 id="design-issues-for-the-layers">Design Issues for the Layers<a class="headerlink" href="#design-issues-for-the-layers" title="Permanent link">&para;</a></h3>
+<p>该部分内容主要讨论了计算机网络在层次设计方面的关键问题，这些问题贯穿于网络的各个层次，对网络的正常运行、发展和性能起着至关重要的作用，具体内容如下：</p>
+<ol>
+<li><strong>可靠性</strong>：网络需保证在组件不可靠的情况下仍能正常运行。通过检错编码发现数据包中的错误比特，利用纠错编码从可能不正确的比特中恢复正确消息，这两种机制都需添加冗余信息。同时，网络要能在源和目的地之间存在多条路径且部分链路或路由器可能故障时，自动选择工作路径，即路由决策。</li>
+<li><strong>网络演进</strong>：随着网络的发展，新设计需要与现有网络连接。协议分层是支撑这种变化的关键结构化机制，它将复杂问题分解，隐藏实现细节。此外，网络中每一层都需要标识发送方和接收方的机制，在下层称为寻址，在高层称为命名。不同网络技术存在不同限制，如消息顺序和最大长度差异，这导致了消息编号和分段等解决方案的出现，这些主题综合起来就是网络互联。能在规模变大时仍良好工作的网络设计被称为可扩展的。</li>
+<li><strong>资源分配</strong>：网络基于底层资源向主机提供服务，需要分配资源的机制，以避免一台主机过度干扰另一台主机。统计复用是一种常见的资源分配方式，它根据主机的短期需求变化动态共享网络带宽，而非固定分配。在每一层都需要解决流量控制问题，即防止快速发送方用数据淹没慢速接收方，同时还要应对网络超载即拥塞的情况。此外，网络还需为不同需求的应用程序提供服务，如实时传递和高吞吐量需求，这涉及到服务质量的调和机制。</li>
+<li><strong>网络安全</strong>：网络需要保护自身抵御各种威胁。保密性机制防止通信被窃听，认证机制用于防止身份假冒，完整性机制防止消息被篡改。这些安全设计大多基于加密技术，在网络的多个层次都有应用。 </li>
+</ol>
+<h3 id="connection-oriented-and-connectionless-services">Connection-Oriented and Connectionless Services<a class="headerlink" href="#connection-oriented-and-connectionless-services" title="Permanent link">&para;</a></h3>
+<p>该部分主要介绍了计算机网络中下层向上层提供的两种服务类型，即面向连接的服务和无连接的服务，并对两者进行了详细的对比分析，具体内容如下：</p>
+<ol>
+<li><strong>面向连接的服务</strong>：这种服务是按照电话系统的模式构建的。在使用前，服务用户需要先建立连接，接着利用该连接传输数据，最后释放连接。其本质如同一个管道，发送方将数据压入管道一端，接收方在另一端按顺序取出数据。在建立连接时，发送方、接收方和子网可能会协商一些参数，如最大消息长度、服务质量等。电路是与资源关联的连接的另一种说法，在电话网络中，一条电路就是通过铜线传送电话交谈内容的路径。</li>
+<li><strong>无连接服务</strong>：该服务以邮政系统为模型。每个报文都携带完整的目标地址，由系统中的中间节点独立进行路由。在无连接服务中，存在存储 - 转发交换和直通式交换两种处理方式。存储 - 转发交换是指中间节点在收到报文全部内容后再转发给下一个节点；直通式交换则是在报文未完全接收完毕前就向下一个节点传输。由于报文的路由独立，先发送的报文可能会因延迟而后到达。</li>
+<li><strong>服务的可靠性及类型</strong><ul>
+<li><strong>可靠的面向连接服务</strong>：适用于对数据准确性和顺序要求较高的应用，如文件传输。它有报文序列和字节流两种变异形式。报文序列能保持报文边界，字节流则没有报文边界。但对于一些对延迟敏感的应用，如IP语音和视频会议，因确认机制引入的延迟是不可接受的。</li>
+<li><strong>不可靠的无连接服务</strong>：也称为数据报服务，类似于电报服务，一般不会给发送方反馈确认消息。虽然不可靠，但在大多数网络中是主导的传输形式，因为它无需建立连接，适合一些对可靠性要求不高但追求便捷性的应用，如垃圾邮件发送。</li>
+<li><strong>有确认的数据报服务</strong>：这种服务在无连接的基础上增加了确认机制，如同寄挂号信要求回执一样，能让发送方确认报文已送达对方。手机上的文本消息就是这种服务的实例。</li>
+<li><strong>请求 - 应答服务</strong>：发送方传输包含请求的数据报，接收方以包含请求结果的应答数据报作为反馈，常用于客户机 - 服务器模型中。</li>
+</ul>
+</li>
+<li><strong>两种服务的对比</strong>：可靠通信和不可靠通信在网络中同时存在。在某些层次，可能无法使用可靠通信，例如以太网就不提供可靠通信，一些可靠服务是建立在不可靠数据报服务之上的。此外，为提供可靠服务引入的延迟在多媒体等实时应用中无法被接受，这也是不可靠通信存在的原因之一。 </li>
+</ol>
+<h3 id="service-primitives">Service Primitives<a class="headerlink" href="#service-primitives" title="Permanent link">&para;</a></h3>
+<p>该部分内容主要介绍了服务原语的概念，以及面向连接服务原语在客户机 - 服务器环境下的工作过程，具体如下：</p>
+<ol>
+<li><strong>服务原语的定义</strong>：服务原语是正式说明服务的一组操作，用户进程通过这些原语访问服务。它可告知服务执行某个动作，或向用户报告对等实体所执行的动作。若协议栈位于操作系统中，这些服务原语通常是系统调用，会陷入内核模式，由操作系统控制机器发送必要的数据包。</li>
+<li><strong>面向连接服务原语的示例</strong>：以实现可靠字节流的服务为例，介绍了6个常见的服务原语，这些原语与Berkeley套接字接口类似。<ul>
+<li><strong>LISTEN</strong>：阻塞操作，用于等待入境连接请求。服务器执行该原语，表示已准备好接收入境连接，通常实现为阻塞的系统调用，执行后服务器进程被阻塞，直至有连接请求到来。</li>
+<li><strong>CONNECT</strong>：用于与等待中的对等实体建立连接请求。客户进程执行此原语时，需指定要连接的服务器地址，操作系统会向对方发送请求建立连接的数据包，之后客户进程被挂起，直到收到应答。</li>
+<li><strong>ACCEPT</strong>：用于接受来自对等实体的入境连接请求。当服务器收到连接请求包，且存在监听进程时，操作系统会解除监听进程的阻塞，并用该调用创建连接，然后向客户进程发送响应。</li>
+<li><strong>RECEIVE</strong>：阻塞操作，用于等待入境报文。服务器从LISTEN的阻塞状态被释放后，通常会马上执行该原语，此时它会再次被阻塞，直到收到客户的请求。</li>
+<li><strong>SEND</strong>：用于给对等实体发送一个报文。客户执行该原语发送请求，服务器收到请求后解除阻塞并处理，处理完后再通过该原语将请求结果送回给客户。</li>
+<li><strong>DISCONNECT</strong>：用于终止一个连接。客户任务完成后，执行该原语终止当前连接，这通常是一个阻塞调用，会向服务器发送数据包表明不再需要该连接。服务器收到后，也会发出自己的DISCONNECT作为确认并释放连接。</li>
+</ul>
+</li>
+<li><strong>服务原语在客户机 - 服务器环境下的应用</strong>：以有确认数据报服务的简单协议实现为例，展示了这些原语在客户机 - 服务器交互中的具体工作过程。在实际情况中，可能会出现各种错误情况，如时间顺序出错、数据包丢失等，但该示例主要展示了正常情况下基于有确认数据报的通信过程，说明了可靠有序字节流在进程通信中的便利性。 </li>
+</ol>
+<h2 id="reference-models">Reference Models<a class="headerlink" href="#reference-models" title="Permanent link">&para;</a></h2>
+<h3 id="the-osi-reference-model">The OSI Reference Model<a class="headerlink" href="#the-osi-reference-model" title="Permanent link">&para;</a></h3>
+<p><img alt="OSI.jpeg" src="../OSI.jpeg" /></p>
 
 
 

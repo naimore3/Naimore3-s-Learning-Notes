@@ -1,0 +1,4240 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.10">
+    
+    
+      
+        <title>The Data Link Layer - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-data-link-layer" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The Data Link Layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  课程笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自学笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  读书笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二上
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大二上
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    离散数学（下）
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学（下）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    半群和群
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PBL数字经济与智能金融
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PBL数字经济与智能金融
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Class：PBL教学方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Second Class：PBL教学的常见形式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Third Class：教授课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourth Class：助教课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifth Class：教授课4互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixth Class：教授课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventh Class：助教课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eighth Class：教授课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ninth Class：助教课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenth Class：教授课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eleventh Class：助教课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Twelfth Class：助教课4期中复习课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thirteenth Class：助教课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourteenth Class：教授课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifteenth Class：教授课7互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixteenth Class：个人规划及发展建议
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventeenth Class：升学与就业方向展望
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二下
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            大二下
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1_1" id="__nav_2_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_1_2" id="__nav_2_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ch1_Introduction/Ch1_Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Physical Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    多元统计分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            多元统计分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    北京大学数学科学学院多元统计分析讲义
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_2_1" id="__nav_2_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            北京大学数学科学学院多元统计分析讲义
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2_2" id="__nav_2_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：绪论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：多变量的可视化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：多元分布的基本概念及数字特征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学导论
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学导论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_3_1" id="__nav_2_3_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3_2" id="__nav_2_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：数学基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：Python语言基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../课程笔记/大二下/数据科学导论/课程笔记/第四章_数据预处理的基本方法/第四章_数据预处理的基本方法.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：数据预处理的基本方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机组成原理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_1" id="__nav_2_3_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E6%95%99%E6%9D%90%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_2" id="__nav_2_3_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_5" id="__nav_2_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    形式语言与自动机
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            形式语言与自动机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_5_1" id="__nav_2_3_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：语义和文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../课程笔记/大二下/形式语言与自动机/课程笔记/第三章_有限自动机与右线性文法/第三章_有限自动机与右线性文法.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：第三章_有限自动机与右线性文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_6" id="__nav_2_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学数学基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学数学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    自学笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            自学笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java基础概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    MkDocs&Github WorkFlow
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MkDocs&Github WorkFlow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    YAML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    读书笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            读书笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    2025.2.16《载人火星探测航天运输系统》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025.2.16《载人火星探测航天运输系统》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章 载人火星探测模式及其航天运输系统方案发展情况
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025.3.13《多元统计分析引论》
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            2025.3.13《多元统计分析引论》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../读书笔记/2025_3_13_多元统计分析引论/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记总览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../读书笔记/2025_3_13_多元统计分析引论/第一章_矩阵/第一章_矩阵.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章 矩阵
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#data-link-layer-design-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Link Layer Design Issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elementary-data-link-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Elementary Data Link Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Elementary Data Link Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocol-1-utopia" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol 1: Utopia（理想化协议）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol 1: Utopia（理想化协议）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 协议核心逻辑
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sender1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 发送方代码（sender1 函数）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-receiver1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 接收方代码（receiver1 函数）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 协议假设
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-2-stop-and-wait-protocol-for-a-error-free-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol 2: Stop-and-Wait Protocol for a Error-free Channel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol 2: Stop-and-Wait Protocol for a Error-free Channel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 协议背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sender2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 发送方代码（sender2 函数）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-receiver2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 接收方代码（receiver2 函数）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 核心机制总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-3-a-simplex-protocol-for-a-noisy-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol 3: A Simplex Protocol for a Noisy Channel
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol 3: A Simplex Protocol for a Noisy Channel">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#case-1failed-on-receiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case 1：接收方故障（Failed on receiver）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#case-2failed-on-sender" class="md-nav__link">
+    <span class="md-ellipsis">
+      Case 2：发送方故障（Failed on Sender）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      代码
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="代码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      发送方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="发送方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 宏定义和类型定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sender3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 发送函数 sender3
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      接收方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="接收方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 函数定义和变量声明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 初始化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 主循环
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 事件处理（帧到达情况）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 协议说明
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      定时器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sliding-window-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sliding Window Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sliding Window Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sliding-window-of-size-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sliding Window of Size 1
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sliding Window of Size 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocol-4-one-bit-sliding-window" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol 4: One-Bit Sliding Window
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#one-bit-sliding-window-protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      One-Bit Sliding Window Protocol
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="One-Bit Sliding Window Protocol">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 整体框架和宏定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 函数定义和变量声明
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 事件处理循环
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-using-go-back-n" class="md-nav__link">
+    <span class="md-ellipsis">
+      Protocol Using Go Back N
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Protocol Using Go Back N">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pipelining-error-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pipelining &amp; Error Recovery
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pipelining &amp; Error Recovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#na" class="md-nav__link">
+    <span class="md-ellipsis">
+      回退N步协议（图a）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择重传协议（图b）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="the-data-link-layer">The Data Link Layer<a class="headerlink" href="#the-data-link-layer" title="Permanent link">&para;</a></h1>
+<p>该文档是计算机网络中数据链路层的学习资料，主要涵盖数据链路层设计问题、差错检测与纠正、基本数据链路协议、滑动窗口协议和典型数据链路协议等内容，用于帮助理解数据链路层原理及应用。</p>
+<ol>
+<li><strong>数据链路层设计问题</strong><ul>
+<li><strong>服务提供</strong>：为网络层提供虚拟通信服务，包括无确认无连接、有确认无连接和有确认面向连接服务 ，以满足不同场景需求。</li>
+<li><strong>功能实现</strong>：实现帧定界、差错控制和流量控制。帧定界通过字符计数、字节填充、比特填充和物理层编码违例等方法确定帧边界；差错控制借助定时器和序号确保帧正确传输；流量控制采用反馈式或速率式控制方式避免接收方过载。</li>
+</ul>
+</li>
+<li><strong>差错检测与纠正</strong><ul>
+<li><strong>纠错码</strong>：依据汉明距离检测和纠正错误。汉明码通过特定校验位设置纠正单比特错误，卷积码和里德 - 所罗门码等分别在不同场景用于差错纠正，擦除码可实现可靠云存储，RAID5提高磁盘存储可靠性。</li>
+<li><strong>检错码</strong>：奇偶校验可检测奇数个位翻转错误，多项式码（CRC）能有效检测多种错误，其性能与生成多项式相关，不同生成多项式有国际标准，可通过硬件或软件计算。哈希函数与CRC相关，不同哈希函数校验能力不同，应用于数据校验和安全领域。</li>
+</ul>
+</li>
+<li><strong>基本数据链路协议</strong>：包括无限制单工协议、停等协议和有噪声信道单工协议。停等协议通过设置序号和定时器处理错误和重复帧问题，但在长延迟高带宽链路效率低。</li>
+<li><strong>滑动窗口协议</strong><ul>
+<li><strong>基本概念</strong>：发送窗口控制未确认帧数量，接收窗口控制可接收帧范围，窗口大小可变。捎带确认机制用于全双工通信提高效率。</li>
+<li><strong>协议类型</strong>：一位滑动窗口协议简单但效率低；回退N步协议基于滑动窗口，接收窗口为1，出错时重传错误帧及后续帧，发送窗口最大值受序号空间限制；选择重传协议仅重传出错帧，接收方需大缓冲区，发送窗口和接收窗口大小之和不超序号范围的一半。</li>
+</ul>
+</li>
+<li><strong>典型数据链路协议</strong><ul>
+<li><strong>HDLC</strong>：有多种站类型和链路配置，帧格式包含控制字段区分帧类型，如I帧传输数据、S帧用于流量和差错控制、U帧进行链路管理，通过不同帧实现链路初始化、数据传输和断开等操作。</li>
+<li><strong>SLIP</strong>：采用字符填充法，存在无差错控制、仅支持IP等问题。</li>
+<li><strong>PPP</strong>：是互联网数据链路层协议，包含多个子层，支持多种物理层接口，具备差错检测、认证和多协议支持等功能，通过LCP协商协议选项，CHAP用于认证。 </li>
+</ul>
+</li>
+</ol>
+<h2 id="data-link-layer-design-issues">Data Link Layer Design Issues<a class="headerlink" href="#data-link-layer-design-issues" title="Permanent link">&para;</a></h2>
+<p>这部分内容主要围绕数据链路层设计问题展开，涵盖数据链路层的目标、为网络层提供的服务、帧定界方法、差错控制和流量控制等方面，具体总结如下：</p>
+<ol>
+<li><strong>数据链路层设计目标</strong>：研究实现两台相邻机器间可靠、高效通信的算法。相邻机器通过类似导线的通信信道连接，数据按发送顺序传输。<img alt="Services.jpeg" src="../Services.jpeg" /></li>
+<li><strong>为网络层提供的服务</strong><ul>
+<li><strong>无确认无连接服务</strong>：如以太网，适用于误码率低的环境，实时性要求高的流量（如语音），上层负责错误恢复。</li>
+<li><strong>有确认无连接服务</strong>：在不可靠信道（如无线系统）中有用，发送方可知帧是否正确到达，未按时到达则重发。</li>
+<li><strong>有确认有连接服务</strong>：适用于长距离、不可靠链路（如卫星信道、长途电话线路），数据链路层的确认是优化而非必需，需使用定时器、序号和建立连接。<img alt="Placement.jpeg" src="../Placement.jpeg" /></li>
+</ul>
+</li>
+<li><strong>帧定界</strong>：在点到点链路传输中，接收方需识别构成帧的比特集。常见方法包括：<ul>
+<li><strong>字符记数法</strong>：利用帧头字段指定帧内字符数，如DEC的DDCMP协议，但错误可能导致帧定界出错。<img alt="Character.jpeg" src="../Character.jpeg" /></li>
+<li><strong>字节填充法</strong>：用特殊字节（FLAG）标识帧的起始和结束，如BISYNC、PPP协议，数据中出现特殊字节时进行填充。</li>
+<li><strong>比特填充法</strong>：以特殊比特模式（01111110）作为帧的起始和结束标志，发送方遇连续5个1时插入0，接收方还原数据。</li>
+<li><strong>物理层编码违例法</strong>：如IEEE 802.3，利用特定编码规则中不表示数据的信号（如电压恒高或恒低、特定非数据编码）作为定界符。</li>
+</ul>
+</li>
+<li><strong>差错控制</strong>：确保所有帧按序准确交付到目的地，为发送方提供接收方的反馈。硬件故障可能导致帧丢失，通过管理定时器和序号，保证每个帧仅交付一次。</li>
+<li><strong>流量控制</strong><ul>
+<li><strong>基于反馈的流量控制</strong>：接收方给予许可（隐式或显式）前，发送方禁止发送帧。</li>
+<li><strong>基于速率的流量控制</strong>：限制发送方传输数据的速率。 </li>
+</ul>
+</li>
+</ol>
+<h2 id="elementary-data-link-protocols">Elementary Data Link Protocols<a class="headerlink" href="#elementary-data-link-protocols" title="Permanent link">&para;</a></h2>
+<p>假设部分（Some of the assumptions）
+- <strong>层独立性</strong>：指出物理层、数据链路层和网络层是相互独立的进程。在网络模型中，这些层各自负责不同的功能，这种独立性有助于模块化设计和维护。
+- <strong>数据传输需求</strong>：机器A想要通过可靠的、面向连接的服务向机器B发送一长串数据。面向连接的服务意味着在数据传输前会先建立连接，传输过程中保证数据的有序和完整性，传输完成后断开连接，常用于对数据准确性要求高的场景。
+- <strong>机器稳定性</strong>：假设机器不会崩溃，这是为了简化数据链路层协议的讨论，排除因机器故障带来的复杂情况。</p>
+<p>库过程部分（Library procedures）
+- <strong>等待事件（wait_for_events）</strong>：用于等待特定事件的发生，比如等待数据到达或某个操作完成的信号。
+- <strong>网络层交互（from_network_layer / to_network_layer）</strong>：表示与网络层进行数据的接收和发送操作，实现数据链路层与网络层之间的通信。
+ - <strong>物理层交互（to_physical_layer / from_physical_layer）</strong>：负责与物理层进行数据的传输和接收，将数据转换为适合物理介质传输的形式或反之。
+- <strong>定时器操作（timer operations）</strong>：用于设置和管理定时器，比如超时重传机制中就会用到定时器来控制等待响应的时间。 
+- <strong>网络层启用与禁用（enable_network_layer / disable_network_layer）</strong>：可以控制网络层的工作状态，在某些情况下可能需要暂停或恢复网络层的功能。
+- <strong>序列号操作（sequence number operation）</strong>：对数据进行编号，以便在接收端进行数据的排序和确认，保证数据按顺序正确接收。 </p>
+<p>这张图片展示了一些与协议相关的定义，这些定义通常用于网络通信或类似的编程场景中，并且是用C语言编写的，位于 <code>protocol.h</code> 文件中。以下是对这些定义的解释：</p>
+<ol>
+<li>
+<p><code>#define MAX_PKT 1024</code>：这是一个预处理指令，定义了一个常量 <code>MAX_PKT</code>，其值为 <code>1024</code>，表示数据包的大小（以字节为单位）。</p>
+</li>
+<li>
+<p><code>typedef enum {false, true} boolean;</code>：使用 <code>typedef</code> 定义了一个新的数据类型 <code>boolean</code>，它本质上是一个枚举类型，包含两个值 <code>false</code> 和 <code>true</code>，用于表示布尔值。</p>
+</li>
+<li>
+<p><code>typedef unsigned int seq_nr;</code>：定义了一个新的数据类型 <code>seq_nr</code>，它是无符号整数类型，用于表示序列编号或确认编号。</p>
+</li>
+<li>
+<p><code>typedef struct {unsigned char data[MAX_PKT];} packet;</code>：定义了一个结构体类型 <code>packet</code>，它包含一个无符号字符数组 <code>data</code>，大小为 <code>MAX_PKT</code>，用于表示数据包。</p>
+</li>
+<li>
+<p><code>typedef enum {data, ack, nak} frame_kind;</code>：定义了一个枚举类型 <code>frame_kind</code>，包含三个值 <code>data</code>（数据帧）、<code>ack</code>（确认帧）和 <code>nak</code>（否认帧），用于表示帧的类型。</p>
+</li>
+<li>
+<p><code>typedef struct {...} frame;</code>：定义了一个结构体类型 <code>frame</code>，包含以下成员：</p>
+</li>
+<li><code>frame_kind kind;</code>：表示帧的类型，取值为 <code>frame_kind</code> 枚举中的一个值。</li>
+<li><code>seq_nr seq;</code>：表示帧的序列编号。</li>
+<li><code>seq_nr ack;</code>：表示确认编号。</li>
+<li><code>packet info;</code>：表示网络层的数据包。</li>
+</ol>
+<p>这些定义为后续的协议实现提供了基础的数据结构和类型，有助于组织和管理网络通信中的数据传输和确认机制 。 </p>
+<p>这是一段用C语言编写的网络通信相关的代码片段，主要定义了一系列函数和一个宏定义，以下是对它们的介绍：</p>
+<p>函数说明</p>
+<ol>
+<li><code>wait_for_event(event_type *event)</code>：等待一个事件发生，并在事件发生时返回其类型。</li>
+<li><code>from_network_layer(packet *p)</code>：从网络层获取一个数据包，以便在信道上传输。</li>
+<li><code>to_network_layer(packet *p)</code>：将来自入站帧的信息传递到网络层。</li>
+<li><code>from_physical_layer(frame *r)</code>：从物理层获取一个入站帧，并将其复制到 <code>r</code> 中。</li>
+<li><code>to_physical_layer(frame *s)</code>：将帧传递到物理层进行传输。</li>
+<li><code>start_timer(seq_nr k)</code>：启动时钟并启用超时事件，<code>seq_nr</code> 可能是序列号类型。 </li>
+<li><code>stop_timer(seq_nr k)</code>：停止时钟并禁用超时事件。</li>
+<li><code>start_ack_timer(void)</code>：启动一个辅助定时器并启用确认超时事件。</li>
+<li><code>stop_ack_timer(void)</code>：停止辅助定时器并禁用确认超时事件。</li>
+<li><code>enable_network_layer(void)</code>：允许网络层引发 <code>network_layer_ready</code> 事件。</li>
+<li><code>disable_network_layer(void)</code>：禁止网络层引发 <code>network_layer_ready</code> 事件。</li>
+</ol>
+<p>宏定义</p>
+<p><code>#define inc(k) if (k &lt; MAX_SEQ) k = k + 1; else k = 0</code> ：这是一个宏 <code>inc</code>，用于对变量 <code>k</code> 进行循环递增。当 <code>k</code> 小于 <code>MAX_SEQ</code>（最大序列号）时，<code>k</code> 自增 1；当 <code>k</code> 达到 <code>MAX_SEQ</code> 时，将 <code>k</code> 重置为 0。</p>
+<p>这些函数和宏通常用于实现网络协议栈中数据链路层或网络层的功能，比如处理数据帧的收发、定时器管理以及与网络层的交互等。 </p>
+<h3 id="protocol-1-utopia">Protocol 1: Utopia（理想化协议）<a class="headerlink" href="#protocol-1-utopia" title="Permanent link">&para;</a></h3>
+<p>这段代码实现的是 <strong>无限制单工协议（Unrestricted Simplex Protocol）</strong>，用于单向数据传输（仅发送方到接收方），假设通信信道无错误，接收方处理能力无限。以下是代码解析：</p>
+<h4 id="1">1. 协议核心逻辑<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>单向传输</strong>：仅支持从发送方向接收方传输数据，无反向通信。</li>
+<li><strong>无错误处理</strong>：假设信道绝对可靠，无需校验、重传等机制。</li>
+</ul>
+<h4 id="2-sender1">2. 发送方代码（<code>sender1</code> 函数）<a class="headerlink" href="#2-sender1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>循环发送</strong>：通过 <code>while (true)</code> 无限循环，持续从网络层获取数据并发送。</li>
+<li><code>from_network_layer(&amp;buffer)</code>：从网络层获取待发送的数据包，存入 <code>buffer</code>。</li>
+<li><code>s.info = buffer</code>：将数据包内容复制到帧 <code>s</code> 的数据字段。</li>
+<li><code>to_physical_layer(&amp;s)</code>：将封装好的帧发送到物理层，通过信道传输。</li>
+</ul>
+<h4 id="3-receiver1">3. 接收方代码（<code>receiver1</code> 函数）<a class="headerlink" href="#3-receiver1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>循环接收</strong>：通过 <code>while (true)</code> 无限等待接收数据。</li>
+<li><code>wait_for_event(&amp;event)</code>：等待事件（此处仅可能是 <code>frame_arrival</code>，即帧到达）。</li>
+<li><code>from_physical_layer(&amp;r)</code>：从物理层获取到达的帧 <code>r</code>。</li>
+<li><code>to_network_layer(&amp;r.info)</code>：将帧中的数据提取出来，交付给网络层处理。</li>
+</ul>
+<h4 id="4">4. 协议假设<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>信道无差错，无需处理丢帧、误码等问题。</li>
+<li>接收方处理速度无限快，不会出现数据积压。因此发送方无需流控，直接无限循环发送。</li>
+</ul>
+<p>总结：该协议是最简单向传输模型，聚焦基础数据传输流程，忽略实际网络中的错误处理、流量控制等复杂机制，常用于理论教学或极简单场景模拟。</p>
+<h3 id="protocol-2-stop-and-wait-protocol-for-a-error-free-channel">Protocol 2: Stop-and-Wait Protocol for a Error-free Channel<a class="headerlink" href="#protocol-2-stop-and-wait-protocol-for-a-error-free-channel" title="Permanent link">&para;</a></h3>
+<p>这段代码实现了 <strong>单工停等协议（Simplex Stop-and-Wait Protocol）</strong>，用于控制发送方与接收方的单向数据传输，避免发送方发送数据过快导致接收方处理不及。以下是代码解析：</p>
+<h4 id="1_1">1. 协议背景<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>假设通信信道无差错，但接收方缓冲区和处理速度有限，需显式控制发送方流量。</li>
+<li>发送方每发送一帧后，必须等待接收方反馈才能继续发送，确保接收方有足够时间处理数据。</li>
+</ul>
+<h4 id="2-sender2">2. 发送方代码（<code>sender2</code> 函数）<a class="headerlink" href="#2-sender2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>循环逻辑</strong>：通过 <code>while (true)</code> 持续运行。</li>
+<li><code>from_network_layer(&amp;buffer)</code>：从网络层获取待发送的数据包。</li>
+<li><code>s.info = buffer</code>：将数据包复制到帧 <code>s</code> 中。</li>
+<li><code>to_physical_layer(&amp;s)</code>：将帧发送到物理层。</li>
+<li><code>wait_for_event(&amp;event)</code>：阻塞等待事件（此处仅可能是接收方的反馈事件），确保发送方不会连续发送数据，实现“停等”机制。</li>
+</ul>
+<h4 id="3-receiver2">3. 接收方代码（<code>receiver2</code> 函数）<a class="headerlink" href="#3-receiver2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>循环逻辑</strong>：通过 <code>while (true)</code> 持续监听。</li>
+<li><code>wait_for_event(&amp;event)</code>：等待帧到达事件（仅 <code>frame_arrival</code>）。</li>
+<li><code>from_physical_layer(&amp;r)</code>：从物理层获取到达的帧。</li>
+<li><code>to_network_layer(&amp;r.info)</code>：将帧中的数据传递给网络层处理。</li>
+<li><code>to_physical_layer(&amp;s)</code>：向发送方发送一个“虚拟帧”（dummy frame），作用是唤醒发送方，允许其继续发送下一帧，实现流量控制的反馈。</li>
+</ul>
+<h4 id="4_1">4. 核心机制总结<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>停等策略</strong>：发送方发送一帧后暂停，等待接收方处理完成并返回反馈（虚拟帧），再继续发送，避免接收方因数据过载无法处理。</li>
+<li><strong>单向传输</strong>：仅支持从发送方到接收方的单向数据流动，接收方不传输真实数据，仅通过虚拟帧控制发送节奏。</li>
+</ul>
+<h3 id="protocol-3-a-simplex-protocol-for-a-noisy-channel">Protocol 3: A Simplex Protocol for a Noisy Channel<a class="headerlink" href="#protocol-3-a-simplex-protocol-for-a-noisy-channel" title="Permanent link">&para;</a></h3>
+<p>这张图主要描述了数据链路层中发送数据（DATA）并等待确认（ACK）机制下的两种故障场景，具体解释如下：  </p>
+<p>解决方案为“发送DATA后等待ACK”，围绕该机制分析两种故障情况：  </p>
+<h4 id="case-1failed-on-receiver">Case 1：接收方故障（Failed on receiver）<a class="headerlink" href="#case-1failed-on-receiver" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>正常流程</strong>：A的网络层将分组1交给数据链路层，B正确接收分组并传递给网络层，随后B向A发送ACK。  </li>
+<li><strong>故障发生</strong>：  </li>
+<li>ACK在传输中完全丢失。  </li>
+<li>A的数据链路层因未收到ACK而超时，触发重传机制，重新发送帧。  </li>
+<li>重传的重复帧到达B，引发重复帧处理问题（图中未展开后续处理）。  </li>
+<li>该场景体现停等协议中“ACK丢失”导致的发送方重传行为。  </li>
+</ol>
+<h4 id="case-2failed-on-sender">Case 2：发送方故障（Failed on Sender）<a class="headerlink" href="#case-2failed-on-sender" title="Permanent link">&para;</a></h4>
+<p>仅提及“延迟的ACK”（A delayed ACK），暗示另一种故障场景：ACK未丢失但延迟到达，可能导致发送方因超时而重传，后续需处理延迟ACK与重传帧的逻辑冲突（图中未详细展开）。  </p>
+<p>总结：图中通过两个案例，分析数据传输中ACK相关的故障场景，涉及停等协议的超时重传机制及重复帧、延迟ACK等问题。</p>
+<ol>
+<li><strong>序列号的核心作用</strong>  </li>
+<li>
+<p><strong>区分新帧与重传帧</strong>：在每个帧的头部添加序列号，接收方通过序列号判断接收到的帧是新发送的帧还是因超时重传的帧，避免重复处理或误判。  </p>
+</li>
+<li>
+<p><strong>链路层（停等协议）使用1比特的原因</strong>  </p>
+</li>
+<li>
+<p>停等协议中，发送方发送一帧后需等待确认，未收到确认才重传。此时只需区分两种状态：当前发送的帧（如编号0）和重传的帧（如编号1）。1比特可表示2个编号（0和1），形成循环编号空间，足以满足“发送-等待确认-重传”的简单机制，无需更多比特。  </p>
+</li>
+<li>
+<p><strong>传输层需要更大编号空间的原因</strong>  </p>
+</li>
+<li>传输层场景更复杂（如非停等协议），可能同时有多个未确认的分组在网络中传输。1比特的编号空间（仅2个编号）无法满足多分组序号区分需求，易导致序号混淆（如新旧分组序号重复无法分辨）。例如TFTP（简单文件传输协议）使用16比特编号，可支持更大范围的序号，适应传输层多分组并发、复杂丢包重传的场景。</li>
+</ol>
+<h4 id="_1">代码<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>这段代码实现了一个简单的数据发送端（Sender）的逻辑，主要功能是从网络层获取分组，进行发送，并处理可能出现的错误情况。</p>
+<ol>
+<li><strong>总结内容</strong><ul>
+<li>初始化时，从网络层获取一个分组放入缓冲区<code>buffer</code>，并发送该分组，同时启动定时器。</li>
+<li>进入事件等待循环，等待不同事件发生：</li>
+<li>若收到坏帧（校验和错），则重发缓冲区中的数据，并重新启动定时器。</li>
+<li>若定时器超时，同样重发缓冲区中的数据，并新启动定时器。</li>
+<li>若收到校验和正确的帧，检查确认（<code>ack</code>）序号是否正确：<ul>
+<li>若<code>ack</code>序号正确，关闭旧定时器，更新发送序号<code>seq_nr</code> ，从网络层获取下一个分组放入缓冲区，然后发送新分组并启动新定时器。</li>
+<li>若<code>ack</code>序号不正确，重发缓冲区中的数据，并重新启动定时器 。</li>
+</ul>
+</li>
+<li>处理完事件后，跳转到<code>label1</code>继续等待下一个事件。</li>
+</ul>
+</li>
+<li><strong>解释<code>seq_nr=0</code></strong>：<code>seq_nr</code>是发送序号，初始值设为0。在数据发送过程中，它用于标识发送的分组顺序。每成功发送一个分组并收到正确的确认（<code>ack</code>）后，<code>seq_nr</code>会增加（通过<code>inc(seq_nr)</code>操作），以标识下一个要发送的分组。这样接收方可以根据<code>seq_nr</code>判断分组是否按顺序到达，发送方也能依据<code>ack</code>中的序号确认哪些分组已被正确接收，从而决定后续操作，如继续发送新分组还是重发旧分组。初始化为0表示从第一个分组开始发送。 </li>
+</ol>
+<p>这是一段实现Protocol 3（发送端）的C语言代码，Protocol 3允许在不可靠信道上进行单向数据流传输。下面是对代码的详细解释：</p>
+<h5 id="_2">发送方<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h5>
+<h6 id="1_2">1. 宏定义和类型定义<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h6>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#define MAX_SEQ 1           </span><span class="cm">/* must be 1 for protocol 3 */</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="n">frame_arrival</span><span class="p">,</span><span class="w"> </span><span class="n">cksum_err</span><span class="p">,</span><span class="w"> </span><span class="n">timeout</span><span class="p">}</span><span class="w"> </span><span class="n">event_type</span><span class="p">;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;protocol.h&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+ - <code>#define MAX_SEQ 1</code>：定义了最大序号为1，这是Protocol 3的要求。
+ - <code>typedef enum {frame_arrival, cksum_err, timeout} event_type;</code>：定义了一个枚举类型<code>event_type</code>，用于表示可能出现的事件，包括帧到达（<code>frame_arrival</code>）、校验和错误（<code>cksum_err</code>）和超时（<code>timeout</code>）。
+ - <code>#include "protocol.h"</code>：包含名为<code>protocol.h</code>的头文件，其中可能定义了代码中使用到的其他类型、函数和宏。</p>
+<h6 id="2-sender3">2. 发送函数 <code>sender3</code><a class="headerlink" href="#2-sender3" title="Permanent link">&para;</a></h6>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span>
+<span class="normal"><a href="#__codelineno-1-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sender3</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="p">{</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="n">seq_nr</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">;</span><span class="w">        </span><span class="cm">/* seq number of next outgoing frame */</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="n">frame</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w">                           </span><span class="cm">/* scratch variable */</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">packet</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w">                     </span><span class="cm">/* buffer for an outbound packet */</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">event_type</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="n">next_frame_to_send</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">            </span><span class="cm">/* initialize outbound sequence numbers */</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="n">from_network_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">);</span><span class="w">       </span><span class="cm">/* fetch first packet */</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w">               </span><span class="cm">/* construct a frame for transmission */</span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">;</span><span class="w">    </span><span class="cm">/* insert sequence number in frame */</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">        </span><span class="n">to_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span><span class="w">         </span><span class="cm">/* send it on its way */</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">        </span><span class="n">start_timer</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">seq</span><span class="p">);</span><span class="w">            </span><span class="cm">/* if answer takes too long, time out */</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">        </span><span class="n">wait_for_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span><span class="w">        </span><span class="cm">/* frame_arrival, cksum_err, timeout */</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">frame_arrival</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">            </span><span class="n">from_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span><span class="w">   </span><span class="cm">/* get the acknowledgement */</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">ack</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">                </span><span class="n">stop_timer</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">ack</span><span class="p">);</span><span class="w">     </span><span class="cm">/* turn the timer off */</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">                </span><span class="n">from_network_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">);</span><span class="w"> </span><span class="cm">/* get the next one to send */</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">                </span><span class="n">inc</span><span class="p">(</span><span class="n">next_frame_to_send</span><span class="p">);</span><span class="w">    </span><span class="cm">/* invert next_frame_to_send */</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+ - <strong>变量声明</strong>：
+    - <code>next_frame_to_send</code>：表示下一个要发送帧的序号。
+    - <code>s</code>：用于构建和处理帧的临时变量。
+    - <code>buffer</code>：用于存储从网络层获取的待发送分组。
+    - <code>event</code>：用于存储发生的事件类型。
+ - <strong>初始化</strong>：
+    - <code>next_frame_to_send = 0;</code>：将下一个要发送帧的序号初始化为0。
+    - <code>from_network_layer(&amp;buffer);</code>：从网络层获取第一个待发送的分组，存储到<code>buffer</code>中。
+ - <strong>循环发送</strong>：
+    - <code>while (true)</code>：进入一个无限循环，持续发送数据帧。
+    - <code>s.info = buffer;</code> 和 <code>s.seq = next_frame_to_send;</code>：将待发送分组放入帧<code>s</code>中，并设置帧的序号。
+    - <code>to_physical_layer(&amp;s);</code>：将构建好的帧发送到物理层。
+    - <code>start_timer(s.seq);</code>：启动一个定时器，用于在没有及时收到确认时重发帧。
+    - <code>wait_for_event(&amp;event);</code>：等待事件发生，事件类型可能是帧到达、校验和错误或超时。
+ - <strong>事件处理</strong>：
+    - 当事件为<code>frame_arrival</code>（收到帧）时：
+        - <code>from_physical_layer(&amp;s);</code>：从物理层获取收到的帧，该帧包含确认信息。
+        - 如果收到的帧中的确认序号（<code>s.ack</code>）与当前要发送的帧序号（<code>next_frame_to_send</code>）相等：
+            - <code>stop_timer(s.ack);</code>：关闭对应的定时器。
+            - <code>from_network_layer(&amp;buffer);</code>：从网络层获取下一个待发送的分组。
+            - <code>inc(next_frame_to_send);</code>：更新下一个要发送帧的序号，这里的<code>inc</code>函数可能是用于切换序号（因为<code>MAX_SEQ</code>为1，所以序号在0和1之间切换）。</p>
+<p>总体来说，这段代码实现了在不可靠信道上的单向数据传输，通过序号和定时器来处理数据帧的发送和确认，确保数据能够可靠地传输到接收端。 </p>
+<p>这是一段C语言代码，实现了Protocol 3中数据接收端（<code>receiver3</code>）的功能，遵循带重传的肯定确认协议（PAR）。以下是对代码的详细解释：</p>
+<h5 id="_3">接收方<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h5>
+<h6 id="1_3">1. 函数定义和变量声明<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h6>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">receiver3</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="n">seq_nr</span><span class="w"> </span><span class="n">frame_expected</span><span class="p">;</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="n">frame</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="n">event_type</span><span class="w"> </span><span class="n">event</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+ - <code>receiver3</code> 是接收端的函数。
+ - <code>frame_expected</code> 用于记录期望接收到的数据帧序号。
+ - <code>r</code> 用于存储从物理层接收到的帧，<code>s</code> 用于构建和发送确认帧。
+ - <code>event</code> 用于存储发生的事件类型，其类型为之前定义的 <code>event_type</code>（可能包含 <code>frame_arrival</code>、<code>cksum_err</code> 等）。</p>
+<h6 id="2">2. 初始化<a class="headerlink" href="#2" title="Permanent link">&para;</a></h6>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="w">    </span><span class="n">frame_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+将 <code>frame_expected</code> 初始化为0，表示接收端一开始期望接收到序号为0的数据帧。</p>
+<h6 id="3">3. 主循环<a class="headerlink" href="#3" title="Permanent link">&para;</a></h6>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">        </span><span class="n">wait_for_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+进入一个无限循环，持续等待事件发生。<code>wait_for_event(&amp;event)</code> 函数会阻塞程序，直到有事件出现，并将事件类型存储在 <code>event</code> 变量中。可能的事件类型注释中提到有 <code>frame_arrival</code>（帧到达）和 <code>cksum_err</code>（校验和错误）。</p>
+<h6 id="4_2">4. 事件处理（帧到达情况）<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h6>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">frame_arrival</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">            </span><span class="n">from_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">);</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">frame_expected</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">                </span><span class="n">to_network_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">.</span><span class="n">info</span><span class="p">);</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">                </span><span class="n">inc</span><span class="p">(</span><span class="n">frame_expected</span><span class="p">);</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">            </span><span class="p">}</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">            </span><span class="n">s</span><span class="p">.</span><span class="n">ack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">frame_expected</span><span class="p">;</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">            </span><span class="n">to_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+ - 当事件为 <code>frame_arrival</code>（接收到有效帧）时：
+    - <code>from_physical_layer(&amp;r);</code>：从物理层获取接收到的帧，存储到 <code>r</code> 中。
+    - 检查接收到帧的序号 <code>r.seq</code> 是否与期望的序号 <code>frame_expected</code> 相等：
+        - 如果相等，说明收到了期望的数据帧，<code>to_network_layer(&amp;r.info);</code> 将帧中的数据部分传递给网络层进行进一步处理。然后调用 <code>inc(frame_expected)</code> 函数，更新期望接收的下一个数据帧的序号（由于 <code>MAX_SEQ</code> 为1，这里序号在0和1之间切换）。
+    - 无论接收到的帧序号是否符合期望，都会构建确认帧：<code>s.ack = 1 - frame_expected;</code> 确定确认帧中的确认序号（与期望序号相反，用于告知发送端），然后 <code>to_physical_layer(&amp;s);</code> 将确认帧发送回物理层，从而反馈给发送端。</p>
+<h6 id="5">5. 协议说明<a class="headerlink" href="#5" title="Permanent link">&para;</a></h6>
+<p>图片下方文字说明该代码实现的是带重传的肯定确认协议（PAR），用于在不可靠的信道上实现可靠的数据传输，接收端通过检查帧序号、传递数据和发送确认帧来确保数据接收的正确性和有序性。 </p>
+<h4 id="_4">定时器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p><code>Timer</code>（定时器）是发送方用来设定一个特定时间段的机制。在数据发送过程中，当发送方发出一个数据帧时，它会启动一个定时器。这个定时器从启动那一刻开始计时，当计时达到预先设定的时间长度，就会触发<code>Timeout</code>（超时）事件。</p>
+<p><code>Timeout</code>（超时）指的是定时器设定的时间间隔已到，但发送方尚未收到接收方对于已发送数据帧的确认信息。在这种情况下，发送方会认为数据传输可能出现了问题，比如数据帧在传输过程中丢失，或者接收方的确认帧在返回途中丢失等。</p>
+<p>当超时时间过短，发送方可能在接收方的确认帧还在传输途中时，就误以为数据传输失败，从而重新发送数据帧。这些额外发送的数据帧虽然不会影响协议的正确性，但会降低系统的性能。</p>
+<h2 id="sliding-window-protocols">Sliding Window Protocols<a class="headerlink" href="#sliding-window-protocols" title="Permanent link">&para;</a></h2>
+<p>这段文字主要介绍了全双工数据传输中的捎带确认（Piggybacking）机制，以及发送窗口和接收窗口的概念，还提及了滑动窗口协议的相关类型。</p>
+<ol>
+<li><strong>捎带确认</strong>：在全双工数据传输场景下，存在两种实现方式，一是用两个独立信道分别进行单向数据传输，二是同一电路双向传输数据。捎带确认是指当数据帧到达时，接收方不立即发送单独的控制帧，而是等待网络层传递下一个数据包，将确认信息（ACK）附加在出站数据帧的帧头<code>ack</code>字段中。</li>
+<li><strong>发送窗口和接收窗口</strong>：发送窗口用于控制未确认帧的数量，发送方会维护一组与未确认帧对应的序列号，这些帧处于发送窗口内，且发送窗口有最大尺寸限制；接收方也有接收窗口，用于限定可接收帧的范围。发送/接收窗口大小既可以固定，也能随着帧的发送和接收动态变化。</li>
+<li><strong>滑动窗口协议</strong>：包括一位滑动窗口协议、回退N步协议和选择重传协议，且提到了不同协议在效率、复杂度和缓冲区需求方面存在差异。 </li>
+</ol>
+<h3 id="sliding-window-of-size-1">Sliding Window of Size 1<a class="headerlink" href="#sliding-window-of-size-1" title="Permanent link">&para;</a></h3>
+<p><img alt="Sliding.jpeg" src="../Sliding.jpeg" /></p>
+<h4 id="protocol-4-one-bit-sliding-window">Protocol 4: One-Bit Sliding Window<a class="headerlink" href="#protocol-4-one-bit-sliding-window" title="Permanent link">&para;</a></h4>
+<p>这张图片介绍了Protocol 4（四位滑动窗口协议）的相关概念，包括发送窗口、发送方和接收方的序号以及发送缓冲区等内容。</p>
+<ul>
+<li><strong>发送窗口</strong>：明确发送窗口最大值为1，意味着发送方在未收到确认信息前，最多只能发送1个帧。 </li>
+<li><strong>发送方向序号</strong>：有一个序号序列，其中<code>next_frame_to_send</code>（下一个要发送的帧序号）指向序号为1的位置，表示当前准备发送序号为1的帧。发送缓冲区<code>buffer</code>中缓冲的是编号为<code>next_frame_to_send</code>的帧，即序号为1的帧 。</li>
+<li><strong>接收方向序号</strong>：存在另一个序号序列，<code>frame_expected</code>（期望接收的帧序号）指向序号为0的位置，说明接收方当前期望接收到序号为0的帧。 </li>
+</ul>
+<h4 id="one-bit-sliding-window-protocol">One-Bit Sliding Window Protocol<a class="headerlink" href="#one-bit-sliding-window-protocol" title="Permanent link">&para;</a></h4>
+<p>这段代码实现了一个双向滑动窗口协议（Protocol 4），用于在不可靠的通信信道上实现可靠的数据传输。以下是对代码的详细解释：</p>
+<h5 id="1_4">1. 整体框架和宏定义<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h5>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="cm">/* Protocol4( siding window is bidlrectional, */</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="cp">#define MAX_SEQ 1</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="k">typedef</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="p">{</span><span class="n">frame_arrival</span><span class="p">,</span><span class="w"> </span><span class="n">cksum_err</span><span class="p">,</span><span class="w"> </span><span class="n">timeout</span><span class="p">}</span><span class="w"> </span><span class="n">event_type</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;protocol.h&quot;</span>
+</span></code></pre></div></td></tr></table></div>
+ - 注释<code>/* Protocol4( siding window is bidlrectional, */</code>表明这是双向滑动窗口的Protocol 4协议实现代码。
+ - <code>#define MAX_SEQ 1</code>：定义了最大序号为1，这意味着在这个协议中，帧的序号只有0和1两种 。这限制了序号空间，简化了序号管理，但也对协议的实现方式有一定约束。
+ - <code>typedef enum {frame_arrival, cksum_err, timeout} event_type;</code>：定义了一个枚举类型<code>event_type</code>，用来表示在数据传输过程中可能出现的事件。<code>frame_arrival</code>表示接收到一个正确的帧；<code>cksum_err</code>表示接收到的帧校验和错误；<code>timeout</code>表示发送帧后等待确认时发生了超时。
+ - <code>#include "protocol.h"</code>：包含名为<code>protocol.h</code>的头文件，这个头文件中可能定义了代码中使用到的其他类型（如<code>seq_nr</code>、<code>packet</code>、<code>frame</code> ）、函数（如<code>from_network_layer</code>、<code>to_physical_layer</code>、<code>inc</code> ）等。</p>
+<h5 id="2_1">2. 函数定义和变量声明<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h5>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">protocol4</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="p">{</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">    </span><span class="n">seq_nr</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">    </span><span class="n">seq_nr</span><span class="w"> </span><span class="n">frame_expected</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="n">packet</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="n">frame</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="n">event_type</span><span class="w"> </span><span class="n">event</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="n">frame_expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="n">next_frame_to_send</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="n">from_network_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">);</span>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">ack</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="n">frame_expected</span><span class="p">;</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">    </span><span class="n">s</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">    </span><span class="n">to_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">    </span><span class="n">start_timer</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">seq</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+ - <code>void protocol4 (void)</code>：定义了<code>protocol4</code>函数，它是实现该协议的核心函数。
+ - <code>seq_nr next_frame_to_send;</code>和<code>seq_nr frame_expected;</code>：<code>seq_nr</code>可能是在<code>protocol.h</code>中定义的一种表示序号的数据类型。<code>next_frame_to_send</code>用于记录下一个要发送的帧的序号，<code>frame_expected</code>用于记录期望接收到的帧的序号，在这个协议中它们的值只能是0或1 。
+ - <code>packet buffer;</code>：<code>packet</code>可能是在<code>protocol.h</code>中定义的一种表示数据包的数据类型，<code>buffer</code>用于临时存储从网络层获取的数据包，以便将其封装成帧进行发送。
+ - <code>frame r, s;</code>：<code>frame</code>可能是在<code>protocol.h</code>中定义的表示帧的数据类型，<code>r</code>用于存储从物理层接收到的帧，<code>s</code>用于构建和发送要传输的帧。
+ - <code>event_type event;</code>：用于存储在数据传输过程中发生的事件类型，取值为前面定义的<code>event_type</code>枚举值。
+ - 初始化部分：
+    - <code>frame_expected = 0;</code>：将期望接收到的帧的序号初始化为0，意味着一开始期望接收到序号为0的帧。
+    - <code>next_frame_to_send=0;</code>：将下一个要发送的帧的序号初始化为0，即开始时先发送序号为0的帧。
+    - <code>from_network_layer(&amp;buffer);</code>：调用<code>from_network_layer</code>函数从网络层获取一个数据包，并将其存储在<code>buffer</code>中。这个函数的具体实现可能在<code>protocol.h</code>头文件对应的源文件中，它负责从网络层获取需要传输的数据。
+    - <code>s.info = buffer;</code>：将从网络层获取的数据包赋值给要发送的帧<code>s</code>的<code>info</code>字段，完成将数据包封装到帧中的一部分操作。
+    - <code>s.ack=1-frame_expected;</code>：计算要发送帧的确认序号（ACK）。因为<code>frame_expected</code>初始值为0，所以<code>1 - frame_expected</code>的值为1，将这个值赋给帧<code>s</code>的<code>ack</code>字段，用于捎带确认信息给对方。
+    - <code>s.seq = next_frame_to_send;</code>：将下一个要发送的帧的序号（此时为0）赋值给帧<code>s</code>的<code>seq</code>字段，标识该帧的序号。
+    - <code>to_physical_layer(&amp;s);</code>：调用<code>to_physical_layer</code>函数将构建好的帧<code>s</code>发送到物理层进行传输。
+    - <code>start_timer(s.seq);</code>：启动一个定时器，用于在规定时间内等待对方的确认。如果在定时器超时前没有收到确认，就会触发超时事件进行重传操作。</p>
+<h5 id="3_1">3. 事件处理循环<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h5>
+<p><div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="nb">true</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="p">{</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">    </span><span class="n">wait_for_event</span><span class="p">(</span><span class="o">&amp;</span><span class="n">event</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">event</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">frame_arrival</span><span class="p">)</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="p">{</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">        </span><span class="n">from_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">frame_expected</span><span class="p">)</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">            </span><span class="n">to_network_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">r</span><span class="p">.</span><span class="n">info</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">            </span><span class="n">inc</span><span class="p">(</span><span class="n">frame_expected</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-11"><a id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-12"><a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">ack</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">)</span><span class="w"> </span>
+</span><span id="__span-8-13"><a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="w">        </span><span class="p">{</span>
+</span><span id="__span-8-14"><a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">            </span><span class="n">stop_timer</span><span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">ack</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-15"><a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">        </span><span class="p">}</span>
+</span><span id="__span-8-16"><a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="w">        </span><span class="n">from_network_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-17"><a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="w">        </span><span class="n">inc</span><span class="p">(</span><span class="n">next_frame_to_send</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-18"><a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">info</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">buffer</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-8-19"><a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">seq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">next_frame_to_send</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-8-20"><a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">        </span><span class="n">s</span><span class="p">.</span><span class="n">ack</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="w"> </span><span class="n">frame_expected</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-8-21"><a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">        </span><span class="n">to_physical_layer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-22"><a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="w">        </span><span class="n">start_timer</span><span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">seq</span><span class="p">);</span><span class="w"> </span>
+</span><span id="__span-8-23"><a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-8-24"><a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+ - <code>while (true)</code>：进入一个无限循环，持续等待和处理各种事件，确保通信过程持续进行。
+ - <code>wait_for_event(&amp;event);</code>：调用<code>wait_for_event</code>函数等待事件发生，该函数会阻塞程序执行，直到有事件出现，并将发生的事件类型存储在<code>event</code>变量中。
+ - <code>if (event == frame_arrival)</code>：当事件类型为<code>frame_arrival</code>，即接收到一个正确的帧时，执行以下操作：
+    - <code>from_physical_layer(&amp;r);</code>：调用<code>from_physical_layer</code>函数从物理层获取接收到的帧，并存储到<code>r</code>中。
+    - <code>if (r.seq == frame_expected)</code>：检查接收到帧的序号<code>r.seq</code>是否与期望的序号<code>frame_expected</code>相等：
+        - 如果相等，说明收到了期望的数据帧，<code>to_network_layer(&amp;r.info);</code>将帧中的数据部分传递给网络层进行进一步处理。
+        - <code>inc(frame_expected);</code>：调用<code>inc</code>函数更新期望接收的下一个数据帧的序号（由于<code>MAX_SEQ</code>为1，这里序号在0和1之间切换）。
+    - <code>if (r.ack == next_frame_to_send)</code>：检查接收到帧中的确认序号<code>r.ack</code>是否与当前发送方正在等待确认的帧序号<code>next_frame_to_send</code>相等：
+        - 如果相等，说明之前发送的帧已被正确接收，<code>stop_timer(r.ack);</code>停止对应的定时器，避免不必要的重传。
+    - <code>from_network_layer(&amp;buffer);</code>：从网络层获取下一个要发送的数据包。
+    - <code>inc(next_frame_to_send);</code>：更新下一个要发送的帧的序号（在0和1之间切换）。
+    - <code>s.info = buffer;</code>：将新获取的数据包封装到要发送的帧<code>s</code>的<code>info</code>字段中。
+    - <code>s.seq = next_frame_to_send;</code>：设置帧<code>s</code>的序号为更新后的<code>next_frame_to_send</code>。
+    - <strong>s.ack=1- frame_expected</strong>：计算并设置帧<code>s</code>的确认序号（用于捎带确认给对方）。
+    - <code>to_physical_layer(&amp;s);</code>：将构建好的帧<code>s</code>发送到物理层进行传输。
+    - <code>start_timer(s.seq);</code>：启动定时器，等待对方对新发送帧的确认。如果在定时器超时前没有收到确认，会触发超时事件，不过这里代码中未处理超时事件（<code>cksum_err</code>和<code>timeout</code>事件也未处理，可能在后续代码或<code>protocol.h</code>对应的源文件中实现）。 </p>
+<p>这段代码是一个循环结构，用于持续处理数据帧的接收、确认以及新数据帧的发送，以实现可靠的数据传输，以下是详细解释：</p>
+<ol>
+<li><strong><code>while (true)</code>循环</strong>：这是一个无限循环，使程序能够持续运行，不断等待和处理各类事件，确保数据传输过程不会中断。在网络通信场景中，这种持续运行的机制至关重要，能保证通信的连续性，实时处理接收到的数据和发送新的数据。</li>
+<li><strong><code>wait_for_event(&amp;event);</code></strong></li>
+<li><strong><code>if (event == frame_arrival)</code>条件判断</strong>：用于检查当前发生的事件是否为<code>frame_arrival</code>，即是否成功接收到一个未损坏的数据帧。如果满足该条件，就进入相应的代码块对接收到的帧进行处理；若事件不是<code>frame_arrival</code>（比如是校验和错误<code>cksum_err</code>或超时<code>timeout</code>事件），当前代码块未对其处理，可能在代码的其他部分进行处理。在实际网络通信中，可能会存在各种干扰导致数据帧损坏或丢失，这种条件判断能准确识别正常接收的帧并进行后续处理。</li>
+<li><strong><code>from_physical_layer(&amp;r);</code></strong>：从物理层获取接收到的数据帧，并将其存储到<code>r</code>变量中。在网络通信的分层架构中，物理层负责实际的信号传输，链路层需要从物理层获取数据帧进行解析和处理，这一步是链路层处理数据的起点。</li>
+<li><strong><code>if (r.seq == frame_expected)</code>条件判断</strong>：检查接收到的数据帧的序号<code>r.seq</code>是否与期望接收的帧序号<code>frame_expected</code>一致。如果两者相等，说明收到了期望的数据帧，会执行以下操作：<ul>
+<li><strong><code>to_network_layer(&amp;r.info);</code></strong>：将数据帧中的数据部分传递给网络层进行进一步处理。在网络通信中，不同的协议层各司其职，链路层负责将数据可靠地传输到对端，当接收到正确的数据帧后，需要将数据传递给上层的网络层，网络层再根据自身的协议规则进行路由、寻址等操作。</li>
+<li><strong><code>inc(frame_expected);</code></strong>：更新期望接收的下一个数据帧的序号。结合整体代码逻辑，这里的<code>inc</code>函数可能是将<code>frame_expected</code>在0和1之间切换（因为代码中最大序号为1 ），为接收下一个序号的帧做准备。在滑动窗口协议中，通过这种方式有序地接收数据帧，保证数据的顺序性和完整性。</li>
+</ul>
+</li>
+<li><strong><code>if (r.ack == next_frame_to_send)</code>条件判断</strong>：检查接收到的数据帧中的确认序号<code>r.ack</code>是否与当前发送方正在等待确认的帧序号<code>next_frame_to_send</code>一致。如果一致，说明之前发送的帧已被对方正确接收，执行<strong><code>stop_timer(r.ack);</code></strong>停止对应的定时器，避免因等待超时导致不必要的重传，节省网络资源。在不可靠的网络环境中，数据帧可能会丢失或延迟，定时器用于控制发送方等待确认的时间，当收到正确的确认后停止定时器，可以避免不必要的重传，提高网络传输效率。</li>
+<li><strong>新数据帧的准备与发送</strong>：<ul>
+<li><strong><code>from_network_layer(&amp;buffer);</code></strong>：从网络层获取下一个要发送的数据包，准备构建新的数据帧进行发送。在发送数据时，需要从上层网络层获取数据，然后封装成链路层的帧格式进行传输。</li>
+<li><strong><code>inc(next_frame_to_send);</code></strong>：更新下一个要发送的帧的序号，同样可能是在0和1之间切换。通过更新序号，确保发送的帧序号唯一且有序，便于接收方进行校验和处理。</li>
+<li><strong><code>s.info = buffer;</code></strong>：将从网络层获取的数据包存储到要发送的帧<code>s</code>的<code>info</code>字段中，完成数据封装。在链路层，帧包含了各种控制信息和数据信息，<code>info</code>字段用于存放实际要传输的数据。</li>
+<li><strong><code>s.seq = next_frame_to_send;</code></strong>：设置要发送帧<code>s</code>的序号为更新后的<code>next_frame_to_send</code>，以便接收方识别。接收方可以根据帧序号判断是否有帧丢失或乱序，从而进行相应的处理。</li>
+<li><strong><code>s.ack=1 - frame_expected;</code></strong>：计算并设置帧<code>s</code>的确认序号，用于向对方捎带确认信息，告知对方自己期望接收的帧序号。这种捎带确认的方式可以提高通信效率，减少额外的确认帧传输。</li>
+<li><strong><code>to_physical_layer(&amp;s);</code></strong>：将构建好的帧<code>s</code>发送到物理层，通过网络进行传输。物理层负责将链路层的帧转换为实际的信号在物理介质上传输。</li>
+<li><strong><code>start_timer(s.seq);</code></strong>：启动定时器，开始计时，等待对方对新发送帧的确认。若在定时器超时前未收到确认，可能会触发重传机制（当前代码未展示超时处理部分），以保证数据可靠传输。定时器是保证数据可靠传输的重要机制，在规定时间内未收到确认，就认为数据可能丢失，从而进行重传。 
+<img alt="Scenarios.jpeg" src="../Scenarios.jpeg" /></li>
+</ul>
+</li>
+</ol>
+<h3 id="protocol-using-go-back-n">Protocol Using Go Back N<a class="headerlink" href="#protocol-using-go-back-n" title="Permanent link">&para;</a></h3>
+<p><img alt="Pipelining.jpeg" src="../Pipelining.jpeg" /></p>
+<h4 id="pipelining-error-recovery">Pipelining &amp; Error Recovery<a class="headerlink" href="#pipelining-error-recovery" title="Permanent link">&para;</a></h4>
+<p>这张图片对比展示了数据链路层中两种不同的可靠传输协议在遇到传输错误时的处理机制，分别是回退N步协议（Go - Back - N）和选择重传协议（Selective Repeat）。</p>
+<h5 id="na">回退N步协议（图a）<a class="headerlink" href="#na" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>传输与确认过程</strong>：<ul>
+<li>发送方从左到右依次发送编号为0、1、2等的数据帧。接收方成功接收到0号帧和1号帧后，分别发送Ack 0和Ack 1作为确认。</li>
+<li>当发送2号帧时出现错误（标记为E），接收方无法正确接收该帧。在错误发生后，发送方继续发送3、4、5、6、7、8号帧。</li>
+</ul>
+</li>
+<li><strong>错误处理机制</strong>：<ul>
+<li>由于2号帧未得到确认，接收方的数据链路层会丢弃后续接收到的3 - 8号帧（标记为D）。</li>
+<li>发送方设置了一个超时时间间隔（Timeout interval），当超过这个时间仍未收到2号帧的确认时，发送方会从2号帧开始，重传所有未被确认的帧，也就是重新发送2、3、4、5、6、7、8号帧。</li>
+<li>接收方正确接收重传帧后，发送相应的确认帧（Ack 2、Ack 3等），发送方继续后续的传输（如发送9号帧）。 </li>
+</ul>
+</li>
+</ul>
+<h5 id="b">选择重传协议（图b）<a class="headerlink" href="#b" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>传输与确认过程</strong>：<ul>
+<li>同样，发送方先发送0、1、2等数据帧，接收方收到0号和1号帧后，发送Ack 0和Ack 1。</li>
+<li>2号帧传输出现错误（标记为E），接收方检测到错误后，发送Nak 2（否定确认）告知发送方2号帧接收失败。</li>
+</ul>
+</li>
+<li><strong>错误处理机制</strong>：<ul>
+<li>与回退N步协议不同，选择重传协议中，接收方会缓存后续正确到达但顺序不对的帧，例如3、4、5号帧。</li>
+<li>发送方收到Nak 2后，仅重传2号帧。当2号帧正确到达后，接收方按照顺序处理之前缓存的帧，并对所有正确接收的帧发送确认帧（Ack 1、Ack 2、Ack 5等）。</li>
+<li>发送方继续发送后续的6、7、8等帧，整个传输过程继续进行。</li>
+</ul>
+</li>
+</ul>
+<p>总体而言，回退N步协议在出现错误时会重传错误帧及后续所有帧，而选择重传协议只重传出错的帧，并通过缓存机制处理顺序错乱但正确的帧，在某些情况下能更有效地利用网络资源，提高传输效率。 </p>
+<p>该内容主要围绕回退N步（Go Back N）协议展开，涵盖协议基本原理、错误处理、确认机制、窗口大小、协议改进及定时器相关内容。
+1. <strong>基本原理</strong>：基于滑动窗口机制，接收窗口大小为1，通过窗口控制未确认帧的数量。
+2. <strong>错误处理</strong>
+    - <strong>数据帧损坏</strong>：接收方检测到帧错误时，丢弃该帧及后续所有帧，直到正确接收到错误帧；发送方在超时后重传错误帧及后续所有帧。
+    - <strong>ACK帧损坏</strong>：若ACK帧丢失，由于ACK具有累积性，后续正确的ACK可能在发送方超时前到达，此时之前丢失的ACK错误可忽略；若发送方超时，则重传相应帧及后续所有帧。
+3. <strong>确认机制（ACK）</strong>：ACK是累积的，例如接收方B收到Frame0和Frame1后未及时回送ACK，收到Frame2后回送ACK2 ，若ACK2在发送方对Frame0的超时前到达，那么ACK0和ACK1的错误可忽略。
+4. <strong>窗口大小</strong>
+    - <strong>最大发送窗口大小</strong>：以3比特序号为例，若发送窗口设为8会出现序号重叠问题，所以发送窗口最大值为7。发送方发完窗口内所有帧且接收方正确接收后，接收窗口向前推移，需保证发送窗口与接收窗口在序号上不重叠。
+    - <strong>判断序号位置</strong>：判断序号b是否落在窗口(a,c)内，分a到c不回绕（b位于a~c之间 ）和a到c回绕（b位于a~7或0~c - 1 ）两种情况，对应不同的判断条件。<img alt="判断.jpg" src="../%E5%88%A4%E6%96%AD.jpg" />
+5. <strong>协议改进</strong>
+    - <strong>设置ACK帧和ACK定时器</strong>：当发送数据量不是源源不断的分组流，无法及时搭载ACK时，发送短的ACK帧；有用于回送ACK的定时器操作和数据重传所用定时器操作，且两者有区别。
+    - <strong>NAK帧</strong>：可激发重传，无需等到超时。
+6. <strong>协议参数与线路利用率</strong>：超时定时器时限设计需考虑线路往返时间延迟、ACK定时器时限、对方物理层发送排队时延；滑动窗口（MAX_SEQ）大小会影响效率，太小可能导致无法流水线操作，出现停等现象。
+7. <strong>定时器队列</strong>：提到在软件中模拟多个定时器，如在实时时间10:00:00.000 ，有3个超时事件分别在10:00:00.005、10:00:00.013和10:00:00.019 。 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../../../../javascripts/extra.js"></script>
+      
+        <script src="../../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

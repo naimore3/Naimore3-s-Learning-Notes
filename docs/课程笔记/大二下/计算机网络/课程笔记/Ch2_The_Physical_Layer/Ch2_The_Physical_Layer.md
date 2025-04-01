@@ -118,3 +118,20 @@
     - **T2 - T4载波**：通过复用T1流形成更高等级的载波，4个T1流合并成1个T2流，7个T2流合并成1个T3流，6个T3流合并成1个T4流。在每一级复用过程中，会添加少量开销用于帧同步和失步恢复。
     - **E1载波**：在北美和日本以外的地区，使用2.048Mbps的E1载波替代T1。E1载波将32个8位数据样本封装在125微秒的基本帧中（速率为64kbps），其中30个信道用于信息传输，最多2个信道用于信令和同步（每4帧提供64个信令位，一半用于信令，一半用于同步）。
 8. **交换技术**：介绍了电路交换、分组交换和报文交换三种交换技术。电路交换在通信前需建立一条专用的物理链路；分组交换将数据分成多个分组进行传输，每个分组独立选择路由；报文交换则以完整的报文为单位进行存储转发，与分组交换不同的是，报文交换不限制报文大小 。 
+![Circuit.jpeg](Circuit.jpeg)
+![Packet.jpeg](Packet.jpeg)
+![Message.jpeg](Message.jpeg)
+
+| Item | Circuit-switched | Packet-switched |
+| --- | --- | --- |
+| Call setup | $ Required $ | Not needed |
+| Dedicated physical path | Yes | No. |
+| Each packet follows the same route | Yes | No. |
+| Packets arrive in order | Yes | No. |
+| Is a switch crash fatal | Yes | No. |
+| Bandwidth available | Fixed | Dynamic |
+| When can congestion occur | At setup time | On every packet |
+| Potentially wasted bandwidth | Yes | No. |
+| Store-and-forward transmission | No. | Yes |
+| Transparency | Yes | $ No $ |
+| Charging | Per minute | Per packet |

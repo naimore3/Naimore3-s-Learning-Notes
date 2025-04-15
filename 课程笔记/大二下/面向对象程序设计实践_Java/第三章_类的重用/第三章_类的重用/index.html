@@ -3277,14 +3277,134 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="泛型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      泛型的概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      泛型类示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      泛型方法示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      通配符泛型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      有限制的泛型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      类型参数命名习惯
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c" class="md-nav__link">
+    <span class="md-ellipsis">
+      与C++对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       类的组合
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="类的组合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      类的组合概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      类的组合语法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      类组合举例——线段类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      组合与继承的比较
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      组合与继承的结合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3298,7 +3418,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       自定义包
     </span>
@@ -3420,9 +3540,169 @@
 <li><strong>应用示例</strong>：以贷款类为例，贷款有多种类型，将<code>Loan</code>声明为抽象类，并指定子类应具有计算月还款值（<code>calculateMonthlyPayment</code>）、还款（<code>makePayment</code>）、取得客户信息（<code>getClientInfo</code>）等行为，其中<code>calculateMonthlyPayment</code>和<code>makePayment</code>被声明为抽象方法，由具体的子类（如<code>Lease</code>、<code>Mortgage</code>等）去实现 。 </li>
 </ol>
 <h2 id="_8">泛型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<h2 id="_9">类的组合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="_9">泛型的概念<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>泛型指不仅数据能作为参数，类型也可作为参数，其本质是参数化类型，把所操作的数据类型指定为一个参数。通过使用类型参数，程序能更通用，可处理不同类型的数据。而且可以声明泛型类、泛型方法和泛型接口。</p>
+<h3 id="_10">泛型类示例<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>示例一</strong>：在<code>GeneralType1</code>类中，它使用<code>Object</code>类型来接收和返回数据。如在<code>GenericsTester1</code>的<code>main</code>方法里，创建<code>GeneralType1</code>对象时分别传入<code>int</code>类型的<code>2</code>（自动封箱为<code>Integer</code>）和<code>double</code>类型的<code>0.33</code>（自动封箱为<code>Double</code>）。但从该类获取对象时，需要手动进行类型转换，若转换错误会出现运行时异常，像<code>System.out.println(“d.object=" + (Integer) d.getObj());</code>就会出错。</li>
+<li><strong>示例二</strong>：<code>GeneralType2&lt;Type2&gt;</code>是一个泛型类，<code>&lt;Type2&gt;</code>为类型参数。在<code>GenericsTester2</code>的<code>main</code>方法中，创建了<code>GeneralType2&lt;Integer&gt;</code>和<code>GeneralType2&lt;Double&gt;</code>的对象。这种方式在编译时就能确保类型安全，避免了像<code>GeneralType1</code>中可能出现的类型转换错误，如<code>System.out.println(“d.object=" + (Integer)d.getObj());</code>这样的代码在该示例中无法通过编译。</li>
+</ul>
+<h3 id="_11">泛型方法示例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><code>GeneralMethod</code>类中的<code>printClassName</code>方法是一个泛型方法，<code>&lt;Type3&gt;</code>为其类型参数。在<code>GenericsTester3</code>的<code>main</code>方法中，调用该方法并传入不同类型的参数，如<code>String</code>类型的<code>"hello"</code> 、<code>int</code>类型的<code>3</code>、<code>float</code>类型的<code>3.0f</code>和<code>double</code>类型的<code>3.0</code>，该方法会打印出传入参数的类名，运行结果依次为<code>java.lang.String</code>、<code>java.lang.Integer</code>、<code>java.lang.Float</code>、<code>java.lang.Double</code>。</p>
+<h3 id="_12">通配符泛型<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>使用通配符<code>?</code>可使程序更通用。例如<code>GeneralType4 &lt;Type4&gt;</code>类结合<code>ShowType</code>类中的<code>showType</code>方法，<code>showType</code>方法参数为<code>GeneralType4&lt;?&gt;</code>，可以接收<code>GeneralType4&lt;Integer&gt;</code>和<code>GeneralType4&lt;String&gt;</code>等不同类型参数的对象，并打印出其内部对象的类名。在<code>GenericsTester4</code>的<code>main</code>方法中进行了相应测试，运行结果分别为<code>java.lang.Integer</code>和<code>java.lang.String</code>。</p>
+<h3 id="_13">有限制的泛型<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>由于不是所有对象都能进行某些操作，有时需要对泛型参数代表的类型进行限制。在参数“<code>Type</code>”后使用“<code>extends</code>”关键字加类名或接口名，表明参数类型必须是该类的子类或实现了该接口。例如<code>GeneralType5 &lt;Type5 extends Number&gt;</code>类，要求<code>Type5</code>必须是<code>Number</code>或<code>Number</code>的子类。在<code>GenericsTester5</code>的<code>main</code>方法中，<code>GeneralType5&lt;Integer&gt; i = new GeneralType5&lt;&gt;(2);</code>是合法的，而<code>GeneralType5&lt;String&gt; s = new GeneralType5&lt;&gt;("hello");</code>是非法的，因为<code>String</code>不是<code>Number</code>或<code>Number</code>的子类。</p>
+<h3 id="_14">类型参数命名习惯<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>Java中泛型类型参数有常见的命名习惯，<code>E</code>代表元素（常用于Java集合框架），<code>K</code>代表键，<code>N</code>代表数字，<code>T</code>代表类型，<code>V</code>代表值，<code>S</code>、<code>U</code>、<code>V</code>等用于表示第二、第三、第四种类型。</p>
+<h3 id="c">与C++对比<a class="headerlink" href="#c" title="Permanent link">&para;</a></h3>
+<p>Java中的泛型和C++中的类模板作用类似，但编译解析方式不同。Java泛型类目标代码只生成一份，牺牲了运行速度；C++的类模板针对不同模板参数静态实例化，目标代码体积稍大，但运行速度快。 </p>
+<h2 id="_15">类的组合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h3 id="_16">类的组合概念<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>类的组合是一种类重用机制，基于部件组装思想，在声明新类时，将已有类的对象作为新类的成员。这一机制源于现实世界中多数对象由更小对象组成的特性，在Java中通过将其他类的对象置于新类内来实现，可用“有一个”描述这种关系。</p>
+<h3 id="_17">类的组合语法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>将已存在类的对象放入新类即可。例如，“厨房（kitchen）里有一个炉子（cooker）和一个冰箱（refrigerator）”，在代码中体现为：
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">class</span> <span class="nc">Cooker</span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="c1">// 类的语句，可包含属性和方法定义等</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">}</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kd">class</span> <span class="nc">Refrigerator</span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="c1">// 类的语句，可包含属性和方法定义等</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kd">class</span> <span class="nc">Kitchen</span><span class="p">{</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="n">Cooker</span><span class="w"> </span><span class="n">myCooker</span><span class="p">;</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="n">Refrigerator</span><span class="w"> </span><span class="n">myRefrigerator</span><span class="p">;</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+在上述代码中，<code>Kitchen</code>类组合了<code>Cooker</code>和<code>Refrigerator</code>类的对象<code>myCooker</code>和<code>myRefrigerator</code>，表示厨房拥有炉子和冰箱。</p>
+<h3 id="_18">类组合举例——线段类<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>线段由两个端点组成，代码实现如下：
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span>
+<span class="normal"><a href="#__codelineno-1-21">21</a></span>
+<span class="normal"><a href="#__codelineno-1-22">22</a></span>
+<span class="normal"><a href="#__codelineno-1-23">23</a></span>
+<span class="normal"><a href="#__codelineno-1-24">24</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Point</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Point</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetX</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">GetY</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="p">}</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="kd">class</span> <span class="nc">Line</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="n">p1</span><span class="p">,</span><span class="n">p2</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="n">Line</span><span class="p">(</span><span class="n">Point</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">Point</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">        </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">GetX</span><span class="p">(),</span><span class="n">a</span><span class="p">.</span><span class="na">GetY</span><span class="p">());</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">GetX</span><span class="p">(),</span><span class="n">b</span><span class="p">.</span><span class="na">GetY</span><span class="p">());</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="nf">Length</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Math</span><span class="p">.</span><span class="na">sqrt</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">GetX</span><span class="p">()</span><span class="o">-</span><span class="n">p1</span><span class="p">.</span><span class="na">GetX</span><span class="p">(),</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">p2</span><span class="p">.</span><span class="na">GetY</span><span class="p">()</span><span class="o">-</span><span class="n">p1</span><span class="p">.</span><span class="na">GetY</span><span class="p">(),</span><span class="mi">2</span><span class="p">));</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+在这个例子中，<code>Line</code>类组合了两个<code>Point</code>类的对象<code>p1</code>和<code>p2</code>来表示线段的两个端点。通过在<code>Line</code>类的构造函数中初始化这两个端点，并提供计算线段长度的方法<code>Length</code>，展示了类组合在实际编程中的应用。</p>
+<h3 id="_19">组合与继承的比较<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>“包含”关系适合用组合表达，比如厨房包含炉子和冰箱；“属于”关系则用继承表达，像餐盘属于盘子，勺子属于器具。继承体现的是一种特殊化的关系，子类继承超类的属性和方法并可进行扩展；而组合强调的是对象的组成关系 。</p>
+<h3 id="_20">组合与继承的结合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>在实际编程中，常将组合与继承结合创建更复杂的类。例如：
+<div class="language-java highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span>
+<span class="normal"><a href="#__codelineno-2-28">28</a></span>
+<span class="normal"><a href="#__codelineno-2-29">29</a></span>
+<span class="normal"><a href="#__codelineno-2-30">30</a></span>
+<span class="normal"><a href="#__codelineno-2-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">class</span> <span class="nc">Plate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Plate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Plate constructor&quot;</span><span class="p">);</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="p">}</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kd">class</span> <span class="nc">DinnerPlate</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Plate</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">DinnerPlate</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;DinnerPlate constructor&quot;</span><span class="p">);</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="p">}</span>
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="kd">class</span> <span class="nc">Utensil</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">    </span><span class="n">Utensil</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Utensil constructor&quot;</span><span class="p">);</span>
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="p">}</span>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="kd">class</span> <span class="nc">Spoon</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Utensil</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Spoon</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Spoon constructor&quot;</span><span class="p">);</span>
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="p">}</span>
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="kd">class</span> <span class="nc">PlaceSetting</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">    </span><span class="n">Spoon</span><span class="w"> </span><span class="n">sp</span><span class="p">;</span><span class="w"> </span>
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">    </span><span class="n">DinnerPlate</span><span class="w"> </span><span class="n">pl</span><span class="p">;</span>
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PlaceSetting</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">        </span><span class="n">sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Spoon</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
+</span><span id="__span-2-28"><a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">        </span><span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DinnerPlate</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
+</span><span id="__span-2-29"><a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;PlaceSetting constructor&quot;</span><span class="p">);</span>
+</span><span id="__span-2-30"><a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="w">    </span><span class="p">}</span>
+</span><span id="__span-2-31"><a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="p">}</span>
+</span></code></pre></div></td></tr></table></div>
+在上述代码中，<code>DinnerPlate</code>继承自<code>Plate</code>，<code>Spoon</code>继承自<code>Utensil</code>，体现了继承关系；而<code>PlaceSetting</code>类组合了<code>Spoon</code>和<code>DinnerPlate</code>类的对象，展示了组合与继承的结合使用。在<code>PlaceSetting</code>的构造函数中，创建了<code>Spoon</code>和<code>DinnerPlate</code>的对象，模拟了实际场景中餐桌布置包含餐盘和勺子的情况。 </p>
 <h2 id="java">Java基础类库简介<a class="headerlink" href="#java" title="Permanent link">&para;</a></h2>
-<h2 id="_10">自定义包<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_21">自定义包<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 
 
 

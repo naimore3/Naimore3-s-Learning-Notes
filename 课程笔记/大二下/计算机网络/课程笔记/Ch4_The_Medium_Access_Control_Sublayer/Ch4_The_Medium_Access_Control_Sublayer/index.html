@@ -3408,6 +3408,180 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#80211-wireless-lans" class="md-nav__link">
+    <span class="md-ellipsis">
+      802.11 Wireless LANs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-data-link-layer-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.4 Data Link Layer Switching
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Data Link Layer Switching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-internetworking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Internetworking
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Internetworking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      混杂模式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transparent-bridge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Transparent Bridge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transparent Bridge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      工作模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#station-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      站表（Station table）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      帧的路由处理流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态拓扑应对
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="动态拓扑应对">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      含义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      存在的问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      解决方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spanning-tree-bridges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Spanning Tree Bridges
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Spanning Tree Bridges">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      拓扑环路问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1983radia-perlman" class="md-nav__link">
+    <span class="md-ellipsis">
+      生成树网桥解决方案（1983年Radia Perlman提出）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      相关机制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3857,8 +4031,86 @@
 <li><strong>令牌环</strong>：各站点按预定义顺序依次发送帧，令牌帧和数据帧在环中循环，到达目的站后，需有站点（发送站或接收站）将数据帧从环中移除，防止其无限循环 。</li>
 <li><strong>以太网长寿的原因</strong>：遵循KISS原则（保持简单）；可靠性高，如10base2使用BNC接口、10BaseT等；成本低，细以太网和双绞线布线以及接口卡价格便宜；易于维护，无需安装软件和管理配置表，添加新主机简单，直接插入即可 。 </li>
 </ul>
+<h2 id="80211-wireless-lans">802.11 Wireless LANs<a class="headerlink" href="#80211-wireless-lans" title="Permanent link">&para;</a></h2>
+<p>该节主要围绕802.11无线局域网展开，涵盖频段规定、架构协议、传输机制、功率管理、帧格式及服务等方面内容，具体如下：
+1. <strong>频段规定</strong>：802.11无线局域网使用ISM频段，其中2.4G频段应用广泛。该频段工作频率带宽83.5MHz（2.401 - 2.483GHz），最多有13个信道，所选用频道中心频率间隔不低于25MHz，最多可同时使用三个频道 。
+2. <strong>架构与协议栈</strong>：802.11无线局域网有基础设施模式（通过接入点连接网络）和自组网模式。协议栈包含物理层、MAC层和逻辑链路控制层等。
+3. <strong>介质访问控制（MAC）</strong>
+- <strong>CSMA/CA协议</strong>：因无线设备半双工特性、接收信号弱导致碰撞检测机制失效，802.11采用CSMA/CA协议避免冲突。发送帧时，除近期未使用信道且信道空闲的情况外，站点先随机退避（0 - 15个时隙），接着在检测到信道空闲（DIFS时长内无信号）后，开始倒计时空闲时隙，期间若有其他帧发送则暂停，计数器为0时发送帧。若收到ACK确认帧则传输成功，未收到则加倍退避周期并重发。<img alt="CSMACA.jpeg" src="../CSMACA.jpeg" />
+- <strong>信道检测</strong>：包含物理检测（检查介质是否有有效信号）和虚拟检测（各站通过跟踪网络分配向量NAV记录信道使用情况，每个帧携带NAV，数据帧的NAV包含发送ACK所需时间，还有可选的RTS/CTS机制 ）。<img alt="Channel.jpg" src="../Channel.jpg" />
+- <strong>提高传输成功率</strong>：支持速率自适应，根据信号质量调整传输速率，丢帧过多时降低速率，丢帧少时尝试提高速率。还允许将帧拆分为片段，每个片段单独编号和校验，采用停等协议确认。
+- <strong>帧间间隔（IFS）</strong>：802.11定义了多种IFS。SIFS用于ACK帧、RTS/CTS等控制帧序列和片段突发；AIFS1用于PCF、语音等高优先级流量；DIFS用于常规数据帧；AIFS4用于背景流量。不同的IFS时长不同，如802.11g中SIFS/AIFS1/DIFS = 10/19/28us 。
+- <strong>PCF点协调功能</strong>：与DCF分布式协调功能并存，但因未纳入Wi-Fi联盟互操作性标准，仅在少数硬件设备中实现。AP定期（0.1s）发送信标帧，信标帧之间的超帧包含无竞争期（CFP）和竞争期（CP）。CP中使用DCF，CFP中AP按顺序向各站发送轮询报文，给予其发送权限，AP轮询时遵循PIFS &lt; DIFS确保访问优先权，轮询报文和回答都需等待SIFS 。
+4. <strong>功率管理</strong>
+- <strong>节能模式</strong>：AP周期性广播信标帧（如每100ms一次），客户端可在发送给AP的帧中设置功率管理位进入节能模式，此时AP会缓存发给该客户端的流量，客户端通过向AP发送轮询消息获取数据。
+- <strong>APSD自动功率节省传输</strong>：AP缓存帧，并在客户端发送帧后立即将缓存的帧发送给客户端。
+5. <strong>QoS（服务质量） - TXOP</strong>：传统CSMA/CA机制下，不同速率站点平均分配带宽。而TXOP机制使各站获得相等的空中时间，而非相等的帧数。例如，6Mbps和54Mbps的站点在TXOP机制下，分别能获得3Mbps和27Mbps的速率。
+6. <strong>帧类型</strong>：802.11帧分为数据帧、控制帧（RTS、CTS、ACK）和管理帧（信标帧、探测帧、认证和解除认证帧、关联和重新关联帧等）。<img alt="Format.jpg" src="../Format.jpg" />
+7. <strong>数据帧格式</strong>：包含类型、子类型、ToDS和FromDS位（标识帧与分发系统的传输方向）、更多片段位、重试位、功率管理位、更多数据位、保护帧位、持续时间字段、地址字段（数据帧2 - 4个，管理帧1个 ）、序列字段（用于检测重复帧，4位标识片段，12位随新传输递增 ）和数据字段（最大2312字节 ）。
+8. <strong>服务</strong>
+- <strong>关联服务</strong>：移动站用于连接AP，可从信标帧或直接向AP询问获取其身份和能力信息，包括支持的数据速率、安全设置、节能能力和QoS支持等。
+- <strong>重新关联服务</strong>：允许站点更换首选AP。 </p>
+<h2 id="44-data-link-layer-switching">4.4 Data Link Layer Switching<a class="headerlink" href="#44-data-link-layer-switching" title="Permanent link">&para;</a></h2>
+<h3 id="local-internetworking">Local Internetworking<a class="headerlink" href="#local-internetworking" title="Permanent link">&para;</a></h3>
+<p>该节内容主要介绍了数据链路层交换中与本地互联网络相关的内容，具体如下：</p>
 </li>
+<li>
+<p><strong>数据链路层交换的需求</strong>：在本地互联网络场景下，数据链路层交换存在多方面需求。一是受物理距离限制，长距离传输信号易衰减，需要进行处理；二是为适应网络负载，将单个局域网分割成多个，形成多个冲突域，以减少冲突发生概率，提升网络性能；三是基于安全考虑，在混杂模式下，网络设备能接收所有经过的帧，可能导致信息泄露，数据链路层交换可对此进行管控。</p>
+</li>
+<li><strong>网桥</strong>：作为数据链路层的重要设备，网桥在网络中发挥关键作用。它能够连接多个局域网，通过对帧的接收、处理和转发，实现不同局域网间的通信。其工作原理是依据站表信息，对收到的帧进行判断和转发操作，从而确保数据在不同局域网之间正确传输 。</li>
 </ol>
+<h4 id="_7">混杂模式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>混杂模式是网络设备的一种工作模式。在该模式下，网络设备（如网卡、网桥等）会接收并处理所有经过它的网络帧，而不仅仅是发送给自己的帧。</p>
+<ul>
+<li><strong>工作原理</strong>：正常情况下，网络设备只接收目的地址是自身MAC地址或广播地址、组播地址的帧。但在混杂模式下，设备会捕获网络上传输的所有帧，不管帧的目的地址是什么。例如，在一个以太网中，普通网卡只处理目的MAC地址为自己的帧，而处于混杂模式的网卡会接收总线上传输的所有帧。</li>
+<li><strong>应用场景</strong>：常用于网络监测和故障排查，网络管理员可以通过将设备设置为混杂模式，使用抓包工具捕获网络中的数据包，分析网络流量，查看是否存在异常的网络活动、故障原因等。在网络安全领域，入侵检测系统（IDS）也可能利用混杂模式来监测网络中的可疑流量，及时发现潜在的安全威胁。</li>
+<li><strong>潜在风险</strong>：由于可以获取大量网络数据，若被恶意利用，可能导致信息泄露，威胁网络安全。比如，攻击者可以利用处于混杂模式的设备捕获用户的账号密码、敏感文件等信息。 </li>
+</ul>
+<h3 id="transparent-bridge">Transparent Bridge<a class="headerlink" href="#transparent-bridge" title="Permanent link">&para;</a></h3>
+<p>该部分内容围绕透明网桥展开，介绍了其工作模式、站表相关机制以及应对动态拓扑的方法，具体如下：</p>
+<h4 id="_8">工作模式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>透明网桥工作在混杂模式（promiscuous mode） ，能接收其连接的所有局域网中传输的每一帧。</p>
+<h4 id="station-table">站表（Station table）<a class="headerlink" href="#station-table" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>功能</strong>：列出每个可能的目的地址，并指明其所属的输出线路（即连接的局域网） 。</li>
+<li><strong>初始化</strong>：网桥刚接入网络时，所有哈希表（站表）为空。 </li>
+<li><strong>添加表项</strong>：利用混杂模式工作特性，网桥能看到连接局域网中发送的所有帧。通过查看帧的源地址，网桥可确定哪台机器在哪个局域网上可访问，进而添加到站表。 </li>
+</ul>
+<h4 id="_9">帧的路由处理流程<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li>若目的局域网（destination LAN）和源局域网（source LAN）相同，丢弃该帧。</li>
+<li>若目的局域网和源局域网不同，转发该帧。 </li>
+<li>若目的局域网未知，或目的地址为组播/广播地址，采用洪泛法（flooding algorithm） ，即向网桥连接的除接收该帧所在局域网外的所有局域网输出该帧。 </li>
+</ul>
+<h4 id="_10">动态拓扑应对<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h5 id="_11">含义<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<p>“Dynamic topologies”即动态拓扑，指网络拓扑结构会随着机器（如计算机等设备）和网桥的加电、断电以及位置移动而发生改变 。</p>
+<h5 id="_12">存在的问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<p>当机器和网桥进行加电、断电操作，或者位置发生移动时，网络的拓扑结构会相应改变。这可能导致网桥站表中的信息过时或错误，使得网桥无法准确转发帧，影响网络通信。</p>
+<h5 id="_13">解决方案<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
+<p>在网桥的站表中，为每个表项增设“arrival time”（到达时间）域，具体操作如下：
+- <strong>记录时间</strong>：每当创建一个新的表项时，在该表项中记录对应帧的到达时间。
+- <strong>更新时间</strong>：若源地址已存在于站表中的帧再次到达，用当前时间更新该表项中的到达时间。
+- <strong>定期清理</strong>：定期扫描站表，删除存在时间超过几分钟的旧表项。这样做有以下好处：
+    - 避免已关机的站点长期占用表项，保证表项能及时反映当前网络中活跃的站点。
+    - 当计算机从一个局域网移动到另一个局域网时，几分钟内旧表项会被删除，之后计算机再次发送帧时，网桥会重新学习其新位置并更新站表，从而恢复正常操作。若移动后的站点立刻主动发出数据，网桥能立刻根据新的源地址修正拓扑结构信息。
+    - 若一台机器几分钟内没有发送数据，在它下次主动发送帧之前，发往它的流量将采用洪泛法传输，因为此时网桥站表中关于它的信息可能已过时，洪泛法可确保数据能到达该机器 。 </p>
+<h3 id="spanning-tree-bridges">Spanning Tree Bridges<a class="headerlink" href="#spanning-tree-bridges" title="Permanent link">&para;</a></h3>
+<p>该部分围绕生成树网桥展开，介绍了拓扑环路问题及解决方案，涉及BPDU等机制，具体如下：</p>
+<h4 id="_14">拓扑环路问题<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>为提高可靠性，部分站点在局域网间并行使用两个或更多网桥，这种方式虽增加可靠性但会在拓扑结构中引入环路，引发网络问题。</p>
+<h4 id="1983radia-perlman">生成树网桥解决方案（1983年Radia Perlman提出）<a class="headerlink" href="#1983radia-perlman" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>构建生成树</strong>：网桥间相互通信，在实际拓扑结构上构建一棵能覆盖每个局域网的生成树。基于该生成树，每个局域网到其他局域网都仅有一条路径，从而避免环路。构建时会忽略一些局域网间的潜在连接，以形成无环拓扑。</li>
+</ul>
+<h4 id="_15">相关机制<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>BPDU（网桥协议数据单元，38字节）</strong>：网桥每隔2秒从所有端口组播BPDU消息（目的MAC地址为01:80:c2:00:00:00 ，该消息不转发），内容包含自身ID（基于MAC地址）、认为的根网桥ID、到根网桥的距离 。</li>
+<li><strong>选举根网桥</strong>：全网选择ID最低的网桥作为根网桥。通过交换足够多BPDU消息后，所有网桥会就根网桥达成一致。</li>
+<li><strong>确定根端口</strong>：每个网桥记住到根网桥的最短路径，若有多条等价路径，选择经过ID最低网桥的路径，该路径对应的端口为根端口。</li>
+<li><strong>确定指定端口</strong>：网桥每个端口对应一个局域网，离根网桥最近的端口（等价时选ID最小的）为该局域网的指定端口。既非根端口也非指定端口的会被阻塞，不收发数据。</li>
+<li><strong>动态适应</strong>：算法在网络正常运行时持续运行，自动检测拓扑结构变化并更新生成树。相关标准IEEE 802.1D对根端口、指定端口、阻塞端口进行了定义规范。 </li>
+</ul>
 
 
 

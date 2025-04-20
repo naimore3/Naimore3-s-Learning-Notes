@@ -4811,20 +4811,32 @@
 <li><strong>超时时间间隔设置过短的影响</strong>：若超时时间间隔设置过短，发送方可能会在确认帧（ACK）实际还在传输途中时就超时。此时，发送方会重传数据帧，导致传输不必要的帧。虽然这些额外重传的帧不会影响协议最终数据传输的正确性（因为接收方会识别并处理重复帧 ），但会增加网络负载，占用带宽资源，从而降低协议的整体性能 。 </li>
 </ul>
 <h2 id="sliding-window-protocols">Sliding Window Protocols<a class="headerlink" href="#sliding-window-protocols" title="Permanent link">&para;</a></h2>
-<p>该部分内容围绕滑动窗口协议（Sliding Window Protocols）展开，介绍了捎带确认（Piggybacking）、发送窗口与接收窗口相关概念，以及不同滑动窗口协议类型，具体如下：
-- 捎带确认（Piggybacking）
-    - <strong>全双工数据传输方式</strong>
-        - 可以使用两个独立的通信信道，每个信道用于单工数据流量。
-        - 也可以在同一电路上实现双向数据传输。
-    - <strong>捎带确认机制</strong>：当接收方收到数据帧时，不立即发送单独的控制帧，而是等待网络层传递下一个数据包。此时，将确认帧（ACK ）附加在即将发出的数据帧上（利用帧头部的ack字段 ）。这种方式能有效减少控制帧的单独发送，提高传输效率。
-- 发送窗口与接收窗口
-    - <strong>发送窗口（Sending window）</strong>
-        - 作用是控制未确认帧的数量。在任何时刻，发送方维护一组与未确认帧对应的序列号，这些帧处于发送窗口内。
-        - 存在发送窗口大小的最大值限制，具体大小取决于协议设计。
-    - <strong>接收窗口（Receiving window）</strong>：接收方同样维护一个接收窗口，用于限定其允许接收的帧的集合。
-    - <strong>窗口大小特性</strong>：窗口大小可以是固定的，也可以在帧的发送和接收过程中动态增长或缩小。 
-- 滑动窗口协议类型
-    - 包括一位滑动窗口协议（A One - Bit Sliding Window Protocol ）、回退N步协议（A Protocol Using Go Back N ）、选择重传协议（A Protocol Using Selective Repeat ） 。不同协议在效率、复杂度和缓冲区要求等方面存在差异 。 </p>
+<p>该部分内容围绕滑动窗口协议（Sliding Window Protocols）展开，介绍了捎带确认（Piggybacking）、发送窗口与接收窗口相关概念，以及不同滑动窗口协议类型，具体如下：</p>
+<ul>
+<li>捎带确认（Piggybacking）<ul>
+<li><strong>全双工数据传输方式</strong><ul>
+<li>可以使用两个独立的通信信道，每个信道用于单工数据流量。</li>
+<li>也可以在同一电路上实现双向数据传输。</li>
+</ul>
+</li>
+<li><strong>捎带确认机制</strong>：当接收方收到数据帧时，不立即发送单独的控制帧，而是等待网络层传递下一个数据包。此时，将确认帧（ACK ）附加在即将发出的数据帧上（利用帧头部的ack字段 ）。这种方式能有效减少控制帧的单独发送，提高传输效率。</li>
+</ul>
+</li>
+<li>发送窗口与接收窗口<ul>
+<li><strong>发送窗口（Sending window）</strong><ul>
+<li>作用是控制未确认帧的数量。在任何时刻，发送方维护一组与未确认帧对应的序列号，这些帧处于发送窗口内。</li>
+<li>存在发送窗口大小的最大值限制，具体大小取决于协议设计。</li>
+</ul>
+</li>
+<li><strong>接收窗口（Receiving window）</strong>：接收方同样维护一个接收窗口，用于限定其允许接收的帧的集合。</li>
+<li><strong>窗口大小特性</strong>：窗口大小可以是固定的，也可以在帧的发送和接收过程中动态增长或缩小。 </li>
+</ul>
+</li>
+<li>滑动窗口协议类型<ul>
+<li>包括一位滑动窗口协议（A One - Bit Sliding Window Protocol ）、回退N步协议（A Protocol Using Go Back N ）、选择重传协议（A Protocol Using Selective Repeat ） 。不同协议在效率、复杂度和缓冲区要求等方面存在差异 。 </li>
+</ul>
+</li>
+</ul>
 <h3 id="one-bit-sliding-window-protocol">One-Bit Sliding Window Protocol<a class="headerlink" href="#one-bit-sliding-window-protocol" title="Permanent link">&para;</a></h3>
 <p><img alt="Sliding.jpeg" src="../Sliding.jpeg" /></p>
 <h4 id="protocol-4-one-bit-sliding-window">Protocol 4: One-Bit Sliding Window<a class="headerlink" href="#protocol-4-one-bit-sliding-window" title="Permanent link">&para;</a></h4>
@@ -4944,20 +4956,28 @@
 </ul>
 </li>
 </ul>
-<p>该内容主要围绕回退N步（Go Back N）协议展开，涵盖协议基本原理、错误处理、确认机制、窗口大小、协议改进及定时器相关内容。
-1. <strong>基本原理</strong>：基于滑动窗口机制，接收窗口大小为1，通过窗口控制未确认帧的数量。
-2. <strong>错误处理</strong>
-    - <strong>数据帧损坏</strong>：接收方检测到帧错误时，丢弃该帧及后续所有帧，直到正确接收到错误帧；发送方在超时后重传错误帧及后续所有帧。
-    - <strong>ACK帧损坏</strong>：若ACK帧丢失，由于ACK具有累积性，后续正确的ACK可能在发送方超时前到达，此时之前丢失的ACK错误可忽略；若发送方超时，则重传相应帧及后续所有帧。
-3. <strong>确认机制（ACK）</strong>：ACK是累积的，例如接收方B收到Frame0和Frame1后未及时回送ACK，收到Frame2后回送ACK2 ，若ACK2在发送方对Frame0的超时前到达，那么ACK0和ACK1的错误可忽略。
-4. <strong>窗口大小</strong>
-    - <strong>最大发送窗口大小</strong>：以3比特序号为例，若发送窗口设为8会出现序号重叠问题，所以发送窗口最大值为7。发送方发完窗口内所有帧且接收方正确接收后，接收窗口向前推移，需保证发送窗口与接收窗口在序号上不重叠。
-    - <strong>判断序号位置</strong>：判断序号b是否落在窗口(a,c)内，分a到c不回绕（b位于a~c之间 ）和a到c回绕（b位于a~7或0~c - 1 ）两种情况，对应不同的判断条件。<img alt="判断.jpg" src="../%E5%88%A4%E6%96%AD.jpg" />
-5. <strong>协议改进</strong>
-    - <strong>设置ACK帧和ACK定时器</strong>：当发送数据量不是源源不断的分组流，无法及时搭载ACK时，发送短的ACK帧；有用于回送ACK的定时器操作和数据重传所用定时器操作，且两者有区别。
-    - <strong>NAK帧</strong>：可激发重传，无需等到超时。
-6. <strong>协议参数与线路利用率</strong>：超时定时器时限设计需考虑线路往返时间延迟、ACK定时器时限、对方物理层发送排队时延；滑动窗口（MAX_SEQ）大小会影响效率，太小可能导致无法流水线操作，出现停等现象。
-7. <strong>定时器队列</strong>：提到在软件中模拟多个定时器，如在实时时间10:00:00.000 ，有3个超时事件分别在10:00:00.005、10:00:00.013和10:00:00.019 。 </p>
+<p>该内容主要围绕回退N步（Go Back N）协议展开，涵盖协议基本原理、错误处理、确认机制、窗口大小、协议改进及定时器相关内容。</p>
+<ol>
+<li><strong>基本原理</strong>：基于滑动窗口机制，接收窗口大小为1，通过窗口控制未确认帧的数量。</li>
+<li><strong>错误处理</strong><ul>
+<li><strong>数据帧损坏</strong>：接收方检测到帧错误时，丢弃该帧及后续所有帧，直到正确接收到错误帧；发送方在超时后重传错误帧及后续所有帧。</li>
+<li><strong>ACK帧损坏</strong>：若ACK帧丢失，由于ACK具有累积性，后续正确的ACK可能在发送方超时前到达，此时之前丢失的ACK错误可忽略；若发送方超时，则重传相应帧及后续所有帧。</li>
+</ul>
+</li>
+<li><strong>确认机制（ACK）</strong>：ACK是累积的，例如接收方B收到Frame0和Frame1后未及时回送ACK，收到Frame2后回送ACK2 ，若ACK2在发送方对Frame0的超时前到达，那么ACK0和ACK1的错误可忽略。</li>
+<li><strong>窗口大小</strong><ul>
+<li><strong>最大发送窗口大小</strong>：以3比特序号为例，若发送窗口设为8会出现序号重叠问题，所以发送窗口最大值为7。发送方发完窗口内所有帧且接收方正确接收后，接收窗口向前推移，需保证发送窗口与接收窗口在序号上不重叠。</li>
+<li><strong>判断序号位置</strong>：判断序号b是否落在窗口(a,c)内，分a到c不回绕（b位于a~c之间 ）和a到c回绕（b位于a~7或0~c - 1 ）两种情况，对应不同的判断条件。<img alt="判断.jpg" src="../%E5%88%A4%E6%96%AD.jpg" /></li>
+</ul>
+</li>
+<li><strong>协议改进</strong><ul>
+<li><strong>设置ACK帧和ACK定时器</strong>：当发送数据量不是源源不断的分组流，无法及时搭载ACK时，发送短的ACK帧；有用于回送ACK的定时器操作和数据重传所用定时器操作，且两者有区别。</li>
+<li><strong>NAK帧</strong>：可激发重传，无需等到超时。</li>
+</ul>
+</li>
+<li><strong>协议参数与线路利用率</strong>：超时定时器时限设计需考虑线路往返时间延迟、ACK定时器时限、对方物理层发送排队时延；滑动窗口（MAX_SEQ）大小会影响效率，太小可能导致无法流水线操作，出现停等现象。</li>
+<li><strong>定时器队列</strong>：提到在软件中模拟多个定时器，如在实时时间10:00:00.000 ，有3个超时事件分别在10:00:00.005、10:00:00.013和10:00:00.019 。 </li>
+</ol>
 <h3 id="using-selective-repeat">Using Selective Repeat<a class="headerlink" href="#using-selective-repeat" title="Permanent link">&para;</a></h3>
 <p>这段内容主要介绍了选择性重传（Selective Repeat）协议，包括其工作原理、窗口大小、定时器、否定确认（NAK）、协议存在的问题以及性能等方面，具体如下：</p>
 <ol>

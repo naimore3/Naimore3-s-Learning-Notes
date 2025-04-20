@@ -4089,40 +4089,42 @@
 </tr>
 </tbody>
 </table>
-<p>以下是对该表格内容的解释：
-- <strong>呼叫建立（Call setup）</strong>：
-  - <strong>电路交换</strong>：需要进行呼叫建立过程。在通信前，要通过信令在通信双方之间建立起一条专用的连接通路，就像打电话时要先拨号建立连接一样。 
-  - <strong>分组交换</strong>：不需要专门的呼叫建立过程。分组交换是将数据分割成一个个分组，直接根据分组中的目的地址进行转发，无需提前建立端到端的连接。 
-- <strong>专用物理路径（Dedicated physical path）</strong>：
-  - <strong>电路交换</strong>：有专用物理路径。一旦呼叫建立，在通信期间这条物理线路就为该通信双方独占，其他通信无法使用。 
-  - <strong>分组交换</strong>：没有专用物理路径。分组在网络中根据路由算法选择不同的路径进行传输，不同分组可能经过不同的链路。 
-- <strong>每个分组是否遵循相同路由（Each packet follows the same route）</strong>：
-  - <strong>电路交换</strong>：是。因为电路交换建立的是固定的物理连接，数据传输过程中所有数据都沿着这条固定的路径传输。 
-  - <strong>分组交换</strong>：否。分组交换中各分组可根据网络实时状况和路由策略选择不同的路径，以提高网络资源利用率和传输效率。 
-- <strong>分组是否按序到达（Packets arrive in order）</strong>：
-  - <strong>电路交换</strong>：是。由于在固定的物理路径上传输，数据的顺序不会改变，所以分组（或数据）按序到达。 
-  - <strong>分组交换</strong>：否。不同分组走不同路径，传输延迟可能不同，所以分组可能不按发送顺序到达接收端。 
-- <strong>交换机故障是否致命（Is a switch crash fatal）</strong>：
-  - <strong>电路交换</strong>：是。因为通信依赖于建立的专用物理连接，若交换机故障，这条连接就会中断，通信无法继续。 
-  - <strong>分组交换</strong>：否。分组交换中各分组独立传输，某一交换机故障时，其他分组可通过其他路径继续传输，不一定导致整个通信失败。 
-- <strong>可用带宽（Bandwidth available）</strong>：
-  - <strong>电路交换</strong>：固定。在呼叫建立时就分配好了固定的带宽资源，通信过程中带宽不会变化。 
-  - <strong>分组交换</strong>：动态。分组交换根据网络实时负载情况动态分配带宽，各分组可按需使用网络带宽资源。 
-- <strong>拥塞发生时间（When can congestion occur）</strong>：
-  - <strong>电路交换</strong>：在呼叫建立时。若此时网络中没有足够的资源（如线路、带宽 ）来建立连接，就会发生拥塞。 
-  - <strong>分组交换</strong>：在每个分组传输时。因为分组随时可能因为网络中链路负载过高、节点队列满等情况而发生拥塞。 
-- <strong>潜在浪费的带宽（Potentially wasted bandwidth）</strong>：
-  - <strong>电路交换</strong>：是。即使在通信过程中实际数据传输量小，已分配的固定带宽也不能被其他通信使用，造成带宽浪费。 
-  - <strong>分组交换</strong>：否。分组交换按需使用带宽，不会预先固定分配带宽，提高了带宽利用率。 
-- <strong>存储转发传输（Store-and-forward transmission）</strong>：
-  - <strong>电路交换</strong>：否。电路交换是在建立的物理连接上直接传输数据，不存在先存储再转发的过程。 
-  - <strong>分组交换</strong>：是。分组交换节点收到分组后，先存储在缓存中，再根据路由信息转发到下一个节点。 
-- <strong>透明性（Transparency）</strong>：
-  - <strong>电路交换</strong>：是。电路交换一旦建立连接，用户感觉就像直接连接一样，对通信过程中的网络细节不感知，具有透明性。 
-  - <strong>分组交换</strong>：否。分组交换中分组可能走不同路径，传输延迟等情况不同，用户能感知到一些网络传输的差异，透明性较差。 
-- <strong>计费方式（Charging）</strong>：
-  - <strong>电路交换</strong>：按分钟计费。通常根据通信建立后占用线路的时间来计费。 
-  - <strong>分组交换</strong>：按分组计费。根据传输的分组数量来计算费用。 </p>
+<p>以下是对该表格内容的解释：</p>
+<ul>
+<li><strong>呼叫建立（Call setup）</strong>：</li>
+<li><strong>电路交换</strong>：需要进行呼叫建立过程。在通信前，要通过信令在通信双方之间建立起一条专用的连接通路，就像打电话时要先拨号建立连接一样。 </li>
+<li><strong>分组交换</strong>：不需要专门的呼叫建立过程。分组交换是将数据分割成一个个分组，直接根据分组中的目的地址进行转发，无需提前建立端到端的连接。 </li>
+<li><strong>专用物理路径（Dedicated physical path）</strong>：</li>
+<li><strong>电路交换</strong>：有专用物理路径。一旦呼叫建立，在通信期间这条物理线路就为该通信双方独占，其他通信无法使用。 </li>
+<li><strong>分组交换</strong>：没有专用物理路径。分组在网络中根据路由算法选择不同的路径进行传输，不同分组可能经过不同的链路。 </li>
+<li><strong>每个分组是否遵循相同路由（Each packet follows the same route）</strong>：</li>
+<li><strong>电路交换</strong>：是。因为电路交换建立的是固定的物理连接，数据传输过程中所有数据都沿着这条固定的路径传输。 </li>
+<li><strong>分组交换</strong>：否。分组交换中各分组可根据网络实时状况和路由策略选择不同的路径，以提高网络资源利用率和传输效率。 </li>
+<li><strong>分组是否按序到达（Packets arrive in order）</strong>：</li>
+<li><strong>电路交换</strong>：是。由于在固定的物理路径上传输，数据的顺序不会改变，所以分组（或数据）按序到达。 </li>
+<li><strong>分组交换</strong>：否。不同分组走不同路径，传输延迟可能不同，所以分组可能不按发送顺序到达接收端。 </li>
+<li><strong>交换机故障是否致命（Is a switch crash fatal）</strong>：</li>
+<li><strong>电路交换</strong>：是。因为通信依赖于建立的专用物理连接，若交换机故障，这条连接就会中断，通信无法继续。 </li>
+<li><strong>分组交换</strong>：否。分组交换中各分组独立传输，某一交换机故障时，其他分组可通过其他路径继续传输，不一定导致整个通信失败。 </li>
+<li><strong>可用带宽（Bandwidth available）</strong>：</li>
+<li><strong>电路交换</strong>：固定。在呼叫建立时就分配好了固定的带宽资源，通信过程中带宽不会变化。 </li>
+<li><strong>分组交换</strong>：动态。分组交换根据网络实时负载情况动态分配带宽，各分组可按需使用网络带宽资源。 </li>
+<li><strong>拥塞发生时间（When can congestion occur）</strong>：</li>
+<li><strong>电路交换</strong>：在呼叫建立时。若此时网络中没有足够的资源（如线路、带宽 ）来建立连接，就会发生拥塞。 </li>
+<li><strong>分组交换</strong>：在每个分组传输时。因为分组随时可能因为网络中链路负载过高、节点队列满等情况而发生拥塞。 </li>
+<li><strong>潜在浪费的带宽（Potentially wasted bandwidth）</strong>：</li>
+<li><strong>电路交换</strong>：是。即使在通信过程中实际数据传输量小，已分配的固定带宽也不能被其他通信使用，造成带宽浪费。 </li>
+<li><strong>分组交换</strong>：否。分组交换按需使用带宽，不会预先固定分配带宽，提高了带宽利用率。 </li>
+<li><strong>存储转发传输（Store-and-forward transmission）</strong>：</li>
+<li><strong>电路交换</strong>：否。电路交换是在建立的物理连接上直接传输数据，不存在先存储再转发的过程。 </li>
+<li><strong>分组交换</strong>：是。分组交换节点收到分组后，先存储在缓存中，再根据路由信息转发到下一个节点。 </li>
+<li><strong>透明性（Transparency）</strong>：</li>
+<li><strong>电路交换</strong>：是。电路交换一旦建立连接，用户感觉就像直接连接一样，对通信过程中的网络细节不感知，具有透明性。 </li>
+<li><strong>分组交换</strong>：否。分组交换中分组可能走不同路径，传输延迟等情况不同，用户能感知到一些网络传输的差异，透明性较差。 </li>
+<li><strong>计费方式（Charging）</strong>：</li>
+<li><strong>电路交换</strong>：按分钟计费。通常根据通信建立后占用线路的时间来计费。 </li>
+<li><strong>分组交换</strong>：按分组计费。根据传输的分组数量来计算费用。 </li>
+</ul>
 
 
 

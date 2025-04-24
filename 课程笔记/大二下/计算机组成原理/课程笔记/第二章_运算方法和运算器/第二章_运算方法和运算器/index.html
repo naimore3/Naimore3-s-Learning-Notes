@@ -3983,19 +3983,25 @@
 </li>
 </ol>
 <h2 id="_22">定点除法运算<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
-<p>该部分内容围绕逻辑运算及多功能算术/逻辑运算单元展开，具体如下：
-1. <strong>逻辑运算</strong>
-    - <strong>运算规则</strong>：仅在无符号数之间进行，与算术运算不同，逻辑运算只在对应位间进行，各位无进位/借位关系。
-    - <strong>基本运算类型</strong>
-      - <strong>逻辑非（逻辑反）</strong>：对操作数按位取反。
-      - <strong>逻辑加（逻辑或）</strong>：只要对应位中有一个为1，结果位就为1，即<span class="arithmatex">\(1∨x = 1\)</span>，<span class="arithmatex">\(0∨x = x\)</span>。可用于将一个数的某些指定比特置1，如<span class="arithmatex">\(a ∨01000010\)</span>能将<span class="arithmatex">\(a\)</span>的第1和第6位置1 。
-      - <strong>逻辑乘（逻辑与）</strong>：只有对应位都为1时，结果位才为1，即<span class="arithmatex">\(1 ∧ x = x\)</span>，<span class="arithmatex">\(0 ∧ x = 0\)</span>。可用来将一个数的某些指定比特清0，例如<span class="arithmatex">\(a ∧ 10111101\)</span>可将<span class="arithmatex">\(a\)</span>的第1和第6位清0。
-      - <strong>逻辑异（逻辑异或，按位加）</strong>：对应位不同时结果为1，相同时为0，即<span class="arithmatex">\(1⊕x = x\)</span>，<span class="arithmatex">\(0 ⊕ x = x\)</span>。能把一个数的某些指定比特取反，像<span class="arithmatex">\(a ⊕ 01000010\)</span>可将<span class="arithmatex">\(a\)</span>的第1和第6位取反。
-2. <strong>多功能算术/逻辑运算单元</strong>
-    - <strong>ALU概述</strong>：ALU即算术逻辑单元，这里介绍的是4位多功能ALU——74181。它能进行算术运算，采用4位先行进位方式，输出<span class="arithmatex">\(Cn+4\)</span>、<span class="arithmatex">\(P\)</span>、<span class="arithmatex">\(G\)</span>，支持组间串行进位或组间先行进位。
-    - <strong>逻辑表达式</strong>：一位算术/逻辑运算单元有其特定逻辑表达式，如<span class="arithmatex">\(Fi＝Xi⊕Y i⊕Cn+i\)</span>用于计算本位结果，<span class="arithmatex">\(Cn+i+1 =X i Y i +Y i Cn+i +C n+iX i\)</span>用于计算下一位进位。还给出了<span class="arithmatex">\(Xi\)</span>、<span class="arithmatex">\(Yi\)</span>的逻辑表达式，通过不同的选择信号组合确定其值。
-    - <strong>功能表</strong>：74181功能表展示了不同输入组合下的运算结果。<span class="arithmatex">\(M\)</span>信号控制是逻辑运算还是算术运算（<span class="arithmatex">\(M = H\)</span>为逻辑运算，<span class="arithmatex">\(M = L\)</span>为算术运算） ，<span class="arithmatex">\(Cn\)</span>表示是否有进位（<span class="arithmatex">\(Cn = 1\)</span>无进位，<span class="arithmatex">\(Cn = 0\)</span>有进位）。
-    - <strong>逻辑电路图</strong>：给出74181的逻辑电路图，其中函数发生器根据输入和控制信号产生相应运算结果。还提及74182 BCLA的逻辑电路图以及三级分组“并 - 并 - 串”先行进位并行ALU，它们在复杂运算中起到优化和扩展功能的作用 。 </p>
+<p>该部分内容围绕逻辑运算及多功能算术/逻辑运算单元展开，具体如下：</p>
+<ol>
+<li><strong>逻辑运算</strong><ul>
+<li><strong>运算规则</strong>：仅在无符号数之间进行，与算术运算不同，逻辑运算只在对应位间进行，各位无进位/借位关系。</li>
+<li><strong>基本运算类型</strong></li>
+<li><strong>逻辑非（逻辑反）</strong>：对操作数按位取反。</li>
+<li><strong>逻辑加（逻辑或）</strong>：只要对应位中有一个为1，结果位就为1，即<span class="arithmatex">\(1∨x = 1\)</span>，<span class="arithmatex">\(0∨x = x\)</span>。可用于将一个数的某些指定比特置1，如<span class="arithmatex">\(a ∨01000010\)</span>能将<span class="arithmatex">\(a\)</span>的第1和第6位置1 。</li>
+<li><strong>逻辑乘（逻辑与）</strong>：只有对应位都为1时，结果位才为1，即<span class="arithmatex">\(1 ∧ x = x\)</span>，<span class="arithmatex">\(0 ∧ x = 0\)</span>。可用来将一个数的某些指定比特清0，例如<span class="arithmatex">\(a ∧ 10111101\)</span>可将<span class="arithmatex">\(a\)</span>的第1和第6位清0。</li>
+<li><strong>逻辑异（逻辑异或，按位加）</strong>：对应位不同时结果为1，相同时为0，即<span class="arithmatex">\(1⊕x = x\)</span>，<span class="arithmatex">\(0 ⊕ x = x\)</span>。能把一个数的某些指定比特取反，像<span class="arithmatex">\(a ⊕ 01000010\)</span>可将<span class="arithmatex">\(a\)</span>的第1和第6位取反。</li>
+</ul>
+</li>
+<li><strong>多功能算术/逻辑运算单元</strong><ul>
+<li><strong>ALU概述</strong>：ALU即算术逻辑单元，这里介绍的是4位多功能ALU——74181。它能进行算术运算，采用4位先行进位方式，输出<span class="arithmatex">\(Cn+4\)</span>、<span class="arithmatex">\(P\)</span>、<span class="arithmatex">\(G\)</span>，支持组间串行进位或组间先行进位。</li>
+<li><strong>逻辑表达式</strong>：一位算术/逻辑运算单元有其特定逻辑表达式，如<span class="arithmatex">\(Fi＝Xi⊕Y i⊕Cn+i\)</span>用于计算本位结果，<span class="arithmatex">\(Cn+i+1 =X i Y i +Y i Cn+i +C n+iX i\)</span>用于计算下一位进位。还给出了<span class="arithmatex">\(Xi\)</span>、<span class="arithmatex">\(Yi\)</span>的逻辑表达式，通过不同的选择信号组合确定其值。</li>
+<li><strong>功能表</strong>：74181功能表展示了不同输入组合下的运算结果。<span class="arithmatex">\(M\)</span>信号控制是逻辑运算还是算术运算（<span class="arithmatex">\(M = H\)</span>为逻辑运算，<span class="arithmatex">\(M = L\)</span>为算术运算） ，<span class="arithmatex">\(Cn\)</span>表示是否有进位（<span class="arithmatex">\(Cn = 1\)</span>无进位，<span class="arithmatex">\(Cn = 0\)</span>有进位）。</li>
+<li><strong>逻辑电路图</strong>：给出74181的逻辑电路图，其中函数发生器根据输入和控制信号产生相应运算结果。还提及74182 BCLA的逻辑电路图以及三级分组“并 - 并 - 串”先行进位并行ALU，它们在复杂运算中起到优化和扩展功能的作用 。 </li>
+</ul>
+</li>
+</ol>
 
 
 

@@ -2731,6 +2731,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#342-nor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 NOR 闪存
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4088,6 +4097,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#342-nor" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 NOR 闪存
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -4618,28 +4636,14 @@
 <td></td>
 <td></td>
 </tr>
-<tr>
-<td>### 3.4.2 NOR 闪存</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>该节以飞索公司（现赛普拉斯公司）生产的S29AL016J系列16Mbit闪存为例，介绍了NOR闪存的相关知识，具体如下：</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
 </li>
-<li>
-<p><strong>外部接口与逻辑结构</strong>：S29AL016J有字模式（1M×16bit ，20位地址，16位数据线）和字节模式（2M×8bit ，21位地址，8位数据线），由引脚<strong>BYTE#</strong>选择。<strong>CE#</strong>为片选信号线，<strong>OE#</strong>为输出允许线，<strong>WE#</strong>为写使能信号，<strong>RESET#</strong>用于硬件复位，<strong>WP#</strong>可使芯片处于写保护状态，<strong>RY/BY#</strong>能反映芯片工作状态。该芯片由单一3.3V电源供电，内部集成编程和擦除电压发生器，通过命令寄存器接收外部命令，内部有状态机和状态控制逻辑，通过定时器定时。</p>
-</li>
+</ol>
+<h3 id="342-nor">3.4.2 NOR 闪存<a class="headerlink" href="#342-nor" title="Permanent link">&para;</a></h3>
+<p>该节以飞索公司（现赛普拉斯公司）生产的S29AL016J系列16Mbit闪存为例，介绍了NOR闪存的相关知识，具体如下：</p>
+<ol>
+<li><strong>外部接口与逻辑结构</strong>：S29AL016J有字模式（1M×16bit ，20位地址，16位数据线）和字节模式（2M×8bit ，21位地址，8位数据线），由引脚<strong>BYTE#</strong>选择。<strong>CE#</strong>为片选信号线，<strong>OE#</strong>为输出允许线，<strong>WE#</strong>为写使能信号，<strong>RESET#</strong>用于硬件复位，<strong>WP#</strong>可使芯片处于写保护状态，<strong>RY/BY#</strong>能反映芯片工作状态。该芯片由单一3.3V电源供电，内部集成编程和擦除电压发生器，通过命令寄存器接收外部命令，内部有状态机和状态控制逻辑，通过定时器定时。</li>
 <li><strong>区块划分</strong>：S29AL016J为区块式闪存，外部按1M×16bit或2M×8bit组织，内部有35个区块。低地址区常存系统引导程序和参数，区块尺寸小且可设写保护，前4个区块大小分别为16KB、8KB、8KB、32KB ，其余SA4 - SA34区块均为64KB。存储单元地址由区块地址（A12以上）和区块内偏移地址组成。</li>
 <li><strong>总线操作与工作方式</strong>：NOR闪存外部接口信号线与SRAM类似，除常规PROM操作外，还可通过“命令写”和“状态读”操作灵活控制。上电或复位后，芯片自动进入“读存储矩阵”状态，此时读操作与传统ROM相同。执行其他操作需特定命令序列，使芯片转入相应状态，如芯片擦除、区块擦除等。不同厂商芯片命令序列不同，常见有AMD/Fujitsu标准命令集和Intel/Sharp扩展命令集。擦除、编程操作需执行内嵌算法，完成前不能接收新命令，可通过读取<strong>RY/BY#</strong>信号电平、<strong>data# polling</strong>等方法判断操作状态，闪存内部状态机设置超时时间，超时时<strong>DQ5</strong>输出为1表示操作失败 。NOR闪存编程前需擦除，编程命令复杂，编程和读出速度远低于RAM，虽可在线编程但仍属ROM，一般不能取代RAM。 <img alt="data#polling算法流程.jpeg" src="../datapolling%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B.jpeg" /></li>
 </ol>

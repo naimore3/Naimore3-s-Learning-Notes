@@ -2401,10 +2401,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="存储系统的层次结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      多级存储体系的组成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#920" class="md-nav__link">
+    <span class="md-ellipsis">
+      鲲鹏920处理器片上系统的内存储系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       内存储器的编址方式
     </span>
@@ -2413,9 +2437,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       存储器的分类
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      闪存技术
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      特殊储存器
     </span>
   </a>
   
@@ -2499,6 +2541,8 @@
       
         
       
+        
+      
     
     
     
@@ -2555,6 +2599,29 @@
   
   <span class="md-ellipsis">
     第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../课程笔记/大二下/计算机组成原理/教材笔记/第三章_储存系统/第三章_储存系统.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
     
   </span>
   
@@ -3555,10 +3622,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="存储系统的层次结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      多级存储体系的组成
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#920" class="md-nav__link">
+    <span class="md-ellipsis">
+      鲲鹏920处理器片上系统的内存储系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       内存储器的编址方式
     </span>
@@ -3567,9 +3658,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       存储器的分类
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      闪存技术
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      特殊储存器
     </span>
   </a>
   
@@ -3696,18 +3805,32 @@
 </li>
 </ol>
 <h2 id="_8">存储系统的层次结构<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
-<p>该部分内容主要围绕计算机存储系统的层次结构展开，包括其发展背景、原理基础、组成结构以及典型案例，具体如下：</p>
+<h3 id="_9">多级存储体系的组成<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>该部分内容主要围绕计算机存储系统的层次结构展开，涵盖了发展背景、原理依据、具体组成以及设计目标等方面，具体总结如下：</p>
 <ol>
-<li><strong>发展背景</strong>：早期计算机系统对存储容量和访问速度要求不高，如20世纪70年代中型机的存储器为十几kB，个人计算机操作系统MS - DOS的存储为1MB。近年来，随着软件复杂度提高、多媒体和网络技术普及，对存储容量需求不断增加；同时CPU工作速度提升，且比内存速度提高更快，而存储器价格较高，在整机成本中占比较大，因此需要在成本和性能间寻求平衡策略，即存储器分层。</li>
-<li><strong>原理基础</strong>：程序的局部性原理是存储系统分层的重要依据。该原理指在一段时间内，程序访问的存储器地址集中在较小范围内。其中，时间局部性指最近被访问的信息很可能再次被访问；空间局部性指最近被访问信息临近的信息也可能被访问。</li>
-<li><strong>组成结构</strong><ul>
-<li><strong>基本组成</strong>：存储系统层次结构由寄存器、Cache、主存、辅存（外存）构成 。CPU内部寄存器速度高但数量少。内存速度高、容量小、价格高，由半导体器件构成；外存速度低、容量大、价格便宜 。</li>
-<li><strong>多级存储体系</strong>：三级存储体系由高速缓冲存储器（cache）、主存、辅存组成，内存包含cache和主存。cache主要解决速度问题，外存主要满足存储容量需求，整个存储系统追求接近cache的速度、外存的容量和价格，实现高性价比 。此外，还有一级（L1）cache、二级（L2）cache、三级（L3）cache，以及指令cache（I - cache）和数据cache（D - cache）。<img alt="Levels.jpeg" src="../Levels.jpeg" /></li>
+<li><strong>发展背景</strong>：早期计算机系统对存储容量和访问速度要求较低，如20世纪70年代中型机存储器为十几kB，个人计算机操作系统MS - DOS为1MB。近年来，随着软件复杂度提升、多媒体与网络技术普及，对存储容量需求不断增大，且CPU工作速度提升更快，与内存速度差距加大。同时，存储器价格较高，在整机成本中占比较大，因此需要在成本和性能间寻求平衡，进而产生了存储器分层策略。</li>
+<li><strong>程序局部性原理</strong>：程序在较短时间内，访问的存储器地址集中在较小范围内。具体分为时间局部性和空间局部性，时间局部性指最近被访问的信息很可能再次被访问；空间局部性指最近被访问信息临近的信息也可能被访问 。该原理为存储系统分层提供了理论依据。</li>
+<li><strong>存储系统层次结构组成</strong><ul>
+<li><strong>两级存储体系</strong>：由内存和外存（辅存）组成。内存速度高、容量小、价格高，由半导体器件构成；外存速度低、容量大、价格便宜。</li>
+<li><strong>三级存储体系</strong>：包括高速缓冲存储器（cache）、主存和辅存，内存由cache和主存组成。其中，寄存器速度极高但数量少。不同层级在容量、访问速度、价格和带宽上差异明显，如寄存器容量为100s Bytes，访问速度小于1ns；磁带容量可达1.5T（每盘），访问时间为1min 。</li>
+<li><strong>数据传输单元</strong>：不同层级间数据传输单元不同，如cache controller传输单元为8 - 128字节，操作系统为512 - 4K字节 。</li>
+<li><strong>cache分类</strong>：cache可进一步分为一级（L1）、二级（L2）、三级（L3）cache，还可分为指令cache（I - cache）和数据cache（D - cache）。</li>
 </ul>
 </li>
-<li><strong>典型案例 - 鲲鹏920处理器片上系统</strong>：其存储系统采用多级Cache的片内共享L3 Cache架构。每个内核有私有的64KB L1 I - Cache、64KB L1 D - Cache和512KB L2 Cache；每个超级内核集群配置共享L3 Cache，L3 Cache数据块位于内核集群外，标记块集成在每个内核集群中，可降低监听延迟，此外还包括主存和硬盘。 </li>
+<li><strong>设计目标</strong>：外存主要解决存储容量问题，cache主要解决速度问题，整个存储系统旨在提高性能 - 价格比，使其在速度上接近cache，在容量和价格上接近外存，实现“多快好省”。 
+<img alt="Levels.jpeg" src="../Levels.jpeg" /></li>
 </ol>
-<h2 id="_9">内存储器的编址方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<h3 id="920">鲲鹏920处理器片上系统的内存储系统<a class="headerlink" href="#920" title="Permanent link">&para;</a></h3>
+<p>这段内容主要介绍了鲲鹏920处理器片上系统的内存储系统，其层次结构包含多级Cache、主存和硬盘，具体如下：</p>
+<ol>
+<li><strong>多级Cache</strong><ul>
+<li><strong>L1 Cache和L2 Cache</strong>：每个内核都配有私有的L1 Cache和L2 Cache。其中，L1 I-Cache（指令缓存）和L1 D-Cache（数据缓存）的大小均为64KB ，用于快速存储处理器近期需要执行的指令和处理的数据，提高数据读取速度。L2 Cache大小为512KB，进一步缓冲数据和指令，缓解L1 Cache容量限制，增强缓存性能。</li>
+<li><strong>L3 Cache</strong>：采用片内共享架构，每个超级内核集群配置共享的L3 Cache。它是系统级片上三级高速缓存，L3 Cache数据块位于内核集群之外，而标记块作为协议处理模块集成在每个内核集群中。这种设计能降低监听延迟，使多个内核可高效共享数据，提升整个系统的缓存访问效率。</li>
+</ul>
+</li>
+<li><strong>主存和硬盘</strong>：除了多级Cache，鲲鹏920处理器片上系统的内存储系统还包括主存和硬盘。主存作为计算机运行时数据和程序的主要存储区域，可被处理器直接访问，存储正在运行的程序和处理的数据 。硬盘则用于长期大容量存储数据，如操作系统、应用程序和用户文件等，弥补主存断电数据丢失和容量不足的问题。 </li>
+</ol>
+<h2 id="_10">内存储器的编址方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <p>该节内容主要介绍了存储器访问和内存的主要技术指标，具体如下：</p>
 <ol>
 <li><strong>存储器访问</strong>：存储器访问每次读写信息量的方式有字寻址、半字寻址和字节寻址。字寻址每次访存读写一个存储字，半字寻址每次访存读写半个存储字，字节寻址每次访存读写一个字节，此处字长设定为4字节。</li>
@@ -3722,7 +3845,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="_10">存储器的分类<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<h2 id="_11">存储器的分类<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
 <p>该节内容主要介绍了存储器的多种分类方式，以及内存储器的习惯分类，具体如下：</p>
 <ol>
 <li><strong>按存储介质分类</strong>：分为半导体存储器、磁介质存储器、光存储器。半导体存储器常见于计算机内存；磁介质存储器如磁盘；光存储器如光盘。</li>
@@ -3741,6 +3864,8 @@
 </ul>
 </li>
 </ol>
+<h2 id="_12">闪存技术<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="_13">特殊储存器<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 
 
 

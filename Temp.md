@@ -1,253 +1,152 @@
-# 乳腺癌数据集分类算法实现及分析
+## 1. 实验背景
+在机器学习领域，分类问题一直是研究的重点。传统的单一分类模型，如决策树，虽然结构简单、易于理解，但容易出现过拟合的问题，尤其是在处理复杂数据集时，其泛化能力有限。为了提升模型的性能和泛化能力，集成学习算法应运而生。集成学习通过组合多个弱分类器来构建一个强分类器，从而获得比单个分类器更好的预测效果。常见的集成学习算法包括 AdaBoost、Bagging 和随机森林等。本实验旨在对比单一决策树模型与几种集成学习模型（AdaBoost、Bagging、随机森林）在乳腺癌数据集上的分类性能。
 
-## 1. 问题分析
-本任务旨在对乳腺癌数据集进行分类分析，通过实现K近邻、朴素贝叶斯、逻辑回归、决策树和支持向量机等多种分类算法，并与Sklearn库函数的实现进行对比，评估不同算法在该数据集上的性能表现。不使用数据集中的标记数据，仅使用属性值进行分类。
+## 1.1 数据集介绍
+本实验使用的是乳腺癌数据集，该数据集是机器学习领域的经典数据集，常用于分类任务的研究。数据集中包含了 569 个样本，每个样本有 30 个特征，这些特征是从乳腺肿块的细针穿刺活检（FNA）图像中提取的，用于描述细胞核的各种特征，如半径、纹理、周长等。目标变量是一个二分类变量，用于指示肿块是良性还是恶性。
 
-## 1.1 数据集
-使用Sklearn库中的乳腺癌数据集，该数据集包含了乳腺癌的相关属性值以及对应的类别标签（良性或恶性）。通过`load_breast_cancer`函数加载数据集，然后将其划分为训练集和测试集，并进行标准化处理，以确保各特征具有相似的尺度，提高算法的性能和稳定性。
+## 1.2 代码实现过程
 
-## 1.2 分类算法
-需要实现K近邻、朴素贝叶斯、逻辑回归、决策树和支持向量机这五种常见的分类算法，并使用这些算法对乳腺癌数据集进行分类，计算其准确率。同时，使用Sklearn库中的对应算法作为对比，进一步验证自定义算法的有效性和性能。
-
-## 2. 代码实现
-
-### 2.1 K近邻算法（KNN）
-K近邻算法是一种基于实例的学习算法，其基本思想是在特征空间中找到与待分类样本距离最近的K个训练样本，根据这K个样本的多数类别来确定待分类样本的类别。
-
+### 1.2.1 数据加载与预处理
 ```python
-class KNN:
-    def __init__(self, k=3):
-        self.k = k
+from sklearn.datasets import load_breast_cancer
+from sklearn.model_selection import train_test_split, GridSearchCV
+from sklearn.ensemble import AdaBoostClassifier, BaggingClassifier, RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
+import pandas as pd
 
-    def fit(self, X, y):
-        self.X_train = X
-        self.y_train = y
+# 加载乳腺癌数据集
+data = load_breast_cancer()
+X = data.data
+y = data.target
 
-    def predict(self, X):
-        y_pred = [self._predict(x) for x in X]
-        return np.array(y_pred)
-
-    def _predict(self, x):
-        distances = [np.linalg.norm(x - x_train) for x_train in self.X_train]  # 计算欧氏距离
-        k_indices = np.argsort(distances)[:self.k]  # 找到最近的K个样本索引
-        k_nearest_labels = [self.y_train[i] for i in k_indices]  # 获取K个最近样本的标签
-        most_common = np.bincount(k_nearest_labels).argmax()  # 统计出现最多的标签
-        return most_common
+# 划分训练集和测试集
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 ```
+- **分析**：首先导入所需的库，包括用于加载数据集的 `load_breast_cancer`、用于划分数据集的 `train_test_split`、用于参数调优的 `GridSearchCV` 以及各种分类器和评估指标。然后使用 `load_breast_cancer` 函数加载乳腺癌数据集，将特征数据存储在 `X` 中，目标变量存储在 `y` 中。最后使用 `train_test_split` 函数将数据集划分为训练集和测试集，测试集占比为 20%，并设置随机种子为 42 以保证结果的可重复性。
 
-在上述代码中，`__init__`方法初始化K值，`fit`方法存储训练数据，`predict`方法对输入数据进行预测，`_predict`方法实现了具体的预测逻辑，通过计算欧氏距离找到最近的K个样本，并根据它们的多数标签进行分类。
-
-### 2.2 朴素贝叶斯算法
-朴素贝叶斯算法基于贝叶斯定理和特征条件独立假设，通过计算每个类别在给定特征条件下的后验概率，选择后验概率最大的类别作为预测结果。
-
+### 1.2.2 单一决策树模型
 ```python
-class NaiveBayes:
-    def fit(self, X, y):
-        n_samples, n_features = X.shape
-        self._classes = np.unique(y)
-        n_classes = len(self._classes)
-
-        self._mean = np.zeros((n_classes, n_features), dtype=np.float64)
-        self._var = np.zeros((n_classes, n_features), dtype=np.float64)
-        self._priors = np.zeros(n_classes, dtype=np.float64)
-
-        for idx, c in enumerate(self._classes):
-            X_c = X[y == c]
-            self._mean[idx, :] = X_c.mean(axis=0)  # 计算每个类别下各特征的均值
-            self._var[idx, :] = X_c.var(axis=0)  # 计算每个类别下各特征的方差
-            self._priors[idx] = X_c.shape[0] / float(n_samples)  # 计算每个类别的先验概率
-
-    def predict(self, X):
-        y_pred = [self._predict(x) for x in X]
-        return np.array(y_pred)
-
-    def _predict(self, x):
-        posteriors = []
-        for idx, c in enumerate(self._classes):
-            prior = np.log(self._priors[idx])  # 计算先验概率的对数
-            class_conditional = np.sum(np.log(self._pdf(idx, x)))  # 计算类条件概率的对数和
-            posterior = prior + class_conditional  # 计算后验概率的对数
-            posteriors.append(posterior)
-        return self._classes[np.argmax(posteriors)]  # 选择后验概率最大的类别
-
-    def _pdf(self, class_idx, x):
-        mean = self._mean[class_idx]
-        var = self._var[class_idx]
-        numerator = np.exp(-((x - mean) ** 2) / (2 * var))  # 计算概率密度函数的分子
-        denominator = np.sqrt(2 * np.pi * var)  # 计算概率密度函数的分母
-        return numerator / denominator  # 返回概率密度函数值
+# 定义单个决策树模型
+single_tree = DecisionTreeClassifier(random_state=42)
+single_tree.fit(X_train, y_train)
+single_tree_pred = single_tree.predict(X_test)
+single_tree_accuracy = accuracy_score(y_test, single_tree_pred)
 ```
+- **分析**：创建一个决策树分类器实例 `single_tree`，并设置随机种子为 42。使用训练集数据对模型进行训练，然后使用训练好的模型对测试集进行预测，得到预测结果 `single_tree_pred`。最后使用 `accuracy_score` 函数计算预测结果的准确率 `single_tree_accuracy`。
 
-`fit`方法用于计算每个类别下各特征的均值、方差以及类别的先验概率；`predict`方法对输入数据进行预测，`_predict`方法实现了具体的预测逻辑，通过计算每个类别的后验概率并选择最大的后验概率对应的类别作为预测结果，`_pdf`方法计算高斯分布的概率密度函数值。
-
-### 2.3 逻辑回归算法
-逻辑回归是一种用于解决二分类问题的线性分类模型，通过构建逻辑回归函数，将线性组合的结果映射到0到1之间的概率值，根据概率值判断样本的类别。
-
+### 1.2.3 AdaBoost 算法及参数调优
 ```python
-class LogisticRegressionCustom:
-    def __init__(self, learning_rate=0.01, num_iterations=1000):
-        self.learning_rate = learning_rate
-        self.num_iterations = num_iterations
-        self.weights = None
-        self.bias = None
-
-    def fit(self, X, y):
-        n_samples, n_features = X.shape
-        self.weights = np.zeros(n_features)  # 初始化权重
-        self.bias = 0  # 初始化偏置
-
-        for _ in range(self.num_iterations):
-            linear_model = np.dot(X, self.weights) + self.bias  # 计算线性组合
-            y_pred = self._sigmoid(linear_model)  # 应用sigmoid函数得到预测概率
-
-            dw = (1 / n_samples) * np.dot(X.T, (y_pred - y))  # 计算权重的梯度
-            db = (1 / n_samples) * np.sum(y_pred - y)  # 计算偏置的梯度
-
-            self.weights -= self.learning_rate * dw  # 更新权重
-            self.bias -= self.learning_rate * db  # 更新偏置
-
-    def predict(self, X):
-        linear_model = np.dot(X, self.weights) + self.bias  # 计算线性组合
-        y_pred = self._sigmoid(linear_model)  # 应用sigmoid函数得到预测概率
-        y_pred_cls = [1 if i > 0.5 else 0 for i in y_pred]  # 根据概率判断类别
-        return np.array(y_pred_cls)
-
-    def _sigmoid(self, x):
-        return 1 / (1 + np.exp(-x))  # sigmoid函数
+# AdaBoost 算法及参数调优
+ada_param_grid = {
+    'n_estimators': [50, 100, 150],
+    'learning_rate': [0.01, 0.1, 1]
+}
+ada = AdaBoostClassifier(random_state=42)
+ada_grid = GridSearchCV(ada, ada_param_grid, cv=5)
+ada_grid.fit(X_train, y_train)
+ada_best = ada_grid.best_estimator_
+ada_pred = ada_best.predict(X_test)
+ada_accuracy = accuracy_score(y_test, ada_pred)
 ```
+#### 算法逻辑
+AdaBoost（Adaptive Boosting）是一种迭代的集成学习算法，其核心思想是通过迭代训练一系列弱分类器，并根据每个弱分类器的表现调整样本的权重，使得后续的弱分类器更加关注之前分类错误的样本。具体步骤如下：
+1. 初始化样本权重 $w_i = \frac{1}{N}$，其中 $N$ 是样本数量。
+2. 对于 $t = 1, 2, \cdots, T$（$T$ 是弱分类器的数量）：
+    - 使用当前样本权重 $w_i$ 训练一个弱分类器 $h_t(x)$。
+    - 计算弱分类器 $h_t(x)$ 的误差率 $\epsilon_t = \sum_{i=1}^{N} w_i I(y_i \neq h_t(x_i))$，其中 $I$ 是指示函数。
+    - 计算弱分类器 $h_t(x)$ 的权重 $\alpha_t = \frac{1}{2} \ln(\frac{1 - \epsilon_t}{\epsilon_t})$。
+    - 更新样本权重 $w_i = w_i \exp(-\alpha_t y_i h_t(x_i))$，并进行归一化处理。
+3. 最终的强分类器为 $H(x) = \text{sign}(\sum_{t=1}^{T} \alpha_t h_t(x))$。
 
-`__init__`方法初始化学习率、迭代次数、权重和偏置；`fit`方法通过多次迭代，使用梯度下降法更新权重和偏置，以最小化损失函数；`predict`方法根据学习到的权重和偏置对输入数据进行预测，并根据概率值判断类别，`_sigmoid`方法实现了sigmoid函数。
+#### 代码解释
+- 定义参数网格 `ada_param_grid`，包含 `n_estimators`（弱分类器的数量）和 `learning_rate`（学习率）两个参数的不同取值。
+- 创建 AdaBoost 分类器实例 `ada`，并设置随机种子为 42。
+- 使用 `GridSearchCV` 进行参数调优，`cv=5` 表示使用 5 折交叉验证。
+- 使用训练集数据对网格搜索对象进行训练，找到最优的参数组合。
+- 获取最优的模型 `ada_best`，并使用该模型对测试集进行预测，计算预测结果的准确率 `ada_accuracy`。
 
-### 2.4 决策树算法
-决策树是一种基于树结构进行决策的分类算法，通过对特征进行递归划分，构建一棵决策树，根据样本在决策树上的路径来确定其类别。
-
+### 1.2.4 Bagging 算法及参数调优
 ```python
-class Node:
-    def __init__(self, feature=None, threshold=None, left=None, right=None, *, value=None):
-        self.feature = feature
-        self.threshold = threshold
-        self.left = left
-        self.right = right
-        self.value = value
-
-    def is_leaf_node(self):
-        return self.value is not None
-
-
-class DecisionTree:
-    def __init__(self, max_depth=100, min_samples_split=2, max_features=None):
-        self.max_depth = max_depth
-        self.min_samples_split = min_samples_split
-        self.max_features = max_features
-        self.root = None
-
-    def fit(self, X, y):
-        if self.max_features is None:
-            self.max_features = X.shape[1]
-        self.root = self._grow_tree(X, y)
-
-    def _grow_tree(self, X, y, depth=0):
-        n_samples, n_features = X.shape
-        n_labels = len(np.unique(y))
-
-        if (depth >= self.max_depth
-                or n_labels == 1
-                or n_samples < self.min_samples_split):
-            leaf_value = self._most_common_label(y)  # 如果满足条件，返回多数类标签作为叶节点值
-            return Node(value=leaf_value)
-
-        feature_indices = np.random.choice(n_features, self.max_features, replace=False)
-        best_feature, best_threshold = self._best_criteria(X, y, feature_indices)  # 选择最佳划分特征和阈值
-        left_indices, right_indices = self._split(X[:, best_feature], best_threshold)  # 划分数据集
-        left = self._grow_tree(X[left_indices, :], y[left_indices], depth + 1)  # 递归构建左子树
-        right = self._grow_tree(X[right_indices, :], y[right_indices], depth + 1)  # 递归构建右子树
-        return Node(best_feature, best_threshold, left, right)  # 返回节点
-
-    def _best_criteria(self, X, y, feature_indices):
-        best_gini = 1
-        split_idx, split_thresh = None, None
-        for feature_index in feature_indices:
-            X_column = X[:, feature_index]
-            thresholds = np.unique(X_column)
-            for threshold in thresholds:
-                gini = self._gini_impurity(X_column, y, threshold)  # 计算基尼不纯度
-                if gini < best_gini:
-                    best_gini = gini
-                    split_idx = feature_index
-                    split_thresh = threshold
-        return split_idx, split_thresh
-
-    def _gini_impurity(self, X_column, y, threshold):
-        n = len(y)
-        left_indices = X_column < threshold
-        right_indices = ~left_indices
-        n_left = np.sum(left_indices)
-        n_right = n - n_left
-        if n_left == 0 or n_right == 0:
-            return 0
-        gini_left = 1 - sum((np.sum(y[left_indices] == c) / n_left) ** 2 for c in np.unique(y))  # 计算左子树的基尼不纯度
-        gini_right = 1 - sum((np.sum(y[right_indices] == c) / n_right) ** 2 for c in np.unique(y))  # 计算右子树的基尼不纯度
-        return (n_left / n) * gini_left + (n_right / n) * gini_right  # 计算总的基尼不纯度
-
-    def _split(self, X_column, split_thresh):
-        left_indices = X_column < split_thresh
-        return left_indices, ~left_indices
-
-    def _most_common_label(self, y):
-        if len(y) == 0:
-            return 0  # 返回默认值
-        unique_labels, counts = np.unique(y, return_counts=True)
-        return unique_labels[np.argmax(counts)]  # 返回出现最多的标签
-
-    def predict(self, X):
-        return np.array([self._traverse_tree(x, self.root) for x in X])  # 对输入数据进行预测
-
-    def _traverse_tree(self, x, node):
-        if node.is_leaf_node():
-            return node.value
-        if x[node.feature] < node.threshold:
-            return self._traverse_tree(x, node.left)  # 向左子树遍历
-        return self._traverse_tree(x, node.right)  # 向右子树遍历
+# Bagging 算法及参数调优
+bagging_param_grid = {
+    'n_estimators': [50, 100, 150]
+}
+bagging = BaggingClassifier(random_state=42)
+bagging_grid = GridSearchCV(bagging, bagging_param_grid, cv=5)
+bagging_grid.fit(X_train, y_train)
+bagging_best = bagging_grid.best_estimator_
+bagging_pred = bagging_best.predict(X_test)
+bagging_accuracy = accuracy_score(y_test, bagging_pred)
 ```
+#### 算法逻辑
+Bagging（Bootstrap Aggregating）是一种基于自助采样的集成学习算法，其基本思想是通过自助采样（有放回的抽样）从原始数据集中生成多个不同的训练子集，然后在每个训练子集上训练一个弱分类器，最后将这些弱分类器的预测结果进行综合（对于分类问题，通常采用投票的方式）得到最终的预测结果。具体步骤如下：
+1. 对于 $t = 1, 2, \cdots, T$（$T$ 是弱分类器的数量）：
+    - 从原始数据集中进行自助采样，生成一个训练子集 $D_t$。
+    - 使用训练子集 $D_t$ 训练一个弱分类器 $h_t(x)$。
+2. 最终的强分类器为 $H(x) = \text{majority vote}(h_1(x), h_2(x), \cdots, h_T(x))$。
 
-`Node`类定义了决策树的节点结构；`DecisionTree`类实现了决策树的构建和预测过程。`fit`方法开始构建决策树，`_grow_tree`方法递归地构建决策树，`_best_criteria`方法选择最佳的划分特征和阈值，`_gini_impurity`方法计算基尼不纯度，`_split`方法根据阈值划分数据集，`_most_common_label`方法返回多数类标签，`predict`方法对输入数据进行预测，`_traverse_tree`方法遍历决策树以确定样本的类别。
+#### 代码解释
+- 定义参数网格 `bagging_param_grid`，包含 `n_estimators`（弱分类器的数量）的不同取值。
+- 创建 Bagging 分类器实例 `bagging`，并设置随机种子为 42。
+- 使用 `GridSearchCV` 进行参数调优，`cv=5` 表示使用 5 折交叉验证。
+- 使用训练集数据对网格搜索对象进行训练，找到最优的参数组合。
+- 获取最优的模型 `bagging_best`，并使用该模型对测试集进行预测，计算预测结果的准确率 `bagging_accuracy`。
 
-### 2.5 支持向量机算法（SVM）
-支持向量机是一种通过寻找最优超平面来进行分类的算法，目标是最大化分类间隔，使不同类别的样本尽可能分开。
-
+### 1.2.5 随机森林算法及参数调优
 ```python
-class SVM:
-    def __init__(self, learning_rate=0.001, lambda_param=0.01, num_iterations=1000):
-        self.lr = learning_rate
-        self.lambda_param = lambda_param
-        self.num_iterations = num_iterations
-        self.w = None
-        self.b = None
-
-    def fit(self, X, y):
-        n_samples, n_features = X.shape
-        y_ = np.where(y <= 0, -1, 1)
-        self.w = np.zeros(n_features)  # 初始化权重
-        self.b = 0  # 初始化偏置
-
-        for _ in range(self.num_iterations):
-            for idx in np.random.permutation(n_samples):
-                x_i = X[idx]
-                condition = y_[idx] * (np.dot(x_i, self.w) - self.b) >= 1  # 判断样本是否满足条件
-                if condition:
-                    self.w -= self.lr * (2 * self.lambda_param * self.w)  # 更新权重（满足条件时）
-                else:
-                    self.w -= self.lr * (2 * self.lambda_param * self.w - np.dot(x_i, y_[idx]))  # 更新权重（不满足条件时）
-                    self.b -= self.lr * y_[idx]  # 更新偏置
-
-    def predict(self, X):
-        approx = np.dot(X, self.w) - self.b  # 计算决策函数值
-        return np.sign(approx)  # 根据决策函数值判断类别
+# 随机森林算法及参数调优
+rf_param_grid = {
+    'n_estimators': [50, 100, 150],
+    'max_depth': [None, 10, 20]
+}
+rf = RandomForestClassifier(random_state=42)
+rf_grid = GridSearchCV(rf, rf_param_grid, cv=5)
+rf_grid.fit(X_train, y_train)
+rf_best = rf_grid.best_estimator_
+rf_pred = rf_best.predict(X_test)
+rf_accuracy = accuracy_score(y_test, rf_pred)
 ```
+#### 算法逻辑
+随机森林是 Bagging 算法的一种改进，它在 Bagging 的基础上引入了特征随机选择的机制。具体步骤如下：
+1. 对于 $t = 1, 2, \cdots, T$（$T$ 是决策树的数量）：
+    - 从原始数据集中进行自助采样，生成一个训练子集 $D_t$。
+    - 在每个节点分裂时，随机选择 $m$ 个特征（$m \lt M$，$M$ 是特征总数），然后从这 $m$ 个特征中选择最优的特征进行分裂。
+    - 使用训练子集 $D_t$ 和随机选择的特征训练一棵决策树 $h_t(x)$。
+2. 最终的强分类器为 $H(x) = \text{majority vote}(h_1(x), h_2(x), \cdots, h_T(x))$。
 
-`__init__`方法初始化学习率、正则化参数、迭代次数、权重和偏置；`fit`方法通过多次迭代，使用随机梯度下降法更新权重和偏置，以找到最优超平面；`predict`方法根据学习到的权重和偏置对输入数据进行预测，并根据决策函数值判断类别。
+#### 代码解释
+- 定义参数网格 `rf_param_grid`，包含 `n_estimators`（决策树的数量）和 `max_depth`（决策树的最大深度）两个参数的不同取值。
+- 创建随机森林分类器实例 `rf`，并设置随机种子为 42。
+- 使用 `GridSearchCV` 进行参数调优，`cv=5` 表示使用 5 折交叉验证。
+- 使用训练集数据对网格搜索对象进行训练，找到最优的参数组合。
+- 获取最优的模型 `rf_best`，并使用该模型对测试集进行预测，计算预测结果的准确率 `rf_accuracy`。
 
-## 3. 结论
-通过实现K近邻、朴素贝叶斯、逻辑回归、决策树和支持向量机这五种分类算法，并对乳腺癌数据集进行分类实验，同时与Sklearn库函数的实现进行对比，得到了不同算法在该数据集上的准确率。实验结果表明，不同算法在乳腺癌数据集上的表现各有优劣，Sklearn库函数的实现通常具有较高的效率和准确性。
+### 1.2.6 结果对比
+```python
+# 结果对比
+results = {
+    'Model': ['Single Decision Tree', 'AdaBoost', 'Bagging', 'Random Forest'],
+    'Accuracy': [single_tree_accuracy, ada_accuracy, bagging_accuracy, rf_accuracy]
+}
+results_df = pd.DataFrame(results)
+print(results_df)
+```
+- **分析**：将各个模型的名称和对应的准确率存储在字典 `results` 中，然后使用 `pandas` 的 `DataFrame` 函数将其转换为数据框 `results_df`，最后打印该数据框，方便对比各个模型的性能。
 
-自定义算法的实现过程有助于深入理解各种分类算法的原理和工作机制，在实际应用中，可以根据具体问题的特点和需求选择合适的分类算法。同时，对于大规模数据集和复杂问题，可能需要进一步优化算法或采用集成学习等方法来提高分类性能。
+## 1.3 分析结论
+通过运行代码，得到了单一决策树模型和三种集成学习模型（AdaBoost、Bagging、随机森林）在乳腺癌数据集上的准确率，具体结果如下：
+
+| Model              | Accuracy |
+|--------------------|----------|
+| Single Decision Tree | 0.947368 |
+| AdaBoost           | 0.973684 |
+| Bagging            | 0.956140 |
+| Random Forest      | 0.964912 |
+
+从这些结果中我们可以得出以下分析：
+- **集成学习的优势**：集成学习模型（AdaBoost、Bagging、随机森林）的准确率均高于单一决策树模型。这充分证明了集成学习的有效性，通过组合多个弱分类器，集成学习能够综合各模型的优势，减少单一模型可能出现的过拟合问题，从而提升整体的泛化能力和分类性能。
+- **AdaBoost的卓越表现**：在所有模型中，AdaBoost取得了最高的准确率。这是因为AdaBoost采用自适应的方式调整样本权重，使得后续的弱分类器更加关注之前分类错误的样本，不断迭代优化，逐步提升整体的分类效果。对于乳腺癌数据集这种具有一定复杂性和潜在分类难度的数据集，AdaBoost能够更好地捕捉数据中的特征和规律，从而做出更准确的分类决策。
+- **Bagging和随机森林的表现**：Bagging和随机森林的准确率也明显高于单一决策树模型。Bagging通过自助采样生成多个训练子集，在每个子集上训练弱分类器，最后综合各弱分类器的结果，有效地降低了模型的方差。随机森林则在Bagging的基础上引入了特征随机选择机制，进一步增加了模型的多样性，提升了模型的泛化能力。虽然这两种模型的准确率略低于AdaBoost，但它们在处理大规模数据集和高维数据时通常具有更好的稳定性和效率。
+
+综合来看，在实际的乳腺癌分类任务中，集成学习模型是更好的选择。如果对分类准确率有较高的要求，AdaBoost可能是首选；而如果更注重模型的稳定性和处理大规模数据的能力，Bagging和随机森林也是不错的选择。同时，还可以通过进一步的参数调优和特征工程，来不断提升模型的性能。 

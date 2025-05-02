@@ -1393,6 +1393,8 @@
       
         
       
+        
+      
     
     
     
@@ -1518,6 +1520,29 @@
   
   <span class="md-ellipsis">
     Medium Access Control Sublayer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch5_The_Network_Layer/Ch5_The_Network_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Network Layer
     
   </span>
   
@@ -4034,7 +4059,7 @@
 <p>该节主要介绍了计算机中<strong>数据格式</strong>的相关内容，具体如下：</p>
 <ol>
 <li><strong>定点数的数据格式</strong>：<strong>定点格式</strong>是指机器中所有数据的小数点位置固定不变，通常将数据表示成<strong>纯小数或纯整数</strong> 。若用<span class="arithmatex">\(n + 1\)</span>位字表示定点数<span class="arithmatex">\(x\)</span>，其中<span class="arithmatex">\(x_n\)</span>表示符号位（<span class="arithmatex">\(0\)</span>为正，<span class="arithmatex">\(1\)</span>为负），其余位代表量值。当<span class="arithmatex">\(x\)</span>为纯小数时，小数点位于<span class="arithmatex">\(x_n\)</span>和<span class="arithmatex">\(x_{n - 1}\)</span>之间，其表示范围为<span class="arithmatex">\(0 \leq |x| \leq 1 - 2^{-n}\)</span>；当<span class="arithmatex">\(x\)</span>为纯整数时，小数点位于最低位<span class="arithmatex">\(x_0\)</span>右边，其表示范围为<span class="arithmatex">\(0 \leq x \leq 2^n - 1\)</span>。目前计算机中多采用<strong>定点纯整数表示</strong>，相应运算称为整数运算。</li>
-<li><strong>浮点数的表示方法</strong>：由于定点格式表示数值范围有限，对于数值范围差异大的数，如电子质量和太阳质量，在定点计算机中处理不便 。<strong>浮点表示法</strong>将数的有效数字和数的范围在计算机存储单元中分别表示，相当于小数点位置随比例因子不同而自由浮动。任意二进制数<span class="arithmatex">\(N = 2^e·M\)</span>，其中<span class="arithmatex">\(M\)</span>为<strong>尾数</strong>（纯小数，决定表示精度），<span class="arithmatex">\(e\)</span>为<strong>阶码</strong>（整数，决定表示范围） 。在机器中，一个浮点数由<strong>阶码、尾数及其符号位</strong>组成。</li>
+<li><strong>浮点数的表示方法</strong>：由于定点格式表示数值范围有限，对于数值范围差异大的数，如电子质量和太阳质量，在定点计算机中处理不便 。<strong>浮点表示法</strong>将数的有效数字和数的范围在计算机存储单元中分别表示，相当于小数点位置随比例因子不同而自由浮动。任意二进制数<span class="arithmatex">\(N = 2^e·M\)</span>，其中<span class="arithmatex">\(M\)</span>为<strong>尾数</strong>（纯小数，决定表示精度），<span class="arithmatex">\(e\)</span>为<strong>阶码</strong>（整数，决定表示范围） 。在机器中，一个浮点数由<strong>阶码、尾数及其符号位</strong>组成。<img alt="浮点数.jpg" src="../%E6%B5%AE%E7%82%B9%E6%95%B0.jpg" /></li>
 <li><strong>十进制数串的表示方法</strong>：大多数通用性强的计算机能直接处理十进制形式数据，主要有两种表示形式：<ul>
 <li><strong>字符串形式</strong>：1字节存放一个十进制数位或符号位，在主存中占用连续多字节，需给出在主存中的起始地址和位数，常用于非数值计算领域。</li>
 <li><strong>压缩的十进制数串形式</strong>：1字节存放两个十进制数位，节省存储空间且便于十进制数算术运算 。每个数位占用半字节（4个二进制位），值可用二 - 十编码（BCD码）或数字符的ASCII码低4位表示，符号位占半字节放在最低数字位之后 。规定数位加符号位之和为偶数，不足时在最高数字位前补0。同样需给出在主存中的首地址和数字位个数（不含符号位），位长可变，许多机器规定长度为0 - 31 。 </li>

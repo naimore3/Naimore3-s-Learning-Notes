@@ -9,25 +9,21 @@
       
       
       
-        <link rel="prev" href="../../Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/">
       
       
-        <link rel="next" href="../../Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/">
-      
-      
-      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
-        <title>Eighth Class：教授课3 - 学习笔记</title>
+        <title>第四章：上下文无关文法与下推自动机2 - 学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../../../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../../../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,9 +42,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../../../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eighth-class-digital-economy-and-countries-social-media-trends-the-rise-of-the-sharing-economy" class="md-skip">
+        <a href="#2" class="md-skip">
           跳转至
         </a>
       
@@ -88,7 +84,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
@@ -108,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Eighth Class：教授课3
+              第四章：上下文无关文法与下推自动机2
             
           </span>
         </div>
@@ -224,7 +220,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../../../../../.." class="md-tabs__link">
         
   
   
@@ -241,7 +237,12 @@
   
   
   
+  
     
+    
+      
+  
+  
   
   
     
@@ -250,22 +251,11 @@
   
   
   
-    
-  
   
     
     
-      
-  
-  
-  
-    
-  
-  
-    
-    
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
           
   
   
@@ -307,7 +297,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+        <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
           
   
   
@@ -335,7 +325,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+        <a href="../../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
           
   
   
@@ -371,7 +361,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+    <a href="../../../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
@@ -389,7 +379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../../../../../.." class="md-nav__link">
         
   
   
@@ -408,10 +398,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -425,20 +413,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -451,7 +436,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             课程笔记
@@ -535,7 +520,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -570,7 +555,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+      <a href="../../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
         
   
   
@@ -593,7 +578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
+      <a href="../../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
         
   
   
@@ -629,8 +614,6 @@
                 
   
   
-    
-  
   
   
     
@@ -645,11 +628,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -665,7 +648,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             2025寒假
@@ -676,8 +659,6 @@
                 
   
   
-    
-  
   
   
     
@@ -728,15 +709,15 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -755,7 +736,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2_1">
             <span class="md-nav__icon md-icon"></span>
             PBL数字经济与智能金融
@@ -771,7 +752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -794,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
         
   
   
@@ -817,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
         
   
   
@@ -840,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
         
   
   
@@ -863,7 +844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
         
   
   
@@ -886,7 +867,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
         
   
   
@@ -909,7 +890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
         
   
   
@@ -929,32 +910,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    Eighth Class：教授课3
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
         
   
   
@@ -965,212 +924,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#top-10-countries-in-digital-economy-2022" class="md-nav__link">
-    <span class="md-ellipsis">
-      Top 10 Countries in Digital Economy 2022
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#top-10-e-commerce-countries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Top 10 E - commerce Countries
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#digital-economy-and-social-media-trends" class="md-nav__link">
-    <span class="md-ellipsis">
-      Digital Economy and Social Media Trends
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Digital Economy and Social Media Trends">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#history-of-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      History of Social Media
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="History of Social Media">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-evolution-of-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      The evolution of social media
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#most-popular-social-media-platforms-in-2022" class="md-nav__link">
-    <span class="md-ellipsis">
-      Most Popular Social Media Platforms in 2022
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Most Popular Social Media Platforms in 2022">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#types-of-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of social media
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#the-social-networks" class="md-nav__link">
-    <span class="md-ellipsis">
-      The social networks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#other-significant-channels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other significant channels
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#six-big-digital-trends-to-watch-in-2022" class="md-nav__link">
-    <span class="md-ellipsis">
-      Six Big Digital Trends to Watch in 2022
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Six Big Digital Trends to Watch in 2022">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Social Media
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-metaverse" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Metaverse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-crypto-nft-growth" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Crypto &amp; NFT Growth
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-ai-in-food-and-hr" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. AI in Food and HR
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-connectivity-and-digital-transformation" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Connectivity and Digital Transformation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-new-workplace-skills" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. New Workplace Skills
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#metaverse-hottest-big-social-media-trends" class="md-nav__link">
-    <span class="md-ellipsis">
-      Metaverse: Hottest Big Social Media Trends
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#the-rise-of-the-sharing-economy" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Rise of the Sharing Economy
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1183,7 +936,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
         
   
   
@@ -1206,7 +959,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
         
   
   
@@ -1229,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
         
   
   
@@ -1252,7 +1005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
         
   
   
@@ -1275,7 +1028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
         
   
   
@@ -1298,7 +1051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
         
   
   
@@ -1321,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
         
   
   
@@ -1344,7 +1097,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
         
   
   
@@ -1367,7 +1120,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
+      <a href="../../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
         
   
   
@@ -1555,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
         
   
   
@@ -1578,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
         
   
   
@@ -1640,7 +1393,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -1675,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch1_Introduction/Ch1_Introduction/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch1_Introduction/Ch1_Introduction/" class="md-nav__link">
         
   
   
@@ -1698,7 +1451,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
         
   
   
@@ -1721,7 +1474,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch3_The_Data_Link_Layer/Ch3_The_Data_Link_Layer/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch3_The_Data_Link_Layer/Ch3_The_Data_Link_Layer/" class="md-nav__link">
         
   
   
@@ -1744,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch4_The_Medium_Access_Control_Sublayer/Ch4_The_Medium_Access_Control_Sublayer/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch4_The_Medium_Access_Control_Sublayer/Ch4_The_Medium_Access_Control_Sublayer/" class="md-nav__link">
         
   
   
@@ -1767,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch5_The_Network_Layer/Ch5_The_Network_Layer/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch5_The_Network_Layer/Ch5_The_Network_Layer/" class="md-nav__link">
         
   
   
@@ -1876,7 +1629,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -1911,7 +1664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
+      <a href="../../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
         
   
   
@@ -1991,7 +1744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
         
   
   
@@ -2014,7 +1767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+      <a href="../../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
         
   
   
@@ -2037,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/" class="md-nav__link">
+      <a href="../../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/" class="md-nav__link">
         
   
   
@@ -2146,7 +1899,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -2181,7 +1934,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
         
   
   
@@ -2267,7 +2020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
         
   
   
@@ -2290,7 +2043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   
@@ -2313,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-nav__link">
         
   
   
@@ -2336,7 +2089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -2359,7 +2112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/" class="md-nav__link">
         
   
   
@@ -2382,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/" class="md-nav__link">
         
   
   
@@ -2499,7 +2252,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -2534,7 +2287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="md-nav__link">
         
   
   
@@ -2557,7 +2310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
         
   
   
@@ -2580,7 +2333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   
@@ -2603,7 +2356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   
@@ -2626,7 +2379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/" class="md-nav__link">
         
   
   
@@ -2688,7 +2441,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E6%95%99%E6%9D%90%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E6%95%99%E6%9D%90%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -2723,7 +2476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="md-nav__link">
         
   
   
@@ -2746,7 +2499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
         
   
   
@@ -2769,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   
@@ -2792,7 +2545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         
   
   
@@ -2815,7 +2568,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="md-nav__link">
+      <a href="../../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="md-nav__link">
         
   
   
@@ -2926,7 +2679,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+            <a href="../../../%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
               
   
   
@@ -2961,7 +2714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -2984,7 +2737,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/" class="md-nav__link">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/" class="md-nav__link">
         
   
   
@@ -3007,7 +2760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../课程笔记/大二下/形式语言与自动机/第四章_上下文无关文法与下推自动机/第四章_上下文无关文法与下推自动机1/第四章_上下文无关文法与下推自动机1.md" class="md-nav__link">
+      <a href="../../../../../../../课程笔记/大二下/形式语言与自动机/第四章_上下文无关文法与下推自动机/第四章_上下文无关文法与下推自动机1/第四章_上下文无关文法与下推自动机1.md" class="md-nav__link">
         
   
   
@@ -3091,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="md-nav__link">
+      <a href="../../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/" class="md-nav__link">
         
   
   
@@ -3252,7 +3005,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+            <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
               
   
   
@@ -3287,7 +3040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+      <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
         
   
   
@@ -3347,7 +3100,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
+            <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
               
   
   
@@ -3382,7 +3135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
+      <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
         
   
   
@@ -3405,7 +3158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
+      <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
         
   
   
@@ -3428,7 +3181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
+      <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
         
   
   
@@ -3451,7 +3204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
+      <a href="../../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
         
   
   
@@ -3522,7 +3275,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+            <a href="../../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
               
   
   
@@ -3580,7 +3333,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+            <a href="../../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
               
   
   
@@ -3615,7 +3368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
+      <a href="../../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
         
   
   
@@ -3693,7 +3446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../读书笔记/2025_3_13_多元统计分析引论/index.md" class="md-nav__link">
+      <a href="../../../../../../../读书笔记/2025_3_13_多元统计分析引论/index.md" class="md-nav__link">
         
   
   
@@ -3716,7 +3469,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../读书笔记/2025_3_13_多元统计分析引论/第一章_矩阵/第一章_矩阵.md" class="md-nav__link">
+      <a href="../../../../../../../读书笔记/2025_3_13_多元统计分析引论/第一章_矩阵/第一章_矩阵.md" class="md-nav__link">
         
   
   
@@ -3774,163 +3527,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#top-10-countries-in-digital-economy-2022" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Top 10 Countries in Digital Economy 2022
+      总览
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#top-10-e-commerce-countries" class="md-nav__link">
-    <span class="md-ellipsis">
-      Top 10 E - commerce Countries
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#digital-economy-and-social-media-trends" class="md-nav__link">
-    <span class="md-ellipsis">
-      Digital Economy and Social Media Trends
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Digital Economy and Social Media Trends">
+    <nav class="md-nav" aria-label="总览">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#history-of-social-media" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      History of Social Media
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="History of Social Media">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#the-evolution-of-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      The evolution of social media
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#most-popular-social-media-platforms-in-2022" class="md-nav__link">
-    <span class="md-ellipsis">
-      Most Popular Social Media Platforms in 2022
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Most Popular Social Media Platforms in 2022">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#types-of-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of social media
+      一段话总结
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-social-networks" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      The social networks
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#other-significant-channels" class="md-nav__link">
-    <span class="md-ellipsis">
-      Other significant channels
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#six-big-digital-trends-to-watch-in-2022" class="md-nav__link">
-    <span class="md-ellipsis">
-      Six Big Digital Trends to Watch in 2022
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Six Big Digital Trends to Watch in 2022">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-social-media" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Social Media
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-metaverse" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Metaverse
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-crypto-nft-growth" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. Crypto &amp; NFT Growth
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-ai-in-food-and-hr" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. AI in Food and HR
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-connectivity-and-digital-transformation" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. Connectivity and Digital Transformation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6-new-workplace-skills" class="md-nav__link">
-    <span class="md-ellipsis">
-      6. New Workplace Skills
+      思维导图
     </span>
   </a>
   
@@ -3942,20 +3560,101 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#metaverse-hottest-big-social-media-trends" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      Metaverse: Hottest Big Social Media Trends
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      详细总结
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#the-rise-of-the-sharing-economy" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      The Rise of the Sharing Economy
+      关键问题
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.2 上下文无关文法的变换
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 上下文无关文法的变换">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cfg" class="md-nav__link">
+    <span class="md-ellipsis">
+      CFG的简化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CFG的简化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      消无用符号
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      消ε产生式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      消单产生式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      对生成式形式进行标准化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3975,228 +3674,172 @@
 
 
 
-<h1 id="eighth-class-digital-economy-and-countries-social-media-trends-the-rise-of-the-sharing-economy">Eighth Class: Digital Economy and Countries, Social Media Trends &amp; The Rise of the Sharing Economy<a class="headerlink" href="#eighth-class-digital-economy-and-countries-social-media-trends-the-rise-of-the-sharing-economy" title="Permanent link">&para;</a></h1>
-<h2 id="top-10-countries-in-digital-economy-2022">Top 10 Countries in Digital Economy 2022<a class="headerlink" href="#top-10-countries-in-digital-economy-2022" title="Permanent link">&para;</a></h2>
-<p>The digital economy refers to global economic activities, commercial transactions, and professional relationships facilitated by information and communication technologies (ICT). In short, it is the economy based on digital technologies.</p>
-<p>The rise of Amazon, Uber, and Airbnb is a prime example of this platform. In a virtual environment, these companies bring market participants together, show the best deals, and create new forms of trust among strangers.</p>
-<p>New technologies such as 3D printing, augmented and virtual reality, sensors, artificial intelligence, quantum computing, and robotics could disrupt nearly any business. Thus, a country's competitiveness in these technologies will determine its economic prosperity in the coming decades.</p>
+<h1 id="2">第四章：上下文无关文法与下推自动机2<a class="headerlink" href="#2" title="Permanent link">&para;</a></h1>
+<h2 id="_1">总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="_2">一段话总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>上下文无关文法（CFG）的变换包括<strong>消无用符号、消ε产生式、消单产生式、对生成式形式进行标准化</strong>等操作。其中，消无用符号需先计算生成符号集和可达符号集，再删除非生成和不可达符号；消ε产生式要计算可致空符号集；消单产生式需计算单元偶对集合。CFG简化步骤依次为消除ε产生式、单产生式和无用符号，可使变换后的文法语言为原语言去掉空串。此外，还介绍了消除递归的方法，包括生成式代换、消除直接左递归和全部左递归，这是因为左递归会导致句法分析算法死循环。 </p>
+<hr />
+<h3 id="_3">思维导图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="_4"><img alt="exported_image.png" src="../exported_image.png" /><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">详细总结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>United States of America</strong><ul>
-<li>Leads the world in the scale of the digital economy, with a value of $13.6 trillion in 2021.</li>
-<li>Digital economy accounts for 8% of US GDP but 86% of labor - productivity growth.</li>
-<li>Is the most digitally competitive country globally.</li>
+<li><strong>上下文无关文法（CFG）的变换</strong><ul>
+<li><strong>生成式的标准形式</strong>
+  |范式|生成式形式|意义|
+  |----|----|----|
+  |Chomsky范式（CNF）|A→BC, A→a（A, B, C∈N , a∈T）|每个上下文无关文法都有一个CNF文法|
+  |Greibach范式（GNF）|A→aβ（a∈T , β∈N*）|对每个2型语言都可找到一个文法使产生式的右端都以终结符开始，中心思想是消除左递归|</li>
+<li><strong>变换算法</strong></li>
+<li><strong>消去无用符号</strong>：有用符号需满足<span class="arithmatex">\(S \stackrel{*}{\Rightarrow} \alpha X \beta \stackrel{*}{\Rightarrow} w\)</span>（<span class="arithmatex">\(w \in T^{*}\)</span> , <span class="arithmatex">\(\alpha, \beta \in(N \cup T)^{*}\)</span>），无用符号包括非生成符号和不可达符号。计算生成符号集时，终结符是生成符号，若产生式<span class="arithmatex">\(A \to \alpha\)</span>中<span class="arithmatex">\(\alpha\)</span>的符号都是生成符号，则A也是；计算可达符号集时，S是可达符号，若A可达且<span class="arithmatex">\(A \to \alpha\)</span>，则<span class="arithmatex">\(\alpha\)</span>中的符号都可达。最后消去非生成和不可达符号及相关产生式，且必须先执行计算生成符号集算法，再执行计算可达符号集算法。</li>
+<li><strong>消去ε产生式</strong>：目的是方便文法设计和规范化，消去后除不能产生空串外不影响其他字符串产生。可致空符号指<span class="arithmatex">\(A \Rightarrow \varepsilon\)</span>的非终结符A，计算可致空符号集后，按规则构造新产生式集P1，若起始符S可致空，还需引入新起始符S1。</li>
+<li><strong>消去单产生式</strong>：单产生式形如A→B（A、B为非终结符），消去目的是简化证明、减少推导步数和规范化。通过计算单元偶对集合，对每个单元偶对(A,B)，在新文法中加入产生式A→α（B→α为非单产生式）。</li>
 </ul>
 </li>
-<li><strong>China</strong><ul>
-<li>Ranks second with a value of $5.4 trillion.</li>
-<li>Digital economy grew to 39.2 trillion - yuan, accounting for 38.6% of GDP.</li>
-<li>Became a stabilizing force and a vital engine of economic growth during the epidemic and global economic downward pressure.</li>
-<li>Digital innovation generated new growth through new business models during the pandemic, from online commerce to online education and entertainment.</li>
-</ul>
-</li>
-<li><strong>Germany</strong><ul>
-<li>Comes third with a digital economy of $2.54 trillion in 2021.</li>
-<li>eCommerce - Electronics &amp; Media has a revenue share of 21.2 percent.</li>
-<li>Germans have a high internet - usage rate and improving digital abilities, but are hesitant to sign up for high - speed Internet.</li>
-</ul>
-</li>
-<li><strong>Japan</strong><ul>
-<li>Digital economy ranked fourth in the world with $2.48 trillion.</li>
-<li>Features a world - class education system, industrial and automotive manufacturing leadership, high - quality infrastructure, and a professional culture.</li>
-<li>Productivity has changed from stagnating to dropping, and only five of the 500 unicorn start - ups are from Japan.</li>
-</ul>
-</li>
-<li><strong>United Kingdom</strong><ul>
-<li>Ranked fifth with a digital economy of $1.79 trillion.</li>
-<li>Has a highly developed social and market - oriented economy, with the world's fifth - largest nominal GDP, tenth - largest purchasing power parity (PPP), and twenty - first - largest GDP per capita.</li>
-</ul>
-</li>
-<li><strong>France</strong><ul>
-<li>In the sixth position with a digital economy of $1.19 trillion.</li>
-<li>In 2019, 77% of French people had a smartphone, and 76% had laptops.</li>
-<li>40 million French e - consumers spent €103.4 billion online in 2019, a 11.6% increase from the previous year.</li>
-</ul>
-</li>
-<li><strong>South Korea</strong><ul>
-<li>Has a digital economy of $847.8 billion and ranks seventh.</li>
-<li>Pioneered in 5G technology, was the first to introduce 5G with the best coverage.</li>
-<li>The government intends to expand its lead with the Digital New Deal.</li>
-</ul>
-</li>
-<li><strong>India</strong><ul>
-<li>Digital economy is $514.9 billion.</li>
-<li>In the fourth quarter of 2021, there were 825 million Indian internet users, a 3.8% increase from the start of the year.</li>
-<li>Has emerged as one of the world's largest and fastest - growing digital consumer markets.</li>
-</ul>
-</li>
-<li><strong>Canada</strong><ul>
-<li>Has a digital economy of $436.5 billion.</li>
-<li>The number of people employed in Canada's digital economy fell to just over 2 million in the first quarter of 2021.</li>
-<li>The digital economy grew almost 40% faster than the broader economy in the last decade.</li>
-</ul>
-</li>
-<li><strong>Italy</strong><ul>
-<li>Is in the tenth position with a digital economy of $377.5 billion.</li>
-<li>The government has taken a more proactive approach to fund innovation and technology development, and strengthen research and technology transfer.</li>
+<li><strong>CFG的简化</strong>：简化步骤为消除ε产生式、单产生式和无用符号，若原CFG语言至少包含一个非空字符串，变换后的文法语言为原语言去掉空串，且要注意简化步骤的次序。</li>
+<li><strong>消除递归</strong><ul>
+<li><strong>递归的定义</strong>：在2型文法中，若存在<span class="arithmatex">\(A\Rightarrow\alpha A\beta\)</span>（A∈N），称G是递归文法；若存在<span class="arithmatex">\(A\Rightarrow A\beta\)</span>，是左递归文法；若存在<span class="arithmatex">\(A\Rightarrow\alpha A\)</span>，是右递归文法；若存在<span class="arithmatex">\(A\Rightarrow A\)</span>，是循环文法。</li>
+<li><strong>生成式的代换</strong>：对形如A→αBβ（B∈N,α,β∈(N∪T)*）的生成式，若B→r1| r2|…| rk，则可将A→αBβ用A→αr1β|…|αrkβ取代。</li>
+<li><strong>消除直接左递归</strong>：若P中有A生成式<span class="arithmatex">\(A￫Aα1 | Aα2 | … | Aαm |β1 |β2 | … |βn\)</span>（βi的第一个字符不是A），可引入新非终结符A’，将A生成式变换为<span class="arithmatex">\(A￫β1|β2|…|βn|β1A’|β2A’|…|βnA’\)</span>，<span class="arithmatex">\(A’￫α1|α2|…|αm|α1A’|α2A’|…|αmA’\)</span>。</li>
+<li><strong>消除全部左递归</strong>：对于给定的无无用符号、无循环且无ε生成式的2型文法，通过特定算法可消除左递归，该算法原理与求解正规表达式方程组类似。</li>
 </ul>
 </li>
 </ol>
-<h2 id="top-10-e-commerce-countries">Top 10 E - commerce Countries<a class="headerlink" href="#top-10-e-commerce-countries" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="_6">关键问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <ol>
-<li><strong>China</strong><ul>
-<li>World's biggest e - commerce market, led by Alibaba group's e - commerce subsidiaries like Taobao, Alibaba.com, and Tmall.</li>
-<li>Annual online sales: $2.78 trillion.</li>
-<li>E - commerce share of total retail sales: 52%.</li>
+<li><strong>为什么消除无用符号时必须先执行计算生成符号集算法，再执行计算可达符号集算法？</strong><ul>
+<li>答案：若先执行计算可达符号集算法，可能会保留一些虽然可达但无法生成终结符串的非终结符及其相关产生式，导致无用符号不能完全删除。例如文档中的例子，若先用算法2，再用算法1，会残留多余的产生式。</li>
 </ul>
 </li>
-<li><strong>United States of America</strong><ul>
-<li>Second - largest e - commerce market, led by Amazon and eBay.</li>
-<li>Annual online sales: $843 billion.</li>
-<li>E - commerce share of total retail sales: 19%.</li>
+<li><strong>消去ε产生式后，新文法的语言与原文法语言有何不同？</strong><ul>
+<li>答案：消去ε产生式后，新文法的语言比原文法语言少了空串<span class="arithmatex">\(\varepsilon\)</span>，其他字符串的产生不受影响。因为消去ε产生式的过程中，只是去除了能产生空串的产生式，对于其他非空字符串的推导路径没有改变。</li>
 </ul>
 </li>
-<li><strong>United Kingdom</strong><ul>
-<li>A big e - commerce player, with Amazon U.K., eBay U.K., and Asos as top e - commerce websites.</li>
-<li>Annual online sales: $169 billion.</li>
-<li>E - commerce share of total retail sales: 4.8%.</li>
-</ul>
-</li>
-<li><strong>Japan</strong><ul>
-<li>Leading m - commerce (mobile commerce) player in the world, with Rakuten as the leading e - commerce platform.</li>
-<li>Annual online sales: $144 billion.</li>
-<li>E - commerce share of total retail sales: 3%.</li>
-</ul>
-</li>
-<li><strong>South Korea</strong><ul>
-<li>Has the fastest wireless internet and is a leading m - commerce market, with Gmarket and coupang as big e - commerce names.</li>
-<li>Annual online sales: $120 billion.</li>
-<li>E - commerce share of total retail sales: 2.5%.</li>
-</ul>
-</li>
-<li><strong>Germany</strong><ul>
-<li>Europe's second - largest e - commerce market, with Amazon, eBay, and Otto as major players.</li>
-<li>Annual online sales: $101.5 billion.</li>
-<li>E - commerce share of total retail sales: 2.1%.</li>
-</ul>
-</li>
-<li><strong>France</strong><ul>
-<li>With local players like Cdiscount and Veepee, and Amazon as the dominant brand.</li>
-<li>Annual online sales: $80 billion.</li>
-<li>E - commerce share of total retail sales: 1.6%.</li>
-</ul>
-</li>
-<li><strong>India</strong><ul>
-<li>One of the fastest - growing e - commerce markets, projected to see digital sales increase by 27% in 2021.</li>
-<li>Annual online sales: $67.5 billion.</li>
-<li>E - commerce share of total retail sales: 1.4%.</li>
-</ul>
-</li>
-<li><strong>Canada</strong><ul>
-<li>A huge e - commerce market dominated by Amazon, followed by Walmart.</li>
-<li>Annual online sales: $44 billion.</li>
-<li>E - commerce share of total retail sales: 1.3%.</li>
-</ul>
-</li>
-<li><strong>Spain</strong><ul>
-<li>E - commerce market dominated by Amazon, El Corte ingles, and PcComponentes, which account for 30% of all online revenue.</li>
-<li>Annual online sales: $37 billion.</li>
-<li>E - commerce share of total retail sales: 0.72%.</li>
+<li><strong>消除左递归的算法5与求解正规表达式方程组的算法类似，体现在哪些方面？</strong><ul>
+<li>答案：二者类似体现在都是通过逐步变换的方式来消除某种递归结构。算法5通过对非终结符的排序，依次处理每个非终结符的产生式，消除左递归；求解正规表达式方程组也是通过对变量（类似非终结符）的处理，逐步消除递归关系，使表达式更加简洁、易于分析。 </li>
 </ul>
 </li>
 </ol>
-<h2 id="digital-economy-and-social-media-trends">Digital Economy and Social Media Trends<a class="headerlink" href="#digital-economy-and-social-media-trends" title="Permanent link">&para;</a></h2>
-<h3 id="history-of-social-media">History of Social Media<a class="headerlink" href="#history-of-social-media" title="Permanent link">&para;</a></h3>
-<h4 id="the-evolution-of-social-media">The evolution of social media<a class="headerlink" href="#the-evolution-of-social-media" title="Permanent link">&para;</a></h4>
-<p>Social media is defined as any website or application that enables users to create and share content or to participate in social networking. Approximately two-thirds of all internet users utilize social media. The largest social media user base is in Asia, and the highest penetration rate is in the Middle East. Social media is highly compatible with mobile devices; for instance, 95 percent of Facebook traffic is generated from mobile devices.</p>
-<h3 id="most-popular-social-media-platforms-in-2022">Most Popular Social Media Platforms in 2022<a class="headerlink" href="#most-popular-social-media-platforms-in-2022" title="Permanent link">&para;</a></h3>
-<p>Social media serves as a personal discovery engine. People establish their social media networks to maintain connections with loved ones, stay informed about matters they care about, and be inspired to lead their best lives. It is a carefully thought-out, curated, and personalized network where irrelevant or valueless content is promptly discarded.</p>
-<p>The philosophy is to forge meaningful, one-to-one connections between a brand and individuals. This is achieved by leveraging user behaviors to add tangible value to their network, transforming a potentially intrusive marketing tactic into a meaningful experience.</p>
-<h4 id="types-of-social-media">Types of social media<a class="headerlink" href="#types-of-social-media" title="Permanent link">&para;</a></h4>
+<h2 id="42">4.2 上下文无关文法的变换<a class="headerlink" href="#42" title="Permanent link">&para;</a></h2>
+<p>这段内容介绍了两种生成式的标准形式：Chomsky范式（CNF）和Greibach范式（GNF）。</p>
 <ul>
-<li><strong>Social networks</strong>: Encourage both online and offline interaction, such as meetup.com and dating sites.</li>
-<li><strong>Blogs and micro-blogging</strong>: Can be utilized for demonstrating thought leadership or sharing content, like Twitter.</li>
-<li><strong>Media sharing</strong>: Platforms such as YouTube or Flickr.</li>
-<li><strong>Professional networking</strong>: For example, LinkedIn.</li>
-<li><strong>Reviews and rating sites</strong>.</li>
-<li><strong>Forums</strong>: Such as Netmums. Forums offer businesses an opportunity to directly engage with customers, but one must be cautious about overt advertising. They can also be an effective way to gauge public opinions about products or brands.</li>
-<li><strong>The sharing economy</strong>: Examples include Airbnb and Uber.</li>
+<li><strong>Chomsky范式（CNF）</strong>：生成式形式为<strong>A→BC</strong>（A、B、C为非终结符，属于集合N ）和<strong>A→a</strong>（a为终结符，属于集合T ）。并且每个上下文无关文法都有与之对应的CNF文法，这意味着任何上下文无关文法都可以转化为满足这种特定形式的文法，从而为后续对文法的分析和处理提供了一种规范的形式。</li>
+<li><strong>Greibach范式（GNF）</strong>：生成式形式为<strong>A→aβ</strong>，其中a是终结符，β是由非终结符组成的字符串（β∈N<em>） 。其意义在于，对于每个2型语言（即上下文无关语言），都能找到一个符合GNF的文法，使得产生式的右端都以终结符开始。</em><em>中心思想是消除左递归</em>*，左递归会导致一些句法分析算法出现死循环，将文法转化为GNF形式可以避免这种情况，使句法分析更加顺畅。 </li>
 </ul>
-<h4 id="the-social-networks">The social networks<a class="headerlink" href="#the-social-networks" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>Facebook</strong>: Has 2.93 billion monthly users. It has shifted towards paid advertising, and since Facebook owns Instagram, ads can be run across both channels. Businesses can create pages to promote their products and services. It is crucial for B2C marketing, but as most users use Facebook for personal content sharing, businesses should be aware that it is not primarily a business site.</li>
-<li><strong>Instagram</strong>: Boasts 1.21 billion users. One-third of the most viewed stories are from businesses. It focuses on visual and image sharing and can be linked to physical brands, such as posting photos from events. Stories can be created for live updates, and links cannot be added to regular posts.</li>
-<li><strong>YouTube</strong>: With 2.6 billion users, it is one of the world's largest video platforms. Owned by Google, it is popular for vlogs, reviews, and instructional videos. Live video is an important feature, similar to that on Facebook and other channels.</li>
-<li><strong>Sina Weibo</strong>: A micro-blogging site specific to China (with a 2,000-character limit per post). Despite relying on sponsorship, it has been very successful. It offers sponsored posts and highly targeted advertising and has 573 million users.</li>
-<li><strong>TikTok</strong>: The target audience ranges from 13 to 40 years of age. It serves as a great form of entertainment. As a video-based platform, it offers a wide variety of sounds and song snippets. It is very user-friendly, making it easier to edit and upload content, and it has 1 billion users.</li>
-</ul>
-<h4 id="other-significant-channels">Other significant channels<a class="headerlink" href="#other-significant-channels" title="Permanent link">&para;</a></h4>
-<ul>
-<li>Pinterest</li>
-<li>Tumblr</li>
-<li>Flickr</li>
-<li>Meetup</li>
-<li>Ask.fm</li>
-<li>Qzone</li>
-<li>Reddit </li>
-</ul>
-<h2 id="six-big-digital-trends-to-watch-in-2022">Six Big Digital Trends to Watch in 2022<a class="headerlink" href="#six-big-digital-trends-to-watch-in-2022" title="Permanent link">&para;</a></h2>
-<h3 id="1-social-media">1. Social Media<a class="headerlink" href="#1-social-media" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Platforms focus on privacy and content quality. Facebook may grow despite criticism.</li>
-<li>In 2022, policy updates and algorithm tweaks are likely.</li>
-<li>Short - form video boosts ad spending on Instagram and TikTok; Instagram's ad share may exceed 50%. Underused marketing aspects will grow.</li>
-</ul>
-<h3 id="2-metaverse">2. Metaverse<a class="headerlink" href="#2-metaverse" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Facebook rebranded to "Meta" in 2021 for metaverse transformation.</li>
-<li>It's a VR/AR - based virtual space. Users can interact, create, and monetize with blockchain.</li>
-<li>Linked to NFTs and crypto, it's a major 2022 commercial topic backed by big brands.</li>
-</ul>
-<h3 id="3-crypto-nft-growth">3. Crypto &amp; NFT Growth<a class="headerlink" href="#3-crypto-nft-growth" title="Permanent link">&para;</a></h3>
-<ul>
-<li>NFT use grew in 2021 and will grow in 2022.</li>
-<li>They're a new online value - exchange, creating "digital deeds" for trading.</li>
-<li>Tokenization for asset - buying, and a large European tokenized asset market is predicted.</li>
-</ul>
-<h3 id="4-ai-in-food-and-hr">4. AI in Food and HR<a class="headerlink" href="#4-ai-in-food-and-hr" title="Permanent link">&para;</a></h3>
-<ul>
-<li>AI may change food and job - seeking. Labor shortages drive AI use in applicant evaluation.</li>
-<li>AI in food boosts chefs' creativity; robots like Flippy are in restaurants.</li>
-</ul>
-<h3 id="5-connectivity-and-digital-transformation">5. Connectivity and Digital Transformation<a class="headerlink" href="#5-connectivity-and-digital-transformation" title="Permanent link">&para;</a></h3>
-<ul>
-<li>5G and Wi - Fi 6 enable faster connections for new digital trends, with applications in smart cities, etc.</li>
-<li>Working from home becomes more hybrid, and IT execs work outside with small devices.</li>
-</ul>
-<h3 id="6-new-workplace-skills">6. New Workplace Skills<a class="headerlink" href="#6-new-workplace-skills" title="Permanent link">&para;</a></h3>
-<ul>
-<li>Workplace changes bring skill changes.</li>
-<li>In 2022, new jobs rise, old - tech jobs fall.</li>
-<li>The labor shift may cut and create jobs. Data - related and e - commerce/social media pros are in demand, and "human" jobs grow. AI creates jobs. </li>
-</ul>
-<h2 id="metaverse-hottest-big-social-media-trends">Metaverse: Hottest Big Social Media Trends<a class="headerlink" href="#metaverse-hottest-big-social-media-trends" title="Permanent link">&para;</a></h2>
+<h3 id="cfg">CFG的简化<a class="headerlink" href="#cfg" title="Permanent link">&para;</a></h3>
+<p><a href="https://blog.csdn.net/m0_73647441/article/details/142342516">无用符号和无用产生式的消除</a>
+这段内容主要讲述了上下文无关文法（CFG）的简化步骤、结论以及需要注意的要点：</p>
 <ol>
-<li><strong>Augmented and Virtual Reality in Gaming</strong>
-3D, AR, VR, and audio systems are vital in virtual gaming. With the metaverse's rise, they've grown exponentially. In 2021, the AR/VR headset market grew 60.8% (IDC), with 2.19 million units shipped in APAC. The Sandbox, a Hong Kong - based platform, offers a decentralized virtual world where users customize avatars, develop land, and trade digital assets with the SAND token.</li>
-<li><strong>Digital Marketplace</strong>
-The pandemic boosted e - commerce. Brands and retailers are integrating digital tools. The metaverse is emerging as an innovative digital marketplace for fashion and retail. Many brands are entering Web 3.0 with digital wearables. WEAR in Hong Kong builds a digital luxury ecosystem for art lovers and NFT collectors.</li>
-<li><strong>Virtual Art Galleries</strong>
-Digital art thrives with NFTs, digital assets, and blockchain. Virtual art galleries, worth $2.4 billion, are popular in the metaverse. Artists display NFTs, and enthusiasts can trade in a virtual setting. The founder of Hong Kong's de Sarthe noted a surge in online business during the pandemic.</li>
-<li><strong>Digital Real Estate</strong>
-Virtual real estate in the metaverse grew fast, with sales over $500 million in 2021, expected to double this year. Users can socialize, create, and monetize virtual properties. Bangkokverse in Thailand attracted local developers, and New World Development in Hong Kong bought land in The Sandbox for a digital hub.</li>
-<li><strong>Social Networking space</strong>
-The metaverse is set to be the next major social platform. Users can socialize immersively without sharing personal details. Asian investors and developers are eager to enter, like Singapore's Millennium Hotels planning a virtual hotel in Decentraland. </li>
-</ol>
-<h2 id="the-rise-of-the-sharing-economy">The Rise of the Sharing Economy<a class="headerlink" href="#the-rise-of-the-sharing-economy" title="Permanent link">&para;</a></h2>
-<p>The sharing economy is an economic model where goods and resources are collaboratively shared by individuals and groups, turning physical assets into services. Its growth is driven by big data and online platforms. Since 2010, over $23 billion in venture capital has been invested in share - based start - ups, but the exact size of the sharing economy is hard to determine as many relevant firms are private.</p>
-<p>The sharing economy has a significant impact on various sectors:</p>
-<ul>
-<li><strong>Transportation</strong>: Uber's success in the transport sector shows the sharing economy's disruption. By using an efficient mobile app and a network of verified drivers, Uber offers a cost - effective, comfortable, and safe alternative to traditional transit like public transport or taxis.</li>
-<li><strong>Consumer Goods</strong>: In consumer goods, the key factors in purchasing decisions are convenience, affordability, and efficiency. Sharing - based brands like eBay, which allows users to buy and sell new or used products directly to their homes, dominate. It provides consumers with a more convenient, affordable, and efficient way to shop.</li>
-<li><strong>Personal and Professional Services</strong>: In technical and personal services, the sharing economy is often manifested as freelance work. These services require skills, knowledge, experience, and certifications, and the sharing economy offers more flexible work arrangements.</li>
-<li><strong>Healthcare</strong>: Although not fully developed yet, the sharing economy is expected to transform healthcare. Conventional healthcare drawbacks such as costs and capital can potentially be mitigated by share - based approaches, from group consultations to telemedicine.</li>
+<li><strong>简化步骤</strong><ul>
+<li><strong>消除ε产生式</strong>：ε产生式指形如<span class="arithmatex">\(A→ε\)</span>的产生式。消除它的目的是使文法更加规范，方便后续处理。消除后，文法将不能产生空串，但不会影响其他字符串的产生。例如，若原文法中有<span class="arithmatex">\(S→aSbS|ε\)</span>，消除ε产生式后，会生成一系列新产生式来替代原产生式，保证除空串外其他字符串的推导不受影响。</li>
+<li><strong>消除单产生式</strong>：单产生式是形如<span class="arithmatex">\(A→B\)</span>（<span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>为非终结符）的产生式。消除单产生式可简化证明过程，减少推导步数。比如在复杂的推导中，过多单产生式会使过程繁琐，消除后能让推导更简洁。</li>
+<li><strong>消除无用符号</strong>：无用符号包括非生成符号（无法推出终结符串的符号）和不可达符号（从起始符无法到达的符号）。通过计算生成符号集和可达符号集，可找出并删除这些无用符号及相关产生式，使文法更精简。如对于文法<span class="arithmatex">\(G = (\{S, A, B\}, \{a\}, P, S)\)</span>，若<span class="arithmatex">\(B\)</span>是不可达符号，就需删除<span class="arithmatex">\(B\)</span>及包含<span class="arithmatex">\(B\)</span>的产生式。</li>
 </ul>
-<p>Technology has propelled the sharing economy to its current state, and its momentum will increase with greater digital connectivity. While it has already made a mark in shipping, consumer goods, and services, many other traditional sectors will soon be affected by the sharing economy. </p>
+</li>
+<li><strong>结论</strong>：<strong>如果上下文无关文法<span class="arithmatex">\(G\)</span>的语言中至少包含一个非空字符串，按照上述三个步骤从<span class="arithmatex">\(G\)</span>构造出的新文法<span class="arithmatex">\(G1\)</span>，其语言<span class="arithmatex">\(L(G1)\)</span>等于原语言<span class="arithmatex">\(L(G)\)</span>去掉空串，即<span class="arithmatex">\(L(G1) = L(G) - \{ε\}\)</span></strong> 。这表明简化后的文法在功能上与原文法基本一致，只是不再产生空串。</li>
+<li><strong>注意事项</strong>：<strong>强调上述简化步骤的顺序不能随意更改</strong>。若顺序颠倒，可能无法完全删除无用符号，导致简化后的文法达不到预期效果。例如在消除无用符号时，必须先计算生成符号集，再计算可达符号集，若顺序错误，就可能保留一些本应删除的无用符号。 </li>
+</ol>
+<h4 id="_7">消无用符号<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p>这段内容主要介绍了上下文无关文法中消去无用符号的相关知识，具体如下：</p>
+<ol>
+<li><strong>无用符号和有用符号的定义</strong><ul>
+<li><strong>无用符号</strong>：包括非生成符号和不可达符号。</li>
+<li><strong>有用符号</strong>：对于上下文无关文法<span class="arithmatex">\(G=(N,T,P,S)\)</span>，符号<span class="arithmatex">\(X\in N\cup T\)</span>是有用的，当且仅当<span class="arithmatex">\(S\stackrel{*}{\Rightarrow}\alpha X\beta\stackrel{*}{\Rightarrow}w\)</span> ，其中<span class="arithmatex">\(w\in T^{*}\)</span>，<span class="arithmatex">\(\alpha,\beta\in(N\cup T)^{*}\)</span>。具体又分为生成符号（存在<span class="arithmatex">\(w\in T^{*}\)</span>，满足<span class="arithmatex">\(X\stackrel{*}{\Rightarrow}w\)</span> ）和可达符号（存在<span class="arithmatex">\(\alpha,\beta\in(N\cup T)^{*}\)</span>，满足<span class="arithmatex">\(S\stackrel{*}{\Rightarrow}\alpha X\beta\)</span> ）。</li>
+</ul>
+</li>
+<li><strong>消去无用符号的步骤</strong><ul>
+<li><strong>计算生成符号集</strong><ul>
+<li><strong>思路</strong>：利用归纳法，基础是任何终结符<span class="arithmatex">\(a\in T\)</span>都是生成符号；归纳条件是若产生式<span class="arithmatex">\(A\rightarrow\alpha\)</span>中<span class="arithmatex">\(\alpha\in(N\cup T)^{*}\)</span>的每一个符号都是生成符号，则<span class="arithmatex">\(A\)</span>也是生成符号。</li>
+<li><strong>算法步骤</strong>：先令<span class="arithmatex">\(N_0 = \varnothing\)</span> ，再确定<span class="arithmatex">\(N’ = \{A | A→ω且ω∈T*\}\)</span> ；若<span class="arithmatex">\(N_0≠N’\)</span>，更新<span class="arithmatex">\(N_0=N’\)</span> ，然后让<span class="arithmatex">\(N’= N_0\cup\{ A | A→α且α∈(T\cup N_0)* \}\)</span>并重复判断，直到<span class="arithmatex">\(N_0=N’\)</span>，最终<span class="arithmatex">\(N_1 = N’\)</span> 。该算法用于找出能推出终结符串的非终结符作为有用符号。</li>
+</ul>
+</li>
+<li><strong>计算可达符号集</strong><ul>
+<li><strong>思路</strong>：同样用归纳法，基础是<span class="arithmatex">\(S\)</span>是可达符号；归纳条件是若<span class="arithmatex">\(A\)</span>是可达符号，且有产生式<span class="arithmatex">\(A\rightarrow\alpha\)</span> （<span class="arithmatex">\(\alpha\in(N\cup T)^{*}\)</span> ），则<span class="arithmatex">\(\alpha\)</span>中的每一个符号都是可达符号。</li>
+<li><strong>算法步骤</strong>：首先<span class="arithmatex">\(N_0 = \{S\}\)</span> ，接着确定<span class="arithmatex">\(N’= \{x | A∈N_0且A→αxβ\}∪ N_0\)</span> ；若<span class="arithmatex">\(N_0≠N’\)</span> ，更新<span class="arithmatex">\(N_0=N’\)</span>并重复操作，直至<span class="arithmatex">\(N_0=N’\)</span> ，最后<span class="arithmatex">\(N_1 = N’ ∩ N\)</span> ，<span class="arithmatex">\(T_1=N’∩T\)</span> ，<span class="arithmatex">\(P_1\)</span>由<span class="arithmatex">\(P\)</span>内只含<span class="arithmatex">\(N’\)</span>中符号的生成式组成，以此找出从<span class="arithmatex">\(S\)</span>可达的所有符号。</li>
+</ul>
+</li>
+<li><strong>消去非生成符号及不可达符号</strong>：以文法<span class="arithmatex">\(G=(\{S, A, B\}, \{a\}, P, S)\)</span> ，<span class="arithmatex">\(P: S→AB, S→a, A→a\)</span>为例，先使用算法1删除推不出终结符串的<span class="arithmatex">\(B\)</span>及相关产生式<span class="arithmatex">\(S→AB\)</span> ；再用算法2删除不出现在<span class="arithmatex">\(S\)</span>能推导出的句型中的<span class="arithmatex">\(A\)</span>及相关产生式<span class="arithmatex">\(A→a\)</span> ，得到简化后的文法<span class="arithmatex">\(G_1=(\{S\}, \{a\}, \{ S→a\}, S )\)</span>。需要注意，必须先执行算法1，再执行算法2，否则可能无法完全删除无用符号。</li>
+</ul>
+</li>
+<li><strong>定理</strong>：任何非空的上下文无关语言，都可由不存在无用符号的上下文无关文法产生，但文中未给出证明过程。 </li>
+</ol>
+<h4 id="_8">消ε产生式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>这段内容聚焦于上下文无关文法中消去ε产生式，从目的、影响、相关符号定义、算法步骤到实例与练习，进行了全面讲解。</p>
+<ol>
+<li><strong>消去ε产生式概述</strong><ul>
+<li><strong>目的</strong>：<strong>方便文法设计，促进文法规范化</strong>。</li>
+<li><strong>影响</strong>：<strong>消去后仅无法产生字符串ε，对原语言其他字符串的产生无影响</strong>。</li>
+<li><strong>可致空符号</strong>：在上下文无关文法<span class="arithmatex">\(G = (N, T, P, S)\)</span>里，若符号<span class="arithmatex">\(A\in N\)</span>满足<span class="arithmatex">\(A\stackrel{+}{\Rightarrow}\varepsilon\)</span>，<span class="arithmatex">\(A\)</span>就是可致空符号。计算该符号集合对消去ε产生式及其影响很关键。</li>
+</ul>
+</li>
+<li><strong>生成无ε文法的算法3</strong><ul>
+<li><strong>定义</strong>：<strong>若<span class="arithmatex">\(G\)</span>中无ε产生式，或仅有<span class="arithmatex">\(S→ε\)</span>且<span class="arithmatex">\(S\)</span>不在其他产生式右边，<span class="arithmatex">\(G\)</span>就是无ε文法</strong>。</li>
+<li><strong>思路</strong>：通过归纳步骤找可致空符号。<strong>基础是<span class="arithmatex">\(A→ε\)</span>的<span class="arithmatex">\(A\)</span>是可致空符号；归纳是若<span class="arithmatex">\(B→C_1C_2…C_k\)</span>中<span class="arithmatex">\(C_i\)</span>都是可致空符号，则<span class="arithmatex">\(B\)</span>也是</strong>。</li>
+<li><strong>算法步骤</strong>：<ul>
+<li>用算法1找出能推出ε的非终结符集合<span class="arithmatex">\(N'\)</span> 。</li>
+<li>构造新产生式集合<span class="arithmatex">\(P_1\)</span> ：对于<span class="arithmatex">\(A→β_0 C_1β_1 C_2…C_nβ_n\in P\)</span> （<span class="arithmatex">\(n≥0\)</span> ，<span class="arithmatex">\(C_k\in N'\)</span> ，<span class="arithmatex">\(β_j\notin N'\)</span> ），在<span class="arithmatex">\(P_1\)</span>加入<span class="arithmatex">\(A→β_0Y_1β_1Y_2β_2…Ynβ_n\)</span> （<span class="arithmatex">\(Y_k\)</span>是<span class="arithmatex">\(C_k\)</span>或<span class="arithmatex">\(\varepsilon\)</span> ），但不加入<span class="arithmatex">\(A→ε\)</span> 。若<span class="arithmatex">\(S\in N'\)</span> ，在<span class="arithmatex">\(P_1\)</span>加<span class="arithmatex">\(S_1→ε|S\)</span> （<span class="arithmatex">\(S_1\)</span>是新起始符），<span class="arithmatex">\(N_1 = N\cup\{S_1\}\)</span> ；若<span class="arithmatex">\(S\notin N'\)</span> ，<span class="arithmatex">\(N_1 = N\)</span> ，<span class="arithmatex">\(S_1 = S\)</span> ，得到新文法<span class="arithmatex">\(G_1=( N_1,T, P_1,S_1)\)</span> 。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>示例与练习</strong><ul>
+<li><strong>示例</strong>：对于<span class="arithmatex">\(G = (N, T, P, S)\)</span> （<span class="arithmatex">\(N = \{S\}\)</span> ，<span class="arithmatex">\(T = \{a, b\}\)</span> ，<span class="arithmatex">\(P: S→aSbS | bSaS|ε\)</span> ），先确定<span class="arithmatex">\(N' = \{S\}\)</span> ，再构造<span class="arithmatex">\(P_1\)</span> ，因<span class="arithmatex">\(S\in N'\)</span> ，得到<span class="arithmatex">\(S_1→ε∣S\)</span> ，<span class="arithmatex">\(N_1 = \{S,S_1\}\)</span> ，从而得出无ε文法<span class="arithmatex">\(G_1\)</span> 。</li>
+<li><strong>练习</strong>：针对含可致空符号<span class="arithmatex">\(D\)</span>的给定文法，按步骤消去ε产生式后，得到新的产生式集合。 </li>
+</ul>
+</li>
+</ol>
+<h4 id="_9">消单产生式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>这段内容主要介绍了上下文无关文法中消去单产生式的相关知识，包括单产生式定义、消去目的、算法思路、步骤及示例，具体如下：</p>
+<ol>
+<li><strong>单产生式定义与消去目的</strong><ul>
+<li><strong>定义</strong>：<strong>单产生式是形如A→B的产生式，其中A、B均为非终结符</strong>。例如在给定文法<span class="arithmatex">\(G = (\{S,A,B\}, \{ (,), +, *, a\}, P, S)\)</span>中，若有产生式<span class="arithmatex">\(S→A\)</span>，这就是一个单产生式。</li>
+<li><strong>消去目的</strong>：<strong>可简化某些证明，减少推导步数，利于文法规范化</strong>。比如在复杂的文法推导和证明过程中，过多单产生式会增加推导的复杂性，消去它们能让过程更简洁明了。</li>
+</ul>
+</li>
+<li><strong>单元偶对</strong>：<strong>对于上下文无关文法<span class="arithmatex">\(G = (N, T, P, S)\)</span>，若<span class="arithmatex">\(A,B \in N\)</span>，当且仅当<span class="arithmatex">\(A \stackrel{*}{\Rightarrow} B\)</span>且推导过程仅使用单产生式时，称<span class="arithmatex">\((A,B)\)</span>是单元偶对</strong>。计算所有单元偶对的集合是消去单产生式的关键步骤，它能确定哪些非终结符之间存在通过单产生式的推导关系。</li>
+<li><strong>消去单产生式算法</strong><ul>
+<li><strong>算法思路</strong>：<strong>对每个单元偶对<span class="arithmatex">\((A,B)\)</span>，在新文法<span class="arithmatex">\(G_1\)</span>中加入产生式<span class="arithmatex">\(A \to \alpha\)</span>，其中<span class="arithmatex">\(B \to \alpha\)</span>为非单产生式，以此消去原文法<span class="arithmatex">\(G\)</span>中的单产生式，得到新的上下文无关文法<span class="arithmatex">\(G_1 = (N_1, T, P_1, S)\)</span></strong>。这意味着利用非单产生式来替代单产生式的推导效果，同时去除单产生式。</li>
+<li><strong>算法步骤</strong>：<ul>
+<li><strong>构造非终结符集<span class="arithmatex">\(N_A\)</span></strong>：对每个<span class="arithmatex">\(A \in N\)</span>，构造可由<span class="arithmatex">\(A\)</span>推出的单生成式中的非终结符集<span class="arithmatex">\(N_A = \{B|A \stackrel{*}{\Rightarrow} B\}\)</span> 。构造过程分三步，先令<span class="arithmatex">\(N_0 = \{A\}\)</span>；然后<span class="arithmatex">\(N' = \{C | 如果B→C \in P且B \in N_0\} \cup N_0\)</span>；若<span class="arithmatex">\(N' \neq N_0\)</span>，更新<span class="arithmatex">\(N_0 = N'\)</span>并重复第二步，直到<span class="arithmatex">\(N' = N_0\)</span>，此时<span class="arithmatex">\(N_A = N'\)</span> 。这一步是为了找出从<span class="arithmatex">\(A\)</span>出发通过单产生式能推导到的所有非终结符。</li>
+<li><strong>构造<span class="arithmatex">\(P_1\)</span></strong>：如果<span class="arithmatex">\(B \to \alpha \in P\)</span>且不是单生成式，对于<span class="arithmatex">\(B \in N_A\)</span>的所有<span class="arithmatex">\(A\)</span>，把<span class="arithmatex">\(A \to \alpha\)</span>加入到<span class="arithmatex">\(P_1\)</span>中 。即对于那些能通过单产生式从<span class="arithmatex">\(A\)</span>推导到<span class="arithmatex">\(B\)</span>，且<span class="arithmatex">\(B\)</span>有非单产生式<span class="arithmatex">\(B \to \alpha\)</span>的情况，将<span class="arithmatex">\(A \to \alpha\)</span>加入新产生式集合<span class="arithmatex">\(P_1\)</span>。</li>
+<li><strong>得到新文法<span class="arithmatex">\(G_1\)</span></strong>：完成上述步骤后，得到新文法<span class="arithmatex">\(G_1 = (N_1, T, P_1, S)\)</span>，其中<span class="arithmatex">\(N_1\)</span>通常与原<span class="arithmatex">\(N\)</span>相同（文档未提及<span class="arithmatex">\(N_1\)</span>有特殊变化），<span class="arithmatex">\(T\)</span>为原终结符集，<span class="arithmatex">\(P_1\)</span>是新构造的产生式集合。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>示例</strong>：对于文法<span class="arithmatex">\(G = (\{S,A,B\}, \{ (,), +, *, a\}, P, S)\)</span>，<span class="arithmatex">\(P: S→S + A|A\)</span>，<span class="arithmatex">\(A→A * B|B\)</span>，<span class="arithmatex">\(B→(S)|a\)</span> 。<ul>
+<li>先构造<span class="arithmatex">\(N_S\)</span>、<span class="arithmatex">\(N_A\)</span>、<span class="arithmatex">\(N_B\)</span>，通过迭代计算得到<span class="arithmatex">\(N_S = \{B, A, S\}\)</span>，<span class="arithmatex">\(N_A = \{A,B\}\)</span>，<span class="arithmatex">\(N_B = \{B\}\)</span> 。</li>
+<li>然后构造<span class="arithmatex">\(P_1\)</span>，根据规则将相关非单产生式添加到<span class="arithmatex">\(P_1\)</span>中，最终得到<span class="arithmatex">\(P_1\)</span>为<span class="arithmatex">\(S→S + A|A * B|(S)|a\)</span>，<span class="arithmatex">\(A→A * B|(S)|a\)</span>，<span class="arithmatex">\(B→(S)|a\)</span> ，完成了从原文法到无单生成式文法的转换。 </li>
+</ul>
+</li>
+</ol>
+<h3 id="_10">对生成式形式进行标准化<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>这段内容主要围绕上下文无关文法中递归的相关概念、消除递归的方法及算法展开，具体如下：</p>
+<ol>
+<li><strong>递归的定义</strong>：在2型文法中，根据推导形式对递归进行分类：<ul>
+<li>若存在<span class="arithmatex">\(A\stackrel{+}{\Rightarrow}\alpha A\beta\)</span>（<span class="arithmatex">\(A\in N\)</span>），则称<span class="arithmatex">\(G\)</span>是递归文法。</li>
+<li>若存在<span class="arithmatex">\(A\stackrel{+}{\Rightarrow}A\beta\)</span> ，<span class="arithmatex">\(G\)</span>是左递归文法。</li>
+<li>若存在<span class="arithmatex">\(A\stackrel{+}{\Rightarrow}\alpha A\)</span> ，<span class="arithmatex">\(G\)</span>是右递归文法。</li>
+<li>若存在<span class="arithmatex">\(A\stackrel{+}{\Rightarrow}A\)</span> ，<span class="arithmatex">\(G\)</span>是循环文法。</li>
+</ul>
+</li>
+<li><strong>生成式的代换</strong>：<ul>
+<li><strong>定义</strong>：2型文法中形如<span class="arithmatex">\(A→\alpha\)</span>的生成式称为<span class="arithmatex">\(A\)</span>生成式。</li>
+<li><strong>引理1</strong>：对于<span class="arithmatex">\(A→\alpha B\beta\)</span>（<span class="arithmatex">\(B\in N\)</span>，<span class="arithmatex">\(\alpha,\beta\in(N\cup T)^*\)</span> ）且<span class="arithmatex">\(B→r_1|r_2|…|r_k\)</span>的情况，可生成新文法<span class="arithmatex">\(G_1\)</span>，其产生式将<span class="arithmatex">\(A→\alpha B\beta\)</span>替换为<span class="arithmatex">\(A→\alpha r_1\beta|…|\alpha r_k\beta\)</span> ，<strong>目的是保持生成语言不变</strong>。例如，对于文法<span class="arithmatex">\(G\)</span>有<span class="arithmatex">\(S→aSS | b\)</span>，设<span class="arithmatex">\(\alpha = a\)</span>，<span class="arithmatex">\(B = S\)</span>，<span class="arithmatex">\(\beta = S\)</span> ，<span class="arithmatex">\(B→aSS | b\)</span> ，替换后<span class="arithmatex">\(G_1\)</span>的产生式为<span class="arithmatex">\(S→aaSSS|abS | b\)</span>。</li>
+</ul>
+</li>
+<li><strong>消除直接左递归</strong>：<ul>
+<li><strong>引理2</strong>：对于<span class="arithmatex">\(P\)</span>中有<span class="arithmatex">\(A\)</span>生成式<span class="arithmatex">\(A→A\alpha_1 | A\alpha_2 | … | A\alpha_m |\beta_1 |\beta_2 | … |\beta_n\)</span>（<span class="arithmatex">\(\beta_i\)</span>首字符不是<span class="arithmatex">\(A\)</span> ）的情况，引入新非终结符<span class="arithmatex">\(A’\)</span>构成<span class="arithmatex">\(G_1\)</span>，<span class="arithmatex">\(P_1\)</span>中用<span class="arithmatex">\(A→\beta_1|\beta_2|…|\beta_n|\beta_1A’|\beta_2A’|…|\beta_nA’\)</span>和<span class="arithmatex">\(A’→\alpha_1|\alpha_2|…|\alpha_m|\alpha_1A’|\alpha_2A’|…|\alpha_mA’\)</span>取代原<span class="arithmatex">\(A\)</span>生成式，<strong>证明思路是<span class="arithmatex">\(G\)</span>和<span class="arithmatex">\(G_1\)</span>正则式相同</strong>。如<span class="arithmatex">\(S→S + A | A\)</span>，<span class="arithmatex">\(A→A*B | B\)</span>，<span class="arithmatex">\(B→(S) | a\)</span> ，变换为<span class="arithmatex">\(S→A | AS’\)</span> ，<span class="arithmatex">\(S’→ + A | + AS’\)</span> 等。</li>
+</ul>
+</li>
+<li><strong>消除左递归的算法（算法5）</strong>：<ul>
+<li><strong>原因</strong>：左递归会使后续句法分析算法陷入死循环，所以要消除。</li>
+<li><strong>适用条件</strong>：针对不存在无用符号、无循环且无<span class="arithmatex">\(\varepsilon\)</span>生成式的2型文法。</li>
+<li><strong>步骤</strong>：对非终结符排序，按顺序对每个非终结符<span class="arithmatex">\(A_i\)</span>的产生式进行变换。若有<span class="arithmatex">\(A_i→A_i\alpha_1|…| A_i\alpha_n|\beta_1|…|\beta_p\)</span> ，变换为<span class="arithmatex">\(A_i→\beta_1|…|\beta_p|\beta_1 A_i ’|\beta_p A_i ’\)</span> ，<span class="arithmatex">\(A_i ’→\alpha_1|…|\alpha_n|\alpha_1 A_i ’|…|\alpha_n A_i ’\)</span>；对于<span class="arithmatex">\(A_i→A_j\alpha\)</span> ，<span class="arithmatex">\(A_j→\beta_1|…|\beta_n\)</span> ，用<span class="arithmatex">\(A_i→\beta_1\alpha|\beta_2\alpha|…|\beta_n\alpha\)</span>代替。例如对<span class="arithmatex">\(A_1→A_2A3|a\)</span> ，<span class="arithmatex">\(A_2→A_3A_1| A_1b\)</span> ，<span class="arithmatex">\(A_3→A_1A_2 | A_3A_3 | a\)</span> ，按算法步骤进行逐步变换消除左递归。 </li>
+</ul>
+</li>
+</ol>
 
 
 
@@ -4251,14 +3894,14 @@ The metaverse is set to be the next major social platform. Users can socialize i
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../../javascripts/extra.js"></script>
       
-        <script src="../../../../../javascripts/mathjax.js"></script>
+        <script src="../../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

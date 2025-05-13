@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.13">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../../../../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../../../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2000,6 +2000,8 @@
       
         
       
+        
+      
     
     
     
@@ -2116,6 +2118,29 @@
   
   <span class="md-ellipsis">
     第四章：数据预处理的基本方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步1
     
   </span>
   
@@ -2328,6 +2353,39 @@
       5.7 集成学习
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5.7 集成学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7.1 概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7.2 序列化方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#573" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7.3 并行化方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3864,6 +3922,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="5.7 集成学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7.1 概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7.2 序列化方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#573" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.7.3 并行化方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -4041,6 +4132,74 @@
 </li>
 </ol>
 <h2 id="57">5.7 集成学习<a class="headerlink" href="#57" title="Permanent link">&para;</a></h2>
+<h3 id="571">5.7.1 概述<a class="headerlink" href="#571" title="Permanent link">&para;</a></h3>
+<p>该部分主要介绍集成学习的基本概念、结合策略、分类方式以及使用Sklearn实现投票集成策略，具体内容如下：</p>
+<ol>
+<li><strong>个体与集成</strong>：集成学习并非单一算法，它通过训练多个个体学习器，并采用特定结合策略形成集成学习器，以获得比单一学习器更优的泛化性能。个体学习器由已有算法从训练数据产生，若个体学习器同类型，集成是同质的，其中个体学习器叫基学习器，对应算法叫基学习算法；若不同类型则为异质集成，个体学习器叫组件学习器。弱学习器指泛化性能略优于随机猜测的学习器，集成学习旨在将弱学习器变成强学习器。</li>
+<li><strong>结合策略</strong><ul>
+<li><strong>平均法</strong>：用于数值类回归预测，有算术平均（公式：<span class="arithmatex">\(H(x)=\frac{1}{n} \sum_{i=1}^{n} h_{i}(x)\)</span>）和加权平均（公式：<span class="arithmatex">\(H(x)=\frac{1}{n} \sum_{i=1}^{n} w_{i}h_{i}(x)\)</span> ）。一般个体学习器性能差异大时用加权平均，差异小时用算术平均。</li>
+<li><strong>投票法</strong>：用于分类问题预测。相对多数投票法选预测次数最多的类别为最终分类，若多个类别得票最高则随机选；绝对多数投票法要求输出类别在预测结果中过半，否则拒绝预测；加权投票法用每个弱学习器分类票数乘以权重后求和，最大和对应的类别为最终结果。</li>
+<li><strong>学习法</strong>：以stacking为代表，用另一个学习器结合预测结果。将弱学习器学习结果作为输入，训练集输出作为输出，重新训练一个学习器得到最终结果，其中弱学习器叫初级学习器，用于结合的叫次级或元学习器。</li>
+</ul>
+</li>
+<li><strong>集成学习分类</strong>：根据个体学习器生成方式，分为序列化方法（个体学习器强依赖，串行生成，如Boosting算法族：AdaBoost、GBDT、Xgboost）和并行化方法（个体学习器相互独立，可并行生成，如Bagging、随机森林RF）。</li>
+<li><strong>Sklearn实现投票集成策略</strong><ul>
+<li><strong>原理与方式</strong>：投票法是针对分类问题的结合策略，根据机器学习算法输出类型，分为直接输出类标签的硬投票和输出类概率的软投票。</li>
+<li><strong>实现步骤</strong>：以新闻分类数据集20newsgroups为例，先导入数据集并划分训练集和测试集；接着用TF - IDF将文本转为特征向量；然后在Sklearn的ensemble模块中用VotingClassifier构建投票分类器，采用软投票方式对支持向量机、逻辑回归、决策树三种分类器进行投票；最后计算并对比各模型准确率，结果显示集成后的VotingClassifier准确率为0.9301 ，高于部分单一模型（逻辑回归0.8868、决策树0.6864、SVC 0.9208 ）。 </li>
+</ul>
+</li>
+</ol>
+<h3 id="572">5.7.2 序列化方法<a class="headerlink" href="#572" title="Permanent link">&para;</a></h3>
+<p>该部分聚焦集成学习序列化方法，详细介绍Boosting算法、AdaBoost算法及在Sklearn库中的实现，还给出了AdaBoost算法的具体实现步骤，具体内容如下：</p>
+<ol>
+<li><strong>Boosting算法核心要点</strong><ul>
+<li><strong>思想起源</strong>：基于PAC可学习型理论，Valiant和Kearns提出弱、强学习算法等价性问题，即能否提升弱学习算法为强学习算法，若能，则无需艰难寻找强学习算法。</li>
+<li><strong>工作与建模</strong>：<strong>工作机制</strong>是先训练一个基学习器，依据其表现调整样本分布，使错误样本受更多关注，再训练下一个基学习器，重复此过程后加权结合所有基学习器。<strong>建模过程</strong>为迭代且线性，给样本附权重，在多次迭代中提高难分类样本权重，训练时权重高的样本更易被采样。</li>
+<li><strong>权重设置逻辑</strong>：初始时样本权重相同，模型预测后，分类失败样本权重加大，成功样本权重降低，使得下一轮训练时，权重高的数据更易被采样，新的基学习器更关注易出错样本的分类。</li>
+</ul>
+</li>
+<li><strong>AdaBoost算法关键信息</strong><ul>
+<li><strong>基本情况</strong>：1995年由Yoav Freund和Robert E. Schapire提出，英文全称“Adaptive Boosting”，是Boosting中常用的实现方法。</li>
+<li><strong>性能优势</strong>：将多个不同决策树非随机组合，能显著提升决策树准确率，可与SVM相媲美；运行速度快，基本无需调参；几乎不会出现过拟合情况。</li>
+<li><strong>算法特点</strong>：可采用多种方法构建子分类器，AdaBoost提供组合与提升框架；使用简单分类器时结果易理解；弱分类器构造简单，无需特征筛选；算法本身简单，无需调整分类器，不易过拟合。</li>
+<li><strong>应用场景</strong>：适用于二值分类和多分类任务；可用于特征选择；无需改动原有分类器，通过新增分类器提升整体性能。</li>
+</ul>
+</li>
+<li><strong>Sklearn实现AdaBoost算法流程</strong><ul>
+<li><strong>实现步骤</strong>：以鸢尾花数据集为例，从Sklearn库的datasets导入iris数据集；从ensemble模块选择AdaBoostClassifier模型，设置参数n_estimators（此处设为100）控制弱学习器数量，用train_test_split方法划分数据集，fit方法训练，predict方法获取预测结果，最后计算模型在训练集和测试集的识别准确率。</li>
+<li><strong>代码结果</strong>：代码运行结果显示，AdaBoost模型在鸢尾花数据集上的准确率为0.9599673202614379。 </li>
+</ul>
+</li>
+<li><strong>AdaBoost算法实现步骤</strong><ul>
+<li>初始化样本权重，对于n个样本的数据集，每个样本权重<span class="arithmatex">\(w_1(i)=\frac{1}{n}\)</span> 。</li>
+<li>训练集的抽样子集，训练出第k个基础模型<span class="arithmatex">\(b_k(x)\)</span>。</li>
+<li>计算基础模型误差率<span class="arithmatex">\(e_k = \sum_{i = 1}^{n}w_k(i)·I(b_k(x_i)≠y_i)\)</span>，其中<span class="arithmatex">\(y_i\)</span>是样本标记值，<span class="arithmatex">\(b_k(x_i)\)</span>是预测值，预测正确时<span class="arithmatex">\(I(x)=0\)</span>，否则<span class="arithmatex">\(I(x)=1\)</span>。</li>
+<li>计算模型权重值<span class="arithmatex">\(\alpha_k = \frac{\ln(1 - e_k)}{e_k}\)</span>，模型误差率低时，权重值更大。</li>
+<li>根据新模型预测值更新训练集权重<span class="arithmatex">\(w_{k + 1}(i)= w_k(i)·e^{\alpha_k}·F(b_k(x_i)≠y_i)\)</span>，预测正确时<span class="arithmatex">\(F(x)= - 1\)</span>，错误时<span class="arithmatex">\(F(x)=1\)</span> 。</li>
+<li>跳转回第2步，直到k到达指定值退出循环。 </li>
+</ul>
+</li>
+</ol>
+<h3 id="573">5.7.3 并行化方法<a class="headerlink" href="#573" title="Permanent link">&para;</a></h3>
+<p>该节主要介绍了集成学习中的并行化方法，包括Bagging算法和随机森林（RF）算法，以及在Sklearn库中实现这两种算法的过程，具体内容如下：</p>
+<ol>
+<li><strong>并行化方法核心要点</strong><ul>
+<li><strong>方法原理</strong>：<strong>并行化方法旨在让个体学习器相互独立</strong>。通过对给定训练数据集采样出若干有重叠的不同子集，保证子集数据量有差异，再从每个子集训练出基学习器，以此确保基学习器间无较强依赖关系。</li>
+</ul>
+</li>
+<li><strong>Bagging算法详解</strong><ul>
+<li><strong>算法原理</strong>：<strong>Bagging是并行化集成学习的典型代表</strong>，基于自助采样法获取数据集。从原始数据集有放回地选择T次得到T个新数据集，基于每个采样集训练一个基学习器。在结合预测输出时，<strong>分类任务用简单投票法，回归任务用简单平均法</strong>。</li>
+<li><strong>采样优势</strong>：自助采样法的优势在于，每轮随机采样中，训练集约36.8%的数据未被采样，这些数据可用作验证集，评估模型的泛化性能。</li>
+<li><strong>Sklearn实现</strong>：以鸢尾花数据集为例构建Bagging集成模型，使用Sklearn的ensemble模块中的BaggingClassifier()方法定义模型，选择KNN算法作为基学习器。代码运行结果显示，该模型在鸢尾花数据集上的准确率为0.9464869281045751。 </li>
+</ul>
+</li>
+<li><strong>随机森林（RF）算法介绍</strong><ul>
+<li><strong>算法本质与特点</strong>：<strong>随机森林是bagging和决策树的结合</strong>。基学习器使用决策树，对训练样本和特征进行bootstrap抽样。其预测结果为子树结果的平均值，具有良好的降噪性，相比单棵决策树，模型边界更平滑，置信区间更大，树越多模型越稳定 。适用于回归和分类任务，易于查看输入特征的相对重要性，超参数少，不易过拟合，但树增多会使算法运算变慢。</li>
+<li><strong>构造过程</strong>：有N个样本时，有放回随机选N个样本训练一个决策树；每个样本有M个属性，节点分裂时，随机从M个属性中选m个（m &lt;&lt; M），再从中选1个作为分裂属性；决策树按此方式分裂直至不能再分裂，且不进行剪枝；重复上述步骤构建多个决策树，构成随机森林。</li>
+<li><strong>Sklearn实现</strong>：同样以鸢尾花数据集为例构建随机森林集成模型，使用Sklearn的ensemble模块中的RandomForestClassifier()方法定义模型，通过参数max_features控制分割节点时考虑的特征随机子集大小。代码运行结果显示，该模型在鸢尾花数据集上的准确率为0.9599673202614379。 </li>
+</ul>
+</li>
+</ol>
 
 
 
@@ -4095,10 +4254,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="../../../../../../../javascripts/extra.js"></script>
       

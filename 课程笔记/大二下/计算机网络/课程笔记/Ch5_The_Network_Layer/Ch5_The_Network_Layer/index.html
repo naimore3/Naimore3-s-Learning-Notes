@@ -12,7 +12,7 @@
         <link rel="prev" href="../../Ch4_The_Medium_Access_Control_Sublayer/Ch4_The_Medium_Access_Control_Sublayer/">
       
       
-        <link rel="next" href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/">
+        <link rel="next" href="../../Ch6_The_Transport_Layer/Ch6_The_Transport_Layer/">
       
       
       <link rel="icon" href="../../../../../../assets/images/favicon.png">
@@ -1399,6 +1399,8 @@
       
         
       
+        
+      
     
     
     
@@ -1897,6 +1899,72 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Congestion Control Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、拥塞的定义与成因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、拥塞控制与流量控制的区别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、拥塞控制的核心方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、拥塞控制的核心方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 预防策略：避免拥塞发生
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 反应策略：缓解已发生的拥塞
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、关键对比与总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1905,6 +1973,99 @@
       Quality of Service
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Quality of Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、QoS 主要参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atm" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、ATM 网络流量分类（重点）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、流量处理机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、流量控制算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、数据包调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、数据包调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式含义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算逻辑
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、资源预留与准入控制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1946,11 +2107,341 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NAT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、私有网络地址范围
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、动态 NAT 表项机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、静态 NAT 表项机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、NAT 的局限性（重点）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ipv6" class="md-nav__link">
     <span class="md-ellipsis">
       IPv6
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internet-control-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Control Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internet Control Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、协议定位与封装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、ICMP 报文分类与功能
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、ICMP 报文分类与功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 差错报告报文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 询问报文
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、ICMP 报文格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、典型应用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arpdhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARP,DHCP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARP,DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、ARP（地址解析协议）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ARP（地址解析协议）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 工作原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 优化机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 与路由表的关联
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、DHCP（动态主机配置协议）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、DHCP（动态主机配置协议）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 工作流程（四次握手）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 与ARP的协同
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ospf-open-shortest-path-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSPF (Open Shortest Path First)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OSPF (Open Shortest Path First)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、协议定位与分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、核心设计要求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、区域（Area）划分机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、路由器类型与功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、关键优势与应用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -1963,6 +2454,29 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Ch6_The_Transport_Layer/Ch6_The_Transport_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Transport Layer
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -4415,6 +4929,72 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Congestion Control Algorithms">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、拥塞的定义与成因
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、拥塞控制与流量控制的区别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、拥塞控制的核心方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、拥塞控制的核心方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 预防策略：避免拥塞发生
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 反应策略：缓解已发生的拥塞
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、关键对比与总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -4423,6 +5003,99 @@
       Quality of Service
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Quality of Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qos" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、QoS 主要参数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atm" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、ATM 网络流量分类（重点）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、流量处理机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、流量控制算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、数据包调度
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、数据包调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      公式含义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算逻辑
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、资源预留与准入控制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4464,11 +5137,341 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#nat" class="md-nav__link">
+    <span class="md-ellipsis">
+      NAT
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="NAT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与特点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、私有网络地址范围
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、动态 NAT 表项机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、静态 NAT 表项机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nat_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、NAT 的局限性（重点）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#ipv6" class="md-nav__link">
     <span class="md-ellipsis">
       IPv6
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#internet-control-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      Internet Control Protocols
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Internet Control Protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、协议定位与封装
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、ICMP 报文分类与功能
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、ICMP 报文分类与功能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 差错报告报文
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 询问报文
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、ICMP 报文格式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、典型应用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arpdhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARP,DHCP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARP,DHCP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、ARP（地址解析协议）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ARP（地址解析协议）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 工作原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 优化机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 与路由表的关联
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhcp" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、DHCP（动态主机配置协议）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、DHCP（动态主机配置协议）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 工作流程（四次握手）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-arp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 与ARP的协同
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ospf-open-shortest-path-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      OSPF (Open Shortest Path First)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OSPF (Open Shortest Path First)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、协议定位与分类
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、核心设计要求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#area" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、区域（Area）划分机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、路由器类型与功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、关键优势与应用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4793,45 +5796,199 @@
 </li>
 </ol>
 <h2 id="congestion-control-algorithms">Congestion Control Algorithms<a class="headerlink" href="#congestion-control-algorithms" title="Permanent link">&para;</a></h2>
-<p>该部分内容主要介绍了拥塞控制算法，具体内容如下：</p>
-<ol>
-<li><strong>拥塞现象及原因</strong>：当网络流量过大时会引发拥塞，导致性能急剧下降。<strong>突发流量、缓冲队列长度（过长或过短）以及慢CPU导致的转发操作缓慢</strong>等是造成拥塞的次要因素。</li>
-<li><strong>拥塞控制与流量控制的区别</strong>：拥塞控制是一个全局问题，旨在解决网络整体的拥塞情况；而流量控制主要确保发送方发送数据的速度不超过接收方的处理能力。</li>
-<li><strong>拥塞控制方法</strong><ul>
-<li><strong>预防措施</strong>：<ul>
-<li><strong>网络配置</strong>：从网络整体规划角度预防拥塞。</li>
-<li><strong>流量感知路由</strong>：普通路由方案使用固定链路权重，仅适应拓扑变化；流量感知路由则将链路权重设置为链路带宽、传播延迟以及测量负载或平均排队延迟的函数。但如果只考虑带宽和传播延迟而忽略负载，可能导致路由表剧烈振荡，引发不稳定路由等问题，目前互联网中的路由协议通常不依据负载调整路由。</li>
-<li><strong>准入控制</strong>：广泛应用于虚电路网络，只有在网络能承载新增流量且不会导致拥塞时，才建立新的虚电路。该方法可与流量感知路由结合，在建立虚电路时考虑避开流量热点的路由。流量可通过漏桶或令牌桶算法描述其速率和形状。</li>
-<li><strong>流量抑制</strong>：当网络接近拥塞时，通知发送方降低传输速率。路由器通过监测输出链路利用率、内部排队数据包的缓冲情况和数据包丢失数量等指标来判断拥塞是否临近，使用指数加权移动平均（EWMA）等方法计算相关指标。路由器通过发送抑制包（如Choke packets）或使用显式拥塞通知（ECN）向发送方反馈拥塞信息。Choke packets是路由器选择一个拥塞的数据包，向源发送抑制包（如Internet中的SOURCEQUENCH消息）；ECN是路由器在转发数据包时，通过设置包头中的一位来标记数据包处于拥塞状态，目的地方收到数据包后，在回复消息中告知发送方，发送方据此降低传输速率。</li>
-</ul>
-</li>
-<li><strong>反应措施</strong>：<ul>
-<li><strong>负载丢弃</strong>：当路由器被数据包淹没时，直接丢弃数据包。丢弃策略包括随机丢弃、根据数据包优先级丢弃等。携带路由信息的数据包比普通数据数据包更重要，因为它们用于建立路由；低优先级数据包发送成本较低。此外，允许主机超出协议规定的流量限制，但超出部分需标记为低优先级。</li>
-<li><strong>随机早期检测（RED）</strong>：在拥塞情况恶化前丢弃数据包，当某条线路上的平均队列长度超过阈值（即出现拥塞）时采取行动。路由器可以通过发送抑制包或直接丢弃选定的数据包（隐式拥塞通知机制）来告知源端拥塞问题。源端在收到数据包丢失的反馈后，会降低传输速率，前提是源端会对数据包丢失做出减速响应。与仅在缓冲区满时才丢弃数据包的路由器相比，RED路由器能提升性能。ECN是更优选择，它能明确地发送拥塞信号；而RED用于主机无法接收显式信号的情况。 </li>
+<h3 id="_18"><strong>一、拥塞的定义与成因</strong><a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>定义</strong>：当网络流量超过承载能力时，会引发<strong>拥塞</strong>，导致性能急剧下降（如延迟增加、丢包率上升）。  </li>
+<li><strong>核心成因</strong>：  </li>
+<li><strong>主要因素</strong>：网络中流量负载过高，超过链路或设备处理能力。  </li>
+<li><strong>次要因素</strong>：  <ul>
+<li>突发流量导致缓冲队列溢出（队列过长或过短均会引发问题）。  </li>
+<li>路由器CPU处理速度慢，导致转发延迟，浪费线路容量。  </li>
 </ul>
 </li>
 </ul>
+<h3 id="_19"><strong>二、拥塞控制与流量控制的区别</strong><a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>拥塞控制</strong>（<strong>重点</strong>）：  </li>
+<li><strong>全局视角</strong>：解决网络中<strong>整体流量过载</strong>问题，涉及所有主机、路由器及链路资源。  </li>
+<li><strong>流量控制</strong>：  </li>
+<li><strong>点对点视角</strong>：确保发送方速率不超过接收方处理能力（如TCP滑动窗口机制）。  </li>
+</ul>
+<h3 id="_20"><strong>三、拥塞控制的核心方法</strong><a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>拥塞控制分为 <strong>预防策略（Preventative）</strong> 和 <strong>反应策略（Reactive）</strong>，以下为具体实现：  </p>
+<h4 id="1"><strong>1. 预防策略：避免拥塞发生</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>网络资源规划（Network Provisioning）</strong>：  </li>
+<li>提前扩容链路带宽、升级设备（如路由器），提升网络承载能力。  </li>
+<li><strong>流量感知路由（Traffic-aware Routing）</strong>（<strong>重点</strong>）：  </li>
+<li><strong>传统路由</strong>：仅根据拓扑调整链路权重（如静态跳数），不考虑实时负载。  </li>
+<li><strong>改进方案</strong>：动态调整链路权重，综合<strong>带宽、延迟、实时负载、队列延迟</strong>等因素（如公式：权重=带宽倒数+负载系数）。  </li>
+<li><strong>风险</strong>：若仅依赖负载调整权重，可能导致路由表剧烈震荡（如链路负载瞬间变化引发路由频繁切换）。  </li>
+<li><strong>现状</strong>：互联网路由协议（如BGP、OSPF）通常不实时感知流量负载，仅支持多路径等价路由（Multipath Routing）分摊流量。  </li>
+<li><strong>准入控制（Admission Control）</strong>（<strong>重点</strong>）：  </li>
+<li><strong>应用场景</strong>：虚电路网络（如ATM）中，仅当网络资源充足时建立新连接（如检查带宽、缓冲区是否足够）。  </li>
+<li><strong>实现方式</strong>：结合流量感知路由，绕开拥塞热点路径；使用<strong>漏桶/令牌桶算法</strong>描述流量特征（如平均速率、突发容忍度）。  </li>
+</ul>
+<h4 id="2"><strong>2. 反应策略：缓解已发生的拥塞</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>流量抑制（Traffic Throttling）</strong>（<strong>重点</strong>）：  </li>
+<li><strong>拥塞检测</strong>：路由器通过以下指标判断拥塞前兆：  <ul>
+<li>输出链路利用率超过阈值（如80%）。  </li>
+<li>队列缓冲区占用率过高或丢包率上升。  </li>
+</ul>
 </li>
-</ol>
+<li><strong>反馈机制</strong>：  <ul>
+<li><strong>抑制包（Choke Packet）</strong>：路由器向源主机发送控制报文（如IP的SOURCEQUENCH消息），要求降低发送速率。  </li>
+<li><strong>显式拥塞通知（ECN）</strong>：  </li>
+<li>路由器在IP报头标记拥塞位（如DS字段的ECN位），目标主机通过ACK报文通知源端。  </li>
+<li>源端接收到通知后，通过TCP拥塞控制算法（如慢启动）降低发送窗口。  </li>
+</ul>
+</li>
+<li><strong>负载分流（Load Shedding）</strong>（<strong>重点</strong>）：  </li>
+<li><strong>核心思想</strong>：当路由器过载时，主动丢弃部分分组以缓解压力。  </li>
+<li><strong>丢弃策略</strong>：  <ul>
+<li><strong>随机丢弃</strong>：无差别丢弃分组（简单但可能影响关键业务）。  </li>
+<li><strong>优先级丢弃</strong>：  </li>
+<li>优先保留路由控制报文（如OSPF的LSP），丢弃普通数据分组。  </li>
+<li>对多媒体流（如MPEG视频），丢弃低优先级帧（如B帧保留I帧/P帧）。  </li>
+<li><strong>RED（随机早期检测）</strong>：  </li>
+<li>当平均队列长度超过阈值时，随机丢弃新到达的分组，<strong>提前缓解拥塞</strong>（优于缓冲区满后再丢弃）。  </li>
+<li><strong>与ECN结合</strong>：RED通过丢包隐式通知拥塞，ECN通过标记显式通知，两者互补（ECN优先用于支持显式信号的主机，RED作为兼容旧设备的 fallback）。  </li>
+</ul>
+</li>
+</ul>
+<h3 id="_21"><strong>四、关键对比与总结</strong><a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>策略类型</strong></th>
+<th><strong>典型方法</strong></th>
+<th><strong>核心优势</strong></th>
+<th><strong>适用场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>预防策略</td>
+<td>流量感知路由</td>
+<td>避免拥塞发生，优化全局路径</td>
+<td>大规模网络、实时业务（如VoIP）</td>
+</tr>
+<tr>
+<td></td>
+<td>准入控制</td>
+<td>确保连接质量，避免资源过度分配</td>
+<td>虚电路网络、QoS敏感业务</td>
+</tr>
+<tr>
+<td>反应策略</td>
+<td>ECN+流量抑制</td>
+<td>快速响应拥塞，减少端到端延迟</td>
+<td>互联网TCP业务</td>
+</tr>
+<tr>
+<td></td>
+<td>RED+负载分流</td>
+<td>低成本缓解拥塞，兼容新旧设备</td>
+<td>高突发流量场景（如文件传输）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结</strong>：拥塞控制需结合预防与反应策略，通过<strong>动态路由优化、流量整形、主动反馈、智能丢弃</strong>等多层次手段，在网络效率与稳定性间取得平衡。<strong>ECN与RED是现代网络中最常用的反应式拥塞控制技术</strong>，而流量感知路由与准入控制则更适用于对QoS要求严格的专用网络。</p>
 <h2 id="quality-of-service">Quality of Service<a class="headerlink" href="#quality-of-service" title="Permanent link">&para;</a></h2>
-<p>这部分内容主要介绍了网络服务质量（Quality of Service）相关内容，包括服务质量的主要参数、ATM网络的流量分类、缓冲、流量整形与监管以及令牌桶算法等，具体总结如下：</p>
+<h3 id="qos"><strong>一、QoS 主要参数</strong><a class="headerlink" href="#qos" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>可靠性（Reliability）</strong>：数据传输的准确性和完整性，保证数据无差错、不丢失。</li>
+<li><strong>延迟（Delay）</strong>：数据从发送端到接收端所经历的时间，延迟过大会影响实时性业务。 </li>
+<li><strong>抖动（Jitter）</strong>：延迟的变化程度，影响多媒体等实时业务的质量。 </li>
+<li><strong>带宽（Bandwidth）</strong>：单位时间内网络可传输的数据量，决定传输速率。  </li>
+</ul>
+<h3 id="atm"><strong>二、ATM 网络流量分类（</strong>重点<strong>）</strong><a class="headerlink" href="#atm" title="Permanent link">&para;</a></h3>
+<p>根据 QoS 需求，ATM 网络将流量分为四类：
+- <strong>恒定比特率（Constant bit rate）</strong>：如电话业务，比特率稳定，对实时性要求极高。 
+- <strong>实时可变比特率（Real - time variable bit rate）</strong>：如压缩视频会议，比特率可变且需实时传输。 
+- <strong>非实时可变比特率（Non - real - time variable bit rate）</strong>：如网络在线看电影，比特率可变但对实时性要求相对较低。 
+- <strong>可用比特率（Available bit rate）</strong>：如文件传输，根据网络状况使用可用带宽。  </p>
+<h3 id="_22"><strong>三、流量处理机制</strong><a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>缓冲（Buffering）</strong>：通过缓存数据包来平滑输出流，减少流量波动影响。  </li>
+<li><strong>流量整形与监管</strong>：</li>
+<li><strong>问题</strong>：主机不规则发送数据包可能引发网络拥塞。</li>
+<li><strong>服务水平协议（SLA）</strong>：用户和子网间的协议。用户进行流量整形以减少拥塞并协助运营商履约；运营商进行流量监管（如承诺访问速率 CAR ）。</li>
+<li><strong>流量整形（Traffic shaping）</strong>（<strong>用户端操作</strong>）：调节数据传输的平均速率和突发程度，平滑流量。 </li>
+<li><strong>流量监管（Traffic Policing）</strong>（<strong>运营商端操作</strong>）：监测流量，超出约定模式的数据包可能被丢弃或标记为低优先级。  </li>
+</ul>
+<h3 id="_23"><strong>四、流量控制算法</strong><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>令牌桶算法（The Token Bucket Algorithm）</strong>：  </li>
+<li>用于网络流量监管和主机流量整形，控制平均速率和突发程度。 </li>
+<li><strong>最大速率突发时长计算</strong>（<strong>重点公式</strong>）：<ul>
+<li>令牌桶容量为 B 字节，令牌到达速率为 R 字节/秒，最大输出速率为 M 字节/秒，突发时长 S 秒 ，公式为 B + RS = MS ，推导得 S = B/(M - R ) 。</li>
+<li>举例：B = 9600KB ，M = 125MB/s ，R = 25MB/s ，计算出 S = 96 ms 。  </li>
+</ul>
+</li>
+</ul>
+<p><img alt="Bucket.jpeg" src="../Bucket.jpeg" />
+这组图表展示了流量整形中令牌桶算法相关概念 ，通过不同参数设置呈现流量速率和令牌桶状态随时间的变化：</p>
+<p><strong>左列速率（Rate）-时间（Time）图</strong></p>
+<ul>
+<li><strong>（a）图</strong>：展示突发流量情况。在开始的128毫秒内，流量速率达到125MB/s ；之后在360毫秒内，流量速率降为25MB/s 。体现流量的不均匀性，有明显突发阶段。</li>
+<li><strong>（b）图</strong>：引入令牌桶参数 ，R（令牌生成速率）为25MB/s ，B（桶容量）为9600KB 。结合（a）图突发流量，表明在此参数下对流量的处理情况，可看出桶对突发流量的缓冲作用。</li>
+<li><strong>（c）图</strong>：R仍为25MB/s ，但B = 0 ，即桶容量为0 。此时流量速率平稳保持在25MB/s ，没有突发情况，意味着没有桶对流量进行缓冲，流量被强制整形为恒定速率。</li>
+</ul>
+<p><strong>右列令牌桶（Bucket）容量 - 时间（Time）图</strong></p>
+<ul>
+<li><strong>（d）图</strong>：桶容量初始值较高（12800KB ），随着时间变化，桶容量先下降，然后保持一段时间不变，之后又上升 。说明桶在接收和处理流量过程中，容量有变化过程，存在流量填充和消耗阶段。</li>
+<li><strong>（e）图</strong>：桶初始容量为9600KB ，在某时刻桶被清空（Bucket empties），之后流量产生延迟（traffic delayed） 。表示当桶容量不足以处理流量时，会出现桶空情况，后续流量需等待，产生延迟。</li>
+<li><strong>（f）图</strong>：桶容量始终为0（Bucket always empty） ，说明在当前设置下，桶一直处于空的状态，没有流量能存入桶中，流量整形效果是流量无缓冲直接通过或被限制。 </li>
+</ul>
+<h3 id="_24"><strong>五、数据包调度</strong><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>资源预留</strong>：为不同流量预留带宽、缓存空间、CPU 周期等资源。  </li>
+<li><strong>调度算法</strong>：</li>
+<li><strong>先进先出（FIFO，FCFS）和尾丢弃（tail drop）</strong>：简单按顺序处理数据包，队列满时丢弃新到数据包。 </li>
+<li><strong>随机早期检测（RED）算法</strong>：在队列满之前随机丢弃数据包，提前缓解拥塞。 </li>
+<li><strong>公平排队（FQ）算法</strong>：公平分配带宽给不同流量。 <img alt="Fair.jpeg" src="../Fair.jpeg" /></li>
+<li><strong>优先级排队（PQ）算法</strong>：根据数据包优先级进行排队处理。  <img alt="Weighted.jpeg" src="../Weighted.jpeg" /><img alt="Finishing.jpg" src="../Finishing.jpg" /></li>
+</ul>
+<h4 id="_25">公式<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<div class="arithmatex">\[ F_{i} = \max(A_{i}, F_{i-1}) + \frac{L_{i}}{W} \]</div>
+<h4 id="_26">公式含义<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<p>该公式为<strong>加权公平排队（WFQ）算法</strong>中计算数据包完成时间的核心公式，用于实现基于流量权重的带宽公平分配。<br />
+<strong>参数解释</strong>：  </p>
+<ul>
+<li><strong><span class="arithmatex">\( F_{i} \)</span></strong>：第 <span class="arithmatex">\(i\)</span> 个数据包的<strong>完成时间</strong>（处理完毕的时间点）。  </li>
+<li><strong><span class="arithmatex">\( A_{i} \)</span></strong>：第 <span class="arithmatex">\(i\)</span> 个数据包的<strong>到达时间</strong>（进入队列的时刻）。  </li>
+<li><strong><span class="arithmatex">\( F_{i-1} \)</span></strong>：第 <span class="arithmatex">\(i-1\)</span> 个数据包的<strong>完成时间</strong>（前一个数据包处理结束的时间）。  </li>
+<li><strong><span class="arithmatex">\( L_{i} \)</span></strong>：第 <span class="arithmatex">\(i\)</span> 个数据包的<strong>长度</strong>（单位：字节等，反映处理耗时）。  </li>
+<li><strong><span class="arithmatex">\( W \)</span></strong>：对应流量的<strong>权重</strong>（权重越大，分配的带宽优先级越高）。  </li>
+</ul>
+<h4 id="_27">计算逻辑<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <ol>
-<li><strong>服务质量的主要参数</strong>：包含四个主要参数，分别是<strong>可靠性（Reliability）</strong>、<strong>延迟（Delay）</strong>、<strong>抖动（Jitter）</strong>和<strong>带宽（Bandwidth）</strong>，这些参数用于衡量网络服务质量的优劣。</li>
-<li><strong>ATM网络的流量分类</strong>：ATM网络依据QoS需求将流量分为四大类。<ul>
-<li><strong>恒定比特率（Constant bit rate）</strong>，例如电话通信，需要稳定的传输速率来保证通话质量。</li>
-<li><strong>实时可变比特率（Real-time variable bit rate）</strong>，如压缩视频会议，虽然传输速率会变化，但需满足实时性要求。</li>
-<li><strong>非实时可变比特率（Non-real-time variable bit rate）</strong>，像在互联网上观看电影，对实时性要求相对较低。</li>
-<li><strong>可用比特率（Available bit rate）</strong>，例如文件传输，能根据网络可用带宽调整传输速率。</li>
-</ul>
-</li>
-<li><strong>缓冲（Buffering）</strong>：通过对数据包进行缓冲来平滑输出流，减少数据包传输的波动。</li>
-<li><strong>流量整形与监管（Traffic Shaping &amp; Policing）</strong><ul>
-<li><strong>问题</strong>：主机不规则地发送数据包可能导致网络拥塞。</li>
-<li><strong>服务级别协议（SLA）</strong>：是用户和子网之间的协议。对于用户而言，<strong>流量整形（Traffic shaping）</strong>可以调节数据传输的平均速率和突发度，使流量更加平滑，从而减少网络拥塞，并帮助运营商履行承诺；对于运营商来说，<strong>流量监管（Traffic Policing）</strong>是对流量进行监测，超出约定模式的数据包可能会被丢弃或标记为低优先级。</li>
-</ul>
-</li>
-<li><strong>桶算法（Bucket Algorithm）</strong>：包括漏桶算法和令牌桶算法。令牌桶算法中，涉及令牌桶容量（B）、令牌到达速率（R）、最大输出速率（M）和突发长度（S）等参数。通过公式<strong>S = B/(M - R)</strong> 可以计算出最大速率突发的持续时间，如当B = 9600KB，M = 125MB/s，R = 25MB/s时，S = 96ms 。 </li>
+<li><strong>确定起始时间</strong>：<br />
+   取 <span class="arithmatex">\( A_{i} \)</span>（当前数据包到达时间）和 <span class="arithmatex">\( F_{i-1} \)</span>（前一个数据包完成时间）中的<strong>较大值</strong>，确保只有当数据包已到达且前序数据包处理完成后，才开始处理当前数据包。  </li>
+<li><strong>计算处理耗时</strong>：<br />
+   用数据包长度 <span class="arithmatex">\( L_{i} \)</span> 除以流量权重 <span class="arithmatex">\( W \)</span>，得到处理当前数据包的<strong>相对耗时</strong>（权重越大，单位长度的处理时间越短，体现带宽分配优势）。  </li>
+<li><strong>得出完成时间</strong>：<br />
+   起始时间 + 相对耗时 = 当前数据包的完成时间 <span class="arithmatex">\( F_{i} \)</span>。  </li>
 </ol>
+<p><strong>示例</strong>：<br />
+- 已知：<span class="arithmatex">\( F_{1}=5 \)</span>（前包完成时间），<span class="arithmatex">\( A_{2}=4 \)</span>（当前包到达时间），<span class="arithmatex">\( L_{2}=10 \)</span>（包长度），<span class="arithmatex">\( W=2 \)</span>（权重）。<br />
+- 计算：<br />
+  - 起始时间：<span class="arithmatex">\( \max(4, 5) = 5 \)</span><br />
+  - 相对耗时：<span class="arithmatex">\( 10 \div 2 = 5 \)</span><br />
+  - 完成时间：<span class="arithmatex">\( F_{2} = 5 + 5 = 10 \)</span><br />
+- <strong>结论</strong>：通过完成时间排序调度数据包，实现加权公平的带宽分配。
+- <strong>轮询公平排队及改进</strong>：
+  - <strong>轮询公平排队问题</strong>：使用大数据包的主机比使用小数据包的主机获得更多带宽。
+  - <strong>加权公平排队（WFQ）</strong>：考虑数据包到达时间（Ai）、完成时间（Fi）、长度（Li）和流量权重（W） ，实现更公平的带宽分配。
+  - <strong>实现复杂度</strong>：N 个流量时，每个数据包处理复杂度为 O(logN) 。
+  - <strong>赤字轮询（DRR）</strong>：是一种近似算法，每个数据包处理复杂度为 O(1) ，降低处理开销。  </p>
+<h3 id="_28"><strong>六、资源预留与准入控制</strong><a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>流量协商（Flow negotiation）</strong>：涉及多方参与，共同确定流量相关参数。  </li>
+<li><strong>流量规格（Flow specification）</strong>：定义流量的具体要求和参数，文中未详述具体示例内容。 </li>
+</ul>
 <h2 id="internetworking">Internetworking<a class="headerlink" href="#internetworking" title="Permanent link">&para;</a></h2>
 <p>该节主要围绕网络互联展开，涵盖网络差异、连接方式、相关技术及问题处理等方面：</p>
 <ol>
@@ -4926,6 +6083,55 @@
 </ul>
 </li>
 </ol>
+<h3 id="nat">NAT<a class="headerlink" href="#nat" title="Permanent link">&para;</a></h3>
+<h4 id="_29"><strong>一、核心概念与特点</strong><a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：NAT 是一种将私有网络 IP 地址转换为公有 IP 地址的技术，用于实现私有网络与公共互联网的通信。  </li>
+<li><strong>透明性</strong>：对主机和路由器完全透明，主机无需修改配置即可通过 NAT 设备访问公网。  </li>
+</ul>
+<h4 id="_30"><strong>二、私有网络地址范围</strong><a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>三段保留地址</strong>（<strong>重点</strong>）：  </li>
+<li><strong>10.0.0.0/8</strong>：范围为 10.0.0.0 ~ 10.255.255.255，支持约 1600 万主机。  </li>
+<li><strong>172.16.0.0/12</strong>：范围为 172.16.0.0 ~ 172.31.255.255，支持约 100 万主机。  </li>
+<li><strong>192.168.0.0/16</strong>：范围为 192.168.0.0 ~ 192.168.255.255，支持约 6.5 万主机。  </li>
+</ul>
+<h4 id="nat_1"><strong>三、动态 NAT 表项机制</strong><a class="headerlink" href="#nat_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>工作流程</strong>（<strong>重点</strong>）：  </li>
+<li><strong>出站（Outgoing）</strong>：  <ul>
+<li>私有 IP（如 10.0.0.1:3723）访问公网时，NAT 设备将其转换为公有 IP 和端口（如 123.116.156.133:33120），并重新计算 IP 和 TCP 校验和。  </li>
+</ul>
+</li>
+<li><strong>入站（Incoming）</strong>：  <ul>
+<li>公网响应数据包通过公有 IP 和端口（如 123.116.156.133:33120）到达 NAT 设备，设备根据表项反向映射回私有 IP（如 10.0.0.1:3723）。  </li>
+</ul>
+</li>
+<li><strong>表项管理</strong>：  <ul>
+<li>表项在连接建立时动态创建，连接关闭或长时间未使用后自动删除。  </li>
+</ul>
+</li>
+<li><strong>共存性问题</strong>：  </li>
+<li><strong>问题1</strong>：不同私有主机（如 10.0.0.1 和 10.0.0.2）访问<strong>不同公网目标</strong>（如 18.7.22.83:80 和 19.7.34.90:80）时，可共享同一公有 IP 的不同端口（如 33120），表项可共存。  </li>
+<li><strong>问题2</strong>：同一私有主机访问<strong>同一公网目标的不同端口</strong>（如 18.7.22.83:80 和 18.7.22.83:8080），或不同主机访问<strong>同一公网目标的不同端口</strong>，均可通过端口区分表项，实现共存。  </li>
+</ul>
+<h4 id="nat_2"><strong>四、静态 NAT 表项机制</strong><a class="headerlink" href="#nat_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>用途</strong>：固定映射私有 IP 与公有 IP（如 Web 服务器），允许公网主动访问私有网络设备。  </li>
+<li><strong>示例</strong>：  </li>
+<li>静态映射 10.0.0.7:8080 到公有 IP 123.116.156.133:80，公网客户端可通过 123.116.156.133:80 访问私有服务器。  </li>
+</ul>
+<h4 id="nat_3"><strong>五、NAT 的局限性（</strong>重点<strong>）</strong><a class="headerlink" href="#nat_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>违反 IP 设计原则</strong>：破坏“IP 地址唯一标识主机”的特性，导致公网无法主动发起连接。  </li>
+<li><strong>连接依赖性</strong>：NAT 设备重启会中断 TCP/UDP 连接（因表项丢失）。  </li>
+<li><strong>端到端通信限制</strong>：内网设备无法被公网直接访问，需依赖端口映射。  </li>
+<li><strong>协议兼容性问题</strong>：  </li>
+<li>不支持非 TCP/UDP 协议（如 ICMP），除非 NAT 专门适配。  </li>
+<li>部分应用（如 FTP）在数据报文中携带 IP 地址，NAT 无法修改报文内容，导致地址不匹配。  </li>
+</ol>
+<h4 id="_31"><strong>六、总结</strong><a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>NAT 通过私有地址与公有地址的转换，解决了 IPv4 地址短缺问题，但其透明性和端口复用机制依赖动态表项管理，同时引入了端到端通信限制和协议兼容性挑战。静态 NAT 可支持公网主动访问，动态 NAT 则适用于多数客户端主动发起的场景。</p>
 <h3 id="ipv6">IPv6<a class="headerlink" href="#ipv6" title="Permanent link">&para;</a></h3>
 <p>该节主要围绕IP地址展开，涵盖了地址分类、特殊地址、前缀、子网、无类别域间路由（CIDR）、地址分配、路由聚合以及路由表等内容，具体如下：</p>
 <ol>
@@ -4944,6 +6150,222 @@
 </ul>
 </li>
 </ol>
+<h3 id="internet-control-protocols">Internet Control Protocols<a class="headerlink" href="#internet-control-protocols" title="Permanent link">&para;</a></h3>
+<h4 id="_32"><strong>一、协议定位与封装</strong><a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：ICMP 是网络层协议，用于在 IP 主机、路由器之间传递<strong>控制消息</strong>（如网络通断、拥塞、路由错误等）。  </li>
+<li><strong>封装方式</strong>：ICMP 报文<strong>封装在 IP 数据报中</strong>，作为 IP 层的数据部分，IP 报头的协议字段值为 <strong>1</strong>。  </li>
+</ul>
+<h4 id="icmp"><strong>二、ICMP 报文分类与功能</strong><a class="headerlink" href="#icmp" title="Permanent link">&para;</a></h4>
+<p>ICMP 报文分为 <strong>差错报告报文</strong> 和 <strong>询问报文</strong> 两类，<strong>加粗部分为重点功能</strong>：  </p>
+<h5 id="1_1"><strong>1. 差错报告报文</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>目的不可达（Destination Unreachable）</strong>：  </li>
+<li><strong>场景</strong>：路由器无法找到目标地址（如网络不可达、主机不可达），或因 <strong>DF 位（禁止分片）</strong> 导致无法转发（如 MTU 不足）。  </li>
+<li><strong>作用</strong>：通知源主机传输失败及原因。  </li>
+<li><strong>超时（Time Exceeded）</strong>：  </li>
+<li><strong>场景</strong>：IP 数据报的 <strong>TTL（生存时间）字段递减为 0</strong>，被路由器丢弃。  </li>
+<li><strong>作用</strong>：报告分组生命周期结束，常用于 <code>traceroute</code> 路径追踪。  </li>
+<li><strong>源抑制（Source Quench）</strong>：  </li>
+<li><strong>场景</strong>：路由器或主机因拥塞丢弃分组，向源主机发送 <strong>抑制包（Choke Packet）</strong>。  </li>
+<li><strong>作用</strong>：要求源主机降低发送速率（已逐渐被 ECN 替代）。  </li>
+<li><strong>重定向（Redirect）</strong>：  </li>
+<li><strong>场景</strong>：路由器发现更佳路由（如更优下一跳），向源主机发送重定向消息。  </li>
+<li><strong>作用</strong>：优化路由路径，通知主机更新路由表。  </li>
+</ul>
+<h5 id="2_1"><strong>2. 询问报文</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>回显请求与应答（ECHO &amp; ECHO REPLY）</strong>：  </li>
+<li><strong>用途</strong>：测试主机间连通性（如 <code>ping</code> 命令）。  </li>
+<li><strong>时间戳请求与应答（Timestamp Request &amp; Reply）</strong>：  </li>
+<li><strong>用途</strong>：测量往返时间（RTT），用于网络性能分析。  </li>
+<li><strong>路由器通告与请求（Router Advertisement &amp; Solicitation）</strong>：  </li>
+<li><strong>用途</strong>：主机主动发现附近路由器（如无状态地址自动配置）。  </li>
+</ul>
+<h4 id="icmp_1"><strong>三、ICMP 报文格式</strong><a class="headerlink" href="#icmp_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>统一首部（前4字节）</strong>：  </li>
+<li><strong>类型（Type）</strong>：标识报文类型（如 3=目的不可达，8=回显请求）。  </li>
+<li><strong>代码（Code）</strong>：细化类型中的具体原因（如类型3的代码1=网络不可达，代码2=主机不可达）。  </li>
+<li><strong>校验和（Checksum）</strong>：校验报文完整性。  </li>
+<li><strong>数据部分</strong>：  </li>
+<li><strong>差错报告报文</strong>：包含原 IP 数据报的 <strong>前8字节首部</strong>（用于定位出错分组）及部分数据。  </li>
+<li><strong>询问报文</strong>：内容随具体功能（如时间戳、回显数据）而定。  </li>
+</ul>
+<h4 id="_33"><strong>四、典型应用场景</strong><a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>路径追踪（traceroute）</strong>：  </li>
+<li><strong>原理</strong>：发送 TTL 递增的 UDP 数据报，途经路由器因 TTL=0 回送 <strong>超时（类型11）</strong> 报文，最终目标主机回送 <strong>端口不可达（类型3代码3）</strong> 报文，从而获取完整路径。  </li>
+<li><strong>示例</strong>：<code>tracert</code> 命令输出各跳路由器的 IP 地址和延迟（如上图 Windows 示例）。  </li>
+<li><strong>MTU 探测（路径 MTU 发现）</strong>：  </li>
+<li><strong>原理</strong>：源主机发送 <strong>DF=1（禁止分片）</strong> 的大分组，路由器因 MTU 不足回送 <strong>目的不可达（类型3代码4）</strong> 报文，携带建议的 MTU 值，源主机据此调整分组大小。  </li>
+<li><strong>网络诊断</strong>：  </li>
+<li><strong>目的不可达</strong>：排查主机或网络是否可达（如服务器未启动）。  </li>
+<li><strong>重定向</strong>：优化本地路由（如主机通过 DHCP 获取默认网关后，路由器发送重定向告知更优路径）。  </li>
+</ul>
+<h4 id="_34"><strong>五、总结</strong><a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<p>ICMP 是 IP 协议的重要补充，通过标准化的控制消息实现网络状态反馈与故障诊断。<strong>重点功能包括差错报告（如目的不可达、超时）和询问（如 ping）</strong>，其报文格式简洁且功能明确，广泛应用于网络调试与性能优化。</p>
+<h3 id="arpdhcp">ARP,DHCP<a class="headerlink" href="#arpdhcp" title="Permanent link">&para;</a></h3>
+<h4 id="arp"><strong>一、ARP（地址解析协议）</strong><a class="headerlink" href="#arp" title="Permanent link">&para;</a></h4>
+<p><strong>核心功能</strong>：将IP地址动态映射为数据链路层地址（如以太网MAC地址），实现网络层与链路层的地址转换。  </p>
+<h5 id="1_2"><strong>1. 工作原理</strong><a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>动态解析流程</strong>（<strong>重点</strong>）：  </li>
+<li><strong>广播请求</strong>：主机A需发送数据给IP为192.31.65.5的主机B时，先广播ARP请求报文，内容为“我是192.31.65.16（MAC：00-00-C0-15-AD-18），寻找192.31.65.5的MAC地址”。  </li>
+<li><strong>单播响应</strong>：主机B接收到广播后，单播回复ARP响应报文，内容为“我是192.31.65.5，MAC地址为00-06-2B-00-EE-0A”。  </li>
+<li>
+<p><strong>缓存更新</strong>：主机A与B均将对方的IP-MAC映射存入<strong>ARP缓存</strong>，默认超时时间为几分钟（避免长期占用资源）。  </p>
+</li>
+<li>
+<p><strong>静态解析</strong>：通过系统配置文件手动绑定IP与MAC地址（如<code>arp -s</code>命令），适用于需要固定映射的场景（如服务器）。  </p>
+</li>
+</ul>
+<h5 id="2_2"><strong>2. 优化机制</strong><a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>ARP缓存</strong>：  </li>
+<li>减少重复解析开销，提高转发效率。  </li>
+<li>超时机制确保缓存条目失效后重新动态获取（应对主机移动或MAC变更）。  </li>
+<li><strong>免费ARP（Gratuitous ARP）</strong>：  </li>
+<li>主机启动时主动广播自身IP-MAC映射（如“寻找自己的IP地址”），强制更新局域网内其他主机的ARP缓存。  </li>
+<li><strong>作用</strong>：检测IP地址冲突（若收到响应，说明存在重复IP）。  </li>
+<li><strong>代理ARP</strong>：  </li>
+<li>路由器代表目标主机响应ARP请求（如主机A与主机B跨网段时，路由器回复自身MAC地址，充当中间转发角色），隐藏子网细节。  </li>
+</ul>
+<h5 id="3"><strong>3. 与路由表的关联</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>直接交付与间接交付</strong>（<strong>重点</strong>）：  </li>
+<li><strong>直接交付</strong>：目标IP与源IP在同一子网（如Host1访问192.32.65.0/24内主机），通过ARP获取目标MAC，直接发送数据帧。  </li>
+<li><strong>间接交付</strong>：目标IP与源IP不在同一子网（如Host1访问192.32.63.0/24内主机），需通过默认网关（如192.32.65.1）转发，此时ARP用于获取网关的MAC地址。  </li>
+<li><strong>路由表项要求</strong>：  </li>
+<li>路由表中“下一跳（NextHop）”若为具体IP地址（非<code>direct</code>），该IP必须属于出接口所在子网（如Host4的192.32.63.1属于192.32.63.0/24），确保可通过ARP直接解析其MAC。  </li>
+</ul>
+<h4 id="dhcp"><strong>二、DHCP（动态主机配置协议）</strong><a class="headerlink" href="#dhcp" title="Permanent link">&para;</a></h4>
+<p><strong>核心功能</strong>：自动为客户端分配IP地址及网络配置参数，替代传统手动配置（如RARP、BOOTP）。  </p>
+<h5 id="1_3"><strong>1. 工作流程（四次握手）</strong><a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th><strong>步骤</strong></th>
+<th><strong>报文类型</strong></th>
+<th><strong>源地址</strong></th>
+<th><strong>目的地址</strong></th>
+<th><strong>内容与作用</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>DHCPDISCOVER</td>
+<td>0.0.0.0</td>
+<td>255.255.255.255</td>
+<td>客户端广播请求配置，包含MAC地址与事务ID（如654）。</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DHCPOFFER</td>
+<td>DHCP服务器IP</td>
+<td>255.255.255.255</td>
+<td>服务器响应，提供可用IP（如223.1.2.4）、租期（3600秒）及配置参数。</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DHCPREQUEST</td>
+<td>0.0.0.0</td>
+<td>255.255.255.255</td>
+<td>客户端确认接受配置，广播请求以通知其他服务器。</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DHCPACK</td>
+<td>DHCP服务器IP</td>
+<td>客户端IP</td>
+<td>服务器确认配置生效，客户端正式获取IP地址及参数。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="2_3"><strong>2. 关键特性</strong><a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>配置参数</strong>：  </li>
+<li>必选：IP地址、子网掩码、默认网关、DNS服务器地址。  </li>
+<li>可选：文件服务器地址、域名等。  </li>
+<li><strong>地址租期</strong>：  </li>
+<li>客户端需在租期到期前（默认50%时）发送DHCPREQUEST续租，若未收到ACK则重新申请地址。  </li>
+<li>租期耗尽后，地址被服务器回收，确保资源重用。  </li>
+<li><strong>中继代理（Relay Agent）</strong>：  </li>
+<li>跨网段场景中，中继代理转发DHCP广播请求至其他子网的DHCP服务器（如路由器充当代理），解决广播无法跨网段的问题。  </li>
+</ul>
+<h5 id="3-arp"><strong>3. 与ARP的协同</strong><a class="headerlink" href="#3-arp" title="Permanent link">&para;</a></h5>
+<ul>
+<li>DHCPDISCOVER/REQUEST报文通过广播发送，需依赖ARP解析本地网关的MAC地址（若配置网关）。  </li>
+<li>客户端获取IP后，通过ARP动态解析同一子网内目标主机的MAC地址，实现数据链路层通信。  </li>
+</ul>
+<h4 id="_35"><strong>三、总结</strong><a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>ARP</strong> 是<strong>网络层与链路层的桥梁</strong>，通过动态解析IP-MAC地址实现数据帧的正确转发，优化机制（如缓存、免费ARP）提升效率与可靠性。  </li>
+<li><strong>DHCP</strong> 通过<strong>自动化配置流程</strong>减少人工管理成本，四次握手机制确保配置可靠分发，中继代理扩展了跨网段应用场景。  </li>
+<li><strong>重点关联</strong>：两者共同支撑IP网络的连通性——DHCP分配IP，ARP实现IP到MAC的映射，缺一不可。</li>
+</ul>
+<h3 id="ospf-open-shortest-path-first">OSPF (Open Shortest Path First)<a class="headerlink" href="#ospf-open-shortest-path-first" title="Permanent link">&para;</a></h3>
+<h4 id="_36"><strong>一、协议定位与分类</strong><a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>所属类别</strong>：<strong>内部网关协议（IGP）</strong>，用于自治系统（AS）内部的路由计算，与RIP、EIGRP、IS-IS等同属IGP体系。  </li>
+<li><strong>功能对比</strong>：外部网关协议（EGP）如BGP-4用于<strong>AS之间的路由交互</strong>，而OSPF专注于<strong>AS内部的高效路由</strong>。  </li>
+</ul>
+<h4 id="_37"><strong>二、核心设计要求</strong><a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>开放性</strong>：基于RFC 2328标准，公开透明，支持多厂商设备互联。  </li>
+<li><strong>动态适应性</strong>：<strong>自动快速响应拓扑变化</strong>，通过链路状态更新（LSU）实时调整路由。  </li>
+<li><strong>多度量支持</strong>：可基于带宽、延迟、负载等<strong>多种距离度量</strong>计算路径（区别于RIP仅用跳数）。  </li>
+<li><strong>分层架构</strong>：支持<strong>区域划分（Area）</strong>，降低路由计算复杂度（<strong>重点</strong>）。  </li>
+<li><strong>负载均衡</strong>：支持等价多路径（ECMP），流量分摊到多条链路上。  </li>
+<li><strong>安全性</strong>：提供认证机制（如明文、MD5），确保路由更新的合法性。  </li>
+</ul>
+<h4 id="area"><strong>三、区域（Area）划分机制</strong><a class="headerlink" href="#area" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：将一个AS划分为多个<strong>逻辑区域（Area）</strong>，每个区域内的路由器维护相同的<strong>链路状态数据库（LSDB）</strong>，独立运行最短路径算法（SPF）。  </li>
+<li><strong>主干区域（Backbone Area）</strong>：  </li>
+<li><strong>唯一标识</strong>：<strong>Area 0</strong>（或Area 0.0.0.0），所有其他区域必须连接到主干区域。  </li>
+<li><strong>作用</strong>：负责区域间路由信息的中转与汇总。  </li>
+<li><strong>区域边界</strong>：  </li>
+<li>区域内路由器仅需了解本区域拓扑，<strong>区域间仅传递路由汇总信息</strong>（非详细链路状态），大幅减少路由表规模。  </li>
+<li><strong>跨区域路由器</strong>：  </li>
+<li>连接两个或多个区域的路由器（如Area Border Router，ABR）需维护多个区域的LSDB，并分别运行SPF算法。  </li>
+</ul>
+<h4 id="_38"><strong>四、路由器类型与功能</strong><a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>路由器类型</strong></th>
+<th><strong>定义与功能</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>内部路由器（Internal Router）</strong></td>
+<td>所有接口均属于<strong>同一区域</strong>，仅维护本区域LSDB，计算本区域内路由。</td>
+</tr>
+<tr>
+<td><strong>区域边界路由器（ABR）</strong></td>
+<td><strong>连接主干区域与其他区域</strong>，汇总本区域路由信息并注入主干区域（或反向）。</td>
+</tr>
+<tr>
+<td><strong>自治系统边界路由器（ASBR）</strong></td>
+<td><strong>引入外部路由</strong>（如BGP路由）到OSPF域内，外部路由通过ASBR注入并标记为“可达”。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_39"><strong>五、关键优势与应用场景</strong><a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>优势</strong>：  </li>
+<li><strong>快速收敛</strong>：通过洪泛机制同步LSDB，拓扑变化时秒级更新路由（优于RIP的30秒周期）。  </li>
+<li><strong>层次化设计</strong>：区域划分降低路由计算复杂度，支持大规模网络（如数千路由器）。  </li>
+<li><strong>无环路保证</strong>：基于Dijkstra算法生成最短路径树，从数学上避免路由环路。  </li>
+<li><strong>典型应用</strong>：  </li>
+<li>企业园区网、运营商骨干网等需要高可靠性和可扩展性的场景。  </li>
+<li>与BGP结合，实现AS内部与外部路由的协同（如ASBR注入BGP路由）。  </li>
+</ul>
+<h4 id="_40"><strong>六、总结</strong><a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>OSPF是IGP中<strong>基于链路状态算法的典型协议</strong>，通过<strong>区域划分、动态拓扑感知、多度量支持</strong>等特性，解决了传统距离矢量协议（如RIP）的收敛慢、路由表臃肿等问题。其核心设计思想是<strong>“分而治之”</strong>，通过分层架构提升网络可管理性，适用于中大型IP网络的路由规划。<strong>重点需关注区域划分规则、路由器角色及SPF算法的应用</strong>。</p>
 
 
 

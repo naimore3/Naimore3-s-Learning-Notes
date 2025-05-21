@@ -4506,26 +4506,38 @@
 <h3 id="728">7.2.8 固态盘<a class="headerlink" href="#728" title="Permanent link">&para;</a></h3>
 <p>该节内容主要介绍固态盘（SSD）的特性、组成结构及核心技术，重点围绕<strong>NAND闪存固态盘</strong>展开，具体总结如下：  </p>
 <h4 id="_2"><strong>一、固态盘概述</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><strong>定义与定位</strong>：<br />
-- 作为<strong>机械硬盘的替代方案</strong>，接口和使用方式与机械硬盘兼容，可平滑替换。<br />
-- 核心特点：采用<strong>半导体存储器件（NAND闪存或DRAM）</strong>替代磁介质，本书重点介绍<strong>NAND闪存固态盘</strong>。  </p>
-<p><strong>优势</strong>：<br />
-- <strong>无机械部件</strong>：无传动装置，具备<strong>防震抗摔、无噪音、体积小、质量轻</strong>等特性，适合移动场景。<br />
-- <strong>性能提升</strong>：读写速度显著快于机械硬盘，无机械故障风险。  </p>
-<p><strong>缺点</strong>：<br />
-- <strong>成本较高</strong>：相同容量下价格高于机械硬盘。<br />
-- <strong>容量限制</strong>：单盘容量较小，数据恢复难度大。  </p>
+<p><strong>定义与定位</strong>：  </p>
+<ul>
+<li>作为<strong>机械硬盘的替代方案</strong>，接口和使用方式与机械硬盘兼容，可平滑替换。  </li>
+<li>核心特点：采用<strong>半导体存储器件（NAND闪存或DRAM）</strong>替代磁介质，本书重点介绍<strong>NAND闪存固态盘</strong>。  </li>
+</ul>
+<p><strong>优势</strong>：  </p>
+<ul>
+<li><strong>无机械部件</strong>：无传动装置，具备<strong>防震抗摔、无噪音、体积小、质量轻</strong>等特性，适合移动场景。  </li>
+<li><strong>性能提升</strong>：读写速度显著快于机械硬盘，无机械故障风险。  </li>
+</ul>
+<p><strong>缺点</strong>：  </p>
+<ul>
+<li><strong>成本较高</strong>：相同容量下价格高于机械硬盘。  </li>
+<li><strong>容量限制</strong>：单盘容量较小，数据恢复难度大。  </li>
+</ul>
 <h4 id="_3"><strong>二、固态盘的组成结构</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>固态盘主要由<strong>存储矩阵、缓存、主控单元</strong>三部分组成：<br />
-1. <strong>存储矩阵</strong><br />
-   - <strong>构成</strong>：由多个<strong>NAND闪存芯片（颗粒）</strong>组成，是数据存储的核心。<br />
-   - <strong>闪存类型</strong>：<br />
-     - <strong>SLC（单层单元）</strong>：每个单元存1比特，<strong>可靠性高、成本高</strong>，适用于企业级场景。<br />
-     - <strong>MLC（双层单元）</strong>：每个单元存2比特，成本与可靠性折中。<br />
-     - <strong>TLC（三层单元）、QLC（四层单元）</strong>：存储密度更高、成本更低，适合消费级产品（如U盘、家用SSD）。<br />
-   - <strong>技术演进</strong>：从<strong>二维平面闪存</strong>发展为<strong>三维NAND（3D NAND）</strong>，通过垂直堆叠数百层单元提升密度，解决干扰问题，增强可靠性。  </p>
+<p>固态盘主要由<strong>存储矩阵、缓存、主控单元</strong>三部分组成：  </p>
 <ol>
-<li><strong>缓存</strong>  </li>
+<li><strong>存储矩阵</strong>  </li>
+<li><strong>构成</strong>：由多个<strong>NAND闪存芯片（颗粒）</strong>组成，是数据存储的核心。  </li>
+<li><strong>闪存类型</strong>：  <ul>
+<li><strong>SLC（单层单元）</strong>：每个单元存1比特，<strong>可靠性高、成本高</strong>，适用于企业级场景。  </li>
+<li><strong>MLC（双层单元）</strong>：每个单元存2比特，成本与可靠性折中。  </li>
+<li><strong>TLC（三层单元）、QLC（四层单元）</strong>：存储密度更高、成本更低，适合消费级产品（如U盘、家用SSD）。  </li>
+</ul>
+</li>
+<li>
+<p><strong>技术演进</strong>：从<strong>二维平面闪存</strong>发展为<strong>三维NAND（3D NAND）</strong>，通过垂直堆叠数百层单元提升密度，解决干扰问题，增强可靠性。  </p>
+</li>
+<li>
+<p><strong>缓存</strong>  </p>
+</li>
 <li><strong>作用</strong>：类似磁盘cache，通过配置<strong>DRAM</strong>作为读写缓存，提升访问速度。  </li>
 <li>
 <p><strong>原理</strong>：NAND闪存按页读取、按块擦除，且擦除寿命有限。缓存可优化小文件读写性能，<strong>延长固态盘寿命</strong>。  </p>
@@ -4543,11 +4555,15 @@
 </ol>
 <h4 id="ftl"><strong>三、闪存转换层（FTL）</strong><a class="headerlink" href="#ftl" title="Permanent link">&para;</a></h4>
 <p><strong>定义</strong>：管理固态盘操作的软件层，核心任务是将主机的读写请求映射到闪存芯片，通常运行于主控单元。  </p>
-<p><strong>核心功能</strong>：<br />
-1. <strong>地址映射</strong>：<br />
-   - 主机通过<strong>逻辑地址</strong>访问固态盘，FTL将其转换为闪存的<strong>物理地址（块号、页号等）</strong>，屏蔽底层存储细节。  </p>
+<p><strong>核心功能</strong>：  </p>
 <ol>
-<li><strong>数据校验与坏块管理</strong>：  </li>
+<li><strong>地址映射</strong>：  </li>
+<li>
+<p>主机通过<strong>逻辑地址</strong>访问固态盘，FTL将其转换为闪存的<strong>物理地址（块号、页号等）</strong>，屏蔽底层存储细节。  </p>
+</li>
+<li>
+<p><strong>数据校验与坏块管理</strong>：  </p>
+</li>
 <li>NAND闪存可能存在<strong>坏块</strong>（编程/擦除时失效的块），通过<strong>空闲字节</strong>存储纠错码（ECC）和标志信息。  </li>
 <li>
 <p>标记坏块并启用备用区域，确保有效容量小于颗粒总容量。  </p>

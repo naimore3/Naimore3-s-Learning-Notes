@@ -5904,11 +5904,13 @@
 <li><strong>带宽（Bandwidth）</strong>：单位时间内网络可传输的数据量，决定传输速率。  </li>
 </ul>
 <h3 id="atm"><strong>二、ATM 网络流量分类（</strong>重点<strong>）</strong><a class="headerlink" href="#atm" title="Permanent link">&para;</a></h3>
-<p>根据 QoS 需求，ATM 网络将流量分为四类：
-- <strong>恒定比特率（Constant bit rate）</strong>：如电话业务，比特率稳定，对实时性要求极高。 
-- <strong>实时可变比特率（Real - time variable bit rate）</strong>：如压缩视频会议，比特率可变且需实时传输。 
-- <strong>非实时可变比特率（Non - real - time variable bit rate）</strong>：如网络在线看电影，比特率可变但对实时性要求相对较低。 
-- <strong>可用比特率（Available bit rate）</strong>：如文件传输，根据网络状况使用可用带宽。  </p>
+<p>根据 QoS 需求，ATM 网络将流量分为四类：</p>
+<ul>
+<li><strong>恒定比特率（Constant bit rate）</strong>：如电话业务，比特率稳定，对实时性要求极高。 </li>
+<li><strong>实时可变比特率（Real - time variable bit rate）</strong>：如压缩视频会议，比特率可变且需实时传输。 </li>
+<li><strong>非实时可变比特率（Non - real - time variable bit rate）</strong>：如网络在线看电影，比特率可变但对实时性要求相对较低。 </li>
+<li><strong>可用比特率（Available bit rate）</strong>：如文件传输，根据网络状况使用可用带宽。  </li>
+</ul>
 <h3 id="_22"><strong>三、流量处理机制</strong><a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>缓冲（Buffering）</strong>：通过缓存数据包来平滑输出流，减少流量波动影响。  </li>
@@ -5972,18 +5974,20 @@
 <li><strong>得出完成时间</strong>：<br />
    起始时间 + 相对耗时 = 当前数据包的完成时间 <span class="arithmatex">\( F_{i} \)</span>。  </li>
 </ol>
-<p><strong>示例</strong>：<br />
-- 已知：<span class="arithmatex">\( F_{1}=5 \)</span>（前包完成时间），<span class="arithmatex">\( A_{2}=4 \)</span>（当前包到达时间），<span class="arithmatex">\( L_{2}=10 \)</span>（包长度），<span class="arithmatex">\( W=2 \)</span>（权重）。<br />
-- 计算：<br />
-  - 起始时间：<span class="arithmatex">\( \max(4, 5) = 5 \)</span><br />
-  - 相对耗时：<span class="arithmatex">\( 10 \div 2 = 5 \)</span><br />
-  - 完成时间：<span class="arithmatex">\( F_{2} = 5 + 5 = 10 \)</span><br />
-- <strong>结论</strong>：通过完成时间排序调度数据包，实现加权公平的带宽分配。
-- <strong>轮询公平排队及改进</strong>：
-  - <strong>轮询公平排队问题</strong>：使用大数据包的主机比使用小数据包的主机获得更多带宽。
-  - <strong>加权公平排队（WFQ）</strong>：考虑数据包到达时间（Ai）、完成时间（Fi）、长度（Li）和流量权重（W） ，实现更公平的带宽分配。
-  - <strong>实现复杂度</strong>：N 个流量时，每个数据包处理复杂度为 O(logN) 。
-  - <strong>赤字轮询（DRR）</strong>：是一种近似算法，每个数据包处理复杂度为 O(1) ，降低处理开销。  </p>
+<p><strong>示例</strong>：  </p>
+<ul>
+<li>已知：<span class="arithmatex">\( F_{1}=5 \)</span>（前包完成时间），<span class="arithmatex">\( A_{2}=4 \)</span>（当前包到达时间），<span class="arithmatex">\( L_{2}=10 \)</span>（包长度），<span class="arithmatex">\( W=2 \)</span>（权重）。  </li>
+<li>计算：  </li>
+<li>起始时间：<span class="arithmatex">\( \max(4, 5) = 5 \)</span>  </li>
+<li>相对耗时：<span class="arithmatex">\( 10 \div 2 = 5 \)</span>  </li>
+<li>完成时间：<span class="arithmatex">\( F_{2} = 5 + 5 = 10 \)</span>  </li>
+<li><strong>结论</strong>：通过完成时间排序调度数据包，实现加权公平的带宽分配。</li>
+<li><strong>轮询公平排队及改进</strong>：</li>
+<li><strong>轮询公平排队问题</strong>：使用大数据包的主机比使用小数据包的主机获得更多带宽。</li>
+<li><strong>加权公平排队（WFQ）</strong>：考虑数据包到达时间（Ai）、完成时间（Fi）、长度（Li）和流量权重（W） ，实现更公平的带宽分配。</li>
+<li><strong>实现复杂度</strong>：N 个流量时，每个数据包处理复杂度为 O(logN) 。</li>
+<li><strong>赤字轮询（DRR）</strong>：是一种近似算法，每个数据包处理复杂度为 O(1) ，降低处理开销。  </li>
+</ul>
 <h3 id="_28"><strong>六、资源预留与准入控制</strong><a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>流量协商（Flow negotiation）</strong>：涉及多方参与，共同确定流量相关参数。  </li>
@@ -6038,7 +6042,7 @@
 <li><strong>互联网网络层的定义和任务</strong>：互联网是由多个相互连接的子网（自治系统）组成。互联网网络层的任务是提供一种尽力而为的方式，将数据报从源端传输到目的端，不保证数据传输的可靠性、顺序性等，但尽力完成数据的交付 。 </li>
 </ol>
 <h3 id="the-ip-version-4-protocol">The IP Version 4 Protocol<a class="headerlink" href="#the-ip-version-4-protocol" title="Permanent link">&para;</a></h3>
-<p>该节主要围绕IPv4协议展开，涵盖了IPv4报头字段、校验和算法以及部分IP选项的相关内容：</p>
+<p>该节主要围绕IPv4协议展开，涵盖了IPv4报头字段、校验和算法以及部分IP选项的相关内容：<img alt="IPv4.jpg" src="../IPv4.jpg" /></p>
 <ol>
 <li><strong>IPv4报头字段</strong><ul>
 <li><strong>版本（Version，4位）</strong>：标识IP协议版本，对于IPv4，该字段值为4。</li>
@@ -6066,7 +6070,7 @@
 </li>
 </ol>
 <h3 id="ip-addresses">IP Addresses<a class="headerlink" href="#ip-addresses" title="Permanent link">&para;</a></h3>
-<p>该节主要围绕IP地址展开，涵盖了地址分类、特殊地址、前缀、子网、无类别域间路由（CIDR）、地址分配、路由聚合以及路由表等内容，具体如下：</p>
+<p>该节主要围绕IP地址展开，涵盖了地址分类、特殊地址、前缀、子网、无类别域间路由（CIDR）、地址分配、路由聚合以及路由表等内容，具体如下：<img alt="formats.jpg" src="../formats.jpg" /></p>
 <ol>
 <li><strong>IP地址分类</strong>：IP地址分为A、B、C、D四类，由互联网名称与数字地址分配机构（ICANN）负责分配。A类地址以0开头，B类以10开头，C类以110开头，D类以1110开头，分别用于不同规模的网络和特殊用途（如多播）。</li>
 <li><strong>特殊IP地址</strong>：包括本地网络广播地址（路由器不会转发到其他网络）和远程网络广播地址（路由器根据目的网络号，通过路由表转发） 。</li>

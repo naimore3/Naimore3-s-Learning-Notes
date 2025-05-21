@@ -73,6 +73,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2715,6 +2720,21 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    第八章：输入输出系统
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -2727,6 +2747,1132 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 CPU 与外设之间的信息交换方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 CPU 与外设之间的信息交换方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.1 输入/输出接口与端口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#812" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.2 输入/输出操作的一般过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#813-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.3 I/O 接口与外设间的数据传送方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#814-cpu-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.4 CPU 与 I/O 接口之间的数据传送
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1.4 CPU 与 I/O 接口之间的数据传送">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、无条件传送方式（简单I/O方式）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、程序查询（轮询）方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、程序中断方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、直接内存访问（DMA）方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iop" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、通道和输入/输出处理器（IOP）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 程序查询方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 程序查询方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、程序查询方式概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、I/O指令的功能与示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、程序查询方式的接口结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、程序查询方式的工作流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、优缺点与适用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 程序中断方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 程序中断方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#831" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.1 异常和中断的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.1 异常和中断的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、异常与中断的定义及分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、异常与中断的定义及分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 广义异常的范畴
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 中断的核心特征
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、中断机制的功能与典型应用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、中断机制的功能与典型应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 典型应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、中断处理流程与关键机制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、中断处理流程与关键机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 中断处理的基本流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键机制解析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、中断与程序查询方式的对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#832" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.2 中断服务程序入口地址的获取
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.2 中断服务程序入口地址的获取">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心背景与目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、向量中断方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、向量中断方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心原理：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、查询中断方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、查询中断方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      特点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、两种方式对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#833-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.3 程序中断方式的基本 I/O 接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.3 程序中断方式的基本 I/O 接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、程序中断接口的核心组成
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、程序中断接口的核心组成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 工作标志触发器（BS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rd" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 就绪标志触发器（RD）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ei" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 允许中断触发器（EI）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 中断请求触发器（IR）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-imcpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 中断屏蔽触发器（IM，CPU侧）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、数据输入控制流程（以输入场景为例）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、关键机制总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、核心要点对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#834" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.4 单级中断
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.4 单级中断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、单级中断的概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、单级中断源的识别：串行排队链法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、中断向量的产生机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、核心要点对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#835" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.5 多级中断
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#836-armv8-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.6 ARMv8-A 架构的异常与中断
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.6 ARMv8-A 架构的异常与中断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#armv8-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、ARMv8-A的异常类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ARMv8-A的异常类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 同步异常与异步异常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 具体异常事件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、异常处理流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、异常处理流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 异常等级切换规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 硬件隐操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 异常返回
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、异常向量与向量表
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、异常向量与向量表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 向量表结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 向量表分组依据
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gic" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、通用中断控制器（GIC）架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、通用中断控制器（GIC）架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 处理流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、关键术语与机制总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4 DMA 方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 DMA 方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#841-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.1 DMA 的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4.1 DMA 的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dma_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、DMA的定义与核心机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、DMA方式的核心特点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、DMA方式的核心特点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      优点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      缺点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      与其他I/O方式的对比：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、适用场景与典型应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、DMA控制器的基本操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、关键要点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#842-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.2 DMA 传送方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4.2 DMA 传送方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dma_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、DMA传送方式的核心背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、成组连续传送方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、成组连续传送方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理与流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、周期挪用方式（周期窃取）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、周期挪用方式（周期窃取）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理与流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、透明DMA方式（总线周期分时）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、透明DMA方式（总线周期分时）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理与流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键特性：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、三种方式对比总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#843-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.3 基本的 DMA 控制器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#844-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.4 选择型和多路型 DMA 控制器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5 鲲鹏 920 处理器片上系统的设备与输入输出子系统
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.5 鲲鹏 920 处理器片上系统的设备与输入输出子系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#851-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.1 鲲鹏 920 处理器片上系统的片上设备类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#852-pcie" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.2 虚拟 PCIe 总线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#853-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.3 鲲鹏 920 处理器片上系统的网络子系统
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#854-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.4 鲲鹏 920 处理器片上系统的外存储子系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#86-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.6 I/O 系统设计
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -3791,6 +4937,1123 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#81-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1 CPU 与外设之间的信息交换方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1 CPU 与外设之间的信息交换方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#811" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.1 输入/输出接口与端口
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#812" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.2 输入/输出操作的一般过程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#813-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.3 I/O 接口与外设间的数据传送方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#814-cpu-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.1.4 CPU 与 I/O 接口之间的数据传送
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.1.4 CPU 与 I/O 接口之间的数据传送">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#io" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、无条件传送方式（简单I/O方式）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、程序查询（轮询）方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、程序中断方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、直接内存访问（DMA）方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iop" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、通道和输入/输出处理器（IOP）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#82" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.2 程序查询方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.2 程序查询方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、程序查询方式概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、I/O指令的功能与示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、程序查询方式的接口结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、程序查询方式的工作流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、优缺点与适用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#83" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3 程序中断方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3 程序中断方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#831" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.1 异常和中断的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.1 异常和中断的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、异常与中断的定义及分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、异常与中断的定义及分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 广义异常的范畴
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 中断的核心特征
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、中断机制的功能与典型应用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、中断机制的功能与典型应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 典型应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、中断处理流程与关键机制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、中断处理流程与关键机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 中断处理的基本流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键机制解析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、中断与程序查询方式的对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#832" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.2 中断服务程序入口地址的获取
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.2 中断服务程序入口地址的获取">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心背景与目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、向量中断方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、向量中断方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心原理：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      特点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、查询中断方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、查询中断方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      核心流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      特点：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、两种方式对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#833-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.3 程序中断方式的基本 I/O 接口
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.3 程序中断方式的基本 I/O 接口">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、程序中断接口的核心组成
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、程序中断接口的核心组成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-bs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 工作标志触发器（BS）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-rd" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 就绪标志触发器（RD）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-ei" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 允许中断触发器（EI）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-ir" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 中断请求触发器（IR）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-imcpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 中断屏蔽触发器（IM，CPU侧）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、数据输入控制流程（以输入场景为例）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、关键机制总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、核心要点对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#834" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.4 单级中断
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.4 单级中断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、单级中断的概念
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、单级中断源的识别：串行排队链法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、中断向量的产生机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、核心要点对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#835" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.5 多级中断
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#836-armv8-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.3.6 ARMv8-A 架构的异常与中断
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.3.6 ARMv8-A 架构的异常与中断">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#armv8-a" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、ARMv8-A的异常类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、ARMv8-A的异常类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 同步异常与异步异常
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 具体异常事件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、异常处理流程
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、异常处理流程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 异常等级切换规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 硬件隐操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 异常返回
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、异常向量与向量表
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、异常向量与向量表">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 向量表结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 向量表分组依据
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gic" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、通用中断控制器（GIC）架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、通用中断控制器（GIC）架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 处理流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、关键术语与机制总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#84-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4 DMA 方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4 DMA 方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#841-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.1 DMA 的基本概念
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4.1 DMA 的基本概念">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dma_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、DMA的定义与核心机制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、DMA方式的核心特点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、DMA方式的核心特点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      优点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      缺点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#io_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      与其他I/O方式的对比：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、适用场景与典型应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、DMA控制器的基本操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、关键要点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#842-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.2 DMA 传送方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.4.2 DMA 传送方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dma_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、DMA传送方式的核心背景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、成组连续传送方式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、成组连续传送方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理与流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、周期挪用方式（周期窃取）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、周期挪用方式（周期窃取）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理与流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      优缺点：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dma_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、透明DMA方式（总线周期分时）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、透明DMA方式（总线周期分时）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      原理与流程：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键特性：
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      适用场景：
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、三种方式对比总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#843-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.3 基本的 DMA 控制器
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#844-dma" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.4.4 选择型和多路型 DMA 控制器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#85-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5 鲲鹏 920 处理器片上系统的设备与输入输出子系统
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8.5 鲲鹏 920 处理器片上系统的设备与输入输出子系统">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#851-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.1 鲲鹏 920 处理器片上系统的片上设备类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#852-pcie" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.2 虚拟 PCIe 总线
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#853-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.3 鲲鹏 920 处理器片上系统的网络子系统
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#854-920" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.5.4 鲲鹏 920 处理器片上系统的外存储子系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#86-io" class="md-nav__link">
+    <span class="md-ellipsis">
+      8.6 I/O 系统设计
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -3806,9 +6069,803 @@
 
 
 
-  <h1>第八章：输入输出系统</h1>
-
-
+<h1 id="_1">输入/输出系统<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="81-cpu">8.1 CPU 与外设之间的信息交换方式<a class="headerlink" href="#81-cpu" title="Permanent link">&para;</a></h2>
+<h3 id="811">8.1.1 输入/输出接口与端口<a class="headerlink" href="#811" title="Permanent link">&para;</a></h3>
+<p>该节内容主要围绕输入/输出接口与端口展开，介绍了其存在的必要性、功能、组成以及端口编址方式，具体如下：</p>
+<ul>
+<li><strong>I/O接口存在的必要性</strong>：<strong>外围设备种类、输入信号形式多样，信息传输速率差异悬殊</strong>，如手动键盘输入字符间隔可达数秒，而磁盘输入速率超30000B/s 。为实现<strong>高速主机与不同速度外设间高效可靠交互</strong>，CPU必须通过I/O接口与外设连接，CPU的输入/输出操作分为I/O接口与外设、CPU与I/O接口两个相互关联的数据传送阶段。</li>
+<li><strong>I/O接口的功能与组成</strong>：I/O接口是<strong>由半导体介质构成的逻辑电路</strong>，作为转换器，确保外部设备按计算机系统要求的形式收发信息。接口内部设置<strong>可被CPU直接访问的寄存器，即端口</strong>。其中，<strong>命令端口</strong>用于接收CPU等主控设备的控制命令；<strong>状态端口</strong>用于向CPU报告I/O设备工作状态；<strong>数据端口</strong>用于在外设和总线间交换数据。</li>
+<li><strong>端口编址方式</strong>：<ul>
+<li><strong>统一编址方式</strong>：将<strong>输入/输出设备接口中的寄存器与内存单元统一编排地址</strong>，可用访问内存的指令访问I/O设备接口寄存器，<strong>无需专门I/O指令组</strong>。</li>
+<li><strong>I/O独立编址方式</strong>：<strong>内存地址与I/O设备地址分开</strong>，访问内存和I/O设备使用不同指令，<strong>需专门的I/O指令组</strong>。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="812">8.1.2 输入/输出操作的一般过程<a class="headerlink" href="#812" title="Permanent link">&para;</a></h3>
+<p>该节内容围绕输入/输出操作的一般过程展开，阐述了端口与内存单元的区别、I/O操作步骤、外围设备定时问题以及I/O对系统性能的影响，具体如下：</p>
+<ul>
+<li><strong>端口与内存单元的差异</strong>：从CPU读写角度，读写端口与内存单元相似，但二者功能不同。<strong>内存单元用于存储数据</strong>；<strong>端口辅助CPU与外设交互</strong>，端口数据动态变化，CPU写入控制口的信息会转换成控制信号发往外设，外设状态信息经转换存入状态口供CPU读取，数据也通过数据口进行缓冲与传输 。</li>
+<li><strong>输入/输出操作步骤</strong>：<ul>
+<li><strong>输入过程</strong>：①CPU在地址总线上放置地址值，<strong>选择某一输入设备</strong>；②<strong>等待输入设备数据有效</strong>；③CPU从数据总线读入数据并存入相应寄存器。</li>
+<li><strong>输出过程</strong>：①CPU在地址总线上放置地址值，<strong>选择输出设备</strong>；②CPU将数据置于数据总线上；③<strong>输出设备确认数据有效后取走数据</strong>。</li>
+</ul>
+</li>
+<li><strong>外围设备定时问题</strong>：输入/输出过程的关键是确定数据何时有效，由于<strong>外围设备数据传输速率差异大</strong>，高速CPU与不同速度外设连接时，<strong>需解决二者时间同步问题</strong>，针对不同速度外设需采用不同定时方式。</li>
+<li><strong>I/O对系统性能的影响</strong>：通过【例8.1】说明，即使CPU速度大幅提升，若忽略I/O速度提升，也会极大影响系统整体性能。假设基准程序运行总时间100s，其中CPU时间90s，I/O时间10s，在CPU速度每年提高50%、I/O时间不变的情况下，5年后I/O时间占总运行时间比例从10%提升至45% 。 </li>
+</ul>
+<h3 id="813-io">8.1.3 I/O 接口与外设间的数据传送方式<a class="headerlink" href="#813-io" title="Permanent link">&para;</a></h3>
+<p>该节主要介绍了根据外设工作速度不同，I/O接口与外设间的数据传送方式，具体内容如下：</p>
+<ul>
+<li><strong>无条件传送方式</strong>：适用于<strong>速度极慢或简单的外围设备</strong>，如机械开关、发光二极管等。这类设备在数据交换前无需准备，机械开关输入数据长期有效，发光二极管在主机输出时必定就绪。因此，接口与外设间仅需数据信号线，<strong>无需握手联络信号线</strong>，接口只需实现数据缓冲和寻址功能，所以也叫<strong>零线握手联络方式</strong>。</li>
+<li><strong>应答方式（异步传送方式）</strong>：适用于<strong>慢速或中速的外围设备</strong>，这类设备速度与主机不在同一数量级，或操作时间间隔不规则，如键盘。主机与这类设备的数据交换采用<strong>异步定时方式</strong>，接口与外设除数据传送信号线外，还设有若干条<strong>握手（联络、挂钩）信号线</strong>，用于传递控制信息，确定数据交换时机。以常见的双线握手方式为例，一条信号线由发方向收方发送选通或请求信号，表明数据是否有效；另一条由收方向发方发送应答信号，告知数据是否已被取走 。</li>
+<li><strong>同步传送方式</strong>：适用于<strong>高速的外围设备</strong>，即中等以上数据传送速率且按规则间隔工作的设备。接口以<strong>确定的时钟速率</strong>与外设交换信息，采用<strong>同步定时方式</strong>，数据交换由时钟脉冲控制。例如，若外设是传输速率为2400位/秒的同步通信线路，接口每隔1/2400秒执行一次串行的输入/输出操作。 </li>
+</ul>
+<h3 id="814-cpu-io">8.1.4 CPU 与 I/O 接口之间的数据传送<a class="headerlink" href="#814-cpu-io" title="Permanent link">&para;</a></h3>
+<p>该节主要介绍CPU与I/O接口间的五种数据传送方式，包括适用场景、工作原理及优缺点，具体内容如下：  </p>
+<h4 id="io"><strong>一、无条件传送方式（简单I/O方式）</strong><a class="headerlink" href="#io" title="Permanent link">&para;</a></h4>
+<p><strong>核心特点</strong>：假设外设始终就绪，CPU直接执行I/O指令传输数据，<strong>无需查询外设状态</strong>。<br />
+- <strong>适用设备</strong>：<strong>低速或简单外设</strong>（如机械开关、LED），数据状态稳定（输入长期有效、输出立即就绪）。<br />
+- <strong>硬件实现</strong>：输入用三态缓冲器，输出用锁存器；<strong>无需握手信号线</strong>，仅需数据总线和寻址逻辑。<br />
+- <strong>局限性</strong>：仅适用于固定状态外设，应用场景有限。  </p>
+<h4 id="_2"><strong>二、程序查询（轮询）方式</strong><a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p><strong>核心逻辑</strong>：CPU通过状态口<strong>循环查询外设状态</strong>，就绪后进行数据传输。<br />
+- <strong>工作流程</strong>：<br />
+  1. <strong>输入场景</strong>：查询外设“准备就绪”→ 接收数据→ 发送响应信号→ 外设复位状态并准备下一次传输。<br />
+  2. <strong>输出场景</strong>：查询外设“就绪”→ 发送数据→ 外设确认接收。<br />
+- <strong>优缺点</strong>：<br />
+  - <strong>优点</strong>：软硬件简单，CPU与外设操作同步。<br />
+  - <strong>缺点</strong>：CPU需持续等待，<strong>大量时间消耗在无效查询中</strong>，仅适用于<strong>低速外设或CPU空闲场景</strong>。  </p>
+<h4 id="_3"><strong>三、程序中断方式</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<p><strong>核心机制</strong>：外设通过中断信号“主动通知”CPU，<strong>CPU暂停当前任务响应I/O请求</strong>。<br />
+- <strong>工作流程</strong>：外设就绪→ 发送中断请求→ CPU保存现场→ 执行中断处理程序（数据传输）→ 恢复现场并继续原任务。<br />
+- <strong>优缺点</strong>：<br />
+  - <strong>优点</strong>：<strong>释放CPU等待时间</strong>，实时性强，适用于随机请求和高负载系统。<br />
+  - <strong>缺点</strong>：硬件（中断控制器）和软件（中断处理程序）复杂度高，存在中断响应延迟。  </p>
+<h4 id="dma"><strong>四、直接内存访问（DMA）方式</strong><a class="headerlink" href="#dma" title="Permanent link">&para;</a></h4>
+<p><strong>核心特性</strong>：<strong>硬件主导数据传输</strong>，DMA控制器接管总线，数据直接在内存与外设间传输，<strong>不经过CPU</strong>。<br />
+- <strong>工作原理</strong>：<br />
+  - 初始化DMA控制器（设置传输方向、地址、长度）。<br />
+  - DMA控制器控制总线，批量传输数据（如磁盘与内存间的大块数据）。<br />
+  - 传输完成后向CPU发送中断通知。<br />
+- <strong>优缺点</strong>：<br />
+  - <strong>优点</strong>：<strong>传输速度快（仅受内存访问速度限制）</strong>，适合高速、成批数据交换（如硬盘、网卡）。<br />
+  - <strong>缺点</strong>：需专用DMA控制器，硬件成本较高。  </p>
+<h4 id="iop"><strong>五、通道和输入/输出处理器（IOP）</strong><a class="headerlink" href="#iop" title="Permanent link">&para;</a></h4>
+<p><strong>进阶方案</strong>：通过专用硬件分担CPU的I/O控制任务，实现<strong>CPU与I/O并行工作</strong>。<br />
+1. <strong>通道（Channel）</strong><br />
+   - <strong>定位</strong>：简化版处理器，有独立指令集，负责统一管理外设与内存的数据传输。<br />
+   - <strong>功能</strong>：CPU仅需发起I/O请求，通道独立执行传输任务，<strong>分时共享内存</strong>，提升CPU利用率。  </p>
+<ol>
+<li><strong>输入/输出处理器（IOP）</strong>  </li>
+<li><strong>分类</strong>：  <ul>
+<li><strong>通道型IOP</strong>：如Intel 8089，辅助CPU处理I/O，支持数据转换、搜索等功能，用于服务器/微型机。  </li>
+<li><strong>外围处理器（PPU）</strong>：完全独立于主机，具备通用计算能力，可用通用机改造。  </li>
+</ul>
+</li>
+<li><strong>优势</strong>：进一步解放CPU，适用于<strong>高性能计算和大规模I/O场景</strong>。  </li>
+</ol>
+<h4 id="_4"><strong>总结对比</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>方式</strong></th>
+<th><strong>适用设备速度</strong></th>
+<th><strong>核心控制</strong></th>
+<th><strong>CPU参与度</strong></th>
+<th><strong>典型场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无条件传送</td>
+<td>极慢/简单</td>
+<td>直接指令控制</td>
+<td>全程参与</td>
+<td>机械开关、LED</td>
+</tr>
+<tr>
+<td>程序查询</td>
+<td>低速</td>
+<td>程序循环查询</td>
+<td>持续等待</td>
+<td>键盘、打印机</td>
+</tr>
+<tr>
+<td>程序中断</td>
+<td>中低速</td>
+<td>中断信号触发</td>
+<td>中断响应</td>
+<td>实时性要求高的外设（如串口）</td>
+</tr>
+<tr>
+<td>DMA</td>
+<td>高速</td>
+<td>DMA控制器硬件</td>
+<td>初始化后脱离</td>
+<td>磁盘、网卡大批量数据传输</td>
+</tr>
+<tr>
+<td>通道/IOP</td>
+<td>超高速</td>
+<td>专用处理器</td>
+<td>仅发起请求</td>
+<td>大型机、高性能服务器</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键结论</strong>：低速设备采用软件控制（查询/中断），高速设备依赖硬件加速（DMA/通道），通过分层方案平衡CPU效率与系统复杂度。</p>
+<h2 id="82">8.2 程序查询方式<a class="headerlink" href="#82" title="Permanent link">&para;</a></h2>
+<p>该节内容围绕<strong>程序查询方式（程序控制I/O方式）</strong>展开，介绍其定义、I/O指令功能、接口结构、工作流程及优化改进，具体总结如下：  </p>
+<h3 id="_5"><strong>一、程序查询方式概述</strong><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>定义</strong>：<br />
+- 数据在CPU与外设间的传送完全由<strong>计算机程序控制</strong>，CPU主动发起并全程参与I/O操作，<strong>需暂停主程序执行</strong>以处理I/O任务。<br />
+- <strong>特点</strong>：硬件简单、成本低，适用于<strong>低速外设或CPU负载较低的场景</strong>。  </p>
+<h3 id="io_1"><strong>二、I/O指令的功能与示例</strong><a class="headerlink" href="#io_1" title="Permanent link">&para;</a></h3>
+<p><strong>核心功能</strong>：<br />
+1. <strong>控制设备动作</strong>：通过置“1”或置“0”接口控制触发器，实现设备<strong>启动、关闭</strong>等操作。<br />
+2. <strong>测试设备状态</strong>：读取“忙”“准备就绪”等状态标志，判断数据传输时机。<br />
+3. <strong>数据传输</strong>：输入时将接口数据寄存器内容送CPU寄存器；输出时将CPU寄存器内容送接口数据寄存器。  </p>
+<p><strong>指令格式示例</strong>：<br />
+- 某机I/O指令格式含<strong>操作码（OP）、设备地址（DMs）、控制位</strong>等字段。<br />
+  - 例：指令“DOAS 2,13”表示将CPU中R2数据输出至13号设备的A寄存器，并<strong>启动设备</strong>。<br />
+  - 例：指令“DICC 3,12”表示将12号设备C寄存器数据输入至CPU的R3，并<strong>关闭设备</strong>。  </p>
+<p><strong>常用指令</strong>：<br />
+- <strong>SKP（测试跳步指令）</strong>：检测设备状态标志（如“就绪”），标志为“1”则顺序执行下一条指令，为“0”则跳过下一条指令，用于程序查询逻辑。  </p>
+<h3 id="_6"><strong>三、程序查询方式的接口结构</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>接口电路包含三部分：<br />
+1. <strong>设备选择电路</strong>：<br />
+   - 功能：通过<strong>地址总线译码</strong>识别CPU选中的设备，仅被选中设备进入工作状态。<br />
+   - 本质：设备地址译码器。  </p>
+<ol>
+<li><strong>数据缓冲寄存器</strong>：  </li>
+<li>
+<p>功能：输入时暂存外设数据供CPU读取；输出时暂存CPU数据供外设提取，实现<strong>速度缓冲</strong>。  </p>
+</li>
+<li>
+<p><strong>设备状态标志</strong>：  </p>
+</li>
+<li>包含“忙”“准备就绪”“错误”等触发器，<strong>实时反馈设备状态</strong>，供CPU查询判断。  </li>
+</ol>
+<h3 id="_7"><strong>四、程序查询方式的工作流程</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>基本步骤</strong>：<br />
+1. <strong>发送命令</strong>：CPU向I/O设备发出数据传送请求。<br />
+2. <strong>读取状态</strong>：从接口读入设备状态字。<br />
+3. <strong>状态判断</strong>：检查“就绪”标志，若未就绪则<strong>循环重复步骤2-3</strong>（忙等待）。<br />
+4. <strong>数据传输</strong>：就绪后执行数据输入/输出，并复位状态标志。  </p>
+<p><strong>优化改进</strong>：<br />
+- <strong>周期性查询</strong>：CPU在主程序中<strong>定期调用询问子程序</strong>，按优先级依次检测多设备状态（如先查询高速设备）。<br />
+- <strong>流程示例</strong>：<br />
+  1. 用SKP指令检测1号设备“Ready”标志。<br />
+  2. 若就绪，跳转至设备服务子程序（完成数据传输、修改地址/字节数等）；若未就绪，跳过子程序，查询下一个设备。<br />
+  3. 所有设备查询完毕后返回主程序。  </p>
+<h3 id="_8"><strong>五、优缺点与适用场景</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>优点</strong>：  </li>
+<li>硬件简单（仅需基本接口电路），<strong>成本低</strong>。  </li>
+<li>程序逻辑直观，适合<strong>简单低速设备</strong>（如键盘、打印机）。  </li>
+<li><strong>缺点</strong>：  </li>
+<li>CPU需<strong>持续轮询等待</strong>，资源利用率低，无法处理多任务或高速数据。  </li>
+<li>实时性差，难以应对突发I/O请求。  </li>
+<li><strong>适用场景</strong>：  </li>
+<li>小型系统或CPU负载较轻的场景，如嵌入式设备中的简单外设控制。  </li>
+</ul>
+<h3 id="_9"><strong>总结</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>程序查询方式通过<strong>软件循环查询外设状态</strong>实现数据传输，其核心依赖I/O指令的状态检测和简单接口电路。尽管硬件成本低，但CPU效率受限于“忙等待”机制，仅适用于<strong>低速、非实时性的外设交互</strong>。在多设备或高性能需求场景中，需采用中断、DMA等更高效的I/O方式。</p>
+<h2 id="83">8.3 程序中断方式<a class="headerlink" href="#83" title="Permanent link">&para;</a></h2>
+<h3 id="831">8.3.1 异常和中断的基本概念<a class="headerlink" href="#831" title="Permanent link">&para;</a></h3>
+<p>该节内容围绕<strong>异常与中断的基本概念</strong>展开，涵盖定义、分类、处理流程、核心机制及应用场景，重点解析中断在计算机系统中的作用与实现逻辑，具体总结如下：  </p>
+<h4 id="_10"><strong>一、异常与中断的定义及分类</strong><a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h5 id="1"><strong>1. 广义异常的范畴</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>定义</strong>：异常是处理器实现程序随机切换的机制，用于处理需特权权限的系统事件或外部请求。  </li>
+<li><strong>分类</strong>：  </li>
+<li><strong>中断（外中断）</strong>：由<strong>处理器外部硬件触发</strong>（如外设请求），属于随机事件，需CPU暂停主程序响应。  </li>
+<li><strong>狭义异常（内中断）</strong>：由<strong>机器内部原因引发</strong>（如指令错误、运算溢出），改变正常指令执行顺序。  </li>
+</ul>
+<h5 id="2"><strong>2. 中断的核心特征</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>与子程序调用的区别</strong>：中断请求由<strong>随机事件触发</strong>，而非程序预先安排，适合处理突发任务。  </li>
+<li><strong>中断源</strong>：引发中断的事件，包括外设请求、硬件故障（如掉电）、软件错误（如地址越界）等。  </li>
+</ul>
+<h4 id="_11"><strong>二、中断机制的功能与典型应用</strong><a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h5 id="1_1"><strong>1. 核心功能</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>实现CPU与外设并行工作</strong>：外设准备数据时CPU继续执行主程序，提升系统效率。  </li>
+<li><strong>实时响应随机事件</strong>：确保紧急任务（如故障处理）优先执行。  </li>
+</ul>
+<h5 id="2_1"><strong>2. 典型应用场景</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>I/O设备数据交换</strong>：替代程序查询方式，减少CPU等待时间。  </li>
+<li><strong>故障处理</strong>：硬件故障（如校验错）或软件异常（如非法指令）时触发中断修复。  </li>
+<li><strong>多任务调度</strong>：操作系统通过中断切换任务，实现分时复用。  </li>
+<li><strong>软中断</strong>：程序主动触发（如系统调用），接口简单且便于维护。  </li>
+</ol>
+<h4 id="_12"><strong>三、中断处理流程与关键机制</strong><a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<h5 id="1_2"><strong>1. 中断处理的基本流程</strong><a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>中断请求</strong>：外设或内部事件通过中断请求线向CPU发送信号。  </li>
+<li><strong>中断响应</strong>：  </li>
+<li>CPU在<strong>当前指令执行完毕（公操作阶段）</strong>检查中断请求。  </li>
+<li>满足条件（如未被屏蔽）时，<strong>关闭中断（置中断屏蔽标志为1）</strong>，保存程序计数器（PC）和现场状态（寄存器值、标志位）。  </li>
+<li><strong>中断服务</strong>：跳转至中断服务程序，完成数据交换或故障处理。  </li>
+<li><strong>中断返回</strong>：恢复现场，<strong>开放中断（清中断屏蔽标志为0）</strong>，返回主程序断点继续执行。  </li>
+</ol>
+<h5 id="2_2"><strong>2. 关键机制解析</strong><a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>中断屏蔽</strong>：通过硬件触发器控制是否响应新中断，确保当前中断服务不被打断。  </li>
+<li><strong>隐操作</strong>：中断响应、关中断、保存断点等由硬件自动完成，程序代码不可见。  </li>
+<li><strong>向量中断</strong>：通过硬件或软件查找中断源，获取对应服务程序入口地址，实现快速响应。  </li>
+</ul>
+<h4 id="_13"><strong>四、中断与程序查询方式的对比</strong><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>程序查询方式</strong></th>
+<th><strong>中断方式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CPU参与度</strong></td>
+<td>全程忙等待，效率低</td>
+<td>仅响应时介入，其余时间执行主程序</td>
+</tr>
+<tr>
+<td><strong>实时性</strong></td>
+<td>差（需轮询）</td>
+<td>高（主动触发）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>低速、非实时外设</td>
+<td>高速、随机请求外设</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_14"><strong>五、总结</strong><a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<p>中断机制通过<strong>硬件与软件协同</strong>（如中断周期的隐操作+中断服务程序），实现了CPU对随机事件的高效响应，是计算机系统并行性和实时性的基础。其核心优势在于<strong>释放CPU资源、提升系统效率</strong>，广泛应用于I/O交互、故障处理、多任务调度等场景。理解中断的处理流程与屏蔽机制，是掌握计算机系统异步通信的关键。</p>
+<h3 id="832">8.3.2 中断服务程序入口地址的获取<a class="headerlink" href="#832" title="Permanent link">&para;</a></h3>
+<p>该节内容围绕<strong>中断服务程序入口地址的获取方式</strong>展开，重点介绍向量中断和查询中断两种机制的定义、原理及差异，具体总结如下：  </p>
+<h4 id="_15"><strong>一、核心背景与目标</strong><a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>CPU响应中断时需解决两大问题：<br />
+1. <strong>中断源识别与优先级判别</strong>：多中断源同时请求时，确定响应顺序。<br />
+2. <strong>获取中断服务程序入口地址</strong>：跳转至对应处理程序。<br />
+<strong>关键方式</strong>：向量中断（硬件主导）与查询中断（软件主导），由处理器架构预先决定。  </p>
+<h4 id="_16"><strong>二、向量中断方式</strong><a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p><strong>定义</strong>：由硬件自动生成中断向量地址，快速定位中断服务程序入口的中断机制。  </p>
+<h5 id="_17"><strong>核心原理</strong>：<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>中断向量与向量表</strong>：  </li>
+<li><strong>中断向量</strong>：每个中断源对应的<strong>服务程序入口地址</strong>（部分系统含初始程序状态字PSW）。  </li>
+<li><strong>中断向量表</strong>：内存中固定区域，按顺序存储所有中断向量，如<strong>图8.7实例</strong>中，地址A1-A<em>n</em>对应入口地址PC1-PC<em>n</em>及PSW1-PSW<em>n</em>。  </li>
+<li><strong>硬件自动寻址</strong>：  </li>
+<li>CPU识别中断源后，硬件直接生成<strong>向量地址</strong>（如中断类型号），通过查表或计算（向量地址+基址寄存器值）获取入口地址。  </li>
+<li>部分系统向量表存储<strong>转移指令</strong>，由硬件执行指令跳转至服务程序。  </li>
+</ol>
+<h5 id="_18"><strong>特点</strong>：<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>高效性</strong>：硬件完成中断源识别、优先级处理及寻址，<strong>响应速度快</strong>，适用于高速外设或实时系统。  </li>
+<li><strong>固定性</strong>：优先级由硬件预设，灵活性较低。  </li>
+</ul>
+<h4 id="_19"><strong>三、查询中断方式</strong><a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p><strong>定义</strong>：通过软件查询中断源状态，跳转至公共中断服务程序处理的机制。  </p>
+<h5 id="_20"><strong>核心流程</strong>：<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>公共中断服务程序</strong>：  </li>
+<li>中断响应后，CPU先进入<strong>统一入口</strong>的公共程序，逐次查询各中断源状态寄存器（如“中断请求标志”）。  </li>
+<li>示例流程（图8.8）：按优先级顺序检测中断源A→B→C，命中后跳转至对应服务子程序。  </li>
+<li><strong>优先级控制</strong>：  </li>
+<li>软件查询顺序决定中断优先级，<strong>可动态调整</strong>（如临时修改查询顺序）。  </li>
+</ol>
+<h5 id="_21"><strong>特点</strong>：<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>灵活性高</strong>：优先级由软件逻辑控制，适合需动态调整的场景（如多任务调度）。  </li>
+<li><strong>效率较低</strong>：依赖软件循环查询，<strong>响应延迟较长</strong>，适用于低速外设或中断源较少的系统。  </li>
+</ul>
+<h4 id="_22"><strong>四、两种方式对比</strong><a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>向量中断</strong></th>
+<th><strong>查询中断</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>核心控制</strong></td>
+<td>硬件（中断控制器、向量表）</td>
+<td>软件（公共服务程序）</td>
+</tr>
+<tr>
+<td><strong>响应速度</strong></td>
+<td>快（硬件直接寻址）</td>
+<td>较慢（软件逐次查询）</td>
+</tr>
+<tr>
+<td><strong>优先级调整</strong></td>
+<td>固定（硬件预设）</td>
+<td>灵活（软件修改查询顺序）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>高速外设、实时系统</td>
+<td>低速外设、中断源少的系统</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_23"><strong>五、总结</strong><a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<p>向量中断通过<strong>硬件自动化机制</strong>实现快速响应，适用于高性能、实时性需求；查询中断依赖<strong>软件逻辑</strong>动态调整优先级，灵活性高但效率较低。两者分别代表了计算机系统中“硬件加速”与“软件灵活”的设计权衡，共同支撑中断系统的多样性需求。理解两种方式的原理与差异，是掌握CPU中断处理机制的关键。</p>
+<h3 id="833-io">8.3.3 程序中断方式的基本 I/O 接口<a class="headerlink" href="#833-io" title="Permanent link">&para;</a></h3>
+<p>该节内容聚焦<strong>程序中断方式的基本I/O接口</strong>，介绍接口组成、核心触发器功能及数据输入控制流程，具体总结如下：  </p>
+<h4 id="_24"><strong>一、程序中断接口的核心组成</strong><a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>程序中断方式的基本接口包含 <strong>4个关键标志触发器</strong> 和硬件控制逻辑，其功能与协作机制如下：  </p>
+<h5 id="1-bs"><strong>1. 工作标志触发器（BS）</strong><a class="headerlink" href="#1-bs" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>功能</strong>：表示外设当前工作状态，<strong>置“1”时为“忙”状态</strong>（正在处理数据或执行操作），<strong>清“0”时为空闲状态</strong>。  </li>
+<li><strong>触发场景</strong>：由程序启动外设时置“1”，数据传输完成后复位。  </li>
+</ul>
+<h5 id="2-rd"><strong>2. 就绪标志触发器（RD）</strong><a class="headerlink" href="#2-rd" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心作用</strong>：<strong>作为中断源触发器</strong>，设备完成数据接收或发送后，通过动作完毕信号将RD置“1”，表示数据就绪可触发中断。  </li>
+<li><strong>地位</strong>：中断请求的前提条件之一，标志外设已准备好与CPU交互。  </li>
+</ul>
+<h5 id="3-ei"><strong>3. 允许中断触发器（EI）</strong><a class="headerlink" href="#3-ei" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>软件可控性</strong>：通过程序指令置位或清零，<strong>EI=1时允许外设向CPU发送中断请求</strong>，EI=0时禁止请求。  </li>
+<li><strong>设计目的</strong>：通过软件灵活控制中断源的开启与关闭，实现中断优先级管理或临时屏蔽特定设备。  </li>
+</ul>
+<h5 id="4-ir"><strong>4. 中断请求触发器（IR）</strong><a class="headerlink" href="#4-ir" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>信号暂存</strong>：接收并暂存外设通过中断请求线发送的中断信号，<strong>IR=1时表示存在未处理的中断请求</strong>。  </li>
+<li><strong>与CPU交互</strong>：CPU在指令执行末尾检测IR状态，决定是否响应中断。  </li>
+</ul>
+<h5 id="5-imcpu"><strong>5. 中断屏蔽触发器（IM，CPU侧）</strong><a class="headerlink" href="#5-imcpu" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>全局控制</strong>：<strong>IM=0时CPU受理中断请求</strong>，IM=1时屏蔽所有外部中断请求，由CPU硬件直接控制。  </li>
+<li><strong>优先级机制</strong>：配合EI实现“CPU全局屏蔽”与“外设局部允许”的双重控制逻辑。  </li>
+</ul>
+<h4 id="_25"><strong>二、数据输入控制流程（以输入场景为例）</strong><a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<p>结合图8.9标号①～⑩，流程如下：<br />
+1. <strong>启动外设</strong>（①～②）：<br />
+   - 程序通过指令置位 <strong>BS=1</strong>（忙状态），清零 <strong>RD=0</strong>（未就绪），并向外设发送启动信号。<br />
+2. <strong>数据传输准备</strong>（③～④）：<br />
+   - 外设将数据传入接口缓冲寄存器，完成后发送控制信号，置位 <strong>RD=1</strong>（数据就绪）。<br />
+3. <strong>中断请求触发</strong>（⑤～⑥）：<br />
+   - 若 <strong>EI=1</strong>（允许中断），接口通过中断请求线向CPU发送信号，置位 <strong>IR=1</strong>（CPU接收请求）。<br />
+4. <strong>CPU响应中断</strong>（⑦～⑧）：<br />
+   - CPU在指令执行结束时检测到 <strong>IR=1</strong> 且 <strong>IM=0</strong>（未屏蔽），<strong>关闭中断（硬件自动置IM=1）</strong>，响应中断并跳转至对应 <strong>中断服务程序入口</strong>。<br />
+5. <strong>数据读取与状态复位</strong>（⑨～⑩）：<br />
+   - 中断服务程序通过输入指令读取缓冲寄存器数据至CPU，随后发送控制信号 <strong>C</strong>，清零 <strong>BS=0</strong> 和 <strong>RD=0</strong>，恢复接口初始状态。  </p>
+<h4 id="_26"><strong>三、关键机制总结</strong><a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>中断请求的双重条件</strong>：  </li>
+<li>外设需同时满足 <strong>RD=1（数据就绪）</strong> 和 <strong>EI=1（允许中断）</strong>，才能向CPU发送中断请求。  </li>
+<li><strong>CPU响应的必要条件</strong>：  </li>
+<li><strong>IM=0（未屏蔽全局中断）</strong> 且 <strong>当前指令执行完毕</strong>，CPU才会受理中断请求。  </li>
+<li><strong>硬件与软件的协同</strong>：  </li>
+<li><strong>硬件自动处理</strong>：BS/RD状态更新、IR信号暂存、IM屏蔽等底层逻辑由接口电路实现。  </li>
+<li><strong>软件灵活控制</strong>：通过指令设置EI标志，动态管理外设的中断权限，适应不同应用场景。  </li>
+</ol>
+<h4 id="_27"><strong>四、核心要点对比</strong><a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>触发器</strong></th>
+<th><strong>控制主体</strong></th>
+<th><strong>功能描述</strong></th>
+<th><strong>状态含义</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BS</td>
+<td>硬件/程序</td>
+<td>表示外设工作状态</td>
+<td>1=忙，0=空闲</td>
+</tr>
+<tr>
+<td>RD</td>
+<td>硬件</td>
+<td>外设数据就绪标志（中断源触发条件）</td>
+<td>1=就绪，0=未就绪</td>
+</tr>
+<tr>
+<td>EI</td>
+<td>软件（程序）</td>
+<td>外设中断请求的局部允许/禁止</td>
+<td>1=允许请求，0=禁止请求</td>
+</tr>
+<tr>
+<td>IR</td>
+<td>硬件</td>
+<td>暂存外设中断请求信号</td>
+<td>1=有请求，0=无请求</td>
+</tr>
+<tr>
+<td>IM</td>
+<td>硬件（CPU）</td>
+<td>CPU全局中断屏蔽标志</td>
+<td>0=受理请求，1=屏蔽请求</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结</strong>：程序中断接口通过多触发器的状态协同，实现了外设与CPU之间的异步通信，既保证了数据传输的实时性，又通过软件可控的中断允许机制提升了系统灵活性。其核心逻辑是“<strong>外设就绪→允许中断→CPU响应→数据传输→状态复位</strong>”，适用于中低速外设的高效交互场景。</p>
+<h3 id="834">8.3.4 单级中断<a class="headerlink" href="#834" title="Permanent link">&para;</a></h3>
+<p>该节内容围绕<strong>单级中断系统</strong>展开，介绍其概念、中断源识别方法及中断向量产生机制，具体总结如下：  </p>
+<h4 id="_28"><strong>一、单级中断的概念</strong><a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p><strong>定义</strong>：<br />
+- 单级中断系统是<strong>最基本的中断结构形式</strong>，所有中断源属于同一优先级层级，<strong>中断响应顺序由物理位置决定</strong>（离CPU越近优先权越高）。<br />
+- <strong>核心特性</strong>：<br />
+  - 中断服务程序执行时<strong>不允许被任何其他中断打断</strong>（包括更高优先级中断源），<strong>必须执行完毕后才响应后续中断</strong>。<br />
+  - 所有外设通过<strong>一条公共中断请求线</strong>向CPU发送信号，CPU采用<strong>链式查询方式（类似总线仲裁）</strong>识别中断源。  </p>
+<p><strong>示意图与结构</strong>：<br />
+- 图8.10(a)为单级中断示意图，图8.10(b)中所有I/O设备共享一条中断请求线，CPU通过<strong>中断响应信号INTA</strong>触发链式判优，与第6章的链式总线仲裁机制类似（中断请求IR对应总线请求BR）。  </p>
+<h4 id="_29"><strong>二、单级中断源的识别：串行排队链法</strong><a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p><strong>核心逻辑</strong>：<br />
+通过<strong>串行优先级排队链电路</strong>实现中断源判优与识别，优先级顺序为IR₁＞IR₂＞IR₃（硬件固定）。  </p>
+<p><strong>关键组件与信号</strong>：<br />
+- <strong>IRᵢ</strong>：各中断源的请求信号（IR₁优先级最高）。<br />
+- <strong>ISᵢ</strong>：中断排队选中信号（ISᵢ=1表示对应中断源被选中）。<br />
+- <strong>INTI/INTO</strong>：中断排队输入/输出信号，用于传递优先级信号（INTI=0表示无更高优先级请求）。  </p>
+<p><strong>工作流程</strong>：<br />
+1. <strong>高优先级优先查询</strong>：<br />
+   - 若IR₁=1且INTI=0（无更高优先级请求），门1输出IS₁=1，IR₁对应的中断源被选中，<strong>封锁后续低优先级查询</strong>（门2关闭，IS₂、IS₃=0）。<br />
+2. <strong>低优先级递补查询</strong>：<br />
+   - 若IR₁=0，INTI信号经门2传递至IR₂，若IR₂=1则IS₂=1，选中IR₂；否则继续查询IR₃，直至找到请求源。<br />
+3. <strong>中断识别信号触发</strong>：<br />
+   - CPU发送<strong>INTA=1</strong>时，选中的中断源通过门7向编码电路输出信号，生成唯一设备地址。  </p>
+<h4 id="_30"><strong>三、中断向量的产生机制</strong><a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<p><strong>定义</strong>：<br />
+中断向量是<strong>中断服务程序的入口地址</strong>，单级中断通过<strong>硬件直接生成向量地址</strong>，快速跳转至对应程序。  </p>
+<p><strong>实现方式</strong>：<br />
+- 图8.11上半部分为<strong>中断向量产生逻辑</strong>，由编码电路完成：<br />
+  - 选中的中断源（如IR₁）通过排队链输出设备编号，编码电路将其转换为<strong>向量地址</strong>，送入CPU的主存地址寄存器。<br />
+  - <strong>优势</strong>：硬件直接生成地址，无需软件查询，<strong>响应速度快</strong>。  </p>
+<h4 id="_31"><strong>四、核心要点对比</strong><a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>单级中断系统特点</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>优先级管理</strong></td>
+<td>硬件固定优先级，物理位置决定响应顺序</td>
+</tr>
+<tr>
+<td><strong>中断嵌套</strong></td>
+<td>不支持（服务程序执行时屏蔽所有其他中断）</td>
+</tr>
+<tr>
+<td><strong>中断请求线</strong></td>
+<td>单条公共请求线，链式查询判优</td>
+</tr>
+<tr>
+<td><strong>响应效率</strong></td>
+<td>硬件快速识别中断源，向量地址由硬件生成</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结</strong>：单级中断系统通过<strong>硬件链式判优</strong>和<strong>向量地址硬件生成</strong>实现中断源识别与响应，其核心特征是<strong>同一优先级层级、不支持中断嵌套</strong>，适合结构简单、实时性要求不高的系统。串行排队链法与向量中断机制的结合，体现了硬件高效性与设计简洁性的平衡。</p>
+<h3 id="835">8.3.5 多级中断<a class="headerlink" href="#835" title="Permanent link">&para;</a></h3>
+<p>该节内容围绕多级中断展开，详细介绍了其概念、中断源识别方式、相关例题及思考题，核心要点如下：</p>
+<ul>
+<li><strong>多级中断的概念</strong>：<ul>
+<li><strong>定义与优先级</strong>：多级中断系统针对众多中断源，<strong>依据轻重缓急划分级别并分配优先权</strong>，高优先级中断可打断低优先级中断服务程序，实现程序嵌套 。例如，三级中断优先权高于二级，二级高于一级。</li>
+<li><strong>分类</strong>：分为<strong>一维多级中断</strong>（每级一个中断源）和<strong>二维多级中断</strong>（每级多个中断源）。</li>
+<li><strong>关键要点</strong>：<ul>
+<li><strong>寄存器与屏蔽策略</strong>：系统若有<strong>n级中断，对应n个中断请求触发器和n个中断屏蔽触发器</strong>。响应中断时，需保存并设置中断屏蔽寄存器内容，通常响应某级中断后，<strong>关闭本级及更低优先级中断屏蔽触发器，开放更高级中断屏蔽触发器</strong>，实现中断嵌套。</li>
+<li><strong>中断嵌套规则</strong>：多级中断间可嵌套，但<strong>同一级内不同中断源的中断不能嵌套</strong>，需处理完一个中断后，再响应同级其他中断源。</li>
+<li><strong>硬件逻辑</strong>：设置多级中断的系统追求快速响应，<strong>由硬件逻辑确定响应的中断级和中断源</strong>。二维中断结构中，结合<strong>独立请求与链式查询方式</strong>，先由中断优先级排队电路确定响应中断级，再用链式查询确定响应中断源。</li>
+<li><strong>堆栈应用</strong>：与单级中断类似，多级中断也<strong>使用中断堆栈保存现场信息</strong>，优点是控制逻辑简单，且各级中断现场可共用同一堆栈。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>多级中断源的识别</strong>：<ul>
+<li><strong>逻辑结构</strong>：每级中断有独立请求线连接CPU的中断优先级排队电路，采用<strong>独立请求方式</strong>。中断请求信号经“中断请求”“中断屏蔽”触发器后，进入排队电路，排队电路确定优先响应的中断源，并输出对应信号，编码电路据此产生地址码，转向中断服务程序入口 。</li>
+<li><strong>示例计算</strong>：若请求源1优先级最高，4最低，中断请求寄存器内容为1111，中断屏蔽寄存器内容为0010，则进入排队器的中断请求是1101，排队器输出1000，编码器产生中断源1对应的向量地址。若一级请求线上连接多个中断源设备，<strong>需用串行链式方式进一步查询，采用二维方式设计中断排队逻辑</strong>。</li>
+</ul>
+</li>
+<li><strong>例题分析</strong>：<ul>
+<li><strong>例8.2</strong>：针对二维中断系统，明确CPU和设备优先级排序，计算不同设备中断服务程序执行时中断屏蔽寄存器（IM）状态，说明IM不能单独屏蔽某个优先级的个别设备，可通过清“0”接口中的EI标志实现；并阐述调整设备优先级的方法 。</li>
+<li><strong>例8.3</strong>：在A、B、C三个设备组成的单级中断结构中，计算处理各设备及总耗时，得出系统达到中断饱和的最小时间及中断极限频率 。</li>
+</ul>
+</li>
+<li><strong>思考题</strong>：提出“多级中断比单级中断在设计理念上的创新点”这一问题，引发思考 。 </li>
+</ul>
+<h3 id="836-armv8-a">8.3.6 ARMv8-A 架构的异常与中断<a class="headerlink" href="#836-armv8-a" title="Permanent link">&para;</a></h3>
+<p>该节内容聚焦<strong>ARMv8-A架构的异常与中断机制</strong>，从异常类型、处理流程、向量表及中断控制器等方面展开，结合64位执行状态（AArch64）的特性，解析其设计逻辑与技术实现，具体总结如下：  </p>
+<h4 id="armv8-a"><strong>一、ARMv8-A的异常类型</strong><a class="headerlink" href="#armv8-a" title="Permanent link">&para;</a></h4>
+<h5 id="1_3"><strong>1. 同步异常与异步异常</strong><a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心区分</strong>：  </li>
+<li><strong>同步异常</strong>：由<strong>执行指令或尝试执行指令直接引发</strong>，返回地址携带异常指令细节（如指令/数据终止、系统调用）。  </li>
+<li><strong>异步异常</strong>：非程序执行直接引发，包括<strong>IRQ（普通中断）、FIQ（快速中断）、SError（系统错误）</strong>，由外部中断引脚或系统错误触发。  </li>
+</ul>
+<h5 id="2_3"><strong>2. 具体异常事件</strong><a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>终止（Aborts）</strong>  </li>
+<li><strong>同步终止</strong>：指令/数据访问错误（如MMU权限故障、无效指令、系统调用）。  </li>
+<li><strong>异步终止</strong>：系统错误（如Cache写回脏数据失败）。  </li>
+<li><strong>复位</strong>：<strong>最高等级异常，不可屏蔽</strong>，系统复位后跳转至最高异常等级初始化。  </li>
+<li><strong>异常产生指令</strong>：触发软中断（如SVC/HVC/SMC指令），用于特权等级提升或系统服务请求。  </li>
+<li><strong>中断（IRQ/FIQ）</strong>：  </li>
+<li><strong>FIQ优先级高于IRQ</strong>，仅少数多数据加载指令可被中断打断，响应发生于当前指令结束且开中断状态。  </li>
+</ol>
+<h4 id="_32"><strong>二、异常处理流程</strong><a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<h5 id="1_4"><strong>1. 异常等级切换规则</strong><a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>进入异常</strong>：等级可保持或提升（不可降低），目标异常等级由异常类型或配置位决定（不可为EL0）。  </li>
+<li><strong>返回异常</strong>：等级可保持或降低（不可提升），通过<strong>ERET指令</strong>恢复现场并返回断点。  </li>
+</ul>
+<h5 id="2_4"><strong>2. 硬件隐操作</strong><a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>保存现场</strong>：将当前PSTATE存入<strong>SPSR_ELn寄存器</strong>（备份程序状态寄存器）。  </li>
+<li><strong>更新状态</strong>：调整PSTATE，必要时提升异常等级。  </li>
+<li><strong>记录断点</strong>：将返回地址存入<strong>ELR_ELn寄存器</strong>（异常链接寄存器）。  </li>
+</ol>
+<h5 id="3"><strong>3. 异常返回</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h5>
+<ul>
+<li>执行<strong>ERET指令</strong>：从SPSR_ELn恢复PSTATE，将ELR_ELn值赋给PC，继续执行主程序。  </li>
+</ul>
+<h4 id="_33"><strong>三、异常向量与向量表</strong><a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<h5 id="1_5"><strong>1. 向量表结构</strong><a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>分级管理</strong>：EL3、EL2、EL1各有独立异常向量表，由<strong>VBAR寄存器</strong>（向量基址寄存器）指定基地址。  </li>
+<li><strong>表项固定偏移</strong>：每个向量表包含4类异常入口（同步异常、IRQ、FIQ、SError），偏移地址固定。  </li>
+<li><strong>表项内容</strong>：存放<strong>异常处理程序的首条指令字</strong>（非入口地址），每个表项128字节（32条指令），支持顶层处理逻辑及异常源查找。  </li>
+</ul>
+<h5 id="2_5"><strong>2. 向量表分组依据</strong><a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h5>
+<ul>
+<li>异常发生等级（当前/更低等级）、堆栈指针（SP0/SPn）、执行状态（AArch64/AArch32）。  </li>
+</ul>
+<h4 id="gic"><strong>四、通用中断控制器（GIC）架构</strong><a class="headerlink" href="#gic" title="Permanent link">&para;</a></h4>
+<h5 id="1_6"><strong>1. 核心功能</strong><a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h5>
+<ul>
+<li>管理<strong>多外部中断源</strong>，仲裁优先级并向CPU内核发送IRQ/FIQ请求。  </li>
+<li><strong>传统方式</strong>：外设通过中断请求线提交请求。  </li>
+<li><strong>MSI方式（v3版本）</strong>：外设通过<strong>写寄存器触发消息信号中断</strong>，减少硬件连线，适用于大型系统。  </li>
+</ul>
+<h5 id="2_6"><strong>2. 处理流程</strong><a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h5>
+<ul>
+<li>中断控制器接收请求→优先级判优→转发至CPU内核→异常处理程序响应。  </li>
+</ul>
+<h4 id="_34"><strong>五、关键术语与机制总结</strong><a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>术语</strong></th>
+<th><strong>定义与作用</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AArch64</strong></td>
+<td>64位执行状态，支持A64指令集，主导异常模型。</td>
+</tr>
+<tr>
+<td><strong>ELn</strong></td>
+<td>异常等级（EL0-EL3），EL0为非特权等级。</td>
+</tr>
+<tr>
+<td><strong>VBAR</strong></td>
+<td>异常向量表基址寄存器，定位各等级向量表。</td>
+</tr>
+<tr>
+<td><strong>GIC</strong></td>
+<td>通用中断控制器，处理多源中断的仲裁与分发。</td>
+</tr>
+<tr>
+<td><strong>MSI</strong></td>
+<td>消息信号中断，通过寄存器写操作触发请求。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结</strong>：ARMv8-A架构通过<strong>同步/异步异常分类</strong>、<strong>分级向量表机制</strong>及<strong>通用中断控制器</strong>，实现了对复杂中断场景的高效管理，其核心设计理念是<strong>硬件隐操作简化流程</strong>、<strong>分级管理提升灵活性</strong>，适用于高性能计算与多核系统的实时响应需求。</p>
+<h2 id="84-dma">8.4 DMA 方式<a class="headerlink" href="#84-dma" title="Permanent link">&para;</a></h2>
+<h3 id="841-dma">8.4.1 DMA 的基本概念<a class="headerlink" href="#841-dma" title="Permanent link">&para;</a></h3>
+<p>该节内容围绕<strong>直接内存访问（DMA）方式</strong>展开，介绍其核心概念、工作原理、优缺点、适用场景及DMA控制器的基本操作，具体总结如下：  </p>
+<h4 id="dma_1"><strong>一、DMA的定义与核心机制</strong><a class="headerlink" href="#dma_1" title="Permanent link">&para;</a></h4>
+<p><strong>定义</strong>：<br />
+- DMA是<strong>完全由硬件执行I/O数据交换的工作方式</strong>，DMA控制器（DMAC）接管CPU对总线的控制权，数据直接在<strong>内存与外设间传输（不经过CPU）</strong>，适用于<strong>高速成组数据传送</strong>。  </p>
+<p><strong>关键原理</strong>：<br />
+- <strong>硬件主导</strong>：DMAC负责生成内存地址、控制传输计数及总线操作，<strong>CPU仅在传输前后参与初始化和收尾</strong>。<br />
+- <strong>中断辅助</strong>：传输结束后DMAC通过<strong>中断通知CPU</strong>，无需CPU全程监控。  </p>
+<h4 id="dma_2"><strong>二、DMA方式的核心特点</strong><a class="headerlink" href="#dma_2" title="Permanent link">&para;</a></h4>
+<h5 id="_35"><strong>优点</strong>：<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>传输效率高</strong>：  </li>
+<li>省去CPU取指令、存取数据等操作，<strong>避免软件开销</strong>（如现场保存/恢复）。  </li>
+<li>硬件直接控制地址修改和计数，<strong>速度远超程序查询/中断方式</strong>。  </li>
+<li><strong>CPU利用率高</strong>：  </li>
+<li>传输过程中CPU可继续执行程序（<strong>无访存冲突时并行工作</strong>）。  </li>
+</ol>
+<h5 id="_36"><strong>缺点</strong>：<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>功能单一</strong>：仅支持简单数据传送，<strong>无法处理复杂逻辑（如数据判断、计算）</strong>。  </li>
+<li><strong>总线冲突风险</strong>：DMA与CPU同时访存时需仲裁，可能影响CPU性能。  </li>
+</ul>
+<h5 id="io_2"><strong>与其他I/O方式的对比</strong>：<a class="headerlink" href="#io_2" title="Permanent link">&para;</a></h5>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>DMA方式</strong></th>
+<th><strong>程序查询/中断方式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>控制主体</strong></td>
+<td>硬件（DMA控制器）</td>
+<td>软件（CPU执行程序）</td>
+</tr>
+<tr>
+<td><strong>CPU参与度</strong></td>
+<td>仅初始化/结束处理</td>
+<td>全程或响应时介入</td>
+</tr>
+<tr>
+<td><strong>数据路径</strong></td>
+<td>内存↔外设（直达）</td>
+<td>内存↔CPU↔外设（中转）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>高速、批量数据（如磁盘块）</td>
+<td>低速、少量数据或复杂逻辑</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_37"><strong>三、适用场景与典型应用</strong><a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心场景</strong>：  </li>
+<li><strong>高速外设批量传输</strong>：磁盘以数据块为单位的读写、网卡的数据帧传输。  </li>
+<li><strong>实时数据采集</strong>：传感器连续数据采集（如ADC批量转换）。  </li>
+<li><strong>关键条件</strong>：  </li>
+<li>外设支持<strong>连续数据传输模式</strong>（如块设备）。  </li>
+<li>系统需具备<strong>DMA控制器硬件模块</strong>（如主板南桥芯片或集成外设控制器）。  </li>
+</ul>
+<h4 id="dma_3"><strong>四、DMA控制器的基本操作</strong><a class="headerlink" href="#dma_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>请求发起</strong>：  </li>
+<li>检测外设状态，就绪后向CPU发送<strong>DMA请求信号</strong>（如DREQ）。  </li>
+<li><strong>总线接管</strong>：  </li>
+<li>CPU响应后（如发送HLDA信号），DMAC接管总线控制权，进入<strong>DMA工作周期</strong>。  </li>
+<li><strong>数据传输控制</strong>：  </li>
+<li><strong>地址管理</strong>：输出内存地址（通过地址总线），每传送一个字自动递增/递减。  </li>
+<li><strong>计数管理</strong>：内置计数器记录已传输字数，达到预设值时终止传输。  </li>
+<li><strong>数据读写</strong>：控制内存与外设间的双向数据流动（如IOR/DACK信号组合）。  </li>
+<li><strong>传输结束处理</strong>：  </li>
+<li>向CPU发送<strong>中断请求</strong>（如EOP信号），通知传输完成。  </li>
+<li>释放总线控制权，返回初始状态。  </li>
+</ol>
+<h4 id="_38"><strong>五、关键要点总结</strong><a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心优势</strong>：通过<strong>硬件旁路CPU</strong>实现高速数据传输，解决了程序控制方式的效率瓶颈。  </li>
+<li><strong>局限性</strong>：依赖专用硬件，逻辑功能受限，需与CPU协调总线访问。  </li>
+<li><strong>系统协同</strong>：DMA的初始化和错误处理由<strong>操作系统驱动程序</strong>完成，硬件仅负责数据搬运。  </li>
+</ul>
+<p><strong>总结</strong>：DMA方式是计算机系统中高速数据传输的核心机制，通过硬件直接控制内存与外设通信，显著提升了系统整体性能，尤其适用于存储设备和高速接口的数据交换场景。</p>
+<h3 id="842-dma">8.4.2 DMA 传送方式<a class="headerlink" href="#842-dma" title="Permanent link">&para;</a></h3>
+<p>该节内容聚焦<strong>DMA（直接内存访问）的三种传送方式</strong>，介绍其核心原理、工作流程、优缺点及适用场景，具体总结如下：  </p>
+<h4 id="dma_4"><strong>一、DMA传送方式的核心背景</strong><a class="headerlink" href="#dma_4" title="Permanent link">&para;</a></h4>
+<p><strong>核心目标</strong>：解决DMA控制器与CPU分时使用内存的问题，根据<strong>DMA请求占用总线周期的数量</strong>，分为三种方式：<br />
+- <strong>成组连续传送方式</strong>（停止CPU访存）<br />
+- <strong>周期挪用方式</strong>（单字传送/周期窃取）<br />
+- <strong>透明DMA方式</strong>（总线周期分时）  </p>
+<h4 id="_39"><strong>二、成组连续传送方式</strong><a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
+<h5 id="_40"><strong>原理与流程</strong>：<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>总线控制权切换</strong>：DMA控制器发送停止信号→CPU放弃总线→DMA完成整批数据传输→归还总线。  </li>
+<li><strong>时间特性</strong>：CPU在传输期间<strong>完全停止工作</strong>（保持状态），如图8.15(a)所示。  </li>
+</ul>
+<h5 id="_41"><strong>优缺点</strong>：<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>优点</strong>：控制逻辑简单，适合<strong>高速设备成组传输</strong>（如磁盘块读写）。  </li>
+<li><strong>缺点</strong>：  </li>
+<li>内存利用率低：外设传输间隔远大于内存周期（如软盘32μs/字 vs 内存0.2μs/周期），导致大量空闲周期。  </li>
+<li>CPU资源浪费：传输期间无法执行任何操作。  </li>
+</ul>
+<h5 id="_42"><strong>适用场景</strong>：<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h5>
+<ul>
+<li>对<strong>连续批量数据传输</strong>需求高，且能接受CPU短时间停顿的场景。  </li>
+</ul>
+<h4 id="_43"><strong>三、周期挪用方式（周期窃取）</strong><a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
+<h5 id="_44"><strong>原理与流程</strong>：<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>动态总线仲裁</strong>：  </li>
+<li>无DMA请求时，CPU正常访存；  </li>
+<li>有请求时，外设<strong>挪用1~2个内存周期</strong>（分时共享总线）。  </li>
+<li><strong>冲突处理</strong>：  </li>
+<li>若CPU与外设同时访存，<strong>外设优先</strong>（避免数据丢失），CPU延缓指令执行（如插入DMA周期）。  </li>
+</ul>
+<h5 id="_45"><strong>优缺点</strong>：<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>优点</strong>：  </li>
+<li>内存与CPU效率高：仅挪用必要周期，避免连续空闲。  </li>
+<li>灵活性强：适用于<strong>随机、非连续的I/O请求</strong>。  </li>
+<li><strong>缺点</strong>：  </li>
+<li>额外开销：每次挪用需申请/归还总线（2~5个内存周期延迟）。  </li>
+</ul>
+<h5 id="_46"><strong>适用场景</strong>：<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>I/O设备读写周期大于内存周期</strong>的场景（如低速外设单字传输）。  </li>
+</ul>
+<h4 id="dma_5"><strong>四、透明DMA方式（总线周期分时）</strong><a class="headerlink" href="#dma_5" title="Permanent link">&para;</a></h4>
+<h5 id="_47"><strong>原理与流程</strong>：<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>固定分时机制</strong>：将CPU周期分为两个子周期（如C1和C2），<strong>C1专供DMA访存，C2专供CPU访存</strong>，如图8.15(c)所示。  </li>
+<li><strong>硬件独立控制</strong>：DMA与CPU各自拥有地址/数据寄存器，通过多路转换器分时使用总线，<strong>无需总线控制权申请</strong>。  </li>
+</ul>
+<h5 id="_48"><strong>关键特性</strong>：<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>高效性</strong>：CPU与DMA并行工作，<strong>无总线切换延迟</strong>，传输效率最高。  </li>
+<li><strong>透明性</strong>：CPU感知不到DMA操作，主程序持续运行。  </li>
+<li><strong>前提条件</strong>：CPU周期需为内存周期的整数倍（如CPU 1.2μs周期=2×内存0.6μs周期）。  </li>
+</ul>
+<h5 id="_49"><strong>适用场景</strong>：<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>外设传输频率固定</strong>（如同步通信设备），且CPU与内存速度匹配的高性能系统。  </li>
+</ul>
+<h4 id="_50"><strong>五、三种方式对比总结</strong><a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>成组连续传送</strong></th>
+<th><strong>周期挪用</strong></th>
+<th><strong>透明DMA</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>总线控制</strong></td>
+<td>独占总线（停止CPU）</td>
+<td>分时共享（挪用周期）</td>
+<td>固定分时（C1/C2）</td>
+</tr>
+<tr>
+<td><strong>CPU状态</strong></td>
+<td>完全停止</td>
+<td>可能延缓（冲突时）</td>
+<td>无感知（持续运行）</td>
+</tr>
+<tr>
+<td><strong>传输效率</strong></td>
+<td>高（批量连续）</td>
+<td>中（单字/随机）</td>
+<td>最高（并行分时）</td>
+</tr>
+<tr>
+<td><strong>内存利用率</strong></td>
+<td>低（大量空闲）</td>
+<td>高</td>
+<td>最高</td>
+</tr>
+<tr>
+<td><strong>典型场景</strong></td>
+<td>高速块设备（如磁盘）</td>
+<td>低速单字设备（如键盘）</td>
+<td>固定频率外设（如网卡）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>总结</strong>：DMA传送方式通过<strong>硬件分时策略</strong>平衡CPU与外设的内存访问需求，成组方式适合批量传输，周期挪用适合随机请求，透明方式适合高速同步场景。选择时需根据外设速度、传输模式及系统效率要求综合考量。</p>
+<h3 id="843-dma">8.4.3 基本的 DMA 控制器<a class="headerlink" href="#843-dma" title="Permanent link">&para;</a></h3>
+<h3 id="844-dma">8.4.4 选择型和多路型 DMA 控制器<a class="headerlink" href="#844-dma" title="Permanent link">&para;</a></h3>
+<h2 id="85-920">8.5 鲲鹏 920 处理器片上系统的设备与输入输出子系统<a class="headerlink" href="#85-920" title="Permanent link">&para;</a></h2>
+<h3 id="851-920">8.5.1 鲲鹏 920 处理器片上系统的片上设备类型<a class="headerlink" href="#851-920" title="Permanent link">&para;</a></h3>
+<h3 id="852-pcie">8.5.2 虚拟 PCIe 总线<a class="headerlink" href="#852-pcie" title="Permanent link">&para;</a></h3>
+<h3 id="853-920">8.5.3 鲲鹏 920 处理器片上系统的网络子系统<a class="headerlink" href="#853-920" title="Permanent link">&para;</a></h3>
+<h3 id="854-920">8.5.4 鲲鹏 920 处理器片上系统的外存储子系统<a class="headerlink" href="#854-920" title="Permanent link">&para;</a></h3>
+<h2 id="86-io">8.6 I/O 系统设计<a class="headerlink" href="#86-io" title="Permanent link">&para;</a></h2>
 
 
 

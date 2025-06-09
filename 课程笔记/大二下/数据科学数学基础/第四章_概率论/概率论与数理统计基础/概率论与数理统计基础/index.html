@@ -1,0 +1,6818 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/">
+      
+      
+        <link rel="next" href="../../%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/">
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>第四章：概率论1 - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第四章：概率论1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  课程笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自学笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  读书笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二上
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大二上
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    离散数学（下）
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学（下）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    半群和群
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PBL数字经济与智能金融
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PBL数字经济与智能金融
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Class：PBL教学方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Second Class：PBL教学的常见形式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Third Class：教授课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourth Class：助教课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifth Class：教授课4互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixth Class：教授课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventh Class：助教课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eighth Class：教授课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ninth Class：助教课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenth Class：教授课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eleventh Class：助教课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Twelfth Class：助教课4期中复习课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thirteenth Class：助教课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourteenth Class：教授课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifteenth Class：教授课7互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixteenth Class：个人规划及发展建议
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventeenth Class：升学与就业方向展望
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二下
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            大二下
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1_1" id="__nav_2_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_1_2" id="__nav_2_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch1_Introduction/Ch1_Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Physical Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch3_The_Data_Link_Layer/Ch3_The_Data_Link_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Data Link Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch4_The_Medium_Access_Control_Sublayer/Ch4_The_Medium_Access_Control_Sublayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Medium Access Control Sublayer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch5_The_Network_Layer/Ch5_The_Network_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Network Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch6_The_Transport_Layer/Ch6_The_Transport_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Transport Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    多元统计分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            多元统计分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    北京大学数学科学学院多元统计分析讲义
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_2_1" id="__nav_2_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            北京大学数学科学学院多元统计分析讲义
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2_2" id="__nav_2_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：绪论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：多变量的可视化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：多元分布的基本概念及数字特征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学导论
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学导论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_3_1" id="__nav_2_3_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3_2" id="__nav_2_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：数学基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：Python语言基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：数据预处理的基本方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机组成原理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_1" id="__nav_2_3_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：运算方法和运算器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：指令系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E6%95%99%E6%9D%90%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_2" id="__nav_2_3_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：运算方法和运算器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：指令系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：中央处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章：总线系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章：外围设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章：输入输出系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_5" id="__nav_2_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    形式语言与自动机
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            形式语言与自动机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_5_1" id="__nav_2_3_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：语义和文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：有限自动机与右线性文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA1/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：上下文无关文法与下推自动机1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA2/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：上下文无关文法与下推自动机2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_6" id="__nav_2_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学数学基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学数学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/%E7%BA%BF%E4%BB%A3%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E5%BA%94%E7%94%A8/%E7%BA%BF%E4%BB%A3%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/%E6%9C%80%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%89%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/%E6%9C%89%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论1
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论1
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      概览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一段话总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      思维导图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      详细总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="详细总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、概率基础
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、多维随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、期望与方差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、参数估计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、假设检验
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率基础总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概率基础总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与性质
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 概率的定义（公理化定义）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 概率的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 条件概率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 乘法定理（链式法则）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、全概率公式与贝叶斯公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、全概率公式与贝叶斯公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 样本空间的划分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全概率公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 条件概率求解方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全概率公式求解方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯公式求解方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率的性质、条件概率及相关公式总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概率的性质、条件概率及相关公式总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 概率的性质（多事件推广）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 条件概率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 乘法定理（链式法则）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 全概率公式与贝叶斯公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 条件概率与乘法定理求解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全概率公式求解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯公式求解
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机变量及其分布总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随机变量及其分布总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 随机变量的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 离散型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 连续型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 多维随机变量（以二维为例）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 离散型随机变量：分布律计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 连续型随机变量：概率密度与分布函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 二维连续型随机变量：联合概率计算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      期望与方差总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="期望与方差总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 数学期望（均值）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 方差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 协方差与相关系数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 协方差矩阵
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 期望的计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 方差的计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 协方差与相关系数的计算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      参数估计方法总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参数估计方法总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mle" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 极大似然估计（MLE）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 最大后验概率估计（MAP）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯估计
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mle_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 极大似然估计（MLE）示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-map_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 最大后验概率估计（MAP）示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯估计示例（共轭先验）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      假设检验总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="假设检验总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 基本思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键术语
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 两类错误
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 检验类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与步骤
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 假设检验通用步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 示例：单个正态总体均值的假设检验
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、重点总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 检验方法对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键要点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 注意事项
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    自学笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            自学笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java基础概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    MkDocs&Github WorkFlow
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MkDocs&Github WorkFlow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    YAML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    读书笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            读书笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    2025.2.16《载人火星探测航天运输系统》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025.2.16《载人火星探测航天运输系统》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章 载人火星探测模式及其航天运输系统方案发展情况
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025.3.13《多元统计分析引论》
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            2025.3.13《多元统计分析引论》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../读书笔记/2025_3_13_多元统计分析引论/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记总览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../读书笔记/2025_3_13_多元统计分析引论/第一章_矩阵/第一章_矩阵.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章 矩阵
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      概览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一段话总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      思维导图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      详细总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="详细总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、概率基础
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、多维随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、期望与方差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、参数估计
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、假设检验
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键问题
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率基础总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概率基础总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与性质
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与性质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 概率的定义（公理化定义）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 概率的性质
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 条件概率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 乘法定理（链式法则）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、全概率公式与贝叶斯公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、全概率公式与贝叶斯公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 样本空间的划分
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全概率公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 条件概率求解方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全概率公式求解方法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯公式求解方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      概率的性质、条件概率及相关公式总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="概率的性质、条件概率及相关公式总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 概率的性质（多事件推广）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 条件概率
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 乘法定理（链式法则）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 全概率公式与贝叶斯公式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 条件概率与乘法定理求解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 全概率公式求解
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯公式求解
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      随机变量及其分布总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随机变量及其分布总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与分类
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 随机变量的定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 离散型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 连续型随机变量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 多维随机变量（以二维为例）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 离散型随机变量：分布律计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 连续型随机变量：概率密度与分布函数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 二维连续型随机变量：联合概率计算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      期望与方差总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="期望与方差总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与公式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与公式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 数学期望（均值）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 方差
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 协方差与相关系数
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 协方差矩阵
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 期望的计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 方差的计算
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 协方差与相关系数的计算
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      参数估计方法总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参数估计方法总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mle" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 极大似然估计（MLE）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-map" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 最大后验概率估计（MAP）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯估计
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-mle_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 极大似然估计（MLE）示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-map_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 最大后验概率估计（MAP）示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 贝叶斯估计示例（共轭先验）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      假设检验总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="假设检验总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心概念与原理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心概念与原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 基本思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键术语
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 两类错误
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 检验类型
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、求解方法与步骤
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、求解方法与步骤">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 假设检验通用步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 示例：单个正态总体均值的假设检验
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、重点总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、重点总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 检验方法对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键要点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 注意事项
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">概率论与数理统计基础<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">概览<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">一段话总结<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>文档围绕概率论与数理统计展开，<strong>先介绍概率的定义、性质，条件概率及全概率公式、贝叶斯公式</strong>；<strong>接着阐述随机变量的定义，包括离散型和连续型随机变量的分布及常见分布类型</strong>；<strong>然后讲解多维随机变量及其分布、期望与方差的定义、计算及性质，还涉及协方差和协方差矩阵</strong>；<strong>最后介绍参数估计方法如极大似然估计、最大后验概率估计、贝叶斯估计，以及假设检验的基本原理、步骤和常见检验方法</strong>。</p>
+<hr />
+<h3 id="_4">思维导图<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p><img alt="exported_image.png" src="../exported_image.png" /></p>
+<hr />
+<h3 id="_5">详细总结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="_6">一、概率基础<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>概率的定义</strong><br />
+   对随机试验E的每一事件A，赋予实数<span class="arithmatex">\(P(A)\)</span>为其概率，满足：  </li>
+<li><strong>非负性</strong>：<span class="arithmatex">\(P(A) \geq 0\)</span>  </li>
+<li><strong>规范性</strong>：必然事件<span class="arithmatex">\(P(S) = 1\)</span>  </li>
+<li>
+<p><strong>可列可加性</strong>：两两互斥事件<span class="arithmatex">\(A_1, A_2, \dots\)</span>，有<span class="arithmatex">\(P(\bigcup_{i=1}^\infty A_i) = \sum_{i=1}^\infty P(A_i)\)</span>。  </p>
+</li>
+<li>
+<p><strong>概率的性质</strong>  </p>
+</li>
+<li><span class="arithmatex">\(P(\varnothing) = 0\)</span>  </li>
+<li><strong>有限可加性</strong>：<span class="arithmatex">\(n\)</span>个互斥事件<span class="arithmatex">\(A_1, \dots, A_n\)</span>，<span class="arithmatex">\(P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i)\)</span>  </li>
+<li>逆事件概率：<span class="arithmatex">\(P(\overline{A}) = 1 - P(A)\)</span>  </li>
+<li>
+<p><strong>加法公式</strong>：任意两事件<span class="arithmatex">\(A, B\)</span>，<span class="arithmatex">\(P(A \cup B) = P(A) + P(B) - P(AB)\)</span>，可推广至<span class="arithmatex">\(n\)</span>个事件。  </p>
+</li>
+<li>
+<p><strong>条件概率与公式</strong>  </p>
+</li>
+<li>定义：<span class="arithmatex">\(P(B|A) = \frac{P(AB)}{P(A)}\)</span>（<span class="arithmatex">\(P(A) &gt; 0\)</span>）  </li>
+<li><strong>乘法定理</strong>：<span class="arithmatex">\(P(AB) = P(B|A)P(A)\)</span>，推广至<span class="arithmatex">\(n\)</span>个事件链。  </li>
+<li><strong>全概率公式</strong>：样本空间划分<span class="arithmatex">\(B_1, \dots, B_n\)</span>，则<span class="arithmatex">\(P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)\)</span>。  </li>
+<li><strong>贝叶斯公式</strong>：<span class="arithmatex">\(P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum_{j=1}^n P(A|B_j)P(B_j)}\)</span>。  </li>
+</ol>
+<h4 id="_7">二、随机变量<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>离散型随机变量</strong>  </li>
+<li>分布律：<span class="arithmatex">\(P(X = x_k) = p_k\)</span>（<span class="arithmatex">\(k=1,2,\dots\)</span>）  </li>
+<li>
+<p><strong>常见分布</strong>：<br />
+     | 分布名称 | 记号 | 概率公式 | 期望 | 方差 |
+     |---|---|---|---|---|
+     | (0-1)分布 | <span class="arithmatex">\(X \sim B(1, p)\)</span> | <span class="arithmatex">\(P(X=k) = p^k(1-p)^{1-k}\)</span> | <span class="arithmatex">\(p\)</span> | <span class="arithmatex">\(p(1-p)\)</span> |
+     | 二项分布 | <span class="arithmatex">\(X \sim B(n, p)\)</span> | <span class="arithmatex">\(P(X=k) = C_n^k p^k(1-p)^{n-k}\)</span> | <span class="arithmatex">\(np\)</span> | <span class="arithmatex">\(np(1-p)\)</span> |
+     | 泊松分布 | <span class="arithmatex">\(X \sim P(\lambda)\)</span> | <span class="arithmatex">\(P(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}\)</span> | <span class="arithmatex">\(\lambda\)</span> | <span class="arithmatex">\(\lambda\)</span> |</p>
+</li>
+<li>
+<p><strong>连续型随机变量</strong>  </p>
+</li>
+<li>概率密度<span class="arithmatex">\(p(x)\)</span>满足：  <ul>
+<li><span class="arithmatex">\(\int_{-\infty}^{+\infty} p(x)dx = 1\)</span>  </li>
+<li><span class="arithmatex">\(P(a &lt; X \leq b) = \int_a^b p(x)dx\)</span>  </li>
+</ul>
+</li>
+<li><strong>常见分布</strong>：<br />
+     | 分布名称 | 记号 | 概率密度 | 期望 | 方差 |
+     |---|---|---|---|---|
+     | 均匀分布 | <span class="arithmatex">\(X \sim U[a, b]\)</span> | <span class="arithmatex">\(p(x) = \frac{1}{b-a}\)</span>（<span class="arithmatex">\(a \leq x \leq b\)</span>） | <span class="arithmatex">\(\frac{a+b}{2}\)</span> | <span class="arithmatex">\(\frac{(b-a)^2}{12}\)</span> |
+     | 正态分布 | <span class="arithmatex">\(X \sim N(\mu, \sigma^2)\)</span> | <span class="arithmatex">\(p(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span> | <span class="arithmatex">\(\mu\)</span> | <span class="arithmatex">\(\sigma^2\)</span> |
+     | 指数分布 | <span class="arithmatex">\(X \sim E(\lambda)\)</span> | <span class="arithmatex">\(p(x) = \lambda e^{-\lambda x}\)</span>（<span class="arithmatex">\(x \geq 0\)</span>） | <span class="arithmatex">\(\frac{1}{\lambda}\)</span> | <span class="arithmatex">\(\frac{1}{\lambda^2}\)</span> |</li>
+</ol>
+<h4 id="_8">三、多维随机变量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>联合分布函数</strong>：<span class="arithmatex">\(F(x_1, \dots, x_n) = P(X_1 \leq x_1, \dots, X_n \leq x_n)\)</span>。  </li>
+<li><strong>二维连续型</strong>：联合概率密度<span class="arithmatex">\(p(x, y)\)</span>满足<span class="arithmatex">\(F(x, y) = \int_{-\infty}^y \int_{-\infty}^x p(u, v)dudv\)</span>，且<span class="arithmatex">\(\iint_{-\infty}^{+\infty} p(x, y)dxdy = 1\)</span>。  </li>
+</ul>
+<h4 id="_9">四、期望与方差<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>数学期望</strong>  </li>
+<li>离散型：<span class="arithmatex">\(E(X) = \sum_{k=1}^\infty x_k p_k\)</span>  </li>
+<li>连续型：<span class="arithmatex">\(E(X) = \int_{-\infty}^{+\infty} x p(x)dx\)</span>  </li>
+<li>
+<p><strong>性质</strong>：<span class="arithmatex">\(E(C) = C\)</span>，<span class="arithmatex">\(E(CX) = CE(X)\)</span>，<span class="arithmatex">\(E(X+Y) = E(X)+E(Y)\)</span>（独立时<span class="arithmatex">\(E(XY) = E(X)E(Y)\)</span>）。  </p>
+</li>
+<li>
+<p><strong>方差</strong>  </p>
+</li>
+<li>定义：<span class="arithmatex">\(D(X) = E[(X-E(X))^2] = E(X^2) - [E(X)]^2\)</span>  </li>
+<li>
+<p><strong>性质</strong>：<span class="arithmatex">\(D(C) = 0\)</span>，<span class="arithmatex">\(D(CX) = C^2D(X)\)</span>，<span class="arithmatex">\(D(X \pm Y) = D(X) + D(Y) \pm 2\text{Cov}(X, Y)\)</span>（独立时<span class="arithmatex">\(D(X+Y) = D(X)+D(Y)\)</span>）。  </p>
+</li>
+<li>
+<p><strong>协方差与协方差矩阵</strong>  </p>
+</li>
+<li>协方差：<span class="arithmatex">\(\text{Cov}(X, Y) = E[(X-E(X))(Y-E(Y))] = E(XY) - E(X)E(Y)\)</span>  </li>
+<li>相关系数：<span class="arithmatex">\(\rho_{XY} = \frac{\text{Cov}(X, Y)}{\sqrt{D(X)D(Y)}}\)</span>  </li>
+<li>协方差矩阵：<span class="arithmatex">\(n\)</span>维随机变量<span class="arithmatex">\(X=(X_1, \dots, X_n)^T\)</span>的协方差矩阵<span class="arithmatex">\(C\)</span>，其中<span class="arithmatex">\(c_{ij} = \text{Cov}(X_i, X_j)\)</span>，对角线为方差。  </li>
+</ol>
+<h4 id="_10">五、参数估计<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>极大似然估计（MLE）</strong>  </li>
+<li>思想：选择参数使样本出现概率最大。  </li>
+<li>
+<p>步骤：构造似然函数<span class="arithmatex">\(L(\theta) = \prod_{i=1}^n p(x_i;\theta)\)</span>，取对数求导，解方程得估计值。  </p>
+</li>
+<li>
+<p><strong>最大后验概率估计（MAP）</strong>  </p>
+</li>
+<li>
+<p>引入先验概率<span class="arithmatex">\(p(\theta)\)</span>，最大化后验概率<span class="arithmatex">\(p(\theta|X) \propto p(X|\theta)p(\theta)\)</span>，适用于小样本场景。  </p>
+</li>
+<li>
+<p><strong>贝叶斯估计</strong>  </p>
+</li>
+<li>计算后验分布<span class="arithmatex">\(p(\theta|X) = \frac{p(X|\theta)p(\theta)}{p(X)}\)</span>，取期望作为估计值，常选共轭先验简化计算。  </li>
+</ol>
+<h4 id="_11">六、假设检验<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>基本原理</strong>  </li>
+<li>基于小概率事件原理，提出原假设<span class="arithmatex">\(H_0\)</span>和备择假设<span class="arithmatex">\(H_1\)</span>，通过检验统计量判断拒绝或接受<span class="arithmatex">\(H_0\)</span>。  </li>
+<li>
+<p><strong>两类错误</strong>：  </p>
+<ul>
+<li>第一类错误（弃真）：概率为显著性水平<span class="arithmatex">\(\alpha\)</span>。  </li>
+<li>第二类错误（取伪）：概率为<span class="arithmatex">\(\beta\)</span>，<span class="arithmatex">\(\alpha\)</span>与<span class="arithmatex">\(\beta\)</span>不能同时减小，需增大样本量。  </li>
+</ul>
+</li>
+<li>
+<p><strong>正态总体均值检验</strong>  </p>
+</li>
+<li><strong>U检验（<span class="arithmatex">\(\sigma^2\)</span>已知）</strong>：  <ul>
+<li>双边检验：<span class="arithmatex">\(H_0: \mu = \mu_0\)</span>，拒绝域<span class="arithmatex">\(|Z| \geq z_{\alpha/2}\)</span>，<span class="arithmatex">\(Z = \frac{\overline{X}-\mu_0}{\sigma/\sqrt{n}}\)</span>。  </li>
+</ul>
+</li>
+<li><strong>t检验（<span class="arithmatex">\(\sigma^2\)</span>未知）</strong>：  <ul>
+<li>双边检验：<span class="arithmatex">\(H_0: \mu = \mu_0\)</span>，拒绝域<span class="arithmatex">\(|t| \geq t_{\alpha/2}(n-1)\)</span>，<span class="arithmatex">\(t = \frac{\overline{X}-\mu_0}{S/\sqrt{n}}\)</span>。  </li>
+</ul>
+</li>
+</ol>
+<hr />
+<h3 id="_12">关键问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>问题</strong>：全概率公式与贝叶斯公式的核心区别是什么？<br />
+<strong>答案</strong>：  </li>
+<li>全概率公式用于<strong>由因求果</strong>，通过样本空间的划分，将复杂事件概率分解为各简单事件条件概率的加权和，公式为<span class="arithmatex">\(P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)\)</span>。  </li>
+<li>
+<p>贝叶斯公式用于<strong>由果溯因</strong>，在已知结果发生的情况下，反推各原因的概率，公式为<span class="arithmatex">\(P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum_{j=1}^n P(A|B_j)P(B_j)}\)</span>，体现了先验概率到后验概率的更新。  </p>
+</li>
+<li>
+<p><strong>问题</strong>：离散型与连续型随机变量的数学期望计算有何本质差异？<br />
+<strong>答案</strong>：  </p>
+</li>
+<li>离散型随机变量的期望是<strong>加权求和</strong>，公式为<span class="arithmatex">\(E(X) = \sum_{k=1}^\infty x_k p_k\)</span>，其中<span class="arithmatex">\(p_k\)</span>为离散概率值。  </li>
+<li>
+<p>连续型随机变量的期望是<strong>积分运算</strong>，公式为<span class="arithmatex">\(E(X) = \int_{-\infty}^{+\infty} x p(x)dx\)</span>，其中<span class="arithmatex">\(p(x)\)</span>为概率密度函数，体现了密度在实数轴上的累积效应。  </p>
+</li>
+<li>
+<p><strong>问题</strong>：极大似然估计（MLE）与最大后验概率估计（MAP）的本质区别是什么？<br />
+<strong>答案</strong>：  </p>
+</li>
+<li><strong>MLE</strong>属于频率学派，假设参数为固定值，仅通过样本数据最大化似然函数<span class="arithmatex">\(L(\theta) = \prod_{i=1}^n p(x_i;\theta)\)</span>，不考虑先验信息。  </li>
+<li><strong>MAP</strong>属于贝叶斯学派，将参数视为随机变量，引入先验分布<span class="arithmatex">\(p(\theta)\)</span>，最大化后验概率<span class="arithmatex">\(p(\theta|X) \propto p(X|\theta)p(\theta)\)</span>，适合样本量小或需融入先验知识的场景。</li>
+</ol>
+<h2 id="_13">概率基础总结<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h3 id="_14">一、核心概念与性质<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="1">1. 概率的定义（公理化定义）<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>三要素</strong>：  </li>
+<li><strong>非负性</strong>：对任意事件 <span class="arithmatex">\( A \)</span>，<span class="arithmatex">\( P(A) \geq 0 \)</span>。  </li>
+<li><strong>规范性</strong>：必然事件 <span class="arithmatex">\( S \)</span> 的概率 <span class="arithmatex">\( P(S) = 1 \)</span>。  </li>
+<li><strong>可列可加性</strong>：若事件 <span class="arithmatex">\( A_1, A_2, \dots \)</span> 两两互斥（即 <span class="arithmatex">\( A_i \cap A_j = \varnothing, i \neq j \)</span>），则<br />
+    [
+    P(A_1 \cup A_2 \cup \dots) = P(A_1) + P(A_2) + \dots
+    ]</li>
+</ul>
+<h4 id="2">2. 概率的性质<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>空集概率</strong>：<span class="arithmatex">\( P(\varnothing) = 0 \)</span>。  </li>
+<li><strong>有限可加性</strong>：若 <span class="arithmatex">\( A_1, A_2, \dots, A_n \)</span> 两两互斥，则<br />
+  [
+  P(A_1 \cup \dots \cup A_n) = P(A_1) + \dots + P(A_n)
+  ]  </li>
+<li><strong>逆事件概率</strong>：对任意事件 <span class="arithmatex">\( A \)</span>，<span class="arithmatex">\( P(\overline{A}) = 1 - P(A) \)</span>。  </li>
+<li><strong>包含关系</strong>：若 <span class="arithmatex">\( A \subseteq B \)</span>，则 <span class="arithmatex">\( P(B - A) = P(B) - P(A) \)</span>，且 <span class="arithmatex">\( P(B) \geq P(A) \)</span>。  </li>
+<li><strong>加法公式</strong>：对任意两事件 <span class="arithmatex">\( A, B \)</span>，<br />
+  [
+  P(A \cup B) = P(A) + P(B) - P(AB)
+  ]<br />
+<strong>推广到 <span class="arithmatex">\( n \)</span> 个事件</strong>：<br />
+  [
+  P(\bigcup_{i=1}^n A_i) = \sum_{i=1}^n P(A_i) - \sum_{1 \leq i &lt; j \leq n} P(A_i A_j) + \dots + (-1)^{n+1} P(A_1 \dots A_n)
+  ]</li>
+</ul>
+<h4 id="3">3. 条件概率<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：设 <span class="arithmatex">\( P(B) &gt; 0 \)</span>，在事件 <span class="arithmatex">\( B \)</span> 发生的条件下，事件 <span class="arithmatex">\( A \)</span> 发生的概率为<br />
+  [
+  P(A|B) = \frac{P(AB)}{P(B)}
+  ]  </li>
+<li><strong>性质</strong>：  </li>
+<li>非负性：<span class="arithmatex">\( P(A|B) \geq 0 \)</span>。  </li>
+<li>规范性：<span class="arithmatex">\( P(S|B) = 1 \)</span>。  </li>
+<li>可列可加性：若 <span class="arithmatex">\( B_1, B_2, \dots \)</span> 两两互斥，则<br />
+    [
+    P(\bigcup_{i=1}^\infty B_i | A) = \sum_{i=1}^\infty P(B_i | A)
+    ]</li>
+</ul>
+<h4 id="4">4. 乘法定理（链式法则）<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>公式</strong>：  </li>
+<li>两事件：若 <span class="arithmatex">\( P(A) &gt; 0 \)</span>，则 <span class="arithmatex">\( P(AB) = P(B|A)P(A) \)</span>。  </li>
+<li><span class="arithmatex">\( n \)</span> 事件：若 <span class="arithmatex">\( P(A_1 A_2 \dots A_{n-1}) &gt; 0 \)</span>，则<br />
+    [
+    P(A_1 A_2 \dots A_n) = P(A_n | A_1 \dots A_{n-1}) \cdots P(A_2 | A_1) P(A_1)
+    ]</li>
+</ul>
+<h3 id="_15">二、全概率公式与贝叶斯公式<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1. 样本空间的划分<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：若事件 <span class="arithmatex">\( B_1, B_2, \dots, B_n \)</span> 满足：  </li>
+<li>两两互斥：<span class="arithmatex">\( B_i \cap B_j = \varnothing \ (i \neq j) \)</span>。  </li>
+<li>覆盖样本空间：<span class="arithmatex">\( B_1 \cup \dots \cup B_n = S \)</span>。<br />
+  则称 <span class="arithmatex">\( B_1, \dots, B_n \)</span> 为样本空间 <span class="arithmatex">\( S \)</span> 的一个<strong>划分</strong>。</li>
+</ul>
+<h4 id="2_1">2. 全概率公式<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>公式</strong>：若 <span class="arithmatex">\( B_1, \dots, B_n \)</span> 是样本空间的划分，且 <span class="arithmatex">\( P(B_i) &gt; 0 \)</span>，则对任意事件 <span class="arithmatex">\( A \)</span>，<br />
+  [
+  P(A) = \sum_{i=1}^n P(A|B_i) P(B_i)
+  ]  </li>
+<li><strong>本质</strong>：将复杂事件 <span class="arithmatex">\( A \)</span> 的概率分解为多个简单事件 <span class="arithmatex">\( B_i \)</span> 条件下的概率加权和，用于<strong>由因求果</strong>。</li>
+</ul>
+<h4 id="3_1">3. 贝叶斯公式<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>公式</strong>：在全概率公式条件下，有<br />
+  [
+  P(B_i | A) = \frac{P(A|B_i) P(B_i)}{\sum_{j=1}^n P(A|B_j) P(B_j)}
+  ]  </li>
+<li><strong>本质</strong>：已知结果 <span class="arithmatex">\( A \)</span> 发生，反推各原因 <span class="arithmatex">\( B_i \)</span> 的概率，用于<strong>由果溯因</strong>，体现先验概率到后验概率的更新。</li>
+</ul>
+<h3 id="_16">三、求解方法与示例<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">1. 条件概率求解方法<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<p><strong>步骤</strong>：<br />
+1. 确定样本空间 <span class="arithmatex">\( S \)</span> 和事件 <span class="arithmatex">\( A, B \)</span>。<br />
+2. 计算 <span class="arithmatex">\( P(AB) \)</span> 和 <span class="arithmatex">\( P(B) \)</span>。<br />
+3. 代入公式 <span class="arithmatex">\( P(A|B) = \frac{P(AB)}{P(B)} \)</span>。  </p>
+<p><strong>示例</strong>：<br />
+一袋中有 3 红球、2 白球，不放回摸球两次。设 <span class="arithmatex">\( A = \{\text{第二次摸到红球}\} \)</span>，<span class="arithmatex">\( B = \{\text{第一次摸到白球}\} \)</span>，求 <span class="arithmatex">\( P(A|B) \)</span>。<br />
+<strong>解</strong>：<br />
+- <span class="arithmatex">\( P(B) = \frac{2}{5} \)</span>（第一次摸白球的概率）。<br />
+- <span class="arithmatex">\( P(AB) = \frac{2}{5} \times \frac{3}{4} = \frac{3}{10} \)</span>（第一次白球且第二次红球的概率）。<br />
+- <span class="arithmatex">\( P(A|B) = \frac{P(AB)}{P(B)} = \frac{3/10}{2/5} = \frac{3}{4} \)</span>。</p>
+<h4 id="2_2">2. 全概率公式求解方法<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<p><strong>步骤</strong>：<br />
+1. 确定样本空间的划分 <span class="arithmatex">\( B_1, \dots, B_n \)</span>。<br />
+2. 计算各 <span class="arithmatex">\( P(B_i) \)</span> 和条件概率 <span class="arithmatex">\( P(A|B_i) \)</span>。<br />
+3. 代入公式 <span class="arithmatex">\( P(A) = \sum P(A|B_i) P(B_i) \)</span>。  </p>
+<p><strong>示例</strong>：<br />
+某工厂有三条生产线，产量分别占 20%、30%、50%，次品率分别为 5%、4%、2%。求随机抽取一件产品为次品的概率。<br />
+<strong>解</strong>：<br />
+- 设 <span class="arithmatex">\( B_1, B_2, B_3 \)</span> 表示产品来自三条生产线，<span class="arithmatex">\( A = \{\text{次品}\} \)</span>。<br />
+- <span class="arithmatex">\( P(B_1) = 0.2 \)</span>，<span class="arithmatex">\( P(B_2) = 0.3 \)</span>，<span class="arithmatex">\( P(B_3) = 0.5 \)</span>。<br />
+- <span class="arithmatex">\( P(A|B_1) = 0.05 \)</span>，<span class="arithmatex">\( P(A|B_2) = 0.04 \)</span>，<span class="arithmatex">\( P(A|B_3) = 0.02 \)</span>。<br />
+- 全概率公式：<br />
+  [
+  P(A) = 0.2 \times 0.05 + 0.3 \times 0.04 + 0.5 \times 0.02 = 0.032
+  ]</p>
+<h4 id="3_2">3. 贝叶斯公式求解方法<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h4>
+<p><strong>步骤</strong>：<br />
+1. 利用全概率公式计算 <span class="arithmatex">\( P(A) \)</span>。<br />
+2. 对目标原因 <span class="arithmatex">\( B_i \)</span>，计算 <span class="arithmatex">\( P(A|B_i) P(B_i) \)</span>。<br />
+3. 代入贝叶斯公式 <span class="arithmatex">\( P(B_i|A) = \frac{P(A|B_i) P(B_i)}{P(A)} \)</span>。  </p>
+<p><strong>示例</strong>（续上例）：若抽到一件次品，求其来自第一条生产线的概率。<br />
+<strong>解</strong>：<br />
+- 已求得 <span class="arithmatex">\( P(A) = 0.032 \)</span>。<br />
+- <span class="arithmatex">\( P(B_1|A) = \frac{P(A|B_1) P(B_1)}{P(A)} = \frac{0.05 \times 0.2}{0.032} = \frac{0.01}{0.032} = \frac{5}{16} \)</span>。</p>
+<h3 id="_17">四、重点总结<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>核心公式</strong>：加法公式、条件概率、全概率公式、贝叶斯公式。  </li>
+<li><strong>关键思想</strong>：  </li>
+<li>全概率公式通过划分样本空间，将复杂事件分解为简单事件的组合。  </li>
+<li>贝叶斯公式结合先验概率与观测数据，更新对事件发生原因的信念。  </li>
+<li><strong>应用场景</strong>：  </li>
+<li>全概率公式适用于多路径导致某结果的概率计算（如可靠性分析）。  </li>
+<li>贝叶斯公式适用于逆概率推断（如医学诊断、机器学习中的分类问题）。</li>
+</ul>
+<h2 id="_18">概率的性质、条件概率及相关公式总结<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<h3 id="_19">一、核心概念与公式<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="1_3">1. <strong>概率的性质（多事件推广）</strong><a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>加法公式推广</strong>：<br />
+  对于任意三个事件 <span class="arithmatex">\(A_1, A_2, A_3\)</span>，有<br />
+  [
+  P(A_1 \cup A_2 \cup A_3) = P(A_1) + P(A_2) + P(A_3) - P(A_1A_2) - P(A_1A_3) - P(A_2A_3) + P(A_1A_2A_3)
+  ]<br />
+<strong>n 个事件推广</strong>：<br />
+  [
+  P\left(\bigcup_{i=1}^n A_i\right) = \sum_{i=1}^n P(A_i) - \sum_{1 \leq i &lt; j \leq n} P(A_iA_j) + \sum_{1 \leq i &lt; j &lt; k \leq n} P(A_iA_jA_k) - \dots + (-1)^{n+1}P(A_1A_2\cdots A_n)
+  ]<br />
+<strong>本质</strong>：通过<strong>容斥原理</strong>逐步加减交集概率，避免重复计算。  </li>
+</ul>
+<h4 id="2_3">2. <strong>条件概率</strong><a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：在事件 <span class="arithmatex">\(B\)</span> 发生的条件下，事件 <span class="arithmatex">\(A\)</span> 发生的概率为<br />
+  [
+  P(A|B) = \frac{P(AB)}{P(B)} \quad (P(B) &gt; 0)
+  ]  </li>
+<li><strong>性质</strong>：  </li>
+<li><strong>非负性</strong>：<span class="arithmatex">\(P(A|B) \geq 0\)</span>；  </li>
+<li><strong>规范性</strong>：<span class="arithmatex">\(P(S|B) = 1\)</span>（<span class="arithmatex">\(S\)</span> 为必然事件）；  </li>
+<li><strong>可列可加性</strong>：若 <span class="arithmatex">\(B_1, B_2, \dots\)</span> 两两互斥，则<br />
+    [
+    P\left(\bigcup_{i=1}^\infty B_i \bigg| A\right) = \sum_{i=1}^\infty P(B_i|A)
+    ]  </li>
+</ul>
+<h4 id="3_3">3. <strong>乘法定理（链式法则）</strong><a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>两事件</strong>：<span class="arithmatex">\(P(AB) = P(A|B)P(B) = P(B|A)P(A)\)</span>（需 <span class="arithmatex">\(P(A), P(B) &gt; 0\)</span>）。  </li>
+<li><strong>多事件</strong>：对于 <span class="arithmatex">\(n\)</span> 个事件 <span class="arithmatex">\(A_1, A_2, \dots, A_n\)</span>，若 <span class="arithmatex">\(P(A_1A_2\cdots A_{n-1}) &gt; 0\)</span>，则<br />
+  [
+  P(A_1A_2\cdots A_n) = P(A_n|A_1A_2\cdots A_{n-1}) \cdot P(A_{n-1}|A_1\cdots A_{n-2}) \cdots P(A_2|A_1) \cdot P(A_1)
+  ]  </li>
+</ul>
+<h4 id="4_1">4. <strong>全概率公式与贝叶斯公式</strong><a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>样本空间划分</strong>：<br />
+  若事件 <span class="arithmatex">\(B_1, B_2, \dots, B_n\)</span> 满足：  </li>
+<li>两两互斥（<span class="arithmatex">\(B_i \cap B_j = \varnothing, i \neq j\)</span>）；  </li>
+<li>
+<p>覆盖样本空间（<span class="arithmatex">\(B_1 \cup B_2 \cup \dots \cup B_n = S\)</span>），<br />
+  则称其为样本空间 <span class="arithmatex">\(S\)</span> 的一个<strong>划分</strong>。  </p>
+</li>
+<li>
+<p><strong>全概率公式</strong>：<br />
+  [
+  P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)
+  ]<br />
+<strong>作用</strong>：将复杂事件 <span class="arithmatex">\(A\)</span> 的概率分解为多个简单事件 <span class="arithmatex">\(B_i\)</span> 条件下的概率加权和（<strong>由因求果</strong>）。  </p>
+</li>
+<li>
+<p><strong>贝叶斯公式</strong>：<br />
+  [
+  P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum_{j=1}^n P(A|B_j)P(B_j)}
+  ]<br />
+<strong>作用</strong>：已知结果 <span class="arithmatex">\(A\)</span> 发生，反推各原因 <span class="arithmatex">\(B_i\)</span> 的概率（<strong>由果溯因</strong>），需结合先验概率 <span class="arithmatex">\(P(B_i)\)</span>。  </p>
+</li>
+</ul>
+<h3 id="_20">二、求解方法与示例<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1. <strong>条件概率与乘法定理求解</strong><a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 确定目标事件 <span class="arithmatex">\(A\)</span> 和条件事件 <span class="arithmatex">\(B\)</span>；<br />
+2. 计算 <span class="arithmatex">\(P(AB)\)</span> 和 <span class="arithmatex">\(P(B)\)</span>（或 <span class="arithmatex">\(P(A)\)</span>）；<br />
+3. 代入公式 <span class="arithmatex">\(P(A|B) = \frac{P(AB)}{P(B)}\)</span> 或 <span class="arithmatex">\(P(AB) = P(A|B)P(B)\)</span>。  </p>
+<p><strong>示例</strong>：<br />
+盒中有 2 红 3 蓝球，不放回摸球两次。求：<br />
+（1）第一次摸到红球（事件 <span class="arithmatex">\(A\)</span>）的条件下，第二次摸到蓝球（事件 <span class="arithmatex">\(B\)</span>）的概率；<br />
+（2）两次都摸到红球的概率。  </p>
+<p><strong>解</strong>：<br />
+（1）<span class="arithmatex">\(P(A) = \frac{2}{5}\)</span>，<span class="arithmatex">\(P(AB) = \frac{2}{5} \times \frac{3}{4} = \frac{3}{10}\)</span>，<br />
+[
+P(B|A) = \frac{P(AB)}{P(A)} = \frac{3/10}{2/5} = \frac{3}{4}
+]<br />
+（2）两次都红球为事件 <span class="arithmatex">\(AB'\)</span>（<span class="arithmatex">\(B'\)</span> 为第二次红球），<br />
+[
+P(AB') = P(A) \cdot P(B'|A) = \frac{2}{5} \times \frac{1}{4} = \frac{1}{10}
+]  </p>
+<h4 id="2_4">2. <strong>全概率公式求解</strong><a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 确定样本空间的划分 <span class="arithmatex">\(B_1, B_2, \dots, B_n\)</span>；<br />
+2. 计算各划分的概率 <span class="arithmatex">\(P(B_i)\)</span> 和条件概率 <span class="arithmatex">\(P(A|B_i)\)</span>；<br />
+3. 代入公式 <span class="arithmatex">\(P(A) = \sum_{i=1}^n P(A|B_i)P(B_i)\)</span>。  </p>
+<p><strong>示例</strong>：<br />
+某工厂有三条生产线，产量占比分别为 30%、50%、20%，次品率分别为 4%、3%、5%。求随机抽取一件产品为次品（事件 <span class="arithmatex">\(A\)</span>）的概率。  </p>
+<p><strong>解</strong>：<br />
+- 划分 <span class="arithmatex">\(B_1, B_2, B_3\)</span> 表示产品来自三条生产线，<br />
+<span class="arithmatex">\(P(B_1) = 0.3\)</span>，<span class="arithmatex">\(P(B_2) = 0.5\)</span>，<span class="arithmatex">\(P(B_3) = 0.2\)</span>；<br />
+- <span class="arithmatex">\(P(A|B_1) = 0.04\)</span>，<span class="arithmatex">\(P(A|B_2) = 0.03\)</span>，<span class="arithmatex">\(P(A|B_3) = 0.05\)</span>；<br />
+- 全概率公式：<br />
+  [
+  P(A) = 0.3 \times 0.04 + 0.5 \times 0.03 + 0.2 \times 0.05 = 0.037
+  ]  </p>
+<h4 id="3_4">3. <strong>贝叶斯公式求解</strong><a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 用全概率公式计算 <span class="arithmatex">\(P(A)\)</span>；<br />
+2. 对目标原因 <span class="arithmatex">\(B_i\)</span>，计算 <span class="arithmatex">\(P(A|B_i)P(B_i)\)</span>；<br />
+3. 代入公式 <span class="arithmatex">\(P(B_i|A) = \frac{P(A|B_i)P(B_i)}{P(A)}\)</span>。  </p>
+<p><strong>示例</strong>（续上例）：若抽到次品，求其来自第二条生产线（事件 <span class="arithmatex">\(B_2\)</span>）的概率。  </p>
+<p><strong>解</strong>：<br />
+- 已求得 <span class="arithmatex">\(P(A) = 0.037\)</span>；<br />
+- <span class="arithmatex">\(P(B_2|A) = \frac{P(A|B_2)P(B_2)}{P(A)} = \frac{0.03 \times 0.5}{0.037} \approx 0.4054\)</span>（即 40.54%）。  </p>
+<h3 id="_21">三、重点总结<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>核心公式</strong>：  </li>
+<li>加法公式（容斥原理）、条件概率、乘法定理；  </li>
+<li>全概率公式（由因求果）、贝叶斯公式（由果溯因）。  </li>
+<li><strong>关键思想</strong>：  </li>
+<li>条件概率体现事件依赖关系；  </li>
+<li>全概率公式通过分解样本空间简化计算；  </li>
+<li>贝叶斯公式结合先验概率与观测数据更新推断。  </li>
+<li><strong>应用场景</strong>：  </li>
+<li>全概率公式：风险分析、可靠性评估；  </li>
+<li>贝叶斯公式：医学诊断、机器学习分类、逆概率问题。</li>
+</ul>
+<h2 id="_22">随机变量及其分布总结<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<h3 id="_23">一、核心概念与分类<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h4 id="1_5">1. <strong>随机变量的定义</strong><a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：设随机试验的样本空间为 <span class="arithmatex">\( S = \{e\} \)</span>，若存在单值实值函数 <span class="arithmatex">\( X = X(e) \)</span>，将样本点 <span class="arithmatex">\( e \)</span> 映射为实数，则称 <span class="arithmatex">\( X \)</span> 为<strong>随机变量</strong>。  </li>
+<li><strong>本质</strong>：将随机试验的结果数值化，便于用数学工具分析（如概率、期望等）。  </li>
+<li><strong>图示</strong>：样本点 <span class="arithmatex">\( e \in S \)</span> 通过 <span class="arithmatex">\( X(e) \)</span> 与实数轴 <span class="arithmatex">\( R \)</span> 建立对应关系（如 <span class="arithmatex">\( e_1 \to X(e_1) \)</span>）。  </li>
+</ul>
+<h4 id="2_5">2. <strong>离散型随机变量</strong><a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：随机变量 <span class="arithmatex">\( X \)</span> 的可能取值为有限个或可列无限个（如 <span class="arithmatex">\( x_1, x_2, \dots \)</span>）。  </li>
+<li><strong>分布律</strong>：  </li>
+<li>定义：<span class="arithmatex">\( P(X = x_k) = p_k \)</span>（<span class="arithmatex">\( k = 1, 2, \dots \)</span>），满足 <span class="arithmatex">\( p_k \geq 0 \)</span> 且 <span class="arithmatex">\( \sum_{k=1}^\infty p_k = 1 \)</span>。  </li>
+<li><strong>常见分布</strong>：  <ul>
+<li><strong>(0-1) 分布</strong>：<span class="arithmatex">\( P(X = k) = p^k(1-p)^{1-k} \)</span>（<span class="arithmatex">\( k = 0, 1 \)</span>），用于描述二分类问题（如抛硬币）。  </li>
+<li><strong>二项分布</strong>：<span class="arithmatex">\( P(X = k) = C_n^k p^k(1-p)^{n-k} \)</span>（<span class="arithmatex">\( k = 0, 1, \dots, n \)</span>），表示 <span class="arithmatex">\( n \)</span> 次独立试验中成功 <span class="arithmatex">\( k \)</span> 次的概率。  </li>
+<li><strong>泊松分布</strong>：<span class="arithmatex">\( P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} \)</span>（<span class="arithmatex">\( k = 0, 1, \dots \)</span>），用于描述单位时间内随机事件的发生次数（如客服中心来电数）。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="3_5">3. <strong>连续型随机变量</strong><a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：存在非负可积函数 <span class="arithmatex">\( p(x) \)</span>（概率密度函数），使得分布函数 <span class="arithmatex">\( F(x) = \int_{-\infty}^x p(t)dt \)</span>。  </li>
+<li><strong>概率密度的性质</strong>：  </li>
+<li><strong>非负性</strong>：<span class="arithmatex">\( p(x) \geq 0 \)</span>。  </li>
+<li><strong>规范性</strong>：<span class="arithmatex">\( \int_{-\infty}^{+\infty} p(x)dx = 1 \)</span>。  </li>
+<li><strong>概率计算</strong>：<span class="arithmatex">\( P(a &lt; X \leq b) = F(b) - F(a) = \int_a^b p(x)dx \)</span>。  </li>
+<li><strong>单点概率</strong>：<span class="arithmatex">\( P(X = c) = 0 \)</span>（连续型变量在单点的概率为零）。  </li>
+<li><strong>常见分布</strong>：  </li>
+<li><strong>均匀分布</strong> <span class="arithmatex">\( X \sim U[a, b] \)</span>：<br />
+    [
+    p(x) = \begin{cases} 
+    \frac{1}{b-a}, &amp; a \leq x \leq b \
+    0, &amp; \text{其他} 
+    \end{cases}
+    ]<br />
+    表示变量在区间 <span class="arithmatex">\([a, b]\)</span> 内等概率取值（如随机数生成）。  </li>
+<li><strong>正态分布</strong> <span class="arithmatex">\( X \sim N(\mu, \sigma^2) \)</span>：<br />
+    [
+    p(x) = \frac{1}{\sqrt{2\pi}\sigma} e<sup>{-\frac{(x-\mu)</sup>2}{2\sigma^2}}
+    ]<br />
+    最常见的分布，描述自然现象中的误差或群体特征（如身高、体重）。  </li>
+<li><strong>指数分布</strong> <span class="arithmatex">\( X \sim E(\lambda) \)</span>：<br />
+    [
+    p(x) = \begin{cases} 
+    \lambda e^{-\lambda x}, &amp; x \geq 0 \
+    0, &amp; x &lt; 0 
+    \end{cases}
+    ]<br />
+    用于描述随机事件的间隔时间（如设备故障时间）。  </li>
+</ul>
+<h4 id="4_2">4. <strong>多维随机变量（以二维为例）</strong><a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>联合分布函数</strong>：<br />
+  [
+  F(x, y) = P(X \leq x, Y \leq y)
+  ]<br />
+  表示随机点 <span class="arithmatex">\((X, Y)\)</span> 落在区域 <span class="arithmatex">\((-\infty, x] \times (-\infty, y]\)</span> 内的概率。  </li>
+<li><strong>二维连续型随机变量</strong>：  </li>
+<li>存在联合概率密度 <span class="arithmatex">\( p(x, y) \)</span>，满足：<br />
+    [
+    F(x, y) = \int_{-\infty}^y \int_{-\infty}^x p(u, v)dudv
+    ]  </li>
+<li><strong>性质</strong>：  <ol>
+<li><span class="arithmatex">\( p(x, y) \geq 0 \)</span>；  </li>
+<li><span class="arithmatex">\( \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} p(x, y)dxdy = 1 \)</span>；  </li>
+<li><span class="arithmatex">\( P((X, Y) \in G) = \iint_G p(x, y)dxdy \)</span>（<span class="arithmatex">\( G \)</span> 为平面区域）。  </li>
+</ol>
+</li>
+</ul>
+<h3 id="_24">二、求解方法与示例<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h4 id="1_6">1. <strong>离散型随机变量：分布律计算</strong><a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 确定 <span class="arithmatex">\( X \)</span> 的所有可能取值 <span class="arithmatex">\( x_k \)</span>；<br />
+2. 计算每个取值的概率 <span class="arithmatex">\( p_k = P(X = x_k) \)</span>；<br />
+3. 验证 <span class="arithmatex">\( \sum p_k = 1 \)</span>。  </p>
+<p><strong>示例</strong>：抛一枚均匀硬币两次，设 <span class="arithmatex">\( X \)</span> 为正面朝上的次数，求 <span class="arithmatex">\( X \)</span> 的分布律。<br />
+<strong>解</strong>：<br />
+- <span class="arithmatex">\( X \)</span> 可能取值：0, 1, 2。<br />
+- 概率计算：<br />
+  - <span class="arithmatex">\( P(X=0) = P(\text{反反}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \)</span>；<br />
+  - <span class="arithmatex">\( P(X=1) = P(\text{正反}) + P(\text{反正}) = 2 \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{2} \)</span>；<br />
+  - <span class="arithmatex">\( P(X=2) = P(\text{正正}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4} \)</span>。<br />
+- 分布律：<br />
+  [
+  \begin{array}{c|c|c|c}
+  X &amp; 0 &amp; 1 &amp; 2 \
+  \hline
+  p_k &amp; \frac{1}{4} &amp; \frac{1}{2} &amp; \frac{1}{4} \
+  \end{array}
+  ]  </p>
+<h4 id="2_6">2. <strong>连续型随机变量：概率密度与分布函数</strong><a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+- <strong>已知 <span class="arithmatex">\( p(x) \)</span> 求概率</strong>：计算 <span class="arithmatex">\( P(a &lt; X \leq b) = \int_a^b p(x)dx \)</span>。<br />
+- <strong>已知 <span class="arithmatex">\( F(x) \)</span> 求 <span class="arithmatex">\( p(x) \)</span></strong>：对 <span class="arithmatex">\( F(x) \)</span> 求导，即 <span class="arithmatex">\( p(x) = F'(x) \)</span>（在 <span class="arithmatex">\( p(x) \)</span> 连续点处）。  </p>
+<p><strong>示例</strong>：设 <span class="arithmatex">\( X \sim U[0, 5] \)</span>，求 <span class="arithmatex">\( P(1 &lt; X &lt; 3) \)</span>。<br />
+<strong>解</strong>：<br />
+- 概率密度：<span class="arithmatex">\( p(x) = \begin{cases} 
+\frac{1}{5}, &amp; 0 \leq x \leq 5 \\
+0, &amp; \text{其他} 
+\end{cases} \)</span><br />
+- 概率计算：<br />
+  [
+  P(1 &lt; X &lt; 3) = \int_1^3 \frac{1}{5}dx = \frac{1}{5} \times (3 - 1) = \frac{2}{5}
+  ]  </p>
+<h4 id="3_6">3. <strong>二维连续型随机变量：联合概率计算</strong><a class="headerlink" href="#3_6" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 确定联合概率密度 <span class="arithmatex">\( p(x, y) \)</span>；<br />
+2. 设定目标区域 <span class="arithmatex">\( G \)</span>（如矩形、圆形等）；<br />
+3. 计算二重积分 <span class="arithmatex">\( P((X, Y) \in G) = \iint_G p(x, y)dxdy \)</span>。  </p>
+<p><strong>示例</strong>：设二维随机变量 <span class="arithmatex">\((X, Y)\)</span> 的联合概率密度为<br />
+[
+p(x, y) = \begin{cases} 
+2e^{-x-2y}, &amp; x &gt; 0, y &gt; 0 \
+0, &amp; \text{其他} 
+\end{cases}
+]<br />
+求 <span class="arithmatex">\( P(X \leq 1, Y \leq 1) \)</span>。<br />
+<strong>解</strong>：<br />
+- 目标区域：<span class="arithmatex">\( G = \{ (x, y) | 0 &lt; x \leq 1, 0 &lt; y \leq 1 \} \)</span><br />
+- 概率计算：<br />
+  [
+  P(X \leq 1, Y \leq 1) = \int_0^1 \int_0^1 2e^{-x-2y}dydx = 2 \left( \int_0^1 e^{-x}dx \right) \left( \int_0^1 e^{-2y}dy \right)
+  ]<br />
+  - 计算内层积分：<br />
+    [
+    \int_0^1 e^{-2y}dy = \left[ -\frac{1}{2}e^{-2y} \right]_0^1 = \frac{1 - e^{-2}}{2}
+    ]<br />
+  - 计算外层积分：<br />
+    [
+    \int_0^1 e^{-x}dx = \left[ -e^{-x} \right]_0^1 = 1 - e^{-1}
+    ]<br />
+  - 最终结果：<br />
+    [
+    P(X \leq 1, Y \leq 1) = 2 \times (1 - e^{-1}) \times \frac{1 - e^{-2}}{2} = (1 - e^{-1})(1 - e^{-2})
+    ]  </p>
+<h3 id="_25">三、重点总结<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>核心分类</strong>：  </li>
+<li><strong>离散型</strong>：用分布律 <span class="arithmatex">\( P(X = x_k) = p_k \)</span> 描述，常见分布包括 (0-1) 分布、二项分布、泊松分布。  </li>
+<li><strong>连续型</strong>：用概率密度 <span class="arithmatex">\( p(x) \)</span> 和分布函数 <span class="arithmatex">\( F(x) \)</span> 描述，常见分布包括均匀分布、正态分布、指数分布。  </li>
+<li><strong>关键思想</strong>：  </li>
+<li>离散型变量通过求和计算概率，连续型变量通过积分计算概率；  </li>
+<li>多维变量需用联合分布描述变量间的依赖关系。  </li>
+<li><strong>应用场景</strong>：  </li>
+<li>离散型：分类问题、计数问题（如产品合格数）；  </li>
+<li>连续型：测量数据、自然现象建模（如温度、时间）；  </li>
+<li>多维变量：联合分析（如身高与体重的相关性）。</li>
+</ul>
+<h2 id="_26">期望与方差总结<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<h3 id="_27">一、核心概念与公式<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="1_7">1. <strong>数学期望（均值）</strong><a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：  </li>
+<li><strong>离散型</strong>：若随机变量 <span class="arithmatex">\(X\)</span> 的分布律为 <span class="arithmatex">\(P(X=x_k)=p_k\)</span>（<span class="arithmatex">\(k=1,2,\dots\)</span>），且级数 <span class="arithmatex">\(\sum_{k=1}^\infty x_k p_k\)</span> 绝对收敛，则<br />
+    [
+    E(X) = \sum_{k=1}^\infty x_k p_k
+    ]  </li>
+<li><strong>连续型</strong>：若 <span class="arithmatex">\(X\)</span> 的概率密度为 <span class="arithmatex">\(f(x)\)</span>，且积分 <span class="arithmatex">\(\int_{-\infty}^{+\infty} x f(x)dx\)</span> 绝对收敛，则<br />
+    [
+    E(X) = \int_{-\infty}^{+\infty} x f(x)dx
+    ]  </li>
+<li><strong>性质</strong>：  </li>
+<li><strong>常数性</strong>：<span class="arithmatex">\(E(C) = C\)</span>（<span class="arithmatex">\(C\)</span> 为常数）。  </li>
+<li><strong>线性性</strong>：<span class="arithmatex">\(E(CX) = CE(X)\)</span>，<span class="arithmatex">\(E(X+Y) = E(X)+E(Y)\)</span>（可推广至有限个变量）。  </li>
+<li>
+<p><strong>独立性</strong>：若 <span class="arithmatex">\(X, Y\)</span> 独立，则 <span class="arithmatex">\(E(XY) = E(X)E(Y)\)</span>（可推广至有限个独立变量）。  </p>
+</li>
+<li>
+<p><strong>常见分布的期望</strong>：<br />
+  | 分布 | 期望 <span class="arithmatex">\(E(X)\)</span> |<br />
+  |---|---|<br />
+  | (0-1) 分布 <span class="arithmatex">\(X \sim B(1, p)\)</span> | <span class="arithmatex">\(p\)</span> |<br />
+  | 二项分布 <span class="arithmatex">\(X \sim B(n, p)\)</span> | <span class="arithmatex">\(np\)</span> |<br />
+  | 泊松分布 <span class="arithmatex">\(X \sim P(\lambda)\)</span> | <span class="arithmatex">\(\lambda\)</span> |<br />
+  | 几何分布 <span class="arithmatex">\(X \sim \text{Geom}(p)\)</span> | <span class="arithmatex">\(\frac{1}{p}\)</span> |<br />
+  | 均匀分布 <span class="arithmatex">\(X \sim U[a, b]\)</span> | <span class="arithmatex">\(\frac{a+b}{2}\)</span> |<br />
+  | 正态分布 <span class="arithmatex">\(X \sim N(\mu, \sigma^2)\)</span> | <span class="arithmatex">\(\mu\)</span> |<br />
+  | 指数分布 <span class="arithmatex">\(X \sim E(\lambda)\)</span> | <span class="arithmatex">\(\frac{1}{\lambda}\)</span> |  </p>
+</li>
+</ul>
+<h4 id="2_7">2. <strong>方差</strong><a class="headerlink" href="#2_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：<br />
+  随机变量 <span class="arithmatex">\(X\)</span> 与期望 <span class="arithmatex">\(E(X)\)</span> 的偏离程度，记为 <span class="arithmatex">\(D(X)\)</span> 或 <span class="arithmatex">\(\text{Var}(X)\)</span>，<br />
+  [
+  D(X) = E\left[(X-E(X))^2\right] = E(X^2) - [E(X)]^2
+  ]  </li>
+<li><strong>离散型</strong>：<span class="arithmatex">\(D(X) = \sum_{k=1}^\infty [x_k - E(X)]^2 p_k\)</span>  </li>
+<li>
+<p><strong>连续型</strong>：<span class="arithmatex">\(D(X) = \int_{-\infty}^{+\infty} [x - E(X)]^2 f(x)dx\)</span>  </p>
+</li>
+<li>
+<p><strong>性质</strong>：  </p>
+</li>
+<li><strong>常数性</strong>：<span class="arithmatex">\(D(C) = 0\)</span>（<span class="arithmatex">\(C\)</span> 为常数）。  </li>
+<li><strong>线性性</strong>：<span class="arithmatex">\(D(CX) = C^2 D(X)\)</span>，<span class="arithmatex">\(D(X+C) = D(X)\)</span>。  </li>
+<li>
+<p><strong>和差公式</strong>：<span class="arithmatex">\(D(X \pm Y) = D(X) + D(Y) \pm 2\text{Cov}(X, Y)\)</span>，若 <span class="arithmatex">\(X, Y\)</span> 独立，则 <span class="arithmatex">\(D(X \pm Y) = D(X) + D(Y)\)</span>。  </p>
+</li>
+<li>
+<p><strong>常见分布的方差</strong>：<br />
+  | 分布 | 方差 <span class="arithmatex">\(D(X)\)</span> |<br />
+  |---|---|<br />
+  | (0-1) 分布 <span class="arithmatex">\(X \sim B(1, p)\)</span> | <span class="arithmatex">\(p(1-p)\)</span> |<br />
+  | 二项分布 <span class="arithmatex">\(X \sim B(n, p)\)</span> | <span class="arithmatex">\(np(1-p)\)</span> |<br />
+  | 泊松分布 <span class="arithmatex">\(X \sim P(\lambda)\)</span> | <span class="arithmatex">\(\lambda\)</span> |<br />
+  | 几何分布 <span class="arithmatex">\(X \sim \text{Geom}(p)\)</span> | <span class="arithmatex">\(\frac{1-p}{p^2}\)</span> |<br />
+  | 均匀分布 <span class="arithmatex">\(X \sim U[a, b]\)</span> | <span class="arithmatex">\(\frac{(b-a)^2}{12}\)</span> |<br />
+  | 正态分布 <span class="arithmatex">\(X \sim N(\mu, \sigma^2)\)</span> | <span class="arithmatex">\(\sigma^2\)</span> |<br />
+  | 指数分布 <span class="arithmatex">\(X \sim E(\lambda)\)</span> | <span class="arithmatex">\(\frac{1}{\lambda^2}\)</span> |  </p>
+</li>
+</ul>
+<h4 id="3_7">3. <strong>协方差与相关系数</strong><a class="headerlink" href="#3_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>协方差</strong>：<br />
+  [
+  \text{Cov}(X, Y) = E\left[(X-E(X))(Y-E(Y))\right] = E(XY) - E(X)E(Y)
+  ]  </li>
+<li>
+<p><strong>性质</strong>：  </p>
+<ul>
+<li><span class="arithmatex">\(\text{Cov}(X, Y) = \text{Cov}(Y, X)\)</span>  </li>
+<li><span class="arithmatex">\(\text{Cov}(aX, bY) = ab\text{Cov}(X, Y)\)</span>（<span class="arithmatex">\(a, b\)</span> 为常数）  </li>
+<li><span class="arithmatex">\(\text{Cov}(X_1+X_2, Y) = \text{Cov}(X_1, Y) + \text{Cov}(X_2, Y)\)</span>  </li>
+</ul>
+</li>
+<li>
+<p><strong>相关系数</strong>：<br />
+  [
+  \rho_{XY} = \frac{\text{Cov}(X, Y)}{\sqrt{D(X)D(Y)}}
+  ]  </p>
+</li>
+<li><strong>意义</strong>：衡量 <span class="arithmatex">\(X, Y\)</span> 的线性相关程度，<span class="arithmatex">\(|\rho_{XY}| \leq 1\)</span>，<span class="arithmatex">\(\rho_{XY}=0\)</span> 表示不相关。  </li>
+</ul>
+<h4 id="4_3">4. <strong>协方差矩阵</strong><a class="headerlink" href="#4_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：对于 <span class="arithmatex">\(n\)</span> 维随机向量 <span class="arithmatex">\(X = (X_1, X_2, \dots, X_n)^T\)</span>，其协方差矩阵为 <span class="arithmatex">\(n \times n\)</span> 矩阵 <span class="arithmatex">\(C\)</span>，其中<br />
+  [
+  C_{ij} = \text{Cov}(X_i, X_j), \quad C_{ii} = D(X_i)
+  ]  </li>
+<li><strong>性质</strong>：对称半正定矩阵，即 <span class="arithmatex">\(x^T C x \geq 0\)</span> 对任意向量 <span class="arithmatex">\(x\)</span> 成立。  </li>
+</ul>
+<h3 id="_28">二、求解方法与示例<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<h4 id="1_8">1. <strong>期望的计算</strong><a class="headerlink" href="#1_8" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+- <strong>离散型</strong>：确定分布律 <span class="arithmatex">\(p_k\)</span>，代入公式 <span class="arithmatex">\(E(X) = \sum x_k p_k\)</span>。<br />
+- <strong>连续型</strong>：确定概率密度 <span class="arithmatex">\(f(x)\)</span>，代入公式 <span class="arithmatex">\(E(X) = \int x f(x)dx\)</span>。<br />
+- <strong>函数的期望</strong>：若 <span class="arithmatex">\(Y = g(X)\)</span>，则 <span class="arithmatex">\(E(Y) = \sum g(x_k)p_k\)</span>（离散型）或 <span class="arithmatex">\(E(Y) = \int g(x)f(x)dx\)</span>（连续型）。  </p>
+<p><strong>示例</strong>：<br />
+设随机变量 <span class="arithmatex">\(X\)</span> 服从参数为 <span class="arithmatex">\(\lambda=2\)</span> 的泊松分布，求 <span class="arithmatex">\(E(X^2)\)</span>。<br />
+<strong>解</strong>：<br />
+- 已知 <span class="arithmatex">\(E(X) = \lambda = 2\)</span>，<span class="arithmatex">\(D(X) = \lambda = 2\)</span>。<br />
+- 利用方差公式 <span class="arithmatex">\(D(X) = E(X^2) - [E(X)]^2\)</span>，得<br />
+  [
+  E(X^2) = D(X) + [E(X)]^2 = 2 + 2^2 = 6
+  ]  </p>
+<h4 id="2_8">2. <strong>方差的计算</strong><a class="headerlink" href="#2_8" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 计算 <span class="arithmatex">\(E(X)\)</span>；<br />
+2. 利用定义式或公式 <span class="arithmatex">\(D(X) = E(X^2) - [E(X)]^2\)</span> 计算方差。  </p>
+<p><strong>示例</strong>：<br />
+掷一枚均匀骰子，设 <span class="arithmatex">\(X\)</span> 为点数，求 <span class="arithmatex">\(D(X)\)</span>。<br />
+<strong>解</strong>：<br />
+- <span class="arithmatex">\(X\)</span> 的分布律：<span class="arithmatex">\(P(X=k) = \frac{1}{6}\)</span>（<span class="arithmatex">\(k=1,2,\dots,6\)</span>）。<br />
+- 计算期望：<br />
+  [
+  E(X) = \frac{1+2+3+4+5+6}{6} = 3.5
+  ]<br />
+- 计算 <span class="arithmatex">\(E(X^2)\)</span>：<br />
+  [
+  E(X^2) = \frac{1^2 + 2^2 + 3^2 + 4^2 + 5^2 + 6^2}{6} = \frac{91}{6} \approx 15.1667
+  ]<br />
+- 方差：<br />
+  [
+  D(X) = E(X^2) - [E(X)]^2 = \frac{91}{6} - (3.5)^2 = \frac{35}{12} \approx 2.9167
+  ]  </p>
+<h4 id="3_8">3. <strong>协方差与相关系数的计算</strong><a class="headerlink" href="#3_8" title="Permanent link">&para;</a></h4>
+<p><strong>方法步骤</strong>：<br />
+1. 计算 <span class="arithmatex">\(E(X)\)</span>、<span class="arithmatex">\(E(Y)\)</span>、<span class="arithmatex">\(E(XY)\)</span>；<br />
+2. 代入协方差公式 <span class="arithmatex">\(\text{Cov}(X, Y) = E(XY) - E(X)E(Y)\)</span>；<br />
+3. 计算 <span class="arithmatex">\(D(X)\)</span>、<span class="arithmatex">\(D(Y)\)</span>，代入相关系数公式 <span class="arithmatex">\(\rho_{XY} = \frac{\text{Cov}(X, Y)}{\sqrt{D(X)D(Y)}}\)</span>。  </p>
+<p><strong>示例</strong>：<br />
+设二维随机变量 <span class="arithmatex">\((X, Y)\)</span> 的联合概率密度为<br />
+[
+f(x, y) = \begin{cases} 
+2, &amp; 0 \leq x \leq 1, 0 \leq y \leq x \
+0, &amp; \text{其他} 
+\end{cases}
+]<br />
+求 <span class="arithmatex">\(\text{Cov}(X, Y)\)</span> 和 <span class="arithmatex">\(\rho_{XY}\)</span>。<br />
+<strong>解</strong>：<br />
+1. 计算 <span class="arithmatex">\(E(X)\)</span>、<span class="arithmatex">\(E(Y)\)</span>：<br />
+   [
+   E(X) = \int_0^1 \int_0^x x \cdot 2 dy dx = \int_0^1 2x^2 dx = \frac{2}{3}
+   ]<br />
+   [
+   E(Y) = \int_0^1 \int_0^x y \cdot 2 dy dx = \int_0^1 x^2 dx = \frac{1}{3}
+   ]<br />
+2. 计算 <span class="arithmatex">\(E(XY)\)</span>：<br />
+   [
+   E(XY) = \int_0^1 \int_0^x xy \cdot 2 dy dx = \int_0^1 x \cdot \left[\frac{2y<sup>2}{2}\right]_0</sup>x dx = \int_0^1 x^3 dx = \frac{1}{4}
+   ]<br />
+3. 协方差：<br />
+   [
+   \text{Cov}(X, Y) = \frac{1}{4} - \frac{2}{3} \times \frac{1}{3} = \frac{1}{4} - \frac{2}{9} = \frac{1}{36}
+   ]<br />
+4. 计算 <span class="arithmatex">\(D(X)\)</span>、<span class="arithmatex">\(D(Y)\)</span>：<br />
+   [
+   E(X^2) = \int_0^1 \int_0^x x^2 \cdot 2 dy dx = \int_0^1 2x^3 dx = \frac{1}{2}, \quad D(X) = \frac{1}{2} - \left(\frac{2}{3}\right)^2 = \frac{1}{18}
+   ]<br />
+   [
+   E(Y^2) = \int_0^1 \int_0^x y^2 \cdot 2 dy dx = \int_0^1 \frac{2x^3}{3} dx = \frac{1}{6}, \quad D(Y) = \frac{1}{6} - \left(\frac{1}{3}\right)^2 = \frac{1}{18}
+   ]<br />
+5. 相关系数：<br />
+   [
+   \rho_{XY} = \frac{\frac{1}{36}}{\sqrt{\frac{1}{18} \times \frac{1}{18}}} = \frac{\frac{1}{36}}{\frac{1}{18}} = \frac{1}{2}
+   ]  </p>
+<h3 id="_29">三、重点总结<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>核心公式</strong>：  </li>
+<li>期望 <span class="arithmatex">\(E(X)\)</span>、方差 <span class="arithmatex">\(D(X)\)</span>、协方差 <span class="arithmatex">\(\text{Cov}(X, Y)\)</span> 的定义与性质；  </li>
+<li>方差公式 <span class="arithmatex">\(D(X) = E(X^2) - [E(X)]^2\)</span>；  </li>
+<li>
+<p>协方差矩阵的对称性与半正定性。  </p>
+</li>
+<li>
+<p><strong>关键思想</strong>：  </p>
+</li>
+<li>期望是随机变量的加权平均，方差衡量取值的分散程度，协方差反映变量间的线性关联；  </li>
+<li>
+<p>独立性可简化期望与方差的计算（如 <span class="arithmatex">\(E(XY)=E(X)E(Y)\)</span>、<span class="arithmatex">\(D(X+Y)=D(X)+D(Y)\)</span>）。  </p>
+</li>
+<li>
+<p><strong>应用场景</strong>：  </p>
+</li>
+<li>期望与方差：统计分析、风险评估（如投资收益的均值与波动）；  </li>
+<li>协方差与相关系数：变量相关性分析（如身高与体重的关联）；  </li>
+<li>协方差矩阵：多元统计分析、机器学习（如高斯分布建模、主成分分析）。</li>
+</ul>
+<h2 id="_30">参数估计方法总结<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h2>
+<h3 id="_31">一、核心概念与方法<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<h4 id="1-mle">1. <strong>极大似然估计（MLE）</strong><a class="headerlink" href="#1-mle" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>基本思想</strong>：选择参数使得观测样本出现的概率最大（<strong>频率学派观点</strong>，假设参数为确定值）。  </li>
+<li><strong>似然函数</strong>：  </li>
+<li>若总体分布为离散型，似然函数为样本联合分布律：<br />
+    [
+    L(\theta) = \prod_{i=1}^n p(x_i; \theta)
+    ]  </li>
+<li>若为连续型，似然函数为样本联合概率密度：<br />
+    [
+    L(\theta) = \prod_{i=1}^n f(x_i; \theta)
+    ]  </li>
+<li><strong>求解步骤</strong>：  </li>
+<li><strong>构造似然函数</strong> <span class="arithmatex">\( L(\theta) \)</span>；  </li>
+<li><strong>取对数</strong>得 <span class="arithmatex">\( \ln L(\theta) \)</span>（简化计算）；  </li>
+<li><strong>求导并解似然方程</strong>：对参数 <span class="arithmatex">\( \theta \)</span> 求导，令导数为零，解得参数估计值 <span class="arithmatex">\( \hat{\theta} \)</span>；  </li>
+<li>
+<p><strong>验证最大值</strong>（通常由问题性质保证）。  </p>
+</li>
+<li>
+<p><strong>注意事项</strong>：  </p>
+</li>
+<li>要求 <span class="arithmatex">\( \ln L(\theta) \)</span> 可微，否则需从定义出发求解；  </li>
+<li>解可能不唯一，需结合实际问题筛选。  </li>
+</ul>
+<h4 id="2-map">2. <strong>最大后验概率估计（MAP）</strong><a class="headerlink" href="#2-map" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>基本思想</strong>：在MLE基础上引入参数的<strong>先验分布</strong> <span class="arithmatex">\( p(\theta) \)</span>，最大化后验概率 <span class="arithmatex">\( p(\theta|X) \)</span>（<strong>贝叶斯学派观点</strong>，视参数为随机变量）。  </li>
+<li><strong>后验概率公式</strong>：<br />
+  [
+  p(\theta|X) = \frac{p(X|\theta)p(\theta)}{p(X)} \propto p(X|\theta)p(\theta)
+  ]<br />
+  （分母 <span class="arithmatex">\( p(X) \)</span> 与 <span class="arithmatex">\( \theta \)</span> 无关，可忽略）。  </li>
+<li><strong>求解步骤</strong>：  </li>
+<li><strong>构造后验概率核</strong>：<span class="arithmatex">\( p(X|\theta)p(\theta) \)</span>；  </li>
+<li><strong>取对数</strong>得 <span class="arithmatex">\( \ln p(X|\theta) + \ln p(\theta) \)</span>；  </li>
+<li>
+<p><strong>求导并解方程</strong>，得到参数估计值 <span class="arithmatex">\( \hat{\theta}_{\text{MAP}} \)</span>。  </p>
+</li>
+<li>
+<p><strong>与MLE的区别</strong>：  </p>
+</li>
+<li>MAP包含先验信息 <span class="arithmatex">\( p(\theta) \)</span>，适用于小样本场景；  </li>
+<li>MLE是MAP在先验 <span class="arithmatex">\( p(\theta) \)</span> 为均匀分布时的特例。  </li>
+</ul>
+<h4 id="3_9">3. <strong>贝叶斯估计</strong><a class="headerlink" href="#3_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>基本思想</strong>：不直接估计参数值，而是估计参数的<strong>后验分布</strong> <span class="arithmatex">\( p(\theta|X) \)</span>，并通过后验分布的期望等统计量作为参数估计结果。  </li>
+<li><strong>关键概念</strong>：  </li>
+<li><strong>共轭先验</strong>：若后验分布与先验分布为同一分布族（如二项分布的先验取Beta分布，后验仍为Beta分布），可简化计算。  </li>
+<li><strong>后验分布计算</strong>：<br />
+    [
+    p(\theta|X) = \frac{p(X|\theta)p(\theta)}{\int p(X|\theta)p(\theta)d\theta}
+    ]  </li>
+<li><strong>求解步骤</strong>：  </li>
+<li><strong>选择先验分布</strong> <span class="arithmatex">\( p(\theta) \)</span>（通常为共轭先验）；  </li>
+<li><strong>计算后验分布</strong> <span class="arithmatex">\( p(\theta|X) \)</span>；  </li>
+<li><strong>求后验期望</strong>作为参数估计值：<br />
+    [
+    \hat{\theta} = E[\theta|X] = \int \theta p(\theta|X)d\theta
+    ]  </li>
+</ul>
+<h3 id="_32">二、求解方法与示例<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<h4 id="1-mle_1">1. <strong>极大似然估计（MLE）示例</strong><a class="headerlink" href="#1-mle_1" title="Permanent link">&para;</a></h4>
+<p><strong>问题</strong>：设样本 <span class="arithmatex">\( X_1, X_2, \dots, X_n \)</span> 来自正态分布 <span class="arithmatex">\( N(\mu, \sigma^2) \)</span>，求 <span class="arithmatex">\( \mu \)</span> 和 <span class="arithmatex">\( \sigma^2 \)</span> 的MLE。<br />
+<strong>解</strong>：<br />
+1. <strong>构造似然函数</strong>：<br />
+   [
+   L(\mu, \sigma^2) = \prod_{i=1}^n \frac{1}{\sqrt{2\pi}\sigma} e<sup>{-\frac{(x_i-\mu)</sup>2}{2\sigma^2}} = (2\pi\sigma<sup -n_2="-n/2">2)</sup> e<sup>{-\frac{1}{2\sigma</sup>2}\sum_{i=1}^n (x_i-\mu)^2}
+   ]<br />
+2. <strong>取对数</strong>：<br />
+   [
+   \ln L = -\frac{n}{2}\ln(2\pi) - \frac{n}{2}\ln\sigma^2 - \frac{1}{2\sigma<sup>2}\sum_{i=1}</sup>n (x_i-\mu)^2
+   ]<br />
+3. <strong>求偏导并解方程</strong>：<br />
+   - 对 <span class="arithmatex">\( \mu \)</span> 求导：<br />
+     [
+     \frac{\partial \ln L}{\partial \mu} = \frac{1}{\sigma<sup>2}\sum_{i=1}</sup>n (x_i - \mu) = 0 \implies \hat{\mu} = \frac{1}{n}\sum_{i=1}^n x_i = \bar{x}
+     ]<br />
+   - 对 <span class="arithmatex">\( \sigma^2 \)</span> 求导：<br />
+     [
+     \frac{\partial \ln L}{\partial \sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma<sup>2)</sup>2}\sum_{i=1}^n (x_i-\mu)^2 = 0 \implies \hat{\sigma}^2 = \frac{1}{n}\sum_{i=1}^n (x_i - \bar{x})^2
+     ]<br />
+4. <strong>结果</strong>：<br />
+   [
+   \hat{\mu}<em _text_MLE="\text{MLE">{\text{MLE}} = \bar{X}, \quad \hat{\sigma}</em>)^2
+   ]  }}^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \bar{X</p>
+<h4 id="2-map_1">2. <strong>最大后验概率估计（MAP）示例</strong><a class="headerlink" href="#2-map_1" title="Permanent link">&para;</a></h4>
+<p><strong>问题</strong>：抛硬币10次，出现7次正面（事件 <span class="arithmatex">\( X \)</span>），假设先验分布为Beta分布 <span class="arithmatex">\( \text{Beta}(\alpha, \beta) \)</span>（参数 <span class="arithmatex">\( \alpha = \beta = 1 \)</span>，即均匀分布），求正面概率 <span class="arithmatex">\( \theta \)</span> 的MAP估计。<br />
+<strong>解</strong>：<br />
+1. <strong>确定似然函数与先验</strong>：<br />
+   - 似然函数（二项分布）：<br />
+     [
+     p(X|\theta) = C_{10}^7 \theta^7 (1-\theta)^3
+     ]<br />
+   - 先验分布：<br />
+     [
+     p(\theta) = \text{Beta}(1, 1) = 1 \quad (0 \leq \theta \leq 1)
+     ]<br />
+2. <strong>构造后验概率核</strong>：<br />
+   [
+   p(\theta|X) \propto \theta^7 (1-\theta)^3 \times 1 = \theta^7 (1-\theta)^3
+   ]<br />
+3. <strong>取对数并求导</strong>：<br />
+   [
+   \ln p(\theta|X) = 7\ln\theta + 3\ln(1-\theta)
+   ]<br />
+   [
+   \frac{d}{d\theta}\ln p(\theta|X) = \frac{7}{\theta} - \frac{3}{1-\theta} = 0 \implies 7(1-\theta) = 3\theta \implies \hat{\theta}<em _text_MAP="\text{MAP">{\text{MAP}} = \frac{7}{10}
+   ]<br />
+4. <strong>结果</strong>：<br />
+   [
+   \hat{\theta}</em>
+   ]}} = \frac{7}{10<br />
+   （与MLE结果相同，因先验为均匀分布）  </p>
+<h4 id="3_10">3. <strong>贝叶斯估计示例（共轭先验）</strong><a class="headerlink" href="#3_10" title="Permanent link">&para;</a></h4>
+<p><strong>问题</strong>：续上例，使用贝叶斯估计求 <span class="arithmatex">\( \theta \)</span> 的估计值，先验为 <span class="arithmatex">\( \text{Beta}(\alpha, \beta) \)</span>，取 <span class="arithmatex">\( \alpha = 2, \beta = 2 \)</span>（先验期望为0.5）。<br />
+<strong>解</strong>：<br />
+1. <strong>确定后验分布</strong>：<br />
+   - 二项分布的共轭先验为Beta分布，后验分布仍为Beta分布，参数为：<br />
+     [
+     \alpha' = \alpha + 成功次数 = 2 + 7 = 9, \quad \beta' = \beta + 失败次数 = 2 + 3 = 5
+     ]<br />
+     即后验分布为 <span class="arithmatex">\( \text{Beta}(9, 5) \)</span>。<br />
+2. <strong>求后验期望</strong>：<br />
+   [
+   E[\theta|X] = \frac{\alpha'}{\alpha' + \beta'} = \frac{9}{14} \approx 0.6429
+   ]<br />
+3. <strong>结果</strong>：<br />
+   [
+   \hat{\theta}_{\text{贝叶斯}} = \frac{9}{14}
+   ]  </p>
+<h3 id="_33">三、重点总结<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>方法</strong></th>
+<th><strong>核心思想</strong></th>
+<th><strong>关键公式</strong></th>
+<th><strong>先验依赖</strong></th>
+<th><strong>适用场景</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MLE</strong></td>
+<td>最大化似然函数</td>
+<td><span class="arithmatex">\( \hat{\theta}_{\text{MLE}} = \arg\max_\theta L(\theta) \)</span></td>
+<td>无</td>
+<td>大样本，无先验信息</td>
+</tr>
+<tr>
+<td><strong>MAP</strong></td>
+<td>最大化后验概率</td>
+<td>( \hat{\theta}<em>{\text{MAP}} = \arg\max</em>\theta p(X</td>
+<td>\theta)p(\theta) )</td>
+<td>有（关键）</td>
+</tr>
+<tr>
+<td><strong>贝叶斯估计</strong></td>
+<td>估计参数的后验分布期望</td>
+<td>( \hat{\theta} = E[\theta</td>
+<td>X] = \int \theta p(\theta</td>
+<td>X)d\theta )</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>共轭先验的优势</strong>：简化后验分布计算，如二项式-Beta、高斯-高斯等组合。  </li>
+<li><strong>MLE与MAP的联系</strong>：MAP可视为MLE的正则化版本，先验相当于对参数添加约束。  </li>
+<li><strong>贝叶斯估计的特点</strong>：提供参数的完整分布信息，而非单一估计值，适合不确定性分析。</li>
+</ul>
+<h2 id="_34">假设检验总结<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h2>
+<h3 id="_35">一、核心概念与原理<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h4 id="1_9">1. <strong>基本思想</strong><a class="headerlink" href="#1_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>目标</strong>：在总体分布未知或参数未知时，通过样本数据对关于总体的假设（如均值、分布形式）进行判断，决定接受或拒绝原假设 <span class="arithmatex">\(H_0\)</span>。  </li>
+<li><strong>实际推断原理</strong>：基于“小概率事件在一次试验中几乎不发生”，若样本结果导致小概率事件发生，则拒绝 <span class="arithmatex">\(H_0\)</span>。  </li>
+</ul>
+<h4 id="2_9">2. <strong>关键术语</strong><a class="headerlink" href="#2_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>原假设（<span class="arithmatex">\(H_0\)</span>）与备择假设（<span class="arithmatex">\(H_1\)</span>）</strong>：  </li>
+<li><span class="arithmatex">\(H_0\)</span> 为待检验的假设（如“总体均值等于 <span class="arithmatex">\(\mu_0\)</span>”）；  </li>
+<li><span class="arithmatex">\(H_1\)</span> 为与 <span class="arithmatex">\(H_0\)</span> 对立的假设（如“总体均值不等于 <span class="arithmatex">\(\mu_0\)</span>”）。  </li>
+<li><strong>检验统计量</strong>：用于判断是否拒绝 <span class="arithmatex">\(H_0\)</span> 的统计量（如 <span class="arithmatex">\(Z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}\)</span>）。  </li>
+<li><strong>拒绝域与临界点</strong>：  </li>
+<li>拒绝域：使 <span class="arithmatex">\(H_0\)</span> 被拒绝的检验统计量取值区域；  </li>
+<li>临界点：拒绝域的边界值（如 <span class="arithmatex">\(z_{\alpha/2}\)</span>、<span class="arithmatex">\(t_{\alpha/2}(n-1)\)</span>）。  </li>
+<li><strong>显著性水平（<span class="arithmatex">\(\alpha\)</span>）</strong>：控制犯<strong>第一类错误（弃真）</strong>的概率，即 <span class="arithmatex">\(H_0\)</span> 为真时拒绝 <span class="arithmatex">\(H_0\)</span> 的概率。  </li>
+</ul>
+<h4 id="3_11">3. <strong>两类错误</strong><a class="headerlink" href="#3_11" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>错误类型</strong></th>
+<th><strong>定义</strong></th>
+<th><strong>概率</strong></th>
+<th><strong>控制方法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一类错误</td>
+<td><span class="arithmatex">\(H_0\)</span> 为真时拒绝 <span class="arithmatex">\(H_0\)</span></td>
+<td><span class="arithmatex">\(\leq \alpha\)</span></td>
+<td>通过显著性水平 <span class="arithmatex">\(\alpha\)</span> 控制</td>
+</tr>
+<tr>
+<td>第二类错误</td>
+<td><span class="arithmatex">\(H_0\)</span> 为假时接受 <span class="arithmatex">\(H_0\)</span></td>
+<td><span class="arithmatex">\(\beta\)</span></td>
+<td>增大样本量 <span class="arithmatex">\(n\)</span> 降低 <span class="arithmatex">\(\beta\)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="4_4">4. <strong>检验类型</strong><a class="headerlink" href="#4_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>双边检验</strong>：<span class="arithmatex">\(H_0: \mu = \mu_0\)</span> vs <span class="arithmatex">\(H_1: \mu \neq \mu_0\)</span>（拒绝域在分布两侧）。  </li>
+<li><strong>单边检验</strong>：  </li>
+<li>右边检验：<span class="arithmatex">\(H_0: \mu \leq \mu_0\)</span> vs <span class="arithmatex">\(H_1: \mu &gt; \mu_0\)</span>（拒绝域在分布右侧）；  </li>
+<li>左边检验：<span class="arithmatex">\(H_0: \mu \geq \mu_0\)</span> vs <span class="arithmatex">\(H_1: \mu &lt; \mu_0\)</span>（拒绝域在分布左侧）。  </li>
+</ul>
+<h3 id="_36">二、求解方法与步骤<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
+<h4 id="1_10">1. <strong>假设检验通用步骤</strong><a class="headerlink" href="#1_10" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>提出假设</strong>：确定 <span class="arithmatex">\(H_0\)</span> 和 <span class="arithmatex">\(H_1\)</span>（如双边检验 <span class="arithmatex">\(H_0: \mu = \mu_0\)</span>，<span class="arithmatex">\(H_1: \mu \neq \mu_0\)</span>）。  </li>
+<li><strong>选择检验统计量</strong>：  </li>
+<li><strong>正态总体且 <span class="arithmatex">\(\sigma^2\)</span> 已知</strong>：用 <span class="arithmatex">\(Z\)</span> 检验（<span class="arithmatex">\(Z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}\)</span>）；  </li>
+<li><strong>正态总体且 <span class="arithmatex">\(\sigma^2\)</span> 未知</strong>：用 <span class="arithmatex">\(t\)</span> 检验（<span class="arithmatex">\(t = \frac{\bar{X} - \mu_0}{S / \sqrt{n}}\)</span>，<span class="arithmatex">\(S\)</span> 为样本标准差）。  </li>
+<li><strong>确定拒绝域</strong>：根据检验类型和显著性水平 <span class="arithmatex">\(\alpha\)</span>，查分位数表得临界点（如双边 <span class="arithmatex">\(Z\)</span> 检验的拒绝域为 <span class="arithmatex">\(|Z| \geq z_{\alpha/2}\)</span>）。  </li>
+<li><strong>计算统计量并决策</strong>：代入样本数据计算统计量，若落入拒绝域则拒绝 <span class="arithmatex">\(H_0\)</span>，否则接受 <span class="arithmatex">\(H_0\)</span>。  </li>
+</ol>
+<h4 id="2_10">2. <strong>示例：单个正态总体均值的假设检验</strong><a class="headerlink" href="#2_10" title="Permanent link">&para;</a></h4>
+<p><strong>问题</strong>：某工厂生产零件，已知零件长度服从正态分布 <span class="arithmatex">\(N(\mu, \sigma^2)\)</span>，原均值 <span class="arithmatex">\(\mu_0 = 10\)</span> cm。现抽取 <span class="arithmatex">\(n = 25\)</span> 个样本，测得样本均值 <span class="arithmatex">\(\bar{x} = 10.5\)</span> cm，样本标准差 <span class="arithmatex">\(S = 1.2\)</span> cm。在显著性水平 <span class="arithmatex">\(\alpha = 0.05\)</span> 下，检验均值是否发生显著变化（双边检验）。  </p>
+<p><strong>解</strong>：<br />
+1. <strong>提出假设</strong>：<br />
+   [
+   H_0: \mu = 10 \quad vs \quad H_1: \mu \neq 10
+   ]<br />
+2. <strong>选择检验统计量</strong>：<br />
+   - <span class="arithmatex">\(\sigma^2\)</span> 未知，用 <span class="arithmatex">\(t\)</span> 检验，统计量为：<br />
+     [
+     t = \frac{\bar{X} - \mu_0}{S / \sqrt{n}}
+     ]<br />
+3. <strong>确定拒绝域</strong>：<br />
+   - 双边检验，<span class="arithmatex">\(\alpha = 0.05\)</span>，自由度 <span class="arithmatex">\(df = n-1 = 24\)</span>，查 <span class="arithmatex">\(t\)</span> 分布表得临界点 <span class="arithmatex">\(t_{\alpha/2}(24) = 2.064\)</span>，拒绝域为 <span class="arithmatex">\(|t| \geq 2.064\)</span>。<br />
+4. <strong>计算统计量并决策</strong>：<br />
+   [
+   t = \frac{10.5 - 10}{1.2 / \sqrt{25}} = \frac{0.5}{0.24} \approx 2.083
+   ]<br />
+   - 由于 <span class="arithmatex">\(|t| = 2.083 &gt; 2.064\)</span>，落入拒绝域，故拒绝 <span class="arithmatex">\(H_0\)</span>，认为零件均值发生显著变化。  </p>
+<h3 id="_37">三、重点总结<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<h4 id="1_11">1. <strong>检验方法对比</strong><a class="headerlink" href="#1_11" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>条件</strong></th>
+<th><strong>检验方法</strong></th>
+<th><strong>检验统计量</strong></th>
+<th><strong>拒绝域（双边）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正态总体，<span class="arithmatex">\(\sigma^2\)</span> 已知</td>
+<td><span class="arithmatex">\(Z\)</span> 检验</td>
+<td><span class="arithmatex">\(Z = \frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}}\)</span></td>
+<td>(</td>
+</tr>
+<tr>
+<td>正态总体，<span class="arithmatex">\(\sigma^2\)</span> 未知</td>
+<td><span class="arithmatex">\(t\)</span> 检验</td>
+<td><span class="arithmatex">\(t = \frac{\bar{X} - \mu_0}{S / \sqrt{n}}\)</span></td>
+<td>(</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2_11">2. <strong>关键要点</strong><a class="headerlink" href="#2_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>假设的方向性</strong>：单边检验需根据实际问题确定拒绝域方向（如“是否大于”对应右边检验）。  </li>
+<li><strong>样本量影响</strong>：增大样本量可同时降低两类错误概率，但实际中受限于成本。  </li>
+<li><strong>应用场景</strong>：  </li>
+<li><span class="arithmatex">\(Z\)</span> 检验：适用于大样本或方差已知的正态总体；  </li>
+<li><span class="arithmatex">\(t\)</span> 检验：适用于小样本且方差未知的正态总体（实际中更常用）。  </li>
+</ul>
+<h4 id="3_12">3. <strong>注意事项</strong><a class="headerlink" href="#3_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li>检验前需确认数据服从正态分布（或大样本下近似正态）；  </li>
+<li>拒绝 <span class="arithmatex">\(H_0\)</span> 意味着样本数据提供了反对 <span class="arithmatex">\(H_0\)</span> 的证据，但不证明 <span class="arithmatex">\(H_1\)</span> 绝对正确。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../../../javascripts/extra.js"></script>
+      
+        <script src="../../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

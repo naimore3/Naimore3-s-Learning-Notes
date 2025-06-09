@@ -1,0 +1,6226 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/">
+      
+      
+        <link rel="next" href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/">
+      
+      
+      <link rel="icon" href="../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>第四章：概率论3 - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#em" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第四章：概率论3
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  课程笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自学笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  读书笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M375.7 19.7c-1.5-8-6.9-14.7-14.4-17.8s-16.1-2.2-22.8 2.4L256 61.1 173.5 4.2c-6.7-4.6-15.3-5.5-22.8-2.4s-12.9 9.8-14.4 17.8l-18.1 98.5-98.5 18.2c-8 1.5-14.7 6.9-17.8 14.4s-2.2 16.1 2.4 22.8L61.1 256 4.2 338.5c-4.6 6.7-5.5 15.3-2.4 22.8s9.8 13 17.8 14.4l98.5 18.1 18.1 98.5c1.5 8 6.9 14.7 14.4 17.8s16.1 2.2 22.8-2.4l82.6-56.8 82.5 56.9c6.7 4.6 15.3 5.5 22.8 2.4s12.9-9.8 14.4-17.8l18.1-98.5 98.5-18.1c8-1.5 14.7-6.9 17.8-14.4s2.2-16.1-2.4-22.8L450.9 256l56.9-82.5c4.6-6.7 5.5-15.3 2.4-22.8s-9.8-12.9-17.8-14.4l-98.5-18.1zM269.6 110l65.6-45.2 14.4 78.3c1.8 9.8 9.5 17.5 19.3 19.3l78.3 14.4-45.2 65.6c-5.7 8.2-5.7 19 0 27.2l45.2 65.6-78.3 14.4c-9.8 1.8-17.5 9.5-19.3 19.3l-14.4 78.3-65.6-45.2c-8.2-5.7-19-5.7-27.2 0l-65.6 45.2-14.4-78.3c-1.8-9.8-9.5-17.5-19.3-19.3l-78.3-14.4 45.2-65.6c5.7-8.2 5.7-19 0-27.2l-45.2-65.6 78.3-14.4c9.8-1.8 17.5-9.5 19.3-19.3l14.4-78.3 65.6 45.2c8.2 5.7 19 5.7 27.2 0M256 368a112 112 0 1 0 0-224 112 112 0 1 0 0 224m-64-112a64 64 0 1 1 128 0 64 64 0 1 1-128 0"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二上
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大二上
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    离散数学（下）
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学（下）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    半群和群
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PBL数字经济与智能金融
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PBL数字经济与智能金融
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Class：PBL教学方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/Second_Class_PBL%E6%95%99%E5%AD%A6%E7%9A%84%E5%B8%B8%E8%A7%81%E5%BD%A2%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Second Class：PBL教学的常见形式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Third Class：教授课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourth Class：助教课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifth Class：教授课4互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixth Class：教授课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventh Class：助教课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eighth Class：教授课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ninth Class：助教课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/Tenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenth Class：教授课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eleventh Class：助教课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Twelfth Class：助教课4期中复习课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thirteenth Class：助教课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourteenth Class：教授课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifteenth Class：教授课7互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixteenth Class：个人规划及发展建议
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventeenth Class：升学与就业方向展望
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二下
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            大二下
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1_1" id="__nav_2_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_1_2" id="__nav_2_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch1_Introduction/Ch1_Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Physical Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch3_The_Data_Link_Layer/Ch3_The_Data_Link_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Data Link Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch4_The_Medium_Access_Control_Sublayer/Ch4_The_Medium_Access_Control_Sublayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Medium Access Control Sublayer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch5_The_Network_Layer/Ch5_The_Network_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Network Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch6_The_Transport_Layer/Ch6_The_Transport_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Transport Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    多元统计分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            多元统计分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    北京大学数学科学学院多元统计分析讲义
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_2_1" id="__nav_2_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            北京大学数学科学学院多元统计分析讲义
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2_2" id="__nav_2_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：绪论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：多变量的可视化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：多元分布的基本概念及数字特征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学导论
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学导论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_3_1" id="__nav_2_3_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3_2" id="__nav_2_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：数学基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：Python语言基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：数据预处理的基本方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机组成原理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_1" id="__nav_2_3_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：运算方法和运算器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：指令系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E6%95%99%E6%9D%90%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_2" id="__nav_2_3_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：运算方法和运算器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：指令系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：中央处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章：总线系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章：外围设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章：输入输出系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_5" id="__nav_2_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    形式语言与自动机
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            形式语言与自动机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_5_1" id="__nav_2_3_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：语义和文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：有限自动机与右线性文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA1/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：上下文无关文法与下推自动机1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA2/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：上下文无关文法与下推自动机2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_6" id="__nav_2_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学数学基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学数学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/%E7%BA%BF%E4%BB%A3%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E5%BA%94%E7%94%A8/%E7%BA%BF%E4%BB%A3%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/%E6%9C%80%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%89%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/%E6%9C%89%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论3
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论3
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      总览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="总览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一段话总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      思维导图
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      详细总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="详细总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、EM算法概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、三硬币模型案例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、高斯混合模型应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、隐马尔可夫模型（HMM）应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、收敛性定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-em" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. EM算法的核心步骤是什么？其数学本质如何理解？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-em" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 为什么EM算法的结果依赖初值选择？如何缓解这一问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 高斯混合模型与隐马尔可夫模型在应用场景上的核心区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法及三硬币模型应用总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法及三硬币模型应用总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、EM算法核心理论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、EM算法核心理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 算法定义与核心思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 算法流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 关键性质
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、三硬币模型问题与求解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、三硬币模型问题与求解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-em_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 求解方法：EM算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 初值影响示例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、EM算法数学推导要点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、EM算法数学推导要点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 目标函数与难点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-jensen" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Jensen不等式的应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-q" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Q函数的作用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法收敛性分析总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法收敛性分析总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心问题与结论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心问题与结论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心疑问
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键结论
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、收敛性定理详解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、收敛性定理详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 定理1：似然函数序列的单调性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 定理2：对数似然函数与参数的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、收敛性的局限性与应对方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、收敛性的局限性与应对方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 局限性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 应对方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、实例解析：三硬币模型的收敛性验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、实例解析：三硬币模型的收敛性验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题回顾
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 收敛性验证步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 关键观察
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法在高斯混合模型中的应用总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法在高斯混合模型中的应用总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、高斯混合模型（GMM）基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、高斯混合模型（GMM）基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 模型定义与作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、高斯混合模型的参数估计：EM算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、高斯混合模型的参数估计：EM算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题难点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-em_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. EM算法流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、实例解析：男女身高数据建模
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、实例解析：男女身高数据建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 求解步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 结果解释
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、高斯混合模型与K-means的对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键要点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法在隐马尔可夫模型中的应用总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法在隐马尔可夫模型中的应用总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hmm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、隐马尔可夫模型（HMM）基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、隐马尔可夫模型（HMM）基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 模型定义与核心要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 基本假设
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、隐马尔可夫模型的三个基本问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baum-welchem" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、参数学习问题：Baum-Welch算法（EM算法应用）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、参数学习问题：Baum-Welch算法（EM算法应用）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题难点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-baum-welchem" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Baum-Welch算法流程（EM框架）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、实例解析：盒子和球模型参数学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、实例解析：盒子和球模型参数学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 求解步骤（简化版）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    自学笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            自学笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java基础概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    MkDocs&Github WorkFlow
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MkDocs&Github WorkFlow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    YAML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    读书笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            读书笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    2025.2.16《载人火星探测航天运输系统》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025.2.16《载人火星探测航天运输系统》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章 载人火星探测模式及其航天运输系统方案发展情况
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025.3.13《多元统计分析引论》
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            2025.3.13《多元统计分析引论》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../读书笔记/2025_3_13_多元统计分析引论/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记总览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../读书笔记/2025_3_13_多元统计分析引论/第一章_矩阵/第一章_矩阵.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章 矩阵
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      总览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="总览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一段话总结
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      思维导图
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      详细总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="详细总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、EM算法概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、三硬币模型案例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、高斯混合模型应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、隐马尔可夫模型（HMM）应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、收敛性定理
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      关键问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关键问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-em" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. EM算法的核心步骤是什么？其数学本质如何理解？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-em" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 为什么EM算法的结果依赖初值选择？如何缓解这一问题？
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 高斯混合模型与隐马尔可夫模型在应用场景上的核心区别是什么？
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法及三硬币模型应用总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法及三硬币模型应用总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#em_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、EM算法核心理论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、EM算法核心理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 算法定义与核心思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 算法流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 关键性质
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、三硬币模型问题与求解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、三硬币模型问题与求解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-em_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 求解方法：EM算法
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 初值影响示例
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、EM算法数学推导要点
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、EM算法数学推导要点">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 目标函数与难点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-jensen" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Jensen不等式的应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-q" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Q函数的作用
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法收敛性分析总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法收敛性分析总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、核心问题与结论
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、核心问题与结论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心疑问
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键结论
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、收敛性定理详解
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、收敛性定理详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 定理1：似然函数序列的单调性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 定理2：对数似然函数与参数的收敛性
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、收敛性的局限性与应对方法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、收敛性的局限性与应对方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 局限性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 应对方法
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、实例解析：三硬币模型的收敛性验证
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、实例解析：三硬币模型的收敛性验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题回顾
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 收敛性验证步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 关键观察
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法在高斯混合模型中的应用总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法在高斯混合模型中的应用总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gmm" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、高斯混合模型（GMM）基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、高斯混合模型（GMM）基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 模型定义与作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#em_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、高斯混合模型的参数估计：EM算法
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、高斯混合模型的参数估计：EM算法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题难点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-em_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. EM算法流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、实例解析：男女身高数据建模
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、实例解析：男女身高数据建模">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 求解步骤
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 结果解释
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#k-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、高斯混合模型与K-means的对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键要点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#em_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      EM算法在隐马尔可夫模型中的应用总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="EM算法在隐马尔可夫模型中的应用总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#hmm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、隐马尔可夫模型（HMM）基础
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、隐马尔可夫模型（HMM）基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 模型定义与核心要素
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 基本假设
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、隐马尔可夫模型的三个基本问题
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baum-welchem" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、参数学习问题：Baum-Welch算法（EM算法应用）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、参数学习问题：Baum-Welch算法（EM算法应用）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题难点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-baum-welchem" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Baum-Welch算法流程（EM框架）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、实例解析：盒子和球模型参数学习
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、实例解析：盒子和球模型参数学习">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 问题描述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 求解步骤（简化版）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键公式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 应用场景
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="em">EM算法及其应用<a class="headerlink" href="#em" title="Permanent link">&para;</a></h1>
+<h2 id="_1">总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="_2">一段话总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>文档围绕<strong>EM算法（期望最大化算法）</strong>展开，介绍其核心思想为通过迭代估计含有隐变量的概率模型参数，包含<strong>E步（计算期望）</strong>和<strong>M步（最大化期望）</strong>。以<strong>三硬币模型</strong>为例说明算法流程，指出其结果受<strong>初值选择影响</strong>，可能收敛到局部极值。还介绍了EM算法在<strong>高斯混合模型</strong>（用于处理多模态数据）和<strong>隐马尔可夫模型</strong>（用于时序数据建模）中的应用，涉及模型定义、参数估计步骤及具体案例，最后提及算法的<strong>收敛性定理</strong>，强调其简单性与普适性，但无法保证全局最优。</p>
+<hr />
+<h3 id="_3">思维导图<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h2 id="_4"><img alt="exported_image.png" src="../exported_image.png" /><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h3 id="_5">详细总结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="em_1"><strong>一、EM算法概述</strong><a class="headerlink" href="#em_1" title="Permanent link">&para;</a></h4>
+<p><strong>核心思想</strong>：通过迭代估计含有隐变量的概率模型参数，解决无解析解的极大似然估计问题。<br />
+<strong>核心步骤</strong>：<br />
+1. <strong>E步（期望步）</strong>：利用当前参数估计值，计算隐变量的条件期望（如三硬币模型中观测来自某硬币的概率）。<br />
+2. <strong>M步（最大化步）</strong>：基于E步结果，最大化似然函数的下界，更新模型参数。  </p>
+<p><strong>关键性质</strong>：<br />
+- 结果依赖<strong>初值选择</strong>，不同初值可能导致不同局部极值（如三硬币模型初值为(0.5,0.5,0.5)和(0.4,0.6,0.7)时结果不同）。<br />
+- <strong>收敛性</strong>：似然函数序列单调递增，最终收敛到局部极值（定理1、定理2）。  </p>
+<h4 id="_6"><strong>二、三硬币模型案例</strong><a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<p><strong>模型设定</strong>：<br />
+- 硬币A（正面概率π）决定选择硬币B（正面概率p）或C（正面概率q），观测结果为1/0序列（如1101001011），需估计π、p、q。<br />
+- <strong>似然函数</strong>：<span class="arithmatex">\( P(Y|\theta) = \prod_{j=1}^{n} [\pi p^{y_j}(1-p)^{1-y_j} + (1-\pi) q^{y_j}(1-q)^{1-y_j}] \)</span>，无解析解，需用EM算法。  </p>
+<p><strong>算法流程</strong>：<br />
+1. <strong>初始化</strong>：如<span class="arithmatex">\( \theta^{(0)}=(0.5,0.5,0.5) \)</span>。<br />
+2. <strong>E步</strong>：计算观测<span class="arithmatex">\( y_j \)</span>来自B的概率<span class="arithmatex">\( \mu_j^{(i+1)} = \frac{\pi^{(i)}p^{(i)^{y_j}}(1-p^{(i)})^{1-y_j}}{\pi^{(i)}p^{(i)^{y_j}}(1-p^{(i)})^{1-y_j} + (1-\pi^{(i)})q^{(i)^{y_j}}(1-q^{(i)})^{1-y_j}} \)</span>。<br />
+3. <strong>M步</strong>：<br />
+   - <span class="arithmatex">\( \pi^{(i+1)} = \frac{1}{n}\sum_{j=1}^{n}\mu_j^{(i+1)} \)</span><br />
+   - <span class="arithmatex">\( p^{(i+1)} = \frac{\sum_{j=1}^{n}\mu_j^{(i+1)}y_j}{\sum_{j=1}^{n}\mu_j^{(i+1)}} \)</span><br />
+   - <span class="arithmatex">\( q^{(i+1)} = \frac{\sum_{j=1}^{n}(1-\mu_j^{(i+1)})y_j}{\sum_{j=1}^{n}(1-\mu_j^{(i+1)})} \)</span>  </p>
+<p><strong>结果示例</strong>：<br />
+- 初值(0.5,0.5,0.5)时，迭代后<span class="arithmatex">\( \pi=0.5, p=0.6, q=0.6 \)</span>；<br />
+- 初值(0.4,0.6,0.7)时，结果为<span class="arithmatex">\( \hat{\pi}=0.4064, \hat{p}=0.5368, \hat{q}=0.6432 \)</span>。  </p>
+<h4 id="_7"><strong>三、高斯混合模型应用</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><strong>模型作用</strong>：处理多模态数据，假设数据由K个高斯分布混合生成，每个分布权重为<span class="arithmatex">\( \alpha_k \)</span>（<span class="arithmatex">\( \sum\alpha_k=1 \)</span>）。<br />
+<strong>参数估计流程</strong>：<br />
+1. <strong>初始化</strong>：设定各高斯分布的均值<span class="arithmatex">\( \mu_k \)</span>、方差<span class="arithmatex">\( \sigma_k^2 \)</span>和权重<span class="arithmatex">\( \alpha_k \)</span>。<br />
+2. <strong>E步</strong>：计算观测数据<span class="arithmatex">\( y_j \)</span>来自第k个分模型的响应度<span class="arithmatex">\( \hat{\gamma}_{jk} = \frac{\alpha_k \phi(y_j|\theta_k)}{\sum_{k=1}^{K}\alpha_k \phi(y_j|\theta_k)} \)</span>。<br />
+3. <strong>M步</strong>：<br />
+   - <span class="arithmatex">\( \hat{\mu}_k = \frac{\sum_{j=1}^{N}\hat{\gamma}_{jk}y_j}{\sum_{j=1}^{N}\hat{\gamma}_{jk}} \)</span><br />
+   - <span class="arithmatex">\( \hat{\sigma}_k^2 = \frac{\sum_{j=1}^{N}\hat{\gamma}_{jk}(y_j-\mu_k)^2}{\sum_{j=1}^{N}\hat{\gamma}_{jk}} \)</span><br />
+   - <span class="arithmatex">\( \hat{\alpha}_k = \frac{\sum_{j=1}^{N}\hat{\gamma}_{jk}}{N} \)</span>  </p>
+<p><strong>案例</strong>：<br />
+- <strong>男女身高问题</strong>：200个未知性别身高数据，通过EM算法估计男女分布的均值、方差及样本归属概率。  </p>
+<h4 id="hmm"><strong>四、隐马尔可夫模型（HMM）应用</strong><a class="headerlink" href="#hmm" title="Permanent link">&para;</a></h4>
+<p><strong>模型定义</strong>：描述隐藏状态序列生成观测序列的过程，适用于时序数据。<br />
+<strong>组成要素</strong>：<br />
+| 要素         | 符号               | 含义                                                                 |<br />
+|--------------|--------------------|----------------------------------------------------------------------|<br />
+| 状态集合     | <span class="arithmatex">\( Q \)</span>            | 如{盒子1, 盒子2, 盒子3, 盒子4}                                      |<br />
+| 观测集合     | <span class="arithmatex">\( V \)</span>            | 如{红球, 白球}                                                      |<br />
+| 初始状态概率 | <span class="arithmatex">\( \pi \)</span>          | 初始时刻各状态概率向量                                               |<br />
+| 状态转移矩阵 | <span class="arithmatex">\( A \)</span>            | <span class="arithmatex">\( a_{ij} \)</span>为从状态i到j的转移概率                                  |<br />
+| 观测概率矩阵 | <span class="arithmatex">\( B \)</span>            | <span class="arithmatex">\( b_j(k) \)</span>为状态j生成观测k的概率                                  |  </p>
+<p><strong>参数学习（Baum-Welch算法）</strong>：<br />
+1. <strong>E步</strong>：计算状态序列的联合概率期望（如<span class="arithmatex">\( P(O, i_t=i, i_{t+1}=j|\bar{\lambda}) \)</span>）。<br />
+2. <strong>M步</strong>：<br />
+   - <span class="arithmatex">\( \pi_i = \frac{P(O, i_1=i|\bar{\lambda})}{P(O|\bar{\lambda})} \)</span><br />
+   - <span class="arithmatex">\( a_{ij} = \frac{\sum_{t=1}^{T-1}P(O, i_t=i, i_{t+1}=j|\bar{\lambda})}{\sum_{t=1}^{T-1}P(O, i_t=i|\bar{\lambda})} \)</span><br />
+   - <span class="arithmatex">\( b_j(k) = \frac{\sum_{t=1}^{T}P(O, i_t=j|\bar{\lambda})I(o_t=v_k)}{\sum_{t=1}^{T}P(O, i_t=j|\bar{\lambda})} \)</span>  </p>
+<p><strong>案例</strong>：<br />
+- <strong>盒子和球模型</strong>：通过5次观测序列{红, 红, 白, 白, 红}，估计状态转移矩阵和观测概率矩阵。  </p>
+<h4 id="_8"><strong>五、收敛性定理</strong><a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>定理</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定理1</td>
+<td>似然函数序列( P(Y</td>
+</tr>
+<tr>
+<td>定理2</td>
+<td>对数似然函数序列收敛到某值<span class="arithmatex">\( L^* \)</span>，参数估计序列收敛到<span class="arithmatex">\( L(\theta) \)</span>的稳定点（可能为局部极值）。</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_9">关键问题<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h4 id="1-em"><strong>1. EM算法的核心步骤是什么？其数学本质如何理解？</strong><a class="headerlink" href="#1-em" title="Permanent link">&para;</a></h4>
+<p><strong>答案</strong>：<br />
+EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（最大化期望）</strong>。<br />
+- <strong>E步</strong>：利用当前参数<span class="arithmatex">\( \theta^{(i)} \)</span>计算隐变量Z的条件期望，即Q函数<span class="arithmatex">\( Q(\theta, \theta^{(i)}) = E_{Z}[logP(Y,Z|\theta)|Y,\theta^{(i)}] \)</span>。<br />
+- <strong>M步</strong>：最大化Q函数以更新参数<span class="arithmatex">\( \theta^{(i+1)} = \arg\max_\theta Q(\theta, \theta^{(i)}) \)</span>。<br />
+<strong>数学本质</strong>：通过Jensen不等式构造对数似然函数<span class="arithmatex">\( L(\theta) \)</span>的下界<span class="arithmatex">\( B(\theta, \theta^{(i)}) \)</span>，迭代逼近其极大值，每次迭代保证似然函数非递减。  </p>
+<h4 id="2-em"><strong>2. 为什么EM算法的结果依赖初值选择？如何缓解这一问题？</strong><a class="headerlink" href="#2-em" title="Permanent link">&para;</a></h4>
+<p><strong>答案</strong>：<br />
+- <strong>原因</strong>：EM算法收敛到对数似然函数的<strong>局部极值</strong>，初值不同可能导致陷入不同局部解（如三硬币模型中不同初值得到不同参数估计）。<br />
+- <strong>缓解方法</strong>：<br />
+  1. 选取多个不同初值进行迭代，比较结果并选择最优解；<br />
+  2. 结合先验知识或数据特征，为初值提供合理猜测（如高斯混合模型中根据数据分布初始化均值）。  </p>
+<h4 id="3"><strong>3. 高斯混合模型与隐马尔可夫模型在应用场景上的核心区别是什么？</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p><strong>答案</strong>：<br />
+| 模型               | 应用场景                                                                 | 核心区别                                                                 |<br />
+|--------------------|--------------------------------------------------------------------------|--------------------------------------------------------------------------|<br />
+| <strong>高斯混合模型</strong>   | 处理<strong>无序列的多模态数据</strong>（如人群身高、样本聚类）。                     | 假设数据由多个独立高斯分布混合生成，无时间序列依赖，侧重静态数据的簇划分。 |<br />
+| <strong>隐马尔可夫模型</strong> | 建模<strong>时序数据</strong>（如语音识别、天气预测、生物序列分析）。                 | 引入状态转移和观测生成的时序依赖，状态序列隐含动态变化规律，侧重序列生成过程。 |</p>
+<h2 id="em_2">EM算法及三硬币模型应用总结<a class="headerlink" href="#em_2" title="Permanent link">&para;</a></h2>
+<h3 id="em_3">一、EM算法核心理论<a class="headerlink" href="#em_3" title="Permanent link">&para;</a></h3>
+<h4 id="1">1. <strong>算法定义与核心思想</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：EM算法（期望最大化算法）是一种通过迭代估计含有<strong>隐变量</strong>的概率模型参数的方法，适用于无解析解的极大似然估计问题。  </li>
+<li><strong>核心思想</strong>：通过<strong>E步（期望步）</strong>和<strong>M步（最大化步）</strong>交替迭代，逐步逼近对数似然函数的极大值。  </li>
+</ul>
+<h4 id="2">2. <strong>算法流程</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>初始化参数</strong>：选取初始值<span class="arithmatex">\(\theta^{(0)}=(\pi^{(0)}, p^{(0)}, q^{(0)})\)</span>。  </li>
+<li><strong>E步（计算期望）</strong>：  </li>
+<li>利用当前参数<span class="arithmatex">\(\theta^{(i)}\)</span>，计算隐变量<span class="arithmatex">\(Z\)</span>的条件期望（即观测数据来自某模型的概率）。  </li>
+<li><strong>三硬币模型E步公式</strong>：<br />
+     [
+     \mu_j^{(i+1)} = \frac{\pi^{(i)} (p<sup y_j="y_j">{(i)})</sup> (1-p<sup 1-y_j="1-y_j">{(i)})</sup> (p}}{\pi^{(i)<sup y_j="y_j">{(i)})</sup> (1-p<sup 1-y_j="1-y_j">{(i)})</sup>) (q} + (1-\pi^{(i)<sup y_j="y_j">{(i)})</sup> (1-q<sup 1-y_j="1-y_j">{(i)})</sup>
+     ]}<br />
+     其中<span class="arithmatex">\(\mu_j^{(i+1)}\)</span>表示第<span class="arithmatex">\(j\)</span>次观测来自硬币B的概率。  </li>
+<li><strong>M步（最大化期望）</strong>：  </li>
+<li>基于E步结果更新参数，最大化似然函数下界。  </li>
+<li><strong>三硬币模型M步公式</strong>：<br />
+     [
+     \pi^{(i+1)} = \frac{1}{n} \sum_{j=1}^n \mu_j^{(i+1)}, \quad p^{(i+1)} = \frac{\sum_{j=1}^n \mu_j^{(i+1)} y_j}{\sum_{j=1}^n \mu_j^{(i+1)}}, \quad q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+1)})}
+     ]  </li>
+<li><strong>迭代终止条件</strong>：当参数变化量小于阈值（如<span class="arithmatex">\(\|\theta^{(i+1)}-\theta^{(i)}\| &lt; \varepsilon\)</span>）或似然函数增长停滞时停止。  </li>
+</ol>
+<h4 id="3_1">3. <strong>关键性质</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>初值敏感性</strong>：不同初值可能导致不同局部极值（如三硬币模型中初值<span class="arithmatex">\((0.5,0.5,0.5)\)</span>和<span class="arithmatex">\((0.4,0.6,0.7)\)</span>得到不同结果）。  </li>
+<li><strong>收敛性</strong>：似然函数序列单调递增，最终收敛到<strong>局部极值</strong>（非全局最优）。  </li>
+</ul>
+<h3 id="_10">二、三硬币模型问题与求解<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1. <strong>问题描述</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>模型设定</strong>：  </li>
+<li>硬币A（正面概率<span class="arithmatex">\(\pi\)</span>）决定选择硬币B（正面概率<span class="arithmatex">\(p\)</span>）或C（正面概率<span class="arithmatex">\(q\)</span>）。  </li>
+<li>观测结果为二进制序列（如<span class="arithmatex">\(Y = [1,1,0,1,0,0,1,0,1,1]\)</span>），需估计参数<span class="arithmatex">\(\pi, p, q\)</span>。  </li>
+<li><strong>难点</strong>：隐变量<span class="arithmatex">\(Z\)</span>（硬币A的结果）不可观测，似然函数含求和项，无解析解。  </li>
+</ul>
+<h4 id="2-em_1">2. <strong>求解方法：EM算法</strong><a class="headerlink" href="#2-em_1" title="Permanent link">&para;</a></h4>
+<p><strong>步骤解析</strong>：<br />
+1. <strong>初始化参数</strong>：<br />
+   - 例：取初值<span class="arithmatex">\(\theta^{(0)} = (0.5, 0.5, 0.5)\)</span>（硬币A、B、C均为均匀硬币）。<br />
+2. <strong>第一次迭代（<span class="arithmatex">\(i=0\)</span>）</strong>：<br />
+   - <strong>E步</strong>：计算每个观测<span class="arithmatex">\(y_j\)</span>来自硬币B的概率<span class="arithmatex">\(\mu_j^{(1)}\)</span>。<br />
+     - 对于<span class="arithmatex">\(y_j=1\)</span>：<br />
+       [
+       \mu_j^{(1)} = \frac{0.5 \times 0.5^1 \times 0.5^0}{0.5 \times 0.5 + 0.5 \times 0.5} = 0.5
+       ]<br />
+     - 对于<span class="arithmatex">\(y_j=0\)</span>：<br />
+       [
+       \mu_j^{(1)} = \frac{0.5 \times 0.5^0 \times 0.5^1}{0.5 \times 0.5 + 0.5 \times 0.5} = 0.5
+       ]<br />
+   - <strong>M步</strong>：<br />
+     - 计算<span class="arithmatex">\(\pi^{(1)}\)</span>：<span class="arithmatex">\(\pi^{(1)} = \frac{1}{10} \times (0.5 \times 10) = 0.5\)</span><br />
+     - 计算<span class="arithmatex">\(p^{(1)}\)</span>：观测中1的个数为6，0的个数为4，<br />
+       [
+       p^{(1)} = \frac{0.5 \times 6}{0.5 \times 10} = 0.6
+       ]<br />
+     - 计算<span class="arithmatex">\(q^{(1)}\)</span>：<br />
+       [
+       q^{(1)} = \frac{(1-0.5) \times 6}{(1-0.5) \times 10} = 0.6
+       ]<br />
+3. <strong>第二次迭代（<span class="arithmatex">\(i=1\)</span>）</strong>：<br />
+   - <strong>E步</strong>：参数更新为<span class="arithmatex">\(\theta^{(1)}=(0.5, 0.6, 0.6)\)</span>，重新计算<span class="arithmatex">\(\mu_j^{(2)}\)</span>。<br />
+     - 对于<span class="arithmatex">\(y_j=1\)</span>：<br />
+       [
+       \mu_j^{(2)} = \frac{0.5 \times 0.6^1 \times 0.4^0}{0.5 \times 0.6 + 0.5 \times 0.6} = 0.5
+       ]<br />
+     - 对于<span class="arithmatex">\(y_j=0\)</span>：<br />
+       [
+       \mu_j^{(2)} = \frac{0.5 \times 0.4^1 \times 0.6^0}{0.5 \times 0.4 + 0.5 \times 0.4} = 0.5
+       ]<br />
+   - <strong>M步</strong>：参数不变，迭代收敛，结果为<span class="arithmatex">\(\pi=0.5, p=0.6, q=0.6\)</span>。  </p>
+<h4 id="3_2">3. <strong>初值影响示例</strong><a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>初值<span class="arithmatex">\(\theta^{(0)}=(0.4, 0.6, 0.7)\)</span></strong>：  </li>
+<li>经过迭代后，参数估计为<span class="arithmatex">\(\hat{\pi}=0.4064, \hat{p}=0.5368, \hat{q}=0.6432\)</span>。  </li>
+<li><strong>结论</strong>：初值不同导致最终参数不同，需通过多次初始化选取最优解。  </li>
+</ul>
+<h3 id="em_4">三、EM算法数学推导要点<a class="headerlink" href="#em_4" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">1. <strong>目标函数与难点</strong><a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>不完全数据对数似然函数</strong>：<br />
+  [
+  L(\theta) = \log P(Y|\theta) = \log \sum_Z P(Y,Z|\theta)
+  ]<br />
+  难点：求和项的对数无法直接求导，需通过不等式放缩构造下界。  </li>
+</ul>
+<h4 id="2-jensen">2. <strong>Jensen不等式的应用</strong><a class="headerlink" href="#2-jensen" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心推导</strong>：<br />
+  [
+  L(\theta) - L(\theta^{(i)}) \geq \sum_Z P(Z|Y,\theta^{(i)}) \log \frac{P(Y,Z|\theta)}{P(Y,Z|\theta^{(i)})}
+  ]<br />
+  定义下界函数<span class="arithmatex">\(B(\theta, \theta^{(i)})\)</span>，通过最大化<span class="arithmatex">\(B\)</span>间接优化<span class="arithmatex">\(L(\theta)\)</span>。  </li>
+</ul>
+<h4 id="3-q">3. <strong>Q函数的作用</strong><a class="headerlink" href="#3-q" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：<br />
+  [
+  Q(\theta, \theta^{(i)}) = E_Z[\log P(Y,Z|\theta) | Y, \theta^{(i)}]
+  ]  </li>
+<li>本质：完全数据对数似然函数在当前参数下的期望，作为<span class="arithmatex">\(L(\theta)\)</span>的逼近目标。  </li>
+<li><strong>M步等价于</strong>：<span class="arithmatex">\(\theta^{(i+1)} = \arg\max_\theta Q(\theta, \theta^{(i)})\)</span>。  </li>
+</ul>
+<h3 id="_11">四、总结<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>EM算法优势</strong>：适用于含隐变量的复杂模型，通过迭代逐步优化参数。  </li>
+<li><strong>局限性</strong>：依赖初值，易收敛到局部极值，需结合实际问题多次初始化。  </li>
+<li><strong>应用场景</strong>：机器学习（如高斯混合模型、隐马尔可夫模型）、统计推断等。</li>
+</ul>
+<h2 id="em_5">EM算法收敛性分析总结<a class="headerlink" href="#em_5" title="Permanent link">&para;</a></h2>
+<h3 id="_12">一、核心问题与结论<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<h4 id="1_3">1. <strong>核心疑问</strong><a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>EM算法的估计序列是否收敛？</strong>  </li>
+<li><strong>若收敛，收敛到全局极大值还是局部极大值？</strong>  </li>
+</ol>
+<h4 id="2_1">2. <strong>关键结论</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>收敛性</strong>：EM算法生成的<strong>似然函数序列</strong>必定收敛（单调递增且有上界），但<strong>参数估计序列</strong>未必一定收敛（可能振荡或收敛到稳定点）。  </li>
+<li><strong>极值性质</strong>：即使参数收敛，也只能保证收敛到<strong>对数似然函数的稳定点</strong>（可能是局部极大值、鞍点甚至局部极小值），<strong>无法保证全局极大值</strong>。  </li>
+</ul>
+<h3 id="_13">二、收敛性定理详解<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="1-1">1. <strong>定理1：似然函数序列的单调性</strong><a class="headerlink" href="#1-1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>内容</strong>：设 <span class="arithmatex">\( P(Y|\theta) \)</span> 为观测数据的似然函数，<span class="arithmatex">\( \{\theta^{(i)}\} \)</span> 为EM算法的参数序列，对应似然函数序列 <span class="arithmatex">\( \{P(Y|\theta^{(i)})\} \)</span> 单调递增，即：<br />
+  [
+  P(Y|\theta^{(i+1)}) \geq P(Y|\theta^{(i)})
+  ]  </li>
+<li><strong>证明要点</strong>：  </li>
+<li>利用<strong>Jensen不等式</strong>构造似然函数差的下界，证明每次迭代后似然函数非递减。  </li>
+<li>数学表达式：通过 <span class="arithmatex">\( H(\theta, \theta^{(i)}) = \sum_Z \log P(Z|Y,\theta) P(Z|Y,\theta^{(i)}) \)</span> 推导，结合不等式 <span class="arithmatex">\( \sum_Z \log \frac{P_1}{P_2} \cdot P_2 \leq \log \sum_Z P_1 \)</span>（其中 <span class="arithmatex">\( P_1, P_2 \)</span> 为概率分布），得出 <span class="arithmatex">\( H(\theta^{(i+1)}, \theta^{(i)}) \leq H(\theta^{(i)}, \theta^{(i)}) \)</span>，从而证明似然函数单调递增。  </li>
+</ul>
+<h4 id="2-2">2. <strong>定理2：对数似然函数与参数的收敛性</strong><a class="headerlink" href="#2-2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>内容</strong>：  </li>
+<li>若 <span class="arithmatex">\( P(Y|\theta) \)</span> 有上界，则对数似然函数序列 <span class="arithmatex">\( L(\theta^{(i)}) = \log P(Y|\theta^{(i)}) \)</span> 收敛到某一值 <span class="arithmatex">\( L^* \)</span>。  </li>
+<li>在 <span class="arithmatex">\( Q(\theta, \theta') \)</span> 与 <span class="arithmatex">\( L(\theta) \)</span> 满足一定条件下，参数序列 <span class="arithmatex">\( \{\theta^{(i)}\} \)</span> 收敛到 <span class="arithmatex">\( L(\theta) \)</span> 的<strong>稳定点</strong>（一阶导数为0的点）。  </li>
+<li><strong>说明</strong>：  </li>
+<li><strong>稳定点</strong>：可能是局部极大值、鞍点或局部极小值（实际应用中多为局部极大值）。  </li>
+<li><strong>条件</strong>：定理2的条件在大多数实际问题中（如连续可微的概率模型）成立。  </li>
+</ul>
+<h3 id="_14">三、收敛性的局限性与应对方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1. <strong>局限性</strong><a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>参数收敛的不确定性</strong>：似然函数收敛不保证参数收敛（可能出现参数振荡但似然函数稳定的情况）。  </li>
+<li><strong>初值敏感性</strong>：不同初值可能导致参数收敛到不同稳定点（如三硬币模型中初值影响最终参数）。  </li>
+</ul>
+<h4 id="2_2">2. <strong>应对方法</strong><a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>多初值迭代</strong>：  </li>
+<li><strong>方法</strong>：选取多个不同初值运行EM算法，比较最终似然函数值，选择最优解。  </li>
+<li><strong>例子</strong>：在三硬币模型中，分别用初值 <span class="arithmatex">\( (0.5, 0.5, 0.5) \)</span> 和 <span class="arithmatex">\( (0.4, 0.6, 0.7) \)</span> 迭代，前者收敛到 <span class="arithmatex">\( (\pi=0.5, p=0.6, q=0.6) \)</span>，后者收敛到 <span class="arithmatex">\( (\pi=0.4064, p=0.5368, q=0.6432) \)</span>，通过比较似然函数值确定更优解。  </li>
+<li><strong>结合先验知识</strong>：  </li>
+<li><strong>方法</strong>：利用领域知识为初值提供合理范围（如高斯混合模型中根据数据分布初始化均值）。  </li>
+<li><strong>改进算法</strong>：  </li>
+<li><strong>方法</strong>：结合全局优化算法（如模拟退火、遗传算法）寻找初值，或使用梯度下降等方法辅助EM算法逃离局部极值。  </li>
+</ol>
+<h3 id="_15">四、实例解析：三硬币模型的收敛性验证<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="1_5">1. <strong>问题回顾</strong><a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>三硬币模型通过EM算法估计参数 <span class="arithmatex">\( \pi, p, q \)</span>，观测序列为 <span class="arithmatex">\( Y = [1,1,0,1,0,0,1,0,1,1] \)</span>（共10次观测，6次1，4次0）。  </li>
+</ul>
+<h4 id="2_3">2. <strong>收敛性验证步骤</strong><a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>初值1：对称初值 <span class="arithmatex">\( (0.5, 0.5, 0.5) \)</span></strong>  </li>
+<li>迭代过程：  <ul>
+<li>第1次迭代后参数：<span class="arithmatex">\( (0.5, 0.6, 0.6) \)</span>  </li>
+<li>第2次迭代后参数不变，似然函数收敛。  </li>
+</ul>
+</li>
+<li>结论：参数收敛到局部极大值，似然函数单调递增。  </li>
+<li><strong>初值2：非对称初值 <span class="arithmatex">\( (0.4, 0.6, 0.7) \)</span></strong>  </li>
+<li>迭代过程：  <ul>
+<li>经过多次迭代后参数收敛到 <span class="arithmatex">\( (0.4064, 0.5368, 0.6432) \)</span>，似然函数仍单调递增但值低于初值1的结果。  </li>
+</ul>
+</li>
+<li>结论：参数收敛到另一局部极大值，说明初值影响收敛结果。  </li>
+</ol>
+<h4 id="3_3">3. <strong>关键观察</strong><a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>无论初值如何，似然函数序列始终单调递增，但参数可能收敛到不同局部极值，印证了EM算法的收敛性定理。  </li>
+</ul>
+<h3 id="_16">五、总结<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>要点</strong></th>
+<th><strong>详细说明</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>收敛性保证</strong></td>
+<td>似然函数序列必收敛（定理1），参数序列可能收敛（定理2条件满足时）。</td>
+</tr>
+<tr>
+<td><strong>极值性质</strong></td>
+<td>收敛到对数似然函数的稳定点（通常为局部极大值），非全局最优。</td>
+</tr>
+<tr>
+<td><strong>应对策略</strong></td>
+<td>多初值迭代、结合先验知识、改进优化算法。</td>
+</tr>
+<tr>
+<td><strong>应用启示</strong></td>
+<td>在实际应用中需通过实验验证结果的鲁棒性，避免依赖单一初值导致的局部最优解。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="em_6">EM算法在高斯混合模型中的应用总结<a class="headerlink" href="#em_6" title="Permanent link">&para;</a></h2>
+<h3 id="gmm">一、高斯混合模型（GMM）基础<a class="headerlink" href="#gmm" title="Permanent link">&para;</a></h3>
+<h4 id="1_6">1. <strong>模型定义与作用</strong><a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：高斯混合模型是由<strong>多个高斯分布线性组合而成的概率模型</strong>，用于描述多模态数据（即数据呈现多个密集簇状分布）。  </li>
+<li><strong>数学表达式</strong>：<br />
+  [
+  P(y|\theta) = \sum_{k=1}^{K} \alpha_k \phi(y|\theta_k), \quad \text{其中}  \alpha_k \geq 0,  \sum_{k=1}^{K} \alpha_k = 1
+  ]  </li>
+<li><span class="arithmatex">\( \alpha_k \)</span>：第<span class="arithmatex">\( k \)</span>个高斯分模型的权重（选择概率）；  </li>
+<li><span class="arithmatex">\( \phi(y|\theta_k) \)</span>：第<span class="arithmatex">\( k \)</span>个高斯分模型的概率密度函数，参数<span class="arithmatex">\( \theta_k = (\mu_k, \sigma_k^2) \)</span>。  </li>
+</ul>
+<h4 id="2_4">2. <strong>应用场景</strong><a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心问题</strong>：当单高斯模型无法拟合多模态数据时（如男女身高混合数据、多类别样本聚类），需用GMM建模。  </li>
+<li><strong>与单高斯模型的对比</strong>：  </li>
+<li>单高斯模型假设数据来自单一分布，对多模态数据拟合差（如数据分布呈双峰值时，单高斯模型的中心区域样本量少，拟合不合理）。  </li>
+<li>GMM通过多个高斯分布的加权和，灵活拟合复杂数据分布。  </li>
+</ul>
+<h3 id="em_7">二、高斯混合模型的参数估计：EM算法<a class="headerlink" href="#em_7" title="Permanent link">&para;</a></h3>
+<h4 id="1_7">1. <strong>问题难点</strong><a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>隐变量存在</strong>：每个观测数据<span class="arithmatex">\( y_j \)</span>的来源分模型未知（即隐变量<span class="arithmatex">\( \gamma_{jk} \)</span>：<span class="arithmatex">\( \gamma_{jk}=1 \)</span>表示<span class="arithmatex">\( y_j \)</span>来自第<span class="arithmatex">\( k \)</span>个分模型）。  </li>
+<li><strong>直接求解不可行</strong>：对数似然函数含求和项的对数，无法通过直接求导得到解析解，需用EM算法迭代求解。  </li>
+</ul>
+<h4 id="2-em_2">2. <strong>EM算法流程</strong><a class="headerlink" href="#2-em_2" title="Permanent link">&para;</a></h4>
+<p><strong>步骤1：初始化参数</strong><br />
+- 设定分模型个数<span class="arithmatex">\( K \)</span>，初始化各分模型的参数<span class="arithmatex">\( \theta_k^{(0)}=(\mu_k^{(0)}, \sigma_k^{2(0)}) \)</span>和权重<span class="arithmatex">\( \alpha_k^{(0)} \)</span>（如随机初始化或基于先验知识）。  </p>
+<p><strong>步骤2：E步（计算响应度）</strong><br />
+- <strong>目标</strong>：计算每个观测数据<span class="arithmatex">\( y_j \)</span>来自第<span class="arithmatex">\( k \)</span>个分模型的概率（响应度，Responsibility）。<br />
+- <strong>公式</strong>：<br />
+  [
+  \hat{\gamma}<em jk="jk">{jk} = P(\gamma</em> \phi(y_j|\theta_k}=1 | y_j, \theta^{(i)}) = \frac{\alpha_k^{(i)<sup K="K">{(i)})}{\sum_{m=1}</sup>
+  ]} \alpha_m^{(i)} \phi(y_j|\theta_m^{(i)})<br />
+  - <span class="arithmatex">\( \phi(y_j|\theta_k^{(i)}) = \frac{1}{\sqrt{2\pi\sigma_k^{2(i)}}} \exp\left(-\frac{(y_j-\mu_k^{(i)})^2}{2\sigma_k^{2(i)}}\right) \)</span>为高斯概率密度。  </p>
+<p><strong>步骤3：M步（更新模型参数）</strong><br />
+- <strong>目标</strong>：基于响应度更新分模型参数和权重，最大化似然函数下界。<br />
+- <strong>更新公式</strong>：<br />
+  1. <strong>均值</strong>：<span class="arithmatex">\( \mu_k^{(i+1)} = \frac{\sum_{j=1}^{N} \hat{\gamma}_{jk} y_j}{\sum_{j=1}^{N} \hat{\gamma}_{jk}} \)</span><br />
+  2. <strong>方差</strong>：<span class="arithmatex">\( \sigma_k^{2(i+1)} = \frac{\sum_{j=1}^{N} \hat{\gamma}_{jk} (y_j - \mu_k^{(i+1)})^2}{\sum_{j=1}^{N} \hat{\gamma}_{jk}} \)</span><br />
+  3. <strong>权重</strong>：<span class="arithmatex">\( \alpha_k^{(i+1)} = \frac{\sum_{j=1}^{N} \hat{\gamma}_{jk}}{N} \)</span>  </p>
+<p><strong>步骤4：迭代终止</strong><br />
+- 当参数变化量小于阈值（如<span class="arithmatex">\( \|\theta^{(i+1)} - \theta^{(i)}\| &lt; \varepsilon \)</span>）或响应度变化极小时，停止迭代。  </p>
+<h3 id="_17">三、实例解析：男女身高数据建模<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h4 id="1_8">1. <strong>问题描述</strong><a class="headerlink" href="#1_8" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>数据</strong>：200个未知性别的身高数据（假设来自男生和女生两个高斯分布）。  </li>
+<li><strong>目标</strong>：  </li>
+<li>估计男生、女生身高分布的参数（均值<span class="arithmatex">\( \mu_1, \mu_2 \)</span>，方差<span class="arithmatex">\( \sigma_1^2, \sigma_2^2 \)</span>）；  </li>
+<li>确定每个样本属于男生或女生的概率。  </li>
+</ul>
+<h4 id="2_5">2. <strong>求解步骤</strong><a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h4>
+<p><strong>Step 1：初始化参数</strong><br />
+- 设<span class="arithmatex">\( K=2 \)</span>（男生、女生两个分模型），初始化：<br />
+  - 男生分布：<span class="arithmatex">\( \mu_1^{(0)}=1.64 \, \text{m}, \sigma_1^{2(0)}=0.06 \, \text{m}^2 \)</span>（假设均值为1.64，方差较小）；<br />
+  - 女生分布：<span class="arithmatex">\( \mu_2^{(0)}=1.56 \, \text{m}, \sigma_2^{2(0)}=0.04 \, \text{m}^2 \)</span>；<br />
+  - 权重：<span class="arithmatex">\( \alpha_1^{(0)}=\alpha_2^{(0)}=0.5 \)</span>（假设男女样本数相等）。  </p>
+<p><strong>Step 2：E步计算响应度</strong><br />
+- 对每个身高数据<span class="arithmatex">\( y_j \)</span>，计算其属于男生的概率<span class="arithmatex">\( \hat{\gamma}_{j1} \)</span>和女生的概率<span class="arithmatex">\( \hat{\gamma}_{j2}=1-\hat{\gamma}_{j1} \)</span>。<br />
+  - 例：某样本<span class="arithmatex">\( y_j=1.70 \, \text{m} \)</span>，<br />
+    [
+    \hat{\gamma}_{j1} = \frac{0.5 \cdot \phi(1.70|1.64, 0.06)}{0.5 \cdot \phi(1.70|1.64, 0.06) + 0.5 \cdot \phi(1.70|1.56, 0.04)}
+    ]<br />
+    计算得<span class="arithmatex">\( \hat{\gamma}_{j1} \approx 0.8 \)</span>，即该样本有80%概率属于男生分布。  </p>
+<p><strong>Step 3：M步更新参数</strong><br />
+- <strong>男生分布参数更新</strong>：<br />
+  - 均值：<span class="arithmatex">\( \mu_1^{(1)} = \frac{\sum_{j=1}^{200} \hat{\gamma}_{j1} y_j}{\sum_{j=1}^{200} \hat{\gamma}_{j1}} \)</span>（加权平均，高响应度样本贡献更大）；<br />
+  - 方差：<span class="arithmatex">\( \sigma_1^{2(1)} = \frac{\sum_{j=1}^{200} \hat{\gamma}_{j1} (y_j - \mu_1^{(1)})^2}{\sum_{j=1}^{200} \hat{\gamma}_{j1}} \)</span>；<br />
+  - 权重：<span class="arithmatex">\( \alpha_1^{(1)} = \frac{\sum_{j=1}^{200} \hat{\gamma}_{j1}}{200} \)</span>（若多数样本响应度高，则权重增大）。<br />
+- <strong>女生分布参数更新</strong>：同理，使用<span class="arithmatex">\( \hat{\gamma}_{j2} \)</span>计算。  </p>
+<p><strong>Step 4：迭代直至收敛</strong><br />
+- 重复E步和M步，直至男生、女生分布的参数不再显著变化（如均值变化小于0.01 m，方差变化小于0.001 m²）。  </p>
+<h4 id="3_4">3. <strong>结果解释</strong><a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li>最终得到男生分布参数（如<span class="arithmatex">\( \mu_1=1.75 \, \text{m}, \sigma_1^2=0.05 \)</span>）和女生分布参数（如<span class="arithmatex">\( \mu_2=1.60 \, \text{m}, \sigma_2^2=0.03 \)</span>），以及每个样本的归属概率。  </li>
+<li>权重<span class="arithmatex">\( \alpha_1, \alpha_2 \)</span>反映男女样本比例（如<span class="arithmatex">\( \alpha_1=0.52, \alpha_2=0.48 \)</span>，接近实际比例1:1）。  </li>
+</ul>
+<h3 id="k-means">四、高斯混合模型与K-means的对比<a class="headerlink" href="#k-means" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>对比维度</strong></th>
+<th><strong>高斯混合模型（EM算法）</strong></th>
+<th><strong>K-means聚类</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>模型性质</strong></td>
+<td>概率生成模型，输出样本属于各簇的概率</td>
+<td>非概率模型，输出硬聚类（样本仅属一个簇）</td>
+</tr>
+<tr>
+<td><strong>核心目标</strong></td>
+<td>最大化数据似然函数，拟合分布参数</td>
+<td>最小化簇内距离平方和（SSD）</td>
+</tr>
+<tr>
+<td><strong>输出结果</strong></td>
+<td>簇分布参数、样本软归属（概率）</td>
+<td>簇质心、样本硬归属（类别标签）</td>
+</tr>
+<tr>
+<td><strong>适用场景</strong></td>
+<td>密度估计、生成式建模（如异常检测）</td>
+<td>无监督分类、数据分组</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_18">五、总结<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h4 id="1_9">1. <strong>核心价值</strong><a class="headerlink" href="#1_9" title="Permanent link">&para;</a></h4>
+<ul>
+<li>高斯混合模型通过EM算法实现<strong>多模态数据的柔性建模</strong>，解决了单高斯模型的局限性。  </li>
+<li>EM算法通过迭代估计隐变量（样本归属概率）和模型参数，是处理含隐变量问题的通用框架。  </li>
+</ul>
+<h4 id="2_6">2. <strong>关键要点</strong><a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>响应度</strong>：E步计算的样本归属概率是连接隐变量与观测数据的桥梁。  </li>
+<li><strong>初值影响</strong>：需通过多组初值迭代避免局部最优（如男女身高案例中不同初值可能导致簇划分偏差）。  </li>
+<li><strong>扩展应用</strong>：GMM可推广至多维数据（如二维平面数据聚类），或与其他模型结合（如HMM中的观测概率建模）。</li>
+</ul>
+<h2 id="em_8">EM算法在隐马尔可夫模型中的应用总结<a class="headerlink" href="#em_8" title="Permanent link">&para;</a></h2>
+<h3 id="hmm_1">一、隐马尔可夫模型（HMM）基础<a class="headerlink" href="#hmm_1" title="Permanent link">&para;</a></h3>
+<h4 id="1_10">1. <strong>模型定义与核心要素</strong><a class="headerlink" href="#1_10" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>定义</strong>：隐马尔可夫模型是描述<strong>时序数据中隐藏状态与观测序列关系</strong>的概率模型，由<strong>隐藏状态序列</strong>生成<strong>观测序列</strong>，适用于语音识别、生物序列分析等场景。  </li>
+<li><strong>核心要素（三要素）</strong>：  </li>
+<li><strong>状态集合 <span class="arithmatex">\( Q \)</span></strong>：所有可能的隐藏状态（如盒子和球模型中的{盒子1, 盒子2, 盒子3, 盒子4}）。  </li>
+<li><strong>观测集合 <span class="arithmatex">\( V \)</span></strong>：所有可能的观测值（如{红球, 白球}）。  </li>
+<li><strong>参数组 <span class="arithmatex">\( \lambda = (A, B, \pi) \)</span></strong>：  <ul>
+<li><strong>初始状态概率向量 <span class="arithmatex">\( \pi \)</span></strong>：<span class="arithmatex">\( \pi_i = P(i_1 = q_i) \)</span>，即初始时刻处于状态 <span class="arithmatex">\( q_i \)</span> 的概率。  </li>
+<li><strong>状态转移矩阵 <span class="arithmatex">\( A \)</span></strong>：<span class="arithmatex">\( a_{ij} = P(i_{t+1}=q_j | i_t=q_i) \)</span>，表示状态转移概率。  </li>
+<li><strong>观测概率矩阵 <span class="arithmatex">\( B \)</span></strong>：<span class="arithmatex">\( b_j(k) = P(o_t=v_k | i_t=q_j) \)</span>，表示状态生成观测的概率。  </li>
+</ul>
+</li>
+</ul>
+<h4 id="2_7">2. <strong>基本假设</strong><a class="headerlink" href="#2_7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>齐次马尔可夫性假设</strong>：当前状态仅依赖前一状态，即 <span class="arithmatex">\( P(i_t | i_{t-1}, o_{t-1}, \dots) = P(i_t | i_{t-1}) \)</span>。  </li>
+<li><strong>观测独立性假设</strong>：当前观测仅依赖当前状态，即 <span class="arithmatex">\( P(o_t | i_t, i_{t-1}, \dots) = P(o_t | i_t) \)</span>。  </li>
+</ul>
+<h3 id="_19">二、隐马尔可夫模型的三个基本问题<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>问题类型</strong></th>
+<th><strong>输入</strong></th>
+<th><strong>输出/目标</strong></th>
+<th><strong>求解方法</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. 概率计算</strong></td>
+<td><span class="arithmatex">\( \lambda, O \)</span></td>
+<td>( P(O</td>
+<td>\lambda) )</td>
+</tr>
+<tr>
+<td><strong>2. 参数学习</strong></td>
+<td><span class="arithmatex">\( O \)</span>（无状态序列）</td>
+<td><span class="arithmatex">\( \lambda = (A, B, \pi) \)</span> 使 ( P(O</td>
+<td>\lambda) ) 最大</td>
+</tr>
+<tr>
+<td><strong>3. 预测（解码）</strong></td>
+<td><span class="arithmatex">\( \lambda, O \)</span></td>
+<td>最可能的状态序列 <span class="arithmatex">\( I \)</span></td>
+<td>Viterbi算法</td>
+</tr>
+</tbody>
+</table>
+<h3 id="baum-welchem">三、参数学习问题：Baum-Welch算法（EM算法应用）<a class="headerlink" href="#baum-welchem" title="Permanent link">&para;</a></h3>
+<h4 id="1_11">1. <strong>问题难点</strong><a class="headerlink" href="#1_11" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>隐变量存在</strong>：状态序列 <span class="arithmatex">\( I \)</span> 不可观测，需通过EM算法迭代估计参数 <span class="arithmatex">\( \lambda = (A, B, \pi) \)</span>。  </li>
+<li><strong>目标函数</strong>：最大化观测数据的对数似然函数 <span class="arithmatex">\( L(\lambda) = \log P(O | \lambda) = \log \sum_I P(O, I | \lambda) \)</span>，其中求和涉及所有可能的状态序列 <span class="arithmatex">\( I \)</span>，无法直接求解。  </li>
+</ul>
+<h4 id="2-baum-welchem">2. <strong>Baum-Welch算法流程（EM框架）</strong><a class="headerlink" href="#2-baum-welchem" title="Permanent link">&para;</a></h4>
+<p><strong>步骤1：明确完全数据与隐变量</strong><br />
+- <strong>完全数据</strong>：<span class="arithmatex">\( (O, I) \)</span>（观测序列+状态序列）。<br />
+- <strong>对数似然函数</strong>：<span class="arithmatex">\( \log P(O, I | \lambda) = \log \left[ \pi_{i_1} \prod_{t=1}^{T-1} a_{i_t i_{t+1}} \prod_{t=1}^T b_{i_t}(o_t) \right] \)</span>。  </p>
+<p><strong>步骤2：E步（计算Q函数）</strong><br />
+- <strong>Q函数定义</strong>：<br />
+  [
+  Q(\lambda, \bar{\lambda}) = E_I \left[ \log P(O, I | \lambda) \mid O, \bar{\lambda} \right] = \sum_I \log P(O, I | \lambda) \cdot P(I \mid O, \bar{\lambda})
+  ]<br />
+  - 其中 <span class="arithmatex">\( P(I \mid O, \bar{\lambda}) \)</span> 是在当前参数 <span class="arithmatex">\( \bar{\lambda} \)</span> 下，状态序列 <span class="arithmatex">\( I \)</span> 的后验概率。  </p>
+<p><strong>步骤3：M步（最大化Q函数更新参数）</strong><br />
+通过拉格朗日乘子法，分别对 <span class="arithmatex">\( \pi, A, B \)</span> 求偏导并最大化，得到更新公式：<br />
+1. <strong>初始状态概率 <span class="arithmatex">\( \pi_i \)</span></strong>：<br />
+   [
+   \pi_i = \frac{P(i_1 = q_i \mid O, \bar{\lambda})}{P(O \mid \bar{\lambda})} = P(i_1 = q_i \mid O, \bar{\lambda})
+   ]<br />
+2. <strong>状态转移矩阵 <span class="arithmatex">\( a_{ij} \)</span></strong>：<br />
+   [
+   a_{ij} = \frac{\sum_{t=1}^{T-1} P(i_t = q_i, i_{t+1} = q_j \mid O, \bar{\lambda})}{\sum_{t=1}^{T-1} P(i_t = q_i \mid O, \bar{\lambda})}
+   ]<br />
+3. <strong>观测概率矩阵 <span class="arithmatex">\( b_j(k) \)</span></strong>：<br />
+   [
+   b_j(k) = \frac{\sum_{t=1}^T P(i_t = q_j \mid O, \bar{\lambda}) \cdot \delta(o_t, v_k)}{\sum_{t=1}^T P(i_t = q_j \mid O, \bar{\lambda})}
+   ]<br />
+   - <span class="arithmatex">\( \delta(o_t, v_k) = 1 \)</span> 当 <span class="arithmatex">\( o_t = v_k \)</span>，否则为0。  </p>
+<p><strong>步骤4：迭代终止</strong><br />
+重复E步和M步，直至参数变化量小于阈值或对数似然函数收敛。  </p>
+<h3 id="_20">四、实例解析：盒子和球模型参数学习<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<h4 id="1_12">1. <strong>问题描述</strong><a class="headerlink" href="#1_12" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>模型设定</strong>：  </li>
+<li>状态集合 <span class="arithmatex">\( Q = \{\text{盒子1}, \text{盒子2}, \text{盒子3}, \text{盒子4}\} \)</span>，观测集合 <span class="arithmatex">\( V = \{\text{红球}, \text{白球}\} \)</span>。  </li>
+<li>观测序列 <span class="arithmatex">\( O = \{\text{红}, \text{红}, \text{白}, \text{白}, \text{红}\} \)</span>（<span class="arithmatex">\( T = 5 \)</span>）。  </li>
+<li><strong>目标</strong>：利用Baum-Welch算法估计参数 <span class="arithmatex">\( \lambda = (A, B, \pi) \)</span>。  </li>
+</ul>
+<h4 id="2_8">2. <strong>求解步骤（简化版）</strong><a class="headerlink" href="#2_8" title="Permanent link">&para;</a></h4>
+<p><strong>Step 1：初始化参数</strong><br />
+- 假设初始参数：<br />
+  - <span class="arithmatex">\( \pi = (0.25, 0.25, 0.25, 0.25) \)</span>（均匀分布），<br />
+  - 状态转移矩阵 <span class="arithmatex">\( A \)</span> 和观测矩阵 <span class="arithmatex">\( B \)</span> 随机初始化（如盒子1→盒子2的概率为1，其他转移均匀分布；观测概率均匀为0.5）。  </p>
+<p><strong>Step 2：E步计算后验概率</strong><br />
+- 计算状态序列 <span class="arithmatex">\( I \)</span> 的后验概率 <span class="arithmatex">\( P(I \mid O, \bar{\lambda}) \)</span>，需通过前向-后向算法计算中间量：<br />
+  - <strong>前向变量</strong> <span class="arithmatex">\( \alpha_t(i) = P(o_1, o_2, \dots, o_t, i_t = q_i \mid \bar{\lambda}) \)</span>，<br />
+  - <strong>后向变量</strong> <span class="arithmatex">\( \beta_t(i) = P(o_{t+1}, \dots, o_T \mid i_t = q_i, \bar{\lambda}) \)</span>。<br />
+- 利用前向-后向变量计算：<br />
+  - <span class="arithmatex">\( P(i_t = q_i \mid O, \bar{\lambda}) = \frac{\alpha_t(i) \beta_t(i)}{P(O \mid \bar{\lambda})} \)</span>，<br />
+  - <span class="arithmatex">\( P(i_t = q_i, i_{t+1} = q_j \mid O, \bar{\lambda}) = \frac{\alpha_t(i) a_{ij} b_j(o_{t+1}) \beta_{t+1}(j)}{P(O \mid \bar{\lambda})} \)</span>。  </p>
+<p><strong>Step 3：M步更新参数</strong><br />
+- <strong>更新 <span class="arithmatex">\( \pi \)</span></strong>：<br />
+  [
+  \pi_i = P(i_1 = q_i \mid O, \bar{\lambda}) = \frac{\alpha_1(i)}{P(O \mid \bar{\lambda})}
+  ]<br />
+- <strong>更新 <span class="arithmatex">\( a_{ij} \)</span></strong>：<br />
+  以盒子1→盒子2为例，<br />
+  [
+  a_{12} = \frac{\sum_{t=1}^{4} P(i_t=\text{盒子1}, i_{t+1}=\text{盒子2} \mid O, \bar{\lambda})}{\sum_{t=1}^{4} P(i_t=\text{盒子1} \mid O, \bar{\lambda})}
+  ]<br />
+- <strong>更新 <span class="arithmatex">\( b_j(\text{红球}) \)</span></strong>：<br />
+  以盒子2为例，<br />
+  [
+  b_2(\text{红球}) = \frac{\sum_{t=1}^5 P(i_t=\text{盒子2} \mid O, \bar{\lambda}) \cdot \delta(o_t, \text{红球})}{\sum_{t=1}^5 P(i_t=\text{盒子2} \mid O, \bar{\lambda})}
+  ]  </p>
+<p><strong>Step 4：迭代优化</strong><br />
+重复E步和M步，直至参数稳定。例如，若观测中前两帧为红球，后两帧为白球，最后一帧为红球，迭代后盒子2和盒子3的观测概率可能分别偏向红球和白球，状态转移矩阵更符合“盒子2/3以0.4左、0.6右转移”的规则。  </p>
+<h3 id="_21">五、总结<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<h4 id="1_13">1. <strong>核心思想</strong><a class="headerlink" href="#1_13" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Baum-Welch算法是EM算法在隐马尔可夫模型中的具体应用，通过<strong>E步计算状态序列的后验期望</strong>，<strong>M步最大化期望似然</strong>，迭代估计不可观测的状态转移和观测概率。  </li>
+</ul>
+<h4 id="2_9">2. <strong>关键公式</strong><a class="headerlink" href="#2_9" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>参数</strong></th>
+<th><strong>更新公式</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\( \pi_i \)</span></td>
+<td><span class="arithmatex">\( \pi_i = P(i_1 = q_i \mid O, \bar{\lambda}) \)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\( a_{ij} \)</span></td>
+<td><span class="arithmatex">\( a_{ij} = \frac{\text{状态i转移到j的期望次数}}{\text{状态i的期望停留次数}} \)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\( b_j(k) \)</span></td>
+<td><span class="arithmatex">\( b_j(k) = \frac{\text{状态j生成观测k的期望次数}}{\text{状态j的期望停留次数}} \)</span></td>
+</tr>
+</tbody>
+</table>
+<h4 id="3_5">3. <strong>应用场景</strong><a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li>语音识别（状态为音素，观测为声学特征）、自然语言处理（词性标注）、生物信息学（DNA序列建模）等时序数据建模任务。</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../../../javascripts/extra.js"></script>
+      
+        <script src="../../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

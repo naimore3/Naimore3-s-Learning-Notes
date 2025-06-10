@@ -5134,40 +5134,46 @@
 <p><strong>判定条件</strong>：<br />
 - 可行域无界（如二维平面中约束形成开放区域）。<br />
 - 目标函数在可行域方向上无界（如目标函数梯度与可行域延伸方向夹角小于90度）。  </p>
-<p><strong>示例</strong>：<br />
-[
+<p><strong>示例</strong>：  </p>
+<div class="arithmatex">\[
 \begin{aligned}
-\min \quad &amp; -3x_1 - 4x_2 \
-\text{s.t.} \quad &amp; x_1 \leq 3 \
-&amp; x_1 - x_2 \leq 1 \
+\min \quad &amp; -3x_1 - 4x_2 \\
+\text{s.t.} \quad &amp; x_1 \leq 3 \\
+&amp; x_1 - x_2 \leq 1 \\
 &amp; x_1, x_2 \geq 0
 \end{aligned}
-]<br />
-<strong>步骤分析</strong>：<br />
-1. <strong>绘制可行域</strong>：<br />
-   - <span class="arithmatex">\(x_1 \leq 3\)</span>：直线 <span class="arithmatex">\(x_1=3\)</span> 左侧区域。<br />
-   - <span class="arithmatex">\(x_1 - x_2 \leq 1\)</span>：直线 <span class="arithmatex">\(x_2 \geq x_1 - 1\)</span> 上方区域。<br />
-   - <span class="arithmatex">\(x_1, x_2 \geq 0\)</span>：第一象限。<br />
-   - 可行域为第一象限内，<span class="arithmatex">\(x_1 \leq 3\)</span> 且 <span class="arithmatex">\(x_2 \geq x_1 - 1\)</span> 的开放区域（向右上方无限延伸）。<br />
-2. <strong>目标函数趋势</strong>：<br />
-   - 目标函数 <span class="arithmatex">\(z = -3x_1 - 4x_2\)</span> 在 <span class="arithmatex">\(x_2\)</span> 增大时趋向负无穷，可行域允许 <span class="arithmatex">\(x_2\)</span> 无限增大，故无界解存在。  </p>
+\]</div>
+<p><strong>步骤分析</strong>：  </p>
+<ol>
+<li><strong>绘制可行域</strong>：  </li>
+<li><span class="arithmatex">\(x_1 \leq 3\)</span>：直线 <span class="arithmatex">\(x_1=3\)</span> 左侧区域。  </li>
+<li><span class="arithmatex">\(x_1 - x_2 \leq 1\)</span>：直线 <span class="arithmatex">\(x_2 \geq x_1 - 1\)</span> 上方区域。  </li>
+<li><span class="arithmatex">\(x_1, x_2 \geq 0\)</span>：第一象限。  </li>
+<li>可行域为第一象限内，<span class="arithmatex">\(x_1 \leq 3\)</span> 且 <span class="arithmatex">\(x_2 \geq x_1 - 1\)</span> 的开放区域（向右上方无限延伸）。  </li>
+<li><strong>目标函数趋势</strong>：  </li>
+<li>目标函数 <span class="arithmatex">\(z = -3x_1 - 4x_2\)</span> 在 <span class="arithmatex">\(x_2\)</span> 增大时趋向负无穷，可行域允许 <span class="arithmatex">\(x_2\)</span> 无限增大，故无界解存在。  </li>
+</ol>
 <p><strong>结论</strong>：该LP问题无界，目标值可无限减小。  </p>
 <h3 id="_32">二、无约束最优化问题<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <p><strong>定义</strong>：<br />
-无约束最优化问题形如：<br />
-[
+无约束最优化问题形如：  </p>
+<div class="arithmatex">\[
 \min_{x \in \mathbb{R}^n} f(x)
-]<br />
-其中 <span class="arithmatex">\(f(x)\)</span> 为连续可导函数，无需满足显式约束条件。  </p>
-<p><strong>求解方法</strong>：<br />
-1. <strong>解析法</strong>：通过求导找临界点（梯度为零），适用于简单函数。<br />
-   - 一阶必要条件：<span class="arithmatex">\(\nabla f(x^*) = 0\)</span>（全局最优需二阶充分条件 <span class="arithmatex">\(\nabla^2 f(x^*) \succ 0\)</span>）。<br />
-2. <strong>数值法</strong>：梯度下降、牛顿法等迭代算法，适用于复杂函数。  </p>
+\]</div>
+<p>其中 <span class="arithmatex">\(f(x)\)</span> 为连续可导函数，无需满足显式约束条件。  </p>
+<p><strong>求解方法</strong>：  </p>
+<ol>
+<li><strong>解析法</strong>：通过求导找临界点（梯度为零），适用于简单函数。  </li>
+<li>一阶必要条件：<span class="arithmatex">\(\nabla f(x^*) = 0\)</span>（全局最优需二阶充分条件 <span class="arithmatex">\(\nabla^2 f(x^*) \succ 0\)</span>）。  </li>
+<li><strong>数值法</strong>：梯度下降、牛顿法等迭代算法，适用于复杂函数。  </li>
+</ol>
 <p><strong>示例：线性最小二乘问题</strong><br />
 <strong>问题</strong>：求解 <span class="arithmatex">\( \min_{x} \frac{1}{2}\|Ax - b\|_2^2 \)</span>，其中 <span class="arithmatex">\(A = \begin{bmatrix}1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6\end{bmatrix}\)</span>，<span class="arithmatex">\(b = \begin{bmatrix}10 \\ 20 \\ 30\end{bmatrix}\)</span>。  </p>
-<p><strong>解析解法步骤</strong>：<br />
-1. <strong>目标函数展开</strong>：<br />
-   [
+<p><strong>解析解法步骤</strong>：  </p>
+<ol>
+<li><strong>目标函数展开</strong>：  </li>
+</ol>
+<p>[
    f(x) = \frac{1}{2} \left[(x_1 + 2x_2 - 10)^2 + (3x_1 + 4x_2 - 20)^2 + (5x_1 + 6x_2 - 30)^2\right]
    ]<br />
 2. <strong>求梯度</strong>：<br />

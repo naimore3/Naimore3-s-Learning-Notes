@@ -1,0 +1,6537 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Chapter1 - 学习笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chapter1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256l-58.2 87.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4l20.9 103.3c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4L434 401.5l103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5L494.2 256l58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3l-103.4-20.8L413 7.3c-1.6-7.8-7-14.3-14.4-17.4s-15.8-2.2-22.5 2.2l-87.7 58.2zm-13.7 143.6 17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0L373 51.8l17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8M239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1-96.8 0m144.8 0a96.4 96.4 0 1 0-192.8 0 96.4 96.4 0 1 0 192.8 0"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            学习笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="cyan"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  主页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  课程笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自学笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  读书笔记
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256l-58.2 87.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4l20.9 103.3c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4L434 401.5l103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5L494.2 256l58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3l-103.4-20.8L413 7.3c-1.6-7.8-7-14.3-14.4-17.4s-15.8-2.2-22.5 2.2l-87.7 58.2zm-13.7 143.6 17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0L373 51.8l17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8M239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1-96.8 0m144.8 0a96.4 96.4 0 1 0-192.8 0 96.4 96.4 0 1 0 192.8 0"/></svg>
+
+    </a>
+    学习笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    主页
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二上
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            大二上
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    离散数学（下）
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1_1" id="__nav_2_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            离散数学（下）
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%85%B3%E7%B3%BB/%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关系
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8A/%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%EF%BC%88%E4%B8%8B%EF%BC%89/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/%E5%8D%8A%E7%BE%A4%E5%92%8C%E7%BE%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    半群和群
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    PBL数字经济与智能金融
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2_1" id="__nav_2_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            PBL数字经济与智能金融
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/First_Class_PBL%E6%95%99%E5%AD%A6%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Class：PBL教学方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifth_Class_%E6%95%99%E6%8E%88%E8%AF%BE4%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Second Class：PBL教学的常见形式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/Sixth_Class_%E6%95%99%E6%8E%88%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixth Class：教授课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/Seventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventh Class：助教课2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/Eighth_Class_%E6%95%99%E6%8E%88%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eighth Class：教授课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/Ninth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ninth Class：助教课3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../课程笔记/2025程笔记/2025寒假/PBL数字经济与智能金融/Second_Class_PBL教学的常见形式/Second_Class_PBL教学的常见形式.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tenth Class：教授课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/Third_Class_%E6%95%99%E6%8E%88%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Third Class：教授课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/Fourth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourth Class：助教课1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../课寒假/PBL数字经济与智能金融/Tenth_Class_教授课5/Tenth_Class_教授课5.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifth Class：教授课4互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/Eleventh_Class_%E5%8A%A9%E6%95%99%E8%AF%BE5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eleventh Class：助教课5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/Twelfth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE4%E6%9C%9F%E4%B8%AD%E5%A4%8D%E4%B9%A0%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Twelfth Class：助教课4期中复习课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/Thirteenth_Class_%E5%8A%A9%E6%95%99%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Thirteenth Class：助教课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/Fourteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fourteenth Class：教授课6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/Fifteenth_Class_%E6%95%99%E6%8E%88%E8%AF%BE7%E4%BA%92%E5%8A%A8%E7%9B%B4%E6%92%AD%E8%AF%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fifteenth Class：教授课7互动直播课
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/Sixteenth_Class_%E4%B8%AA%E4%BA%BA%E8%A7%84%E5%88%92%E5%8F%8A%E5%8F%91%E5%B1%95%E5%BB%BA%E8%AE%AE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sixteenth Class：个人规划及发展建议
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../2025%E5%AF%92%E5%81%87/PBL%E6%95%B0%E5%AD%97%E7%BB%8F%E6%B5%8E%E4%B8%8E%E6%99%BA%E8%83%BD%E9%87%91%E8%9E%8D/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/Seventeenth_Class_%E5%8D%87%E5%AD%A6%E4%B8%8E%E5%B0%B1%E4%B8%9A%E6%96%B9%E5%90%91%E5%B1%95%E6%9C%9B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Seventeenth Class：升学与就业方向展望
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大二下
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            大二下
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1" id="__nav_2_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_1_1" id="__nav_2_3_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/%E7%AC%AC%E4%BA%8C%E7%AB%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_1_2" id="__nav_2_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch1_Introduction/Ch1_Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch2_The_Physical_Layer/Ch2_The_Physical_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Physical Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch3_The_Data_Link_Layer/Ch3_The_Data_Link_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Data Link Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch4_The_Medium_Access_Control_Sublayer/Ch4_The_Medium_Access_Control_Sublayer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Medium Access Control Sublayer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch5_The_Network_Layer/Ch5_The_Network_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Network Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/Ch6_The_Transport_Layer/Ch6_The_Transport_Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    The Transport Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2" id="__nav_2_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    多元统计分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            多元统计分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/%E8%AE%B2%E4%B9%89%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    北京大学数学科学学院多元统计分析讲义
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_2_1" id="__nav_2_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            北京大学数学科学学院多元统计分析讲义
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E5%8C%97%E4%BA%AC%E5%A4%A7%E5%AD%A6%E6%95%B0%E5%AD%A6%E7%A7%91%E5%AD%A6%E5%AD%A6%E9%99%A2%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90%E8%AE%B2%E4%B9%89/Chapter_1/Chapter_1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_2_2" id="__nav_2_3_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：绪论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E5%A4%9A%E5%8F%98%E9%87%8F%E7%9A%84%E5%8F%AF%E8%A7%86%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：多变量的可视化
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%A4%9A%E5%85%83%E5%88%86%E5%B8%83%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%95%B0%E5%AD%97%E7%89%B9%E5%BE%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：多元分布的基本概念及数字特征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E9%87%8F%E5%8F%8A%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E9%87%8F%E5%8F%8A%E6%8A%BD%E6%A0%B7%E5%88%86%E5%B8%83/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：多元统计量及抽样分布
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E5%92%8C%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%A4%9A%E5%85%83%E6%AD%A3%E6%80%81%E5%88%86%E5%B8%83%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E5%92%8C%E5%81%87%E8%AE%BE%E6%A3%80%E9%AA%8C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：多元正态分布的参数估计和假设检验
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E7%9B%B8%E5%85%B3%E6%80%A7%E5%BA%A6%E9%87%8F/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E7%9B%B8%E5%85%B3%E6%80%A7%E5%BA%A6%E9%87%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章：相关性度量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../课程笔记/大二下/多元统计分析/课程笔记/第七章_主成分分析征/第七章_主成分分析.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章：主成分分析征
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%A4%9A%E5%85%83%E7%BB%9F%E8%AE%A1%E5%88%86%E6%9E%90/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E5%9B%A0%E5%AD%90%E5%88%86%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章：因子分析
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3" id="__nav_2_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学导论
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学导论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_3_1" id="__nav_2_3_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_3_2" id="__nav_2_3_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%A6%82%E8%A7%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：数据科学概览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：数学基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_Python%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：Python语言基础
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：数据预处理的基本方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A51/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A52/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A5/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E5%88%9D%E6%AD%A53/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：分析方法初步3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%9E%E8%B7%B5/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AE%9E%E8%B7%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章：数据科学实践
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E9%87%8D%E8%A6%81%E7%A0%94%E7%A9%B6%E9%A2%86%E5%9F%9F/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E9%87%8D%E8%A6%81%E7%A0%94%E7%A9%B6%E9%A2%86%E5%9F%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章：数据科学的重要研究领域
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E5%AF%BC%E8%AE%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章：大数据处理技术
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_4" id="__nav_2_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机组成原理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            计算机组成原理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_1" id="__nav_2_3_4_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：运算方法和运算器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：指令系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/%E7%AC%AC%E4%BA%94%E7%AB%A0_CPU/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：CPU
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E6%95%99%E6%9D%90%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    教材笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_4_2" id="__nav_2_3_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            教材笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/%E7%AC%AC%E4%B8%80%E7%AB%A0_%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章：计算机系统概述
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BF%90%E7%AE%97%E6%96%B9%E6%B3%95%E5%92%8C%E8%BF%90%E7%AE%97%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：运算方法和运算器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E5%82%A8%E5%AD%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：储存系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：指令系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/%E7%AC%AC%E4%BA%94%E7%AB%A0_%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第五章：中央处理器
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%85%AD%E7%AB%A0_%E6%80%BB%E7%BA%BF%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第六章：总线系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87/%E7%AC%AC%E4%B8%83%E7%AB%A0_%E5%A4%96%E5%9B%B4%E8%AE%BE%E5%A4%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第七章：外围设备
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/%E6%95%99%E6%9D%90%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E5%85%AB%E7%AB%A0_%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第八章：输入输出系统
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_5" id="__nav_2_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    形式语言与自动机
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            形式语言与自动机
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_5_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E8%AF%BE%E7%A8%8B%E6%80%BB%E8%A7%88/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    课程笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3_5_1" id="__nav_2_3_5_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_2_3_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            课程笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%AF%AD%E4%B9%89%E5%92%8C%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：语义和文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B8%8E%E5%8F%B3%E7%BA%BF%E6%80%A7%E6%96%87%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：有限自动机与右线性文法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA1/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：上下文无关文法与下推自动机1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80%E4%B8%8E%E8%87%AA%E5%8A%A8%E6%9C%BA/%E8%AF%BE%E7%A8%8B%E7%AC%94%E8%AE%B0/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA2/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E4%B8%8A%E4%B8%8B%E6%96%87%E6%97%A0%E5%85%B3%E6%96%87%E6%B3%95%E4%B8%8E%E4%B8%8B%E6%8E%A8%E8%87%AA%E5%8A%A8%E6%9C%BA2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：上下文无关文法与下推自动机2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3_6" id="__nav_2_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数据科学数学基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            数据科学数学基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/%E7%BA%BF%E4%BB%A3%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/%E7%BA%BF%E4%BB%A3%E7%9F%A9%E9%98%B5%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0/%E7%BA%BF%E4%BB%A3%E5%BA%94%E7%94%A8/%E7%BA%BF%E4%BB%A3%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章：线性代数3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/%E6%9C%80%E4%BC%98%E5%8C%96%E5%85%A5%E9%97%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/%E6%97%A0%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%89%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/%E6%9C%89%E7%BA%A6%E6%9D%9F%E4%BC%98%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E4%B8%89%E7%AB%A0_%E6%9C%80%E4%BC%98%E5%8C%96%E6%96%B9%E6%B3%95/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/%E6%9C%80%E4%BC%98%E6%9D%A1%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第三章：最优化方法4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/%E6%A6%82%E7%8E%87%E5%9B%BE%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E5%A4%A7%E4%BA%8C%E4%B8%8B/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/%E7%AC%AC%E5%9B%9B%E7%AB%A0_%E6%A6%82%E7%8E%87%E8%AE%BA/EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/EM%E7%AE%97%E6%B3%95%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第四章：概率论3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    自学笔记
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            自学笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025寒假
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            2025寒假
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%85%A5%E9%97%A8/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Java
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_1" id="__nav_3_1_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            Java
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/Java/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/Java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Java基础概念
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    MkDocs&Github WorkFlow
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1_2" id="__nav_3_1_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            MkDocs&Github WorkFlow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Git/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/Markdown/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Markdown
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/MkDocs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MkDocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E8%87%AA%E5%AD%A6%E7%AC%94%E8%AE%B0/2025%E5%AF%92%E5%81%87/MkDocs_and_Github_WorkFlow/YAML/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    YAML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    读书笔记
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            读书笔记
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    2025.2.16《载人火星探测航天运输系统》
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            2025.2.16《载人火星探测航天运输系统》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/2025_2_16_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/%E7%AC%AC%E4%BA%8C%E7%AB%A0_%E8%BD%BD%E4%BA%BA%E7%81%AB%E6%98%9F%E6%8E%A2%E6%B5%8B%E6%A8%A1%E5%BC%8F%E5%8F%8A%E5%85%B6%E8%88%AA%E5%A4%A9%E8%BF%90%E8%BE%93%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%A1%88%E5%8F%91%E5%B1%95%E6%83%85%E5%86%B5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第二章 载人火星探测模式及其航天运输系统方案发展情况
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    2025.3.13《多元统计分析引论》
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            2025.3.13《多元统计分析引论》
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../读书笔记/2025_3_13_多元统计分析引论/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    笔记总览
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../读书笔记/2025_3_13_多元统计分析引论/第一章_矩阵/第一章_矩阵.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    第一章 矩阵
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      总览
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="总览">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 课程考核方式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      📜 大数据概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📜 大数据概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 大数据历史
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 大数据典型应用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 大数据带来的转变与效应
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-4v" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 大数据4V特征
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 大数据产生阶段
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. 大数据与相关概念区别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 科学研究四范式
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧰 大数据计算模式与技术框架
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧰 大数据计算模式与技术框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 大数据计算模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 企业级大数据技术框架
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 主流大数据技术栈
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 主流大数据技术栈">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-google" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Google大数据技术栈
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-hadoopspark" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Hadoop与Spark开源大数据技术栈
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ 大数据架构与数据收集工具
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏗️ 大数据架构与数据收集工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-lambda-architecturela" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Lambda Architecture（LA）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关系型数据收集工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flume" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 非关系型数据收集工具-Flume
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      📝 附录与参考文献
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📝 附录与参考文献">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sqoop1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sqoop1相关命令
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 参考文献
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据历史
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据的产生和应用
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据的产生和应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、大数据的典型应用案例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、大数据当下的典型应用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、大数据的产生阶段
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据的挑战
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据的挑战">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、大数据带来的思维转变
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、大数据带来的社会效应
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4v" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据的特征（4V特征）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据的特征（4V特征）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、Volume（数据量大）：规模呈指数级增长
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#velocity" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Velocity（速度快）：数据实时生成与处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variety" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Variety（多样化）：数据类型复杂多元
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#value" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、Value（价值密度低）：需挖掘高价值信息
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据的产生
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据的产生">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、运营式系统阶段：数据被动产生
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、用户原创内容阶段：数据主动爆发
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、感知式系统阶段：数据全面感知生成
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据计算模式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据计算模式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、批处理计算：大规模数据的批量离线处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、流计算：流数据的实时低延迟处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、图计算：大规模图结构数据的高效处理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、查询分析计算：大规模数据的实时/准时查询
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据技术框架
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据技术框架">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etl" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、数据收集层（ETL：提取、转换、加载）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、数据存储层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、资源管理与服务协调层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、计算引擎层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、数据分析层
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、数据可视化层
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据技术实现方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据技术实现方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#google" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、Google大数据技术栈（论文驱动，未开源代码）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、Google大数据技术栈（论文驱动，未开源代码）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 数据存储层：支撑海量数据可靠存储
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 资源管理与服务协调层：实现集群资源高效调度
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 计算引擎层：满足不同类型数据计算需求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 数据分析层：简化复杂数据处理流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hadoopspark" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Hadoop与Spark开源大数据技术栈（应用最广泛，全栈开源）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Hadoop与Spark开源大数据技术栈（应用最广泛，全栈开源）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 数据收集层：实现多源数据高效接入
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 数据存储层：支撑多类型数据持久化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 资源管理与服务协调层：保障集群资源有序分配
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 计算引擎层：覆盖批处理、交互、实时计算场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 数据分析层：提供多样化数据处理工具
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据架构（Lambda Architecture）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据架构（Lambda Architecture）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lambda-architecture_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、Lambda Architecture核心设计思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-architecture_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Lambda Architecture三层核心结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Lambda Architecture三层核心结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-batch-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 批处理层（Batch Layer）：全量数据离线处理，保证结果准确性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-speed-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 流式处理层（Speed Layer）：实时数据增量处理，降低延迟
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-serving-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 服务层（Serving Layer）：整合两层结果，提供统一访问
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lambda-architecture_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Lambda Architecture典型应用案例——推荐系统
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据收集
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据收集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      关系型数据收集
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="关系型数据收集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、关系型数据收集概述
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、核心工具：Sqoop
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、核心工具：Sqoop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sqoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sqoop设计动机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sqoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sqoop基本思想及特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sqoop概述
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sqoop概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqoop_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、Sqoop基本架构：从客户端工具到服务端架构的演进
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、Sqoop基本架构：从客户端工具到服务端架构的演进">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sqoop1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sqoop1架构：客户端轻量架构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sqoop2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sqoop2架构：服务端集中管理架构
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop1sqoop2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Sqoop1与Sqoop2核心差异对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Sqoop使用方式：分版本适配不同操作逻辑
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、Sqoop使用方式：分版本适配不同操作逻辑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sqoop1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Sqoop1使用方式：命令行直接操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-sqoop2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Sqoop2使用方式：服务端交互流程
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sqoop基本架构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sqoop基本架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqoop1mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、Sqoop1架构：客户端驱动的MapReduce作业模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop2" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Sqoop2架构：服务端集中管理的分布式架构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop1sqoop2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、Sqoop1与Sqoop2架构核心差异对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、Sqoop1使用方式：命令行直接操作，聚焦“导入/导出”核心场景
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="一、Sqoop1使用方式：命令行直接操作，聚焦“导入/导出”核心场景">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-1importhadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心命令1：import（关系型数据库→Hadoop）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-2exporthadoop" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 核心命令2：export（Hadoop→关系型数据库）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sqoop2linkjob" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、Sqoop2使用方式：服务端交互流程，需“Link→Job”两步创建
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、Sqoop2使用方式：服务端交互流程，需“Link→Job”两步创建">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-sqoop2shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 前置操作：进入Sqoop2客户端Shell
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 关键概念解析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 核心操作流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 访问方式扩展
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 CDC（数据增量收集）核心内容总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📌 CDC（数据增量收集）核心内容总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-cdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. CDC的定义与核心需求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-cdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. CDC的实现方案对比
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cdc" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. CDC的核心功能与应用场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-cdccanal" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. CDC的开源实现：Canal
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-cdcotter" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. 基于CDC的扩展应用：Otter跨机房同步
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdccanal" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 CDC开源实现Canal核心内容总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 CDC开源实现Canal核心内容总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-canal" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Canal的定位与核心目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-canal" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Canal的核心工作原理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-canal" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Canal的基本架构设计
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      大数据收集
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="大数据收集">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      📤 非关系型数据收集核心内容总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📤 非关系型数据收集核心内容总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 非关系型数据的特点与收集需求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-flume" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 核心收集工具：Flume的定位与设计动机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flume_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Flume的核心设计思想与关键特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flume" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌀 Flume概述核心内容总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌀 Flume概述核心内容总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-flume" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Flume的定位与核心价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-flume_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Flume的设计动机：解决非关系型数据收集痛点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flume_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Flume的核心设计思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-flume" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Flume的五大关键特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flume_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌀 Flume概述核心内容总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🌀 Flume概述核心内容总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-flume_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Flume的定位与核心价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-flume_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Flume的设计动机：解决非关系型数据收集痛点
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flume_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Flume的核心设计思想
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-flume_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Flume的五大关键特点
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flume-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Flume NG基本架构核心内容总结
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏗️ Flume NG基本架构核心内容总结">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-flume-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Flume NG的整体架构逻辑
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-flume-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Flume Agent的核心组成（三组件架构）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-flume-ng" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Flume NG的高级扩展组件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chapter1">Chapter1<a class="headerlink" href="#chapter1" title="Permanent link">&para;</a></h1>
+<h2 id="_1">总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>该文档围绕大数据技术展开全面讲解，涵盖课程考核、大数据概述、技术框架、数据收集工具及架构等核心内容，系统呈现了大数据技术的基础理论与实践应用。</p>
+<h3 id="_2">🔍 课程考核方式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>文档明确了《大数据技术基础》2025年课程的考核构成，具体如下：
+- <strong>期末考试</strong>：占比60%，是课程成绩的主要组成部分。
+- <strong>平时作业</strong>：共3次，占比30%，考查学生日常学习效果。
+- <strong>小测验</strong>：约4次，占比10%，用于阶段性检验学习成果。
+- <strong>课程思政</strong>：附加分形式，每次提出能引发广泛讨论的课程思政主题可获0.5分。</p>
+<hr />
+<h3 id="_3">📜 大数据概述<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="1">1. 大数据历史<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ul>
+<li>1980年，阿尔文·托夫勒在《第三次浪潮》中预测信息时代会带来数据爆发。</li>
+<li>1998年，SGI首席科学家John R. Masey在USENIX大会“Big Data and the Next Wave of Infrastress”论文中首次提出“Big Data”概念，描述数据爆炸现象。</li>
+<li>2003-2006年，Google公布GFS、MapReduce和BigTable三篇论文，奠定大数据发展基石。</li>
+<li>Doug Cutting参考上述论文，实现开源领域极具影响力的Hadoop框架，推动大数据技术蓬勃发展。</li>
+</ul>
+<h4 id="2">2. 大数据典型应用<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>公共卫生领域</strong>：2009年甲型H1N1流感期间，Google通过分析5000万条高频检索词条与美国疾控中心2003-2008年流感数据，处理4.5亿个数学模型，用45条检索词条组合建立模型，预测准确率与官方数据相关性达97%。</li>
+<li><strong>商业领域</strong>：2003年Oren Etzioni开发机票价格预测系统Farecast，基于41天12000个价格样本，截至2012年底用近十万亿条价格记录预测美国国内航班票价，准确率75%，平均每张机票节省50美元。</li>
+<li><strong>零售领域</strong>：Target公司通过分析怀孕女性购买无香乳液等行为，找出20余种关联物，在不与准妈妈对话的情况下，准确预测女性怀孕及预产期，助力精准营销。</li>
+<li><strong>当下多领域应用</strong>：金融行业用于风险管理和欺诈检测；医疗领域实现个性化治疗和疾病预测；电子商务优化推荐系统与库存；社交媒体改善用户互动；智慧城市优化交通和能源管理；制造业提升生产效率；教育领域实现个性化学习。</li>
+</ul>
+<h4 id="3">3. 大数据带来的转变与效应<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>思维转变</strong>：从抽样分析转向全样分析，不再依赖随机采样；从追求精确转向接纳效率，接受数据复杂性；从探寻因果转向关注相关，聚焦“是什么”而非“为什么”。</li>
+<li><strong>社会效应</strong>：大数据决策成为新决策方式，推动信息技术与各行业融合，催生新技术新应用；数据科学家成为热门职业；改变中国高校信息技术相关专业教学和科研体制。</li>
+</ul>
+<h4 id="4-4v">4. 大数据4V特征<a class="headerlink" href="#4-4v" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Volume（量大）</strong>：数据以每年50%速度增长，每两年翻倍（大数据摩尔定律）。2020年全球数据量达35ZB，2025年预计达213.56ZB，数据量超出计算机内存处理容量。</li>
+<li><strong>Velocity（快速化）</strong>：数据从生成到消耗时间窗口小，决策可用时间少，遵循“1秒定律”，如每秒发送290万封邮件，每分钟向Youtube上传60小时视频等。</li>
+<li><strong>Variety（多样化）</strong>：由15%结构化数据（存储于数据库）和85%非结构化数据（如音频、视频、图片等）组成，非结构化数据类型丰富。</li>
+<li><strong>Value（价值密度低）</strong>：数据整体价值密度低，但商业价值高，如连续监控中有用数据可能仅一两秒，却有极高商业价值，可应用于科学研究、企业应用、社会网络等领域。</li>
+</ul>
+<h4 id="5">5. 大数据产生阶段<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>运营式系统阶段</strong>：数据库降低数据管理复杂度，数据伴随运营活动被动产生并记录在数据库中。</li>
+<li><strong>用户原创内容阶段</strong>：Web 2.0时代，博客、微博等社交网络及智能手机、平板电脑等移动设备出现，数据主动爆发产生。</li>
+<li><strong>感知式系统阶段</strong>：VR/AR等感知式系统广泛使用，引发数据第三次大飞跃，促使大数据产生。</li>
+</ul>
+<h4 id="6">6. 大数据与相关概念区别<a class="headerlink" href="#6" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>与大规模数据、海量数据</strong>：从对象看，大数据是超出典型数据库处理能力且数据间有结构性和关联性的集合，非简单数据堆积；从技术看，是快速从各类大数据中获取有价值信息的技术集合；从应用看，是结合具体应用、运用大数据技术获取价值的行为。</li>
+<li><strong>与数据库（类比大海捕鱼vs池塘捕鱼）</strong>：数据规模上，数据库以MB为单位，大数据以GB、TB、PB为单位；数据类型上，数据库种类单一且多为结构化数据，大数据种类繁多，含大量半结构化和非结构化数据；模式与数据关系上，数据库先有模式后有数据，大数据常后定模式且模式随数据增长演变；处理对象上，数据库中数据仅为处理对象，大数据中数据还可辅助解决其他领域问题；处理工具上，数据库用少数工具即可，大数据无通用工具。</li>
+</ul>
+<h4 id="7">7. 科学研究四范式<a class="headerlink" href="#7" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>经验范式</strong>：始于数千年前，通过描述自然现象开展研究。</li>
+<li><strong>理论范式</strong>：近几百年兴起，运用模型和概括进行研究。</li>
+<li><strong>计算范式</strong>：近几十年出现，通过模拟复杂现象开展研究。</li>
+<li><strong>数据探索范式（eScience）</strong>：当前主流，利用仪器捕获或模拟器生成数据，经软件处理后存储于计算机，科学家分析数据库进行研究，由Jim Gray提出。</li>
+</ul>
+<hr />
+<h3 id="_4">🧰 大数据计算模式与技术框架<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1. 大数据计算模式<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>计算模式</th>
+<th>解决问题</th>
+<th>代表产品</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>批处理计算</td>
+<td>大规模数据批量处理</td>
+<td>MapReduce、Spark等</td>
+</tr>
+<tr>
+<td>流计算</td>
+<td>流数据实时计算</td>
+<td>Storm、S4、Flume、Streams、Puma、Dstream、银河流数据处理平台等</td>
+</tr>
+<tr>
+<td>图计算</td>
+<td>大规模图结构数据处理</td>
+<td>Pregel、GraphX、Giraph等</td>
+</tr>
+<tr>
+<td>查询分析计算</td>
+<td>大规模数据存储管理与查询分析</td>
+<td>Dremel、Hive、Cassandra、Impala等</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>批处理计算</strong>：MapReduce将并行计算抽象为Map和Reduce函数，可并行处理大规模数据；Spark启用内存分布数据集，处理速度比MapReduce快。</li>
+<li><strong>流计算</strong>：流数据是连续到达的动态数据集合，数据价值随时间降低，需实时计算给出秒级响应。</li>
+<li><strong>图计算</strong>：许多大数据以图或网络形式呈现，非图结构数据也常转化为图模式处理，MapReduce不适合大规模图计算，需专门图计算模式。</li>
+<li><strong>查询分析计算</strong>：需对超大规模数据提供实时或准时查询分析响应，代表产品各有优势。</li>
+</ul>
+<h4 id="2_1">2. 企业级大数据技术框架<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<p>从数据生命周期看，框架包含6个主要环节，各环节功能与特点如下：
+- <strong>数据收集层（ETL）</strong>：数据源具有分布式、异构性、多样化、流式产生特点；收集系统需具备扩展性、可靠性、安全性、低延迟特性，实现数据提取、转换、加载。
+- <strong>数据存储层</strong>：负责存储海量结构化与非结构化数据，传统数据库和文件系统难以满足需求，需具备良好扩展性、容错性，支持多种存储模型。
+- <strong>资源管理与服务协调层</strong>：解决传统独立部署应用的资源利用率低、运维成本高、数据共享难问题，通过轻量级弹性资源管理平台，实现资源高效利用、降低运维成本、促进数据共享。
+- <strong>计算引擎层</strong>：按时间性能要求分为批处理（追求高吞吐率，处理时间分钟到天级）、交互式处理（秒级响应，提供类SQL语言）、实时处理（秒级以内延迟），满足不同数据处理场景需求。
+- <strong>数据分析层</strong>：提供应用程序API、类SQL查询语言、数据挖掘SDK等工具，常结合批处理与交互式处理工具使用，提升数据分析效率。
+- <strong>数据可视化层</strong>：运用计算机图形学和图像处理技术，将数据转化为图形或图像展示，直接面向用户，是展示大数据价值的“门户”，但因大数据特点面临诸多挑战。</p>
+<hr />
+<h3 id="_5">🔧 主流大数据技术栈<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="1-google">1. Google大数据技术栈<a class="headerlink" href="#1-google" title="Permanent link">&para;</a></h4>
+<p>Google大数据技术以论文形式公开，未开源代码，涵盖以下层级：
+- <strong>数据存储层</strong>：GFS（分布式文件系统，容错性、扩展性好）、BigTable（分布式数据库，稀疏、多维度排序映射表）、MegaStore（基于BigTable，支持ACID特性）、Spanner（全球分布式数据库，支持同步复制与外部一致性事务）。
+- <strong>资源管理与服务协调层</strong>：Borg（集群资源管理调度系统，最大化资源利用率）、Omega（下一代系统，共享状态架构）、Chubby（提供粗粒度锁与可靠存储，侧重可用性和可靠性）。
+- <strong>计算引擎层</strong>：MapReduce（批处理框架，分Map和Reduce阶段）、Dremel（分布式OLAP系统，秒级处理PB级数据）、Pregel（分布式图计算框架，采用BSP模型）、Percolator（基于BigTable的增量更新系统）、MillWheel（分布式流式实时处理框架）。
+- <strong>数据分析层</strong>：FlumeJava（Java编程库，简化MapReduce应用开发）、Tenzing（SQL查询执行引擎，将SQL转化为MapReduce程序）。</p>
+<h4 id="2-hadoopspark">2. Hadoop与Spark开源大数据技术栈<a class="headerlink" href="#2-hadoopspark" title="Permanent link">&para;</a></h4>
+<p>该技术栈是目前应用最广泛的开源大数据生态系统，涉及多个层级：
+- <strong>数据收集层</strong>：Sqoop/Canal（连接关系型数据库与Hadoop，实现全量/增量数据导入）、Flume（收集非关系型流式日志数据）、Kafka（分布式消息队列，作为数据总线）。
+- <strong>数据存储层</strong>：HDFS（分布式文件系统，容错性、扩展性好）、HBase（分布式数据库，支持结构化与半结构化数据存储）、Kudu（分布式列式存储数据库，支持数据随机查找与更新），且有多种数据存储格式。
+- <strong>资源管理与服务协调层</strong>：YARN（统一资源管理调度系统，支持多租户资源调度）、ZooKeeper（服务协调系统，实现leader选举等分布式功能）。
+- <strong>计算引擎层</strong>：MapReduce/Tez（批处理引擎，MapReduce是经典开源实现，Tez是通用DAG计算引擎）、Spark（通用DAG计算引擎，基于RDD数据抽象）、Impala/Presto（MPP系统，支持标准SQL处理Hadoop数据）、Storm/Spark Streaming（流式实时计算引擎）。
+- <strong>数据分析层</strong>：Hive/Pig/SparkSQL（支持SQL或脚本语言的分析系统）、Mahout/MLlib（机器学习库）、Apache Beam/Cascading（高级API，方便构建数据流水线）。</p>
+<hr />
+<h3 id="_6">🏗️ 大数据架构与数据收集工具<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="1-lambda-architecturela">1. Lambda Architecture（LA）<a class="headerlink" href="#1-lambda-architecturela" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>架构构成</strong>：分为批处理层、流式处理层和服务层。批处理层用分布式批处理计算，处理大量数据，吞吐率高但延迟高；流式处理层采用流式计算技术，降低数据处理延迟但无法进行复杂逻辑计算；服务层结合前两层，对外提供统一访问接口，兼顾低延迟与复杂计算。</li>
+<li><strong>应用案例-推荐系统</strong>：数据流入Kafka后，按不同时间粒度导入批处理（MapReduce/Spark，分钟或小时级延迟，实现推荐模型）和流式处理（Storm/Spark Streaming，毫秒或秒级延迟，解决新用户推荐问题）系统，服务层对外提供访问接口。</li>
+</ul>
+<h4 id="2_2">2. 关系型数据收集工具<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Sqoop</strong></li>
+<li><strong>设计动机</strong>：构建关系型数据库与Hadoop间的“桥梁”，实现数据迁移（将商用数据仓库数据迁移到Hadoop）、可视化分析结果（将Hadoop分析结果导入关系型数据库用于可视化）、数据增量导入（避免Hadoop直接访问事务型数据库影响性能）。</li>
+<li><strong>特点</strong>：性能高（采用MapReduce，并发度可控、容错性高、扩展性好）；自动类型转换（读取数据源元信息，支持自定义映射）；自动传播元信息（保证数据发送端与接收端元信息一致）。</li>
+<li><strong>架构</strong>：Sqoop1是客户端工具，为只有Map的MapReduce作业，存在Connector定制难等缺点；Sqoop2引入Sqoop Server，客户端轻量，改进了Sqoop1的不足。</li>
+<li>
+<p><strong>使用方式</strong>：Sqoop1仅支持命令行，有import（将关系型数据库数据导入Hadoop）和export（将Hadoop数据导回关系型数据库）命令；Sqoop2支持CLI和浏览器访问，需创建Link（Connector实例）、Job（数据迁移作业），再提交并监控Job。</p>
+</li>
+<li>
+<p><strong>CDC与Canal</strong></p>
+</li>
+<li><strong>CDC概述</strong>：CDC（Change Data Capture）即捕获数据源数据更新获取增量数据，传统方案有缺陷，基于事务或提交日志解析的方案更高效，可应用于异地机房同步、数据库实时备份等场景。</li>
+<li>
+<p><strong>Canal</strong>：主要支持MySQL等关系型数据库，原理是模拟数据库主备复制协议，接收主数据库binary log捕获更新数据；架构包含Canal Server（运行实例，对应一个JVM）和Canal Instance（数据队列，含EventParser、EventSink、EventStore、MetaManager模块）。</p>
+</li>
+<li>
+<p><strong>Otter</strong>：基于Canal，用于准实时同步数据到本机房或异地机房数据库，架构有Manager（Web管理，发布配置、接收状态）和Node（执行任务、反馈状态），依赖ZooKeeper实现分布式协调；同步流程抽象为Select（数据接入）、Extract（数据提取）、Transform（数据转换）、Load（数据载入）四阶段，支持跨机房数据同步。</p>
+</li>
+</ul>
+<h4 id="3-flume">3. 非关系型数据收集工具-Flume<a class="headerlink" href="#3-flume" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>设计动机</strong>：解决生产环境中流式日志收集问题，应对数据源种类多、物理分布、流式产生、需保证可靠性等挑战，实现不同数据源流式数据近实时发送到中心化存储系统。</li>
+<li><strong>特点</strong>：扩展性好（完全分布式，无中心化组件）；高度定制化（组件可插拔）；声明式动态化配置（提供配置语言，动态配置数据流拓扑）；语意路由（按设置路由数据）；可靠性高（内置事务支持）。</li>
+<li><strong>基本架构</strong>：数据流由Agent构成，数据单位为Event（含头部和字节数组）。Agent包含Source（接收Event，如Avro Source、Thrift Source等）、Channel（缓存Event，如Memory Channel、File Channel等）、Sink（发送Event，如HDFS Sink、HBase Sink等）。</li>
+<li><strong>高级组件</strong>：Interceptor（修改或丢弃Event，如Timestamp Interceptor等）、Channel Selector（选择目标Channel，如Replicating Channel Selector、Multiplexing Channel Selector）、Sink Processor（组装Sink形成Sink Group，提供负载均衡和容错，如Failover Sink Processor、Load balancing Sink Processor）。</li>
+<li><strong>数据流拓扑</strong>：构建流程为确定数据获取方式、规划Agent、配置Agent组件、测试、部署；常见拓扑有多路合并（大量客户端日志发送到聚集节点，再写入HDFS）和多路复用（按数据类别路由到不同目标系统）。</li>
+</ul>
+<hr />
+<h3 id="_7">📝 附录与参考文献<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="1-sqoop1">1. Sqoop1相关命令<a class="headerlink" href="#1-sqoop1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>import命令</strong>：将MySQL数据导入HDFS，基本用法为<code>$ sqoop import [generic-args] [import-args]</code>，generic-args为Hadoop通用参数，import-args含--connect（JDBC连接符）、--table（表名）等，示例为将movie数据库data表数据导入HDFS /data文件夹。</li>
+<li><strong>export命令</strong>：将HDFS数据导入MySQL，基本用法为<code>$ sqoop export [generic-args] [export-args]</code>，export-args含--export-dir（HDFS目录）等，示例为将HDFS /data目录数据导入movie数据库data表。</li>
+</ul>
+<h4 id="2_3">2. 参考文献<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<p>董西成著. 大数据技术体系详解:原理､架构与实战[M]. 北京: 机械工业出版社, 2018.3.</p>
+<p>要不要我帮你整理一份<strong>大数据技术核心知识点对比表</strong>，涵盖不同技术栈的关键组件、功能及适用场景，方便你快速查阅和对比？</p>
+<h2 id="_8">大数据概述<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h3 id="_9">大数据历史<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>大数据概念的提出与发展经历了多个关键阶段，且在不同时期有着重要的理论和实践推动。
+- 1980年，阿尔文·托夫勒在《第三次浪潮》中，敏锐地预测到信息时代会带来数据的大爆发，为大数据概念的后续发展埋下伏笔。
+- 1998年，SGI首席科学家John R. Masey在USENIX大会上发表“Big Data and the Next Wave of Infrastress”论文，首次明确提出“Big Data”概念，用于描述当时已经出现的数据爆炸现象。
+- 2003-2006年，Google公布GFS（分布式文件系统）、MapReduce（分布式计算模型）和BigTable（分布式数据库）三篇具有里程碑意义的论文，这些技术奠定了大数据发展的基石，为大数据的存储、计算等核心环节提供了理论和技术支撑。
+- 此后，Doug Cutting参考Google的这三篇论文，成功实现了开源领域极具影响力的Hadoop框架。Hadoop框架的出现极大地推动了大数据技术的蓬勃发展，使得大数据技术能够在更广泛的领域得到应用和推广。</p>
+<h3 id="_10">大数据的产生和应用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>本节从大数据的典型应用案例、当下多领域应用场景及数据产生阶段三个维度，系统阐述了大数据的实践价值与形成过程。</p>
+<h4 id="_11">一、大数据的典型应用案例<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>通过三个跨领域案例，展现大数据在预测分析与行业变革中的核心作用：
+1. <strong>公共卫生领域：预测流感传播</strong>
+    - 背景：2009年甲型H1N1流感快速全球传播，传统疾控数据统计存在滞后性。
+    - 实践：Google基于每天全球超30亿条搜索请求，筛选5000万条美国人高频检索词条，与美国疾控中心2003-2008年季节性流感数据对比，共处理4.5亿个数学模型。
+    - 成果：最终用45条检索词条组合建立预测模型，其结果与官方流感数据相关性高达97%，实现流感传播的近实时预测，变革了公共卫生监测模式。</p>
+<ol>
+<li>
+<p><strong>商业领域：预测机票价格</strong></p>
+<ul>
+<li>发现：2003年Oren Etzioni观察到“早买机票未必更便宜”的现象，萌生通过数据预测票价的想法。</li>
+<li>系统开发：基于41天内12000个机票价格样本，开发票价预测系统Farecast。</li>
+<li>成果：截至2012年底，系统累计分析近十万亿条价格记录，美国国内航班票价预测准确率达75%，平均为每位用户节省50美元机票费用，优化了航空出行消费决策。</li>
+</ul>
+</li>
+<li>
+<p><strong>零售领域：预测用户怀孕</strong></p>
+<ul>
+<li>核心逻辑：Target公司发现“怀孕是消费行为的关键转折点”——准妈妈会改变购物习惯，尝试新品牌、光顾不常去的商店，精准识别怀孕用户可实现针对性营销。</li>
+<li>分析方法：通过大数据分析怀孕女性的消费行为（如怀孕三个月左右会高频购买无香乳液），筛选出20余种关联消费特征，构建“怀孕趋势”分析模型。</li>
+<li>成果：无需与用户直接沟通，即可准确预测女性怀孕状态及预产期，大幅提升母婴类商品的营销精准度。</li>
+</ul>
+</li>
+</ol>
+<h4 id="_12">二、大数据当下的典型应用场景<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>随着技术成熟，大数据已渗透到社会经济多个核心领域，具体应用如下：
+- <strong>金融行业</strong>：用于风险管理（如评估用户信贷违约风险）和欺诈检测（如识别异常交易行为，防范信用卡盗刷）。
+- <strong>医疗领域</strong>：通过分析患者病历、基因数据等，实现个性化治疗方案制定（如癌症靶向药匹配）和疾病早期预测（如通过体检数据预警慢性病风险）。
+- <strong>电子商务</strong>：基于用户浏览、购买记录构建推荐系统（如“猜你喜欢”功能），同时通过销售数据优化库存管理（避免缺货或积压），提升用户体验与运营效率。
+- <strong>社交媒体</strong>：分析用户点赞、评论、转发等行为数据，优化内容推荐算法，同时监测舆情动态（如识别热门话题、排查负面信息），改善用户互动效果。
+- <strong>智慧城市</strong>：整合交通流量数据优化信号灯配时、缓解拥堵，分析能源消耗数据调整供给策略，实现城市资源的高效调配。
+- <strong>制造业</strong>：通过设备传感器数据进行预测性维护（提前发现故障隐患），结合生产数据优化工艺流程，降低生产成本、提升生产效率。
+- <strong>教育领域</strong>：跟踪学生学习进度、答题正确率等数据，识别学习薄弱环节，推送个性化学习资源，实现“因材施教”的个性化学习模式。</p>
+<h4 id="_13">三、大数据的产生阶段<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>大数据的爆发式增长并非偶然，而是经历了三个关键发展阶段，数据产生方式从“被动记录”逐步转向“主动生成”：
+1. <strong>运营式系统阶段</strong>
+    - 核心特征：数据“被动产生”，伴随企业日常运营活动生成。
+    - 技术支撑：数据库技术的出现降低了数据管理复杂度，数据被集中记录在数据库中（如超市收银系统记录交易数据、银行系统记录存取款数据）。
+    - 局限性：数据量较小，且仅服务于特定运营场景，复用性低。</p>
+<ol>
+<li>
+<p><strong>用户原创内容阶段</strong></p>
+<ul>
+<li>核心特征：数据“主动爆发”，用户成为数据生成的核心主体。</li>
+<li>驱动因素：一是Web 2.0时代来临，博客、微博等社交网络平台兴起，用户开始主动发布文字、图片等内容；二是智能手机、平板电脑等移动设备普及，用户可随时随地生成位置、行为等数据。</li>
+<li>结果：数据量呈指数级增长，非结构化数据（如社交文本、用户轨迹）占比大幅提升。</li>
+</ul>
+</li>
+<li>
+<p><strong>感知式系统阶段</strong></p>
+<ul>
+<li>核心特征：数据“全面感知生成”，各类智能设备成为新的数据来源。</li>
+<li>技术支撑：VR/AR、物联网传感器、智能穿戴设备（如手环、智能手表）等感知式系统广泛应用，可实时采集环境、生理、行为等多维度数据（如手环记录心率、物联网传感器监测环境温湿度）。</li>
+<li>结果：推动数据第三次大飞跃，形成真正意义上的“大数据”，数据维度更丰富、实时性更强。</li>
+</ul>
+</li>
+</ol>
+<h3 id="_14">大数据的挑战<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>本节从“思维转变”和“社会效应”两个核心维度，阐述大数据发展带来的变革性挑战，既包含认知层面的突破，也涉及社会运行模式的调整。</p>
+<h4 id="_15">一、大数据带来的思维转变<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<p>大数据打破了传统数据处理的认知局限，推动思维模式从“有限样本”向“全量数据”、“追求精确”向“接纳效率”、“探寻因果”向“关注相关”转变，具体如下：
+1. <strong>全样而非抽样</strong>
+    - 传统模式：受限于计算能力和存储成本，通常采用随机抽样的方式分析数据，用样本结论推断整体特征，存在抽样误差风险。
+    - 大数据模式：可处理与特定现象相关的<strong>全部数据</strong>（而非部分样本），无需依赖抽样，能更全面、准确地反映数据本质，避免抽样偏差（如分析全国用户消费行为时，可直接处理所有用户数据，而非仅抽取部分城市样本）。</p>
+<ol>
+<li>
+<p><strong>效率而非精确</strong></p>
+<ul>
+<li>传统模式：追求数据的绝对精确性，需花费大量时间清洗、校准数据，确保每个数据点的准确性，导致处理效率低下，难以应对大规模数据。</li>
+<li>大数据模式：因数据量极大（如PB、ZB级），不再执着于“精确性”，而是<strong>接纳数据的复杂性和一定的模糊性</strong>，优先保证处理效率。例如实时监测城市交通流量时，无需精确到每辆车的实时位置，只需通过海量数据趋势判断拥堵情况，即可快速制定疏导策略。</li>
+</ul>
+</li>
+<li>
+<p><strong>相关而非因果</strong></p>
+<ul>
+<li>传统模式：注重探寻数据间的“因果关系”（即“为什么”），需通过复杂实验或逻辑推导验证因果，过程耗时且适用场景有限。</li>
+<li>大数据模式：受前两种思维转变影响，更关注数据间的“相关关系”（即“是什么”）。通过分析海量数据发现变量间的关联规律，即可指导实践，无需深究因果。例如电商平台通过分析“用户浏览A商品后常购买B商品”的相关关系，直接推送B商品，无需探究用户购买B商品的深层原因（如需求互补、价格关联等）。</li>
+</ul>
+</li>
+</ol>
+<h4 id="_16">二、大数据带来的社会效应<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>大数据不仅改变认知方式，更对社会发展、就业市场和人才培养产生深远影响，具体体现在三个方面：
+1. <strong>社会发展层面：推动产业融合与技术创新</strong>
+    - 决策模式变革：“大数据决策”成为新的决策方式，替代传统依赖经验的决策模式（如政府通过分析人口流动数据制定城市规划，企业通过销售数据调整产品策略）。
+    - 产业深度融合：大数据技术与金融、医疗、教育、制造等各行业深度结合，催生新的业务模式（如金融科技、智慧医疗），提升行业运行效率。
+    - 技术创新加速：大数据的开发需求推动云计算、人工智能、物联网等新技术的迭代，同时促进新应用场景（如智慧城市、自动驾驶）的涌现。</p>
+<ol>
+<li>
+<p><strong>就业市场层面：催生新兴热门职业</strong></p>
+<ul>
+<li>传统岗位调整：部分依赖人工统计、分析的岗位（如基础数据录入、简单报表制作）需求减少，甚至被自动化工具替代。</li>
+<li>新兴岗位爆发：“数据科学家”成为热门职业，同时衍生出数据分析师、大数据开发工程师、数据安全专家等岗位，这些岗位需具备大数据采集、处理、分析的综合能力，薪资水平和市场需求持续攀升。</li>
+</ul>
+</li>
+<li>
+<p><strong>人才培养层面：重构高校教学科研体制</strong></p>
+<ul>
+<li>教学体系调整：传统信息技术专业（如计算机、软件工程）的课程设置需新增大数据相关内容（如Hadoop、Spark技术、数据挖掘算法），部分高校甚至开设“数据科学与大数据技术”新专业。</li>
+<li>科研方向转变：高校科研从传统的“理论研究”向“数据驱动研究”倾斜，例如医学领域通过分析海量病历数据研究疾病规律，社会学领域通过用户行为数据研究社会趋势，科研模式更贴近实际应用需求。</li>
+</ul>
+</li>
+</ol>
+<h3 id="4v">大数据的特征（4V特征）<a class="headerlink" href="#4v" title="Permanent link">&para;</a></h3>
+<p>第14到21页围绕大数据的核心特征展开，明确其以“4V”为核心（Volume、Velocity、Variety、Value），从数据规模、处理速度、数据类型、价值密度四个维度，结合具体数据与场景阐述特征内涵，同时补充数据度量单位与增长趋势。</p>
+<h4 id="volume">一、Volume（数据量大）：规模呈指数级增长<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心表现</strong>：数据量以“大数据摩尔定律”增长——每年增长50%，每两年数据总量翻倍，人类近年产生的数据量相当于过去全部数据总和。</li>
+<li>2020年全球数据总量达35ZB，相较于2010年增长近30倍；2025年全球预计拥有213.56ZB数据量。</li>
+<li>数据量已超出传统计算机内存处理容量，需依赖分布式存储与计算技术（如HDFS）承载。</li>
+<li><strong>数据度量单位</strong>：从TB到YB，不同单位对应不同存储规模，具体如下表：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>数据单位</th>
+<th>含义（10的幂次）</th>
+<th>类比场景</th>
+<th>形象比喻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TB</td>
+<td>12次方</td>
+<td>一块TB硬盘</td>
+<td>200,000张照片或MP3</td>
+</tr>
+<tr>
+<td>PB</td>
+<td>15次方</td>
+<td>两个数据中心机柜</td>
+<td>16个Blackblaze pod存储单元</td>
+</tr>
+<tr>
+<td>EB</td>
+<td>18次方</td>
+<td>2,000个机柜</td>
+<td>占据一个街区的4层数据中心</td>
+</tr>
+<tr>
+<td>ZB</td>
+<td>21次方</td>
+<td>1000个数据中心</td>
+<td>纽约曼哈顿的1/5区域</td>
+</tr>
+<tr>
+<td>YB</td>
+<td>24次方</td>
+<td>一百万个数据中心</td>
+<td>特拉华州和罗德岛州</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>增长趋势实例</strong>：2011年中国互联网行业持有数据总量1.9EB（1EB=10亿GB），全球被创建和复制的数据总量1.8ZB；2013年生成1.8ZB数据仅需10分钟；2015年全球数据总量增长至8.2ZB以上，数据膨胀速度持续加快。</li>
+</ul>
+<h4 id="velocity">二、Velocity（速度快）：数据实时生成与处理<a class="headerlink" href="#velocity" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心要求</strong>：数据从生成到消耗的“时间窗口极小”，需在短时间内完成处理以支撑决策，遵循“1秒定律”（与传统数据挖掘技术有本质区别）。</li>
+<li><strong>实时数据生成场景</strong>：</li>
+<li>每秒钟：全球发送290万封电子邮件；</li>
+<li>每分钟：向Youtube上传60小时的视频；</li>
+<li>每一天：Twitter上发出3.4亿条消息，Facebook上发出40亿条消息。</li>
+<li><strong>技术挑战</strong>：需依赖流计算技术（如Storm、Spark Streaming）实现数据实时接收、处理与响应，避免因延迟导致数据价值流失（如实时 fraud 检测需秒级响应）。</li>
+</ul>
+<h4 id="variety">三、Variety（多样化）：数据类型复杂多元<a class="headerlink" href="#variety" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心构成</strong>：大数据由“结构化数据”与“非结构化数据”组成，且非结构化数据占比极高。</li>
+<li>结构化数据（占比15%）：存储于传统数据库中，格式规范（如MySQL表中的用户ID、年龄等字段）；</li>
+<li>非结构化数据（占比85%）：与人类信息密切相关，格式多样，具体类型包括：<ul>
+<li>音频：录音文件、音频邮件、音频剪辑；</li>
+<li>视频：社交视频、节目素材、视频广告、视频培训；</li>
+<li>图片：扫描票据、身份证扫描件、演示图片、电子地图、网站图档；</li>
+<li>文档：说明书PDF、书稿、授权页、网站内容、产品资料。</li>
+</ul>
+</li>
+<li><strong>处理难点</strong>：需兼容不同类型数据的存储与分析需求，传统关系型数据库难以适配，需采用NoSQL数据库（如HBase）、搜索引擎（如ElasticSearch）等技术。</li>
+</ul>
+<h4 id="value">四、Value（价值密度低）：需挖掘高价值信息<a class="headerlink" href="#value" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心矛盾</strong>：数据总量庞大，但“有用数据占比极低”，需通过技术手段从海量数据中提取高价值信息，且提取出的信息商业价值、应用价值极高。</li>
+<li><strong>典型案例</strong>：连续不间断的监控视频中，有用数据可能仅一两秒（如识别异常行为的片段），但这一两秒数据可用于安全预警、事件追溯，具备极高商业与社会价值。</li>
+<li><strong>应用场景</strong>：</li>
+<li>科学研究：从海量实验数据中筛选关键变量，支撑科研结论；</li>
+<li>企业应用：从用户行为日志中分析消费偏好，用于精准营销、产品优化；</li>
+<li>社会网络：从社交平台数据中监测舆情趋势，辅助公共决策。</li>
+</ul>
+<h3 id="_17">大数据的产生<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>第22到28页围绕“大数据的产生”展开，从数据产生的<strong>三个核心阶段</strong>切入，清晰梳理了大数据从“被动记录”到“主动生成”再到“全面感知”的演进过程，每个阶段均明确了技术支撑、数据特征及核心驱动因素。</p>
+<h4 id="_18">一、运营式系统阶段：数据被动产生<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心特征</strong>：数据伴随企业或组织的日常运营活动“被动生成”，并非主动采集，数据量较小且用途单一。</li>
+<li><strong>技术支撑</strong>：数据库技术的出现是关键，它大幅降低了数据管理的复杂度，让数据能够被系统地记录在数据库中（如超市收银系统记录每笔交易的商品、金额、时间；银行系统记录用户的存取款操作）。</li>
+<li><strong>局限性</strong>：数据仅服务于特定的运营场景，复用性低，无法跨场景整合分析，且数据类型以结构化数据为主（如表格中的字段数据），难以满足后续多维度分析需求。</li>
+</ul>
+<h4 id="_19">二、用户原创内容阶段：数据主动爆发<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心特征</strong>：用户成为数据生成的核心主体，数据从“被动记录”转向“主动生成”，数据量呈指数级增长，非结构化数据占比大幅提升。</li>
+<li><strong>驱动因素</strong>：</li>
+<li><strong>Web 2.0时代来临</strong>：博客、微博、论坛等新型社交网络平台出现，用户开始主动发布文字、图片、观点等内容，形成大量UGC（用户生成内容）数据。</li>
+<li><strong>移动设备普及</strong>：智能手机、平板电脑等移动终端的快速推广，让用户可随时随地生成数据（如位置信息、拍照录像、社交互动记录），进一步扩大数据来源。</li>
+<li><strong>数据特点</strong>：除传统结构化数据外，文本、图片、音频、视频等非结构化数据占比显著增加，数据格式更复杂，且生成速度更快。</li>
+</ul>
+<h4 id="_20">三、感知式系统阶段：数据全面感知生成<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心特征</strong>：各类智能感知设备成为新的数据来源，数据实现“全面感知、实时采集”，推动数据第三次大飞跃，最终形成真正意义上的“大数据”。</li>
+<li><strong>技术支撑</strong>：VR/AR（虚拟现实/增强现实）、物联网传感器、智能穿戴设备（如智能手环、智能手表）、监控摄像头等感知式系统广泛应用。这些设备可实时采集环境、生理、行为等多维度数据（如手环记录心率、睡眠质量；物联网传感器监测环境温湿度、设备运行状态；监控摄像头捕捉实时画面）。</li>
+<li><strong>数据特点</strong>：数据维度极丰富（涵盖物理世界、生理状态、行为轨迹等）、实时性极强（数据生成后需立即处理）、数据量庞大（单设备持续产生数据，多设备叠加后规模惊人），且数据类型混合（结构化、半结构化、非结构化数据并存）。</li>
+</ul>
+<h3 id="_21">大数据计算模式<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>第29到32页围绕大数据计算模式展开，明确单一计算模式无法满足多样数据处理需求，系统介绍了<strong>四种核心计算模式</strong>，包括每种模式的解决问题、核心原理、代表产品及适用场景，形成完整的大数据计算技术框架。</p>
+<h4 id="_22">一、批处理计算：大规模数据的批量离线处理<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>解决问题</strong>：针对TB/PB级别的大规模静态数据，进行离线、批量处理，追求高吞吐率（单位时间处理数据量），对实时性要求较低（处理延迟通常为分钟到小时级）。</li>
+<li><strong>核心原理</strong>：采用“分而治之”思想，将复杂计算任务拆解为多个子任务，在分布式集群中并行执行，最终汇总结果。</li>
+<li><strong>MapReduce</strong>：最具代表性的批处理技术，将计算抽象为“Map（映射）”和“Reduce（归约）”两个阶段。Map阶段并行处理输入数据并生成中间结果，Reduce阶段整合中间结果得到最终输出，具备高容错性和扩展性。</li>
+<li><strong>Spark</strong>：基于MapReduce优化的批处理框架，通过“内存分布数据集（RDD）”将中间结果存储在内存中，避免频繁读写磁盘，处理速度比MapReduce快数倍，同时支持更灵活的计算逻辑。</li>
+<li><strong>代表产品</strong>：MapReduce、Spark、Tez等。</li>
+<li><strong>适用场景</strong>：搜索引擎构建索引、海量日志离线分析、用户行为数据统计（如月度活跃用户计算）。</li>
+</ul>
+<h4 id="_23">二、流计算：流数据的实时低延迟处理<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>解决问题</strong>：针对持续生成的“流数据”（如实时日志、传感器数据、社交平台实时消息），进行秒级甚至毫秒级的实时处理，数据价值随时间衰减，需快速响应。</li>
+<li><strong>核心原理</strong>：将流数据视为“无限增长的动态数据集”，采用“逐条/逐批”的增量处理方式，数据一经生成立即进入计算流程，无需等待全量数据收集，确保低延迟。</li>
+<li><strong>代表产品</strong>：Storm（实时性强，延迟毫秒级，适合简单实时计算）、Spark Streaming（基于Spark，支持微批处理，平衡实时性与计算复杂度）、Flume（配合流处理的日志收集工具）、S4、Streams、Puma、Dstream、银河流数据处理平台等。</li>
+<li><strong>适用场景</strong>：实时舆情监控、信用卡欺诈检测（需即时识别异常交易）、实时推荐系统（根据用户当前行为推送内容）、传感器实时数据监测（如工业设备故障预警）。</li>
+</ul>
+<h4 id="_24">三、图计算：大规模图结构数据的高效处理<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>解决问题</strong>：针对社交网络、路网结构、传染病传播路径等“大规模图数据”（节点数可达数十亿，边数达数百亿），处理多迭代、细粒度的图计算任务（如最短路径、节点影响力分析）。</li>
+<li><strong>核心原理</strong>：传统MapReduce框架因“单输入、两阶段”的粗粒度并行特性，难以适配图数据的“局部依赖”（如节点与边的关联）和“多轮迭代”需求，图计算模式通过专门的分布式图存储与计算模型，优化节点通信和迭代效率。</li>
+<li><strong>代表产品</strong>：Pregel（Google提出的分布式图计算框架，采用“计算-通信-同步”的BSP模型，通过消息传递实现节点间交互）、GraphX（基于Spark的图计算库，支持图与RDD数据的无缝转换）、Giraph（开源的Pregel实现）等。</li>
+<li><strong>适用场景</strong>：社交网络好友推荐（分析用户关系图谱）、路网交通流量优化（计算最短通行路径）、传染病传播模拟（分析人群接触图谱）。</li>
+</ul>
+<h4 id="_25">四、查询分析计算：大规模数据的实时/准时查询<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>解决问题</strong>：针对超大规模数据（如PB级），提供快速的存储管理与查询分析能力，支持类SQL等便捷查询方式，满足用户“即查即得”的需求（延迟通常为秒级到分钟级）。</li>
+<li><strong>核心原理</strong>：通过列式存储（优化查询时的数据读取效率）、分布式索引、查询下推等技术，减少数据扫描范围，提升查询速度，同时兼容结构化与半结构化数据的存储与查询。</li>
+<li><strong>代表产品</strong>：Dremel（Google的分布式OLAP系统，支持秒级查询PB级数据，采用树状架构与列式存储）、Hive（基于Hadoop的SQL引擎，将SQL转换为MapReduce/Tez任务执行，适合离线查询分析）、Cassandra（分布式NoSQL数据库，支持高可用、高扩展的读写，适合实时查询）、Impala（Cloudera开源的MPP架构查询引擎，支持实时SQL查询Hadoop数据）等。</li>
+<li><strong>适用场景</strong>：企业级报表生成（如季度销售数据查询）、用户行为实时分析（如查看某商品实时点击量）、海量日志快速检索（如定位某时间段的系统错误日志）。</li>
+</ul>
+<h3 id="_26">大数据技术框架<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>第33到39页围绕企业级大数据技术框架展开，从数据生命周期视角出发，将框架拆解为<strong>6个核心环节</strong>（数据收集、数据存储、资源管理与服务协调、计算引擎、数据分析、数据可视化），明确各环节的功能定位、技术需求与核心特点，形成完整的大数据处理链路。</p>
+<h4 id="etl">一、数据收集层（ETL：提取、转换、加载）<a class="headerlink" href="#etl" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：从各类数据源获取数据，经过提取、清洗、转换后，传输到后端存储系统，是大数据处理的“入口”。</li>
+<li><strong>数据源特点</strong>：</li>
+<li><strong>分布式</strong>：数据源分散在不同机器或设备（如Web服务器、传感器、手机），通过网络连接。</li>
+<li><strong>异构性</strong>：数据源类型多样，包括Web服务器、数据库、传感器、手环、摄像头等。</li>
+<li><strong>多样化</strong>：数据格式混杂，既有用户信息等结构化数据，也有图片、音频、视频等非结构化数据。</li>
+<li><strong>流式产生</strong>：数据像“水龙头流水”般持续生成，需实时或近实时收集。</li>
+<li><strong>收集系统要求</strong>：</li>
+<li><strong>扩展性</strong>：能灵活适配不同数据源，接入大量设备时不出现瓶颈。</li>
+<li><strong>可靠性</strong>：数据传输过程中不丢失、不重复。</li>
+<li><strong>安全性</strong>：对敏感数据（如用户隐私信息）提供加密或权限控制机制。</li>
+<li><strong>低延迟</strong>：在数据量庞大的情况下，仍能快速将数据传输到存储系统。</li>
+</ul>
+<h4 id="_27">二、数据存储层<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：负责存储海量结构化与非结构化数据，支撑后续计算与分析，是大数据处理的“仓库”。</li>
+<li><strong>技术痛点</strong>：传统关系型数据库（如MySQL）和文件系统（如Linux文件系统）在存储容量、扩展性、容错性上无法满足大数据需求（如PB级数据存储、机器故障时数据不丢失）。</li>
+<li><strong>核心要求</strong>：</li>
+<li><strong>扩展性</strong>：数据量增长时，可通过增加机器快速扩充存储能力（线性扩展）。</li>
+<li><strong>容错性</strong>：基于廉价机器构建，需具备自动检测故障、恢复数据的机制，避免机器故障导致数据丢失。</li>
+<li><strong>多存储模型</strong>：支持结构化、半结构化、非结构化数据存储，适配不同类型数据的存储需求。</li>
+</ul>
+<h4 id="_28">三、资源管理与服务协调层<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：对集群中的CPU、内存、存储等资源进行统一管理与调度，协调不同应用对资源的使用，是大数据处理的“资源管家”。</li>
+<li><strong>传统模式弊端</strong>：传统做法将不同应用（如批处理作业、实时服务）单独部署在独立服务器，导致资源利用率低（部分集群空闲、部分集群紧张）、运维成本高（需多管理员维护）、数据共享难（跨集群移动数据耗时耗力）。</li>
+<li><strong>核心价值</strong>：</li>
+<li><strong>提升资源利用率</strong>：多应用共享集群资源，平衡资源需求，避免浪费。</li>
+<li><strong>降低运维成本</strong>：少数管理员即可完成多框架的统一管理，减少人力投入。</li>
+<li><strong>促进数据共享</strong>：应用在同一集群内共享数据与硬件，无需跨集群移动数据，降低成本。</li>
+</ul>
+<h4 id="_29">四、计算引擎层<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：根据不同业务场景的时间需求，对存储的数据进行计算处理，是大数据处理的“计算核心”。</li>
+<li><strong>分类与特点</strong>：按对时间性能的要求，分为三类计算引擎：</li>
+<li><strong>批处理引擎</strong>：<ul>
+<li>时间要求：最低，处理延迟通常为分钟到小时级（甚至天级）。</li>
+<li>核心目标：追求高吞吐率（单位时间处理数据量）。</li>
+<li>适用场景：搜索引擎构建索引、海量日志离线分析（如月度用户行为统计）。</li>
+</ul>
+</li>
+<li><strong>交互式处理引擎</strong>：<ul>
+<li>时间要求：较高，处理延迟为秒级。</li>
+<li>核心目标：支持人机交互，提供类SQL语言方便用户操作。</li>
+<li>适用场景：数据查询、参数化报表生成（如实时查看某商品当日销量）。</li>
+</ul>
+</li>
+<li><strong>实时处理引擎</strong>：<ul>
+<li>时间要求：最高，处理延迟在秒级以内。</li>
+<li>核心目标：低延迟响应，适配流式数据处理。</li>
+<li>适用场景：信用卡欺诈检测、舆情分析、广告系统（如实时推荐商品）。</li>
+</ul>
+</li>
+</ul>
+<h4 id="_30">五、数据分析层<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：为用户提供易用的数据分析工具，对接上层应用程序，将计算后的原始数据转化为有价值的信息，是大数据处理的“价值提炼器”。</li>
+<li><strong>工具类型</strong>：</li>
+<li><strong>接口与语言工具</strong>：提供应用程序API、类SQL查询语言、数据挖掘SDK等，降低用户使用门槛。</li>
+<li><strong>典型使用模式</strong>：先通过批处理框架分析海量原始数据，生成小规模数据集；再用交互式处理工具对小规模数据集快速查询，获取最终结果（平衡效率与精度）。</li>
+</ul>
+<h4 id="_31">六、数据可视化层<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：将数据分析结果通过图形、图像等形式在屏幕上展示，支持用户交互，是大数据价值的“展示窗口”。</li>
+<li><strong>技术本质</strong>：运用计算机图形学和图像处理技术，将抽象数据转化为直观的可视化图表（如折线图、热力图、仪表盘）。</li>
+<li><strong>核心挑战</strong>：因大数据具有容量大、结构复杂、维度多的特点，如何在保证可视化效果的同时，清晰呈现数据规律（如多维度数据的分层展示、大规模数据的实时渲染），是该层的主要难点。</li>
+</ul>
+<h3 id="_32">大数据技术实现方案<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>第40到51页围绕大数据技术实现方案展开，重点介绍了<strong>Google大数据技术栈</strong>与<strong>Hadoop/Spark开源大数据技术栈</strong>两大主流实现体系，从数据存储、资源管理、计算引擎、数据分析四个核心层级，拆解各技术栈的组件功能与定位，形成完整的技术落地框架。</p>
+<h4 id="google">一、Google大数据技术栈（论文驱动，未开源代码）<a class="headerlink" href="#google" title="Permanent link">&para;</a></h4>
+<p>Google的大数据技术以论文形式公开，虽未对外开源系统实现代码，但为大数据技术发展指明方向，其核心技术分布在四个关键层级：</p>
+<h5 id="1_2">1. 数据存储层：支撑海量数据可靠存储<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>GFS（Google文件系统）</strong>：分布式文件系统，核心优势是高容错性、扩展性与可用性。可构建在普通廉价机器上，通过“横向扩展”（增加机器）提升存储能力，能应对机器故障导致的数据安全问题，是Google大数据存储的基础。</li>
+<li><strong>BigTable</strong>：构建在GFS之上的分布式数据库，本质是“稀疏、分布式、持久化的多维度排序映射表”。支持数据插入、更新操作，且行数和列数可无限扩展，弥补了传统关系型数据库在schema（数据结构）灵活性上的不足。</li>
+<li><strong>MegaStore</strong>：基于BigTable构建，支持ACID特性（原子性、一致性、隔离性、持久性）的分布式数据库。具备高扩展性与高密度交互能力，可在广域网中同步复制文件写操作，能在可接受延迟下实现跨数据中心故障迁移。</li>
+<li><strong>Spanner</strong>：可扩展、多版本、全球分布式的数据库，支持同步复制。是首个将数据分布在全球范围的系统，且能保障外部一致性的分布式事务，适用于跨地域大规模数据存储与访问场景。</li>
+</ul>
+<h5 id="2_4">2. 资源管理与服务协调层：实现集群资源高效调度<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Borg</strong>：集群资源管理与调度系统，负责接收、启动、停止、重启和监控应用程序。核心目标是让开发者无需关注资源管理，专注于应用开发，同时实现跨多个数据中心的资源利用率最大化。</li>
+<li><strong>Omega</strong>：Google下一代集群资源管理系统，采用“共享状态架构”。应用程序调度器可获取整个集群的资源权限，自由分配资源；通过多版本并发访问控制，解决资源冲突问题，提升调度灵活性。</li>
+<li><strong>Chubby</strong>：为松散耦合的分布式系统提供“粗粒度锁”与可靠存储。接口类似分布式文件系统，可轻松实现leader选举、分布式锁、服务命名等分布式核心功能，设计侧重可用性与可靠性，而非高性能。</li>
+</ul>
+<h5 id="3_1">3. 计算引擎层：满足不同类型数据计算需求<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>MapReduce</strong>：批处理计算框架，采用“分而治之”思想，将大规模数据操作拆解为Map（映射）和Reduce（归约）两个阶段。Map阶段并行处理输入数据生成中间结果，Reduce阶段整合中间结果得到最终输出，具备高吞吐率、高容错性、易编程的特点。</li>
+<li><strong>Dremel</strong>：分布式OLAP（在线分析处理）系统，通过列式存储、树状架构等技术，实现“秒级处理PB级数据”，适用于大规模数据的快速查询分析。</li>
+<li><strong>Pregel</strong>：分布式图计算框架，专门解决社交网络分析、网页链接分析等场景的大规模图计算问题。采用BSP（计算-通信-同步）模型，通过消息传递实现高效迭代计算，适配图数据的关联特性。</li>
+<li><strong>Percolator</strong>：基于BigTable的大数据集增量更新系统。核心目标是在海量数据上提供增量更新能力，通过支持分布式事务，确保增量处理过程的数据一致性与系统可扩展性。</li>
+<li><strong>MillWheel</strong>：分布式流式实时处理框架，允许用户自定义处理单元，并按拓扑结构连接成有向图，形成流式处理数据线，适配实时数据的持续计算需求。</li>
+</ul>
+<h5 id="4">4. 数据分析层：简化复杂数据处理流程<a class="headerlink" href="#4" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>FlumeJava</strong>：建立在MapReduce之上的Java编程库，提供高级原语简化复杂MapReduce应用开发。内置优化器，可自动优化执行计划，基于底层原语执行优化后的操作，适合构建复杂数据流水线。</li>
+<li><strong>Tenzing</strong>：基于MapReduce的SQL查询执行引擎，能将用户编写的SQL语句转化为MapReduce程序，提交到集群分布式并行执行，降低非开发人员使用大数据分析的门槛。</li>
+</ul>
+<h4 id="hadoopspark">二、Hadoop与Spark开源大数据技术栈（应用最广泛，全栈开源）<a class="headerlink" href="#hadoopspark" title="Permanent link">&para;</a></h4>
+<p>随着开源技术发展，以Hadoop与Spark为核心的生态系统已形成完整技术栈，覆盖数据收集、存储、资源管理、计算、分析五个层级，是目前工业界应用最广泛的方案：</p>
+<h5 id="1_3">1. 数据收集层：实现多源数据高效接入<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Sqoop/Canal</strong>：关系型数据收集工具，是关系型数据库（如MySQL）与Hadoop（如HDFS）的“桥梁”。Sqoop支持全量数据导入导出，Canal则专注于数据增量导入，避免Hadoop直接访问业务数据库影响性能。</li>
+<li><strong>Flume</strong>：非关系型数据（如流式日志）收集工具，可近实时收集日志数据，经过滤、聚集后加载到HDFS等存储系统，适配日志类数据的分布式、流式产生特点。</li>
+<li><strong>Kafka</strong>：分布式消息队列，常作为“数据总线”使用。支持多数据消费者订阅感兴趣的数据，采用分布式高容错设计，更适配大数据场景下的高并发数据传输需求。</li>
+</ul>
+<h5 id="2_5">2. 数据存储层：支撑多类型数据持久化<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>HDFS（Hadoop分布式文件系统）</strong>：核心分布式存储组件，具备高扩展性与容错性，可构建在廉价机器上，大幅降低存储成本。开源社区提供多种存储格式（如SSTable、Sequence File、Parquet列式存储），适配不同数据类型存储需求。</li>
+<li><strong>HBase</strong>：构建在HDFS之上的分布式数据库，支持结构化与半结构化数据存储，允许行列无限扩展，且支持数据随机查找与删除，适用于非结构化数据的结构化存储场景。</li>
+<li><strong>Kudu</strong>：分布式列式存储数据库，支持结构化数据存储，允许行无限扩展及数据随机查找与更新，平衡了HDFS的高吞吐与HBase的低延迟访问优势。</li>
+</ul>
+<h5 id="3_2">3. 资源管理与服务协调层：保障集群资源有序分配<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>YARN</strong>：统一资源管理与调度系统，管理集群CPU、内存等资源，按策略分配给上层应用。内置多租户资源调度器，支持按队列组织管理资源，且每个队列调度机制可独立定制，适配多应用共享集群的需求。</li>
+<li><strong>ZooKeeper</strong>：基于简化Paxos协议的服务协调系统，提供类似文件系统的数据模型。通过简单API即可实现leader选举、服务命名、分布式队列与锁等分布式模块，是开源大数据生态的“协调中枢”。</li>
+</ul>
+<h5 id="4_1">4. 计算引擎层：覆盖批处理、交互、实时计算场景<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>MapReduce/Tez</strong>：批处理引擎，MapReduce是Google MapReduce的开源实现，具备高扩展性与容错性；Tez基于MapReduce开发，是通用DAG（有向无环图）计算引擎，能更高效实现复杂数据处理逻辑。</li>
+<li><strong>Spark</strong>：通用DAG计算引擎，提供基于RDD（弹性分布式数据集）的数据抽象，充分利用内存存储中间结果，大幅提升数据挖掘与分析速度，支持批处理、交互式处理、流处理等多种计算模式。</li>
+<li><strong>Impala/Presto</strong>：交互式计算引擎，分别由Cloudera和Facebook开源，采用并行数据库架构。支持标准SQL处理Hadoop中的数据，内置查询优化器、查询下推、代码生成等机制，实现秒级查询响应。</li>
+<li><strong>Storm/Spark Streaming</strong>：流式实时计算引擎，具备高容错性与扩展性，能高效处理流式数据。支持通过简单API开发实时应用程序，适配实时监控、实时推荐等低延迟计算场景。</li>
+</ul>
+<h5 id="5_1">5. 数据分析层：提供多样化数据处理工具<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Hive/Pig/SparkSQL</strong>：SQL与脚本语言分析工具，Hive基于MapReduce/Tez实现SQL引擎，Pig基于MapReduce/Tez实现工作流引擎，SparkSQL基于Spark实现SQL引擎，降低非开发人员的使用门槛。</li>
+<li><strong>Mahout/MLlib</strong>：机器学习库，实现常用机器学习与数据挖掘算法。Mahout最初基于MapReduce，现逐步迁移到Spark；MLlib基于Spark开发，适配大规模数据的机器学习需求。</li>
+<li><strong>Apache Beam/Cascading</strong>：高级API框架，Apache Beam统一批处理与流处理计算框架，提供与具体引擎无关的API，方便跨引擎开发；Cascading内置查询计划优化器，自动优化数据流，适合构建复杂数据流水线。</li>
+</ul>
+<h3 id="lambda-architecture">大数据架构（Lambda Architecture）<a class="headerlink" href="#lambda-architecture" title="Permanent link">&para;</a></h3>
+<p>第52到54页围绕大数据核心架构——<strong>Lambda Architecture（LA，lambda架构）</strong> 展开，详细介绍其设计思想、三层核心结构及典型应用案例，明确该架构如何通过整合批处理与流处理优势，实现复杂大数据处理系统的高效运行。</p>
+<h4 id="lambda-architecture_1">一、Lambda Architecture核心设计思想<a class="headerlink" href="#lambda-architecture_1" title="Permanent link">&para;</a></h4>
+<p>Lambda Architecture的核心目标是<strong>兼顾数据处理的“高吞吐”与“低延迟”</strong>：通过拆分数据处理流程为三个独立层级，让批处理技术负责处理全量数据以保证结果准确性，流处理技术负责处理实时数据以降低延迟，最终通过服务层对外提供统一、高效的访问接口，解决单一计算模式无法同时满足“全量数据处理”与“实时响应”的痛点。</p>
+<h4 id="lambda-architecture_2">二、Lambda Architecture三层核心结构<a class="headerlink" href="#lambda-architecture_2" title="Permanent link">&para;</a></h4>
+<p>Lambda Architecture将数据处理流程拆解为批处理层、流式处理层、服务层，各层功能独立且协同工作，具体如下：</p>
+<h5 id="1-batch-layer">1. 批处理层（Batch Layer）：全量数据离线处理，保证结果准确性<a class="headerlink" href="#1-batch-layer" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心功能</strong>：以“批”为单位处理全量历史数据与新增数据，通过复杂计算逻辑生成“预计算只读数据视图”（如用户行为统计结果、商品推荐模型参数）。</li>
+<li><strong>技术特点</strong>：</li>
+<li>优势：能一次性处理PB级大规模数据，支持复杂计算逻辑（如多表关联、机器学习模型训练），吞吐率高，结果准确性强。</li>
+<li>劣势：数据处理延迟高（通常为分钟到小时级），无法满足实时性需求。</li>
+<li><strong>核心目标</strong>：为整个架构提供“权威、准确的全量数据计算结果”，作为数据处理的“基准层”。</li>
+</ul>
+<h5 id="2-speed-layer">2. 流式处理层（Speed Layer）：实时数据增量处理，降低延迟<a class="headerlink" href="#2-speed-layer" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心功能</strong>：针对实时产生的流数据（如用户实时点击、传感器实时数据），采用流计算技术进行增量处理，生成“实时临时数据视图”，弥补批处理层延迟高的缺陷。</li>
+<li><strong>技术特点</strong>：</li>
+<li>优势：数据处理延迟低（通常为秒级到毫秒级），能快速响应实时业务需求（如实时推荐、实时监控）。</li>
+<li>劣势：受限于实时计算能力，无法支持复杂逻辑计算（如大规模机器学习训练），结果精度相对批处理层较低。</li>
+<li><strong>核心目标</strong>：快速捕捉数据最新变化，提供“实时、轻量化的增量计算结果”，作为批处理层的“补充层”。</li>
+</ul>
+<h5 id="3-serving-layer">3. 服务层（Serving Layer）：整合两层结果，提供统一访问<a class="headerlink" href="#3-serving-layer" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心功能</strong>：接收批处理层的“全量数据视图”与流式处理层的“实时数据视图”，将两者结果整合后，对外提供统一的数据查询与访问接口（如API、SQL查询）。</li>
+<li><strong>技术特点</strong>：支持高并发查询，能根据用户需求快速返回整合后的最终结果——对于历史数据查询，优先返回批处理层的准确结果；对于实时数据查询，返回流式处理层的最新结果，兼顾准确性与实时性。</li>
+<li><strong>核心目标</strong>：屏蔽底层计算细节，为上层业务（如推荐系统、报表系统）提供“高效、统一、完整的数据服务”，是架构的“输出层”。</li>
+</ul>
+<h4 id="lambda-architecture_3">三、Lambda Architecture典型应用案例——推荐系统<a class="headerlink" href="#lambda-architecture_3" title="Permanent link">&para;</a></h4>
+<p>以互联网行业的推荐系统（如电商商品推荐、视频内容推荐）为例，Lambda Architecture的落地流程如下：
+1. <strong>数据接入</strong>：用户行为数据（如浏览、点击、购买）统一流入分布式消息队列（如Kafka），作为架构的数据源。
+2. <strong>批处理层处理</strong>：将Kafka中的全量历史数据与新增数据按小时/天粒度导入批处理系统（如MapReduce/Spark），训练复杂推荐模型（如协同过滤模型），生成“用户长期兴趣推荐结果”，存储到数据库中（延迟为小时级）。
+3. <strong>流式处理层处理</strong>：从Kafka中实时读取用户最新行为数据（如当前浏览商品），通过流处理系统（如Storm/Spark Streaming）分析用户短期兴趣，生成“实时临时推荐结果”（延迟为秒级）。
+4. <strong>服务层整合</strong>：服务层整合“长期兴趣推荐结果”与“实时兴趣推荐结果”，当用户访问推荐页面时，通过统一接口返回最终推荐列表，既保证推荐结果的准确性（基于全量数据），又能实时响应用户最新行为（基于实时数据）。</p>
+<h2 id="_33">大数据收集<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h2>
+<h3 id="_34">关系型数据收集<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<p>第56到57页围绕“关系型数据收集”展开，明确关系型数据的存储场景、收集必要性及核心工具，重点阐述Hadoop生态中用于解决关系型数据库与大数据系统数据交互的关键工具——Sqoop，形成从“数据迁移需求”到“工具落地”的完整逻辑。</p>
+<h4 id="_35">一、关系型数据收集概述<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>数据特征与存储场景</strong>：关系型数据是结构规范、按表结构存储的数据，常见于MySQL、Oracle等关系型数据库（如用户基本信息表、交易记录表），是企业日常业务中产生的核心数据。</li>
+<li><strong>收集必要性</strong>：为充分利用大数据技术（如MapReduce、Spark等分布式计算框架）对关系型数据进行高效分析（如大规模数据统计、复杂关联分析），需将关系型数据库中的数据导入HDFS、HBase等大数据存储系统；同时，Hadoop分析产生的结果（如报表数据）常需导回关系型数据库，以便对接前端数据可视化工具（多数可视化工具更适配关系型数据库）。</li>
+<li><strong>核心解决方案</strong>：Hadoop生态系统提供<strong>Sqoop工具</strong>，作为关系型数据库与Hadoop之间的“数据桥梁”，高效实现两者间的数据导入与导出。</li>
+</ul>
+<h4 id="sqoop">二、核心工具：Sqoop<a class="headerlink" href="#sqoop" title="Permanent link">&para;</a></h4>
+<h5 id="1-sqoop">1. Sqoop设计动机<a class="headerlink" href="#1-sqoop" title="Permanent link">&para;</a></h5>
+<p>Sqoop从工程实践角度解决关系型数据库与Hadoop的“数据传输痛点”，无需手动编写复杂数据迁移代码，主要承担三类核心任务：
+- <strong>数据迁移</strong>：企业商用关系型数据仓库（如Oracle数据仓库）的数据分析场景中，为兼顾扩展性、容错性与成本，需将数据迁移到Hadoop平台，后续可通过Hive、SparkSQL等分布式工具进行高效分析，Sqoop可实现全量数据一次性导入。
+- <strong>可视化分析结果</strong>：Hadoop处理的输入数据常达PB级，但最终分析结果（如月度销售报表、用户画像摘要）规模较小（MB/GB级）。由于多数可视化工具（如Tableau、PowerBI）与关系型数据库对接更成熟，Sqoop可将Hadoop的分析结果导回关系型数据库，支撑直观的可视化展示。
+- <strong>数据增量导入</strong>：Hadoop对事务支持较弱，支付平台、订单系统等涉及事务的应用仍依赖关系型数据库。为避免Hadoop直接访问业务数据库影响性能，Sqoop可将事务相关数据（如用户支付记录）增量导入Hadoop，既保障业务系统稳定，又满足大数据分析需求。</p>
+<h5 id="2-sqoop">2. Sqoop基本思想及特点<a class="headerlink" href="#2-sqoop" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心思想</strong>：采用<strong>插拔式Connector架构</strong>——Connector是与特定数据源绑定的组件，仅负责从目标关系型数据库抽取数据或向其加载数据，无需关注通用数据传输逻辑，灵活适配不同类型的关系型数据库。</li>
+<li><strong>关键特点</strong>：</li>
+<li><strong>性能高</strong>：基于MapReduce实现数据迁移，继承MapReduce的高并发、高容错性与线性扩展性，可通过调整并发度（Map Task数量）提升数据传输速度。</li>
+<li><strong>自动类型转换</strong>：能自动读取数据源的元信息（如数据库表字段类型），完成关系型数据库字段（如MySQL的INT、VARCHAR）与Hadoop数据类型（如HDFS的Text、IntWritable）的映射，用户也可根据需求自定义类型映射规则。</li>
+<li><strong>自动传播元信息</strong>：在数据传输过程中，同步传递数据的元信息（如字段名、数据类型、主键约束），确保Hadoop端与关系型数据库端的元信息一致，避免后续分析因元信息不匹配导致错误。</li>
+</ul>
+<h3 id="sqoop_1">Sqoop概述<a class="headerlink" href="#sqoop_1" title="Permanent link">&para;</a></h3>
+<p>第58到60页围绕“Sqoop概述”展开，从架构设计、版本差异、使用方式三个核心维度，系统介绍Sqoop工具的技术细节，明确其如何解决关系型数据库与Hadoop间的数据迁移问题，同时对比不同版本的优劣，提供具体使用指引。</p>
+<h4 id="sqoop_2">一、Sqoop基本架构：从客户端工具到服务端架构的演进<a class="headerlink" href="#sqoop_2" title="Permanent link">&para;</a></h4>
+<p>Sqoop的架构经历了Sqoop1到Sqoop2的迭代，核心差异在于是否引入服务端，以解决早期版本的管理与扩展性问题。</p>
+<h5 id="1-sqoop1_1">1. Sqoop1架构：客户端轻量架构<a class="headerlink" href="#1-sqoop1_1" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>核心定位</strong>：纯客户端工具，无需启动任何服务即可使用，部署门槛低。</li>
+<li><strong>工作原理</strong>：本质是“仅含Map任务的MapReduce作业”——用户通过Shell命令提交数据迁移任务后，Sqoop先读取关系型数据库的元信息（如表结构、字段类型），再根据数据表大小和用户设置的并发度，将数据划分为若干分片，每个分片由一个Map Task并行处理，最终将数据写入HDFS、HBase或Hive等目标存储系统。</li>
+<li><strong>核心能力</strong>：支持用户定制任务参数，如调整Map Task并发度（控制迁移速度）、设置数据源地址、配置超时时间等。</li>
+<li><strong>明显缺陷</strong>：当数据迁移任务数量增多时，暴露诸多问题，包括Connector定制开发难度大、客户端软件需在各机器单独部署（管理繁琐）、敏感信息（如数据库密码）在客户端存储存在安全风险。</li>
+</ul>
+<h5 id="2-sqoop2">2. Sqoop2架构：服务端集中管理架构<a class="headerlink" href="#2-sqoop2" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>改进思路</strong>：为解决Sqoop1客户端架构的痛点，引入“Sqoop Server”，将Connector管理、数据库客户端、安全认证等核心功能统一迁移到服务端，客户端仅负责发送请求与接收结果，实现“轻客户端+重服务端”的架构模式（类似传统软件到云计算架构的变迁）。</li>
+<li><strong>核心组件及功能</strong>：</li>
+<li><strong>Sqoop Client</strong>：用户交互入口，支持两种访问方式——命令行（CLI）和浏览器（通过HTTP协议完成管理与数据迁移操作），操作便捷且无需关注底层实现。</li>
+<li><strong>Sqoop Server</strong>：核心管理节点，包含三大关键模块：<ul>
+<li><strong>Connector</strong>：所有数据源的Connector（如MySQL Connector、Oracle Connector）集中部署于此，被抽象为Partitioner（数据分片策略）、Extractor（数据解析）、Loader（数据写入）三个子模块，仅关注与特定数据源相关的功能，降低定制难度。</li>
+<li><strong>Metadata</strong>：存储Sqoop的元信息，包括可用Connector列表、用户创建的迁移作业配置、数据源链接（Link）信息等，元信息统一存储在数据仓库中，便于管理与复用。</li>
+<li><strong>RESTful/HTTP Server</strong>：对接客户端，响应CLI的命令请求与浏览器的HTTP请求，实现客户端与服务端的通信。</li>
+</ul>
+</li>
+</ul>
+<h4 id="sqoop1sqoop2">二、Sqoop1与Sqoop2核心差异对比<a class="headerlink" href="#sqoop1sqoop2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Sqoop1</th>
+<th>Sqoop2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>架构模式</td>
+<td>纯客户端工具，无服务端</td>
+<td>服务端（Sqoop Server）+轻客户端模式</td>
+</tr>
+<tr>
+<td>客户端访问方式</td>
+<td>仅支持命令行（CLI）</td>
+<td>支持命令行（CLI）和浏览器（HTTP）两种方式</td>
+</tr>
+<tr>
+<td>数据源访问逻辑</td>
+<td>客户端直接访问数据源（如MySQL、HBase）</td>
+<td>服务端统一访问数据源，客户端仅发送请求</td>
+</tr>
+<tr>
+<td>Connector开发与管理</td>
+<td>需遵循JDBC模型，需考虑通用功能模块，定制复杂</td>
+<td>Connector被泛化，仅需实现Partitioner/Extractor/Loader，通用模块独立封装</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>仅支持Hadoop Security基础安全机制</td>
+<td>增加基于角色的安全访问控制（RBAC），权限管理更精细</td>
+</tr>
+<tr>
+<td>资源管理</td>
+<td>无资源管理机制，多任务并发易引发资源竞争</td>
+<td>支持细粒度资源管理，可配置单个作业的CPU、内存占用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="sqoop_3">三、Sqoop使用方式：分版本适配不同操作逻辑<a class="headerlink" href="#sqoop_3" title="Permanent link">&para;</a></h4>
+<h5 id="1-sqoop1_2">1. Sqoop1使用方式：命令行直接操作<a class="headerlink" href="#1-sqoop1_2" title="Permanent link">&para;</a></h5>
+<p>Sqoop1仅支持命令行交互，核心提供“import”和“export”两类命令，覆盖数据双向迁移需求：
+- <strong>import命令</strong>：将关系型数据库数据导入Hadoop（HDFS/HBase/Hive）。<br />
+  基本语法：<code>$ sqoop import [generic-args] [import-args]</code><br />
+  - <code>[generic-args]</code>：Hadoop通用参数，如<code>-fs</code>（指定NameNode地址）、<code>-jt</code>（指定ResourceManager地址）。<br />
+  - <code>[import-args]</code>：import特有参数，如<code>--connect</code>（JDBC连接地址）、<code>--table</code>（待导入的数据库表名）、<code>--target-dir</code>（HDFS目标存储目录）。<br />
+  数据转换规则：关系型数据库的每条记录会转化为HDFS文件中的一行，支持文本、二进制、SequenceFile等格式存储。</p>
+<ul>
+<li><strong>export命令</strong>：将Hadoop中的数据导回关系型数据库。<br />
+  基本语法：<code>$ sqoop export [generic-args] [export-args]</code>  </li>
+<li><code>[export-args]</code>：export特有参数，如<code>--export-dir</code>（HDFS数据源目录）、<code>--table</code>（待导入的数据库表名）。<br />
+  数据转换规则：HDFS文件按用户设定的分隔符（如逗号、制表符）拆分为一条条记录，批量插入到关系型数据库表中。</li>
+</ul>
+<h5 id="2-sqoop2_1">2. Sqoop2使用方式：服务端交互流程<a class="headerlink" href="#2-sqoop2_1" title="Permanent link">&para;</a></h5>
+<p>Sqoop2需先通过命令行进入客户端Shell（<code>sqoop.sh client</code>），再按“创建Link→创建Job→提交Job”的流程操作，核心概念包括：
+- <strong>Connector</strong>：访问特定数据源的组件（如<code>generic-jdbc-connector</code>用于JDBC数据库、<code>hdfs-connector</code>用于HDFS），是创建Link的基础。
+- <strong>Link</strong>：一个Connector的实例，代表与某数据源的连接配置（如MySQL的JDBC地址、用户名、密码），创建命令：<code>create link -c &lt;connector-id&gt;</code>。
+- <strong>Job</strong>：定义一次数据迁移任务，指定数据从源Link（<code>-f &lt;link-id1&gt;</code>）到目标Link（<code>-t &lt;link-id2&gt;</code>）的迁移规则，创建命令：<code>create job -f &lt;link-id1&gt; -t &lt;link-id2&gt;</code>。
+- <strong>Job提交与监控</strong>：通过<code>start job -jid &lt;job-id&gt;</code>提交任务到集群，通过<code>status job -jid &lt;job-id&gt;</code>查看任务运行状态（成功/失败/运行中）。</p>
+<h3 id="sqoop_4">Sqoop基本架构<a class="headerlink" href="#sqoop_4" title="Permanent link">&para;</a></h3>
+<p>第61到65页围绕“Sqoop基本架构”展开，重点对比Sqoop1与Sqoop2两代架构的设计逻辑、核心组件及功能差异，清晰呈现从“客户端轻量架构”到“服务端集中管理架构”的演进思路，同时明确各架构的优势与局限。</p>
+<h4 id="sqoop1mapreduce">一、Sqoop1架构：客户端驱动的MapReduce作业模式<a class="headerlink" href="#sqoop1mapreduce" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心定位</strong>：Sqoop1是纯客户端工具，无需启动独立服务，用户通过命令行提交任务即可运行，部署与初期使用门槛较低。</li>
+<li><strong>架构核心逻辑</strong>：本质是“仅包含Map任务的MapReduce作业”，利用MapReduce的分布式特性实现数据并行迁移，具体流程如下：</li>
+<li><strong>任务提交与元信息读取</strong>：用户通过Shell命令提交数据迁移任务后，Sqoop首先连接关系型数据库，读取数据源元信息（如数据表结构、字段类型、数据量大小）。</li>
+<li><strong>数据分片与任务分配</strong>：根据用户配置的并发度（Map Task数量）和数据表实际大小，Sqoop将全量数据划分为若干均等分片，每个分片分配给一个Map Task负责处理。</li>
+<li><strong>并行数据迁移</strong>：各Map Task独立连接数据库，并行读取对应分片的数据，经过格式转换后，将数据写入HDFS、HBase或Hive等目标存储系统，整个过程无Reduce任务（避免数据聚合导致的延迟）。</li>
+<li><strong>用户可配置参数</strong>：支持自定义任务并发度（控制Map Task数量）、数据源连接信息（数据库地址、用户名、密码）、数据超时时间、目标存储格式（文本、SequenceFile等），以适配不同迁移场景。</li>
+<li><strong>架构局限</strong>：随迁移任务增多逐渐暴露问题，包括Connector定制开发复杂（需兼容通用逻辑，适配新数据源成本高）、客户端软件需在多机器重复部署（管理繁琐）、敏感信息（如数据库密码）在客户端明文配置（安全风险高）。</li>
+</ul>
+<h4 id="sqoop2">二、Sqoop2架构：服务端集中管理的分布式架构<a class="headerlink" href="#sqoop2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>架构改进目标</strong>：针对Sqoop1客户端架构的痛点，引入“Sqoop Server”作为核心管理节点，将 Connector管理、安全认证、元信息存储等功能统一收敛到服务端，客户端仅保留轻量交互能力，形成“服务端承核心逻辑+客户端简化操作”的模式（类似传统软件到云计算架构的升级）。</li>
+<li><strong>核心组件及功能拆解</strong>：</li>
+<li><strong>Sqoop Client（客户端）</strong>：用户交互入口，支持两种访问方式：<ul>
+<li>命令行（CLI）：通过<code>sqoop.sh client</code>进入Shell环境，执行Link创建、Job提交等命令。</li>
+<li>浏览器（Web）：通过HTTP协议访问服务端，直接在网页端完成任务配置、监控与管理，无需依赖本地客户端环境。</li>
+</ul>
+</li>
+<li><strong>Sqoop Server（服务端）</strong>：架构核心，包含四大关键模块：<ul>
+<li><strong>Connector模块</strong>：所有数据源的Connector（如MySQL Connector、HDFS Connector）集中部署于此，被抽象为三个独立子模块，降低定制难度：</li>
+<li>Partitioner：负责对源数据进行合理分片，确定每个Map Task的处理范围，保障并行迁移效率。</li>
+<li>Extractor：解析分片中的原始数据，将其转换为统一格式的记录（如键值对），实现数据标准化。</li>
+<li>Loader：读取Extractor输出的标准化记录，按目标数据源格式（如HDFS文件、数据库表）写入数据，完成最终迁移。</li>
+<li><strong>Metadata模块</strong>：存储Sqoop全量元信息，包括可用Connector列表、用户创建的Link配置（数据源连接信息）、Job定义（迁移规则）等，元信息统一存储在数据仓库中，支持复用与统一管理。</li>
+<li><strong>RESTful/HTTP Server模块</strong>：对接客户端请求，响应CLI的命令调用与浏览器的HTTP请求，实现客户端与服务端的通信与数据交互。</li>
+<li><strong>安全与资源管理模块</strong>：内置安全认证机制（如权限校验）与资源调度功能，可控制不同用户的任务权限，同时限制单个Job的CPU、内存占用，避免资源竞争。</li>
+</ul>
+</li>
+</ul>
+<h4 id="sqoop1sqoop2_1">三、Sqoop1与Sqoop2架构核心差异对比<a class="headerlink" href="#sqoop1sqoop2_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>Sqoop1架构</th>
+<th>Sqoop2架构</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>架构模式</td>
+<td>纯客户端工具，无独立服务端</td>
+<td>服务端（Sqoop Server）+轻量级客户端</td>
+</tr>
+<tr>
+<td>数据源访问逻辑</td>
+<td>客户端直接连接数据源，需本地部署数据库驱动</td>
+<td>服务端统一连接数据源，客户端仅发送请求</td>
+</tr>
+<tr>
+<td>Connector管理方式</td>
+<td>Connector与客户端绑定，定制需兼容通用逻辑</td>
+<td>Connector集中在服务端，按“Partitioner+Extractor+Loader”拆分，定制仅需关注数据源特有逻辑</td>
+</tr>
+<tr>
+<td>元信息存储</td>
+<td>无统一存储，任务配置随客户端分散管理</td>
+<td>元信息集中存储在服务端Metadata模块，支持复用与统一查询</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>仅依赖Hadoop基础安全机制，敏感信息在客户端暴露</td>
+<td>支持基于角色的访问控制（RBAC），敏感信息在服务端加密存储</td>
+</tr>
+<tr>
+<td>运维复杂度</td>
+<td>多客户端需重复部署，任务监控分散</td>
+<td>服务端集中运维，任务状态统一可视化监控</td>
+</tr>
+<tr>
+<td>### Sqoop使用方式</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>第66到第68页围绕“Sqoop使用方式”展开，根据Sqoop1与Sqoop2的架构差异，分别明确两代工具的操作逻辑、核心命令及使用流程，同时介绍Sqoop2的关键概念，形成分版本、可落地的使用指引。</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="sqoop1">一、Sqoop1使用方式：命令行直接操作，聚焦“导入/导出”核心场景<a class="headerlink" href="#sqoop1" title="Permanent link">&para;</a></h4>
+<p>Sqoop1仅支持<strong>命令行（CLI）</strong> 一种使用方式，核心通过“import”和“export”两类命令，实现关系型数据库与Hadoop之间的双向数据迁移，操作逻辑简洁直接。</p>
+<h5 id="1-1importhadoop">1. 核心命令1：import（关系型数据库→Hadoop）<a class="headerlink" href="#1-1importhadoop" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>功能定位</strong>：将MySQL、Oracle等关系型数据库中的表数据，全量导入到HDFS、HBase或Hive等Hadoop生态存储系统中。</li>
+<li><strong>基本语法</strong>：<code>$ sqoop import [generic-args] [import-args]</code></li>
+<li><strong>[generic-args]（Hadoop通用参数）</strong>：需遵循Hadoop命令规范，用于指定集群环境配置，例如：<ul>
+<li><code>-fs &lt;namenode地址&gt;</code>：指定HDFS的NameNode节点地址（如<code>hdfs://master:9000</code>）；</li>
+<li><code>-jt &lt;resourcemanager地址&gt;</code>：指定YARN的ResourceManager节点地址（如<code>master:8032</code>）；</li>
+<li><code>-conf &lt;配置文件路径&gt;</code>：指定自定义的Hadoop配置文件，覆盖默认配置。</li>
+</ul>
+</li>
+<li><strong>[import-args]（import特有参数）</strong>：用于定义数据迁移的具体规则，核心参数包括：<ul>
+<li><code>--connect &lt;JDBC连接符&gt;</code>：指定关系型数据库的JDBC连接地址（如<code>jdbc:mysql://master:3306/movie</code>，表示连接master节点3306端口的movie数据库）；</li>
+<li><code>--driver &lt;JDBC驱动类&gt;</code>：当数据库驱动未包含在Sqoop默认依赖中时，需指定驱动类路径（如MySQL驱动<code>com.mysql.jdbc.Driver</code>）；</li>
+<li><code>--username &lt;数据库用户名&gt;</code>、<code>--password &lt;数据库密码&gt;</code>：访问关系型数据库的认证信息；</li>
+<li><code>--table &lt;数据库表名&gt;</code>：指定需导入的数据库表（如<code>data</code>表）；</li>
+<li><code>--target-dir &lt;HDFS目标目录&gt;</code>：指定数据在HDFS中的存储路径（需确保该目录不存在，否则会报错）；</li>
+<li><code>--fields-terminated-by &lt;分隔符&gt;</code>：指定HDFS输出文件中字段的分隔符（如逗号<code>,</code>、制表符<code>\t</code>）。</li>
+</ul>
+</li>
+<li><strong>数据转换规则</strong>：关系型数据库中的每一条记录，会被转换为HDFS文件中的一行数据，支持文本文件、二进制文件（如SequenceFile）等多种存储格式，便于后续MapReduce、Spark等工具分析。</li>
+</ul>
+<h5 id="2-2exporthadoop">2. 核心命令2：export（Hadoop→关系型数据库）<a class="headerlink" href="#2-2exporthadoop" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>功能定位</strong>：将HDFS等Hadoop存储系统中的数据，按指定格式解析后，批量导入回关系型数据库的目标表中（需确保目标表已提前创建，且字段结构与HDFS数据匹配）。</li>
+<li><strong>基本语法</strong>：<code>$ sqoop export [generic-args] [export-args]</code></li>
+<li><strong>[generic-args]</strong>：与import命令一致，为Hadoop通用参数，用于指定集群环境。</li>
+<li><strong>[export-args]（export特有参数）</strong>：核心参数包括：<ul>
+<li><code>--connect &lt;JDBC连接符&gt;</code>、<code>--username</code>、<code>--password</code>：与import命令一致，用于连接目标关系型数据库；</li>
+<li><code>--table &lt;目标数据库表名&gt;</code>：指定数据需导入的关系型数据库表（如<code>movie</code>数据库的<code>data</code>表）；</li>
+<li><code>--export-dir &lt;HDFS数据源目录&gt;</code>：指定Hadoop中待导出数据的存储路径（如<code>/data</code>，需确保该目录下有数据文件）；</li>
+<li><code>--input-fields-terminated-by &lt;分隔符&gt;</code>：指定HDFS数据文件中字段的分隔符，需与数据写入时的分隔符一致，否则会导致数据解析错误。</li>
+</ul>
+</li>
+<li><strong>数据转换规则</strong>：HDFS文件会按照指定分隔符拆分为一条条结构化记录，Sqoop通过JDBC批量插入到关系型数据库表中，提升导入效率。</li>
+</ul>
+<h4 id="sqoop2linkjob">二、Sqoop2使用方式：服务端交互流程，需“Link→Job”两步创建<a class="headerlink" href="#sqoop2linkjob" title="Permanent link">&para;</a></h4>
+<p>Sqoop2因引入服务端（Sqoop Server），使用流程较Sqoop1更规范，需先通过命令行进入客户端Shell环境，再按“创建Link→创建Job→提交Job”的步骤操作，支持命令行与浏览器两种访问方式，核心依赖“Connector→Link→Job”三个关键概念。</p>
+<h5 id="1-sqoop2shell">1. 前置操作：进入Sqoop2客户端Shell<a class="headerlink" href="#1-sqoop2shell" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>启动命令</strong>：在部署Sqoop2客户端的机器上，执行<code>$ sqoop.sh client</code>，进入交互式Shell环境，后续所有操作均在此环境中执行。</li>
+</ul>
+<h5 id="2_6">2. 关键概念解析<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h5>
+<ul>
+<li><strong>Connector（连接器）</strong>：Sqoop2内置的数据源适配组件，用于对接不同类型的数据源（如关系型数据库、HDFS、Kafka等），每个Connector对应一种数据源类型，例如：</li>
+<li><code>generic-jdbc-connector</code>：适配支持JDBC协议的关系型数据库（如MySQL、Oracle）；</li>
+<li><code>hdfs-connector</code>：适配Hadoop HDFS分布式文件系统；</li>
+<li><code>kafka-connector</code>：适配分布式消息队列Kafka；</li>
+<li><code>kite-connector</code>：通过Kite SDK适配HDFS、HBase、Hive等Hadoop生态存储。</li>
+<li><strong>Link（链接）</strong>：一个Connector的实例，用于存储某一具体数据源的连接配置（如数据库地址、用户名、密码），相当于“数据源的连接模板”，可重复复用（如创建一个连接movie数据库的Link，后续所有从该数据库迁移数据的Job均可使用）。</li>
+<li><strong>Job（作业）</strong>：定义一次完整的数据迁移任务，需指定“源Link”（数据来源）和“目标Link”（数据去向），明确数据迁移的方向与规则（如字段映射、数据过滤条件）。</li>
+</ul>
+<h5 id="3_3">3. 核心操作流程<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h5>
+<ol>
+<li><strong>创建Link（配置数据源连接）</strong></li>
+<li><strong>命令格式</strong>：<code>create link -c &lt;connector-id&gt;</code>，其中<code>&lt;connector-id&gt;</code>为目标Connector的ID（可通过<code>show connector</code>命令查看所有可用Connector及其ID）。</li>
+<li>
+<p><strong>配置过程</strong>：执行命令后，需按提示输入数据源的连接信息（如JDBC连接地址、用户名、密码），完成后Sqoop2会将Link信息存储到服务端Metadata模块，生成唯一的<code>link-id</code>（后续创建Job需用到）。</p>
+</li>
+<li>
+<p><strong>创建Job（定义数据迁移任务）</strong></p>
+</li>
+<li><strong>命令格式</strong>：<code>create job -f &lt;source-link-id&gt; -t &lt;target-link-id&gt;</code>，其中<code>&lt;source-link-id&gt;</code>为源数据源的Link ID，<code>&lt;target-link-id&gt;</code>为目标数据源的Link ID。</li>
+<li><strong>配置过程</strong>：需进一步设置数据迁移规则，例如：<ul>
+<li>选择源数据表与目标数据表（或HDFS目录）；</li>
+<li>配置字段映射关系（若源与目标字段名/类型不一致）；</li>
+<li>设置数据过滤条件（如仅导入某一时间范围内的数据）。</li>
+</ul>
+</li>
+<li>
+<p><strong>结果</strong>：创建成功后生成唯一的<code>job-id</code>，用于后续提交与监控任务。</p>
+</li>
+<li>
+<p><strong>提交并监控Job（执行数据迁移）</strong></p>
+</li>
+<li><strong>提交Job</strong>：执行<code>start job -jid &lt;job-id&gt;</code>，将Job提交到Sqoop Server，由服务端调度MapReduce任务完成数据迁移。</li>
+<li><strong>监控Job状态</strong>：执行<code>status job -jid &lt;job-id&gt;</code>，查看Job的运行状态（如<code>RUNNING</code>运行中、<code>SUCCEEDED</code>成功、<code>FAILED</code>失败），若失败可通过<code>log job -jid &lt;job-id&gt;</code>查看日志定位问题。</li>
+</ol>
+<h5 id="4_2">4. 访问方式扩展<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h5>
+<p>除命令行Shell外，Sqoop2还支持<strong>浏览器访问</strong>：通过浏览器访问Sqoop Server的Web管理界面（默认端口通常为12000，如<code>http://master:12000</code>），可可视化完成Link创建、Job配置、任务监控等操作，无需记忆命令，降低非技术人员的使用门槛。</p>
+<h3 id="cdc">📌 CDC（数据增量收集）核心内容总结<a class="headerlink" href="#cdc" title="Permanent link">&para;</a></h3>
+<h4 id="1-cdc">1. CDC的定义与核心需求<a class="headerlink" href="#1-cdc" title="Permanent link">&para;</a></h4>
+<p>CDC全称为Change Data Capture（变更数据捕获），主要解决“高效获取数据库增量数据”的问题。<br />
+传统的Sqoop工具虽能实现关系型数据全量导入，但无法高效捕捉“增量数据”——即数据库中某张表从特定时刻开始的新增、修改或删除数据。而实际场景中，如实时同步支付记录、更新业务缓存等，都需要精准获取这些增量数据，CDC正是为满足该需求而生。</p>
+<h4 id="2-cdc">2. CDC的实现方案对比<a class="headerlink" href="#2-cdc" title="Permanent link">&para;</a></h4>
+<p>文档中提到两类CDC实现方案，优劣差异明显：
+- <strong>传统方案（存在明显缺陷）</strong>：包括定时扫描整表、写双份数据、利用数据库触发器等。这类方案要么会占用大量数据库资源（如频繁扫表），要么需要修改业务代码（如写双份数据），实用性较低。
+- <strong>主流方案（基于日志解析）</strong>：通过解析数据库的事务日志或提交日志，还原数据的变更记录。该方案无需修改业务层代码，能在不影响业务系统性能的前提下，高效捕获增量数据，是目前工业界的主流选择。</p>
+<h4 id="3-cdc">3. CDC的核心功能与应用场景<a class="headerlink" href="#3-cdc" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>核心功能</strong>：捕获数据库中的数据变更（新增、修改、删除），并将这些增量数据同步给下游的订阅者或消费者（如大数据平台、缓存系统、异地数据库）。</li>
+<li><strong>典型应用场景</strong>：</li>
+<li>异地机房同步：实现数据异地容灾，避免单机房故障导致数据丢失。</li>
+<li>数据库实时备份：类似主从复制架构，实时备份核心业务数据。</li>
+<li>业务Cache刷新：数据库数据更新后，同步刷新缓存中的数据，保证数据一致性。</li>
+<li>数据全库迁移：通过增量同步逐步完成全库数据迁移，减少迁移对业务的影响。</li>
+</ul>
+<h4 id="4-cdccanal">4. CDC的开源实现：Canal<a class="headerlink" href="#4-cdccanal" title="Permanent link">&para;</a></h4>
+<p>文档重点介绍了Canal这一主流CDC开源工具，包括其原理与架构：
+- <strong>核心原理</strong>：模拟数据库的主备复制协议，获取数据库产生的二进制日志（binary log），进而解析并捕获增量数据。以MySQL为例，具体流程为：
+  1. Canal向MySQL Server发送dump协议，模拟从库请求。
+  2. MySQL接收请求后，将二进制日志推送给Canal。
+  3. Canal解析二进制日志，生成结构化的变更数据，并发送给下游消费者（如业务系统、大数据平台）。
+- <strong>基本架构</strong>：Canal采用模块化设计，一个Canal Server（对应一个JVM）可管理多个Canal Instance（对应一个数据队列），每个Instance包含4个核心模块：
+  - EventParser：接入数据源，模拟从库协议并解析日志。
+  - EventSink：连接Parser与Store，负责数据过滤、加工和分发。
+  - EventStore：存储解析后的增量数据。
+  - MetaManager：管理增量订阅信息和消息元数据，记录同步进度。</p>
+<h4 id="5-cdcotter">5. 基于CDC的扩展应用：Otter跨机房同步<a class="headerlink" href="#5-cdcotter" title="Permanent link">&para;</a></h4>
+<p>Otter基于Canal开发，专门解决“跨机房数据同步”问题，其核心架构与流程如下：
+- <strong>架构组成</strong>：包含Manager（Web管理端，负责配置推送和状态监控）和Node（工作节点，执行同步任务），并通过ZooKeeper实现分布式协调。
+- <strong>同步流程（S-E-T-L阶段模型）</strong>：
+  1. Select（数据接入）：对接数据源，解决不同来源数据的差异性问题。
+  2. Extract（数据提取）：从源数据库提取增量数据。
+  3. Transform（数据转换）：根据目标端需求，对数据进行格式转换、过滤等处理。
+  4. Load（数据载入）：将处理后的增量数据写入目标数据库或消息队列。
+- <strong>典型场景</strong>：在跨机房同步中，Select和Extract部署在原机房，Transform和Load部署在目标机房，通过网络传输增量数据，实现异地数据准实时同步。</p>
+<h3 id="cdccanal">📦 CDC开源实现Canal核心内容总结<a class="headerlink" href="#cdccanal" title="Permanent link">&para;</a></h3>
+<h4 id="1-canal">1. Canal的定位与核心目标<a class="headerlink" href="#1-canal" title="Permanent link">&para;</a></h4>
+<p>Canal是一款基于数据库增量日志解析的开源工具，核心定位是<strong>提供增量数据的订阅与消费能力</strong>，目前主要支持MySQL等关系型数据库。它的核心目标是解决“无需修改业务代码，即可高效捕获数据库增量数据”的问题，为下游系统（如大数据平台、缓存系统）提供实时、可靠的增量数据来源。</p>
+<h4 id="2-canal">2. Canal的核心工作原理<a class="headerlink" href="#2-canal" title="Permanent link">&para;</a></h4>
+<p>Canal的原理本质是<strong>模拟数据库的主备复制协议</strong>，通过解析数据库产生的二进制日志（binary log）来捕获数据变更，具体以MySQL为例可分为3个关键步骤：
+- 步骤1：协议发起。Canal主动向MySQL Server发送“dump协议”，模拟MySQL从库（slave）向主库（master）请求同步数据的行为。
+- 步骤2：日志推送。MySQL主库收到dump请求后，会将产生的二进制日志（记录数据新增、修改、删除的详细信息）持续推送给Canal。
+- 步骤3：日志解析与分发。Canal接收二进制日志后，会对其进行解析，将二进制格式的日志转换为结构化的“数据变更对象”，再将这些对象分发给下游的消费者（如业务客户端、大数据处理系统）。</p>
+<h4 id="3-canal">3. Canal的基本架构设计<a class="headerlink" href="#3-canal" title="Permanent link">&para;</a></h4>
+<p>为了满足扩展性需求，Canal采用模块化架构设计，整体分为“Canal Server”和“Canal Instance”两个核心层级，结构清晰且职责明确：
+- <strong>Canal Server</strong>：对应一个独立的JVM进程，是Canal的运行实例载体，一个Server可以管理1到多个Canal Instance。
+- <strong>Canal Instance</strong>：对应一个具体的数据同步队列，每个Instance负责处理一个数据源（如某台MySQL服务器的增量数据），内部包含4个核心功能模块：
+  - EventParser：数据源接入模块，负责模拟从库协议与主库交互，并完成二进制日志的解析。
+  - EventSink：数据中转模块，连接EventParser与EventStore，负责对解析后的日志进行过滤、加工（如字段筛选）和分发。
+  - EventStore：数据存储模块，暂存解析后的结构化增量数据，为下游消费提供数据支撑。
+  - MetaManager：元信息管理模块，负责记录增量订阅的进度（如已同步到哪条日志）、消息元数据等，保证同步过程不丢数据、不重复同步。</p>
+<h2 id="_36">大数据收集<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h2>
+<h3 id="_37">📤 非关系型数据收集核心内容总结<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1. 非关系型数据的特点与收集需求<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<p>非关系型数据是指无法用传统数据库表结构存储的数据，典型类型包括网页内容、视频、图片、用户行为日志（如点击、浏览记录）等。这类数据有3个核心特点，决定了其收集需求：
+- <strong>分布零散</strong>：数据分散在多台设备、多个服务上（如不同服务器的Web日志），需跨节点聚合。
+- <strong>流式产生</strong>：数据实时、不间断生成（如每秒钟产生的用户行为），需近实时收集。
+- <strong>数据量大</strong>：单条数据可能体积小（如日志），但总量庞大，需支撑高并发收集。<br />
+传统收集方式难以应对这些特点，因此需要专门的分布式系统来高效处理。</p>
+<h4 id="2-flume">2. 核心收集工具：Flume的定位与设计动机<a class="headerlink" href="#2-flume" title="Permanent link">&para;</a></h4>
+<p>Flume是Hadoop生态中专门用于非关系型数据收集的开源工具，由Cloudera公司开发，核心定位是<strong>分布式高可靠的流式数据收集与聚合系统</strong>。它的设计初衷就是解决非关系型数据收集的4大痛点：
+- 数据源种类多：适配不同格式（如日志、图片）、不同产生方式（如服务输出、设备上报）的数据。
+- 物理分布广：支持跨机器、跨机房收集，适配数据分散的特点。
+- 实时性要求高：实现近实时数据传输，避免数据堆积。
+- 可靠性要求高：保证收集过程中数据不丢失或仅丢失可控的少量数据。</p>
+<h4 id="3-flume_1">3. Flume的核心设计思想与关键特点<a class="headerlink" href="#3-flume_1" title="Permanent link">&para;</a></h4>
+<p>Flume通过灵活的架构设计，满足非关系型数据的收集需求，核心思想与特点包括：
+- <strong>插拔式架构</strong>：所有组件（如数据接收、缓存、发送模块）均可替换，用户可根据需求定制（如替换不同的数据接收源）。
+- <strong>中间件角色</strong>：屏蔽数据源与后端存储系统的差异（如不管是Web日志还是设备数据，都能统一导入HDFS），降低数据对接复杂度。
+- <strong>四大核心特点</strong>：
+  - 扩展性强：完全分布式架构，无中心化组件，可通过增加节点轻松扩展收集能力。
+  - 定制化高：组件可插拔，支持自定义数据过滤、路由规则。
+  - 动态配置：通过声明式语言，可实时调整数据流转拓扑（如修改数据发送目标）。
+  - 可靠性高：内置事务机制，确保数据从“接收”到“发送”的完整链路不丢失。</p>
+<h3 id="flume">🌀 Flume概述核心内容总结<a class="headerlink" href="#flume" title="Permanent link">&para;</a></h3>
+<h4 id="1-flume">1. Flume的定位与核心价值<a class="headerlink" href="#1-flume" title="Permanent link">&para;</a></h4>
+<p>Flume是Hadoop生态系统中一款<strong>分布式、高可靠的流式数据收集工具</strong>，由Cloudera公司开源。其核心价值是解决“非关系型数据（如日志、视频片段、用户行为记录）分散产生、实时流动”的收集难题，能将不同来源的流式数据高效聚合后，统一导入到HDFS、HBase等中心化存储系统，为后续数据分析提供数据基础。</p>
+<h4 id="2-flume_1">2. Flume的设计动机：解决非关系型数据收集痛点<a class="headerlink" href="#2-flume_1" title="Permanent link">&para;</a></h4>
+<p>非关系型数据（如多台服务器的Web日志、设备上报的行为数据）在收集过程中存在4大核心痛点，Flume的设计正是针对性解决这些问题：
+- <strong>数据源种类繁杂</strong>：不同服务（如Web服务、APP后台）产生的日志格式、生成方式不同，Flume支持多类型数据源接入，适配多样化数据格式。
+- <strong>数据源物理分散</strong>：数据产生于不同机器，甚至跨机房部署，Flume通过分布式架构，可跨节点收集数据，打破物理位置限制。
+- <strong>数据流式不间断</strong>：数据实时产生（如每秒新增上万条日志），需近实时收集，Flume支持低延迟数据传输，避免数据堆积。
+- <strong>数据可靠性要求高</strong>：日志等数据丢失可能影响业务分析（如用户行为统计），Flume内置容错机制，确保数据收集过程“不丢或少丢”。</p>
+<h4 id="3-flume_2">3. Flume的核心设计思想<a class="headerlink" href="#3-flume_2" title="Permanent link">&para;</a></h4>
+<p>Flume的设计围绕“灵活适配、稳定传输”展开，核心思想可概括为两点：
+- <strong>插拔式软件架构</strong>：Flume的核心组件（如数据接收、缓存、发送模块）均可独立替换或扩展，用户可根据实际需求，选择合适的组件组合（如替换不同的数据接收源、存储目标），无需修改整体框架。
+- <strong>中间件角色定位</strong>：Flume作为“数据源”与“后端存储”之间的中间件，屏蔽了两者的异构性。无论前端是Web日志还是设备数据，后端是HDFS还是Kafka，Flume都能统一适配，降低数据对接的复杂度。</p>
+<h4 id="4-flume">4. Flume的五大关键特点<a class="headerlink" href="#4-flume" title="Permanent link">&para;</a></h4>
+<p>这些特点是其能应对非关系型数据收集需求的核心能力：
+- <strong>良好的扩展性</strong>：无中心化组件，可通过增加“数据处理节点（Agent）”，灵活扩展收集能力，应对数据量增长。
+- <strong>高度定制化</strong>：支持自定义组件（如自定义数据过滤规则），也可选择开源社区提供的成熟组件，满足不同业务场景的个性化需求。
+- <strong>声明式动态化配置</strong>：通过简洁的配置语言，可实时调整数据流转拓扑（如修改数据发送目标、调整过滤规则），无需重启系统，提升运维效率。
+- <strong>语意路由能力</strong>：可根据数据头部信息（如日志级别、数据来源标识），将不同类型数据路由到不同存储系统（如将错误日志导入HBase，普通日志导入HDFS），实现“一分多流”。
+- <strong>可靠的数据传输</strong>：内置事务机制，从“数据接收”到“数据写入后端存储”的全链路，确保每条数据能被正确传递，减少数据丢失风险。</p>
+<h3 id="flume_1">🌀 Flume概述核心内容总结<a class="headerlink" href="#flume_1" title="Permanent link">&para;</a></h3>
+<h4 id="1-flume_1">1. Flume的定位与核心价值<a class="headerlink" href="#1-flume_1" title="Permanent link">&para;</a></h4>
+<p>Flume是Hadoop生态系统中一款<strong>分布式、高可靠的流式数据收集工具</strong>，由Cloudera公司开源。其核心价值是解决“非关系型数据（如日志、视频片段、用户行为记录）分散产生、实时流动”的收集难题，能将不同来源的流式数据高效聚合后，统一导入到HDFS、HBase等中心化存储系统，为后续数据分析提供数据基础。</p>
+<h4 id="2-flume_2">2. Flume的设计动机：解决非关系型数据收集痛点<a class="headerlink" href="#2-flume_2" title="Permanent link">&para;</a></h4>
+<p>非关系型数据（如多台服务器的Web日志、设备上报的行为数据）在收集过程中存在4大核心痛点，Flume的设计正是针对性解决这些问题：
+- <strong>数据源种类繁杂</strong>：不同服务（如Web服务、APP后台）产生的日志格式、生成方式不同，Flume支持多类型数据源接入，适配多样化数据格式。
+- <strong>数据源物理分散</strong>：数据产生于不同机器，甚至跨机房部署，Flume通过分布式架构，可跨节点收集数据，打破物理位置限制。
+- <strong>数据流式不间断</strong>：数据实时产生（如每秒新增上万条日志），需近实时收集，Flume支持低延迟数据传输，避免数据堆积。
+- <strong>数据可靠性要求高</strong>：日志等数据丢失可能影响业务分析（如用户行为统计），Flume内置容错机制，确保数据收集过程“不丢或少丢”。</p>
+<h4 id="3-flume_3">3. Flume的核心设计思想<a class="headerlink" href="#3-flume_3" title="Permanent link">&para;</a></h4>
+<p>Flume的设计围绕“灵活适配、稳定传输”展开，核心思想可概括为两点：
+- <strong>插拔式软件架构</strong>：Flume的核心组件（如数据接收、缓存、发送模块）均可独立替换或扩展，用户可根据实际需求，选择合适的组件组合（如替换不同的数据接收源、存储目标），无需修改整体框架。
+- <strong>中间件角色定位</strong>：Flume作为“数据源”与“后端存储”之间的中间件，屏蔽了两者的异构性。无论前端是Web日志还是设备数据，后端是HDFS还是Kafka，Flume都能统一适配，降低数据对接的复杂度。</p>
+<h4 id="4-flume_1">4. Flume的五大关键特点<a class="headerlink" href="#4-flume_1" title="Permanent link">&para;</a></h4>
+<p>这些特点是其能应对非关系型数据收集需求的核心能力：
+- <strong>良好的扩展性</strong>：无中心化组件，可通过增加“数据处理节点（Agent）”，灵活扩展收集能力，应对数据量增长。
+- <strong>高度定制化</strong>：支持自定义组件（如自定义数据过滤规则），也可选择开源社区提供的成熟组件，满足不同业务场景的个性化需求。
+- <strong>声明式动态化配置</strong>：通过简洁的配置语言，可实时调整数据流转拓扑（如修改数据发送目标、调整过滤规则），无需重启系统，提升运维效率。
+- <strong>语意路由能力</strong>：可根据数据头部信息（如日志级别、数据来源标识），将不同类型数据路由到不同存储系统（如将错误日志导入HBase，普通日志导入HDFS），实现“一分多流”。
+- <strong>可靠的数据传输</strong>：内置事务机制，从“数据接收”到“数据写入后端存储”的全链路，确保每条数据能被正确传递，减少数据丢失风险。</p>
+<h3 id="flume-ng">🏗️ Flume NG基本架构核心内容总结<a class="headerlink" href="#flume-ng" title="Permanent link">&para;</a></h3>
+<h4 id="1-flume-ng">1. Flume NG的整体架构逻辑<a class="headerlink" href="#1-flume-ng" title="Permanent link">&para;</a></h4>
+<p>Flume NG的核心是通过“Agent（代理）”组件构建数据流转链路，整体架构呈现“分布式、可串联”的特点。<br />
+- 数据以“Event（事件）”为基本单位流转：每个Event包含“头部（key/value键值对，用于路由、标识）”和“数据体（字节数组，存储实际非关系型数据，如日志内容）”。<br />
+- 多个Agent可灵活串联：一个Agent可接收前端客户端或上一个Agent的数据，经处理后传递给下一个或多个Agent，最终将数据导入HDFS、HBase等目标存储系统，形成完整的“数据流水线”。</p>
+<h4 id="2-flume-agent">2. Flume Agent的核心组成（三组件架构）<a class="headerlink" href="#2-flume-agent" title="Permanent link">&para;</a></h4>
+<p>每个Agent是Flume NG的最小功能单元，内部由<strong>Source（源）、Channel（通道）、Sink（ sink）</strong> 三个核心组件构成，三者协同完成“数据接收-暂存-发送”的基础流程：
+- <strong>Source（数据接收组件）</strong>：负责从外部数据源接收数据，并将其转换为Event写入Channel。Flume NG提供多种现成Source实现，适配不同数据接入场景：
+  - Avro Source/Thrift Source：通过Avro/Thrift协议接收客户端或其他Agent发送的数据。
+  - Exec Source：执行指定Shell命令（如“tail -f 日志文件”），从命令输出中获取实时日志数据。
+  - Spooling Directory Source：监控指定目录，当有新文件新增时，自动读取文件内容作为数据。
+  - Kafka Source：作为Kafka消费者，从Kafka主题（Topic）中读取流式数据。
+  - Syslog Source/HTTP Source：分别接收TCP/UDP协议、HTTP协议发送的数据。
+- <strong>Channel（数据暂存组件）</strong>：相当于“临时缓存区”，暂存Source写入的Event，直到被Sink读取发送，避免Source与Sink速度不匹配导致数据丢失。常用Channel类型包括：
+  - Memory Channel：将Event存储在内存中，速度快但机器宕机时数据会丢失，适合对可靠性要求不高的场景。
+  - File Channel：将Event存储在磁盘文件中，可靠性高（数据持久化）但速度略慢，适合对数据不丢失有硬性要求的场景。
+  - JDBC Channel：通过JDBC驱动将Event写入数据库，支持持久化但性能较低，较少用于高吞吐场景。
+  - Kafka Channel：利用Kafka主题暂存Event，兼具可靠性与高吞吐，适合大规模流式数据场景。
+- <strong>Sink（数据发送组件）</strong>：从Channel中读取Event，并将其发送到下一个Agent或目标存储系统。常用Sink实现包括：
+  - HDFS Sink/HBase Sink：直接将数据写入HDFS（分布式文件系统）或HBase（分布式数据库）。
+  - Avro Sink/Thrift Sink：通过Avro/Thrift协议将数据发送给下一个Agent的对应Source。
+  - ElasticSearch Sink/Solr Sink：将数据写入ElasticSearch或Solr搜索引擎，用于后续检索分析。
+  - Kafka Sink：作为Kafka生产者，将数据写入Kafka主题。</p>
+<h4 id="3-flume-ng">3. Flume NG的高级扩展组件<a class="headerlink" href="#3-flume-ng" title="Permanent link">&para;</a></h4>
+<p>为满足更复杂的数据流控制需求，Flume NG还提供<strong>Interceptor（拦截器）、Channel Selector（通道选择器）、Sink Processor（Sink处理器）</strong> 三类高级组件，可灵活扩展Agent的功能：
+- <strong>Interceptor（数据拦截组件）</strong>：对流转的Event进行“修改、过滤或增强”，支持配置多个Interceptor形成“拦截链”，按顺序处理数据：
+  - Timestamp Interceptor：在Event头部添加当前时间戳，方便后续按时间维度分析。
+  - Host Interceptor：在Event头部添加当前Agent所在机器的IP或主机名，标识数据来源。
+  - Regex Filtering Interceptor：根据正则表达式过滤Event，保留或丢弃符合规则的数据（如只保留“ERROR”级别的日志）。
+  - Regex Extractor Interceptor：通过正则表达式从Event数据体中提取指定信息（如用户ID），并添加到Event头部。
+- <strong>Channel Selector（通道选择组件）</strong>：决定Source将Event写入哪些Channel，支持“数据分流”场景：
+  - Replicating Channel Selector（复制模式）：将同一个Event写入多个Channel，实现“一份数据多份存储”（如同时写入Memory Channel和File Channel，兼顾速度与可靠性）。
+  - Multiplexing Channel Selector（多路复用模式）：根据Event头部的某个属性值（如日志级别），将Event写入对应的Channel（如“ERROR”日志写入Channel1，“INFO”日志写入Channel2）。
+- <strong>Sink Processor（Sink处理组件）</strong>：将多个Sink组合成“Sink Group（Sink组）”，提供“负载均衡”和“容错”能力：
+  - Default Sink Processor：最简单的模式，一个Channel对应一个Sink，无额外功能。
+  - Failover Sink Processor（故障转移模式）：为Sink组中的每个Sink设置优先级，优先使用高优先级Sink；若高优先级Sink故障，自动切换到次高优先级Sink，保证数据发送不中断。
+  - Load balancing Sink Processor（负载均衡模式）：通过“轮询（round_robin）”或“随机（random）”策略，将Channel中的Event均匀分配给Sink组中的多个Sink，提升数据发送吞吐量。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.path", "navigation.top", "navigation.indexes", "search.suggest", "search.highlight", "search.share", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../../../../javascripts/extra.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

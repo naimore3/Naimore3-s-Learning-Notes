@@ -1,0 +1,7 @@
+# MIMO Radar
+## Introduction
+Multiple-input-multiple-output (MIMO) refers to a radar with multiple TX and multiple RX antennas. As discussed later, the angle resolution of a MIMO radar with \(N_{Tx}\) TX antennas and \(N_{RX}\) RX antennas can be made equivalent to that of a SIMO radar with \(N_{TX} ×N_{RX}\) RX antennas. The MIMO radar therefore provides a cost-effective way to improve the angle resolution of the radar.
+## Principle of the MIMO Radar
+The radar in Figure 5 has two transmit antennas, TX1 and TX2. A transmission from TX1 results in a phase of [0 ω 2ω 3ω] at the four RX antennas (with the first RX antenna as a reference). Because the second TX antenna (TX2) is placed a distance of 4d from TX1, any signal emanating from TX2 traverses an additional path of length 4dsin(θ) compared to TX1. Correspondingly, the signal at each RX antenna sees an additional phase-shift of 4ω (with regard to transmission from TX1). The phase of the signal at the four RX antennas, due to a transmission from TX2, is [4ω 5ω 6ω 7ω]. Concatenating the phase sequences at the four RX antennas, due to transmissions from TX1 and TX2, gets the sequence [0 ω 2ω 3ω 4ω 5ω 6ω 7ω], which is the same sequence seen in Figure 4 with one TX and eight RX antennas. It can be said that the 2TX – 4RX antenna configuration of Figure 4 synthesizes a virtual array of eight RX antennas (with one TX antenna being implied).
+## 4 Multiplexing Strategies for the MIMO Radar
+### 4.1 Time Division Multiplexing (TDM-MIMO)

@@ -12,15 +12,15 @@
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>System Structure - 学习笔记</title>
+        <title>Chapter3: SQL - 学习笔记</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.2a3383ac.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -70,7 +70,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#system-structure" class="md-skip">
+        <a href="#chapter3-sql" class="md-skip">
           跳转至
         </a>
       
@@ -87,7 +87,7 @@
     <a href="../../../../.." title="学习笔记" class="md-header__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256l-58.2 87.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4l20.9 103.3c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4L434 401.5l103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5L494.2 256l58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3l-103.4-20.8L413 7.3c-1.6-7.8-7-14.3-14.4-17.4s-15.8-2.2-22.5 2.2l-87.7 58.2zm-13.7 143.6 17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0L373 51.8l17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8M239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1-96.8 0m144.8 0a96.4 96.4 0 1 0-192.8 0 96.4 96.4 0 1 0 192.8 0"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256l-58.2 87.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4l20.9 103.3c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4L434 401.5l103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5L494.2 256l58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3l-103.4-20.8L413 7.3c-1.6-7.8-7-14.3-14.4-17.4s-15.8-2.2-22.5 2.2l-87.7 58.2zm-13.7 143.6 17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0L373 51.8l17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8M239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1-96.8 0m144.8 0a96.4 96.4 0 1 0-192.8 0 96.4 96.4 0 1 0 192.8 0"/></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -104,7 +104,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              System Structure
+              Chapter3: SQL
             
           </span>
         </div>
@@ -406,7 +406,7 @@
     <a href="../../../../.." title="学习笔记" class="md-nav__button md-logo" aria-label="学习笔记" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256l-58.2 87.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4l20.9 103.3c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4L434 401.5l103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5L494.2 256l58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3l-103.4-20.8L413 7.3c-1.6-7.8-7-14.3-14.4-17.4s-15.8-2.2-22.5 2.2l-87.7 58.2zm-13.7 143.6 17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0L373 51.8l17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8M239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1-96.8 0m144.8 0a96.4 96.4 0 1 0-192.8 0 96.4 96.4 0 1 0 192.8 0"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M200.6-7.9c-6.7-4.4-15.1-5.2-22.5-2.2S165.4-.5 163.9 7.3L143 110.6 39.7 131.4c-7.8 1.6-14.4 7-17.4 14.3s-2.2 15.8 2.2 22.5L82.7 256l-58.2 87.8c-4.4 6.7-5.2 15.1-2.2 22.5s9.6 12.8 17.4 14.3L143 401.4l20.9 103.3c1.6 7.8 7 14.4 14.3 17.4s15.8 2.2 22.5-2.2l87.8-58.2 87.8 58.2c6.7 4.4 15.1 5.2 22.5 2.2s12.8-9.6 14.3-17.4L434 401.5l103.2-20.9c7.8-1.6 14.4-7 17.4-14.3s2.2-15.8-2.2-22.5L494.2 256l58.2-87.8c4.4-6.7 5.2-15.1 2.2-22.5s-9.6-12.8-17.4-14.3l-103.4-20.8L413 7.3c-1.6-7.8-7-14.3-14.4-17.4s-15.8-2.2-22.5 2.2l-87.7 58.2zm-13.7 143.6 17-83.9 71.3 47.3c8 5.3 18.5 5.3 26.5 0L373 51.8l17 83.9c1.9 9.5 9.3 16.8 18.8 18.8l83.9 17-47.3 71.3c-5.3 8-5.3 18.5 0 26.5l47.3 71.3-83.9 17c-9.5 1.9-16.9 9.3-18.8 18.8l-17 83.9-71.3-47.3c-8-5.3-18.5-5.3-26.5 0l-71.3 47.3-17-83.9c-1.9-9.5-9.3-16.9-18.8-18.8l-83.9-17 47.3-71.3c5.3-8 5.3-18.5 0-26.5l-47.3-71.3 83.9-17c9.5-1.9 16.8-9.3 18.8-18.8M239.6 256a48.4 48.4 0 1 1 96.8 0 48.4 48.4 0 1 1-96.8 0m144.8 0a96.4 96.4 0 1 0-192.8 0 96.4 96.4 0 1 0 192.8 0"/></svg>
 
     </a>
     学习笔记
@@ -444,6 +444,8 @@
   
     
     
+      
+        
       
         
       
@@ -3671,6 +3673,416 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大三上
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            大三上
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_1" id="__nav_2_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python程序设计与R语言
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Python程序设计与R语言
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E4%B8%8ER%E8%AF%AD%E8%A8%80/Chapter2_%E5%86%85%E5%BB%BA%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E5%87%BD%E6%95%B0/Chapter2_%E5%86%85%E5%BB%BA%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84_%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2：内建数据结构、函数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_2" id="__nav_2_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    大数据技术基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            大数据技术基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../课程笔记/大三上/大数据技术基础/Chapter_1/Chapter_1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    操作系统
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            操作系统
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Chapter1_Introduction/Chapter1_Introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Chapter2_System_Structure/Chapter2_System_Structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Chapter3_Process_Concept/Chapter3_Process_Concept/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Chapter4_Multithreaded_Programming/Chapter4_Multithreaded_Programming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Chapter5_Process_Scheduling/Chapter5_Process_Scheduling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/Chapter6_Process_Synchronization/Chapter6_Process_Synchronization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -4516,142 +4928,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#sql" class="md-nav__link">
     <span class="md-ellipsis">
-      总览
+      SQL 概述与背景
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="总览">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#21-operating-systems-services" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔍 2.1 操作系统服务（Operating Systems Services）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#22-user-operating-system-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      🖥️ 2.2 用户操作系统接口（User Operating System Interface）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#23-system-call" class="md-nav__link">
-    <span class="md-ellipsis">
-      📞 2.3 系统调用（System Call）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#24-types-of-system-calls" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 2.4 系统调用类型（Types of System Calls）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#25-system-programs" class="md-nav__link">
-    <span class="md-ellipsis">
-      📦 2.5 系统程序（System Programs）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#26-system-design-and-implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      🛠️ 2.6 系统设计与实现（System Design and Implementation）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#27-operating-system-structures" class="md-nav__link">
-    <span class="md-ellipsis">
-      🏗️ 2.7 操作系统结构（Operating System Structures）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#28-operating-system-debugging" class="md-nav__link">
-    <span class="md-ellipsis">
-      🐛 2.8 操作系统调试（Operating-System Debugging）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#29-operating-system-generation" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 2.9 操作系统生成（Operating System Generation）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#210-system-boot" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔋 2.10 系统启动（System Boot）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#appendices-typical-os-virtual-machines" class="md-nav__link">
-    <span class="md-ellipsis">
-      📜 附录：典型操作系统与虚拟机技术（Appendices: Typical OS &amp; Virtual Machines）
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 文档其他补充内容
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#21-operating-systems-services3-8" class="md-nav__link">
+  <a href="#ddl" class="md-nav__link">
     <span class="md-ellipsis">
-      📋 2.1 Operating Systems Services（第3-8页内容总结）
+      数据定义语言（DDL）
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📋 2.1 Operating Systems Services（第3-8页内容总结）">
+    <nav class="md-nav" aria-label="数据定义语言（DDL）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ddl_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、DDL核心功能
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、表创建：CREATE TABLE 语句
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、表创建：CREATE TABLE 语句">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 🎯 操作系统服务的核心定位
+      1. 基本语法
     </span>
   </a>
   
@@ -4660,62 +4977,7 @@
           <li class="md-nav__item">
   <a href="#2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 👤 面向用户的服务：聚焦使用便捷性
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 👤 面向用户的服务：聚焦使用便捷性">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1user-interface-ui" class="md-nav__link">
-    <span class="md-ellipsis">
-      （1）用户接口（User Interface, UI）：交互入口
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2program-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      （2）程序执行（Program Execution）：任务调度核心
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3ioio-operations" class="md-nav__link">
-    <span class="md-ellipsis">
-      （3）I/O操作（I/O Operations）：硬件交互中介
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4file-system-manipulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      （4）文件系统操作（File-System Manipulation）：数据管理基础
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5communications" class="md-nav__link">
-    <span class="md-ellipsis">
-      （5）通信（Communications）：数据交换通道
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6error-detection" class="md-nav__link">
-    <span class="md-ellipsis">
-      （6）错误检测（Error Detection）：稳定运行保障
+      2. 典型表创建示例
     </span>
   </a>
   
@@ -4727,75 +4989,52 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      3. ⚙️ 保障系统高效运行的服务：聚焦资源优化
+      三、完整性约束：确保数据有效性的规则
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="3. ⚙️ 保障系统高效运行的服务：聚焦资源优化">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1resource-allocation" class="md-nav__link">
-    <span class="md-ellipsis">
-      （1）资源分配（Resource Allocation）：公平与高效兼顾
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2accounting" class="md-nav__link">
-    <span class="md-ellipsis">
-      （2）记账（Accounting）：资源监控与追溯
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3protection-and-security" class="md-nav__link">
-    <span class="md-ellipsis">
-      （3）保护与安全（Protection and Security）：风险防控屏障
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 🔗 服务与OS组件、硬件的关联
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#22-user-operating-system-interface9-13" class="md-nav__link">
-    <span class="md-ellipsis">
-      🖥️ 2.2 User Operating System Interface（第9-13页内容总结）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🖥️ 2.2 User Operating System Interface（第9-13页内容总结）">
+    <nav class="md-nav" aria-label="三、完整性约束：确保数据有效性的规则">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1_1" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 🎯 接口的核心分类：两类用户，两种接口
+      1. 常用约束类型及作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-instructor" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 约束应用示例（以instructor表为例）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、SQL数据类型：定义属性的取值格式
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、SQL数据类型：定义属性的取值格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 字符型（存储文本数据）
     </span>
   </a>
   
@@ -4804,35 +5043,7 @@
           <li class="md-nav__item">
   <a href="#2_1" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 👤 面向人员用户的接口：多样化交互方式
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 👤 面向人员用户的接口：多样化交互方式">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      （1）命令行接口（CLI）：精准控制型交互
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2gui" class="md-nav__link">
-    <span class="md-ellipsis">
-      （2）图形用户接口（GUI）：可视化交互
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      （3）新型交互接口：场景化创新
+      2. 数值型（存储数值数据）
     </span>
   </a>
   
@@ -4844,20 +5055,35 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 🖥️ 面向程序用户的接口：标准化调用通道
+      五、表操作：修改与删除表结构
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、表操作：修改与删除表结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-drop-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. DROP TABLE：删除表
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-os_1" class="md-nav__link">
+  <a href="#2-alter-table" class="md-nav__link">
     <span class="md-ellipsis">
-      4. 📌 接口的核心价值：连接“用户需求”与“OS能力”
+      2. ALTER TABLE：修改表结构（重点：添加属性）
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -4867,158 +5093,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#23-system-call14-20" class="md-nav__link">
+  <a href="#sql_2" class="md-nav__link">
     <span class="md-ellipsis">
-      📞 2.3 System Call（第14-20页内容总结）
+      SQL查询基本结构
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📞 2.3 System Call（第14-20页内容总结）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 🎯 系统调用的核心定义：程序访问OS服务的入口
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 🔗 系统调用与API的关系：封装与适配
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 📊 典型示例：系统调用的实际应用
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 📊 典型示例：系统调用的实际应用">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      （1）文件复制的系统调用序列
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2unixlinuxread-api" class="md-nav__link">
-    <span class="md-ellipsis">
-      （2）UNIX/Linux的read() API示例
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 🚀 系统调用的参数传递方式：数据交互的三种路径
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 💡 核心逻辑：用户模式与内核模式的切换
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#24-types-of-system-calls21-24" class="md-nav__link">
-    <span class="md-ellipsis">
-      📊 2.4 Types of System Calls（第21-24页内容总结）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="📊 2.4 Types of System Calls（第21-24页内容总结）">
+    <nav class="md-nav" aria-label="SQL查询基本结构">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#1_3" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 🎯 系统调用的六大核心分类
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 🎯 系统调用的六大核心分类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1process-control" class="md-nav__link">
-    <span class="md-ellipsis">
-      （1）进程控制（Process Control）：管理程序生命周期
+      1. 基本语法与关系代数对应
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2file-management" class="md-nav__link">
+  <a href="#2-select" class="md-nav__link">
     <span class="md-ellipsis">
-      （2）文件管理（File Management）：操控文件与目录
+      2. SELECT子句：定义检索结果的属性
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3device-management" class="md-nav__link">
+  <a href="#3-where" class="md-nav__link">
     <span class="md-ellipsis">
-      （3）设备管理（Device Management）：对接硬件资源
+      3. WHERE子句：筛选符合条件的元组
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#4information-maintenance" class="md-nav__link">
+  <a href="#4-from" class="md-nav__link">
     <span class="md-ellipsis">
-      （4）信息维护（Information Maintenance）：管理系统与对象状态
+      4. FROM子句：指定数据来源与笛卡尔积
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#5communications_1" class="md-nav__link">
+  <a href="#5-as" class="md-nav__link">
     <span class="md-ellipsis">
-      （5）通信（Communications）：实现进程间数据交互
+      5. 重命名操作（AS）：简化表/属性引用
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#6protection" class="md-nav__link">
+  <a href="#6" class="md-nav__link">
     <span class="md-ellipsis">
-      （6）保护（Protection）：保障资源访问安全
+      6. 字符串操作：匹配与处理文本数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-order-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. 结果排序（ORDER BY）：调整元组显示顺序
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-duplicationsql" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. 重复（Duplication）处理：SQL的多集特性
     </span>
   </a>
   
@@ -5026,22 +5176,50 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、高级查询特性
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、高级查询特性">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 集合操作：多结果集的组合与筛选
+    </span>
+  </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#2_2" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 🔍 跨系统调用实例对比
+      2. 聚合函数：数据统计与计算
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_4" class="md-nav__link">
+  <a href="#3-null" class="md-nav__link">
     <span class="md-ellipsis">
-      3. 💡 核心价值：标准化的资源访问接口
+      3. 空值（NULL）处理：应对“未知/不存在”的数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 嵌套子查询：复杂逻辑的分层实现
     </span>
   </a>
   
@@ -5053,106 +5231,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#25-system-programs25-29" class="md-nav__link">
+  <a href="#dml" class="md-nav__link">
     <span class="md-ellipsis">
-      📦 2.5 System Programs（第25-29页内容总结）
+      五、数据操纵语言（DML）
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="📦 2.5 System Programs（第25-29页内容总结）">
+    <nav class="md-nav" aria-label="五、数据操纵语言（DML）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-os_1" class="md-nav__link">
+  <a href="#1-delete" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 🎯 系统程序的核心定位与OS发行版构成
+      1. 删除操作（DELETE）：移除表中的元组
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_3" class="md-nav__link">
+  <a href="#2-insert" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 📊 系统程序的七大核心分类
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 📊 系统程序的七大核心分类">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1file-manipulation" class="md-nav__link">
-    <span class="md-ellipsis">
-      （1）文件操作（File Manipulation）：管理文件生命周期
+      2. 插入操作（INSERT）：向表中添加新元组
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2status-information" class="md-nav__link">
+  <a href="#3-update" class="md-nav__link">
     <span class="md-ellipsis">
-      （2）状态信息（Status Information）：监控系统与文件状态
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3file-modification" class="md-nav__link">
-    <span class="md-ellipsis">
-      （3）文件修改（File Modification）：编辑与处理文件内容
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4programming-language-support" class="md-nav__link">
-    <span class="md-ellipsis">
-      （4）编程语言支持（Programming-Language Support）：辅助程序开发
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5program-loading-and-execution" class="md-nav__link">
-    <span class="md-ellipsis">
-      （5）程序加载与执行（Program Loading and Execution）：管理程序运行
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#6communications" class="md-nav__link">
-    <span class="md-ellipsis">
-      （6）通信（Communications）：实现跨设备/用户交互
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7background-servicesapplication-programsos" class="md-nav__link">
-    <span class="md-ellipsis">
-      （7）背景服务（Background Services）与应用程序（Application Programs）：拓展OS功能
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 💡 系统程序的核心价值：降低使用与开发门槛
+      3. 更新操作（UPDATE）：修改表中已有元组的属性值
     </span>
   </a>
   
@@ -5164,106 +5273,28 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#28-operating-system-debugging45-46" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      🐛 2.8 Operating-System Debugging（第45-46页内容总结）
+      六、索引
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🐛 2.8 Operating-System Debugging（第45-46页内容总结）">
+    <nav class="md-nav" aria-label="六、索引">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_4" class="md-nav__link">
+  <a href="#1-create-index" class="md-nav__link">
     <span class="md-ellipsis">
-      1. 🎯 调试的核心定义与目标
+      1. 索引创建（CREATE INDEX）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_4" class="md-nav__link">
+  <a href="#2-drop-index" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 🔧 核心调试工具：捕获错误信息的关键载体
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 📈 性能优化：调试的延伸目标
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4-kernighan" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 💬 核心原则：Kernighan定律
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#5-os" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. 🎯 核心价值：保障OS稳定与高效
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#29-operating-system-generation47-85" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 2.9 Operating System Generation（第47-85页内容总结）
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 2.9 Operating System Generation（第47-85页内容总结）">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. 🎯 操作系统生成的核心定义与目标
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-sysgen" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. 🔧 核心工具：SYSGEN程序
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. 📌 与系统启动的关联：生成是启动的前提
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      4. 💡 核心价值：平衡通用性与适配性
+      2. 索引删除（DROP INDEX）
     </span>
   </a>
   
@@ -5290,453 +5321,515 @@
 
 
 
-<h1 id="system-structure">System Structure<a class="headerlink" href="#system-structure" title="Permanent link">&para;</a></h1>
-<h2 id="_1">总览<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本文档围绕操作系统结构展开，系统讲解了操作系统的服务、用户接口、系统调用、系统程序、设计实现、结构类型、调试、生成与启动等核心内容，并介绍了Unix、Windows等典型操作系统及虚拟机技术。</p>
-<h3 id="21-operating-systems-services">🔍 2.1 操作系统服务（Operating Systems Services）<a class="headerlink" href="#21-operating-systems-services" title="Permanent link">&para;</a></h3>
-<p>操作系统为程序执行提供环境，并向程序和用户提供两类核心服务，同时对应特定的OS组件模块。
-1. <strong>面向用户的服务</strong>
-    - <strong>用户接口（UI）</strong>：支持命令行（CLI，如Linux的Bourne Shell）、图形界面（GUI，如Mac OS X的Aqua）、批处理（Batch），还包括触摸屏、语音控制（如小米小爱同学）、脑机接口等新型交互方式。
-    - <strong>程序执行</strong>：能将程序加载到内存并运行，支持正常或异常（报错）终止。
-    - <strong>I/O操作</strong>：处理运行中程序对文件或I/O设备的输入输出需求。
-    - <strong>文件系统操作</strong>：支持文件/目录的读写、创建、删除、搜索、权限管理等。
-    - <strong>通信</strong>：进程间可通过共享内存或消息传递（数据包由OS处理）交换信息，支持本地或跨网络通信。
-    - <strong>错误检测</strong>：实时监控CPU、内存、I/O设备及用户程序的错误，针对不同错误采取纠正措施，提供调试工具辅助用户高效使用系统。
-2. <strong>保障系统高效运行的服务</strong>
-    - <strong>资源分配</strong>：当多用户或多任务并发时，分配CPU周期、主内存、文件存储、I/O设备等资源。
-    - <strong>记账（Accounting）</strong>：记录用户使用计算机资源的类型和数量。
-    - <strong>保护与安全</strong>：控制资源访问权限，通过用户身份验证防止外部非法访问，避免并发进程相互干扰。
-3. <strong>OS组件模块</strong>：对应服务功能，包含文件管理、网络、进程管理、主内存管理、二级存储管理、I/O系统、设备驱动等模块，底层对接CPU、内存、I/O设备等硬件。</p>
-<hr />
-<h3 id="22-user-operating-system-interface">🖥️ 2.2 用户操作系统接口（User Operating System Interface）<a class="headerlink" href="#22-user-operating-system-interface" title="Permanent link">&para;</a></h3>
-<p>接口分为面向“人用户”和“程序用户”两类，是用户与OS交互的核心通道。
-1. <strong>面向人用户的接口</strong>
-    - 基础接口：CLI（命令解释器）和GUI，前者可集成在内核（如MS-DOS）或作为系统程序（如Shell），后者通过图标、鼠标操作实现（如Windows桌面）。
-    - 新型接口：触摸屏（基于手势操作）、语音（语音识别+自然语言处理）、姿态控制（如XBOX360的Kinect）、VR/AR等。
-2. <strong>面向程序用户的接口</strong>
-    - 系统调用/API（应用程序接口）：程序通过API间接调用系统服务，避免直接操作OS内核。
-    - 批处理系统专用：作业控制语言（JCL），用于批量执行任务。
-3. <strong>典型示例</strong>
-    - Windows：GUI为主，内置“命令提示符”CLI；Mac OS X：Aqua GUI底层是UNIX内核，支持Shell；Linux：默认CLI，可加装CDE、KDE、GNOME等GUI。</p>
-<hr />
-<h3 id="23-system-call">📞 2.3 系统调用（System Call）<a class="headerlink" href="#23-system-call" title="Permanent link">&para;</a></h3>
-<p>系统调用是OS提供给程序的编程接口，通常通过API间接调用，存在特定的参数传递方式。
-1. <strong>核心概念</strong>
-    - 本质：程序访问OS服务的入口，多由C/C++编写，程序一般通过高层API调用，而非直接使用系统调用。
-    - 常见API：Win32 API（Windows系统）、POSIX API（UNIX、Linux、Mac OS X，含Pthread API）、Java API（Java虚拟机JVM专用）。
-2. <strong>参数传递方式</strong>
-    - <strong>寄存器传递</strong>：最简单，但参数数量受寄存器数量限制。
-    - <strong>内存块传递</strong>：参数存储在内存块中，将块地址通过寄存器传给OS，Linux和Solaris采用此方式。
-    - <strong>栈传递</strong>：程序将参数压入栈，OS从栈中弹出参数，无参数数量和长度限制。
-3. <strong>示例关系</strong>：以C程序为例，调用<code>printf()</code>（标准库函数）时，会间接调用<code>write()</code>系统调用，实现从用户模式到内核模式的切换，完成输出功能。</p>
-<hr />
-<h3 id="24-types-of-system-calls">📊 2.4 系统调用类型（Types of System Calls）<a class="headerlink" href="#24-types-of-system-calls" title="Permanent link">&para;</a></h3>
-<p>系统调用按功能分为六大类，覆盖OS核心管理场景，不同系统有对应实现。
-1. <strong>进程控制</strong>：创建/终止进程、加载/执行程序、获取/设置进程属性、等待时间/事件、内存分配与释放、内存转储（报错时）、调试（单步执行）、共享数据访问锁管理。
-2. <strong>文件管理</strong>：创建/删除文件、打开/关闭文件、读写/重定位文件、获取/设置文件属性。
-3. <strong>设备管理</strong>：请求/释放设备、读写/重定位设备、获取/设置设备属性、逻辑挂载/卸载设备。
-4. <strong>信息维护</strong>：获取/设置时间/日期、系统数据，以及进程、文件、设备的属性。
-5. <strong>通信</strong>：创建/删除通信连接、发送/接收消息（客户端到服务器）、创建/访问共享内存区域、传递状态信息、挂载/卸载远程设备。
-6. <strong>保护</strong>：控制资源访问权限、获取/设置权限、允许/拒绝用户访问。
-7. <strong>跨系统对比</strong>：Windows的<code>CreateProcess()</code>对应UNIX的<code>fork()</code>，<code>ReadFile()</code>对应UNIX的<code>read()</code>，<code>SetFileSecurity()</code>对应UNIX的<code>chown()</code>等。</p>
-<hr />
-<h3 id="25-system-programs">📦 2.5 系统程序（System Programs）<a class="headerlink" href="#25-system-programs" title="Permanent link">&para;</a></h3>
-<p>系统程序是OS发行版的重要组成，为程序开发和执行提供便捷环境，非OS内核但定义用户对OS的直观认知。
-1. <strong>OS发行版构成</strong>：内核（Kernel）+系统程序，如Linux发行版openEuler、麒麟、Ubuntu、Redhat等。
-2. <strong>系统程序分类</strong>
-    - <strong>文件操作</strong>：创建、删除、复制、重命名、打印、备份、列出文件/目录等。
-    - <strong>状态信息</strong>：查询日期、时间、内存/磁盘空间、用户数量，提供性能日志、调试信息，部分系统用“注册表”存储配置信息。
-    - <strong>文件修改</strong>：通过文本编辑器创建/修改文件，用专用命令搜索文件内容或转换文本格式。
-    - <strong>编程语言支持</strong>：提供编译器、汇编器、调试器、解释器。
-    - <strong>程序加载与执行</strong>：包含绝对加载器、可重定位加载器、链接编辑器、覆盖加载器及调试系统。
-    - <strong>通信</strong>：支持用户间屏幕消息发送、网页浏览、邮件、远程登录、文件跨机传输。
-    - <strong>背景服务（Daemons）</strong>：开机启动，部分启动后终止，部分持续运行至关机，提供磁盘检查、进程调度、错误日志、打印等服务，运行在用户态而非内核态。
-    - <strong>应用程序</strong>：非系统专属，由用户启动（如命令行、鼠标点击），不属于OS核心部分（如办公软件MS Office）。</p>
-<hr />
-<h3 id="26-system-design-and-implementation">🛠️ 2.6 系统设计与实现（System Design and Implementation）<a class="headerlink" href="#26-system-design-and-implementation" title="Permanent link">&para;</a></h3>
-<p>设计无固定“解决方案”，需先明确目标与规范，遵循核心原则，采用混合编程语言实现。
-1. <strong>设计目标与规范</strong>
-    - <strong>目标分类</strong>：用户目标（便捷、易学、可靠、安全、快速）；系统目标（易设计、实现、维护，灵活、无错、高效）。
-    - <strong>核心原则</strong>：分离“策略（Policy，要做什么）”与“机制（Mechanism，如何做）”，便于后续灵活修改策略。
-    - <strong>规范基础</strong>：需结合硬件选择、系统类型（如桌面OS、服务器OS）确定设计方向，是软件工程的创造性任务。
-2. <strong>实现方式</strong>
-    - <strong>编程语言演进</strong>：早期用汇编语言，后用Algol、PL/1，现在主流是C/C++（UNIX内核最初用C编写），Linux内核也支持Rust；系统程序还可用Perl、Python、Shell脚本。
-    - <strong>混合编写</strong>：底层（如硬件交互）用汇编，主体用C，高层用脚本语言；高层语言编写的OS更易移植，但运行速度较慢。</p>
-<hr />
-<h3 id="27-operating-system-structures">🏗️ 2.7 操作系统结构（Operating System Structures）<a class="headerlink" href="#27-operating-system-structures" title="Permanent link">&para;</a></h3>
-<p>通用OS是大型程序，按结构分为五类，不同结构在模块化、灵活性、性能上各有特点。
-1. <strong>简单结构（Simple Structure）</strong>
-    - <strong>代表系统</strong>：MS-DOS、早期UNIX。
-    - <strong>特点</strong>：用汇编语言编写，追求“最小空间实现最多功能”，无清晰模块划分，接口和功能层级混乱（如MS-DOS）；UNIX虽分“系统程序”和“内核”，但内核包含文件系统、CPU调度等大量功能，层级单一，组件易相互干扰。
-2. <strong>分层结构（Layered Structure）</strong>
-    - <strong>代表系统</strong>：IBM OS/2。
-    - <strong>特点</strong>：OS按功能分为多层，底层（0层）是硬件，顶层（N层）是用户接口，每层仅调用下层服务；模块化清晰，但层定义难度大，效率较低（多层调用耗时）。
-3. <strong>微内核结构（Microkernel Structure）</strong>
-    - <strong>代表系统</strong>：Mach（Mac OS X内核Darwin基于此）、Tru64 Unix、QNX、华为鸿蒙。
-    - <strong>特点</strong>：内核仅保留核心功能（CPU调度、内存管理、进程通信），文件管理、设备驱动等非核心功能作为“服务器进程”运行在用户态；通过消息传递实现用户模块通信。
-    - <strong>优缺点</strong>：优点是易扩展、易移植、更可靠（内核态代码少）、更安全；缺点是用户态与内核态通信存在性能开销。
-4. <strong>模块结构（Modules）</strong>
-    - <strong>代表系统</strong>：Linux、Solaris。
-    - <strong>特点</strong>：采用面向对象思想，核心组件独立，通过已知接口交互，可按需动态加载到内核；比分层结构更灵活，兼顾模块化与性能。
-5. <strong>混合结构（Hybrid Systems）</strong>
-    - <strong>代表系统</strong>：Linux、Solaris、Windows、Mac OS X。
-    - <strong>特点</strong>：融合多种结构优势，如Linux/Solaris内核是宏内核（功能集中），但支持模块动态加载；Windows以宏内核为主，用微内核实现不同子系统；Mac OS X结合Mach微内核、BSD Unix部分、I/O工具包及动态加载模块（内核扩展）。</p>
-<hr />
-<h3 id="28-operating-system-debugging">🐛 2.8 操作系统调试（Operating-System Debugging）<a class="headerlink" href="#28-operating-system-debugging" title="Permanent link">&para;</a></h3>
-<p>调试目的是定位并修复错误（Bugs），同时包含性能优化，需借助特定工具和方法。
-1. <strong>错误捕获工具</strong>
-    - <strong>日志文件</strong>：OS生成含错误信息的日志，供排查问题。
-    - <strong>转储文件</strong>：应用程序故障生成“核心转储文件”（捕获进程内存），OS故障生成“崩溃转储文件”（捕获内核内存）。
-2. <strong>性能优化手段</strong>
-    - <strong>跟踪列表（Trace Listings）</strong>：记录系统活动，用于分析性能瓶颈。
-    - <strong>剖析（Profiling）</strong>：周期性采样指令指针，统计系统运行趋势。
-3. <strong>核心定律</strong>：Kernighan定律——调试难度是编写代码的两倍，若代码写得过于复杂，开发者将无法调试。
-4. <strong>常用工具</strong>：如Linux的“top”命令、Windows的“任务管理器”，可显示CPU使用率、内存占用、进程数量等系统状态，辅助优化。</p>
-<hr />
-<h3 id="29-operating-system-generation">🚀 2.9 操作系统生成（Operating System Generation）<a class="headerlink" href="#29-operating-system-generation" title="Permanent link">&para;</a></h3>
-<p>OS需针对特定计算机配置“定制化”，通过专用程序实现。
-1. <strong>核心工具</strong>：SYSGEN程序，获取硬件配置信息，生成系统专属的编译内核或优化系统；相比通用内核，定制内核代码更高效。
-2. <strong>目的</strong>：适配不同硬件（如CPU型号、内存大小、I/O设备），确保OS在特定机器上稳定高效运行。</p>
-<hr />
-<h3 id="210-system-boot">🔋 2.10 系统启动（System Boot）<a class="headerlink" href="#210-system-boot" title="Permanent link">&para;</a></h3>
-<p>系统通电后，通过固定流程加载OS内核，主要有BIOS和UEFI两种启动模式。
-1. <strong>启动核心流程</strong>
-    - <strong>初始代码</strong>：通电后，CPU从固定内存地址（如ROM中的0xFFFF0H）执行初始代码，跳转至“引导加载程序（Bootstrap Loader）”。
-    - <strong>加载内核</strong>：引导加载程序（存储在ROM/EEPROM或磁盘引导扇区）定位OS内核，加载到内存并启动；部分采用“两步启动”——ROM代码先加载磁盘引导扇区的引导程序，再由引导程序加载内核（如GRUB支持多内核选择）。
-    - <strong>后续初始化</strong>：内核启动后，初始化硬件和设备驱动，再将系统软件、应用程序导入内存，完成启动。
-2. <strong>两种启动模式</strong>
-    - <strong>BIOS</strong>：存储在ROM中的固件，功能包括硬件检测与初始化（如POST开机自检）、提供硬件软件抽象（传递SMBIOS、ACPI表等信息给OS），是早期主流模式，现逐步演进为UEFI。
-    - <strong>UEFI</strong>：替代BIOS的新型启动模式，支持更大磁盘、更快启动速度，功能更完善，兼容现代硬件。
-3. <strong>CPU模式变化</strong>：启动时先进入内核模式（执行ROM中的引导程序、加载内存中的内核），后续切换到用户模式（运行系统软件和应用程序）。</p>
-<hr />
-<h3 id="appendices-typical-os-virtual-machines">📜 附录：典型操作系统与虚拟机技术（Appendices: Typical OS &amp; Virtual Machines）<a class="headerlink" href="#appendices-typical-os-virtual-machines" title="Permanent link">&para;</a></h3>
-<p>介绍了Unix、Windows等经典OS的发展、结构及特点，同时详解虚拟机技术的分类与实现。
-1. <strong>典型操作系统</strong>
-    - <strong>Unix</strong>
-        - 发展历程：1969年由AT&amp;T贝尔实验室开发，最初用汇编，Unix 3.<em>版本改用C语言；1970年代末源码免费分发，导致“内核分叉”（版本不兼容），后被Linux逐步替代；主要版本有AT&amp;T的System V、伯克利的BSD、IBM的AIX、HP的HP-UX等。
-        - 特点：多用户多任务、C语言编写易移植、内核+应用子系统架构可扩展、支持分层可装卸文件系统、I/O缓冲技术、抢占式动态优先级CPU调度、请求分页虚拟内存、Shell命令行接口，网络功能强大；缺点是1990年代版本繁多且不兼容，遵循POSIX标准（定义兼容Unix-like OS的最小系统调用和工具集）。
-    - </em><em>MS-DOS</em><em>：1980年代由IBM和微软联合开发，单用户CLI操作系统，功能包括命令处理、文件管理、设备管理，早期CPU和内存管理简单，DOS 4.0后逐步优化；结构简单，无清晰模块划分。
-    - </em><em>Windows</em><em>
-        - 产品分类：个人OS（如Windows XP、Win11）、服务器OS（如Windows Server 2022）、嵌入式OS（如Windows CE、Windows Mobile），无大型主机版本。
-        - Windows NT（1993年推出）：多用户OS，采用“分层+微内核”结构，面向对象设计；内核态含“NT执行体”（实现OS核心功能），用户态含保护子系统（如Win32子系统、POSIX子系统）；支持SMP（双CPU/4CPU）、GUI、网络与多媒体，内核线程调度、中断管理等功能常驻内存，不可拆分。
-2. </em><em>虚拟机技术（Virtual Machines, VM）</em><em>
-    - </em><em>核心概念</em><em>：通过软件模拟硬件性能，为应用程序提供独立运行空间（虚拟硬件资源），实现程序可移植性（如让Intel架构程序在Motorola芯片运行），本质是将用户指令集映射到实际硬件指令集。
-    - </em><em>分类与实现</em><em>
-        - </em><em>逻辑虚拟模式</em><em>：通过虚拟机软件（如VMware ESX Server、Xen）将物理资源虚拟为多个硬件副本，支持多OS独立运行，一台物理机可创建多个VM，VM崩溃不影响整体系统；代表产品有IBM VM370、Intel的HT超线程技术（硬件实现逻辑虚拟）。
-        - </em><em>硬件虚拟模式</em><em>：通过硬件分区（如HP的nPAR）将物理硬件分为多个单元，每个单元运行独立OS；代表产品有HP vPAR，上海超级计算中心主机系统（2015年）采用此模式，可分配计算节点给用户。
-        - </em><em>软件虚拟模式</em><em>：虚拟层软件运行在宿主OS上（与硬件无关），支持多个客户OS；代表产品有Virtual Box、VMware GSX Server、KVM，如VMware可在Linux宿主OS上运行Windows XP、FreeBSD等客户OS。
-        - </em><em>应用虚拟模式</em><em>：虚拟层软件运行在宿主OS上，直接运行应用域软件/中间件；代表产品有Sun的Solaris Container、Docker（容器技术）、JVM（Java虚拟机）。
-    - </em><em>JVM（Java Virtual Machine）</em><em>：属于应用虚拟技术，包含类加载器、类验证器、运行时解释器；Java程序编译为字节码，由JVM解释执行或通过JIT（即时编译器）转换为本地机器语言，实现跨平台可移植性。
-    - </em><em>优缺点</em>*：优点是资源独占、程序可移植、隔离性好（适合OS研发）；缺点是实现难度大（需精确模拟底层硬件）。</p>
-<hr />
-<h3 id="_2">📋 文档其他补充内容<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h1 id="chapter3-sql">Chapter3: SQL<a class="headerlink" href="#chapter3-sql" title="Permanent link">&para;</a></h1>
+<h2 id="sql">SQL 概述与背景<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h2>
 <ol>
-<li><strong>操作系统兴衰</strong>：提及IBM OS/360（首个大型通用OS）、UNIX与开源运动、Windows、Linux、iOS、Android、鸿蒙等OS的发展脉络。</li>
-<li><strong>关键时间节点</strong>：如Unix 1969年诞生、1973年用C重写；Windows NT 1993年推出；Intel 2005年推出VT虚拟化技术等。</li>
+<li><strong>SQL定义</strong>：全称为Structured Query Language（结构化查询语言），是用于与数据库交互、实现数据管理的标准化语言。</li>
+<li><strong>发展历程</strong>：遵循清晰的时间演进线，从1970年代IBM在System R系统中推出Sequel起步；1986年ANSI（美国国家标准协会）与ISO（国际标准化组织）联合发布首个标准SQL_86；1987年IBM推出SAA_SQL；1989年ANSI发布扩展标准SQL_89；后续陆续更新至SQL_92、1999 SQL、SQL:2003、SQL:2008，最终到SQL:2011。</li>
+<li><strong>核心组成</strong>：包含四大关键模块，分别是用于定义数据结构的<strong>数据定义语言（DDL）</strong>、用于操作数据的<strong>数据操纵语言（DML）</strong>、负责数据安全与规则的<strong>数据控制语言（DCL，含数据完整性保障、访问授权）</strong>，以及适用于复杂场景的<strong>嵌入式SQL与动态SQL</strong>。</li>
+<li><strong>底层基础</strong>：以集合运算和关系运算为技术基石，同时结合实际应用需求进行了特定的修改与功能增强，确保语言的实用性与灵活性。</li>
 </ol>
-<h2 id="21-operating-systems-services3-8">📋 2.1 Operating Systems Services（第3-8页内容总结）<a class="headerlink" href="#21-operating-systems-services3-8" title="Permanent link">&para;</a></h2>
-<p>本节是文档核心章节之一，明确操作系统的核心定位是“为程序执行提供环境”，并从“面向用户需求”和“保障系统高效运行”两大维度，系统拆解服务类型、功能细节及实现逻辑，同时关联OS组件与硬件的支撑关系，形成完整服务体系。</p>
-<h3 id="1">1. 🎯 操作系统服务的核心定位<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
-<p>操作系统的核心价值是为程序执行提供稳定、可控的环境，并向两类对象提供服务：<br />
-- 直接使用者：<strong>用户/人员</strong>（如普通电脑用户、开发者）；<br />
-- 运行载体：<strong>程序</strong>（包括应用程序如办公软件、系统程序如命令解释器）。<br />
-所有服务设计均围绕“简化用户操作”和“优化系统资源利用”展开，是连接用户需求与硬件能力的关键桥梁。</p>
-<h3 id="2">2. 👤 面向用户的服务：聚焦使用便捷性<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
-<p>这类服务直接解决用户在交互、程序运行、数据处理等场景的核心需求，共包含6类具体服务，覆盖从操作入口到数据管理的全流程：</p>
-<h4 id="1user-interface-ui">（1）用户接口（User Interface, UI）：交互入口<a class="headerlink" href="#1user-interface-ui" title="Permanent link">&para;</a></h4>
-<p>几乎所有操作系统都具备UI，是用户与系统沟通的直接渠道，主要分为三类主流形式，同时拓展新型交互方式：<br />
-- <strong>命令行接口（CLI）</strong>：通过输入文本指令操作计算机，如Linux的Bourne Shell、MS-DOS的命令行，适合需要精准控制的场景（如服务器管理）；<br />
-- <strong>图形用户接口（GUI）</strong>：通过图标、窗口、鼠标点击可视化操作，如Mac OS X的“Aqua”界面、Windows的桌面环境，降低普通用户使用门槛；<br />
-- <strong>批处理接口（Batch）</strong>：用户预先编写任务脚本（如批量处理文件的脚本），系统自动按顺序执行，无需实时交互，适合重复性工作；<br />
-- 新型接口：文档还提及触摸屏（基于手势操作如滑动、点击）、语音控制（如小米“小爱同学”，依赖语音识别与自然语言处理）、脑机接口等，进一步拓展交互边界。</p>
-<h4 id="2program-execution">（2）程序执行（Program Execution）：任务调度核心<a class="headerlink" href="#2program-execution" title="Permanent link">&para;</a></h4>
-<p>操作系统需完成程序从“存储”到“运行”的全生命周期管理，确保任务可控：<br />
-- 加载与运行：将程序从磁盘等存储设备加载到内存，分配CPU、内存等资源，启动程序执行；<br />
-- 终止管理：支持两种终止方式——正常结束（任务完成后释放资源）、异常终止（如代码报错时，提示错误信息并回收资源），避免程序异常导致系统崩溃。</p>
-<h4 id="3ioio-operations">（3）I/O操作（I/O Operations）：硬件交互中介<a class="headerlink" href="#3ioio-operations" title="Permanent link">&para;</a></h4>
-<p>运行中的程序常需与外部设备或文件交互（如读取键盘输入、写入磁盘文件、打印文档），操作系统的核心作用是“屏蔽硬件差异”：<br />
-- 统一接口：为程序提供标准化的I/O接口（如read()、write()系统调用），程序无需关注具体硬件型号（如不同品牌打印机的驱动差异），直接通过OS调用硬件；<br />
-- 冲突避免：OS负责调度多个程序对同一I/O设备的访问（如多个程序同时打印时，按顺序排队），防止硬件竞争导致的错误。</p>
-<h4 id="4file-system-manipulation">（4）文件系统操作（File-System Manipulation）：数据管理基础<a class="headerlink" href="#4file-system-manipulation" title="Permanent link">&para;</a></h4>
-<p>文件是用户存储数据的核心载体，操作系统提供完整的文件管理功能，保障数据安全与可访问性：<br />
-- 基础操作：支持文件/目录的创建、删除、读取、写入，满足数据存储与修改需求；<br />
-- 辅助管理：包括搜索文件（如Linux的“find”命令查找特定文件）、列出文件信息（如“ls”命令显示文件大小、修改时间）、权限管理（设置谁能读取、修改、删除文件，如普通用户无法修改系统核心文件），确保数据有序且安全。</p>
-<h4 id="5communications">（5）通信（Communications）：数据交换通道<a class="headerlink" href="#5communications" title="Permanent link">&para;</a></h4>
-<p>支持进程间（程序运行时的实例）的数据交换，覆盖本地与跨网络场景：<br />
-- 本地通信：同一台计算机上的进程通过“共享内存”交换数据，效率高（无需经过网络传输），适合高频交互场景（如浏览器的多个标签页间通信）；<br />
-- 跨网络通信：不同计算机的进程通过“消息传递”交互，操作系统负责将数据打包成数据包，通过网络传输并解析，如聊天软件、文件传输工具的底层依赖此服务。</p>
-<h4 id="6error-detection">（6）错误检测（Error Detection）：稳定运行保障<a class="headerlink" href="#6error-detection" title="Permanent link">&para;</a></h4>
-<p>操作系统需实时监控系统各环节的错误，及时处理以避免故障扩散，同时辅助问题排查：<br />
-- 错误来源：覆盖硬件（CPU故障如运算错误、内存异常如地址越界、I/O设备故障如磁盘损坏）、软件（用户程序错误如代码逻辑漏洞）；<br />
-- 处理措施：针对不同错误触发对应策略（如内存错误时终止异常程序、磁盘损坏时提示修复），同时提供调试工具（如GDB），帮助开发者定位并修复程序bug，提升系统稳定性与用户使用效率。</p>
-<h3 id="3">3. ⚙️ 保障系统高效运行的服务：聚焦资源优化<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>这类服务面向操作系统自身，解决多用户、多任务并发场景下的资源管理问题，确保系统稳定且高效，共包含3类核心服务：</p>
-<h4 id="1resource-allocation">（1）资源分配（Resource Allocation）：公平与高效兼顾<a class="headerlink" href="#1resource-allocation" title="Permanent link">&para;</a></h4>
-<p>当多个用户（如多人同时使用服务器）或多个任务（如同时运行浏览器、办公软件、音乐播放器）并发时，操作系统需合理分配有限的硬件资源：<br />
-- 核心资源类型：包括CPU周期（决定程序运行优先级，如系统进程优先级高于普通应用）、主内存（分配存储空间，避免内存不足导致程序崩溃）、文件存储（磁盘空间分配）、I/O设备（如打印机、摄像头的使用权限）；<br />
-- 分配逻辑：根据任务重要性、资源需求动态调整（如视频渲染任务需更多CPU和内存资源），避免资源浪费或单一任务占用过多资源导致系统卡顿。</p>
-<h4 id="2accounting">（2）记账（Accounting）：资源监控与追溯<a class="headerlink" href="#2accounting" title="Permanent link">&para;</a></h4>
-<p>操作系统记录用户或任务对计算机资源的使用情况，为管理与优化提供数据支撑：<br />
-- 记录内容：包括“使用哪些资源”（如CPU、内存、磁盘）、“使用多少”（如CPU占用时长、内存占用大小、磁盘空间消耗）；<br />
-- 核心作用：便于管理员统计资源消耗（如企业按用户使用的服务器资源计费）、定位资源占用异常（如某程序恶意占用大量内存导致系统缓慢），优化资源分配策略。</p>
-<h4 id="3protection-and-security">（3）保护与安全（Protection and Security）：风险防控屏障<a class="headerlink" href="#3protection-and-security" title="Permanent link">&para;</a></h4>
-<p>针对多用户或网络环境，操作系统需构建两层防护体系，保障资源安全与系统隔离：<br />
-- 保护（Protection）：控制对系统资源的访问权限，如普通用户无法修改系统核心文件、进程间不能随意读取对方内存数据，避免非法操作或程序间相互干扰；<br />
-- 安全（Security）：防止外部非法访问，包括用户身份验证（如密码、指纹识别确认用户合法性）、拦截I/O设备的无效访问（如防止未授权U盘读取硬盘数据），抵御外部攻击（如病毒、黑客入侵）。</p>
-<h3 id="4-os">4. 🔗 服务与OS组件、硬件的关联<a class="headerlink" href="#4-os" title="Permanent link">&para;</a></h3>
-<p>文档通过图示（Fig. 2.0.1）明确服务的底层支撑逻辑：<br />
-操作系统服务的实现依赖核心组件模块，包括文件管理、网络、进程管理、主内存管理、二级存储管理、I/O系统、设备驱动等；这些组件直接对接硬件（CPU、内存、I/O设备如磁盘、打印机），形成“硬件→组件→服务→用户/程序”的完整链路，确保所有服务稳定运行。</p>
-<h2 id="22-user-operating-system-interface9-13">🖥️ 2.2 User Operating System Interface（第9-13页内容总结）<a class="headerlink" href="#22-user-operating-system-interface9-13" title="Permanent link">&para;</a></h2>
-<p>本节聚焦操作系统与用户的交互接口，明确接口分为“面向人员用户”和“面向程序用户”两大类别，详细拆解各类接口的形式、实现方式及典型案例，同时覆盖传统与新型交互技术，完整呈现用户与OS的沟通桥梁。</p>
-<h3 id="1_1">1. 🎯 接口的核心分类：两类用户，两种接口<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
-<p>操作系统需服务两类“用户”，对应两种差异化接口，分别解决“人如何操作OS”和“程序如何调用OS服务”的问题：
-- <strong>人员用户</strong>：通过可视化或指令化操作与OS交互，核心需求是“便捷、直观”；
-- <strong>程序用户</strong>（系统程序、应用程序）：通过标准化接口调用OS服务，核心需求是“稳定、高效”。</p>
-<h3 id="2_1">2. 👤 面向人员用户的接口：多样化交互方式<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
-<p>这类接口围绕“降低操作门槛”设计，从传统的命令行、图形界面，逐步拓展到触摸屏、语音等新型交互，具体包括以下形式：</p>
-<h4 id="1cli">（1）命令行接口（CLI）：精准控制型交互<a class="headerlink" href="#1cli" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>核心定义</strong>：用户通过输入文本命令直接操作计算机，命令解释器（Command Interpreter）接收并执行命令，是早期OS的主流交互方式。</li>
-<li><strong>实现方式</strong>：</li>
-<li>集成在内核：如MS-DOS（磁盘操作系统），命令解释器作为内核一部分，直接与硬件交互；</li>
-<li>独立系统程序：如Unix/Linux的Bourne/Bash Shell，不仅能执行单条命令，还支持命令编程语言（如编写Shell脚本批量执行任务），灵活性更高。</li>
-<li><strong>核心功能</strong>：主要作用是“获取用户命令→解析命令→调用OS服务执行”，例如在Linux终端输入“ls”命令，可列出当前目录下的文件信息。</li>
-</ul>
-<h4 id="2gui">（2）图形用户接口（GUI）：可视化交互<a class="headerlink" href="#2gui" title="Permanent link">&para;</a></h4>
-<ul>
-<li><strong>核心定义</strong>：采用“桌面隐喻”设计，通过图标、窗口、菜单、鼠标等元素实现可视化操作，无需记忆复杂命令，是当前个人电脑的主流接口。</li>
-<li><strong>关键特点</strong>：</li>
-<li>交互设备：依赖鼠标、键盘、显示器，鼠标点击不同对象触发对应操作（如双击图标打开程序、右键点击文件弹出操作菜单）；</li>
-<li>技术起源：最早由施乐PARC（帕洛阿尔托研究中心）发明，后被苹果、微软等公司普及；</li>
-<li>系统适配：多数现代OS同时支持CLI和GUI，如Windows以GUI为主，内置“命令提示符”CLI；Mac OS X的“Aqua”GUI底层基于UNIX内核，可调用Shell；Unix/Linux默认CLI，可加装CDE、KDE、GNOME等GUI组件。</li>
-</ul>
-<h4 id="3_1">（3）新型交互接口：场景化创新<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
-<p>随着硬件技术发展，接口形式突破传统“键盘+鼠标”限制，适配移动设备、智能终端等场景：
-- <strong>触摸屏接口</strong>：无需鼠标，通过手势（如点击、滑动、缩放）操作，搭配虚拟键盘实现文本输入，常见于手机、平板等设备；
-- <strong>语音/语音接口（VUI）</strong>：基于语音识别和自然语言处理（NLP），用户通过语音指令控制OS，如小米的“小爱同学”、苹果的“Siri”；
-- <strong>姿态/身体姿势接口</strong>：通过摄像头或传感器捕捉人体动作，转化为OS操作，如微软XBOX 360的Kinect（动作感应游戏控制器）；
-- <strong>脑机接口、VR/AR接口</strong>：更前沿的交互方式，直接连接人脑或构建虚拟环境，进一步模糊“人与OS”的交互边界。</p>
-<h3 id="3_2">3. 🖥️ 面向程序用户的接口：标准化调用通道<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h3>
-<p>程序无法像人一样通过可视化操作与OS交互，需通过标准化接口调用OS服务，确保程序可移植、稳定运行：
-- <strong>核心接口形式</strong>：
-  - 系统调用/API（应用程序接口）：OS提供的编程接口，程序通过调用API间接使用OS服务（如文件读写、内存分配），无需直接操作内核，降低开发难度；
-  - 批处理系统专用：作业控制语言（JCL），用于批量执行任务的程序，通过JCL定义任务流程（如“读取文件→处理数据→输出结果”），OS按流程自动执行。</p>
-<h3 id="4-os_1">4. 📌 接口的核心价值：连接“用户需求”与“OS能力”<a class="headerlink" href="#4-os_1" title="Permanent link">&para;</a></h3>
-<p>无论是面向人员还是程序的接口，核心作用都是“翻译”——将人员的操作意图、程序的功能需求，转化为OS能理解的指令，同时屏蔽OS底层的复杂逻辑（如硬件差异、资源调度），让用户和程序能“专注目标，无需关注实现”，是OS易用性和可扩展性的关键保障。</p>
-<h2 id="23-system-call14-20">📞 2.3 System Call（第14-20页内容总结）<a class="headerlink" href="#23-system-call14-20" title="Permanent link">&para;</a></h2>
-<p>本节围绕“系统调用”展开，明确其作为“操作系统与程序间编程接口”的核心定位，详细拆解系统调用的本质、与API的关系、参数传递方式及典型示例，完整呈现程序如何通过系统调用获取OS服务。</p>
-<h3 id="1-os">1. 🎯 系统调用的核心定义：程序访问OS服务的入口<a class="headerlink" href="#1-os" title="Permanent link">&para;</a></h3>
-<p>系统调用（System Call）是操作系统为程序提供的“编程接口”，程序通过调用系统调用来获取OS的核心服务（如文件访问、内存分配），是连接用户程序与OS内核的关键桥梁。
-- <strong>实现语言</strong>：通常用C或C++编写，确保与主流编程语言的兼容性；
-- <strong>调用方式</strong>：程序极少直接调用系统调用，而是通过<strong>高层应用程序接口（API）</strong> 间接调用，API封装了系统调用的复杂逻辑，降低开发难度。</p>
-<h3 id="2-api">2. 🔗 系统调用与API的关系：封装与适配<a class="headerlink" href="#2-api" title="Permanent link">&para;</a></h3>
-<p>API是系统调用的“上层包装”，二者并非同一概念，具体差异与关联如下：
-- <strong>核心区别</strong>：API是给程序员使用的函数集合（如C标准库中的<code>fopen()</code>），系统调用是OS内核提供的服务接口（如<code>open()</code>）；程序调用API时，API会根据需求调用对应的系统调用，完成与内核的交互；
-- <strong>典型API案例</strong>：
-  1. Win32 API：适用于Windows系统，提供Windows专属的系统服务调用接口；
-  2. POSIX API：适用于POSIX兼容系统（如UNIX、Linux、Mac OS X），包含Pthread API（线程管理相关），确保程序在不同类UNIX系统间可移植；
-  3. Java API：适用于Java虚拟机（JVM），通过JVM间接调用底层OS的系统调用，实现Java程序的跨平台特性。</p>
-<h3 id="3_3">3. 📊 典型示例：系统调用的实际应用<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
-<p>文档通过“文件复制”和“标准API使用”两个案例，直观展示系统调用的执行流程：</p>
-<h4 id="1_2">（1）文件复制的系统调用序列<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
-<p>复制一个文件内容到另一个文件，需依次调用以下系统调用，形成完整流程：
-1. 向屏幕输出提示，获取源文件和目标文件名称；
-2. 调用“打开文件”系统调用，若源文件不存在则终止程序；
-3. 调用“创建文件”系统调用，若目标文件已存在则终止程序；
-4. 循环调用“读取文件”和“写入文件”系统调用，直到源文件读取完毕；
-5. 调用“关闭文件”系统调用，释放文件资源；
-6. 向屏幕输出完成提示，程序正常终止。</p>
-<h4 id="2unixlinuxread-api">（2）UNIX/Linux的read() API示例<a class="headerlink" href="#2unixlinuxread-api" title="Permanent link">&para;</a></h4>
-<p><code>read()</code>是UNIX/Linux中用于读取文件的标准API，其定义与使用规则如下：
-- <strong>API声明</strong>：<code>ssize_t read(int fd, void *buf, size_t count)</code>，需包含头文件<code>&lt;unistd.h&gt;</code>；
-- <strong>参数含义</strong>：
-  - <code>int fd</code>：文件描述符，标识要读取的文件；
-  - <code>void *buf</code>：缓冲区地址，用于存储读取到的数据；
-  - <code>size_t count</code>：最大读取字节数；
-- <strong>返回值</strong>：成功时返回实际读取的字节数，返回0表示文件读取完毕，返回-1表示读取错误。</p>
-<h3 id="4">4. 🚀 系统调用的参数传递方式：数据交互的三种路径<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
-<p>程序调用系统调用时，常需传递参数（如文件路径、缓冲区地址），OS通过三种方式接收参数，解决“参数数量与寄存器容量不匹配”的问题：
-- <strong>方式1：寄存器传递</strong><br />
-  最简单的方式，直接将参数存入CPU寄存器，OS从寄存器中读取；但当参数数量超过寄存器数量时，该方式失效。</p>
-<ul>
-<li>
-<p><strong>方式2：内存块传递</strong><br />
-  将所有参数存储在内存中的一个块（或表格）里，仅将块的地址存入寄存器，OS通过地址访问内存块获取参数；Linux和Solaris采用此方式，支持大量参数传递。</p>
-</li>
-<li>
-<p><strong>方式3：栈传递</strong><br />
-  程序将参数按顺序压入栈中，OS从栈中依次弹出参数；该方式无参数数量和长度限制，适用于参数复杂的场景。</p>
-</li>
-</ul>
-<h3 id="5">5. 💡 核心逻辑：用户模式与内核模式的切换<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
-<p>程序调用系统调用时，会触发“用户模式”到“内核模式”的切换：
-- 程序在“用户模式”下运行时，仅能访问用户空间内存，无法直接操作OS内核；
-- 调用系统调用时，CPU切换到“内核模式”，程序可通过系统调用接口请求内核执行特权操作（如访问硬件、修改内核数据）；
-- 系统调用执行完毕后，CPU切换回“用户模式”，程序继续在用户空间运行。</p>
-<p>这种切换确保了OS内核的安全性，防止用户程序非法操作内核资源。</p>
-<h2 id="24-types-of-system-calls21-24">📊 2.4 Types of System Calls（第21-24页内容总结）<a class="headerlink" href="#24-types-of-system-calls21-24" title="Permanent link">&para;</a></h2>
-<p>本节是对系统调用的功能分类梳理，将系统调用按核心作用划分为六大类，每类对应操作系统的关键管理场景（如进程、文件、设备等），同时补充Windows与Unix系统的调用实例对比，清晰呈现系统调用的功能覆盖范围与实际应用。</p>
-<h3 id="1_3">1. 🎯 系统调用的六大核心分类<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
-<p>根据服务对象与功能场景，系统调用分为以下六类，每类均包含具体的调用功能，覆盖程序运行全流程的资源需求：</p>
-<h4 id="1process-control">（1）进程控制（Process Control）：管理程序生命周期<a class="headerlink" href="#1process-control" title="Permanent link">&para;</a></h4>
-<p>针对“进程”（程序的运行实例）的创建、运行、终止及状态管理，核心功能包括：
-- 基础操作：创建进程（如Windows的<code>CreateProcess()</code>）、终止进程（正常结束或异常中止）；
-- 执行控制：加载程序到内存、执行程序，获取/设置进程属性（如进程优先级、ID）；
-- 事件与时间管理：等待指定时间（如<code>sleep()</code>）、等待某个事件触发（如进程结束）、发送事件信号；
-- 内存与调试：分配/释放进程内存，报错时生成内存转储文件（记录内存状态用于排查），提供调试功能（如单步执行、锁定共享数据防止冲突）。</p>
-<h4 id="2file-management">（2）文件管理（File Management）：操控文件与目录<a class="headerlink" href="#2file-management" title="Permanent link">&para;</a></h4>
-<p>围绕文件的全生命周期操作，满足程序对数据存储与读取的需求，核心功能包括：
-- 基础操作：创建/删除文件，打开/关闭文件（打开后获取文件描述符，关闭后释放资源）；
-- 数据操作：读取文件内容、写入数据到文件、调整文件读写指针位置（如跳转到文件指定行）；
-- 属性管理：获取文件属性（如大小、修改时间、权限）、设置文件属性（如修改读写权限）。</p>
-<h4 id="3device-management">（3）设备管理（Device Management）：对接硬件资源<a class="headerlink" href="#3device-management" title="Permanent link">&para;</a></h4>
-<p>程序通过这类调用访问计算机硬件设备（如打印机、磁盘、键盘），核心功能包括：
-- 设备申请与释放：请求使用某个设备（如申请打印机）、使用完毕后释放设备（供其他程序使用）；
-- 数据交互：读取设备数据（如从键盘获取输入）、向设备写入数据（如向打印机发送打印内容）、调整设备读写位置（如移动磁盘读写磁头）；
-- 属性管理：获取设备属性（如打印机型号、磁盘容量）、设置设备属性（如调整显示器分辨率），逻辑上挂载/卸载设备（如将U盘挂载为系统可识别的存储设备）。</p>
-<h4 id="4information-maintenance">（4）信息维护（Information Maintenance）：管理系统与对象状态<a class="headerlink" href="#4information-maintenance" title="Permanent link">&para;</a></h4>
-<p>用于获取或修改系统、进程、文件、设备的状态信息，核心功能包括：
-- 时间与日期：获取当前系统时间/日期、设置系统时间/日期；
-- 系统数据：获取系统信息（如系统版本、已启动进程数量）、设置系统数据（如修改系统默认语言）；
-- 对象属性：获取进程、文件、设备的属性（如进程ID、文件权限）、设置这些对象的属性（如修改进程优先级）。</p>
-<h4 id="5communications_1">（5）通信（Communications）：实现进程间数据交互<a class="headerlink" href="#5communications_1" title="Permanent link">&para;</a></h4>
-<p>支持进程间（同一台计算机或不同计算机）的数据交换，核心功能包括：
-- 连接管理：创建/删除进程间的通信连接；
-- 数据传输：通过消息传递模式发送/接收消息（如从客户端向服务器发送请求），需指定目标主机名或进程名；
-- 共享内存管理：在共享内存模式下，创建共享内存区域、获取共享内存访问权限（供多个进程读写）；
-- 辅助操作：传递进程状态信息，挂载/卸载远程设备（如访问另一台电脑的共享磁盘）。</p>
-<h4 id="6protection">（6）保护（Protection）：保障资源访问安全<a class="headerlink" href="#6protection" title="Permanent link">&para;</a></h4>
-<p>控制程序对系统资源的访问权限，防止非法操作，核心功能包括：
-- 权限控制：设置资源（如文件、设备）的访问权限（如仅允许管理员修改），允许/拒绝特定用户访问资源；
-- 权限查询：获取资源当前的访问权限设置（如查看文件哪些用户可读写）。</p>
-<h3 id="2_2">2. 🔍 跨系统调用实例对比<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
-<p>文档通过表格对比Windows与Unix系统中部分核心系统调用的差异，体现不同OS调用命名的区别（功能相似但名称不同），典型对比如下：</p>
+<h2 id="ddl">数据定义语言（DDL）<a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h2>
+<p>DDL（Data Definition Language，数据定义语言）是SQL中用于定义、管理数据库结构（如关系、属性、约束等）的核心模块，核心目标是搭建数据库的“骨架”，明确数据的组织规则与存储规范，具体内容如下：</p>
+<h3 id="ddl_1">一、DDL核心功能<a class="headerlink" href="#ddl_1" title="Permanent link">&para;</a></h3>
+<p>DDL的核心作用是<strong>定义数据库的结构与元数据</strong>，而非操作具体数据，主要涵盖6类关键信息的定义：
+1. <strong>关系集定义</strong>：确定数据库中包含的所有关系（即表），明确各表的名称与作用；
+2. <strong>关系属性信息定义</strong>：
+   - 表的<strong>模式</strong>：指定每个表包含的属性（列）名称及属性间的逻辑关联；
+   - 属性的<strong>域</strong>：定义每个属性的取值范围（通过数据类型约束）；
+   - <strong>完整性约束</strong>：设置数据的有效性规则（如主键唯一、外键关联、非空等），确保数据准确性；
+   - <strong>索引</strong>：定义为提升查询效率而创建的索引（后续单独展开）；
+   - <strong>安全授权</strong>：指定不同用户对表的访问权限（如查询、修改权限）；
+   - <strong>物理存储结构</strong>：定义表在磁盘上的存储方式（如存储位置、文件格式等，通常由数据库管理系统自动优化，用户可按需配置）。</p>
+<h3 id="create-table">二、表创建：CREATE TABLE 语句<a class="headerlink" href="#create-table" title="Permanent link">&para;</a></h3>
+<p>CREATE TABLE是DDL中最基础的命令，用于创建新的关系（表），明确表的属性、数据类型及完整性约束。</p>
+<h4 id="1">1. 基本语法<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p><div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="n">A1</span><span class="w"> </span><span class="n">D1</span><span class="p">,</span><span class="w">   </span><span class="c1">-- A1：属性名，D1：该属性的数据类型</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">A2</span><span class="w"> </span><span class="n">D2</span><span class="p">,</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="p">...,</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="n">An</span><span class="w"> </span><span class="n">Dn</span><span class="p">,</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="err">完整性约束</span><span class="mi">1</span><span class="p">,</span><span class="w">  </span><span class="c1">-- 对表或属性的约束规则</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="p">...,</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="err">完整性约束</span><span class="n">k</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+- 核心参数说明：
+  - <code>r</code>：新创建表的名称（即关系名），需符合数据库命名规范（如不重复、不包含特殊字符）；
+  - <code>Ai</code>：表中的第i个属性名（列名），需唯一标识某一列（如“ID”“name”）；
+  - <code>Di</code>：属性Ai的数据类型（如char(5)、int等），限制该属性的取值类型与格式；
+  - <code>完整性约束</code>：可选但关键，用于定义数据的有效性规则，避免无效或错误数据存入。</p>
+<h4 id="2">2. 典型表创建示例<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>PPT中以数据库常见的“教学管理场景”为例，创建了4个核心表，清晰体现CREATE TABLE的应用：
+- <strong>instructor表（教师表）</strong>：存储教师的基本信息，包含属性ID（教师编号）、name（姓名）、dept_name（所属部门）、salary（工资），并设置主键（ID）、非空（name）、外键（dept_name关联部门表）等约束；
+- <strong>student表（学生表）</strong>：存储学生信息，属性包括ID（学生编号）、name（姓名）、dept_name（所属部门）、tot_cred（总学分），主键为ID，外键为dept_name，且name非空；
+- <strong>takes表（选课表）</strong>：存储学生选课记录，属性有ID（学生编号）、course_id（课程编号）、sec_id（课节号）、semester（学期）、year（年份）、grade（成绩），主键为多属性组合（ID+course_id+sec_id+semester+year，确保同一学生同一学期不重复选同一课程的同一课节），外键分别关联student表（ID）和section表（course_id+sec_id+semester+year）；
+- <strong>course表（课程表）</strong>：存储课程信息，属性包括course_id（课程编号）、title（课程名称）、dept_name（所属部门）、credits（学分），主键为course_id，外键为dept_name。</p>
+<h3 id="_1">三、完整性约束：确保数据有效性的规则<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>完整性约束是DDL的核心组成部分，用于限制表中数据的取值范围与逻辑关联，避免“脏数据”（如主键重复、外键无关联、非空属性为空等），PPT中重点介绍4类常用约束：</p>
+<h4 id="1_1">1. 常用约束类型及作用<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
 <tr>
-<th>系统调用类别</th>
-<th>Windows系统调用</th>
-<th>Unix系统调用</th>
+<th>约束类型</th>
+<th>语法格式</th>
+<th>核心作用</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>进程控制</td>
-<td><code>CreateProcess()</code>、<code>WaitForSingleObject()</code></td>
-<td><code>fork()</code>、<code>wait()</code></td>
+<td>NOT NULL（非空约束）</td>
+<td>属性名 数据类型 not null</td>
+<td>限制该属性的值不能为NULL（未知或不存在的值），确保关键信息必填（如姓名）</td>
 </tr>
 <tr>
-<td>文件操作</td>
-<td><code>CreateFile()</code>、<code>ReadFile()</code>、<code>WriteFile()</code>、<code>CloseHandle()</code></td>
-<td><code>open()</code>、<code>read()</code>、<code>write()</code>、<code>close()</code></td>
+<td>PRIMARY KEY（主键约束）</td>
+<td>primary key (A1, A2, ..., An)</td>
+<td>定义表的主键（唯一标识表中每一条元组的属性/属性组合），主键值必须唯一且非空</td>
 </tr>
 <tr>
-<td>设备管理</td>
-<td><code>SetConsoleMode()</code>、<code>ReadConsole()</code></td>
-<td><code>ioctl()</code></td>
+<td>FOREIGN KEY（外键约束）</td>
+<td>foreign key (A1,...,An) references 表r [on delete 规则]</td>
+<td>建立表间关联：指定当前表的属性（A1...An）关联另一表r的主键，确保引用的有效性；<br><strong>on delete规则</strong>：<br>- restrict：若被关联表r的主键记录被删除，当前表关联记录存在则禁止删除；<br>- cascade：被关联表r的主键记录删除时，当前表关联记录同步删除；<br>- set null：被关联表r的主键记录删除时，当前表关联属性值设为NULL（需关联属性允许NULL）</td>
 </tr>
 <tr>
-<td>信息维护</td>
-<td><code>GetCurrentProcessID()</code>、<code>Sleep()</code></td>
-<td><code>getpid()</code>、<code>sleep()</code>、<code>alarm()</code></td>
-</tr>
-<tr>
-<td>内存管理（共享）</td>
-<td><code>MapViewOfFile()</code></td>
-<td><code>shmget()</code>、<code>mmap()</code></td>
-</tr>
-<tr>
-<td>保护（权限）</td>
-<td><code>SetFileSecurity()</code>、<code>SetSecurityDescriptorGroup()</code></td>
-<td><code>chown()</code>（修改文件所有者）</td>
+<td>CHECK（检查约束）</td>
+<td>check (P)（P为谓词，如salary &gt; 0）</td>
+<td>自定义数据取值规则，仅当数据满足谓词P时可存入（如工资必须大于0）</td>
 </tr>
 </tbody>
 </table>
-<h3 id="3_4">3. 💡 核心价值：标准化的资源访问接口<a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h3>
-<p>六大类系统调用覆盖了程序运行所需的全部核心资源（进程、文件、设备、内存、网络），为程序提供了“标准化、安全化”的OS服务访问方式——程序无需直接操作硬件或内核，只需调用对应系统调用，即可高效获取所需服务，同时保障系统资源不被非法篡改。</p>
-<h2 id="25-system-programs25-29">📦 2.5 System Programs（第25-29页内容总结）<a class="headerlink" href="#25-system-programs25-29" title="Permanent link">&para;</a></h2>
-<p>本节聚焦系统程序的定义、定位与分类，明确其是操作系统发行版的核心组成（内核+系统程序），核心作用是为程序开发与执行提供便捷环境，同时也是用户感知操作系统的主要载体（而非底层系统调用）。</p>
-<h3 id="1-os_1">1. 🎯 系统程序的核心定位与OS发行版构成<a class="headerlink" href="#1-os_1" title="Permanent link">&para;</a></h3>
+<h4 id="2-instructor">2. 约束应用示例（以instructor表为例）<a class="headerlink" href="#2-instructor" title="Permanent link">&para;</a></h4>
+<p><div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="p">,</span><span class="w">  </span><span class="c1">-- NOT NULL约束：姓名必填</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="n">dept_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">salary</span><span class="w"> </span><span class="nb">numeric</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">),</span><span class="w">           </span><span class="c1">-- PRIMARY KEY约束：ID为教师唯一标识</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span><span class="w">  </span><span class="c1">-- FOREIGN KEY约束：关联部门表</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+该示例中，通过3类约束确保教师数据有效：
+- <code>name not null</code>：避免“无姓名的教师”记录；
+- <code>primary key (ID)</code>：避免“教师编号重复”；
+- <code>foreign key (dept_name) references department</code>：避免“教师所属部门不存在”（如dept_name为“不存在的部门”时无法插入）。</p>
+<h3 id="sql_1">四、SQL数据类型：定义属性的取值格式<a class="headerlink" href="#sql_1" title="Permanent link">&para;</a></h3>
+<p>数据类型是对属性“域”的具体实现，规定属性的取值类型、长度、精度等，PPT中按“字符型”和“数值型”分类介绍核心类型：</p>
+<h4 id="1_2">1. 字符型（存储文本数据）<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>语法格式</th>
+<th>特点与适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char(n)</td>
+<td>char(固定长度n)</td>
+<td>固定长度字符串：无论实际存储的文本长度如何，均占用n个字符的存储空间；<br>适用：长度固定的文本（如教师ID char(5)、性别 char(1)）</td>
+</tr>
+<tr>
+<td>varchar(n)</td>
+<td>varchar(最大n)</td>
+<td>可变长度字符串：实际存储长度随文本内容变化，最大不超过n个字符；<br>适用：长度不固定的文本（如姓名 varchar(20)、课程名称 varchar(50)），节省存储空间</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2_1">2. 数值型（存储数值数据）<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>语法格式</th>
+<th>特点与适用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>int</td>
+<td>int</td>
+<td>整数类型：取值范围为数据库管理系统（如MySQL、Oracle）依赖的有限整数集；<br>适用：无需小数的整数（如年份 int、课节号 int）</td>
+</tr>
+<tr>
+<td>smallint</td>
+<td>smallint</td>
+<td>小整数类型：取值范围小于int，占用存储空间更少；<br>适用：数值范围小的整数（如学分 smallint，通常1-10）</td>
+</tr>
+<tr>
+<td>numeric(p, d)</td>
+<td>numeric(总精度p, 小数位d)</td>
+<td>定点数：精确存储数值，总位数为p（含整数位和小数位），小数部分固定为d位；<br>适用：需精确计算的数值（如工资 numeric(8,2)，表示最大999999.99，保留2位小数）</td>
+</tr>
+<tr>
+<td>real / double precision</td>
+<td>real / double precision</td>
+<td>浮点型/双精度浮点型：近似存储数值，精度由数据库管理系统决定（double精度高于real）；<br>适用：对精度要求不高的数值（如成绩排名 real）</td>
+</tr>
+<tr>
+<td>float(n)</td>
+<td>float(精度n)</td>
+<td>浮点型：精度至少为n位（由用户指定最低精度）；<br>适用：需自定义最低精度的浮点数据（如实验数据 float(10)）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_2">五、表操作：修改与删除表结构<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>DDL除了创建表，还支持对已存在表的结构进行修改（ALTER TABLE）或删除（DROP TABLE），PPT中重点介绍这两个命令：</p>
+<h4 id="1-drop-table">1. DROP TABLE：删除表<a class="headerlink" href="#1-drop-table" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>本质属性</strong>：系统程序是运行在操作系统之上的“工具类程序”，并非OS内核本身，但依赖内核提供的系统调用实现功能，是连接用户需求与内核服务的“中间层”。</li>
-<li><strong>OS发行版组成</strong>：操作系统发行版（如Linux的openEuler、麒麟、Ubuntu、Redhat）由两部分构成——<strong>内核（Kernel，OS核心功能模块）</strong> + <strong>系统程序</strong>，二者共同构成可直接使用的完整OS环境。</li>
-<li><strong>用户感知</strong>：对多数用户而言，日常使用的“操作系统”实际是系统程序（如命令行Shell、文件管理器），而非底层的内核或系统调用，系统程序定义了用户对OS的直观体验。</li>
+<li>作用：<strong>彻底删除表的所有信息</strong>，包括表的结构（属性、约束等）和表中存储的所有数据，删除后无法恢复（需谨慎操作）；</li>
+<li>基本语法：<code>drop table 表名;</code></li>
+<li>示例：<code>drop table instructor;</code>（删除instructor表，表中所有教师数据及表结构均被清除）。</li>
 </ul>
-<h3 id="2_3">2. 📊 系统程序的七大核心分类<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
-<p>根据功能场景，系统程序可分为七类，覆盖文件管理、程序开发、通信等全流程需求，每类均有明确的服务目标：</p>
-<h4 id="1file-manipulation">（1）文件操作（File Manipulation）：管理文件生命周期<a class="headerlink" href="#1file-manipulation" title="Permanent link">&para;</a></h4>
-<p>围绕文件与目录的基础操作，提供便捷的文件管理工具，核心功能包括：
-- 基础操作：创建、删除、复制、重命名文件/目录；
-- 辅助操作：打印文件内容、备份文件（生成dump文件）、列出文件列表（如Linux的<code>ls</code>命令），帮助用户高效管理数据。</p>
-<h4 id="2status-information">（2）状态信息（Status Information）：监控系统与文件状态<a class="headerlink" href="#2status-information" title="Permanent link">&para;</a></h4>
-<p>用于查询系统资源使用情况或文件属性，满足用户“了解系统运行状态”的需求，核心功能包括：
-- 系统状态查询：获取当前时间/日期、可用内存大小、磁盘剩余空间、在线用户数量等；
-- 详细信息提供：输出系统性能日志（如CPU使用率）、错误日志、调试信息，部分系统通过“注册表”存储并查询配置信息（如Windows）；
-- 输出形式：将查询结果格式化后显示在终端或其他输出设备（如打印机），便于用户阅读。</p>
-<h4 id="3file-modification">（3）文件修改（File Modification）：编辑与处理文件内容<a class="headerlink" href="#3file-modification" title="Permanent link">&para;</a></h4>
-<p>提供文件内容编辑与文本处理工具，核心功能包括：
-- 文本编辑：通过文本编辑器（如Linux的<code>vim</code>、Windows的“记事本”）创建或修改文件内容；
-- 文本处理：通过专用命令（如Linux的<code>grep</code>命令搜索文件内容、<code>sed</code>命令替换文本）实现文件内容的搜索、筛选与格式转换。</p>
-<h4 id="4programming-language-support">（4）编程语言支持（Programming-Language Support）：辅助程序开发<a class="headerlink" href="#4programming-language-support" title="Permanent link">&para;</a></h4>
-<p>为开发者提供程序编写、编译、调试的工具链，降低开发难度，核心功能包括：
-- 编译与汇编：提供编译器（如C语言的<code>gcc</code>）、汇编器，将源代码转换为可执行程序；
-- 调试与解释：提供调试器（如<code>gdb</code>）定位程序错误，提供解释器（如Python解释器）直接执行脚本语言代码。</p>
-<h4 id="5program-loading-and-execution">（5）程序加载与执行（Program Loading and Execution）：管理程序运行<a class="headerlink" href="#5program-loading-and-execution" title="Permanent link">&para;</a></h4>
-<p>负责将程序加载到内存并启动，同时提供调试支持，核心功能包括：
-- 加载工具：提供绝对加载器（加载固定地址程序）、可重定位加载器（灵活分配内存地址）、链接编辑器（链接多个目标文件）、覆盖加载器（处理内存不足场景）；
-- 调试系统：提供针对高级语言和机器语言的调试工具，支持断点设置、变量查看等功能，辅助排查程序运行错误。</p>
-<h4 id="6communications">（6）通信（Communications）：实现跨设备/用户交互<a class="headerlink" href="#6communications" title="Permanent link">&para;</a></h4>
-<p>提供设备间、用户间的数据传输工具，构建通信环境，核心功能包括：
-- 用户交互：支持用户向其他用户发送屏幕消息、发送电子邮件；
-- 网络访问：支持网页浏览、远程登录（如Linux的<code>ssh</code>命令）、跨机器文件传输（如<code>scp</code>命令），实现不同计算机间的资源共享。</p>
-<h4 id="7background-servicesapplication-programsos">（7）背景服务（Background Services）与应用程序（Application Programs）：拓展OS功能<a class="headerlink" href="#7background-servicesapplication-programsos" title="Permanent link">&para;</a></h4>
+<h4 id="2-alter-table">2. ALTER TABLE：修改表结构（重点：添加属性）<a class="headerlink" href="#2-alter-table" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>背景服务（守护程序Daemons）</strong>：</li>
-<li>启动方式：开机时自动启动，部分服务完成初始化后终止，部分服务持续运行至系统关机；</li>
-<li>核心功能：提供磁盘检查、进程调度、错误日志记录、打印队列管理等“后台支撑”功能；</li>
-<li>运行模式：运行在用户态（非内核态），避免占用内核资源，被称为“服务（Services）”或“子系统（Subsystems）”。</li>
-<li><strong>应用程序</strong>：</li>
-<li>本质属性：不属于OS核心功能，是用户按需运行的程序（如办公软件MS Office、数据库管理系统DBMS）；</li>
-<li>启动方式：通过命令行输入、鼠标点击、触摸屏点击等方式启动，是用户完成特定任务的工具。</li>
+<li>核心作用：在不删除表的前提下，修改表的结构（PPT中重点介绍“添加属性”，其他修改如删除属性、修改数据类型等可扩展）；</li>
+<li>添加属性的语法：<code>alter table r add A D;</code></li>
+<li>参数说明：<code>r</code>为目标表名，<code>A</code>为新添加的属性名，<code>D</code>为新属性的数据类型；</li>
+<li>注意事项：新添加的属性默认允许NULL（若需非空，需后续通过ALTER TABLE补充约束），且添加后所有已存在的元组中，该属性值均为NULL；</li>
+<li>示例：<code>alter table instructor add email varchar(50);</code>（为instructor表添加“email”属性，类型为可变长度字符串，最大50个字符，已存在的教师记录中email字段值为NULL）。</li>
 </ul>
-<h3 id="3_5">3. 💡 系统程序的核心价值：降低使用与开发门槛<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h3>
-<p>系统程序的核心作用是“封装复杂的系统调用”——用户无需记忆底层系统调用（如<code>open()</code>、<code>read()</code>），只需通过简单的系统程序操作（如双击打开文件、输入<code>cp</code>命令复制文件）即可完成需求；同时为开发者提供完整的工具链，简化程序开发流程，是操作系统“易用性”与“可扩展性”的关键支撑。</p>
-<h2 id="28-operating-system-debugging45-46">🐛 2.8 Operating-System Debugging（第45-46页内容总结）<a class="headerlink" href="#28-operating-system-debugging45-46" title="Permanent link">&para;</a></h2>
-<p>本节围绕操作系统调试展开，明确调试的核心目标是“定位并修复错误（Bugs）”，同时涵盖性能优化相关内容，详细介绍了调试工具、方法及核心原则，为保障OS稳定运行提供解决方案。</p>
-<h3 id="1_4">1. 🎯 调试的核心定义与目标<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
-<p>调试（Debugging）是操作系统开发与维护中的关键环节，核心任务是“发现系统中的错误（如内核漏洞、程序兼容性问题）并修复”，最终确保OS能稳定、正确地执行程序，避免因错误导致系统崩溃或功能异常。</p>
-<h3 id="2_4">2. 🔧 核心调试工具：捕获错误信息的关键载体<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h3>
-<p>操作系统通过生成特定文件记录错误信息，为调试提供数据支撑，主要包括两类核心工具：
-- <strong>日志文件（Log Files）</strong>：OS实时记录系统运行过程中的关键事件与错误信息（如设备驱动加载失败、进程异常终止原因），日志文件按时间或模块分类存储，开发者可通过分析日志定位错误发生的场景与根源。
-- <strong>转储文件（Dump Files）</strong>：根据错误发生的主体不同，分为两种类型：
-  - 核心转储文件（Core Dump）：当应用程序故障（如代码逻辑错误、内存越界）时生成，捕获故障进程的内存数据（如变量值、函数调用栈），帮助开发者还原程序崩溃时的状态；
-  - 崩溃转储文件（Crash Dump）：当操作系统自身故障（如内核 panic）时生成，捕获内核内存数据，是排查OS底层漏洞（如内核模块冲突、硬件兼容性问题）的核心依据。</p>
-<h3 id="3_6">3. 📈 性能优化：调试的延伸目标<a class="headerlink" href="#3_6" title="Permanent link">&para;</a></h3>
-<p>除修复错误外，调试还包括“性能调优”——通过分析系统运行状态，定位并消除性能瓶颈，提升OS运行效率，主要方法包括：
-- <strong>跟踪列表（Trace Listings）</strong>：记录系统关键活动的详细流程（如进程调度顺序、I/O请求处理耗时），开发者通过分析跟踪数据，识别耗时环节（如某进程占用CPU过长）；
-- <strong>剖析（Profiling）</strong>：周期性采样CPU的指令指针（IP），统计不同函数或模块的执行频率与耗时，形成性能分析报告，帮助开发者发现资源占用异常的模块（如某内存管理函数执行效率低）。
-- <strong>常用工具示例</strong>：如Linux的“top”命令（实时显示进程CPU、内存占用）、Windows的“任务管理器”（可视化展示CPU使用率、内存使用量、进程列表），可直观反映系统性能状态，辅助性能调优。</p>
-<h3 id="4-kernighan">4. 💬 核心原则：Kernighan定律<a class="headerlink" href="#4-kernighan" title="Permanent link">&para;</a></h3>
-<p>文档引用Kernighan定律强调调试的难度与代码编写的关联性：“调试的难度是编写代码的两倍。因此，若你将代码写得尽可能复杂，从定义上讲，你将没有足够的智慧去调试它。”<br />
-该定律提醒开发者：编写代码时应追求简洁、清晰的逻辑，避免过度复杂的设计，从源头降低后续调试的难度。</p>
-<h3 id="5-os">5. 🎯 核心价值：保障OS稳定与高效<a class="headerlink" href="#5-os" title="Permanent link">&para;</a></h3>
-<p>调试是操作系统“可靠性”与“性能”的重要保障——通过错误捕获工具快速定位并修复漏洞，避免系统崩溃；通过性能优化方法消除瓶颈，提升资源利用率，最终为用户与程序提供稳定、高效的运行环境。</p>
-<h2 id="29-operating-system-generation47-85">🚀 2.9 Operating System Generation（第47-85页内容总结）<a class="headerlink" href="#29-operating-system-generation47-85" title="Permanent link">&para;</a></h2>
-<p>本节围绕“操作系统生成”展开，明确其核心是“为特定硬件配置定制OS”，通过专用程序实现系统适配，同时延伸关联系统启动流程与虚拟机技术，完整呈现OS从“通用设计”到“硬件落地”的关键环节。</p>
-<h3 id="1_5">1. 🎯 操作系统生成的核心定义与目标<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h3>
-<p>操作系统生成（Operating System Generation）是指：由于OS需适配某一类硬件（而非单一设备），需通过特定流程为<strong>具体计算机站点的硬件配置</strong>定制专属OS，确保OS能充分利用硬件资源，避免通用内核的性能损耗。<br />
-核心目标：生成“系统专属的编译内核”或“硬件优化的OS版本”，相比通用内核，定制后的OS执行效率更高，能更好适配硬件特性（如特定CPU型号、内存大小、I/O设备）。</p>
-<h3 id="2-sysgen">2. 🔧 核心工具：SYSGEN程序<a class="headerlink" href="#2-sysgen" title="Permanent link">&para;</a></h3>
-<p>SYSGEN（System Generation）程序是实现OS生成的关键工具，其核心作用是“获取硬件配置信息并生成定制OS”，具体流程如下：
-1. <strong>收集硬件信息</strong>：SYSGEN程序通过扫描或用户输入，获取目标计算机的硬件配置细节，包括CPU类型、主内存容量、磁盘数量与型号、I/O设备（如打印机、网卡）的型号与接口等；
-2. <strong>定制内核编译</strong>：根据收集的硬件信息，筛选OS内核中适配该硬件的模块（如特定设备的驱动程序），剔除无用模块（如不支持的硬件驱动），生成“硬件专属的编译内核”；
-3. <strong>系统参数优化</strong>：根据硬件性能调整OS参数（如内存分页大小、CPU调度优先级阈值），确保OS与硬件性能匹配，避免资源浪费或性能瓶颈。</p>
-<h3 id="3_7">3. 📌 与系统启动的关联：生成是启动的前提<a class="headerlink" href="#3_7" title="Permanent link">&para;</a></h3>
-<p>操作系统生成与“系统启动（2.10节）”紧密衔接，生成的定制OS是启动的基础：
-- 生成后的OS内核存储在磁盘等存储设备中；
-- 系统启动时（如BIOS/UEFI流程），引导加载程序（Bootstrap Loader）会定位并加载这份“定制内核”到内存，而非通用内核，确保启动后OS能正常识别并控制硬件。</p>
-<h3 id="4_1">4. 💡 核心价值：平衡通用性与适配性<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h3>
-<p>操作系统生成解决了“OS通用性与硬件特异性”的矛盾——OS设计时需覆盖一类硬件（如x86架构计算机），但实际使用中需适配具体硬件配置（如某台电脑的CPU、内存、设备组合）。通过SYSGEN程序定制生成，既保留了OS的通用设计框架，又实现了硬件专属的高效适配，避免通用内核因兼容过多硬件导致的性能冗余。</p>
+<h2 id="sql_2">SQL查询基本结构<a class="headerlink" href="#sql_2" title="Permanent link">&para;</a></h2>
+<p>SQL查询的基本结构是实现数据检索的核心框架，围绕“选择-来源-筛选”逻辑展开，同时包含结果处理（如去重、排序、字符串匹配）等基础功能，具体内容如下：</p>
+<h3 id="1_3">1. 基本语法与关系代数对应<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h3>
+<p>SQL基本查询语句的标准格式为：
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">select</span><span class="w"> </span><span class="n">A1</span><span class="p">,</span><span class="w"> </span><span class="n">A2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">An</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="k">from</span><span class="w"> </span><span class="n">r1</span><span class="p">,</span><span class="w"> </span><span class="n">r2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="n">rm</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="k">where</span><span class="w"> </span><span class="n">P</span>
+</span></code></pre></div></td></tr></table></div>
+- <strong>参数含义</strong>：
+  - <code>A1,A2,...,An</code>：需检索的目标属性（列），可指定单个/多个属性或通过通配符覆盖所有属性；
+  - <code>r1,r2,...,rm</code>：数据来源的关系（表），查询会对这些表执行笛卡尔积操作；
+  - <code>P</code>：筛选条件（谓词），用于过滤笛卡尔积结果中不符合需求的元组（行）。
+- <strong>关系代数对应</strong>：该语句等价于关系代数的“投影-选择-笛卡尔积”组合运算，即<br />
+<code>ΠA1,A2,...,An(σP (r1 × r2 × ... × rm))</code>，最终查询结果本身也是一个关系（具备关系的结构化特性）。</p>
+<h3 id="2-select">2. SELECT子句：定义检索结果的属性<a class="headerlink" href="#2-select" title="Permanent link">&para;</a></h3>
+<p>SELECT子句对应关系代数的“投影操作”，核心作用是从数据源中提取指定属性，形成最终结果的列结构，支持多种灵活用法：
+- <strong>基础功能</strong>：明确列出需检索的属性，例如<code>select name, dept_name from instructor</code>（提取教师的姓名和所属部门）。
+- <strong>特殊用法</strong>：
+  - 通配符<code>*</code>：表示“检索所有属性”，例如<code>select * from instructor</code>（提取教师表的所有列），无需逐一列出属性，适用于需完整数据的场景；
+  - 算术表达式：支持对数值型属性进行<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>运算，例如<code>select ID, name, salary/12 from instructor</code>（计算教师月薪并作为结果列）；
+  - 属性重命名（AS子句）：用<code>as</code>关键字为结果列指定新名称，增强可读性，例如<code>select salary/12 as monthly_salary</code>（将“月薪”列命名为<code>monthly_salary</code>），<code>as</code>可省略（如<code>salary/12 monthly_salary</code>）。
+- <strong>重复处理基础</strong>：SQL默认保留查询结果中的重复元组，可通过关键字控制：
+  - <code>distinct</code>：删除结果中的重复元组，例如<code>select distinct dept_name from instructor</code>（提取所有不重复的部门名称）；
+  - <code>all</code>：显式保留重复元组（默认行为，可省略），例如<code>select all dept_name from instructor</code>（保留部门名称的重复项）。</p>
+<h3 id="3-where">3. WHERE子句：筛选符合条件的元组<a class="headerlink" href="#3-where" title="Permanent link">&para;</a></h3>
+<p>WHERE子句对应关系代数的“选择操作”，核心作用是在<code>from</code>子句的笛卡尔积结果上，按指定条件过滤元组，仅保留符合谓词<code>P</code>的行：
+- <strong>逻辑连接符</strong>：支持用<code>and</code>（且）、<code>or</code>（或）、<code>not</code>（非）组合多个条件，例如<br />
+<code>where dept_name = 'Comp. Sci.' and salary &gt; 80000</code>（筛选计算机科学系且工资超8万的教师）。
+- <strong>特殊运算符</strong>：
+  - <code>between...and</code>：匹配数值/日期的连续范围，包含边界值，例如<code>where salary between 90000 and 100000</code>（筛选工资在9万-10万之间的教师），等价于<code>salary &gt;= 90000 and salary &lt;= 100000</code>；
+  - 元组比较：支持多属性组合比较，例如<code>where (instructor.ID, dept_name) = (teaches.ID, 'Biology')</code>（匹配“教师ID与授课ID一致，且部门为生物系”的元组），需保证两侧元组的属性数量和类型一致。</p>
+<h3 id="4-from">4. FROM子句：指定数据来源与笛卡尔积<a class="headerlink" href="#4-from" title="Permanent link">&para;</a></h3>
+<p>FROM子句的核心作用是指定查询的数据源（关系/表），并对这些表执行笛卡尔积操作（即所有表的元组两两组合）：
+- <strong>笛卡尔积特性</strong>：若<code>from</code>后有<code>r1</code>（m行）和<code>r2</code>（n行），则笛卡尔积结果为<code>m×n</code>行，包含两表的所有属性；但直接使用笛卡尔积结果通常无实际意义，需结合<code>where</code>子句筛选有效关联。
+- <strong>常见用法（表连接基础）</strong>：通过<code>where</code>子句指定“表间关联条件”，将笛卡尔积的无效组合过滤，形成有效连接，例如<br />
+<code>select name, course_id from instructor, teaches where instructor.ID = teaches.ID</code>（通过<code>ID</code>关联教师表和授课表，获取教师姓名与所授课程ID）。
+- <strong>属性重名处理</strong>：当多个表存在同名属性（如<code>instructor</code>和<code>teaches</code>均有<code>ID</code>）时，需用“表名.属性名”的格式区分，例如<code>instructor.ID</code>（教师ID）、<code>teaches.ID</code>（授课教师ID），避免歧义。</p>
+<h3 id="5-as">5. 重命名操作（AS）：简化表/属性引用<a class="headerlink" href="#5-as" title="Permanent link">&para;</a></h3>
+<p>SQL支持用<code>as</code>关键字对表或属性重命名，核心作用是简化复杂查询（尤其是多表自连接、子查询）中的引用，<code>as</code>可省略：
+- <strong>表重命名</strong>：格式为<code>表名 as 别名</code>，例如<code>from instructor as T, instructor as S</code>（将教师表分别重命名为<code>T</code>和<code>S</code>），适用于“同一表需多次引用”的场景（如比较同一表中不同元组的属性，如“查询工资高于生物系某教师的教师姓名”）。
+- <strong>属性重命名</strong>：除SELECT子句的结果列重命名外，也可在FROM子句中对表的属性重命名（较少用），核心目的均为提升查询语句的可读性和简洁性。</p>
+<h3 id="6">6. 字符串操作：匹配与处理文本数据<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
+<p>SQL提供针对字符型属性的专用操作，支持灵活的文本匹配和处理，核心功能围绕“模式匹配”展开：
+- <strong>通配符匹配（LIKE）</strong>：用<code>like</code>关键字结合通配符实现模糊匹配，常用通配符包括：
+  - <code>%</code>：匹配任意长度的子串（包括空串），例如<code>where name like '%dar%'</code>（匹配姓名中包含“dar”子串的教师，如“Darwin”“Edward”）；
+  - <code>_</code>：匹配单个字符，例如<code>where name like 'J_n'</code>（匹配姓名为3个字符且首字母“J”、尾字母“n”的人，如“Jan”“Jon”）。
+- <strong>转义字符（ESCAPE）</strong>：当需匹配的文本中包含通配符（如<code>%</code>“Main%”）时，需用<code>escape</code>指定转义字符，例如<code>where name like 'Main\%' escape '\'</code>（<code>\</code>为转义字符，此处匹配“Main%”字符串，而非“Main后接任意子串”）。
+- <strong>其他字符串函数</strong>：SQL支持文本处理函数，例如<code>||</code>（字符串连接，如<code>'Name: ' || name</code>）、<code>upper()</code>/<code>lower()</code>（大小写转换）、<code>length()</code>（字符串长度）、<code>substring()</code>（提取子串）等，具体函数因数据库系统略有差异。</p>
+<h3 id="7-order-by">7. 结果排序（ORDER BY）：调整元组显示顺序<a class="headerlink" href="#7-order-by" title="Permanent link">&para;</a></h3>
+<p>ORDER BY子句的核心作用是对查询结果按指定属性排序，支持单属性或多属性排序，默认按“升序（ASC）”排列，可显式指定“降序（DESC）”：
+- <strong>单属性排序</strong>：格式为<code>order by 属性名 [ASC/DESC]</code>，例如<code>select distinct name from instructor order by name desc</code>（按姓名降序排列教师姓名）。
+- <strong>多属性排序</strong>：按多个属性的优先级排序，优先级由前至后，例如<code>select dept_name, name from instructor order by dept_name, name</code>（先按部门名称升序排列，同一部门内按姓名升序排列），不同属性可指定不同排序方向（如<code>order by dept_name asc, salary desc</code>）。
+- <strong>注意事项</strong>：ORDER BY仅影响“结果的显示顺序”，不改变关系本身的元组顺序（关系具有“无序性”特性）。</p>
+<h3 id="8-duplicationsql">8. 重复（Duplication）处理：SQL的多集特性<a class="headerlink" href="#8-duplicationsql" title="Permanent link">&para;</a></h3>
+<p>SQL的核心特性之一是“允许关系（表）和查询结果中存在重复元组”，这与“纯关系代数要求元组唯一”不同，属于SQL查询基本结构的重要组成部分（非高级查询功能），具体包括：
+- <strong>默认行为</strong>：SQL的表（关系）本质是“多集（Multiset）”，允许同一元组多次出现；查询结果默认保留所有重复元组（即<code>select all</code>的效果），仅当显式使用<code>distinct</code>时才删除重复。
+- <strong>多集版本的关系代数操作</strong>：SQL的基本查询操作（选择、投影、笛卡尔积）均基于“多集”实现，与纯关系代数的“集合操作”有差异，例如：
+  1. 选择操作（<code>σP(r)</code>）：若原多集<code>r</code>中有<code>c1</code>个元组<code>t1</code>且<code>t1</code>满足<code>P</code>，则结果中仍保留<code>c1</code>个<code>t1</code>；
+  2. 投影操作（<code>ΠA(r)</code>）：若原多集<code>r</code>中有<code>c1</code>个元组<code>t1</code>，则结果中保留<code>c1</code>个“<code>t1</code>的投影元组”（例如<code>r1={(1,a),(2,a)}</code>，<code>ΠB(r1)</code>结果为<code>{(a),(a)}</code>）；
+  3. 笛卡尔积（<code>r1 × r2</code>）：若<code>r1</code>有<code>c1</code>个<code>t1</code>、<code>r2</code>有<code>c2</code>个<code>t2</code>，则结果中有<code>c1×c2</code>个“<code>t1.t2</code>组合元组”（例如<code>r1={(1,a),(2,a)}</code>、<code>r2={(2),(3),(3)}</code>，<code>ΠB(r1) × r2</code>结果为<code>{(a,2),(a,2),(a,3),(a,3),(a,3),(a,3)}</code>）。
+- <strong>与DISTINCT/ALL的关联</strong>：<code>distinct</code>本质是将“多集结果”转换为“集合结果”（删除重复），<code>all</code>则保留多集特性（默认），二者均属于重复处理的基础手段，需结合业务需求选择（如“提取所有部门名称”需去重，“统计每个教师的授课次数”需保留重复）。</p>
+<h2 id="_3">四、高级查询特性<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>高级查询特性是在SQL基本查询结构基础上的功能扩展，用于解决复杂数据检索需求（如多结果集运算、数据统计、空值处理、嵌套逻辑等），核心目标是提升查询的灵活性与功能性，具体内容如下：</p>
+<h3 id="1_4">1. 集合操作：多结果集的组合与筛选<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<p>集合操作基于“关系是集合”的特性，对两个或多个查询结果集（需满足“属性数量一致、对应属性类型兼容”）执行“并、交、差”运算，分为“自动去重”和“保留重复”两类，适用于“合并多条件结果”“筛选交集/差集数据”场景：
+- <strong>基本操作（自动去重）</strong>：执行运算后删除结果集中的重复元组，需对结果排序（性能略低），核心包括3类：
+  - <code>UNION（并集）</code>：合并两个结果集，保留所有存在于任一集合的元组（去重），示例：<br />
+<code>(select course_id from section where semester = 'Fall' and year = 2009) union (select course_id from section where semester = 'Spring' and year = 2010)</code>（查询2009年秋季<strong>或</strong>2010年春季开设的课程，去重）；
+  - <code>INTERSECT（交集）</code>：保留同时存在于两个结果集的元组（去重），示例：<br />
+<code>(select course_id from section where semester = 'Fall' and year = 2009) intersect (select course_id from section where semester = 'Spring' and year = 2010)</code>（查询2009年秋季<strong>且</strong>2010年春季开设的课程，去重）；
+  - <code>EXCEPT（差集）</code>：保留“第一个结果集存在、第二个结果集不存在”的元组（去重），示例：<br />
+<code>(select course_id from section where semester = 'Fall' and year = 2009) except (select course_id from section where semester = 'Spring' and year = 2010)</code>（查询2009年秋季开设、但2010年春季未开设的课程，去重）。
+- <strong>多集操作（保留重复）</strong>：执行运算后保留结果集中的重复元组，无需排序（性能更高），对应3类操作：<code>UNION ALL</code>（并集保重）、<code>INTERSECT ALL</code>（交集保重，仅保留两集合中重复次数一致的元组）、<code>EXCEPT ALL</code>（差集保重，按重复次数计算差值），示例：<br />
+  若2009年秋季“CS-101”开设2次，2010年春季“CS-101”开设1次，则<code>(select course_id from section where semester='Fall' and year=2009) union all (select course_id ... Spring 2010)</code>的结果中“CS-101”会出现3次。
+- <strong>关键注意事项</strong>：参与集合操作的结果集必须满足“结构兼容”——属性数量相同、对应属性的数据类型一致（如第一个结果集第1列是<code>varchar(8)</code>，第二个结果集第1列也需是字符串类型），否则会报错。</p>
+<h3 id="2_2">2. 聚合函数：数据统计与计算<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<p>聚合函数对“关系中某列的多值集合”执行统计运算，返回单个结果值，常用于“数据汇总”场景（如计算平均值、总数、最值等），结合<code>GROUP BY</code>可实现“分组统计”，结合<code>HAVING</code>可筛选分组结果：
+- <strong>常用聚合函数及功能</strong>：
+  | 函数名   | 功能描述                                                                 | 示例（基于instructor表）                          |
+  |----------|--------------------------------------------------------------------------|---------------------------------------------------|
+  | <code>AVG()</code>  | 计算某列（数值型）的平均值，自动忽略NULL值                               | <code>select avg(salary) from instructor where dept_name='Comp. Sci.'</code>（计算机系教师平均工资） |
+  | <code>MIN()</code>  | 查找某列的最小值，支持数值、字符、日期类型（字符按字典序，日期按时间序） | <code>select min(salary) from instructor</code>（教师最低工资） |
+  | <code>MAX()</code>  | 查找某列的最大值，类型支持同MIN()                                        | <code>select max(salary) from instructor where dept_name='Finance'</code>（财务系教师最高工资） |
+  | <code>SUM()</code>  | 计算某列（数值型）的总和，自动忽略NULL值                                 | <code>select sum(salary) from instructor where dept_name='Biology'</code>（生物系教师工资总和） |
+  | <code>COUNT()</code>| 统计“非NULL值的数量”，<code>COUNT(*)</code>统计所有元组数量（含NULL列的元组）        | <code>select count(distinct ID) from teaches where semester='Spring' and year=2010</code>（2010年春季授课的不重复教师数）；<code>select count(*) from course</code>（课程表总元组数） |
+- <strong><code>GROUP BY</code>子句：分组统计</strong>：<br />
+  按指定属性（或属性组合）将关系划分为多个“分组”，对每个分组单独执行聚合函数，核心规则：<strong>SELECT子句中，所有“非聚合函数的属性”必须出现在<code>GROUP BY</code>列表中</strong>（确保每个分组的该属性值唯一，避免统计歧义）。<br />
+  示例：<code>select dept_name, avg(salary) as avg_salary from instructor group by dept_name</code>（按部门分组，计算每个部门的教师平均工资）；<br />
+  错误示例：<code>select dept_name, ID, avg(salary) from instructor group by dept_name</code>（ID未在<code>GROUP BY</code>中，同一部门有多个ID，无法确定返回哪个ID，会报错）。
+- <strong><code>HAVING</code>子句：筛选分组结果</strong>：<br />
+  用于“过滤聚合函数计算后的分组”，与<code>WHERE</code>的核心区别在于<strong>执行时机</strong>：<code>WHERE</code>在“分组前”筛选元组（作用于单个元组），<code>HAVING</code>在“分组后”筛选分组（作用于聚合结果）。<br />
+  示例：<code>select dept_name, avg(salary) from instructor group by dept_name having avg(salary) &gt; 42000</code>（筛选平均工资超过42000的部门，先按部门分组算平均工资，再过滤分组）；<br />
+  注意：<code>HAVING</code>子句中可使用聚合函数或<code>GROUP BY</code>中的属性，不可使用非分组、非聚合的属性（如上述示例中不能用<code>salary &gt; 42000</code>，需用<code>avg(salary) &gt; 42000</code>）。</p>
+<h3 id="3-null">3. 空值（NULL）处理：应对“未知/不存在”的数据<a class="headerlink" href="#3-null" title="Permanent link">&para;</a></h3>
+<p>NULL表示“属性值未知”或“属性值不存在”（非“0”或空字符串），SQL对NULL的运算和判断有特殊规则，需避免因NULL导致的查询逻辑错误：
+- <strong>空值的核心特性</strong>：<br />
+  - 算术运算：任何包含NULL的算术表达式结果均为NULL，例如<code>5 + NULL = NULL</code>、<code>salary * 1.05 + NULL = NULL</code>；<br />
+  - 比较运算：任何与NULL的比较结果均为“UNKNOWN”（既非TRUE也非FALSE），例如<code>salary = NULL</code>、<code>5 &gt; NULL</code>的结果都是UNKNOWN，因此判断空值不能用<code>=</code>，必须用<code>IS NULL</code>。
+- <strong>三值逻辑：处理UNKNOWN结果</strong>：<br />
+  SQL的逻辑判断除“TRUE（真）”“FALSE（假）”外，新增“UNKNOWN（未知）”，用于处理含NULL的比较，核心规则：
+  - <code>OR</code>（或）：只要有一个为TRUE，结果为TRUE；若有UNKNOWN且无TRUE，结果为UNKNOWN；均为FALSE则为FALSE，例如<code>TRUE OR UNKNOWN = TRUE</code>、<code>FALSE OR UNKNOWN = UNKNOWN</code>、<code>UNKNOWN OR UNKNOWN = UNKNOWN</code>；
+  - <code>AND</code>（且）：只要有一个为FALSE，结果为FALSE；若有UNKNOWN且无FALSE，结果为UNKNOWN；均为TRUE则为TRUE，例如<code>TRUE AND UNKNOWN = UNKNOWN</code>、<code>FALSE AND UNKNOWN = FALSE</code>、<code>UNKNOWN AND UNKNOWN = UNKNOWN</code>；
+  - <code>NOT</code>（非）：<code>NOT TRUE = FALSE</code>、<code>NOT FALSE = TRUE</code>、<code>NOT UNKNOWN = UNKNOWN</code>；<br />
+  关键影响：<code>WHERE</code>子句仅保留“结果为TRUE”的元组，“UNKNOWN”和“FALSE”的元组都会被过滤，例如<code>where salary &gt; 80000</code>会过滤掉“salary为NULL”的元组（因<code>salary &gt; 80000</code>结果为UNKNOWN）。
+- <strong>空值检测与聚合函数处理</strong>：<br />
+  - 空值检测：用<code>IS NULL</code>（判断为空）或<code>IS NOT NULL</code>（判断非空），示例：<code>select name from instructor where salary is null</code>（查询工资为空的教师）；<br />
+  - 聚合函数处理：除<code>COUNT(*)</code>外，所有聚合函数均自动忽略NULL值；若某分组的聚合列全为NULL，<code>COUNT()</code>返回0，其他函数（<code>AVG</code>/<code>SUM</code>/<code>MIN</code>/<code>MAX</code>）返回NULL，例如“某部门无教师（salary全为NULL）”，<code>avg(salary)</code>返回NULL，<code>count(salary)</code>返回0。</p>
+<h3 id="4">4. 嵌套子查询：复杂逻辑的分层实现<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<p>嵌套子查询是“在一个查询（外层查询）中包含另一个完整的SELECT-FROM-WHERE表达式（内层查询）”，内层查询的结果作为外层查询的“数据来源”或“判断条件”，适用于“需多步检索”的复杂场景，按子查询所在位置可分为4类：
+- <strong>WHERE子句中的子查询：作为筛选条件</strong><br />
+  内层查询返回一个“单值集合”或“元组集合”，外层查询通过关键字判断“元组是否满足与该集合的关系”，核心用途包括：
+  1. <strong>集合成员检测（IN/NOT IN）</strong>：判断外层元组的属性值是否在“内层查询结果集”中（<code>IN</code>）或不在（<code>NOT IN</code>），示例：<br />
+<code>select distinct course_id from section where semester='Fall' and year=2009 and course_id not in (select course_id from section where semester='Spring' and year=2010)</code>（2009年秋季开设、但2010年春季未开设的课程）；<br />
+     注意：若内层查询结果含NULL，<code>NOT IN</code>可能返回空结果（因<code>NULL</code>导致三值逻辑的UNKNOWN），需谨慎使用。
+  2. <strong>集合比较（SOME/ALL）</strong>：结合比较运算符（<code>&gt;</code>/<code>&lt;</code>/<code>&gt;=</code>/<code>&lt;=</code>/<code>=</code>/<code>!=</code>），判断外层属性值是否“满足与集合中某一个元素的比较（SOME）”或“满足与集合中所有元素的比较（ALL）”，示例：<br />
+     - <code>select name from instructor where salary &gt; some (select salary from instructor where dept_name='Biology')</code>（工资高于生物系<strong>某一位</strong>教师的教师姓名）；<br />
+     - <code>select name from instructor where salary &gt; all (select salary from instructor where dept_name='Biology')</code>（工资高于生物系<strong>所有</strong>教师的教师姓名）；<br />
+     等价关系：<code>= SOME</code>等价于<code>IN</code>，<code>!= ALL</code>等价于<code>NOT IN</code>。
+  3. <strong>空关系检测（EXISTS/NOT EXISTS）</strong>：判断“内层查询结果集是否非空（EXISTS）”或“为空（NOT EXISTS）”，无需关注内层查询返回的具体值（常用<code>select *</code>），且支持“相关子查询”（内层查询引用外层查询的属性），灵活性极高，示例：<br />
+     - <code>select course_id from section as S where semester='Fall' and year=2009 and exists (select * from section as T where semester='Spring' and year=2010 and S.course_id=T.course_id)</code>（2009年秋季和2010年春季均开设的课程，S为外层表别名，T为内层表别名，通过<code>S.course_id=T.course_id</code>关联）；<br />
+     - <code>select distinct S.ID, S.name from student as S where not exists ( (select course_id from course where dept_name='Biology') except (select T.course_id from takes as T where S.ID=T.ID) )</code>（选修了生物系所有课程的学生，利用“X except Y为空”等价于“X包含于Y”的逻辑）。
+  4. <strong>重复检测（UNIQUE）</strong>：判断“内层查询结果集是否无重复元组”，返回TRUE（无重复）或FALSE（有重复），示例：<br />
+<code>select T.course_id from course as T where unique (select R.course_id from section as R where T.course_id=R.course_id and R.year=2009)</code>（2009年最多开设一次的课程，内层查询若返回重复的course_id，则UNIQUE为FALSE，该课程不被选中）。</p>
+<ul>
+<li>
+<p><strong>FROM子句中的子查询：作为临时关系</strong><br />
+  内层查询的结果集被视为一个“临时关系”（需指定别名，否则报错），外层查询从该临时关系中检索数据，适用于“需先对数据做预处理（如分组统计），再基于预处理结果查询”的场景，示例：<br />
+<code>select dept_name, avg_salary from (select dept_name, avg(salary) as avg_salary from instructor group by dept_name) as dept_avg where avg_salary &gt; 42000</code>（查询平均工资超42000的部门，内层查询先按部门算平均工资，生成临时关系<code>dept_avg</code>，外层查询从<code>dept_avg</code>中筛选结果）；<br />
+  注意：临时关系的别名是必需的（如上述<code>dept_avg</code>），用于在外层查询中引用该临时关系的属性（如<code>dept_avg.avg_salary</code>）。</p>
+</li>
+<li>
+<p><strong>WITH子句：定义可复用的临时关系</strong><br />
+<code>WITH</code>子句在查询开头定义一个或多个“临时关系”（仅在当前查询中有效，查询结束后销毁），避免重复编写相同的子查询，提升代码可读性，支持多临时关系（用逗号分隔），示例：  </p>
+</li>
+<li>单临时关系：<code>with max_budget (value) as (select max(budget) from department) select department.name from department, max_budget where department.budget = max_budget.value</code>（查询预算最高的部门，<code>max_budget</code>是临时关系，存储最高预算值）；  </li>
+<li>
+<p>多临时关系：<code>with dept_total (dept_name, value) as (select dept_name, sum(salary) from instructor group by dept_name), dept_total_avg(value) as (select avg(value) from dept_total) select dept_name from dept_total, dept_total_avg where dept_total.value &gt; dept_total_avg.value</code>（查询总工资高于所有部门平均总工资的部门，先定义<code>dept_total</code>（各部门总工资）和<code>dept_total_avg</code>（平均总工资）两个临时关系，再筛选结果）。</p>
+</li>
+<li>
+<p><strong>SELECT子句中的标量子查询：返回单个值</strong><br />
+  内层查询必须返回“单个值”（即结果集只有1行1列），作为外层查询SELECT子句的一个“属性值”，适用于“为每条外层元组附加一个基于其他表计算的值”的场景，示例：<br />
+<code>select dept_name, (select count(*) from instructor where department.dept_name = instructor.dept_name) as num_instructors from department</code>（查询每个部门及其对应的教师人数，内层查询为每个部门（外层<code>department.dept_name</code>）统计教师数量，返回单个值作为<code>num_instructors</code>列）；<br />
+  注意：若标量子查询返回多行或多列，会触发运行时错误，需确保内层查询逻辑仅返回单个值（可通过<code>limit 1</code>或聚合函数保障）。</p>
+</li>
+</ul>
+<h2 id="dml">五、数据操纵语言（DML）<a class="headerlink" href="#dml" title="Permanent link">&para;</a></h2>
+<p>数据操纵语言（DML，Data Manipulation Language）是SQL中用于<strong>修改数据库数据</strong>的核心模块，不改变数据库结构（如表、属性定义），仅对表中的元组（行）执行“删除、插入、更新”操作，确保数据的动态维护，具体内容如下：</p>
+<h3 id="1-delete">1. 删除操作（DELETE）：移除表中的元组<a class="headerlink" href="#1-delete" title="Permanent link">&para;</a></h3>
+<p>DELETE语句用于从指定表中删除符合条件的元组，若不指定条件则删除表中所有元组（保留表结构，仅清空数据），核心是“精准筛选待删数据，避免误删”。
+- <strong>基本语法</strong>：<br />
+  <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="k">delete</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="p">[</span><span class="k">where</span><span class="w"> </span><span class="err">筛选条件</span><span class="p">];</span>
+</span></code></pre></div></td></tr></table></div>
+  - 关键字说明：<code>from</code>指定待删除数据所在的表；<code>where</code>可选，用于筛选“需删除的元组”，无<code>where</code>时删除表中所有元组（需谨慎操作）。</p>
+<ul>
+<li><strong>典型示例与逻辑解析</strong>：</li>
+<li><strong>删除表中所有元组</strong>（清空数据，保留表结构）：<br />
+<code>delete from instructor;</code><br />
+     作用：删除<code>instructor</code>表中所有教师记录，表的属性（ID、name等）和约束（主键、外键等）仍保留，后续可重新插入数据。</li>
+<li><strong>按简单条件删除</strong>（筛选特定属性值的元组）：<br />
+<code>delete from instructor where dept_name = 'Finance';</code><br />
+     作用：仅删除“所属部门为财务系（Finance）”的教师元组，其他部门的教师记录不受影响。</li>
+<li><strong>按关联条件删除</strong>（结合子查询筛选关联表数据）：<br />
+<code>delete from instructor where dept_name in (select dept_name from department where building = 'Watson');</code><br />
+     作用：删除“所在部门位于Watson楼”的教师，逻辑分两步：先通过子查询找到<code>department</code>表中“building='Watson'”的部门名称，再删除<code>instructor</code>表中属于这些部门的教师元组。</li>
+<li>
+<p><strong>按聚合条件删除</strong>（结合子查询计算动态值筛选）：<br />
+<code>delete from instructor where salary &lt; (select avg(salary) from instructor);</code><br />
+     作用：删除“工资低于教师平均工资”的元组，<strong>关键机制</strong>：SQL会先执行子查询计算<code>avg(salary)</code>（固定平均工资值），再基于该固定值筛选待删元组；若边删边重新计算平均工资，会导致结果不准确（删除过程中平均工资会动态上升），因此SQL默认“先计算条件值，再批量删除”。</p>
+</li>
+<li>
+<p><strong>关键注意事项</strong>：  </p>
+</li>
+<li>DELETE仅删除元组，不删除表结构（与<code>DROP TABLE</code>不同，后者删除表结构和数据）；  </li>
+<li>若表存在外键约束，删除元组需满足外键规则（如关联表有引用时，需按<code>ON DELETE</code>规则处理，否则报错）。</li>
+</ul>
+<h3 id="2-insert">2. 插入操作（INSERT）：向表中添加新元组<a class="headerlink" href="#2-insert" title="Permanent link">&para;</a></h3>
+<p>INSERT语句用于向指定表中插入新元组，支持“插入单个/多个指定值”“插入查询结果集”，核心是“确保插入数据符合表的属性类型和完整性约束”。
+- <strong>基本语法（两种核心形式）</strong>：
+  1. <strong>不指定属性顺序</strong>（需与表结构的属性顺序完全一致）：<br />
+     <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="err">表名</span><span class="w"> </span><span class="k">values</span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">值</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="err">值</span><span class="n">n</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+     要求：<code>值1~值n</code>的数量、数据类型需与表的属性数量、类型一一对应（如<code>instructor</code>表属性顺序为ID、name、dept_name、salary，则插入值需按“ID值、姓名、部门、工资”顺序填写）。
+  2. <strong>指定属性顺序</strong>（可灵活调整属性顺序，未指定的属性需允许NULL或有默认值）：<br />
+     <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">insert</span><span class="w"> </span><span class="k">into</span><span class="w"> </span><span class="err">表名</span><span class="p">(</span><span class="err">属性</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">属性</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="err">属性</span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="k">values</span><span class="p">(</span><span class="err">值</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">值</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="err">值</span><span class="n">k</span><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+     优势：无需记忆表的属性顺序，仅需为指定的<code>k</code>个属性提供对应值，未指定的属性若定义了“默认值”则取默认值，若允许NULL则为NULL（需符合表的约束，如<code>name</code>设为<code>not null</code>则必须指定并提供非NULL值）。</p>
+<ul>
+<li><strong>典型示例与特殊场景</strong>：</li>
+<li><strong>插入单个元组（指定属性）</strong>：<br />
+<code>insert into course(course_id, title, dept_name, credits) values('CS-437', 'Database Systems', 'Comp. Sci.', 4);</code><br />
+     作用：向<code>course</code>表插入“课程ID为CS-437、名称为数据库系统、所属计算机系、学分4”的课程记录，属性顺序与表结构无关，仅需保证“指定属性与值对应”。</li>
+<li><strong>插入含NULL的元组</strong>（属性允许NULL时）：<br />
+<code>insert into student values('3003', 'Green', 'Finance', null);</code><br />
+     作用：向<code>student</code>表插入“学号3003、姓名Green、财务系、总学分（tot_cred）为NULL”的学生记录，因<code>tot_cred</code>未设<code>not null</code>，故可插入NULL（表示“总学分未统计”）。</li>
+<li>
+<p><strong>插入查询结果集</strong>（批量插入，将一个查询的结果作为新元组插入）：<br />
+<code>insert into student select ID, name, dept_name, 0 from instructor;</code><br />
+     作用：将<code>instructor</code>表中所有教师的“ID、name、dept_name”作为<code>student</code>表的“ID、name、dept_name”，并将<code>student</code>表的<code>tot_cred</code>设为0，批量插入学生记录。<br />
+     关键规则：<code>select</code>的结果需与<code>insert</code>目标表的“属性数量、数据类型”兼容（如<code>select</code>返回4列，<code>student</code>表有4个属性，且对应列类型一致）；SQL会<strong>先完整执行<code>select</code>获取所有结果，再批量插入</strong>，避免“插入过程中查询结果变化”（如避免<code>insert into table1 select * from table1</code>的循环插入问题）。</p>
+</li>
+<li>
+<p><strong>关键注意事项</strong>：  </p>
+</li>
+<li>插入数据需符合表的完整性约束（如主键不重复、外键存在于关联表、<code>not null</code>属性非空），否则插入失败；  </li>
+<li>批量插入（如插入查询结果）时，需确保结果集与目标表结构兼容，避免数据类型不匹配。</li>
+</ul>
+<h3 id="3-update">3. 更新操作（UPDATE）：修改表中已有元组的属性值<a class="headerlink" href="#3-update" title="Permanent link">&para;</a></h3>
+<p>UPDATE语句用于修改指定表中符合条件的元组的属性值，若不指定条件则更新表中所有元组的对应属性（需谨慎，避免全表误更新），核心是“精准定位待更新元组，灵活设置新值”。
+- <strong>基本语法</strong>：<br />
+  <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="k">update</span><span class="w"> </span><span class="err">表名</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="k">set</span><span class="w"> </span><span class="err">属性</span><span class="mi">1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">新值</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">属性</span><span class="mi">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">新值</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">...,</span><span class="w"> </span><span class="err">属性</span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">新值</span><span class="n">k</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="p">[</span><span class="k">where</span><span class="w"> </span><span class="err">筛选条件</span><span class="p">];</span>
+</span></code></pre></div></td></tr></table></div>
+  - 关键字说明：<code>set</code>指定“需更新的属性”及“对应的新值”（新值可是固定值、算术表达式、子查询结果）；<code>where</code>可选，筛选“需更新的元组”，无<code>where</code>时更新表中所有元组。</p>
+<ul>
+<li><strong>典型示例与进阶用法</strong>：</li>
+<li><strong>按简单条件更新</strong>（分批次更新不同元组）：<br />
+     <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">-- 工资&gt;100000的教师涨3%</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="k">update</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">03</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">100000</span><span class="p">;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1">-- 工资&lt;=100000的教师涨5%</span>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="k">update</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">05</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">100000</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+     作用：分两次更新教师工资，需注意“更新顺序”——若先更新低工资再更新高工资，不会影响结果（因高工资条件<code>salary&gt;100000</code>在第一次更新中未被触发）；但可通过<code>CASE</code>语句优化为单次更新，更高效。</li>
+<li><strong>用CASE语句实现条件更新</strong>（单次更新多条件场景）：<br />
+     <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span>
+<span class="normal"><a href="#__codelineno-8-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">update</span><span class="w"> </span><span class="n">instructor</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">set</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">case</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">                </span><span class="k">when</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">100000</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">05</span><span class="w">  </span><span class="c1">-- 低工资涨5%</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="n">salary</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1</span><span class="p">.</span><span class="mi">03</span><span class="w">                       </span><span class="c1">-- 高工资涨3%</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">            </span><span class="k">end</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+     优势：无需分两次执行，通过<code>CASE</code>语句在单次更新中按条件设置不同新值，减少SQL执行次数，避免漏更或重复更新。</li>
+<li>
+<p><strong>标量子查询更新</strong>（基于其他表的计算结果更新）：<br />
+     <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">update</span><span class="w"> </span><span class="n">student</span><span class="w"> </span><span class="n">S</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="k">set</span><span class="w"> </span><span class="n">tot_cred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">    </span><span class="k">select</span><span class="w"> </span><span class="k">case</span>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">               </span><span class="k">when</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">credits</span><span class="p">)</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="k">sum</span><span class="p">(</span><span class="n">credits</span><span class="p">)</span><span class="w">  </span><span class="c1">-- 有选课记录则求和</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">               </span><span class="k">else</span><span class="w"> </span><span class="mi">0</span><span class="w">                                           </span><span class="c1">-- 无选课记录设为0</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">           </span><span class="k">end</span>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">    </span><span class="k">from</span><span class="w"> </span><span class="n">takes</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="k">C</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">course_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">C</span><span class="p">.</span><span class="n">course_id</span><span class="w">  </span><span class="c1">-- 关联选课表与课程表，获取学分</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">S</span><span class="p">.</span><span class="n">ID</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">ID</span><span class="w">                </span><span class="c1">-- 关联学生表与选课表，匹配当前学生</span>
+</span><span id="__span-9-10"><a id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">grade</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="w">             </span><span class="c1">-- 排除不及格课程</span>
+</span><span id="__span-9-11"><a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">      </span><span class="k">and</span><span class="w"> </span><span class="n">T</span><span class="p">.</span><span class="n">grade</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w">        </span><span class="c1">-- 排除成绩为空的课程</span>
+</span><span id="__span-9-12"><a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+     作用：重新计算每个学生的总学分（<code>tot_cred</code>），逻辑分三步：<br />
+     ① 对每个学生（<code>S.ID</code>），通过子查询关联<code>takes</code>（选课记录）和<code>course</code>（课程学分）；<br />
+     ② 筛选“成绩非F且非空”的课程，求和学分；<br />
+     ③ 用<code>CASE</code>处理“无选课记录（sum(credits)为NULL）”的情况，设为0，避免<code>tot_cred</code>被更新为NULL。</p>
+</li>
+<li>
+<p><strong>关键注意事项</strong>：  </p>
+</li>
+<li><code>where</code>条件是“精准更新”的核心，若遗漏则会更新表中所有元组（如<code>update instructor set salary = salary * 1.05</code>会让所有教师工资涨5%，需谨慎）；  </li>
+<li>标量子查询需返回“单个值”（1行1列），否则会触发运行时错误；若子查询可能返回NULL，需用<code>CASE</code>或<code>IFNULL</code>处理，确保更新值符合表约束。</li>
+</ul>
+<h2 id="_4">六、索引<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>索引是数据库中用于<strong>提升查询效率</strong>的辅助数据结构，通过对表中特定属性（或属性组合）建立有序映射，避免查询时的“全表扫描”，快速定位符合条件的元组；同时，唯一索引还能辅助保障数据完整性（防止属性值重复）。核心操作包括“索引创建”和“索引删除”，具体内容如下：</p>
+<h3 id="1-create-index">1. 索引创建（CREATE INDEX）<a class="headerlink" href="#1-create-index" title="Permanent link">&para;</a></h3>
+<p>通过<code>CREATE INDEX</code>语句创建索引，根据功能需求可分为“普通索引”和“唯一索引”，需指定索引名、目标表及索引对应的属性（可设置排序方式）。
+- <strong>基本语法框架</strong>：<br />
+  <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="p">[</span><span class="k">UNIQUE</span><span class="p">]</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="err">索引名</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="err">表名</span><span class="p">(</span><span class="err">属性</span><span class="mi">1</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">/</span><span class="k">DESC</span><span class="p">],</span><span class="w"> </span><span class="err">属性</span><span class="mi">2</span><span class="w"> </span><span class="p">[</span><span class="k">ASC</span><span class="o">/</span><span class="k">DESC</span><span class="p">],</span><span class="w"> </span><span class="p">...);</span>
+</span></code></pre></div></td></tr></table></div>
+  - 关键字说明：<code>UNIQUE</code>（可选）表示“唯一索引”，无则为“普通索引”；<code>ASC</code>（默认，可省略）表示属性按升序排序，<code>DESC</code>表示按降序排序；索引名需唯一，避免与其他索引重名。</p>
+<ul>
+<li><strong>两类核心索引及示例解析</strong>：</li>
+<li>
+<p><strong>普通索引</strong>：仅用于加速查询，不限制属性值的唯一性（允许重复值），适用于“频繁作为查询条件、但值可重复”的属性。<br />
+     示例：<code>CREATE INDEX H_INDEX ON STUDENT(HEIGHT);</code><br />
+     解析：  </p>
+<ul>
+<li>索引名：<code>H_INDEX</code>（自定义，需见名知意，此处为“学生身高索引”）；  </li>
+<li>目标表：<code>STUDENT</code>（对学生表建立索引）；  </li>
+<li>索引属性：<code>HEIGHT</code>（基于“身高”属性建立索引）；  </li>
+<li>作用：当执行<code>SELECT * FROM STUDENT WHERE HEIGHT &gt; 180</code>这类查询时，数据库可通过<code>H_INDEX</code>快速定位身高超180的学生，无需扫描全表。</li>
+</ul>
+</li>
+<li>
+<p><strong>唯一索引</strong>：除加速查询外，还强制要求“索引对应的属性（或属性组合）值唯一”，若插入/更新导致值重复，会触发错误，适用于“需唯一标识、且频繁查询”的属性（如主键的辅助索引，主键默认自带唯一索引）。<br />
+     示例：<code>CREATE UNIQUE INDEX SC_INDEX ON SC(SNO ASC, CNO DESC);</code><br />
+     解析：  </p>
+<ul>
+<li>索引名：<code>SC_INDEX</code>（针对“学生选课表（SC）”的索引）；  </li>
+<li>目标表：<code>SC</code>（选课表，存储学生编号（SNO）、课程编号（CNO）等信息）；  </li>
+<li>索引属性及排序：<code>SNO ASC</code>（学生编号按升序）、<code>CNO DESC</code>（课程编号按降序），属于“组合唯一索引”；  </li>
+<li>核心作用：① 加速“按SNO和CNO查询”的语句（如<code>SELECT * FROM SC WHERE SNO='2023001' AND CNO='CS-101'</code>）；② 强制“同一学生（SNO）不能选同一课程（CNO）”（因索引唯一，重复的SNO+CNO组合无法插入），辅助保障选课数据的完整性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-drop-index">2. 索引删除（DROP INDEX）<a class="headerlink" href="#2-drop-index" title="Permanent link">&para;</a></h3>
+<p>当索引不再需要（如属性查询频率降低、表结构变更）时，通过<code>DROP INDEX</code>语句删除索引，删除后仅移除索引结构，不影响表本身的数据及结构。
+- <strong>基本语法</strong>：<br />
+  <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="k">DROP</span><span class="w"> </span><span class="k">INDEX</span><span class="w"> </span><span class="err">索引名</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+  - 示例：<code>DROP INDEX H_INDEX;</code><br />
+    解析：删除名为<code>H_INDEX</code>的索引，删除后：① 针对<code>STUDENT</code>表<code>HEIGHT</code>属性的查询将不再通过该索引加速（可能恢复全表扫描）；② 若<code>H_INDEX</code>是普通索引，<code>HEIGHT</code>属性的值仍可重复（删除索引不改变数据本身）。</p>
+<ul>
+<li><strong>关键注意事项</strong>：  </li>
+<li>索引删除不可逆，需确认索引不再使用后执行；  </li>
+<li>删除索引不会影响表的数据和表结构，仅移除索引的辅助映射；  </li>
+<li>若索引是“唯一索引”，删除后其“值唯一”的约束也会消失（如需继续保障唯一性，需通过<code>UNIQUE</code>约束或主键约束实现）。</li>
+</ul>
 
 
 

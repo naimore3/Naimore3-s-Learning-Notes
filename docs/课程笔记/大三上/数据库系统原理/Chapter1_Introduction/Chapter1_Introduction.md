@@ -46,6 +46,9 @@
 - **DB**：数据库（Database），一组相互关联的数据集合（a collection of interrelated data），包含特定企业的信息。
 - **Applications**：访问数据的程序集（Set of programs to access the data）。
 - **整体定义**：DBMS 包含特定企业的信息，包括相互关联的数据集合、访问数据的程序集，以及提供便利且高效的使用环境（An environment that is both convenient and efficient to use）。
+  - Collection of interrelated data
+  - Set of program to access the data
+  - An environment that is both convenient and efficient to use
 - **数据库应用示例**（Database Applications）：
   - 银行（Banking）：所有交易（all transactions）。
   - 航空（Airlines）：预订、调度（reservations, schedules）。

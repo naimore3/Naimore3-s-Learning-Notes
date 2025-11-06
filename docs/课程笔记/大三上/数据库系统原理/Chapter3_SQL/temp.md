@@ -1,0 +1,175 @@
+### 第三章：SQL
+
+#### 背景（Background）
+- **SQL 历史**：
+  - 1970s：IBM Sequel (System R)。
+  - 1986：ANSI 和 ISO 发布 SQL-86。
+  - 1987：IBM SAA-SQL。
+  - 1989：ANSI SQL-89（扩展标准）。
+  - 1992：SQL-92。
+  - 1999：SQL-99。
+  - 2003：SQL:2003。
+  - 2008：SQL:2008。
+  - 2011：SQL:2011。
+- **SQL 组件**：
+  - 数据定义语言 (DDL)。
+  - 数据操纵语言 (DML)。
+  - 数据控制语言 (DCL)：完整性、授权。
+  - 嵌入式 SQL 和动态 SQL。
+- **SQL 基础**：基于集合和关系操作，具有修改和增强。
+
+#### 数据定义语言 (DDL)
+- **指定关系信息**：
+  - 每个关系的模式。
+  - 每个属性的域值。
+  - 完整性约束。
+  - 每个关系的索引集。
+  - 每个关系的安全和授权信息。
+  - 每个关系的物理存储结构。
+- **创建表 (Create Table)**：
+  - 语法：create table r (A1 D1, A2 D2, ..., An Dn, (integrity_constraint1), ..., (integrity_constraintk))。
+  - 示例：create table instructor (ID char(5), name varchar(20), dept_name varchar(20), salary numeric(8,2))。
+- **完整性约束**：
+  - not null。
+  - primary key (A1, ..., An)。
+  - foreign key (A1, ..., An) references r on delete restrict/cascade/set null。
+  - check (P)，其中 P 是谓词。
+  - 示例：create table instructor (ID char(5), name varchar(20) not null, dept_name varchar(20), salary numeric(8,2), primary key (ID), foreign key (dept_name) references department)。
+- **其他表定义示例**：
+  - student：ID, name, dept_name, tot_cred；主键 ID；外键 dept_name 引用 department。
+  - takes：ID, course_id, sec_id, semester, year, grade；主键 (ID, course_id, sec_id, semester, year)；外键 ID 引用 student，外键 (course_id, sec_id, semester, year) 引用 section。
+  - course：course_id, title, dept_name, credits；主键 course_id；外键 dept_name 引用 department。
+- **域类型**：
+  - char(n)：固定长度字符串。
+  - varchar(n)：可变长度字符串。
+  - int：整数。
+  - smallint：小整数。
+  - numeric(p,d)：固定点数，p 位数字，d 位小数。
+  - real, double precision：浮点数。
+  - float(n)：至少 n 位浮点数。
+- **删除和修改表**：
+  - drop table：删除关系的所有信息。
+  - alter table r add A D：添加属性 A（域 D）。
+
+#### 基本查询结构 (Basic Structure__query)
+- **典型查询形式**：
+  - select A1, A2, ..., An from r1, r2, ..., rm where P。
+  - 等价于关系代数：Π_A1, A2, ..., An(σ_P(r1 × r2 × ... × rm))。
+- **Select 子句**：
+  - 选择属性：select name from instructor。
+  - 所有属性：select * from instructor。
+  - 算术表达式：select ID, name, salary/12 from instructor。
+  - 重命名：select ID, name, salary/12 as monthly_salary。
+  - 去重：select distinct dept_name from instructor。
+  - 保留重复：select all dept_name from instructor。
+- **Where 子句**：
+  - 谓词：select name from instructor where dept_name = 'Comp. Sci.'。
+  - 逻辑运算：and, or, not。
+  - 示例：select name from instructor where dept_name = 'Comp. Sci.' and salary > 80000。
+  - 范围：between 90000 and 100000。
+  - 元组比较：where (instructor.ID, dept_name) = (teaches.ID, 'Biology')。
+- **From 子句**：
+  - 笛卡尔积：select * from instructor, teaches。
+  - 示例：select name, course_id from instructor, teaches where instructor.ID = teaches.ID。
+  - 示例：select name, course_id from instructor, teaches where instructor.ID = teaches.ID and instructor.dept_name = 'Art'。
+- **重命名 (As Clause)**：
+  - old_name as new_name。
+  - 示例：select distinct T.name from instructor as T, instructor as S where T.salary > S.salary and S.dept_name = 'Comp. Sci.'。
+- **字符串操作**：
+  - like '%dar%'：匹配包含 "dar"。
+  - like 'Main\%' escape '\'：转义。
+  - 其他：|| (连接)，upper/lower，length，substring 等。
+- **排序 (Order By)**：
+  - select distinct name from instructor order by name。
+  - desc/asc：order by name desc。
+  - 多属性：order by dept_name, name。
+- **多重集语义**：
+  - SQL 支持重复；多重集版本的代数操作符。
+- **集合操作**：
+  - union, intersect, except：自动去重。
+  - union all, intersect all, except all：保留重复。
+  - 示例：Fall 2009 或 Spring 2010 课程：(select course_id from section where semester = 'Fall' and year = 2009) union (select course_id from section where semester = 'Spring' and year = 2010)。
+  - 示例：Fall 2009 但不在 Spring 2010：except。
+  - 示例：Fall 2009 和 Spring 2010：intersect。
+- **聚合函数**：
+  - avg, min, max, sum, count。
+  - 示例：select avg(salary) from instructor where dept_name = 'Comp. Sci.'。
+  - 示例：select count(distinct ID) from teaches where semester = 'Spring' and year = 2010。
+  - 示例：select count(*) from course。
+- **分组 (Group By)**：
+  - select dept_name, avg(salary) as avg_salary from instructor group by dept_name。
+  - 注意：select 子句中非聚合属性必须在 group by 中。
+- **Having 子句**：
+  - 在分组后应用谓词。
+  - 示例：select dept_name, avg(salary) from instructor group by dept_name having avg(salary) > 42000。
+- **Null 值**：
+  - null 表示未知或不存在。
+  - 算术涉及 null 结果为 null。
+  - is null 检查。
+  - 聚合忽略 null（除 count(*)）。
+  - 比较返回 unknown（三值逻辑：true, false, unknown）。
+  - where 谓词为 unknown 视为 false。
+
+#### 嵌套子查询 (Nested Subqueries)
+- **子查询位置**：select 中的属性、from 中的关系、where 中的谓词。
+- **集合成员测试 (In/Not In)**：
+  - 示例：Fall 2009 和 Spring 2010 课程：where course_id in (select course_id from section where semester = 'Spring' and year = 2010)。
+  - 示例：Fall 2009 但不在 Spring 2010：not in。
+  - 示例：ID 10101 教师的学生数：select count(distinct ID) from takes where (course_id, sec_id, semester, year) in (select ... from teaches where teaches.ID = 10101)。
+- **集合比较 (Some/All)**：
+  - > some：大于至少一个。
+  - 示例：薪资 > Biology 部门至少一个：where salary > some (select salary from instructor where dept_name = 'Biology')。
+  - > all：大于所有。
+  - 示例：薪资 > Biology 部门所有：> all。
+  - 定义：F <comp> some r ⇔ ∃ t ∈ r (F <comp> t)；F <comp> all r ⇔ ∀ t ∈ r (F <comp> t)。
+- **存在测试 (Exists/Not Exists)**：
+  - exists：子查询非空返回 true。
+  - 示例：Fall 2009 和 Spring 2010 课程：where exists (select * from section as T where semester = 'Spring' and year = 2010 and S.course_id = T.course_id)。
+  - 示例：取过 Biology 所有课程的学生：where not exists ((select course_id from course where dept_name = 'Biology') except (select T.course_id from takes as T where S.ID = T.ID))。
+- **唯一性测试 (Unique/Not Unique)**：
+  - unique：子查询无重复返回 true。
+  - 示例：2009 年最多一次的课程：where unique (select R.course_id from section as R where T.course_id = R.course_id and R.year = 2009)。
+- **From 子句中的子查询**：
+  - 示例：平均薪资 > 42000 部门：select dept_name, avg_salary from (select dept_name, avg(salary) as avg_salary from instructor group by dept_name) where avg_salary > 42000。
+  - 可重命名：as dept_avg (dept_name, avg_salary)。
+- **With 子句**：
+  - 定义临时关系。
+  - 示例：最大预算部门：with max_budget (value) as (select max(budget) from department) select department.name from department, max_budget where department.budget = max_budget.value。
+  - 复杂示例：总薪资 > 平均总薪资部门：with dept_total (dept_name, value) as ..., dept_total_avg(value) as ... select dept_name from dept_total, dept_total_avg where dept_total.value > dept_total_avg.value。
+- **Select 子句中的子查询 (Scalar Subquery)**：
+  - 返回单个值。
+  - 示例：部门及其教师数：select dept_name, (select count(*) from instructor where department.dept_name = instructor.dept_name) as num_instructors from department。
+- **集合操作总结**：in/not in, >some/all 等, exists/not exists, unique/not unique。
+
+#### 数据操纵语言 (DML: Insert, Delete, Update)
+- **删除 (Deletion)**：
+  - delete from r where P。
+  - 示例：delete from instructor。
+  - 示例：delete from instructor where dept_name = 'Finance'。
+  - 示例：delete from instructor where dept_name in (select dept_name from department where building = 'Watson')。
+  - 示例：delete from instructor where salary < (select avg(salary) from instructor)（先计算平均值，再删除）。
+- **插入 (Insertion)**：
+  - insert into r values (v1, ..., vn)。
+  - 示例：insert into course values ('CS-437', 'Database Systems', 'Comp. Sci.', 4)。
+  - 示例：insert into course (course_id, title, dept_name, credits) values ('CS-437', 'Database Systems', 'Comp. Sci.', 4)。
+  - 示例：insert into student values ('3003', 'Green', 'Finance', null)。
+  - 子查询插入：insert into student select ID, name, dept_name, 0 from instructor。
+- **更新 (Update)**：
+  - update r set A = expr where P。
+  - 示例：> 100000 薪资 +3%，其他 +5%：update instructor set salary = salary * 1.03 where salary > 100000; update instructor set salary = salary * 1.05 where salary <= 100000。
+  - Case 语句：update instructor set salary = case when salary <= 100000 then salary * 1.05 else salary * 1.03 end。
+  - 子查询更新：update student S set tot_cred = (select sum(credits) from takes, course where ... and S.ID = takes.ID and takes.grade <> 'F' and takes.grade is not null)。
+
+#### 索引 (Index)
+- 创建：CREATE INDEX H_INDEX ON STUDENT(HEIGHT)。
+- 唯一索引：CREATE UNIQUE INDEX SC_INDEX ON SC(SNO ASC, CNO DESC)。
+- 删除：DROP INDEX H_INDEX。
+
+#### 总结 (Summary)
+- 查询：SELECT。
+- 修改：Delete, Insert, Update。
+- 定义：Table, View。
+
+#### 示例问题
+- 关系：R(RNO, name)，B(RNO, BookNO)。
+- 等价于 Π_RNO(R) - Π_RNO(σ_BookNO=“B01”(R ⋈ B)) 的 SQL：B. select RNO from R where RNO NOT IN (select RNO from B where BookNO = “B01”)。

@@ -1,0 +1,194 @@
+# Chapter2: Relation Model
+### 第二章：Relational Model
+
+#### 关系数据结构（Relational Data Structure）
+- **数学定义**：
+  - 关系是域列表的笛卡尔积的子集：D1 × D2 × … × Dn。
+  - 区别：每个域分配属性名；有限集。
+  - 形式化：给定域 D1, D2, …, Dn，关系 r 是 D1 × D2 × … × Dn 的子集，即 n-元组 (a1, a2, …, an) 的集合，其中 ai ∈ Di。
+- **示例**：
+  - customer-name = {Jones, Smith, Curry, Lindsay}。
+  - customer-street = {Main, North, Park}。
+  - customer-city = {Harrison, Rye, Pittsfield}。
+  - r = {(Jones, Main, Harrison), (Smith, North, Rye), (Curry, North, Rye), (Lindsay, Park, Pittsfield), …}。
+- **关系模式（Relation Schema）**：
+  - R = (A1, A2, …, An)，例如 Customer-schema = (customer-name, customer-street, customer-city)。
+  - r(R) 是模式 R 上的关系。
+  - R(U)，其中 A1, A2, …, An 是属性；每个属性有域 Di：{A1} → D1, {A2} → D2, …, {An} → Dn。
+- **关系实例（Relation Instance）**：
+  - 关系的当前值用表格表示。
+  - 元组（Tuple）或行（Row）表示记录。
+  - 属性（Attribute）或列（Column）。
+  - 示例表格：customer 表，包括 customer-name, customer-street, customer-city。
+- **属性**：
+  - 元组顺序无关（行顺序无关）。
+  - 属性顺序无关（列顺序无关）。
+  - 所有属性的域必须是原子的。
+  - 属性名必须不同。
+  - 多个属性可有相同域。
+  - 元组无重复。
+  - 示例：学生表 (NO, Name, Sex, Age, Class, Dept)。
+- **数据库模式与实例（Database Schema）**：
+  - 数据库模式：数据库的逻辑设计。
+  - 数据库实例：数据库在给定时刻的数据快照。
+  - 关系模式与实例。
+- **超键（SuperKey）**：
+  - 对于模式 R(U)，K ⊆ U 是超键，如果在任何 r 中，没有两个不同元组在 K 上有相同值（t1[K] ≠ t2[K]）。
+  - 示例：{customer-name, customer-street} 和 {customer-name} 是 Customer 的超键。
+- **候选键（Candidate Key）**：
+  - 最小超键。
+  - 示例：customer-id 是 customer 的候选键；account-number 是 account 的候选键。
+  - 学生表 (no, id, name, sex, age)：{no} 和 {id} 是候选键，可选 {no} 作为主键。
+  - 属性：唯一性（Uniqueness）：没有两个元组在 K 上相同；最小性（Irreducibility）：K 的任何真子集不具有唯一性。
+- **主键（Primary Key）**：
+  - 从候选键中选择一个。
+- **外键（Foreign Key）**：
+  - 对于 R1, R2，如果 R1 包含 R2 的主键 X，则 X 是参照 R2 的外键。
+  - R1 是参照关系，R2 是被参照关系。
+  - 示例：Employee (no, name, sex, age, deptno)；Dept (deptno, name, address)：deptno 是 Employee 参照 Dept 的外键。
+  - 问题：
+    - 外键值可为 NULL。
+    - 外键名不必与参照主键相同。
+    - 外键可定义在同一表上。
+- **大学组织示例（University Organization）**：
+  - 部门：dept_name, building, budget。
+  - 课程：course_id, title, dept_name, credits, prerequisites。
+  - 教师：ID, name, dept_name, salary。
+  - 学生：ID, name, dept_name, tot_cred。
+  - 教室：building, room_number, capacity。
+  - 班级：course_id, sec_id, year, semester, building, room_number, time_slot_id。
+  - 教学分配：教师与班级。
+  - 学生注册：学生与课程/班级。
+  - 大学数据库模式图（Schema Diagram）。
+- **完整性约束（Integrity Constraint）**：
+  - 参照完整性（Referential Integrity）：r1 中外键值要么 NULL，要么必须出现在 r2 的主键值中。
+  - 实体完整性（Entity Integrity）：主键列假设 NOT NULL。
+
+#### 关系代数基本操作（Fundamental Relational-Algebra-Operations）
+- 六个基本操作符：
+  - Select (选择)：σ。
+  - Project (投影)：Π。
+  - Union (并)：∪。
+  - Set Difference (差)：−。
+  - Cartesian Product (笛卡尔积)：×。
+  - Rename (更名)：ρ。
+- 操作符输入一个或多个关系，输出新关系。
+- **Select 操作**：
+  - σ_p(r) = {t | t ∈ r and p(t)}。
+  - p 是命题公式，使用 ∧, ∨, ¬；项为 <attribute> op <attribute> 或常量，op ∈ {=, ≠, >, ≥, <, ≤}。
+  - 示例：σ_dept_name=“Physics”(instructor)。
+  - 示例：σ_A=B ∧ D>5(r)。
+- **Project 操作**：
+  - Π_A1, A2, …, Ak(r)：删除未列出的列，移除重复。
+  - 示例：Π_ID, name, salary(instructor)。
+  - 示例：Π_A,C(r)。
+- **Union 操作**：
+  - r ∪ s = {t | t ∈ r or t ∈ s}。
+  - 要求：相同属性数，域兼容。
+  - 示例：查找 Fall 2009 或 Spring 2010 学期课程：Π_course_id(σ_semester=“Fall” ∧ year=2009(section)) ∪ Π_course_id(σ_semester=“Spring” ∧ year=2010(section))。
+- **Set Difference 操作**：
+  - r − s = {t | t ∈ r and t ∉ s}。
+  - 要求：兼容关系。
+  - 示例：查找 Fall 2009 但不在 Spring 2010 的课程：Π_course_id(σ_semester=“Fall” ∧ year=2009(section)) − Π_course_id(σ_semester=“Spring” ∧ year=2010(section))。
+- **Cartesian Product 操作**：
+  - r × s = {t q | t ∈ r and q ∈ s}。
+  - 如果属性不 disjoint，重命名。
+  - 示例：r × s。
+- **Rename 操作**：
+  - ρ_x(E)：将 E 重命名为 x。
+  - ρ_x(A1, A2, …, An)(E)：重命名属性。
+- **形式定义**：
+  - 基本表达式：数据库关系或常量关系。
+  - 组合：E1 ∪ E2, E1 − E2, E1 × E2, σ_p(E1), Π_s(E1), ρ_x(E1)。
+
+#### 附加关系代数操作（Additional Relational-Algebra-Operations）
+- 不增加表达力，但简化查询。
+- **Set Intersection 操作**：
+  - r ∩ s = {t | t ∈ r and t ∈ s}。
+  - = r − (r − s)。
+  - 要求：兼容。
+- **Join 操作**：
+  - r ⋈_AθB s = {t q | t ∈ r and q ∈ s and (t[A] θ q[B])} = σ_AθB(r × s)，θ ∈ {=, ≠, ≥, ≤, >, <}。
+  - 示例：r ⋈_A>D s。
+- **Natural Join 操作**：
+  - r ⋈ s = Π_Att(r)∪(Att(s)-{B}) σ_r.B=s.B(r × s)。
+  - B 是 r 和 s 的公共属性。
+  - 示例：r ⋈ s。
+- **Division 操作**：
+  - r ÷ s，R = (A1, …, Am, B1, …, Bn)，S = (B1, …, Bn)。
+  - 结果模式：R − S = (A1, …, Am)。
+  - r ÷ s = {t | t ∈ Π_R-S(r) ∧ ∀ u ∈ s (tu ∈ r)}。
+  - = Π_R-S(r) − Π_R-S((Π_R-S(r) × s) − r)。
+  - 示例：r ÷ s。
+- **Assignment 操作**：
+  - ←：将复杂查询表达为赋值序列。
+  - 示例：r ÷ s = temp1 ← Π_R-S(r)；temp2 ← Π_R-S((temp1 × s) − r)；result = temp1 − temp2。
+
+#### 扩展关系代数操作（Extended Relational-Algebra-Operations）
+- **Outer Join**：
+  - 避免信息丢失：计算 join，然后添加不匹配的元组，使用 null 值填充。
+  - Left Outer Join：loan ⟕ borrower。
+  - Right Outer Join：loan ⟖ borrower。
+  - Full Outer Join：loan ⟗ borrower。
+- **Null 值**：
+  - 表示未知或不存在的值。
+  - 涉及 null 的算术表达式结果为 null。
+  - 聚合函数忽略 null。
+  - 重复消除和分组：两个 null 被视为相同。
+  - 比较返回 unknown（三值逻辑：true, false, unknown）。
+  - OR, AND, NOT 处理 unknown。
+  - Select：unknown 谓词视为 false。
+  - Join：公共属性上的 null 不匹配。
+  - Projection, Union 等：null 被视为相同值处理重复。
+  - 聚合：忽略 null。
+  - 重复消除/分组：null 如其他值，两个 null 相同。
+
+#### 数据库修改（Modification of the Database）
+- **Deletion**：
+  - r ← r − E。
+  - 示例：删除 Perryridge 分支的所有账户：account ← account − σ_branch-name=“Perryridge”(account)。
+- **Insertion**：
+  - r ← r ∪ E。
+  - E 可为常量关系（单元组）或查询结果。
+  - 示例：插入 Smith 在 Perryridge 的 A-973 账户 ($1200)：account ← account ∪ {(“Perryridge”, A-973, 1200)}；depositor ← depositor ∪ {(“Smith”, A-973)}。
+  - 示例：为 Perryridge 贷款客户赠送 $200 储蓄账户：r1 ← (σ_branch_name=“Perryridge”(borrower ⋈ loan))；account ← account ∪ Π_loan_number, branch_name, 200(r1)；depositor ← depositor ∪ Π_customer_name, loan_number(r1)。
+- **Updating**：
+  - 使用广义投影：r ← Π_F1, F2, …, Fi(r)，Fi 是未更新属性或新值表达式。
+  - 示例：所有余额增加 5%：account ← Π_account-number, branch-name, balance * 1.05(account)。
+  - 示例：> $10,000 余额 6%，其他 5%：account ← Π_account_number, branch-name, balance * 1.06(σ_BAL>10000(account)) ∪ Π_account_number, branch-name, balance * 1.05(σ_BAL≤10000(account))。
+
+#### 示例
+- **银行示例（Banking Example）**：
+  - branch (branch-name, branch-city, assets)。
+  - customer (customer-name, customer-street, customer-city)。
+  - account (account-number, branch-name, balance)。
+  - loan (loan-number, branch-name, amount)。
+  - depositor (customer-name, account-number)。
+  - borrower (customer-name, loan-number)。
+- **查询示例**：
+  - 查找 > $1200 贷款：σ_amount>1200(loan)。
+  - 查找 > $1200 贷款号：Π_loan-number(σ_amount>1200(loan))。
+  - 查找有贷款或账户或两者客户名：Π_customer-name(borrower) ∪ Π_customer-name(depositor)。
+  - 查找既有贷款又有账户客户名：Π_customer-name(borrower) ∩ Π_customer-name(depositor)。
+  - 查找 Perryridge 分支贷款客户名：Π_customer-name(σ_branch-name=“Perryridge”(σ_borrower.loan-number=loan.loan-number(borrower × loan)))。
+  - 查找 Perryridge 贷款但无任何分支账户客户名：Π_customer-name(σ_branch-name=“Perryridge”(σ_borrower.loan-number=loan.loan-number(borrower × loan))) − Π_customer-name(depositor)。
+  - 查找最大账户余额：Π_balance(account) − Π_account.balance(σ_account.balance<d.balance(account × ρ_d(account)))。
+  - 查找至少在 Downtown 和 Uptown 分支有账户客户：Π_CN(σ_BN=“Downtown”(depositor ⋈ account)) ∩ Π_CN(σ_BN=“Uptown”(depositor ⋈ account))；或 Π_customer-name, branch-name(depositor ⋈ account) ÷ ρ_temp(branch-name)({(“Downtown”), (“Uptown”)})。
+  - 查找 Brooklyn 市所有分支有账户客户：Π_customer-name, branch-name(depositor ⋈ account) ÷ Π_branch-name(σ_branch-city=“Brooklyn”(branch))。
+- **示例 2**：
+  - S (SNO, SName, Sex, Age, Class, Dept)。
+  - C (Cno, Cname, Dept)。
+  - SC (SNO, Cno, Grade)。
+  - 查询：
+    - (1) Π_SNO,GRADE(σ_CNO=’C2’(SC))。
+    - (2) Π_SNO,SNAME(σ_CNO=’C2’(S ⋈ SC))。
+    - (3) Π_SNO,SNAME(σ_CNAME=’DB’(S ⋈ SC ⋈ C))。
+    - (4) Π_SNO,SNAME(S) − Π_SNO,SNAME(σ_CNO=’C2’(S ⋈ SC))。
+    - (5) Π_SNAME(S ⋈ (Π_SNO,CNO(SC) ÷ Π_CNO(C)))。
+
+#### 总结（Summary）
+- 关系数据模型：表、记录/元组/行、属性、域/列。
+- 键：候选键、主键、外键。
+- 约束规则。
+- 关系代数：基本操作；附加操作；扩展操作。
+- 元组关系演算；域关系演算。

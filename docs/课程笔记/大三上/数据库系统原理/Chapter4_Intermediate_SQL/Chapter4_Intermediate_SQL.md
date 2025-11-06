@@ -1,0 +1,203 @@
+# Chapter4: Intermediate SQL
+### 第四章：Intermediate SQL
+
+#### 连接关系（Joined Relations）
+- **连接操作**：
+  - 连接两个关系，返回另一个关系。
+  - 是笛卡尔积的变体，要求两个关系中的元组匹配（基于条件），并指定结果中的属性。
+  - 通常作为 from 子句中的子查询表达式使用。
+- **示例关系**：
+  - course：课程信息。
+  - prereq：先修课程信息。
+  - 注意：CS-315 缺少 prereq 信息，CS-347 缺少 course 信息。
+- **Natural Join**：
+  - select * from course natural join prereq。
+  - select * from course join prereq on course.course_id = prereq.course_id。
+- **Natural Join 的危险**：
+  - 注意无关但同名属性可能被错误等价。
+  - 示例：列出学生姓名和课程标题（正确版本）：select name, title from student natural join takes, course where takes.course_id = course.course_id。
+  - 错误版本：select name, title from student natural join takes natural join course（可能遗漏跨系课程）。
+- **Using 子句**：
+  - 避免错误等价：select name, title from (student natural join takes) join course using (course_id)。
+- **On 条件**：
+  - 允许一般谓词：select * from student join takes on student.ID = takes.ID。
+  - 等价于：select * from student, takes where student.ID = takes.ID。
+- **Outer Join**：
+  - 避免信息丢失：计算 join，然后添加不匹配的元组，使用 null 填充。
+  - Left Outer Join：course natural left outer join prereq。
+  - Right Outer Join：course natural right outer join prereq。
+  - Full Outer Join：course natural full outer join prereq。
+- **连接类型和条件**：
+  - Join type：定义不匹配元组的处理（inner, left outer, right outer, full outer）。
+  - Join condition：定义匹配元组。
+- **示例**：
+  - course inner join prereq on course.course_id = prereq.course_id。
+  - course left outer join prereq on course.course_id = prereq.course_id。
+  - course natural right outer join prereq。
+  - course full outer join prereq using (course_id)。
+- **问题示例**：
+  - 关系：学生（学号，姓名，年龄，班级，系别）；选课（学号，课程编号，课程名称，成绩）。
+  - SQL：SELECT * FROM 选课 RIGHT OUTER JOIN 学生 ON 选课.学号 = 学生.学号。
+  - 结果：所有学生的基本信息及其选课信息，包括没有选课的学生的基本信息（B）。
+
+#### 视图（Views）
+- **视图的作用**：
+  - 隐藏某些数据，不让所有用户看到整个逻辑模型。
+  - 示例：只显示教师姓名和部门（不显示薪资）：select ID, name, dept_name from instructor。
+  - 视图是虚拟关系，不是概念模型的一部分。
+- **视图定义**：
+  - create view v as <query expression>。
+  - 查询表达式是任何合法 SQL 表达式。
+  - 一旦定义，视图名可用于引用虚拟关系。
+  - 视图定义保存表达式；查询时替换表达式。
+- **示例视图**：
+  - 教师视图（无薪资）：create view faculty as select ID, name, dept_name from instructor。
+  - 查询：select name from faculty where dept_name = 'Biology'。
+  - 部门薪资总和：create view departments_total_salary(dept_name, total_salary) as select dept_name, sum(salary) from instructor group by dept_name。
+- **使用其他视图定义视图**：
+  - 示例：create view physics_fall_2009 as ... (物理系 Fall 2009 课程)。
+  - create view physics_fall_2009_watson as select course_id, room_number from physics_fall_2009 where building = 'Watson'。
+- **视图扩展**：
+  - 在查询中替换视图定义，直到无视图剩余。
+  - 只要定义非递归，过程会终止。
+- **视图依赖**：
+  - v1 直接依赖 v2 如果 v2 用于定义 v1。
+  - v1 依赖 v2 如果有从 v1 到 v2 的依赖路径。
+  - 递归视图：视图依赖自身。
+- **视图更新**：
+  - 示例：insert into faculty values ('30765', 'Green', 'Music') → 插入 instructor ('30765', 'Green', 'Music', null)。
+- **某些更新无法唯一翻译**：
+  - 示例视图：create view instructor_info as select ID, name, building from instructor, department where instructor.dept_name = department.dept_name。
+  - insert into instructor_info values ('69987', 'White', 'Taylor') → 可能多个部门在 Taylor，或无部门。
+  - 大多数 SQL 只允许简单视图更新：from 只有一个关系，select 只含属性名（无表达式、聚合、distinct），未列属性可 null，无 group by/having。
+- **历史教师视图示例**：
+  - create view history_instructors as select * from instructor where dept_name = 'History'。
+  - 插入 ('25566', 'Brown', 'Biology', 100000) → 可能违反部门约束。
+- **物化视图（Materialized Views）**：
+  - 创建物理表包含视图结果。
+  - 基础关系更新时，视图需维护。
+
+#### 事务（Transactions）
+- **事务定义**：
+  - 工作单元。
+  - 原子事务：完全执行或回滚，像从未发生。
+  - 与并发事务隔离。
+- **事务管理**：
+  - 隐式开始。
+  - 以 commit work 或 rollback work 结束。
+  - 大多数数据库默认：每个 SQL 语句自动提交。
+  - 可关闭自动提交（使用 API）。
+  - SQL:1999：begin atomic ... end（大多数不支持）。
+
+#### 完整性约束（Integrity Constraints）
+- **作用**：
+  - 防止意外损坏，确保授权变更不丢失一致性。
+  - 示例：账户余额 > $10,000；薪资 >= $4/小时；电话非 null。
+- **单关系约束**：
+  - not null。
+  - primary key。
+  - unique。
+  - check (P)，P 是谓词。
+- **Not Null 和 Unique**：
+  - 示例：name varchar(20) not null, budget numeric(12,2) not null。
+  - unique (A1, ..., Am)：候选键（可 null，与主键不同）。
+- **Check 子句**：
+  - 示例：check (semester in ('Fall', 'Winter', 'Spring', 'Summer'))。
+- **参照完整性（Referential Integrity）**：
+  - 值出现在一个关系中，必须出现在另一个关系的主键中。
+  - 示例：instructor 中的 dept_name 必须在 department 中存在。
+  - foreign key (A) references S。
+- **参照完整性级联动作**：
+  - on delete cascade / set null / set default。
+  - on update cascade。
+  - 示例：foreign key (dept_name) references department on delete cascade on update cascade。
+- **事务中约束违反**：
+  - 示例：person 表有 father 和 mother 外键引用自身。
+  - 解决方案：先插入父/母，或初始设 null 后更新，或延迟检查。
+- **复杂 Check**：
+  - check (time_slot_id in (select time_slot_id from time_slot))。
+  - 子查询在 check 中不支持；替代：触发器。
+  - create assertion <name> check <predicate>（不支持）。
+
+#### SQL 数据类型和模式（SQL Data Types and Schemas）
+- **内置类型**：
+  - date：'2005-7-27'。
+  - time：'09:00:30'，'09:00:30.75'。
+  - timestamp：'2005-7-27 09:00:30.75'。
+  - interval：'1' day。
+  - 日期/时间运算返回 interval；interval 可加到日期/时间。
+- **索引创建**：
+  - create index studentID_index on student(ID)。
+  - 加速指定值访问。
+- **用户定义类型**：
+  - create type Dollars as numeric(12,2) final。
+  - 示例：budget Dollars。
+- **域（Domains）**：
+  - create domain person_name char(20) not null。
+  - 可有约束如 not null。
+  - 示例：create domain degree_level varchar(10) constraint degree_level_test check (value in ('Bachelors', 'Masters', 'Doctorate'))。
+  - 域非强类型。
+- **大对象类型**：
+  - blob：二进制大对象。
+  - clob：字符大对象。
+  - 查询返回指针而非对象本身。
+- **唯一键生成**：
+  - ID number(5) generated always as identity。
+- **其他**：
+  - create table ... like ...。
+  - create table as (...) with data。
+  - 模式、目录、环境。
+
+#### 授权（Authorization）
+- **授权形式**：
+  - 数据库部分：read, insert, update, delete。
+  - 修改模式：index, resources, alteration, drop。
+- **授权规范**：
+  - grant <privilege list> on <relation> to <user list>。
+  - user list：user-id, public, role。
+  - 视图授权不隐含基础关系授权。
+- **SQL 特权**：
+  - select：读取/查询。
+  - 示例：grant select on instructor to U1, U2, U3。
+  - insert, update, delete。
+  - all privileges：所有特权。
+- **撤销授权**：
+  - revoke <privilege list> on <relation> from <user list>。
+  - 示例：revoke select on branch from U1, U2, U3。
+  - all：撤销所有。
+  - 依赖特权也被撤销。
+- **角色（Roles）**：
+  - create role instructor; grant instructor to Amit。
+  - grant select on takes to instructor。
+  - 角色可授予用户或其他角色：grant teaching_assistant to instructor（继承）。
+  - 角色链：create role dean; grant instructor to dean; grant dean to Satoshi。
+- **视图授权**：
+  - create view geo_instructor as select * from instructor where dept_name = 'Geology'。
+  - grant select on geo_instructor to geo_staff。
+  - 如果 geo_staff 无 instructor 权限，或视图创建者缺少权限，会发生什么？
+- **其他授权特性**：
+  - references：创建外键。
+  - with grant option：转移特权。
+  - revoke ... cascade/restrict。
+  - granted by current_role。
+- **授权图**：
+  - 节点：用户；根：DBA。
+  - 边 Ui → Uj：Ui 授予 Uj 权限。
+  - 所有边必须从 DBA 路径。
+  - 撤销时：如果 U1 撤销，U4 撤销（依赖 U1），U5 不（有 U2 路径）。
+
+#### 触发器（Triggers）
+- **触发器定义**：
+  - 修改数据库的副作用，系统自动执行语句。
+  - 指定执行条件和动作。
+- **触发事件和动作**：
+  - 事件：insert, delete, update。
+  - 激活：before/after 事件，作为额外约束。
+  - 示例：create trigger setnull-trigger before update on r referencing new row as nrow for each row when nrow.phone-number = ' ' set nrow.phone-number = null。
+  - 值引用：referencing old row as, new row as。
+- **语句级触发**：
+  - for each statement：对所有受影响行执行一次动作。
+  - referencing old table / new table：临时表包含受影响行。
+  - 效率更高于大更新。
+- **示例：维护 credits_earned**：
+  - create trigger credits_earned after update of takes on (grade) referencing new row as nrow referencing old row as orow for each row when nrow.grade <> 'F' and nrow.grade is not null and (orow.grade = 'F' or orow.grade is null) begin atomic update student set tot_cred = tot_cred + (select credits from course where course.course_id = nrow.course_id) where student.id = nrow.id; end。

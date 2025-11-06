@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
@@ -4277,7 +4277,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      一、逻辑模型基础概念
+      思维导图
     </span>
   </a>
   
@@ -4285,6 +4285,15 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、逻辑模型基础概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       二、概念学习
     </span>
@@ -4359,7 +4368,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       三、决策树
     </span>
@@ -4458,7 +4467,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       四、核心小结
     </span>
@@ -5361,7 +5370,7 @@
         <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      一、逻辑模型基础概念
+      思维导图
     </span>
   </a>
   
@@ -5369,6 +5378,15 @@
       
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、逻辑模型基础概念
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       二、概念学习
     </span>
@@ -5443,7 +5461,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       三、决策树
     </span>
@@ -5542,7 +5560,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       四、核心小结
     </span>
@@ -5567,13 +5585,15 @@
 
 
 <h1 id="_1">逻辑模型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
-<h2 id="_2">一、逻辑模型基础概念<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h2 id="_2">思维导图<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><img alt="exported_image.png" src="../exported_image.png" /></p>
+<h2 id="_3">一、逻辑模型基础概念<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <ol>
 <li>定义：通过逻辑表达式划分实例空间，使每个区隔内数据更一致，本质偏向规则系统，可解释性强。</li>
 <li>常见类型：概念学习、决策树模型、规则模型等。</li>
 <li>核心思想：源自计算机科学与工程，易转化为人类可理解的规则。</li>
 </ol>
-<h2 id="_3">二、概念学习<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_4">二、概念学习<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <h3 id="1">1. 定义与核心逻辑<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>定义：利用布尔函数的输入输出训练样例，推断该布尔函数的归纳学习过程（狭义归纳学习）。</li>
@@ -5603,7 +5623,7 @@
 <li>核心逻辑：用正例泛化假设，用反例特化假设，通过边界集合<span class="arithmatex">\(S\)</span>（最特殊假设）和<span class="arithmatex">\(G\)</span>（最一般假设）表征版本空间。</li>
 <li>基础方法（列表后消除）：初始化<span class="arithmatex">\(VS\)</span>为<span class="arithmatex">\(H\)</span>中所有假设→遍历样例，移除不满足<span class="arithmatex">\(h(x)=c(x)\)</span>的假设→输出剩余假设。</li>
 </ul>
-<h2 id="_4">三、决策树<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_5">三、决策树<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="1_1">1. 定义与特点<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
 <ul>
 <li>定义：树形结构分类/回归模型，通过逐层判断特征值到达叶子节点完成分类（非必为二叉树）。</li>
@@ -5640,14 +5660,12 @@
 <li>特征选择改进：C4.5算法用信息增益比替代信息增益，避免偏向取值多的特征。</li>
 <li>任务扩展：从分类任务延伸到回归任务，核心是将输出从离散类别改为连续值（区域均值）。</li>
 </ul>
-<h2 id="_5">四、核心小结<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_6">四、核心小结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <ol>
 <li>关键概念：理解假设空间、版本空间的定义，区分假设与概念的差异。</li>
 <li>学习逻辑：概念学习通过“特殊→一般”或“一般→特殊”搜索假设空间；决策树通过分步最优策略（最大化信息增益/最小化基尼指数）构建模型。</li>
 <li>任务延伸：掌握从分类问题（ID3、CART分类树）到回归问题（CART回归树）的逻辑模型适配方法。</li>
 </ol>
-<hr />
-<p>要不要我帮你整理一份<strong>逻辑模型核心算法步骤与关键公式对照表</strong>，方便你快速梳理学习重点？</p>
 
 
 

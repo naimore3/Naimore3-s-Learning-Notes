@@ -4453,75 +4453,879 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#intermediate-sql" class="md-nav__link">
+  <a href="#join-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      第四章：Intermediate SQL
+      连接表达式（Join Expressions）
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="第四章：Intermediate SQL">
+    <nav class="md-nav" aria-label="连接表达式（Join Expressions）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#joined-relations" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      连接关系（Joined Relations）
+      连接关系概述
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#natural-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      自然连接（Natural Join）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      自然连接的风险
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using 子句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on" class="md-nav__link">
+    <span class="md-ellipsis">
+      On 条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      外部连接（Outer Join）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接类型与条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题示例解析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#views" class="md-nav__link">
     <span class="md-ellipsis">
       视图（Views）
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="视图（Views）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图的核心作用
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图的定义规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="视图示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例1：无薪资的教师视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例2：部门薪资总和视图
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于其他视图定义新视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图依赖与视图扩展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="视图依赖与视图扩展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 视图依赖类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 视图扩展
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图的更新操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="视图的更新操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 可正常更新的场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 无法唯一翻译的更新（不可更新场景）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SQL对可更新视图的限制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      历史教师视图的更新冲突示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materialized-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      物化视图（Materialized Views）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transactions" class="md-nav__link">
     <span class="md-ellipsis">
       事务（Transactions）
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="事务（Transactions）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务的核心定义与关键特性
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务的生命周期与管理机制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#integrity-constraints" class="md-nav__link">
     <span class="md-ellipsis">
       完整性约束（Integrity Constraints）
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="完整性约束（Integrity Constraints）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整性约束的核心作用
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      单关系约束（约束作用于单个表）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单关系约束（约束作用于单个表）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-not-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. NOT NULL 约束
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-primary-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. PRIMARY KEY 约束（主键约束）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. UNIQUE 约束（唯一约束）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. CHECK 子句（条件约束）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      参照完整性（跨关系约束）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参照完整性（跨关系约束）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 参照完整性的级联动作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务中的完整性约束违反与解决方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事务中的完整性约束违反与解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型问题示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      解决方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂 CHECK 子句的限制与替代方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="复杂 CHECK 子句的限制与替代方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 复杂 CHECK 子句的限制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 替代方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sql-sql-data-types-and-schemas" class="md-nav__link">
     <span class="md-ellipsis">
       SQL 数据类型和模式（SQL Data Types and Schemas）
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="SQL 数据类型和模式（SQL Data Types and Schemas）">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
+  <a href="#built-in-data-types" class="md-nav__link">
     <span class="md-ellipsis">
-      授权（Authorization）
+      一、内置数据类型（Built-in Data Types）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#index-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、索引创建（Index Creation）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-defined-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、用户定义类型（User-Defined Types）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、域（Domains）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-object-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、大对象类型（Large-Object Types）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-unique-key-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、唯一键生成（Generating Unique Key Values）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-schema-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、表创建变体与模式层级（Other Schema Features）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、表创建变体与模式层级（Other Schema Features）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-table-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 表结构复制（create table ... like ...）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-table-as-with-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 基于查询结果创建表（create table ... as (...) with data）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 模式、目录、环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      授权（Authorization）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="授权（Authorization）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、授权的核心形式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grant" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、授权规范（Grant 语句）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、SQL 中的具体特权类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、SQL 中的具体特权类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 常用数据操作特权
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-all-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 特权简写：all privileges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、授权的撤销（Revoke 语句）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、角色（Roles）管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、角色（Roles）管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 角色的基础操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-role-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 角色链（Role Chain）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、视图的授权注意事项
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、视图的授权注意事项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 视图授权示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 核心问题与结论
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、其他授权特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、授权图与权限传递规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#triggers" class="md-nav__link">
     <span class="md-ellipsis">
       触发器（Triggers）
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="触发器（Triggers）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、触发器的定义与核心作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、触发事件与激活机制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、触发事件与激活机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 触发事件类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 激活时机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 数据值引用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 示例：空值预处理触发器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、行级触发与语句级触发
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、行级触发与语句级触发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-for-each-row" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 行级触发（for each row）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-for-each-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 语句级触发（for each statement）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、典型应用示例——维护学生总学分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、典型应用示例——维护学生总学分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      触发器完整语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句解析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5423,75 +6227,879 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#intermediate-sql" class="md-nav__link">
+  <a href="#join-expressions" class="md-nav__link">
     <span class="md-ellipsis">
-      第四章：Intermediate SQL
+      连接表达式（Join Expressions）
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="第四章：Intermediate SQL">
+    <nav class="md-nav" aria-label="连接表达式（Join Expressions）">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#joined-relations" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      连接关系（Joined Relations）
+      连接关系概述
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#natural-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      自然连接（Natural Join）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      自然连接的风险
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using 子句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on" class="md-nav__link">
+    <span class="md-ellipsis">
+      On 条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outer-join" class="md-nav__link">
+    <span class="md-ellipsis">
+      外部连接（Outer Join）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接类型与条件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      连接示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题示例解析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#views" class="md-nav__link">
     <span class="md-ellipsis">
       视图（Views）
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="视图（Views）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图的核心作用
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图的定义规则
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图示例
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="视图示例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例1：无薪资的教师视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      示例2：部门薪资总和视图
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      基于其他视图定义新视图
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图依赖与视图扩展
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="视图依赖与视图扩展">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 视图依赖类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 视图扩展
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      视图的更新操作
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="视图的更新操作">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 可正常更新的场景
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 无法唯一翻译的更新（不可更新场景）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. SQL对可更新视图的限制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      历史教师视图的更新冲突示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#materialized-views" class="md-nav__link">
+    <span class="md-ellipsis">
+      物化视图（Materialized Views）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#transactions" class="md-nav__link">
     <span class="md-ellipsis">
       事务（Transactions）
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="事务（Transactions）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务的核心定义与关键特性
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务的生命周期与管理机制
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#integrity-constraints" class="md-nav__link">
     <span class="md-ellipsis">
       完整性约束（Integrity Constraints）
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="完整性约束（Integrity Constraints）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      完整性约束的核心作用
+    </span>
+  </a>
+  
 </li>
         
           <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      单关系约束（约束作用于单个表）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="单关系约束（约束作用于单个表）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-not-null" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. NOT NULL 约束
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-primary-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. PRIMARY KEY 约束（主键约束）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unique" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. UNIQUE 约束（唯一约束）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. CHECK 子句（条件约束）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      参照完整性（跨关系约束）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参照完整性（跨关系约束）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 核心定义
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 参照完整性的级联动作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      事务中的完整性约束违反与解决方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="事务中的完整性约束违反与解决方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      典型问题示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      解决方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check" class="md-nav__link">
+    <span class="md-ellipsis">
+      复杂 CHECK 子句的限制与替代方案
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="复杂 CHECK 子句的限制与替代方案">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 复杂 CHECK 子句的限制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 替代方案
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#sql-sql-data-types-and-schemas" class="md-nav__link">
     <span class="md-ellipsis">
       SQL 数据类型和模式（SQL Data Types and Schemas）
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="SQL 数据类型和模式（SQL Data Types and Schemas）">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#authorization" class="md-nav__link">
+  <a href="#built-in-data-types" class="md-nav__link">
     <span class="md-ellipsis">
-      授权（Authorization）
+      一、内置数据类型（Built-in Data Types）
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
+  <a href="#index-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、索引创建（Index Creation）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-defined-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、用户定义类型（User-Defined Types）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domains" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、域（Domains）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#large-object-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、大对象类型（Large-Object Types）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generating-unique-key-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、唯一键生成（Generating Unique Key Values）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-schema-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、表创建变体与模式层级（Other Schema Features）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="七、表创建变体与模式层级（Other Schema Features）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-create-table-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 表结构复制（create table ... like ...）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-create-table-as-with-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 基于查询结果创建表（create table ... as (...) with data）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 模式、目录、环境
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authorization" class="md-nav__link">
+    <span class="md-ellipsis">
+      授权（Authorization）
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="授权（Authorization）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、授权的核心形式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#grant" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、授权规范（Grant 语句）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、SQL 中的具体特权类型
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、SQL 中的具体特权类型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 常用数据操作特权
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-all-privileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 特权简写：all privileges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#revoke" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、授权的撤销（Revoke 语句）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      五、角色（Roles）管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、角色（Roles）管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 角色的基础操作
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-role-chain" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 角色链（Role Chain）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      六、视图的授权注意事项
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、视图的授权注意事项">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 视图授权示例
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 核心问题与结论
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      七、其他授权特性
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      八、授权图与权限传递规则
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#triggers" class="md-nav__link">
     <span class="md-ellipsis">
       触发器（Triggers）
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="触发器（Triggers）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      一、触发器的定义与核心作用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      二、触发事件与激活机制
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、触发事件与激活机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 触发事件类型
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 激活时机
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. 数据值引用
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. 示例：空值预处理触发器
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      三、行级触发与语句级触发
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、行级触发与语句级触发">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-for-each-row" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 行级触发（for each row）
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-for-each-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 语句级触发（for each statement）
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      四、典型应用示例——维护学生总学分
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、典型应用示例——维护学生总学分">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      触发器完整语句
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      语句解析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -5517,215 +7125,552 @@
 
 
 <h1 id="chapter4-intermediate-sql">Chapter4: Intermediate SQL<a class="headerlink" href="#chapter4-intermediate-sql" title="Permanent link">&para;</a></h1>
-<h3 id="intermediate-sql">第四章：Intermediate SQL<a class="headerlink" href="#intermediate-sql" title="Permanent link">&para;</a></h3>
-<h4 id="joined-relations">连接关系（Joined Relations）<a class="headerlink" href="#joined-relations" title="Permanent link">&para;</a></h4>
+<h2 id="join-expressions">连接表达式（Join Expressions）<a class="headerlink" href="#join-expressions" title="Permanent link">&para;</a></h2>
+<h3 id="_1">连接关系概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>连接操作</strong>：</li>
-<li>连接两个关系，返回另一个关系。</li>
-<li>是笛卡尔积的变体，要求两个关系中的元组匹配（基于条件），并指定结果中的属性。</li>
-<li>通常作为 from 子句中的子查询表达式使用。</li>
-<li><strong>示例关系</strong>：</li>
-<li>course：课程信息。</li>
-<li>prereq：先修课程信息。</li>
-<li>注意：CS-315 缺少 prereq 信息，CS-347 缺少 course 信息。</li>
-<li><strong>Natural Join</strong>：</li>
-<li>select * from course natural join prereq。</li>
-<li>select * from course join prereq on course.course_id = prereq.course_id。</li>
-<li><strong>Natural Join 的危险</strong>：</li>
-<li>注意无关但同名属性可能被错误等价。</li>
-<li>示例：列出学生姓名和课程标题（正确版本）：select name, title from student natural join takes, course where takes.course_id = course.course_id。</li>
-<li>错误版本：select name, title from student natural join takes natural join course（可能遗漏跨系课程）。</li>
-<li><strong>Using 子句</strong>：</li>
-<li>避免错误等价：select name, title from (student natural join takes) join course using (course_id)。</li>
-<li><strong>On 条件</strong>：</li>
-<li>允许一般谓词：select * from student join takes on student.ID = takes.ID。</li>
-<li>等价于：select * from student, takes where student.ID = takes.ID。</li>
-<li><strong>Outer Join</strong>：</li>
-<li>避免信息丢失：计算 join，然后添加不匹配的元组，使用 null 填充。</li>
-<li>Left Outer Join：course natural left outer join prereq。</li>
-<li>Right Outer Join：course natural right outer join prereq。</li>
-<li>Full Outer Join：course natural full outer join prereq。</li>
-<li><strong>连接类型和条件</strong>：</li>
-<li>Join type：定义不匹配元组的处理（inner, left outer, right outer, full outer）。</li>
-<li>Join condition：定义匹配元组。</li>
+<li>连接操作核心：接收两个关系作为输入，返回一个新关系，本质是带匹配条件的笛卡尔积变体。</li>
+<li>匹配规则：要求两个关系中的元组满足指定匹配条件，同时明确结果中包含的属性。</li>
+<li>使用场景：通常作为 <code>from</code> 子句中的子查询表达式使用。</li>
+<li>示例基础关系：</li>
+<li><code>course</code> 表：存储课程编号、名称、所属部门、学分等课程信息。</li>
+<li><code>prereq</code> 表：存储课程编号与先修课程编号的对应关系。</li>
+<li>数据特点：CS-315 课程缺少先修课程信息，CS-347 先修课程缺少对应课程信息。</li>
+</ul>
+<h3 id="natural-join">自然连接（Natural Join）<a class="headerlink" href="#natural-join" title="Permanent link">&para;</a></h3>
+<ul>
+<li>核心逻辑：自动根据两个关系中的同名属性进行匹配连接。</li>
+<li>典型语法：</li>
+<li><code>select * from course natural join prereq</code></li>
+<li>等价写法：<code>select * from course join prereq on course.course_id = prereq.course_id</code></li>
+<li>结果特征：仅保留同名属性匹配成功的元组，同名属性会合并为一列。</li>
+</ul>
+<h3 id="_2">自然连接的风险<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>核心风险：无关但同名的属性会被错误等价匹配，导致结果偏差。</li>
+<li>示例场景：查询学生姓名与所选课程标题。</li>
+<li>正确写法：<code>select name, title from student natural join takes, course where takes.course_id = course.course_id</code></li>
+<li>错误写法：<code>select name, title from student natural join takes natural join course</code></li>
+<li>错误后果：遗漏学生跨自身所在部门选课的（姓名-课程标题）组合。</li>
+</ul>
+<h3 id="using">Using 子句<a class="headerlink" href="#using" title="Permanent link">&para;</a></h3>
+<ul>
+<li>核心作用：明确指定用于匹配的属性，避免自然连接中同名属性的错误匹配。</li>
+<li>语法示例：<code>select name, title from (student natural join takes) join course using (course_id)</code></li>
+<li>优势：精准控制连接条件，仅对指定属性进行匹配，提升查询准确性。</li>
+</ul>
+<h3 id="on">On 条件<a class="headerlink" href="#on" title="Permanent link">&para;</a></h3>
+<ul>
+<li>核心功能：支持在连接时使用通用谓词，灵活定义匹配规则。</li>
+<li>语法特点：谓词写法类似 <code>where</code> 子句，需使用 <code>on</code> 关键字引导。</li>
+<li>示例语法：<code>select * from student join takes on student.ID = takes.ID</code></li>
+<li>等价转换：<code>select * from student, takes where student.ID = takes.ID</code>（传统多表查询写法）</li>
+</ul>
+<h3 id="outer-join">外部连接（Outer Join）<a class="headerlink" href="#outer-join" title="Permanent link">&para;</a></h3>
+<ul>
+<li>核心优势：解决普通连接丢失不匹配数据的问题，保留未匹配元组并以 <code>null</code> 填充缺失属性。</li>
+<li>分类及用法：</li>
+<li>左外连接（Left Outer Join）：保留左表所有元组，右表无匹配时填充 <code>null</code>，语法：<code>select * from course natural left outer join prereq</code>。</li>
+<li>右外连接（Right Outer Join）：保留右表所有元组，左表无匹配时填充 <code>null</code>，语法：<code>select * from course natural right outer join prereq</code>。</li>
+<li>全外连接（Full Outer Join）：保留两个表所有元组，无匹配时均填充 <code>null</code>，语法：<code>select * from course natural full outer join prereq</code>。</li>
+</ul>
+<h3 id="_3">连接类型与条件<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>连接类型（Join Type）：定义无匹配元组的处理方式，包括内连接（inner join）、左外连接、右外连接、全外连接。</li>
+<li>连接条件（Join Condition）：定义元组匹配规则，支持三种形式：<code>natural</code>（自动同名属性匹配）、<code>on &lt;predicate&gt;</code>（通用谓词）、<code>using (A1, A2, ..., An)</code>（指定匹配属性）。</li>
+</ul>
+<h3 id="_4">连接示例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>内连接带 <code>on</code> 条件：<code>course inner join prereq on course.course_id = prereq.course_id</code></li>
+<li>左外连接带 <code>on</code> 条件：<code>course left outer join prereq on course.course_id = prereq.course_id</code></li>
+<li>自然右外连接：<code>course natural right outer join prereq</code></li>
+<li>全外连接带 <code>using</code> 子句：<code>course full outer join prereq using (course_id)</code></li>
+</ul>
+<h3 id="_5">问题示例解析<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基础关系：学生（学号，姓名，年龄，班级，系别）、选课（学号，课程编号，课程名称，成绩）。</li>
+<li>查询语句：<code>SELECT * FROM 选课 RIGHT OUTER JOIN 学生 ON 选课.学号 = 学生.学号</code></li>
+<li>结果结论：返回所有学生的基本信息及其选课信息，未选课的学生信息也会保留（对应选项B）。</li>
+</ul>
+<h2 id="views">视图（Views）<a class="headerlink" href="#views" title="Permanent link">&para;</a></h2>
+<h3 id="_6">视图的核心作用<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>数据隐藏与权限控制</strong>：避免所有用户直接访问数据库的完整逻辑模型（实际存储的关系），仅向特定用户展示所需数据。<br />
+  示例：仅向部分用户展示教师的ID、姓名和所属部门，隐藏敏感的薪资信息，对应查询逻辑为 <code>select ID, name, dept_name from instructor</code>。</li>
+<li><strong>虚拟关系属性</strong>：视图并非数据库中实际存储的关系（非概念模型组成部分），而是通过查询表达式生成的“虚拟关系”，仅在使用时动态计算结果。</li>
+</ul>
+<h3 id="_7">视图的定义规则<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>基础语法</strong>：使用 <code>create view</code> 语句定义，格式为：<br />
+<code>create view &lt;视图名&gt; as &lt;合法SQL查询表达式&gt;</code><br />
+  其中，<code>&lt;查询表达式&gt;</code> 可包含 select、from、where、group by 等常规SQL子句。</li>
+<li><strong>使用特性</strong>：</li>
+<li>视图定义仅保存查询表达式，不存储实际数据（除非是物化视图）。</li>
+<li>后续查询中引用视图名时，数据库会自动将视图名“替换”为其定义的查询表达式，再执行最终查询。</li>
+</ul>
+<h3 id="_8">视图示例<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="1">示例1：无薪资的教师视图<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>创建语句</strong>：<br />
+<code>create view faculty as select ID, name, dept_name from instructor;</code>  </li>
+<li><strong>查询用法</strong>：通过视图筛选特定部门教师，如查询生物系教师姓名：<br />
+<code>select name from faculty where dept_name = 'Biology';</code></li>
+</ul>
+<h4 id="2">示例2：部门薪资总和视图<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>创建语句</strong>（指定视图列名）：<br />
+<code>create view departments_total_salary(dept_name, total_salary) as select dept_name, sum(salary) from instructor group by dept_name;</code>  </li>
+<li><strong>功能</strong>：动态计算各部门教师的薪资总和，无需手动重复执行聚合查询。</li>
+</ul>
+<h3 id="_9">基于其他视图定义新视图<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>核心逻辑</strong>：允许将已定义的视图作为“基础关系”，嵌套定义新视图，实现查询逻辑的分层复用。</li>
 <li><strong>示例</strong>：</li>
-<li>course inner join prereq on course.course_id = prereq.course_id。</li>
-<li>course left outer join prereq on course.course_id = prereq.course_id。</li>
-<li>course natural right outer join prereq。</li>
-<li>course full outer join prereq using (course_id)。</li>
-<li><strong>问题示例</strong>：</li>
-<li>关系：学生（学号，姓名，年龄，班级，系别）；选课（学号，课程编号，课程名称，成绩）。</li>
-<li>SQL：SELECT * FROM 选课 RIGHT OUTER JOIN 学生 ON 选课.学号 = 学生.学号。</li>
-<li>结果：所有学生的基本信息及其选课信息，包括没有选课的学生的基本信息（B）。</li>
+<li>先定义“2009年秋季物理系课程”视图：<br />
+<code>create view physics_fall_2009 as select course.course_id, sec_id, building, room_number from course, section where course.course_id = section.course_id and course.dept_name = 'Physics' and section.semester = 'Fall' and section.year = '2009';</code>  </li>
+<li>再基于该视图定义“2009年秋季物理系Watson楼课程”视图：<br />
+<code>create view physics_fall_2009_watson as select course_id, room_number from physics_fall_2009 where building = 'Watson';</code></li>
 </ul>
-<h4 id="views">视图（Views）<a class="headerlink" href="#views" title="Permanent link">&para;</a></h4>
+<h3 id="_10">视图依赖与视图扩展<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="1_1">1. 视图依赖类型<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>视图的作用</strong>：</li>
-<li>隐藏某些数据，不让所有用户看到整个逻辑模型。</li>
-<li>示例：只显示教师姓名和部门（不显示薪资）：select ID, name, dept_name from instructor。</li>
-<li>视图是虚拟关系，不是概念模型的一部分。</li>
-<li><strong>视图定义</strong>：</li>
-<li>create view v as <query expression>。</li>
-<li>查询表达式是任何合法 SQL 表达式。</li>
-<li>一旦定义，视图名可用于引用虚拟关系。</li>
-<li>视图定义保存表达式；查询时替换表达式。</li>
-<li><strong>示例视图</strong>：</li>
-<li>教师视图（无薪资）：create view faculty as select ID, name, dept_name from instructor。</li>
-<li>查询：select name from faculty where dept_name = 'Biology'。</li>
-<li>部门薪资总和：create view departments_total_salary(dept_name, total_salary) as select dept_name, sum(salary) from instructor group by dept_name。</li>
-<li><strong>使用其他视图定义视图</strong>：</li>
-<li>示例：create view physics_fall_2009 as ... (物理系 Fall 2009 课程)。</li>
-<li>create view physics_fall_2009_watson as select course_id, room_number from physics_fall_2009 where building = 'Watson'。</li>
-<li><strong>视图扩展</strong>：</li>
-<li>在查询中替换视图定义，直到无视图剩余。</li>
-<li>只要定义非递归，过程会终止。</li>
-<li><strong>视图依赖</strong>：</li>
-<li>v1 直接依赖 v2 如果 v2 用于定义 v1。</li>
-<li>v1 依赖 v2 如果有从 v1 到 v2 的依赖路径。</li>
-<li>递归视图：视图依赖自身。</li>
-<li><strong>视图更新</strong>：</li>
-<li>示例：insert into faculty values ('30765', 'Green', 'Music') → 插入 instructor ('30765', 'Green', 'Music', null)。</li>
-<li><strong>某些更新无法唯一翻译</strong>：</li>
-<li>示例视图：create view instructor_info as select ID, name, building from instructor, department where instructor.dept_name = department.dept_name。</li>
-<li>insert into instructor_info values ('69987', 'White', 'Taylor') → 可能多个部门在 Taylor，或无部门。</li>
-<li>大多数 SQL 只允许简单视图更新：from 只有一个关系，select 只含属性名（无表达式、聚合、distinct），未列属性可 null，无 group by/having。</li>
-<li><strong>历史教师视图示例</strong>：</li>
-<li>create view history_instructors as select * from instructor where dept_name = 'History'。</li>
-<li>插入 ('25566', 'Brown', 'Biology', 100000) → 可能违反部门约束。</li>
-<li><strong>物化视图（Materialized Views）</strong>：</li>
-<li>创建物理表包含视图结果。</li>
-<li>基础关系更新时，视图需维护。</li>
+<li><strong>直接依赖</strong>：若视图v1的定义中引用了视图v2，则v1“直接依赖”于v2。  </li>
+<li><strong>间接依赖</strong>：若v1依赖于v2，v2又依赖于v3，则v1“间接依赖”于v3（存在依赖路径）。  </li>
+<li><strong>递归依赖</strong>：若视图依赖于自身（如定义中引用自身），则为“递归视图”（需特殊处理，普通SQL场景较少见）。</li>
 </ul>
-<h4 id="transactions">事务（Transactions）<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h4>
+<h4 id="2_1">2. 视图扩展<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>事务定义</strong>：</li>
-<li>工作单元。</li>
-<li>原子事务：完全执行或回滚，像从未发生。</li>
-<li>与并发事务隔离。</li>
-<li><strong>事务管理</strong>：</li>
-<li>隐式开始。</li>
-<li>以 commit work 或 rollback work 结束。</li>
-<li>大多数数据库默认：每个 SQL 语句自动提交。</li>
-<li>可关闭自动提交（使用 API）。</li>
-<li>SQL:1999：begin atomic ... end（大多数不支持）。</li>
+<li><strong>定义</strong>：将查询中引用的视图，替换为其原始查询表达式的过程，直到查询中不再包含任何视图名。  </li>
+<li><strong>终止条件</strong>：只要视图定义非递归，替换过程会最终终止。  </li>
+<li><strong>示例</strong>：上述 <code>physics_fall_2009_watson</code> 视图扩展后：<br />
+<code>create view physics_fall_2009_watson as select course_id, room_number from (select course.course_id, sec_id, building, room_number from course, section where course.course_id = section.course_id and course.dept_name = 'Physics' and section.semester = 'Fall' and section.year = '2009') where building = 'Watson';</code></li>
 </ul>
-<h4 id="integrity-constraints">完整性约束（Integrity Constraints）<a class="headerlink" href="#integrity-constraints" title="Permanent link">&para;</a></h4>
+<h3 id="_11">视图的更新操作<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="1_2">1. 可正常更新的场景<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>作用</strong>：</li>
-<li>防止意外损坏，确保授权变更不丢失一致性。</li>
-<li>示例：账户余额 &gt; $10,000；薪资 &gt;= $4/小时；电话非 null。</li>
-<li><strong>单关系约束</strong>：</li>
-<li>not null。</li>
-<li>primary key。</li>
-<li>unique。</li>
-<li>check (P)，P 是谓词。</li>
-<li><strong>Not Null 和 Unique</strong>：</li>
-<li>示例：name varchar(20) not null, budget numeric(12,2) not null。</li>
-<li>unique (A1, ..., Am)：候选键（可 null，与主键不同）。</li>
-<li><strong>Check 子句</strong>：</li>
-<li>示例：check (semester in ('Fall', 'Winter', 'Spring', 'Summer'))。</li>
-<li><strong>参照完整性（Referential Integrity）</strong>：</li>
-<li>值出现在一个关系中，必须出现在另一个关系的主键中。</li>
-<li>示例：instructor 中的 dept_name 必须在 department 中存在。</li>
-<li>foreign key (A) references S。</li>
-<li><strong>参照完整性级联动作</strong>：</li>
-<li>on delete cascade / set null / set default。</li>
-<li>on update cascade。</li>
-<li>示例：foreign key (dept_name) references department on delete cascade on update cascade。</li>
-<li><strong>事务中约束违反</strong>：</li>
-<li>示例：person 表有 father 和 mother 外键引用自身。</li>
-<li>解决方案：先插入父/母，或初始设 null 后更新，或延迟检查。</li>
-<li><strong>复杂 Check</strong>：</li>
-<li>check (time_slot_id in (select time_slot_id from time_slot))。</li>
-<li>子查询在 check 中不支持；替代：触发器。</li>
-<li>create assertion <name> check <predicate>（不支持）。</li>
+<li>若视图基于单表且无复杂逻辑（如无聚合、join），更新视图会同步映射到基础表。<br />
+  示例：向 <code>faculty</code> 视图插入数据：<br />
+<code>insert into faculty values ('30765', 'Green', 'Music');</code><br />
+  实际执行：向基础表 <code>instructor</code> 插入元组 <code>('30765', 'Green', 'Music', null)</code>（薪资字段无值，补为null）。</li>
 </ul>
-<h4 id="sql-sql-data-types-and-schemas">SQL 数据类型和模式（SQL Data Types and Schemas）<a class="headerlink" href="#sql-sql-data-types-and-schemas" title="Permanent link">&para;</a></h4>
+<h4 id="2_2">2. 无法唯一翻译的更新（不可更新场景）<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>内置类型</strong>：</li>
-<li>date：'2005-7-27'。</li>
-<li>time：'09:00:30'，'09:00:30.75'。</li>
-<li>timestamp：'2005-7-27 09:00:30.75'。</li>
-<li>interval：'1' day。</li>
-<li>日期/时间运算返回 interval；interval 可加到日期/时间。</li>
-<li><strong>索引创建</strong>：</li>
-<li>create index studentID_index on student(ID)。</li>
-<li>加速指定值访问。</li>
-<li><strong>用户定义类型</strong>：</li>
-<li>create type Dollars as numeric(12,2) final。</li>
-<li>示例：budget Dollars。</li>
-<li><strong>域（Domains）</strong>：</li>
-<li>create domain person_name char(20) not null。</li>
-<li>可有约束如 not null。</li>
-<li>示例：create domain degree_level varchar(10) constraint degree_level_test check (value in ('Bachelors', 'Masters', 'Doctorate'))。</li>
-<li>域非强类型。</li>
-<li><strong>大对象类型</strong>：</li>
-<li>blob：二进制大对象。</li>
-<li>clob：字符大对象。</li>
-<li>查询返回指针而非对象本身。</li>
-<li><strong>唯一键生成</strong>：</li>
-<li>ID number(5) generated always as identity。</li>
-<li><strong>其他</strong>：</li>
-<li>create table ... like ...。</li>
-<li>create table as (...) with data。</li>
-<li>模式、目录、环境。</li>
+<li><strong>歧义示例</strong>：定义关联两张表的视图 <code>instructor_info</code>：<br />
+<code>create view instructor_info as select ID, name, building from instructor, department where instructor.dept_name = department.dept_name;</code><br />
+  若执行插入：<code>insert into instructor_info values ('69987', 'White', 'Taylor');</code><br />
+  会产生歧义：无法确定“Taylor”楼对应的具体部门（可能多个部门在该楼，或无部门在该楼），导致更新无法执行。</li>
 </ul>
-<h4 id="authorization">授权（Authorization）<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h4>
+<h4 id="3-sql">3. SQL对可更新视图的限制<a class="headerlink" href="#3-sql" title="Permanent link">&para;</a></h4>
+<p>仅允许对“简单视图”执行更新，需满足以下所有条件：<br />
+- 视图的 <code>from</code> 子句仅包含一个基础关系（表，非其他视图）。<br />
+- <code>select</code> 子句仅包含基础关系的属性名，无表达式、聚合函数（如sum）或 <code>distinct</code> 关键字。<br />
+- 未在 <code>select</code> 中列出的属性，允许被设为null（无 <code>not null</code> 约束）。<br />
+- 视图定义中无 <code>group by</code> 或 <code>having</code> 子句。</p>
+<h3 id="_12">历史教师视图的更新冲突示例<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>授权形式</strong>：</li>
-<li>数据库部分：read, insert, update, delete。</li>
-<li>修改模式：index, resources, alteration, drop。</li>
-<li><strong>授权规范</strong>：</li>
-<li>grant <privilege list> on <relation> to <user list>。</li>
-<li>user list：user-id, public, role。</li>
-<li>视图授权不隐含基础关系授权。</li>
-<li><strong>SQL 特权</strong>：</li>
-<li>select：读取/查询。</li>
-<li>示例：grant select on instructor to U1, U2, U3。</li>
-<li>insert, update, delete。</li>
-<li>all privileges：所有特权。</li>
-<li><strong>撤销授权</strong>：</li>
-<li>revoke <privilege list> on <relation> from <user list>。</li>
-<li>示例：revoke select on branch from U1, U2, U3。</li>
-<li>all：撤销所有。</li>
-<li>依赖特权也被撤销。</li>
-<li><strong>角色（Roles）</strong>：</li>
-<li>create role instructor; grant instructor to Amit。</li>
-<li>grant select on takes to instructor。</li>
-<li>角色可授予用户或其他角色：grant teaching_assistant to instructor（继承）。</li>
-<li>角色链：create role dean; grant instructor to dean; grant dean to Satoshi。</li>
-<li><strong>视图授权</strong>：</li>
-<li>create view geo_instructor as select * from instructor where dept_name = 'Geology'。</li>
-<li>grant select on geo_instructor to geo_staff。</li>
-<li>如果 geo_staff 无 instructor 权限，或视图创建者缺少权限，会发生什么？</li>
-<li><strong>其他授权特性</strong>：</li>
-<li>references：创建外键。</li>
-<li>with grant option：转移特权。</li>
-<li>revoke ... cascade/restrict。</li>
-<li>granted by current_role。</li>
-<li><strong>授权图</strong>：</li>
-<li>节点：用户；根：DBA。</li>
-<li>边 Ui → Uj：Ui 授予 Uj 权限。</li>
-<li>所有边必须从 DBA 路径。</li>
-<li>撤销时：如果 U1 撤销，U4 撤销（依赖 U1），U5 不（有 U2 路径）。</li>
+<li><strong>视图定义</strong>：<code>create view history_instructors as select * from instructor where dept_name = 'History';</code>  </li>
+<li><strong>更新问题</strong>：若向该视图插入元组 <code>('25566', 'Brown', 'Biology', 100000)</code>（属于生物系），虽语法可执行，但会导致基础表 <code>instructor</code> 中出现“部门为Biology却被历史系视图引用”的矛盾，违反视图的逻辑筛选条件。</li>
 </ul>
-<h4 id="triggers">触发器（Triggers）<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h4>
+<h3 id="materialized-views">物化视图（Materialized Views）<a class="headerlink" href="#materialized-views" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>触发器定义</strong>：</li>
-<li>修改数据库的副作用，系统自动执行语句。</li>
-<li>指定执行条件和动作。</li>
-<li><strong>触发事件和动作</strong>：</li>
-<li>事件：insert, delete, update。</li>
-<li>激活：before/after 事件，作为额外约束。</li>
-<li>示例：create trigger setnull-trigger before update on r referencing new row as nrow for each row when nrow.phone-number = ' ' set nrow.phone-number = null。</li>
-<li>值引用：referencing old row as, new row as。</li>
-<li><strong>语句级触发</strong>：</li>
-<li>for each statement：对所有受影响行执行一次动作。</li>
-<li>referencing old table / new table：临时表包含受影响行。</li>
-<li>效率更高于大更新。</li>
-<li><strong>示例：维护 credits_earned</strong>：</li>
-<li>create trigger credits_earned after update of takes on (grade) referencing new row as nrow referencing old row as orow for each row when nrow.grade &lt;&gt; 'F' and nrow.grade is not null and (orow.grade = 'F' or orow.grade is null) begin atomic update student set tot_cred = tot_cred + (select credits from course where course.course_id = nrow.course_id) where student.id = nrow.id; end。</li>
+<li><strong>与普通视图的核心区别</strong>：普通视图仅保存查询表达式，物化视图会<strong>物理存储</strong>查询结果（生成实际表）。  </li>
+<li><strong>数据一致性维护</strong>：当基础关系（如 <code>instructor</code>）的数据更新时，物化视图的结果会“过时”，需通过“视图维护”机制同步更新（如自动刷新或手动触发刷新），确保数据准确性。  </li>
+<li><strong>适用场景</strong>：适用于查询频率高、计算成本高（如复杂聚合）的场景，通过预存储结果提升查询效率。</li>
 </ul>
+<h2 id="transactions">事务（Transactions）<a class="headerlink" href="#transactions" title="Permanent link">&para;</a></h2>
+<h3 id="_13">事务的核心定义与关键特性<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>本质定位</strong>：事务是数据库操作中的<strong>基本工作单元</strong>，包含一系列SQL操作（如查询、插入、更新、删除），这些操作共同完成一个完整的业务逻辑（例如“转账”包含“扣款”和“收款”两步操作）。</li>
+<li><strong>原子性（Atomicity）</strong>：事务具有“原子事务”特性，即事务中的所有操作要么<strong>完全执行成功</strong>（所有步骤都完成），要么<strong>完全回滚</strong>（若某一步失败，所有已执行的操作都会撤销，数据库恢复到事务开始前的状态，如同事务从未发生）。</li>
+<li><strong>隔离性（Isolation）</strong>：事务在并发执行时，会与其他并发事务相互隔离，一个事务的执行过程和结果不会被其他未完成的事务干扰，避免因并发操作导致的数据不一致（如脏读、不可重复读等问题）。</li>
+</ul>
+<h3 id="_14">事务的生命周期与管理机制<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>事务的开始</strong>：事务采用<strong>隐式开始</strong>方式，无需显式声明“开始事务”的语句。当用户执行第一条SQL操作（如select、insert）时，事务会自动启动。</li>
+<li><strong>事务的结束</strong>：事务需通过显式语句结束，有两种核心方式：</li>
+<li><strong>提交事务（commit work）</strong>：将事务中所有已执行的操作永久保存到数据库，事务正常结束，数据变更生效。</li>
+<li><strong>回滚事务（rollback work）</strong>：撤销事务中所有已执行的操作，数据库恢复到事务开始前的状态，事务异常结束。</li>
+<li><strong>默认自动提交机制</strong>：大多数数据库（如MySQL、Oracle）默认开启“自动提交”模式，即<strong>每个独立的SQL语句都会被视为一个单独的事务</strong>，语句执行完成后自动触发commit work，无需用户手动提交。</li>
+<li><strong>自动提交的关闭方式</strong>：可通过数据库API（如JDBC、ODBC）或数据库命令（如MySQL的<code>set autocommit = 0</code>）关闭自动提交模式，此时需用户手动执行commit work或rollback work来结束事务。</li>
+<li><strong>SQL标准与数据库支持差异</strong>：SQL:1999标准中定义了<code>begin atomic ... end</code>语法，用于显式包裹事务内的操作块，但目前<strong>大多数数据库（如MySQL、PostgreSQL）并不支持该语法</strong>，实际应用中仍以“隐式开始+手动提交/回滚”为主。</li>
+</ul>
+<h2 id="integrity-constraints">完整性约束（Integrity Constraints）<a class="headerlink" href="#integrity-constraints" title="Permanent link">&para;</a></h2>
+<h3 id="_15">完整性约束的核心作用<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>完整性约束是数据库系统的“防护机制”，核心目标是<strong>防止数据库因意外操作或错误变更导致数据不一致</strong>，确保授权用户对数据库的修改不会破坏数据的逻辑正确性。<br />
+典型应用示例：
+- 业务规则约束：检查账户余额需大于 $10,000.00（避免负余额或过低余额）、银行员工时薪不低于 $4.00（符合最低工资标准）。
+- 数据有效性约束：客户的联系电话字段不可为空（<code>not null</code>），确保每个客户都有可联系的方式。</p>
+<h3 id="_16">单关系约束（约束作用于单个表）<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>单关系约束仅针对某一个数据库表中的数据进行规则限制，主要包含以下四类：</p>
+<h4 id="1-not-null">1. NOT NULL 约束<a class="headerlink" href="#1-not-null" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>作用</strong>：强制指定字段的值不能为 <code>null</code>（即必须填写具体数据），避免字段缺失关键信息。</li>
+<li><strong>语法示例</strong>：定义部门表时，要求“部门名称”和“预算”必须有值：<br />
+<code>name varchar(20) not null, budget numeric(12,2) not null</code></li>
+</ul>
+<h4 id="2-primary-key">2. PRIMARY KEY 约束（主键约束）<a class="headerlink" href="#2-primary-key" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>作用</strong>：指定表中的一个或多个字段作为“主键”，用于唯一标识表中的每一条元组（记录），且主键字段的值<strong>不可重复、不可为 null</strong>。</li>
+<li><strong>隐含规则</strong>：主键自动具备 <code>unique</code> 和 <code>not null</code> 的特性，是表中数据的“唯一身份标识”（如学生表的“学号”、课程表的“课程编号”）。</li>
+</ul>
+<h4 id="3-unique">3. UNIQUE 约束（唯一约束）<a class="headerlink" href="#3-unique" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>作用</strong>：指定字段或字段组合的值必须唯一（不可重复），但与主键不同的是，<code>unique</code> 约束的字段<strong>允许为 null</strong>（null 不视为重复值）。</li>
+<li><strong>本质</strong>：<code>unique (A1, A2, ..., Am)</code> 定义的字段组合是表的“候选键”——即具备唯一标识元组的能力，但未被指定为主键。</li>
+<li><strong>示例</strong>：员工表中“工号”设为主键，“身份证号”可设为 <code>unique</code>（确保每个员工身份证号唯一，但允许暂未录入时为 null）。</li>
+</ul>
+<h4 id="4-check">4. CHECK 子句（条件约束）<a class="headerlink" href="#4-check" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>作用</strong>：通过自定义谓词（条件表达式）<code>P</code>，限制字段值必须满足 <code>P</code> 的逻辑要求，仅允许符合条件的数据存入表中。</li>
+<li><strong>语法示例</strong>：定义课程章节表时，限制“学期”只能是“秋、冬、春、夏”四季：<br />
+  <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">section</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="n">course_id</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">sec_id</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">semester</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">year</span><span class="w"> </span><span class="nb">numeric</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">course_id</span><span class="p">,</span><span class="w"> </span><span class="n">sec_id</span><span class="p">,</span><span class="w"> </span><span class="n">semester</span><span class="p">,</span><span class="w"> </span><span class="k">year</span><span class="p">),</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="k">check</span><span class="w"> </span><span class="p">(</span><span class="n">semester</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;Fall&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Winter&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Spring&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Summer&#39;</span><span class="p">))</span><span class="w"> </span><span class="c1">-- 仅允许指定学期值</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div></li>
+<li><strong>逻辑</strong>：若插入或更新数据时，字段值不满足 <code>check</code> 中的谓词，数据库会拒绝该操作。</li>
+</ul>
+<h3 id="_17">参照完整性（跨关系约束）<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>参照完整性用于维护<strong>两个表之间的数据一致性</strong>，确保“从表”中引用的字段值，在“主表”的对应主键字段中一定存在（避免引用不存在的数据）。</p>
+<h4 id="1_3">1. 核心定义<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>设表 <code>R</code>（从表）包含字段组 <code>A</code>，表 <code>S</code>（主表）的主键为 <code>A</code>，则 <code>A</code> 是 <code>R</code> 的“外键”（foreign key），需满足：<code>R</code> 中所有 <code>A</code> 的值，要么为 <code>null</code>，要么在 <code>S</code> 的主键 <code>A</code> 中存在。</li>
+<li><strong>示例</strong>：<code>instructor</code> 表（从表）的 <code>dept_name</code> 字段引用 <code>department</code> 表（主表）的主键 <code>dept_name</code>，则 <code>instructor</code> 中出现的“部门名称”（如“Biology”），必须在 <code>department</code> 表中存在对应的部门记录。</li>
+</ul>
+<h4 id="2_3">2. 参照完整性的级联动作<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
+<p>当主表中的主键值被修改（<code>update</code>）或删除（<code>delete</code>）时，从表中引用该值的外键可能会变成“无效引用”，此时需通过“级联动作”处理，常见动作包括：
+- <strong>ON DELETE CASCADE</strong>：删除主表记录时，自动删除从表中所有引用该主键的记录（如删除某部门时，自动删除该部门的所有教师记录）。
+- <strong>ON UPDATE CASCADE</strong>：更新主表主键值时，自动更新从表中所有引用该主键的外键值（如修改部门名称时，自动同步更新教师表中该部门的名称）。
+- <strong>ON DELETE SET NULL / ON DELETE SET DEFAULT</strong>：删除主表记录时，将从表中对应的外键值设为 <code>null</code> 或默认值（需确保外键字段允许为 <code>null</code> 或有默认值）。</p>
+<ul>
+<li><strong>语法示例</strong>：定义课程表时，设置外键级联动作：<br />
+  <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span>
+<span class="normal"><a href="#__codelineno-1-7">7</a></span>
+<span class="normal"><a href="#__codelineno-1-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">course</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="n">course_id</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="n">dept_name</span><span class="w"> </span><span class="nb">varchar</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">dept_name</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">department</span><span class="w"> </span><span class="c1">-- 外键引用部门表</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="k">on</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">cascade</span><span class="w"> </span><span class="c1">-- 部门删除时，级联删除对应课程</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="k">on</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">cascade</span><span class="w"> </span><span class="c1">-- 部门名称更新时，级联更新课程的部门名称</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div></li>
+</ul>
+<h3 id="_18">事务中的完整性约束违反与解决方案<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p>在事务执行过程中，若操作触发完整性约束（如外键引用不存在的值），会导致事务执行失败，需通过合理方式规避。</p>
+<h4 id="_19">典型问题示例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<p>定义 <code>person</code> 表，其中“父亲”“母亲”字段引用自身主键“ID”（自引用外键）：<br />
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="k">create</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">person</span><span class="w"> </span><span class="p">(</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="n">ID</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">40</span><span class="p">),</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="n">mother</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="n">father</span><span class="w"> </span><span class="nb">char</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">ID</span><span class="p">),</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">mother</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">person</span><span class="p">,</span><span class="w"> </span><span class="c1">-- 引用自身ID</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="k">foreign</span><span class="w"> </span><span class="k">key</span><span class="w"> </span><span class="p">(</span><span class="n">father</span><span class="p">)</span><span class="w"> </span><span class="k">references</span><span class="w"> </span><span class="n">person</span><span class="w">  </span><span class="c1">-- 引用自身ID</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="p">);</span>
+</span></code></pre></div></td></tr></table></div>
+若直接插入某个人的记录（其父母记录尚未插入），会因“父母ID不存在”违反外键约束。</p>
+<h4 id="_20">解决方案<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>先插入依赖记录</strong>：先插入该人的父母记录，再插入此人记录（确保外键引用的主键已存在）。</li>
+<li><strong>初始设 null 后更新</strong>：若“父亲”“母亲”字段允许为 <code>null</code>，可先插入此人记录（父母字段设为 <code>null</code>），待父母记录插入后，再通过 <code>update</code> 语句补全父母ID。</li>
+<li><strong>延迟约束检查</strong>：部分数据库支持“延迟约束检查”，将约束检查推迟到事务提交时（而非每条语句执行时），确保事务内所有相关记录插入完成后再验证约束。</li>
+</ol>
+<h3 id="check">复杂 CHECK 子句的限制与替代方案<a class="headerlink" href="#check" title="Permanent link">&para;</a></h3>
+<h4 id="1-check">1. 复杂 CHECK 子句的限制<a class="headerlink" href="#1-check" title="Permanent link">&para;</a></h4>
+<p>若 <code>check</code> 子句中包含子查询（如引用其他表的数据），大多数数据库（如MySQL、Oracle）<strong>不支持该语法</strong>。例如：<br />
+<code>check (time_slot_id in (select time_slot_id from time_slot))</code><br />
+（意图：确保章节表的“时间段ID”在时间段表中存在）——该语句会因“子查询在 check 中”被数据库拒绝。</p>
+<h4 id="2_4">2. 替代方案<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>触发器（Trigger）</strong>：通过自定义触发器，在插入/更新数据时执行子查询校验逻辑，替代 <code>check</code> 子句的复杂条件（触发器将在后续章节详细讲解）。</li>
+<li><strong>CREATE ASSERTION（不推荐）</strong>：SQL标准中定义 <code>create assertion &lt;断言名&gt; check &lt;谓词&gt;</code> 用于全局约束，但目前<strong>几乎所有数据库都不支持该语法</strong>，无法实际应用。</li>
+</ul>
+<h2 id="sql-sql-data-types-and-schemas">SQL 数据类型和模式（SQL Data Types and Schemas）<a class="headerlink" href="#sql-sql-data-types-and-schemas" title="Permanent link">&para;</a></h2>
+<h3 id="built-in-data-types">一、内置数据类型（Built-in Data Types）<a class="headerlink" href="#built-in-data-types" title="Permanent link">&para;</a></h3>
+<p>内置数据类型是SQL标准定义的基础数据格式，覆盖日期、时间、时间间隔等常见场景，支持直接用于表结构定义，核心类型及特性如下：
+- <strong>date（日期类型）</strong>：存储年、月、日，格式为<code>'YYYY-MM-DD'</code>，示例：<code>date '2005-7-27'</code>（代表2005年7月27日）。
+- <strong>time（时间类型）</strong>：存储时、分、秒，支持毫秒精度，格式为<code>'HH:MM:SS'</code>或<code>'HH:MM:SS.fff'</code>，示例：<code>time '09:00:30'</code>（无毫秒）、<code>time '09:00:30.75'</code>（含750毫秒）。
+- <strong>timestamp（时间戳类型）</strong>：组合日期与时间，同时包含年、月、日、时、分、秒（支持毫秒），格式为<code>'YYYY-MM-DD HH:MM:SS.fff'</code>，示例：<code>timestamp '2005-7-27 09:00:30.75'</code>。
+- <strong>interval（时间间隔类型）</strong>：表示一段连续时间，需指定单位，示例：<code>interval '1' day</code>（1天）、<code>interval '30' minute</code>（30分钟）。
+- <strong>运算规则</strong>：日期/时间/timestamp类型间的差值运算返回interval类型（如<code>date '2024-5-1' - date '2024-4-28' = interval '3' day</code>）；interval类型可与日期/时间/timestamp类型相加（如<code>timestamp '2024-5-1 00:00:00' + interval '2' hour = timestamp '2024-5-1 02:00:00'</code>）。</p>
+<h3 id="index-creation">二、索引创建（Index Creation）<a class="headerlink" href="#index-creation" title="Permanent link">&para;</a></h3>
+<p>索引是优化数据库查询效率的数据结构，通过对指定列建立索引，可快速定位目标记录，避免全表扫描，核心特性如下：
+- <strong>核心作用</strong>：加速“基于索引列的查询”（如按ID查询、按关键字筛选），尤其适用于数据量较大的表。
+- <strong>语法格式</strong>：<code>create index &lt;索引名&gt; on &lt;表名&gt;(&lt;列名&gt;);</code>
+- <strong>示例</strong>：对<code>student</code>表的<code>ID</code>列创建索引，语句为<code>create index studentID_index on student(ID);</code>。当执行<code>select * from student where ID = '12345'</code>时，数据库可通过该索引直接定位记录，无需遍历所有学生数据。</p>
+<h3 id="user-defined-types">三、用户定义类型（User-Defined Types）<a class="headerlink" href="#user-defined-types" title="Permanent link">&para;</a></h3>
+<p>用户可基于SQL内置类型自定义新类型，增强数据语义的明确性（如区分“金额”“温度”等特殊数值），核心规则如下：
+- <strong>语法格式</strong>：<code>create type &lt;自定义类型名&gt; as &lt;内置类型&gt; final;</code>（<code>final</code>表示类型不可继承，部分数据库支持省略）。
+- <strong>示例</strong>：定义“金额类型”<code>Dollars</code>（适配货币精度需求），语句为<code>create type Dollars as numeric(12,2) final;</code>；在表中使用该类型：<code>create table department(dept_name varchar(20), building varchar(15), budget Dollars);</code>，其中<code>budget</code>字段明确为“金额”，语义更清晰。</p>
+<h3 id="domains">四、域（Domains）<a class="headerlink" href="#domains" title="Permanent link">&para;</a></h3>
+<p>域是对数据格式与约束的封装，侧重“约束规则复用”，支持直接附加<code>not null</code>、<code>check</code>等约束，与用户定义类型的核心区别是“非强类型”，具体特性如下：
+- <strong>语法格式</strong>：
+  - 基础域（带<code>not null</code>）：<code>create domain &lt;域名&gt; &lt;内置类型&gt; [not null];</code>
+  - 带<code>check</code>约束的域：<code>create domain &lt;域名&gt; &lt;内置类型&gt; constraint &lt;约束名&gt; check (&lt;约束条件&gt;);</code>
+- <strong>示例</strong>：
+  1. 定义“人员姓名域”：<code>create domain person_name char(20) not null;</code>（限制姓名为20位字符且不可为空）。
+  2. 定义“学历等级域”：<code>create domain degree_level varchar(10) constraint degree_level_test check (value in ('Bachelors', 'Masters', 'Doctorate'));</code>（限制学历仅为学士、硕士、博士）。
+- <strong>关键特性</strong>：域仅校验数据格式与约束，不具备严格的类型区分（基于同一内置类型的不同域可隐式转换）。</p>
+<h3 id="large-object-types">五、大对象类型（Large-Object Types）<a class="headerlink" href="#large-object-types" title="Permanent link">&para;</a></h3>
+<p>用于存储超出常规字段长度的数据（如照片、视频、超长文档），SQL提供两种核心类型，核心特性如下：
+- <strong>blob（二进制大对象）</strong>：存储无结构二进制数据（如图片、视频、压缩文件），数据库不解析内容，仅以二进制流存储。
+- <strong>clob（字符大对象）</strong>：存储结构化字符数据（如超长文本、XML/JSON文档），支持字符编码识别（如UTF-8）。
+- <strong>访问特性</strong>：查询大对象字段时，数据库默认返回“数据指针”（而非完整数据），避免超大数据传输导致的查询效率下降。</p>
+<h3 id="generating-unique-key-values">六、唯一键生成（Generating Unique Key Values）<a class="headerlink" href="#generating-unique-key-values" title="Permanent link">&para;</a></h3>
+<p>通过<code>generated always as identity</code>语法实现字段值的自动生成与唯一性保证，常用于主键（如ID）的自动赋值，核心规则如下：
+- <strong>语法格式</strong>：<code>&lt;字段名&gt; &lt;数值类型&gt; generated always as identity;</code>
+- <strong>示例</strong>：定义<code>student</code>表的<code>ID</code>字段为自动生成的5位唯一值：<code>create table student(ID number(5) generated always as identity, name varchar(20));</code>。插入数据时无需手动指定<code>ID</code>，数据库会自动生成从初始值（默认1）开始的连续唯一值，避免重复。</p>
+<h3 id="other-schema-features">七、表创建变体与模式层级（Other Schema Features）<a class="headerlink" href="#other-schema-features" title="Permanent link">&para;</a></h3>
+<h4 id="1-create-table-like">1. 表结构复制（<code>create table ... like ...</code>）<a class="headerlink" href="#1-create-table-like" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>作用</strong>：复制现有表的结构（含字段名、数据类型、约束），但不复制数据。</li>
+<li><strong>示例</strong>：<code>create table student_copy like student;</code>（创建<code>student_copy</code>表，结构与<code>student</code>完全一致，无数据）。</li>
+</ul>
+<h4 id="2-create-table-as-with-data">2. 基于查询结果创建表（<code>create table ... as (...) with data</code>）<a class="headerlink" href="#2-create-table-as-with-data" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>作用</strong>：根据SQL查询结果创建新表，并将查询结果直接作为新表数据。</li>
+<li><strong>示例</strong>：<code>create table biology_student as (select * from student where dept_name = 'Biology') with data;</code>（创建“生物系学生表”，结构与<code>student</code>一致，数据为生物系学生记录）。</li>
+</ul>
+<h4 id="3">3. 模式、目录、环境<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>模式（Schema）</strong>：表的“逻辑分组”，用于区分不同业务模块的表（如<code>school</code>模式含<code>student</code>/<code>instructor</code>表，<code>finance</code>模式含<code>salary</code>/<code>budget</code>表），避免表名冲突。</li>
+<li><strong>目录（Catalog）</strong>：模式的“物理分组”，通常对应数据库实例中的一个“数据库”，一个目录可包含多个模式。</li>
+<li><strong>环境（Environment）</strong>：用户的“访问上下文”，定义默认目录与模式，无需每次查询都指定“目录.模式.表”路径（如默认目录<code>school_db</code>、默认模式<code>school</code>，查询<code>student</code>表可简写为<code>select * from student</code>）。</li>
+</ul>
+<h2 id="authorization">授权（Authorization）<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h2>
+<h3 id="_21">一、授权的核心形式<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>授权的本质是控制用户对数据库资源的访问与修改权限，避免未授权操作破坏数据安全性或完整性，主要分为“数据操作权限”和“模式修改权限”两类：
+- <strong>数据库数据操作权限</strong>：针对表、视图等数据对象的读写操作，包括4种核心权限：
+  - <code>read</code>：允许读取数据（如执行<code>select</code>查询），仅查看不修改；
+  - <code>insert</code>：允许插入新数据（如执行<code>insert</code>语句），不允许修改已有数据；
+  - <code>update</code>：允许修改已有数据（如执行<code>update</code>语句），不允许删除数据；
+  - <code>delete</code>：允许删除已有数据（如执行<code>delete</code>语句），不允许插入或修改数据。
+- <strong>数据库模式修改权限</strong>：针对数据库结构（表、索引等）的调整操作，包括4种核心权限：
+  - <code>index</code>：允许为表创建或删除索引（如<code>create index</code>、<code>drop index</code>）；
+  - <code>resources</code>：允许创建新的关系（表），是“建表”的基础权限；
+  - <code>alteration</code>：允许修改已有表的结构（如添加/删除列，执行<code>alter table</code>）；
+  - <code>drop</code>：允许删除已有关系（表、视图等），执行<code>drop table</code>或<code>drop view</code>。</p>
+<h3 id="grant">二、授权规范（Grant 语句）<a class="headerlink" href="#grant" title="Permanent link">&para;</a></h3>
+<p>通过<code>grant</code>语句明确授予权限，需指定“权限范围”“操作对象”和“授权对象”，核心规则与语法如下：
+- <strong>基础语法</strong>：<br />
+<code>grant &lt;privilege list&gt; on &lt;relation/view name&gt; to &lt;user list&gt;;</code>
+- <strong>参数说明</strong>：
+  - <code>&lt;privilege list&gt;</code>：单个或多个权限（如<code>select, insert</code>），或用<code>all privileges</code>表示“该对象的所有允许权限”；
+  - <code>&lt;relation/view name&gt;</code>：权限对应的操作对象（表或视图）；
+  - <code>&lt;user list&gt;</code>：被授权的对象，支持三类：
+    1. 具体用户ID（如<code>U1</code>、<code>Amit</code>）；
+    2. <code>public</code>：所有合法用户（权限对全体开放）；
+    3. 角色（如<code>instructor</code>，后续“角色管理”章节详细说明）。
+- <strong>关键规则</strong>：<br />
+  视图授权不隐含基础关系授权——若授予用户“视图的<code>select</code>权限”，仅允许用户查询该视图，不代表用户可访问视图依赖的基础表（如授予<code>geo_instructor</code>视图权限，不隐含<code>instructor</code>表权限）。</p>
+<h3 id="sql">三、SQL 中的具体特权类型<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
+<h4 id="1_4">1. 常用数据操作特权<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>select</code>：最基础的查询权限，允许读取表或视图的数据，是<code>select</code>语句的执行前提。<br />
+  示例：授予<code>U1</code>、<code>U2</code>、<code>U3</code>查询<code>instructor</code>表的权限：<br />
+<code>grant select on instructor to U1, U2, U3;</code></li>
+<li><code>insert</code>：允许向表中插入新元组，可指定列（如<code>grant insert (name, dept_name) on instructor to U1</code>，仅允许插入姓名和部门列）。</li>
+<li><code>update</code>：允许修改表中数据，可指定列（如<code>grant update (salary) on instructor to U2</code>，仅允许修改薪资）。</li>
+<li><code>delete</code>：允许删除表中整行数据，无列级限制。</li>
+</ul>
+<h4 id="2-all-privileges">2. 特权简写：<code>all privileges</code><a class="headerlink" href="#2-all-privileges" title="Permanent link">&para;</a></h4>
+<p>当需授予“某对象的所有权限”时，用<code>all privileges</code>简化语句。<br />
+示例：给所有用户授予<code>student</code>表的所有权限：<br />
+<code>grant all privileges on student to public;</code></p>
+<h3 id="revoke">四、授权的撤销（Revoke 语句）<a class="headerlink" href="#revoke" title="Permanent link">&para;</a></h3>
+<p>通过<code>revoke</code>语句收回已授予的权限，确保权限管理的灵活性（如用户离职后回收权限），核心规则与语法如下：
+- <strong>基础语法</strong>：<br />
+<code>revoke &lt;privilege list&gt; on &lt;relation/view name&gt; from &lt;user list&gt;;</code>
+- <strong>关键规则与示例</strong>：
+  - 撤销所有权限：用<code>all</code>表示“撤销该用户在该对象上的所有权限”，示例：<br />
+<code>revoke all on branch from U1, U2, U3;</code>（收回<code>U1-U3</code>对<code>branch</code>表的所有权限）；
+  - <code>public</code>的撤销：若之前用<code>public</code>授予权限，撤销时指定<code>public</code>，则所有用户失去该权限（除非有单独授予的权限）；
+  - 依赖特权的级联撤销：若用户<code>U1</code>将权限授予<code>U2</code>，当撤销<code>U1</code>的权限时，<code>U2</code>从<code>U1</code>继承的权限会被自动撤销（权限传递链断裂）。</p>
+<h3 id="roles">五、角色（Roles）管理<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>
+<p>角色是“一组权限的集合”，用于简化批量权限管理（如给“教师”角色绑定统一权限，再授予多个用户），核心操作如下：</p>
+<h4 id="1_5">1. 角色的基础操作<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>创建角色</strong>：<code>create role &lt;role name&gt;;</code><br />
+  示例：创建“教师角色”<code>instructor</code>：<br />
+<code>create role instructor;</code></li>
+<li><strong>给角色授予权限</strong>：将权限绑定到角色，示例：<br />
+<code>grant select on takes to instructor;</code>（给<code>instructor</code>角色授予查询<code>takes</code>表的权限）；</li>
+<li><strong>将角色授予用户/其他角色</strong>：</li>
+<li>授予用户：<code>grant &lt;role name&gt; to &lt;user id&gt;;</code><br />
+    示例：将<code>instructor</code>角色授予用户<code>Amit</code>：<br />
+<code>grant instructor to Amit;</code></li>
+<li>授予其他角色（角色继承）：被授予角色的用户/角色会“继承”该角色的所有权限。<br />
+    示例：创建“助教角色”<code>teaching_assistant</code>，并授予<code>instructor</code>角色（教师继承助教权限）：<br />
+<code>create role teaching_assistant; grant teaching_assistant to instructor;</code></li>
+</ul>
+<h4 id="2-role-chain">2. 角色链（Role Chain）<a class="headerlink" href="#2-role-chain" title="Permanent link">&para;</a></h4>
+<p>多个角色可形成依赖链，权限沿链传递。<br />
+示例：创建“院长角色”<code>dean</code>，使其继承“教师角色”权限，并授予用户<code>Satoshi</code>：<br />
+<code>create role dean; grant instructor to dean; grant dean to Satoshi;</code><br />
+（<code>Satoshi</code>最终拥有<code>dean</code>、<code>instructor</code>、<code>teaching_assistant</code>的所有权限）。</p>
+<h3 id="_22">六、视图的授权注意事项<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>视图作为“虚拟关系”，其授权需关注“权限依赖”问题，结合示例说明关键场景：</p>
+<h4 id="1_6">1. 视图授权示例<a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
+<p>创建“地质学教师视图”<code>geo_instructor</code>，并授予<code>geo_staff</code>用户组查询权限：<br />
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span>
+<span class="normal"><a href="#__codelineno-3-5">5</a></span>
+<span class="normal"><a href="#__codelineno-3-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">-- 1. 创建视图（创建者需有instructor表的select权限）</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="k">create</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">geo_instructor</span><span class="w"> </span><span class="k">as</span><span class="w"> </span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">instructor</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">dept_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Geology&#39;</span><span class="p">;</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="c1">-- 2. 授予视图权限</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="k">grant</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">geo_instructor</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">geo_staff</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div></p>
+<h4 id="2_5">2. 核心问题与结论<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>问题1</strong>：若<code>geo_staff</code>无<code>instructor</code>表的权限，能否查询<code>geo_instructor</code>视图？<br />
+  结论：<strong>可以</strong>。视图授权仅依赖“视图本身的权限”，用户无需直接拥有基础表权限，即可访问视图范围内的数据（实现数据隐藏）；</li>
+<li><strong>问题2</strong>：若视图创建者缺少<code>instructor</code>表的权限，视图能否创建？授权是否有效？<br />
+  结论：<strong>视图创建失败</strong>。创建视图的前提是“创建者拥有基础表的对应权限”（如<code>select</code>），否则视图无法生成，后续授权无从谈起。</li>
+</ul>
+<h3 id="_23">七、其他授权特性<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>references</code>权限</strong>：创建外键时，需对“被引用表的主键列”拥有<code>references</code>权限（确保用户有权关联该表）。<br />
+  示例：授予<code>Mariano</code>引用<code>department</code>表<code>dept_name</code>列的权限（用于创建外键）：<br />
+<code>grant reference (dept_name) on department to Mariano;</code></li>
+<li><strong><code>with grant option</code>（权限转移）</strong>：授予权限时添加该选项，允许被授权用户将该权限“再授予其他用户”。<br />
+  示例：授予<code>Amit</code>查询<code>department</code>表的权限，并允许其转移权限：<br />
+<code>grant select on department to Amit with grant option;</code></li>
+<li><strong><code>revoke</code>的<code>cascade</code>/<code>restrict</code>选项</strong>：</li>
+<li><code>cascade</code>：级联撤销——撤销用户权限时，自动撤销该用户通过<code>with grant option</code>授予他人的权限；</li>
+<li><code>restrict</code>：限制撤销——若该用户已将权限授予他人，则撤销失败（需先手动收回被传递的权限）；<br />
+    示例：级联撤销<code>Amit</code>和<code>Satoshi</code>的查询权限：<br />
+<code>revoke select on department from Amit, Satoshi cascade;</code></li>
+<li><strong><code>granted by current_role</code></strong>：指定“当前角色”作为授权者，而非用户自身，确保权限归属清晰（多角色切换场景适用）。</li>
+</ul>
+<h3 id="_24">八、授权图与权限传递规则<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>授权关系可通过“授权图”可视化，清晰呈现权限的来源与传递范围：
+- <strong>授权图结构</strong>：
+  - 节点：代表用户（如<code>U1</code>、<code>U2</code>）或数据库管理员（DBA，为图的“根节点”）；
+  - 边：从授权者指向被授权者（如<code>U1→U4</code>表示<code>U1</code>授予<code>U4</code>权限），边的含义是“权限传递路径”。
+- <strong>核心规则</strong>：
+  - 权限溯源：所有边必须属于“从DBA出发的路径”，即任何用户的权限最终都源于DBA（确保权限合法性）；
+  - 撤销影响：若某节点的权限被撤销，所有“仅通过该节点获得权限的子节点”权限会被撤销。<br />
+    示例：初始路径<code>DBA→U1→U4</code>、<code>DBA→U2→U5</code>；若DBA撤销<code>U1</code>的权限，<code>U4</code>因“仅依赖U1”被撤销权限，<code>U5</code>因“有U2的独立路径”保留权限。</p>
+<h2 id="triggers">触发器（Triggers）<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
+<h3 id="_25">一、触发器的定义与核心作用<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>触发器是数据库系统中一种<strong>自动执行的特殊语句</strong>，其本质是作为“数据库数据被修改时的副作用”存在，无需用户手动调用，仅在满足预设条件时由系统自动触发。<br />
+- <strong>核心目标</strong>：补充数据库的完整性约束（如复杂业务规则校验）、实现自动化数据维护（如同步更新关联表数据），避免因手动操作导致的数据不一致。<br />
+- <strong>设计关键</strong>：定义触发器时需明确两个核心要素：
+  1. <strong>触发条件</strong>：指定“何时触发”（如数据插入、更新后）；
+  2. <strong>触发动作</strong>：指定“触发后执行什么操作”（如修改其他表数据、校验数据合法性）。</p>
+<h3 id="_26">二、触发事件与激活机制<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>触发器的执行依赖于“触发事件”和“激活时机”的组合，同时支持对数据修改前后的值进行引用，确保动作逻辑精准。</p>
+<h4 id="1_7">1. 触发事件类型<a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h4>
+<p>触发事件对应数据库的基础修改操作，仅当这些操作执行时，触发器才可能被激活，主要包括三类：
+- <code>insert</code>：向表中插入新元组时触发；
+- <code>delete</code>：从表中删除元组时触发；
+- <code>update</code>：修改表中元组时触发（可指定具体列，如<code>update of grade</code>表示仅修改<code>grade</code>列时触发）。</p>
+<h4 id="2_6">2. 激活时机<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
+<p>激活时机决定触发器在“触发事件执行前”还是“执行后”生效，用于不同业务场景：
+- <code>before</code>：触发事件执行前激活，常用于<strong>数据合法性校验</strong>或<strong>预处理</strong>（如将非法值修正为合法值）；
+- <code>after</code>：触发事件执行后激活，常用于<strong>关联数据同步更新</strong>（如某表数据修改后，同步更新统计报表）。</p>
+<h4 id="3_1">3. 数据值引用<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<p>触发器中可通过<code>referencing</code>子句引用“数据修改前后的状态”，便于对比或计算，核心语法：
+- <code>referencing old row as &lt;别名&gt;</code>：引用修改前的元组（仅<code>update</code>、<code>delete</code>事件支持，<code>insert</code>无旧元组）；
+- <code>referencing new row as &lt;别名&gt;</code>：引用修改后的元组（仅<code>insert</code>、<code>update</code>事件支持，<code>delete</code>无新元组）。</p>
+<h4 id="4">4. 示例：空值预处理触发器<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>需求：当更新表<code>r</code>的<code>phone-number</code>字段时，若值为空格字符串，自动将其设为<code>null</code>。<br />
+触发器语句：
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span>
+<span class="normal"><a href="#__codelineno-4-5">5</a></span>
+<span class="normal"><a href="#__codelineno-4-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="k">create</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">setnull</span><span class="o">-</span><span class="k">trigger</span><span class="w"> </span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="k">before</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">r</span><span class="w">  </span><span class="c1">-- 触发时机：更新前；触发对象：表r</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="k">referencing</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nrow</span><span class="w">  </span><span class="c1">-- 引用更新后的新元组，别名为nrow</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">row</span><span class="w">  </span><span class="c1">-- 行级触发：每修改一行就执行一次动作</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="k">when</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">phone</span><span class="o">-</span><span class="nb">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w">  </span><span class="c1">-- 触发条件：新元组的phone-number为空格</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="k">set</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">phone</span><span class="o">-</span><span class="nb">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">null</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 触发动作：将该字段设为null</span>
+</span></code></pre></div></td></tr></table></div></p>
+<h3 id="_27">三、行级触发与语句级触发<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>根据“触发动作的执行粒度”，触发器分为“行级触发”和“语句级触发”，适用场景不同。</p>
+<h4 id="1-for-each-row">1. 行级触发（<code>for each row</code>）<a class="headerlink" href="#1-for-each-row" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>执行逻辑</strong>：触发事件（如<code>update</code>）每修改一行数据，触发器就执行一次动作；</li>
+<li><strong>适用场景</strong>：需要对“每一行修改的数据”单独处理（如逐行校验、逐行同步数据）；</li>
+<li><strong>特点</strong>：精度高，但当修改大量数据（如批量更新1000行）时，会执行1000次动作，效率较低。</li>
+</ul>
+<h4 id="2-for-each-statement">2. 语句级触发（<code>for each statement</code>）<a class="headerlink" href="#2-for-each-statement" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>执行逻辑</strong>：无论触发事件修改多少行数据，触发器仅执行一次动作；</li>
+<li><strong>数据引用</strong>：通过<code>referencing old table as &lt;别名&gt;</code>或<code>referencing new table as &lt;别名&gt;</code>，引用存储“所有修改行”的临时表，而非单一行；</li>
+<li><strong>适用场景</strong>：对“批量修改的整体”进行处理（如统计批量更新的总行数）；</li>
+<li><strong>特点</strong>：效率高，尤其适合大数量级的数据修改（如批量更新1000行仅执行1次动作）。</li>
+</ul>
+<h3 id="_28">四、典型应用示例——维护学生总学分<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>需求：当学生选课表（<code>takes</code>）的成绩（<code>grade</code>）从“F”或“null”更新为“非F且非null”时，自动将对应课程的学分累加到学生表（<code>student</code>）的总学分（<code>tot_cred</code>）中。</p>
+<h4 id="_29">触发器完整语句<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">create</span><span class="w"> </span><span class="k">trigger</span><span class="w"> </span><span class="n">credits_earned</span><span class="w"> </span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="k">after</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">grade</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">takes</span><span class="w">  </span><span class="c1">-- 触发事件：更新takes表的grade列；时机：更新后</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">referencing</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">nrow</span><span class="w">  </span><span class="c1">-- 引用更新后的新成绩行</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">            </span><span class="k">old</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">orow</span><span class="w">  </span><span class="c1">-- 引用更新前的旧成绩行</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="k">for</span><span class="w"> </span><span class="k">each</span><span class="w"> </span><span class="k">row</span><span class="w">  </span><span class="c1">-- 行级触发：每更新一个学生的成绩就检查一次</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="c1">-- 触发条件：新成绩非F且非null，旧成绩为F或null（确保仅首次通过课程时加分）</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="k">when</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">grade</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">grade</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">null</span><span class="w"> </span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">     </span><span class="k">and</span><span class="w"> </span><span class="p">(</span><span class="n">orow</span><span class="p">.</span><span class="n">grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;F&#39;</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="n">orow</span><span class="p">.</span><span class="n">grade</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">null</span><span class="p">)</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="k">begin</span><span class="w"> </span><span class="k">atomic</span><span class="w">  </span><span class="c1">-- 原子块：确保内部操作要么全执行，要么全回滚</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">    </span><span class="k">update</span><span class="w"> </span><span class="n">student</span><span class="w"> </span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="k">set</span><span class="w"> </span><span class="n">tot_cred</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tot_cred</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="k">select</span><span class="w"> </span><span class="n">credits</span><span class="w"> </span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">                               </span><span class="k">from</span><span class="w"> </span><span class="n">course</span><span class="w"> </span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">                               </span><span class="k">where</span><span class="w"> </span><span class="n">course</span><span class="p">.</span><span class="n">course_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">course_id</span><span class="p">)</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">    </span><span class="k">where</span><span class="w"> </span><span class="n">student</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">.</span><span class="n">id</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 找到对应学生，累加课程学分</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="k">end</span><span class="p">;</span>
+</span></code></pre></div></td></tr></table></div>
+<h4 id="_30">语句解析<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>触发时机与事件</strong>：<code>after update of grade on takes</code>——仅当<code>takes</code>表的<code>grade</code>列被更新后触发，避免其他列更新时误触发；</li>
+<li><strong>新旧值对比</strong>：通过<code>nrow</code>（新成绩）和<code>orow</code>（旧成绩）的对比，确保仅“成绩从不及格/未评分变为及格”时才加分，避免重复累加；</li>
+<li><strong>原子性保障</strong>：<code>begin atomic</code>包裹更新逻辑，防止因中间错误导致“课程学分查询成功但学生总学分未更新”的不一致问题。</li>
+</ol>
 
 
 

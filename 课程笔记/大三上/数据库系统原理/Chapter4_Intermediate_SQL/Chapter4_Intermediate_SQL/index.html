@@ -7296,9 +7296,11 @@
 <h2 id="integrity-constraints">完整性约束（Integrity Constraints）<a class="headerlink" href="#integrity-constraints" title="Permanent link">&para;</a></h2>
 <h3 id="_15">完整性约束的核心作用<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>完整性约束是数据库系统的“防护机制”，核心目标是<strong>防止数据库因意外操作或错误变更导致数据不一致</strong>，确保授权用户对数据库的修改不会破坏数据的逻辑正确性。<br />
-典型应用示例：
-- 业务规则约束：检查账户余额需大于 $10,000.00（避免负余额或过低余额）、银行员工时薪不低于 $4.00（符合最低工资标准）。
-- 数据有效性约束：客户的联系电话字段不可为空（<code>not null</code>），确保每个客户都有可联系的方式。</p>
+典型应用示例：</p>
+<ul>
+<li>业务规则约束：检查账户余额需大于 $10,000.00（避免负余额或过低余额）、银行员工时薪不低于 $4.00（符合最低工资标准）。</li>
+<li>数据有效性约束：客户的联系电话字段不可为空（<code>not null</code>），确保每个客户都有可联系的方式。</li>
+</ul>
 <h3 id="_16">单关系约束（约束作用于单个表）<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>单关系约束仅针对某一个数据库表中的数据进行规则限制，主要包含以下四类：</p>
 <h4 id="1-not-null">1. NOT NULL 约束<a class="headerlink" href="#1-not-null" title="Permanent link">&para;</a></h4>
@@ -7412,12 +7414,14 @@
 </ul>
 <h2 id="sql-sql-data-types-and-schemas">SQL 数据类型和模式（SQL Data Types and Schemas）<a class="headerlink" href="#sql-sql-data-types-and-schemas" title="Permanent link">&para;</a></h2>
 <h3 id="built-in-data-types">一、内置数据类型（Built-in Data Types）<a class="headerlink" href="#built-in-data-types" title="Permanent link">&para;</a></h3>
-<p>内置数据类型是SQL标准定义的基础数据格式，覆盖日期、时间、时间间隔等常见场景，支持直接用于表结构定义，核心类型及特性如下：
-- <strong>date（日期类型）</strong>：存储年、月、日，格式为<code>'YYYY-MM-DD'</code>，示例：<code>date '2005-7-27'</code>（代表2005年7月27日）。
-- <strong>time（时间类型）</strong>：存储时、分、秒，支持毫秒精度，格式为<code>'HH:MM:SS'</code>或<code>'HH:MM:SS.fff'</code>，示例：<code>time '09:00:30'</code>（无毫秒）、<code>time '09:00:30.75'</code>（含750毫秒）。
-- <strong>timestamp（时间戳类型）</strong>：组合日期与时间，同时包含年、月、日、时、分、秒（支持毫秒），格式为<code>'YYYY-MM-DD HH:MM:SS.fff'</code>，示例：<code>timestamp '2005-7-27 09:00:30.75'</code>。
-- <strong>interval（时间间隔类型）</strong>：表示一段连续时间，需指定单位，示例：<code>interval '1' day</code>（1天）、<code>interval '30' minute</code>（30分钟）。
-- <strong>运算规则</strong>：日期/时间/timestamp类型间的差值运算返回interval类型（如<code>date '2024-5-1' - date '2024-4-28' = interval '3' day</code>）；interval类型可与日期/时间/timestamp类型相加（如<code>timestamp '2024-5-1 00:00:00' + interval '2' hour = timestamp '2024-5-1 02:00:00'</code>）。</p>
+<p>内置数据类型是SQL标准定义的基础数据格式，覆盖日期、时间、时间间隔等常见场景，支持直接用于表结构定义，核心类型及特性如下：</p>
+<ul>
+<li><strong>date（日期类型）</strong>：存储年、月、日，格式为<code>'YYYY-MM-DD'</code>，示例：<code>date '2005-7-27'</code>（代表2005年7月27日）。</li>
+<li><strong>time（时间类型）</strong>：存储时、分、秒，支持毫秒精度，格式为<code>'HH:MM:SS'</code>或<code>'HH:MM:SS.fff'</code>，示例：<code>time '09:00:30'</code>（无毫秒）、<code>time '09:00:30.75'</code>（含750毫秒）。</li>
+<li><strong>timestamp（时间戳类型）</strong>：组合日期与时间，同时包含年、月、日、时、分、秒（支持毫秒），格式为<code>'YYYY-MM-DD HH:MM:SS.fff'</code>，示例：<code>timestamp '2005-7-27 09:00:30.75'</code>。</li>
+<li><strong>interval（时间间隔类型）</strong>：表示一段连续时间，需指定单位，示例：<code>interval '1' day</code>（1天）、<code>interval '30' minute</code>（30分钟）。</li>
+<li><strong>运算规则</strong>：日期/时间/timestamp类型间的差值运算返回interval类型（如<code>date '2024-5-1' - date '2024-4-28' = interval '3' day</code>）；interval类型可与日期/时间/timestamp类型相加（如<code>timestamp '2024-5-1 00:00:00' + interval '2' hour = timestamp '2024-5-1 02:00:00'</code>）。</li>
+</ul>
 <h3 id="index-creation">二、索引创建（Index Creation）<a class="headerlink" href="#index-creation" title="Permanent link">&para;</a></h3>
 <p>索引是优化数据库查询效率的数据结构，通过对指定列建立索引，可快速定位目标记录，避免全表扫描，核心特性如下：
 - <strong>核心作用</strong>：加速“基于索引列的查询”（如按ID查询、按关键字筛选），尤其适用于数据量较大的表。

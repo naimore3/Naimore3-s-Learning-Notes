@@ -7350,12 +7350,15 @@
 <li><strong>示例</strong>：<code>instructor</code> 表（从表）的 <code>dept_name</code> 字段引用 <code>department</code> 表（主表）的主键 <code>dept_name</code>，则 <code>instructor</code> 中出现的“部门名称”（如“Biology”），必须在 <code>department</code> 表中存在对应的部门记录。</li>
 </ul>
 <h4 id="2_3">2. 参照完整性的级联动作<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
-<p>当主表中的主键值被修改（<code>update</code>）或删除（<code>delete</code>）时，从表中引用该值的外键可能会变成“无效引用”，此时需通过“级联动作”处理，常见动作包括：
-- <strong>ON DELETE CASCADE</strong>：删除主表记录时，自动删除从表中所有引用该主键的记录（如删除某部门时，自动删除该部门的所有教师记录）。
-- <strong>ON UPDATE CASCADE</strong>：更新主表主键值时，自动更新从表中所有引用该主键的外键值（如修改部门名称时，自动同步更新教师表中该部门的名称）。
-- <strong>ON DELETE SET NULL / ON DELETE SET DEFAULT</strong>：删除主表记录时，将从表中对应的外键值设为 <code>null</code> 或默认值（需确保外键字段允许为 <code>null</code> 或有默认值）。</p>
+<p>当主表中的主键值被修改（<code>update</code>）或删除（<code>delete</code>）时，从表中引用该值的外键可能会变成“无效引用”，此时需通过“级联动作”处理，常见动作包括：</p>
 <ul>
-<li><strong>语法示例</strong>：定义课程表时，设置外键级联动作：<br />
+<li><strong>ON DELETE CASCADE</strong>：删除主表记录时，自动删除从表中所有引用该主键的记录（如删除某部门时，自动删除该部门的所有教师记录）。</li>
+<li><strong>ON UPDATE CASCADE</strong>：更新主表主键值时，自动更新从表中所有引用该主键的外键值（如修改部门名称时，自动同步更新教师表中该部门的名称）。</li>
+<li>
+<p><strong>ON DELETE SET NULL / ON DELETE SET DEFAULT</strong>：删除主表记录时，将从表中对应的外键值设为 <code>null</code> 或默认值（需确保外键字段允许为 <code>null</code> 或有默认值）。</p>
+</li>
+<li>
+<p><strong>语法示例</strong>：定义课程表时，设置外键级联动作：<br />
   <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
 <span class="normal"><a href="#__codelineno-1-3">3</a></span>
@@ -7371,7 +7374,8 @@
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">        </span><span class="k">on</span><span class="w"> </span><span class="k">delete</span><span class="w"> </span><span class="k">cascade</span><span class="w"> </span><span class="c1">-- 部门删除时，级联删除对应课程</span>
 </span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">        </span><span class="k">on</span><span class="w"> </span><span class="k">update</span><span class="w"> </span><span class="k">cascade</span><span class="w"> </span><span class="c1">-- 部门名称更新时，级联更新课程的部门名称</span>
 </span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="p">);</span>
-</span></code></pre></div></td></tr></table></div></li>
+</span></code></pre></div></td></tr></table></div></p>
+</li>
 </ul>
 <h3 id="_18">事务中的完整性约束违反与解决方案<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>在事务执行过程中，若操作触发完整性约束（如外键引用不存在的值），会导致事务执行失败，需通过合理方式规避。</p>
@@ -7423,32 +7427,42 @@
 <li><strong>运算规则</strong>：日期/时间/timestamp类型间的差值运算返回interval类型（如<code>date '2024-5-1' - date '2024-4-28' = interval '3' day</code>）；interval类型可与日期/时间/timestamp类型相加（如<code>timestamp '2024-5-1 00:00:00' + interval '2' hour = timestamp '2024-5-1 02:00:00'</code>）。</li>
 </ul>
 <h3 id="index-creation">二、索引创建（Index Creation）<a class="headerlink" href="#index-creation" title="Permanent link">&para;</a></h3>
-<p>索引是优化数据库查询效率的数据结构，通过对指定列建立索引，可快速定位目标记录，避免全表扫描，核心特性如下：
-- <strong>核心作用</strong>：加速“基于索引列的查询”（如按ID查询、按关键字筛选），尤其适用于数据量较大的表。
-- <strong>语法格式</strong>：<code>create index &lt;索引名&gt; on &lt;表名&gt;(&lt;列名&gt;);</code>
-- <strong>示例</strong>：对<code>student</code>表的<code>ID</code>列创建索引，语句为<code>create index studentID_index on student(ID);</code>。当执行<code>select * from student where ID = '12345'</code>时，数据库可通过该索引直接定位记录，无需遍历所有学生数据。</p>
+<p>索引是优化数据库查询效率的数据结构，通过对指定列建立索引，可快速定位目标记录，避免全表扫描，核心特性如下：</p>
+<ul>
+<li><strong>核心作用</strong>：加速“基于索引列的查询”（如按ID查询、按关键字筛选），尤其适用于数据量较大的表。</li>
+<li><strong>语法格式</strong>：<code>create index &lt;索引名&gt; on &lt;表名&gt;(&lt;列名&gt;);</code></li>
+<li><strong>示例</strong>：对<code>student</code>表的<code>ID</code>列创建索引，语句为<code>create index studentID_index on student(ID);</code>。当执行<code>select * from student where ID = '12345'</code>时，数据库可通过该索引直接定位记录，无需遍历所有学生数据。</li>
+</ul>
 <h3 id="user-defined-types">三、用户定义类型（User-Defined Types）<a class="headerlink" href="#user-defined-types" title="Permanent link">&para;</a></h3>
-<p>用户可基于SQL内置类型自定义新类型，增强数据语义的明确性（如区分“金额”“温度”等特殊数值），核心规则如下：
-- <strong>语法格式</strong>：<code>create type &lt;自定义类型名&gt; as &lt;内置类型&gt; final;</code>（<code>final</code>表示类型不可继承，部分数据库支持省略）。
-- <strong>示例</strong>：定义“金额类型”<code>Dollars</code>（适配货币精度需求），语句为<code>create type Dollars as numeric(12,2) final;</code>；在表中使用该类型：<code>create table department(dept_name varchar(20), building varchar(15), budget Dollars);</code>，其中<code>budget</code>字段明确为“金额”，语义更清晰。</p>
+<p>用户可基于SQL内置类型自定义新类型，增强数据语义的明确性（如区分“金额”“温度”等特殊数值），核心规则如下：</p>
+<ul>
+<li><strong>语法格式</strong>：<code>create type &lt;自定义类型名&gt; as &lt;内置类型&gt; final;</code>（<code>final</code>表示类型不可继承，部分数据库支持省略）。</li>
+<li><strong>示例</strong>：定义“金额类型”<code>Dollars</code>（适配货币精度需求），语句为<code>create type Dollars as numeric(12,2) final;</code>；在表中使用该类型：<code>create table department(dept_name varchar(20), building varchar(15), budget Dollars);</code>，其中<code>budget</code>字段明确为“金额”，语义更清晰。</li>
+</ul>
 <h3 id="domains">四、域（Domains）<a class="headerlink" href="#domains" title="Permanent link">&para;</a></h3>
-<p>域是对数据格式与约束的封装，侧重“约束规则复用”，支持直接附加<code>not null</code>、<code>check</code>等约束，与用户定义类型的核心区别是“非强类型”，具体特性如下：
-- <strong>语法格式</strong>：
-  - 基础域（带<code>not null</code>）：<code>create domain &lt;域名&gt; &lt;内置类型&gt; [not null];</code>
-  - 带<code>check</code>约束的域：<code>create domain &lt;域名&gt; &lt;内置类型&gt; constraint &lt;约束名&gt; check (&lt;约束条件&gt;);</code>
-- <strong>示例</strong>：
-  1. 定义“人员姓名域”：<code>create domain person_name char(20) not null;</code>（限制姓名为20位字符且不可为空）。
-  2. 定义“学历等级域”：<code>create domain degree_level varchar(10) constraint degree_level_test check (value in ('Bachelors', 'Masters', 'Doctorate'));</code>（限制学历仅为学士、硕士、博士）。
-- <strong>关键特性</strong>：域仅校验数据格式与约束，不具备严格的类型区分（基于同一内置类型的不同域可隐式转换）。</p>
+<p>域是对数据格式与约束的封装，侧重“约束规则复用”，支持直接附加<code>not null</code>、<code>check</code>等约束，与用户定义类型的核心区别是“非强类型”，具体特性如下：</p>
+<ul>
+<li><strong>语法格式</strong>：</li>
+<li>基础域（带<code>not null</code>）：<code>create domain &lt;域名&gt; &lt;内置类型&gt; [not null];</code></li>
+<li>带<code>check</code>约束的域：<code>create domain &lt;域名&gt; &lt;内置类型&gt; constraint &lt;约束名&gt; check (&lt;约束条件&gt;);</code></li>
+<li><strong>示例</strong>：</li>
+<li>定义“人员姓名域”：<code>create domain person_name char(20) not null;</code>（限制姓名为20位字符且不可为空）。</li>
+<li>定义“学历等级域”：<code>create domain degree_level varchar(10) constraint degree_level_test check (value in ('Bachelors', 'Masters', 'Doctorate'));</code>（限制学历仅为学士、硕士、博士）。</li>
+<li><strong>关键特性</strong>：域仅校验数据格式与约束，不具备严格的类型区分（基于同一内置类型的不同域可隐式转换）。</li>
+</ul>
 <h3 id="large-object-types">五、大对象类型（Large-Object Types）<a class="headerlink" href="#large-object-types" title="Permanent link">&para;</a></h3>
-<p>用于存储超出常规字段长度的数据（如照片、视频、超长文档），SQL提供两种核心类型，核心特性如下：
-- <strong>blob（二进制大对象）</strong>：存储无结构二进制数据（如图片、视频、压缩文件），数据库不解析内容，仅以二进制流存储。
-- <strong>clob（字符大对象）</strong>：存储结构化字符数据（如超长文本、XML/JSON文档），支持字符编码识别（如UTF-8）。
-- <strong>访问特性</strong>：查询大对象字段时，数据库默认返回“数据指针”（而非完整数据），避免超大数据传输导致的查询效率下降。</p>
+<p>用于存储超出常规字段长度的数据（如照片、视频、超长文档），SQL提供两种核心类型，核心特性如下：</p>
+<ul>
+<li><strong>blob（二进制大对象）</strong>：存储无结构二进制数据（如图片、视频、压缩文件），数据库不解析内容，仅以二进制流存储。</li>
+<li><strong>clob（字符大对象）</strong>：存储结构化字符数据（如超长文本、XML/JSON文档），支持字符编码识别（如UTF-8）。</li>
+<li><strong>访问特性</strong>：查询大对象字段时，数据库默认返回“数据指针”（而非完整数据），避免超大数据传输导致的查询效率下降。</li>
+</ul>
 <h3 id="generating-unique-key-values">六、唯一键生成（Generating Unique Key Values）<a class="headerlink" href="#generating-unique-key-values" title="Permanent link">&para;</a></h3>
-<p>通过<code>generated always as identity</code>语法实现字段值的自动生成与唯一性保证，常用于主键（如ID）的自动赋值，核心规则如下：
-- <strong>语法格式</strong>：<code>&lt;字段名&gt; &lt;数值类型&gt; generated always as identity;</code>
-- <strong>示例</strong>：定义<code>student</code>表的<code>ID</code>字段为自动生成的5位唯一值：<code>create table student(ID number(5) generated always as identity, name varchar(20));</code>。插入数据时无需手动指定<code>ID</code>，数据库会自动生成从初始值（默认1）开始的连续唯一值，避免重复。</p>
+<p>通过<code>generated always as identity</code>语法实现字段值的自动生成与唯一性保证，常用于主键（如ID）的自动赋值，核心规则如下：</p>
+<ul>
+<li><strong>语法格式</strong>：<code>&lt;字段名&gt; &lt;数值类型&gt; generated always as identity;</code></li>
+<li><strong>示例</strong>：定义<code>student</code>表的<code>ID</code>字段为自动生成的5位唯一值：<code>create table student(ID number(5) generated always as identity, name varchar(20));</code>。插入数据时无需手动指定<code>ID</code>，数据库会自动生成从初始值（默认1）开始的连续唯一值，避免重复。</li>
+</ul>
 <h3 id="other-schema-features">七、表创建变体与模式层级（Other Schema Features）<a class="headerlink" href="#other-schema-features" title="Permanent link">&para;</a></h3>
 <h4 id="1-create-table-like">1. 表结构复制（<code>create table ... like ...</code>）<a class="headerlink" href="#1-create-table-like" title="Permanent link">&para;</a></h4>
 <ul>
@@ -7468,30 +7482,36 @@
 </ul>
 <h2 id="authorization">授权（Authorization）<a class="headerlink" href="#authorization" title="Permanent link">&para;</a></h2>
 <h3 id="_21">一、授权的核心形式<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
-<p>授权的本质是控制用户对数据库资源的访问与修改权限，避免未授权操作破坏数据安全性或完整性，主要分为“数据操作权限”和“模式修改权限”两类：
-- <strong>数据库数据操作权限</strong>：针对表、视图等数据对象的读写操作，包括4种核心权限：
-  - <code>read</code>：允许读取数据（如执行<code>select</code>查询），仅查看不修改；
-  - <code>insert</code>：允许插入新数据（如执行<code>insert</code>语句），不允许修改已有数据；
-  - <code>update</code>：允许修改已有数据（如执行<code>update</code>语句），不允许删除数据；
-  - <code>delete</code>：允许删除已有数据（如执行<code>delete</code>语句），不允许插入或修改数据。
-- <strong>数据库模式修改权限</strong>：针对数据库结构（表、索引等）的调整操作，包括4种核心权限：
-  - <code>index</code>：允许为表创建或删除索引（如<code>create index</code>、<code>drop index</code>）；
-  - <code>resources</code>：允许创建新的关系（表），是“建表”的基础权限；
-  - <code>alteration</code>：允许修改已有表的结构（如添加/删除列，执行<code>alter table</code>）；
-  - <code>drop</code>：允许删除已有关系（表、视图等），执行<code>drop table</code>或<code>drop view</code>。</p>
+<p>授权的本质是控制用户对数据库资源的访问与修改权限，避免未授权操作破坏数据安全性或完整性，主要分为“数据操作权限”和“模式修改权限”两类：</p>
+<ul>
+<li><strong>数据库数据操作权限</strong>：针对表、视图等数据对象的读写操作，包括4种核心权限：</li>
+<li><code>read</code>：允许读取数据（如执行<code>select</code>查询），仅查看不修改；</li>
+<li><code>insert</code>：允许插入新数据（如执行<code>insert</code>语句），不允许修改已有数据；</li>
+<li><code>update</code>：允许修改已有数据（如执行<code>update</code>语句），不允许删除数据；</li>
+<li><code>delete</code>：允许删除已有数据（如执行<code>delete</code>语句），不允许插入或修改数据。</li>
+<li><strong>数据库模式修改权限</strong>：针对数据库结构（表、索引等）的调整操作，包括4种核心权限：</li>
+<li><code>index</code>：允许为表创建或删除索引（如<code>create index</code>、<code>drop index</code>）；</li>
+<li><code>resources</code>：允许创建新的关系（表），是“建表”的基础权限；</li>
+<li><code>alteration</code>：允许修改已有表的结构（如添加/删除列，执行<code>alter table</code>）；</li>
+<li><code>drop</code>：允许删除已有关系（表、视图等），执行<code>drop table</code>或<code>drop view</code>。</li>
+</ul>
 <h3 id="grant">二、授权规范（Grant 语句）<a class="headerlink" href="#grant" title="Permanent link">&para;</a></h3>
-<p>通过<code>grant</code>语句明确授予权限，需指定“权限范围”“操作对象”和“授权对象”，核心规则与语法如下：
-- <strong>基础语法</strong>：<br />
-<code>grant &lt;privilege list&gt; on &lt;relation/view name&gt; to &lt;user list&gt;;</code>
-- <strong>参数说明</strong>：
-  - <code>&lt;privilege list&gt;</code>：单个或多个权限（如<code>select, insert</code>），或用<code>all privileges</code>表示“该对象的所有允许权限”；
-  - <code>&lt;relation/view name&gt;</code>：权限对应的操作对象（表或视图）；
-  - <code>&lt;user list&gt;</code>：被授权的对象，支持三类：
-    1. 具体用户ID（如<code>U1</code>、<code>Amit</code>）；
-    2. <code>public</code>：所有合法用户（权限对全体开放）；
-    3. 角色（如<code>instructor</code>，后续“角色管理”章节详细说明）。
-- <strong>关键规则</strong>：<br />
-  视图授权不隐含基础关系授权——若授予用户“视图的<code>select</code>权限”，仅允许用户查询该视图，不代表用户可访问视图依赖的基础表（如授予<code>geo_instructor</code>视图权限，不隐含<code>instructor</code>表权限）。</p>
+<p>通过<code>grant</code>语句明确授予权限，需指定“权限范围”“操作对象”和“授权对象”，核心规则与语法如下：</p>
+<ul>
+<li><strong>基础语法</strong>：<br />
+<code>grant &lt;privilege list&gt; on &lt;relation/view name&gt; to &lt;user list&gt;;</code></li>
+<li><strong>参数说明</strong>：</li>
+<li><code>&lt;privilege list&gt;</code>：单个或多个权限（如<code>select, insert</code>），或用<code>all privileges</code>表示“该对象的所有允许权限”；</li>
+<li><code>&lt;relation/view name&gt;</code>：权限对应的操作对象（表或视图）；</li>
+<li><code>&lt;user list&gt;</code>：被授权的对象，支持三类：<ol>
+<li>具体用户ID（如<code>U1</code>、<code>Amit</code>）；</li>
+<li><code>public</code>：所有合法用户（权限对全体开放）；</li>
+<li>角色（如<code>instructor</code>，后续“角色管理”章节详细说明）。</li>
+</ol>
+</li>
+<li><strong>关键规则</strong>：<br />
+  视图授权不隐含基础关系授权——若授予用户“视图的<code>select</code>权限”，仅允许用户查询该视图，不代表用户可访问视图依赖的基础表（如授予<code>geo_instructor</code>视图权限，不隐含<code>instructor</code>表权限）。</li>
+</ul>
 <h3 id="sql">三、SQL 中的具体特权类型<a class="headerlink" href="#sql" title="Permanent link">&para;</a></h3>
 <h4 id="1_4">1. 常用数据操作特权<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h4>
 <ul>
@@ -7507,14 +7527,16 @@
 示例：给所有用户授予<code>student</code>表的所有权限：<br />
 <code>grant all privileges on student to public;</code></p>
 <h3 id="revoke">四、授权的撤销（Revoke 语句）<a class="headerlink" href="#revoke" title="Permanent link">&para;</a></h3>
-<p>通过<code>revoke</code>语句收回已授予的权限，确保权限管理的灵活性（如用户离职后回收权限），核心规则与语法如下：
-- <strong>基础语法</strong>：<br />
-<code>revoke &lt;privilege list&gt; on &lt;relation/view name&gt; from &lt;user list&gt;;</code>
-- <strong>关键规则与示例</strong>：
-  - 撤销所有权限：用<code>all</code>表示“撤销该用户在该对象上的所有权限”，示例：<br />
-<code>revoke all on branch from U1, U2, U3;</code>（收回<code>U1-U3</code>对<code>branch</code>表的所有权限）；
-  - <code>public</code>的撤销：若之前用<code>public</code>授予权限，撤销时指定<code>public</code>，则所有用户失去该权限（除非有单独授予的权限）；
-  - 依赖特权的级联撤销：若用户<code>U1</code>将权限授予<code>U2</code>，当撤销<code>U1</code>的权限时，<code>U2</code>从<code>U1</code>继承的权限会被自动撤销（权限传递链断裂）。</p>
+<p>通过<code>revoke</code>语句收回已授予的权限，确保权限管理的灵活性（如用户离职后回收权限），核心规则与语法如下：</p>
+<ul>
+<li><strong>基础语法</strong>：<br />
+<code>revoke &lt;privilege list&gt; on &lt;relation/view name&gt; from &lt;user list&gt;;</code></li>
+<li><strong>关键规则与示例</strong>：</li>
+<li>撤销所有权限：用<code>all</code>表示“撤销该用户在该对象上的所有权限”，示例：<br />
+<code>revoke all on branch from U1, U2, U3;</code>（收回<code>U1-U3</code>对<code>branch</code>表的所有权限）；</li>
+<li><code>public</code>的撤销：若之前用<code>public</code>授予权限，撤销时指定<code>public</code>，则所有用户失去该权限（除非有单独授予的权限）；</li>
+<li>依赖特权的级联撤销：若用户<code>U1</code>将权限授予<code>U2</code>，当撤销<code>U1</code>的权限时，<code>U2</code>从<code>U1</code>继承的权限会被自动撤销（权限传递链断裂）。</li>
+</ul>
 <h3 id="roles">五、角色（Roles）管理<a class="headerlink" href="#roles" title="Permanent link">&para;</a></h3>
 <p>角色是“一组权限的集合”，用于简化批量权限管理（如给“教师”角色绑定统一权限，再授予多个用户），核心操作如下：</p>
 <h4 id="1_5">1. 角色的基础操作<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
@@ -7576,36 +7598,46 @@
 <li><strong><code>granted by current_role</code></strong>：指定“当前角色”作为授权者，而非用户自身，确保权限归属清晰（多角色切换场景适用）。</li>
 </ul>
 <h3 id="_24">八、授权图与权限传递规则<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
-<p>授权关系可通过“授权图”可视化，清晰呈现权限的来源与传递范围：
-- <strong>授权图结构</strong>：
-  - 节点：代表用户（如<code>U1</code>、<code>U2</code>）或数据库管理员（DBA，为图的“根节点”）；
-  - 边：从授权者指向被授权者（如<code>U1→U4</code>表示<code>U1</code>授予<code>U4</code>权限），边的含义是“权限传递路径”。
-- <strong>核心规则</strong>：
-  - 权限溯源：所有边必须属于“从DBA出发的路径”，即任何用户的权限最终都源于DBA（确保权限合法性）；
-  - 撤销影响：若某节点的权限被撤销，所有“仅通过该节点获得权限的子节点”权限会被撤销。<br />
-    示例：初始路径<code>DBA→U1→U4</code>、<code>DBA→U2→U5</code>；若DBA撤销<code>U1</code>的权限，<code>U4</code>因“仅依赖U1”被撤销权限，<code>U5</code>因“有U2的独立路径”保留权限。</p>
+<p>授权关系可通过“授权图”可视化，清晰呈现权限的来源与传递范围：</p>
+<ul>
+<li><strong>授权图结构</strong>：</li>
+<li>节点：代表用户（如<code>U1</code>、<code>U2</code>）或数据库管理员（DBA，为图的“根节点”）；</li>
+<li>边：从授权者指向被授权者（如<code>U1→U4</code>表示<code>U1</code>授予<code>U4</code>权限），边的含义是“权限传递路径”。</li>
+<li><strong>核心规则</strong>：</li>
+<li>权限溯源：所有边必须属于“从DBA出发的路径”，即任何用户的权限最终都源于DBA（确保权限合法性）；</li>
+<li>撤销影响：若某节点的权限被撤销，所有“仅通过该节点获得权限的子节点”权限会被撤销。<br />
+    示例：初始路径<code>DBA→U1→U4</code>、<code>DBA→U2→U5</code>；若DBA撤销<code>U1</code>的权限，<code>U4</code>因“仅依赖U1”被撤销权限，<code>U5</code>因“有U2的独立路径”保留权限。</li>
+</ul>
 <h2 id="triggers">触发器（Triggers）<a class="headerlink" href="#triggers" title="Permanent link">&para;</a></h2>
 <h3 id="_25">一、触发器的定义与核心作用<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
-<p>触发器是数据库系统中一种<strong>自动执行的特殊语句</strong>，其本质是作为“数据库数据被修改时的副作用”存在，无需用户手动调用，仅在满足预设条件时由系统自动触发。<br />
-- <strong>核心目标</strong>：补充数据库的完整性约束（如复杂业务规则校验）、实现自动化数据维护（如同步更新关联表数据），避免因手动操作导致的数据不一致。<br />
-- <strong>设计关键</strong>：定义触发器时需明确两个核心要素：
-  1. <strong>触发条件</strong>：指定“何时触发”（如数据插入、更新后）；
-  2. <strong>触发动作</strong>：指定“触发后执行什么操作”（如修改其他表数据、校验数据合法性）。</p>
+<p>触发器是数据库系统中一种<strong>自动执行的特殊语句</strong>，其本质是作为“数据库数据被修改时的副作用”存在，无需用户手动调用，仅在满足预设条件时由系统自动触发。  </p>
+<ul>
+<li><strong>核心目标</strong>：补充数据库的完整性约束（如复杂业务规则校验）、实现自动化数据维护（如同步更新关联表数据），避免因手动操作导致的数据不一致。  </li>
+<li><strong>设计关键</strong>：定义触发器时需明确两个核心要素：</li>
+<li><strong>触发条件</strong>：指定“何时触发”（如数据插入、更新后）；</li>
+<li><strong>触发动作</strong>：指定“触发后执行什么操作”（如修改其他表数据、校验数据合法性）。</li>
+</ul>
 <h3 id="_26">二、触发事件与激活机制<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>触发器的执行依赖于“触发事件”和“激活时机”的组合，同时支持对数据修改前后的值进行引用，确保动作逻辑精准。</p>
 <h4 id="1_7">1. 触发事件类型<a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h4>
-<p>触发事件对应数据库的基础修改操作，仅当这些操作执行时，触发器才可能被激活，主要包括三类：
-- <code>insert</code>：向表中插入新元组时触发；
-- <code>delete</code>：从表中删除元组时触发；
-- <code>update</code>：修改表中元组时触发（可指定具体列，如<code>update of grade</code>表示仅修改<code>grade</code>列时触发）。</p>
+<p>触发事件对应数据库的基础修改操作，仅当这些操作执行时，触发器才可能被激活，主要包括三类：</p>
+<ul>
+<li><code>insert</code>：向表中插入新元组时触发；</li>
+<li><code>delete</code>：从表中删除元组时触发；</li>
+<li><code>update</code>：修改表中元组时触发（可指定具体列，如<code>update of grade</code>表示仅修改<code>grade</code>列时触发）。</li>
+</ul>
 <h4 id="2_6">2. 激活时机<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
-<p>激活时机决定触发器在“触发事件执行前”还是“执行后”生效，用于不同业务场景：
-- <code>before</code>：触发事件执行前激活，常用于<strong>数据合法性校验</strong>或<strong>预处理</strong>（如将非法值修正为合法值）；
-- <code>after</code>：触发事件执行后激活，常用于<strong>关联数据同步更新</strong>（如某表数据修改后，同步更新统计报表）。</p>
+<p>激活时机决定触发器在“触发事件执行前”还是“执行后”生效，用于不同业务场景：</p>
+<ul>
+<li><code>before</code>：触发事件执行前激活，常用于<strong>数据合法性校验</strong>或<strong>预处理</strong>（如将非法值修正为合法值）；</li>
+<li><code>after</code>：触发事件执行后激活，常用于<strong>关联数据同步更新</strong>（如某表数据修改后，同步更新统计报表）。</li>
+</ul>
 <h4 id="3_1">3. 数据值引用<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
-<p>触发器中可通过<code>referencing</code>子句引用“数据修改前后的状态”，便于对比或计算，核心语法：
-- <code>referencing old row as &lt;别名&gt;</code>：引用修改前的元组（仅<code>update</code>、<code>delete</code>事件支持，<code>insert</code>无旧元组）；
-- <code>referencing new row as &lt;别名&gt;</code>：引用修改后的元组（仅<code>insert</code>、<code>update</code>事件支持，<code>delete</code>无新元组）。</p>
+<p>触发器中可通过<code>referencing</code>子句引用“数据修改前后的状态”，便于对比或计算，核心语法：</p>
+<ul>
+<li><code>referencing old row as &lt;别名&gt;</code>：引用修改前的元组（仅<code>update</code>、<code>delete</code>事件支持，<code>insert</code>无旧元组）；</li>
+<li><code>referencing new row as &lt;别名&gt;</code>：引用修改后的元组（仅<code>insert</code>、<code>update</code>事件支持，<code>delete</code>无新元组）。</li>
+</ul>
 <h4 id="4">4. 示例：空值预处理触发器<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
 <p>需求：当更新表<code>r</code>的<code>phone-number</code>字段时，若值为空格字符串，自动将其设为<code>null</code>。<br />
 触发器语句：

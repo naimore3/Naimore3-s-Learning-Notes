@@ -8926,13 +8926,15 @@
 <p>SQL 基于集合和关系操作构建，在原有操作基础上进行了一定的修改和增强，以满足数据库管理的实际需求。</p>
 <h2 id="ddl">数据定义语言 (DDL)<a class="headerlink" href="#ddl" title="Permanent link">&para;</a></h2>
 <h3 id="1-ddl">1. DDL 的核心功能：指定关系信息<a class="headerlink" href="#1-ddl" title="Permanent link">&para;</a></h3>
-<p>DDL 可定义关系的完整结构及关联属性，具体需指定以下内容：
-- 每个关系的<strong>模式</strong>（即关系的属性构成及结构）；
-- 每个属性对应的<strong>域值</strong>（即属性的取值范围和数据类型）；
-- 保障数据有效性的<strong>完整性约束</strong>（如非空、主键、外键等）；
-- 为提升查询效率的<strong>索引集</strong>（需明确为每个关系维护的索引）；
-- 数据安全相关的<strong>安全和授权信息</strong>（如哪些用户可操作该关系）；
-- 数据存储相关的<strong>物理存储结构</strong>（即关系在磁盘上的存储方式）。</p>
+<p>DDL 可定义关系的完整结构及关联属性，具体需指定以下内容：</p>
+<ul>
+<li>每个关系的<strong>模式</strong>（即关系的属性构成及结构）；</li>
+<li>每个属性对应的<strong>域值</strong>（即属性的取值范围和数据类型）；</li>
+<li>保障数据有效性的<strong>完整性约束</strong>（如非空、主键、外键等）；</li>
+<li>为提升查询效率的<strong>索引集</strong>（需明确为每个关系维护的索引）；</li>
+<li>数据安全相关的<strong>安全和授权信息</strong>（如哪些用户可操作该关系）；</li>
+<li>数据存储相关的<strong>物理存储结构</strong>（即关系在磁盘上的存储方式）。</li>
+</ul>
 <h3 id="2-create-table">2. 核心操作：创建表（Create Table）<a class="headerlink" href="#2-create-table" title="Permanent link">&para;</a></h3>
 <h4 id="21">2.1 基本语法<a class="headerlink" href="#21" title="Permanent link">&para;</a></h4>
 <p><div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
@@ -8969,11 +8971,13 @@
 </span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div></p>
 <h3 id="3">3. 关键保障：完整性约束<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
-<p>完整性约束用于确保表中数据的准确性和一致性，DDL 支持以下4类核心约束：
-- <strong>not null</strong>：指定属性值不可为空（即该属性必须有值）；
-- <strong>primary key (A1, ..., An)</strong>：指定 (A1,...,An) 为主键，主键属性值唯一且非空，用于唯一标识表中的元组；
-- <strong>foreign key (A1,...,An) references r on delete [restrict/cascade/set null]</strong>：指定 (A1,...,An) 为外键，引用另一个表 <code>r</code> 的主键；<code>on delete</code> 后接删除策略（restrict：禁止删除关联数据；cascade：删除主表数据时联动删除从表关联数据；set null：删除主表数据时将从表外键设为null）；
-- <strong>check (P)</strong>：指定谓词 <code>P</code> 为数据校验条件，只有满足 <code>P</code> 的值才能存入表中。</p>
+<p>完整性约束用于确保表中数据的准确性和一致性，DDL 支持以下4类核心约束：</p>
+<ul>
+<li><strong>not null</strong>：指定属性值不可为空（即该属性必须有值）；</li>
+<li><strong>primary key (A1, ..., An)</strong>：指定 (A1,...,An) 为主键，主键属性值唯一且非空，用于唯一标识表中的元组；</li>
+<li><strong>foreign key (A1,...,An) references r on delete [restrict/cascade/set null]</strong>：指定 (A1,...,An) 为外键，引用另一个表 <code>r</code> 的主键；<code>on delete</code> 后接删除策略（restrict：禁止删除关联数据；cascade：删除主表数据时联动删除从表关联数据；set null：删除主表数据时将从表外键设为null）；</li>
+<li><strong>check (P)</strong>：指定谓词 <code>P</code> 为数据校验条件，只有满足 <code>P</code> 的值才能存入表中。</li>
+</ul>
 <h4 id="31">3.1 带约束的示例<a class="headerlink" href="#31" title="Permanent link">&para;</a></h4>
 <p>创建 <code>instructor</code> 表并添加完整性约束：
 <div class="language-sql highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
@@ -9055,14 +9059,16 @@
 </span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="p">)</span>
 </span></code></pre></div></td></tr></table></div>
 <h3 id="5-sql">5. 基础支撑：SQL 域类型<a class="headerlink" href="#5-sql" title="Permanent link">&para;</a></h3>
-<p>域类型定义属性的取值格式和范围，DDL 支持以下7类常用域类型：
-- <strong>char(n)</strong>：固定长度字符串，长度由 <code>n</code> 指定（如 <code>char(5)</code> 表示固定5个字符）；
-- <strong>varchar(n)</strong>：可变长度字符串，最大长度由 <code>n</code> 指定（如 <code>varchar(20)</code> 表示最多20个字符，实际长度随内容变化）；
-- <strong>int</strong>：整数类型，取值范围为机器依赖的有限整数集；
-- <strong>smallint</strong>：小整数类型，取值范围为机器依赖的更小整数集；
-- <strong>numeric(p,d)</strong>：固定点数类型，<code>p</code> 表示总位数，<code>d</code> 表示小数点后位数（如 <code>numeric(8,2)</code> 表示最大为999999.99）；
-- <strong>real / double precision</strong>：浮点数类型，<code>real</code> 为单精度，<code>double precision</code> 为双精度，精度均依赖机器；
-- <strong>float(n)</strong>：浮点数类型，精度至少为 <code>n</code> 位（由 <code>n</code> 指定最小精度）。</p>
+<p>域类型定义属性的取值格式和范围，DDL 支持以下7类常用域类型：</p>
+<ul>
+<li><strong>char(n)</strong>：固定长度字符串，长度由 <code>n</code> 指定（如 <code>char(5)</code> 表示固定5个字符）；</li>
+<li><strong>varchar(n)</strong>：可变长度字符串，最大长度由 <code>n</code> 指定（如 <code>varchar(20)</code> 表示最多20个字符，实际长度随内容变化）；</li>
+<li><strong>int</strong>：整数类型，取值范围为机器依赖的有限整数集；</li>
+<li><strong>smallint</strong>：小整数类型，取值范围为机器依赖的更小整数集；</li>
+<li><strong>numeric(p,d)</strong>：固定点数类型，<code>p</code> 表示总位数，<code>d</code> 表示小数点后位数（如 <code>numeric(8,2)</code> 表示最大为999999.99）；</li>
+<li><strong>real / double precision</strong>：浮点数类型，<code>real</code> 为单精度，<code>double precision</code> 为双精度，精度均依赖机器；</li>
+<li><strong>float(n)</strong>：浮点数类型，精度至少为 <code>n</code> 位（由 <code>n</code> 指定最小精度）。</li>
+</ul>
 <h3 id="6">6. 表的维护：删除和修改表<a class="headerlink" href="#6" title="Permanent link">&para;</a></h3>
 <h4 id="61-drop-table">6.1 删除表（Drop Table）<a class="headerlink" href="#61-drop-table" title="Permanent link">&para;</a></h4>
 <p>功能：删除表的所有数据及表结构，从数据库中彻底移除该关系。<br />
@@ -9257,10 +9263,12 @@
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="k">order</span><span class="w"> </span><span class="k">by</span><span class="w"> </span><span class="n">dept_name</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">  </span><span class="c1">-- 先部门、再姓名，均为升序</span>
 </span></code></pre></div></td></tr></table></div></p>
 <h3 id="8">8. 多重集语义（支持重复元组）<a class="headerlink" href="#8" title="Permanent link">&para;</a></h3>
-<p>SQL 与“纯关系代数”的区别之一是<strong>支持重复元组</strong>（即多重集），多重集版本的关系代数操作规则如下：
-1. <strong>选择（σ）</strong>：若原关系有 <code>c1</code> 个满足条件的元组 <code>t1</code>，结果仍保留 <code>c1</code> 个 <code>t1</code>；
-2. <strong>投影（Π）</strong>：若原关系有 <code>c1</code> 个元组 <code>t1</code>，投影后仍保留 <code>c1</code> 个投影后的元组；
-3. <strong>笛卡尔积（×）</strong>：若关系 <code>r1</code> 有 <code>c1</code> 个元组 <code>t1</code>，关系 <code>r2</code> 有 <code>c2</code> 个元组 <code>t2</code>，则笛卡尔积有 <code>c1×c2</code> 个 <code>(t1, t2)</code> 元组。</p>
+<p>SQL 与“纯关系代数”的区别之一是<strong>支持重复元组</strong>（即多重集），多重集版本的关系代数操作规则如下：</p>
+<ol>
+<li><strong>选择（σ）</strong>：若原关系有 <code>c1</code> 个满足条件的元组 <code>t1</code>，结果仍保留 <code>c1</code> 个 <code>t1</code>；</li>
+<li><strong>投影（Π）</strong>：若原关系有 <code>c1</code> 个元组 <code>t1</code>，投影后仍保留 <code>c1</code> 个投影后的元组；</li>
+<li><strong>笛卡尔积（×）</strong>：若关系 <code>r1</code> 有 <code>c1</code> 个元组 <code>t1</code>，关系 <code>r2</code> 有 <code>c2</code> 个元组 <code>t2</code>，则笛卡尔积有 <code>c1×c2</code> 个 <code>(t1, t2)</code> 元组。</li>
+</ol>
 <p>示例：设 <code>r1 = {(1,a), (2,a)}</code>（2个元组），<code>r2 = {(2), (3), (3)}</code>（3个元组），则：
 - <code>Π_B(r1)</code> 结果为 <code>{(a), (a)}</code>（保留重复）；
 - <code>Π_B(r1) × r2</code> 结果为 <code>{(a,2), (a,3), (a,3), (a,2), (a,3), (a,3)}</code>（共 2×3=6 个元组）。</p>
@@ -9680,8 +9688,9 @@
 </span></code></pre></div></td></tr></table></div>
 <h4 id="72_1">7.2 典型示例<a class="headerlink" href="#72_1" title="Permanent link">&para;</a></h4>
 <ol>
-<li><strong>查询预算最高的部门名称</strong>：<br />
-   先定义<code>max_budget</code>（临时关系，存储最高预算值），再关联<code>department</code>表查询对应部门：
+<li><strong>查询预算最高的部门名称</strong>：  </li>
+</ol>
+<p>先定义<code>max_budget</code>（临时关系，存储最高预算值），再关联<code>department</code>表查询对应部门：
    ```sql
    with max_budget (value) as (-- 临时关系：存储最高预算值
                                select max(budget) 
@@ -9717,8 +9726,7 @@ where department.budget = max_budget.value;
 </span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12"></a>select dept_name
 </span><span id="__span-53-13"><a id="__codelineno-53-13" name="__codelineno-53-13"></a>from dept_total, dept_total_avg
 </span><span id="__span-53-14"><a id="__codelineno-53-14" name="__codelineno-53-14"></a>where dept_total.value &gt; dept_total_avg.value;
-</span></code></pre></div></td></tr></table></div></li>
-</ol>
+</span></code></pre></div></td></tr></table></div></p>
 <h3 id="8-selectscalar-subquery">8. <code>Select</code>子句中的标量子查询（Scalar Subquery）<a class="headerlink" href="#8-selectscalar-subquery" title="Permanent link">&para;</a></h3>
 <p>嵌入<code>select</code>子句的子查询，需返回<strong>单个值</strong>（标量），用于为每条主查询结果附加“基于其他表计算的属性值”，若子查询返回多个值则会报错。</p>
 <h4 id="81">8.1 典型示例<a class="headerlink" href="#81" title="Permanent link">&para;</a></h4>
@@ -9742,13 +9750,38 @@ where department.budget = max_budget.value;
 <li>标量子查询需与主查询通过关联条件（如<code>department.dept_name = instructor.dept_name</code>）绑定，否则会返回“全局唯一值”（所有部门的教师数相同）。</li>
 </ul>
 <h3 id="9">9. 嵌套子查询的集合操作总结<a class="headerlink" href="#9" title="Permanent link">&para;</a></h3>
-<p>嵌套子查询中常用的集合操作符可分为四类，覆盖“成员匹配”“比较”“存在性”“唯一性”场景，具体如下：
-| 操作类型       | 关键运算符                          | 核心功能                                  |
-|----------------|-------------------------------------|-------------------------------------------|
-| 集合成员测试   | <code>in</code> / <code>not in</code>                     | 判断属性值是否在子查询结果集中            |
-| 集合比较       | <code>&gt; some</code> / <code>&lt; some</code> / <code>&gt; all</code> / <code>&lt; all</code>  | 属性值与子查询结果集中的部分/全部值比较    |
-| 存在性测试     | <code>exists</code> / <code>not exists</code>             | 判断子查询结果是否非空/空                  |
-| 唯一性测试     | <code>unique</code> / <code>not unique</code>             | 判断子查询结果是否无重复/有重复            |</p>
+<p>嵌套子查询中常用的集合操作符可分为四类，覆盖“成员匹配”“比较”“存在性”“唯一性”场景，具体如下：</p>
+<table>
+<thead>
+<tr>
+<th>操作类型</th>
+<th>关键运算符</th>
+<th>核心功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>集合成员测试</td>
+<td><code>in</code> / <code>not in</code></td>
+<td>判断属性值是否在子查询结果集中</td>
+</tr>
+<tr>
+<td>集合比较</td>
+<td><code>&gt; some</code> / <code>&lt; some</code> / <code>&gt; all</code> / <code>&lt; all</code></td>
+<td>属性值与子查询结果集中的部分/全部值比较</td>
+</tr>
+<tr>
+<td>存在性测试</td>
+<td><code>exists</code> / <code>not exists</code></td>
+<td>判断子查询结果是否非空/空</td>
+</tr>
+<tr>
+<td>唯一性测试</td>
+<td><code>unique</code> / <code>not unique</code></td>
+<td>判断子查询结果是否无重复/有重复</td>
+</tr>
+</tbody>
+</table>
 <h2 id="dml-insert-delete-update">数据操纵语言（DML: Insert, Delete, Update）<a class="headerlink" href="#dml-insert-delete-update" title="Permanent link">&para;</a></h2>
 <p>数据操纵语言（DML）用于对数据库表中的数据进行<strong>增、删、改</strong>操作，核心目标是维护表中数据的有效性和准确性，同时遵循表的完整性约束（如主键唯一、外键关联等）。</p>
 <h3 id="1-deletion">1. 删除操作（Deletion）<a class="headerlink" href="#1-deletion" title="Permanent link">&para;</a></h3>

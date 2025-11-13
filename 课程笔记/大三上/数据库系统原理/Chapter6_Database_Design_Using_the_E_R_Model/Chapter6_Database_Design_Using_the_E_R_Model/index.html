@@ -7909,20 +7909,28 @@
 <li>关系集（Relationship Set）：是由<strong>n个（n ≥ 2）实体集</strong>中的实体构成的数学关系集合，形式可表示为<code>{(e₁, e₂, …, eₙ) | e₁ ∈ E₁, e₂ ∈ E₂, …, eₙ ∈ Eₙ}</code>，其中<code>(e₁, e₂, …, eₙ)</code>是一个关系，<code>E₁, E₂, …, Eₙ</code>是参与关系的实体集。在数据库系统中，<strong>二元关系集（涉及2个实体集）最为常见</strong>，如“advisor（指导）”关系集（连接student和instructor实体集）。</li>
 </ul>
 <h3 id="32-degree">3.2 关系集的度（Degree）<a class="headerlink" href="#32-degree" title="Permanent link">&para;</a></h3>
-<p>关系集的“度”指其涉及的实体集数量，主要分为两类：
-- 二元关系（Binary Relationship）：度为2，即仅涉及两个实体集。这是数据库设计中最普遍的关系类型，绝大多数业务场景可通过二元关系描述，例如“teaches（授课）”关系集（连接instructor和course实体集）、“takes（选课）”关系集（连接student和course实体集）。
-- 非二元关系（Non-binary Relationship）：度大于2，涉及三个及以上实体集。这类关系较少见，仅在特定场景下使用。例如“proj_guide（项目指导）”三元关系集，同时连接instructor（教师）、student（学生）、project（项目）三个实体集，描述“教师指导学生参与项目”的关联。</p>
+<p>关系集的“度”指其涉及的实体集数量，主要分为两类：</p>
+<ul>
+<li>二元关系（Binary Relationship）：度为2，即仅涉及两个实体集。这是数据库设计中最普遍的关系类型，绝大多数业务场景可通过二元关系描述，例如“teaches（授课）”关系集（连接instructor和course实体集）、“takes（选课）”关系集（连接student和course实体集）。</li>
+<li>非二元关系（Non-binary Relationship）：度大于2，涉及三个及以上实体集。这类关系较少见，仅在特定场景下使用。例如“proj_guide（项目指导）”三元关系集，同时连接instructor（教师）、student（学生）、project（项目）三个实体集，描述“教师指导学生参与项目”的关联。</li>
+</ul>
 <h3 id="33">3.3 关系集的属性<a class="headerlink" href="#33" title="Permanent link">&para;</a></h3>
-<p>关系集可拥有<strong>自身的描述性属性</strong>，用于刻画关系的额外特征，这些属性不属于参与关系的任何一个实体集，仅归属于关系本身。例如：
-- “advisor（指导）”关系集可添加“date（指导开始日期）”属性，用于记录学生与导师建立指导关系的具体时间（如“3 May 2008”“10 June 2007”）；
-- “takes（选课）”关系集可添加“grade（成绩）”属性，用于记录学生选修某门课程的最终成绩，该属性既不属于student实体集，也不属于course实体集，仅用于描述“选课”这一关系的结果。</p>
+<p>关系集可拥有<strong>自身的描述性属性</strong>，用于刻画关系的额外特征，这些属性不属于参与关系的任何一个实体集，仅归属于关系本身。例如：</p>
+<ul>
+<li>“advisor（指导）”关系集可添加“date（指导开始日期）”属性，用于记录学生与导师建立指导关系的具体时间（如“3 May 2008”“10 June 2007”）；</li>
+<li>“takes（选课）”关系集可添加“grade（成绩）”属性，用于记录学生选修某门课程的最终成绩，该属性既不属于student实体集，也不属于course实体集，仅用于描述“选课”这一关系的结果。</li>
+</ul>
 <h3 id="34-roles">3.4 关系集的角色（Roles）<a class="headerlink" href="#34-roles" title="Permanent link">&para;</a></h3>
-<p>当<strong>同一实体集在关系集中扮演不同角色</strong>时，需通过“角色标签（Role）”明确区分实体的作用，避免歧义。这一情况常见于“自反关系”（实体集与自身建立的关系）。例如：
-- 在“prereq（先修课）”关系集中，参与关系的实体集均为“course（课程）”，但一个课程扮演“主课程（course_id）”角色，另一个课程扮演“先修课程（prereq_id）”角色。通过“course_id”和“prereq_id”这两个角色标签，可清晰表达“某课程是另一课程的先修课”这一关联（如“数据库系统”的prereq_id为“计算机基础”的course_id）。</p>
+<p>当<strong>同一实体集在关系集中扮演不同角色</strong>时，需通过“角色标签（Role）”明确区分实体的作用，避免歧义。这一情况常见于“自反关系”（实体集与自身建立的关系）。例如：</p>
+<ul>
+<li>在“prereq（先修课）”关系集中，参与关系的实体集均为“course（课程）”，但一个课程扮演“主课程（course_id）”角色，另一个课程扮演“先修课程（prereq_id）”角色。通过“course_id”和“prereq_id”这两个角色标签，可清晰表达“某课程是另一课程的先修课”这一关联（如“数据库系统”的prereq_id为“计算机基础”的course_id）。</li>
+</ul>
 <h3 id="35">3.5 关系集中的冗余属性<a class="headerlink" href="#35" title="Permanent link">&para;</a></h3>
-<p>冗余属性指在关系集或关联的实体集中<strong>重复存储的信息</strong>，会增加数据不一致的风险，需在设计中避免并移除。典型案例如下：
-- 实体集“instructor（教师）”包含属性（ID, name, dept_name, salary），实体集“department（部门）”包含属性（dept_name, building, budget），二者通过“inst_dept（教师-部门）”关系集关联；
-- 由于“dept_name”是“department”实体集的主键，可唯一标识部门，其在“instructor”实体集中的存储属于冗余信息（因“inst_dept”关系已能关联教师与部门）。因此，需从“instructor”实体集中移除“dept_name”属性，仅通过“inst_dept”关系获取教师所属部门，消除冗余。</p>
+<p>冗余属性指在关系集或关联的实体集中<strong>重复存储的信息</strong>，会增加数据不一致的风险，需在设计中避免并移除。典型案例如下：</p>
+<ul>
+<li>实体集“instructor（教师）”包含属性（ID, name, dept_name, salary），实体集“department（部门）”包含属性（dept_name, building, budget），二者通过“inst_dept（教师-部门）”关系集关联；</li>
+<li>由于“dept_name”是“department”实体集的主键，可唯一标识部门，其在“instructor”实体集中的存储属于冗余信息（因“inst_dept”关系已能关联教师与部门）。因此，需从“instructor”实体集中移除“dept_name”属性，仅通过“inst_dept”关系获取教师所属部门，消除冗余。</li>
+</ul>
 <h2 id="4-constraints">4. 约束（Constraints）<a class="headerlink" href="#4-constraints" title="Permanent link">&para;</a></h2>
 <h3 id="41-mapping-cardinality">4.1 映射基数约束（Mapping Cardinality）<a class="headerlink" href="#41-mapping-cardinality" title="Permanent link">&para;</a></h3>
 <ul>
@@ -8016,27 +8024,31 @@
 </table>
 <h3 id="52-e-r">5.2 典型E-R图示例<a class="headerlink" href="#52-e-r" title="Permanent link">&para;</a></h3>
 <h4 id="521-e-r">5.2.1 大学数据库E-R图<a class="headerlink" href="#521-e-r" title="Permanent link">&para;</a></h4>
-<p>以高校场景为核心，涵盖教学管理的关键实体与关系，结构如下：
-- <strong>核心实体集</strong>：
-  - instructor（强实体）：属性包括ID（主键）、name、street、city、salary；
-  - student（强实体）：属性包括ID（主键）、name、tot_cred；
-  - course（强实体）：属性包括course_id（主键）、title、credits；
-  - department（强实体）：属性包括dept_name（主键）、building、budget；
-  - section（弱实体）：属性包括sec_id（鉴别符）、semester、year，依赖course（标识实体集），完整主键为<code>course_id + sec_id + semester + year</code>。
-- <strong>核心关系集</strong>：
-  - advisor（菱形）：连接instructor与student，基数约束为“instructor（0..*）→ student（1..1）”（教师可指导0或多个学生，学生必属1个教师）；
-  - teaches（菱形）：连接instructor与course，描述“教师授课”关系；
-  - takes（菱形）：连接student与section，含属性grade（记录选课成绩）；
-  - sec_course（双菱形）：标识关系，连接section与course，传递course的主键course_id。</p>
+<p>以高校场景为核心，涵盖教学管理的关键实体与关系，结构如下：</p>
+<ul>
+<li><strong>核心实体集</strong>：</li>
+<li>instructor（强实体）：属性包括ID（主键）、name、street、city、salary；</li>
+<li>student（强实体）：属性包括ID（主键）、name、tot_cred；</li>
+<li>course（强实体）：属性包括course_id（主键）、title、credits；</li>
+<li>department（强实体）：属性包括dept_name（主键）、building、budget；</li>
+<li>section（弱实体）：属性包括sec_id（鉴别符）、semester、year，依赖course（标识实体集），完整主键为<code>course_id + sec_id + semester + year</code>。</li>
+<li><strong>核心关系集</strong>：</li>
+<li>advisor（菱形）：连接instructor与student，基数约束为“instructor（0..*）→ student（1..1）”（教师可指导0或多个学生，学生必属1个教师）；</li>
+<li>teaches（菱形）：连接instructor与course，描述“教师授课”关系；</li>
+<li>takes（菱形）：连接student与section，含属性grade（记录选课成绩）；</li>
+<li>sec_course（双菱形）：标识关系，连接section与course，传递course的主键course_id。</li>
+</ul>
 <h4 id="522-e-r">5.2.2 订货系统E-R图<a class="headerlink" href="#522-e-r" title="Permanent link">&para;</a></h4>
-<p>围绕“客户-订单-产品”的业务流程设计，重点体现多值属性、复合属性与关系约束：
-- <strong>核心实体集</strong>：
-  - Customer（强实体）：属性包括customer-number（主键）、name、balance、discount，<strong>多值属性ship-to-addresses</strong>（双椭圆，一个客户可有多地址）；
-  - Order（强实体）：属性包括order-number（主键）、<strong>复合属性date</strong>（含year、month、day）、ship-to-address（单值，与客户的多值地址区分）；
-  - Product（强实体）：属性包括product-number（主键）、name、manufacturing-plant、quantity-on-hand。
-- <strong>核心关系集</strong>：
-  - make（菱形）：连接Customer与Order，描述“客户下单”关系；约束为“Customer（0..<em>，部分参与）→ Order（1..1，总参与）”（客户可不下单，订单必属1个客户），基数为“一对多”（1个客户可多订单）；
-  - contain（菱形）：连接Order与Product，描述“订单包含产品”关系；含属性quantity（记录产品订购数量），约束为“Order（1..</em>，总参与）↔ Product（0..*，部分参与）”（订单必含1种以上产品，产品可未被订购），基数为“多对多”。</p>
+<p>围绕“客户-订单-产品”的业务流程设计，重点体现多值属性、复合属性与关系约束：</p>
+<ul>
+<li><strong>核心实体集</strong>：</li>
+<li>Customer（强实体）：属性包括customer-number（主键）、name、balance、discount，<strong>多值属性ship-to-addresses</strong>（双椭圆，一个客户可有多地址）；</li>
+<li>Order（强实体）：属性包括order-number（主键）、<strong>复合属性date</strong>（含year、month、day）、ship-to-address（单值，与客户的多值地址区分）；</li>
+<li>Product（强实体）：属性包括product-number（主键）、name、manufacturing-plant、quantity-on-hand。</li>
+<li><strong>核心关系集</strong>：</li>
+<li>make（菱形）：连接Customer与Order，描述“客户下单”关系；约束为“Customer（0..*，部分参与）→ Order（1..1，总参与）”（客户可不下单，订单必属1个客户），基数为“一对多”（1个客户可多订单）；</li>
+<li>contain（菱形）：连接Order与Product，描述“订单包含产品”关系；含属性quantity（记录产品订购数量），约束为“Order（1..<em>，总参与）↔ Product（0..</em>，部分参与）”（订单必含1种以上产品，产品可未被订购），基数为“多对多”。</li>
+</ul>
 <h2 id="6-extended-e-r-features">6. 高级主题（Extended E-R Features）<a class="headerlink" href="#6-extended-e-r-features" title="Permanent link">&para;</a></h2>
 <h3 id="61-non-binary-relationships">6.1 非二元关系（Non-Binary Relationships）<a class="headerlink" href="#61-non-binary-relationships" title="Permanent link">&para;</a></h3>
 <p>非二元关系指<strong>度大于2</strong>（涉及3个及以上实体集）的关系集，虽不如二元关系普遍，但在特定场景中可更精准描述多实体交互，核心特性与处理方式如下：</p>
@@ -8099,38 +8111,52 @@
 </ul>
 <h2 id="7-design-issues">7. 设计问题（Design Issues）<a class="headerlink" href="#7-design-issues" title="Permanent link">&para;</a></h2>
 <h3 id="71-entityvs-attribute">7.1 实体（Entity）vs. 属性（Attribute）<a class="headerlink" href="#71-entityvs-attribute" title="Permanent link">&para;</a></h3>
-<p>核心是判断“待描述的概念”是否需要独立存储额外信息或处理多值/复杂关联，决策依据围绕“描述需求的深度与灵活性”：
-- <strong>选择属性的场景</strong>：若概念仅需存储“单一值”且无额外描述需求，可作为实体的属性。例如，教师的“姓名（name）”“薪资（salary）”——仅需记录文本或数值，无需附加其他信息，适合作为<code>instructor</code>实体的属性。
-- <strong>选择实体的场景</strong>：若概念需存储“多值”“额外描述信息”或与其他实体产生关联，则需设计为独立实体集。例如，“电话（phone）”：<br />
-  - 若仅记录教师的电话号码，可作为<code>instructor</code>的多值属性<code>{phone_number}</code>；<br />
-  - 若需额外记录号码类型（办公/私人）、所属运营商等信息，则需将“phone”设计为实体集，包含<code>phone_id</code>（主键）、<code>phone_number</code>、<code>type</code>、<code>carrier</code>等属性，并通过<code>inst_phone</code>关系集与<code>instructor</code>关联，满足更丰富的描述需求。</p>
+<p>核心是判断“待描述的概念”是否需要独立存储额外信息或处理多值/复杂关联，决策依据围绕“描述需求的深度与灵活性”：</p>
+<ul>
+<li><strong>选择属性的场景</strong>：若概念仅需存储“单一值”且无额外描述需求，可作为实体的属性。例如，教师的“姓名（name）”“薪资（salary）”——仅需记录文本或数值，无需附加其他信息，适合作为<code>instructor</code>实体的属性。</li>
+<li><strong>选择实体的场景</strong>：若概念需存储“多值”“额外描述信息”或与其他实体产生关联，则需设计为独立实体集。例如，“电话（phone）”：  </li>
+<li>若仅记录教师的电话号码，可作为<code>instructor</code>的多值属性<code>{phone_number}</code>；  </li>
+<li>若需额外记录号码类型（办公/私人）、所属运营商等信息，则需将“phone”设计为实体集，包含<code>phone_id</code>（主键）、<code>phone_number</code>、<code>type</code>、<code>carrier</code>等属性，并通过<code>inst_phone</code>关系集与<code>instructor</code>关联，满足更丰富的描述需求。</li>
+</ul>
 <h3 id="72-entityvs-relationship">7.2 实体（Entity）vs. 关系（Relationship）<a class="headerlink" href="#72-entityvs-relationship" title="Permanent link">&para;</a></h3>
-<p>关键是区分“独立存在的事物”与“事物间的交互动作/关联”，关系集更适合描述“动态关联或动作”：
-- <strong>选择实体的场景</strong>：概念是“独立存在、可被直接标识”的事物，不依赖其他实体的关联而存在。例如，“课程（course）”“学生（student）”——即使不考虑“选课（takes）”关系，课程和学生仍是客观存在的实体，适合设计为实体集。
-- <strong>选择关系的场景</strong>：概念是“实体间的动作或关联”，依赖于参与的实体而存在，无法独立标识。例如，“指导（advisor）”“授课（teaches）”“选课（takes）”——这些是教师与学生、教师与课程、学生与课程之间的交互动作，无实体参与则无意义，适合设计为关系集。<br />
-  典型 guideline：若概念可描述为“实体A对实体B做了什么”（如“教师指导学生”），则优先用关系集。</p>
+<p>关键是区分“独立存在的事物”与“事物间的交互动作/关联”，关系集更适合描述“动态关联或动作”：</p>
+<ul>
+<li><strong>选择实体的场景</strong>：概念是“独立存在、可被直接标识”的事物，不依赖其他实体的关联而存在。例如，“课程（course）”“学生（student）”——即使不考虑“选课（takes）”关系，课程和学生仍是客观存在的实体，适合设计为实体集。</li>
+<li><strong>选择关系的场景</strong>：概念是“实体间的动作或关联”，依赖于参与的实体而存在，无法独立标识。例如，“指导（advisor）”“授课（teaches）”“选课（takes）”——这些是教师与学生、教师与课程、学生与课程之间的交互动作，无实体参与则无意义，适合设计为关系集。<br />
+  典型 guideline：若概念可描述为“实体A对实体B做了什么”（如“教师指导学生”），则优先用关系集。</li>
+</ul>
 <h3 id="73">7.3 关系属性的放置<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
-<p>核心是判断属性“属于实体本身”还是“依赖于实体间的关联”，归属需与业务含义强绑定：
-- <strong>放置在实体中的情况</strong>：属性描述“实体自身的固有特征”，与其他实体的关联无关。例如，“学生的入学日期（enroll_date）”——该日期是学生个人的固有信息，无论是否有“指导（advisor）”关系均存在，应放在<code>student</code>实体中。
-- <strong>放置在关系中的情况</strong>：属性描述“实体间关联的特征”，依赖于两个及以上实体的关联而存在。例如，“指导关系的开始日期（date）”——该日期仅当学生与教师建立<code>advisor</code>关系时才存在，单独的学生或教师实体无法承载此信息，应放在<code>advisor</code>关系集中。<br />
-  常见误区：避免将“关联特征”误放实体中，如将“选课成绩（grade）”放在<code>student</code>或<code>course</code>中——成绩依赖“学生选某门课”的关联，必须放在<code>takes</code>关系集中。</p>
+<p>核心是判断属性“属于实体本身”还是“依赖于实体间的关联”，归属需与业务含义强绑定：</p>
+<ul>
+<li><strong>放置在实体中的情况</strong>：属性描述“实体自身的固有特征”，与其他实体的关联无关。例如，“学生的入学日期（enroll_date）”——该日期是学生个人的固有信息，无论是否有“指导（advisor）”关系均存在，应放在<code>student</code>实体中。</li>
+<li><strong>放置在关系中的情况</strong>：属性描述“实体间关联的特征”，依赖于两个及以上实体的关联而存在。例如，“指导关系的开始日期（date）”——该日期仅当学生与教师建立<code>advisor</code>关系时才存在，单独的学生或教师实体无法承载此信息，应放在<code>advisor</code>关系集中。<br />
+  常见误区：避免将“关联特征”误放实体中，如将“选课成绩（grade）”放在<code>student</code>或<code>course</code>中——成绩依赖“学生选某门课”的关联，必须放在<code>takes</code>关系集中。</li>
+</ul>
 <h3 id="74-binaryvs-non-binary">7.4 二元（Binary）vs. 非二元（Non-Binary）关系<a class="headerlink" href="#74-binaryvs-non-binary" title="Permanent link">&para;</a></h3>
-<p>决策需平衡“描述清晰度”与“信息灵活性”，核心是判断多实体关联是否“必须同时存在”：
-- <strong>选择非二元关系的场景</strong>：多实体的关联“必须同时发生”，拆分后会丢失逻辑完整性，此时非二元关系更清晰。例如，“项目指导（proj_guide）”——教师、学生、项目三者的关联是“教师指导学生参与某项目”，缺少任一实体（如仅教师和学生）则关联无意义，用三元关系可直接体现三者的绑定关系，逻辑更明确。
-- <strong>选择二元关系的场景</strong>：多实体关联可拆分，或需支持“部分信息缺失”的情况，二元关系更灵活。例如，“父母（parents）”关系——若设计为三元关系（孩子、父亲、母亲），则无法记录“仅知母亲、不知父亲”的情况；拆分为两个二元关系（<code>father-of</code>：父亲-孩子，<code>mother-of</code>：母亲-孩子），可分别存储父母与孩子的关联，支持部分信息缺失的场景。<br />
-  注意：任何非二元关系均可通过“引入人工实体集”转换为二元关系，但需权衡逻辑清晰度与实现复杂度。</p>
+<p>决策需平衡“描述清晰度”与“信息灵活性”，核心是判断多实体关联是否“必须同时存在”：</p>
+<ul>
+<li><strong>选择非二元关系的场景</strong>：多实体的关联“必须同时发生”，拆分后会丢失逻辑完整性，此时非二元关系更清晰。例如，“项目指导（proj_guide）”——教师、学生、项目三者的关联是“教师指导学生参与某项目”，缺少任一实体（如仅教师和学生）则关联无意义，用三元关系可直接体现三者的绑定关系，逻辑更明确。</li>
+<li><strong>选择二元关系的场景</strong>：多实体关联可拆分，或需支持“部分信息缺失”的情况，二元关系更灵活。例如，“父母（parents）”关系——若设计为三元关系（孩子、父亲、母亲），则无法记录“仅知母亲、不知父亲”的情况；拆分为两个二元关系（<code>father-of</code>：父亲-孩子，<code>mother-of</code>：母亲-孩子），可分别存储父母与孩子的关联，支持部分信息缺失的场景。<br />
+  注意：任何非二元关系均可通过“引入人工实体集”转换为二元关系，但需权衡逻辑清晰度与实现复杂度。</li>
+</ul>
 <h3 id="75-strong-entityvs-weak-entity">7.5 强实体（Strong Entity）vs. 弱实体（Weak Entity）<a class="headerlink" href="#75-strong-entityvs-weak-entity" title="Permanent link">&para;</a></h3>
-<p>判断标准是“实体是否能通过自身属性独立唯一标识”，核心是“主键的独立性”：
-- <strong>选择强实体的场景</strong>：实体存在“自身属性构成的主键”，无需依赖其他实体即可唯一标识。例如，<code>instructor</code>（主键<code>ID</code>）、<code>student</code>（主键<code>ID</code>）、<code>course</code>（主键<code>course_id</code>）——这些实体的主键均来自自身属性，不依赖其他实体，属于强实体集。
-- <strong>选择弱实体的场景</strong>：实体“自身属性无法构成主键”，需依赖“标识实体集”的主键+自身“鉴别符”才能唯一标识，且存在依赖于标识实体的“存在性”。例如，<code>section</code>（课程章节）——自身属性<code>sec_id</code>、<code>semester</code>、<code>year</code>无法唯一标识（不同课程的章节可能有相同组合），需结合<code>course</code>的主键<code>course_id</code>（标识实体的主键），构成完整主键<code>(course_id, sec_id, semester, year)</code>；且若<code>course</code>实体被删除，对应的<code>section</code>也需删除，符合弱实体的存在依赖性。</p>
+<p>判断标准是“实体是否能通过自身属性独立唯一标识”，核心是“主键的独立性”：</p>
+<ul>
+<li><strong>选择强实体的场景</strong>：实体存在“自身属性构成的主键”，无需依赖其他实体即可唯一标识。例如，<code>instructor</code>（主键<code>ID</code>）、<code>student</code>（主键<code>ID</code>）、<code>course</code>（主键<code>course_id</code>）——这些实体的主键均来自自身属性，不依赖其他实体，属于强实体集。</li>
+<li><strong>选择弱实体的场景</strong>：实体“自身属性无法构成主键”，需依赖“标识实体集”的主键+自身“鉴别符”才能唯一标识，且存在依赖于标识实体的“存在性”。例如，<code>section</code>（课程章节）——自身属性<code>sec_id</code>、<code>semester</code>、<code>year</code>无法唯一标识（不同课程的章节可能有相同组合），需结合<code>course</code>的主键<code>course_id</code>（标识实体的主键），构成完整主键<code>(course_id, sec_id, semester, year)</code>；且若<code>course</code>实体被删除，对应的<code>section</code>也需删除，符合弱实体的存在依赖性。</li>
+</ul>
 <h3 id="76-specializationgeneralization">7.6 专化/泛化（Specialization/Generalization）的使用<a class="headerlink" href="#76-specializationgeneralization" title="Permanent link">&para;</a></h3>
-<p>核心是判断实体集是否存在“层级化的属性/关系差异”，目的是提升设计的模块化与可维护性：
-- <strong>适用场景</strong>：多个实体集共享“部分属性与关系”（公共特征），同时存在“特有属性与关系”（差异特征），需通过层级管理减少冗余。例如，<code>person</code>（公共属性：<code>ID</code>、<code>name</code>、<code>street</code>、<code>city</code>）可专化为<code>student</code>（特有属性：<code>tot_cred</code>）和<code>employee</code>（特有属性：<code>salary</code>）——公共属性在<code>person</code>中统一管理，特有属性在子类中单独定义，避免重复存储公共属性，提升模块化。
-- <strong>不适用场景</strong>：实体集间无明显公共特征，或差异特征极少，强行专化会增加设计复杂度。例如，<code>course</code>与<code>classroom</code>（教室）——二者无共享属性（<code>course</code>有<code>title</code>、<code>credits</code>，<code>classroom</code>有<code>building</code>、<code>room_number</code>），无需专化/泛化。</p>
+<p>核心是判断实体集是否存在“层级化的属性/关系差异”，目的是提升设计的模块化与可维护性：</p>
+<ul>
+<li><strong>适用场景</strong>：多个实体集共享“部分属性与关系”（公共特征），同时存在“特有属性与关系”（差异特征），需通过层级管理减少冗余。例如，<code>person</code>（公共属性：<code>ID</code>、<code>name</code>、<code>street</code>、<code>city</code>）可专化为<code>student</code>（特有属性：<code>tot_cred</code>）和<code>employee</code>（特有属性：<code>salary</code>）——公共属性在<code>person</code>中统一管理，特有属性在子类中单独定义，避免重复存储公共属性，提升模块化。</li>
+<li><strong>不适用场景</strong>：实体集间无明显公共特征，或差异特征极少，强行专化会增加设计复杂度。例如，<code>course</code>与<code>classroom</code>（教室）——二者无共享属性（<code>course</code>有<code>title</code>、<code>credits</code>，<code>classroom</code>有<code>building</code>、<code>room_number</code>），无需专化/泛化。</li>
+</ul>
 <h3 id="77-aggregation">7.7 聚合（Aggregation）的使用<a class="headerlink" href="#77-aggregation" title="Permanent link">&para;</a></h3>
-<p>关键是判断是否存在“关系与其他实体/关系的关联”，目的是消除冗余关联信息，简化复杂交互：
-- <strong>适用场景</strong>：需描述“一个关系集与其他实体/关系的关联”，若直接关联会重复存储基础关系的信息，则用聚合。例如，“项目指导（proj_guide）”与“指导评价（eval_for）”——<code>proj_guide</code>是<code>instructor</code>、<code>student</code>、<code>project</code>的三元关系，<code>eval_for</code>需记录“对该指导关系的评价”；若直接关联<code>instructor</code>、<code>student</code>、<code>project</code>、<code>evaluation</code>，会重复<code>proj_guide</code>的关联信息；通过聚合将<code>proj_guide</code>抽象为“聚合实体”，<code>eval_for</code>仅关联“聚合实体”与<code>evaluation</code>，既保留逻辑关联，又消除冗余。
-- <strong>不适用场景</strong>：无“关系间关联”的需求，或基础关系与其他实体的关联可直接描述，无需聚合。例如，<code>advisor</code>（教师-学生）与<code>evaluation</code>——若评价仅依赖教师或学生（而非指导关系），则无需聚合，直接将<code>evaluation</code>与<code>instructor</code>或<code>student</code>关联即可。</p>
+<p>关键是判断是否存在“关系与其他实体/关系的关联”，目的是消除冗余关联信息，简化复杂交互：</p>
+<ul>
+<li><strong>适用场景</strong>：需描述“一个关系集与其他实体/关系的关联”，若直接关联会重复存储基础关系的信息，则用聚合。例如，“项目指导（proj_guide）”与“指导评价（eval_for）”——<code>proj_guide</code>是<code>instructor</code>、<code>student</code>、<code>project</code>的三元关系，<code>eval_for</code>需记录“对该指导关系的评价”；若直接关联<code>instructor</code>、<code>student</code>、<code>project</code>、<code>evaluation</code>，会重复<code>proj_guide</code>的关联信息；通过聚合将<code>proj_guide</code>抽象为“聚合实体”，<code>eval_for</code>仅关联“聚合实体”与<code>evaluation</code>，既保留逻辑关联，又消除冗余。</li>
+<li><strong>不适用场景</strong>：无“关系间关联”的需求，或基础关系与其他实体的关联可直接描述，无需聚合。例如，<code>advisor</code>（教师-学生）与<code>evaluation</code>——若评价仅依赖教师或学生（而非指导关系），则无需聚合，直接将<code>evaluation</code>与<code>instructor</code>或<code>student</code>关联即可。</li>
+</ul>
 <h2 id="8-reduction-to-relation-schemas">8. 转换为关系模式（Reduction to Relation Schemas）<a class="headerlink" href="#8-reduction-to-relation-schemas" title="Permanent link">&para;</a></h2>
 <p>将E-R模型转换为关系模式，核心是将实体集、关系集、专化/聚合等结构，映射为“属性-列”对应的关系表，确保数据完整性与无冗余（或可控冗余），各结构的转换规则如下：</p>
 <h3 id="81">8.1 实体集的转换<a class="headerlink" href="#81" title="Permanent link">&para;</a></h3>
@@ -8300,20 +8326,24 @@
 <h3 id="92-e-r">9.2 替代E-R表示法<a class="headerlink" href="#92-e-r" title="Permanent link">&para;</a></h3>
 <p>除了标准E-R图和UML类图，数据库设计中还常用其他简化或专用的表示法，核心包括Chen表示法（经典E-R变种）和IDEF1X表示法（工业界常用，又称“乌鸦脚表示法”）。</p>
 <h4 id="921-chene-r">9.2.1 Chen表示法（经典E-R表示）<a class="headerlink" href="#921-chene-r" title="Permanent link">&para;</a></h4>
-<p>Chen表示法是E-R模型的原始表示形式，与之前章节介绍的“标准E-R符号”高度一致，是理解E-R模型的基础，核心特征如下：
-- 实体集：用矩形表示，属性用椭圆表示，主键属性用<strong>实线下划线</strong>标注，多值属性用<strong>双椭圆</strong>，派生属性用<strong>虚线椭圆</strong>；<br />
-- 关系集：用菱形表示，通过实线连接实体集，关系的基数约束（1:1、1:N、N:M）通过在连线旁标注数字或符号（如“1”“N”“M”）表示；<br />
-- 优势：符号直观，与E-R模型的概念完全对齐，适合教学和入门级设计；劣势：符号较多，复杂系统的图会显得冗长。</p>
+<p>Chen表示法是E-R模型的原始表示形式，与之前章节介绍的“标准E-R符号”高度一致，是理解E-R模型的基础，核心特征如下：</p>
+<ul>
+<li>实体集：用矩形表示，属性用椭圆表示，主键属性用<strong>实线下划线</strong>标注，多值属性用<strong>双椭圆</strong>，派生属性用<strong>虚线椭圆</strong>；  </li>
+<li>关系集：用菱形表示，通过实线连接实体集，关系的基数约束（1:1、1:N、N:M）通过在连线旁标注数字或符号（如“1”“N”“M”）表示；  </li>
+<li>优势：符号直观，与E-R模型的概念完全对齐，适合教学和入门级设计；劣势：符号较多，复杂系统的图会显得冗长。</li>
+</ul>
 <h4 id="922-idef1x">9.2.2 IDEF1X表示法（乌鸦脚表示法）<a class="headerlink" href="#922-idef1x" title="Permanent link">&para;</a></h4>
-<p>IDEF1X是面向工业应用的实体关系表示法，以“简洁的基数符号”（乌鸦脚“⊃”表示“多”）为核心特征，又称“乌鸦脚表示法”，广泛用于企业级数据库设计，核心规则如下：
-- 实体集：用矩形表示，分为“独立实体”（强实体，矩形左上角无标记）和“从属实体”（弱实体，矩形左上角标“(D)”）；主键属性用<strong>实线下划线</strong>，外键属性用<strong>虚线下划线</strong>；<br />
-- 关系表示：用线连接实体集，基数约束通过“线末端的符号”表示，无需菱形：<br />
-  - “|”表示“一个”（1）；<br />
-  - “⊃”表示“多个”（N/M）；<br />
-  - “|⊃”表示“一个或多个”（1:N）；<br />
-  - “⊃⊃”表示“多个或多个”（N:M）；<br />
-- 示例：“department（部门）”与“instructor（教师）”的1:N关系，在department侧标“|”（一个部门），在instructor侧标“⊃”（多个教师），连线旁标注关系名“has”，直观体现“一个部门有多个教师”。<br />
-- 优势：符号简洁，基数约束一目了然，适合复杂系统的快速绘图；劣势：对弱实体、派生属性的表示不够直观，需额外注释。</p>
+<p>IDEF1X是面向工业应用的实体关系表示法，以“简洁的基数符号”（乌鸦脚“⊃”表示“多”）为核心特征，又称“乌鸦脚表示法”，广泛用于企业级数据库设计，核心规则如下：</p>
+<ul>
+<li>实体集：用矩形表示，分为“独立实体”（强实体，矩形左上角无标记）和“从属实体”（弱实体，矩形左上角标“(D)”）；主键属性用<strong>实线下划线</strong>，外键属性用<strong>虚线下划线</strong>；  </li>
+<li>关系表示：用线连接实体集，基数约束通过“线末端的符号”表示，无需菱形：  </li>
+<li>“|”表示“一个”（1）；  </li>
+<li>“⊃”表示“多个”（N/M）；  </li>
+<li>“|⊃”表示“一个或多个”（1:N）；  </li>
+<li>“⊃⊃”表示“多个或多个”（N:M）；  </li>
+<li>示例：“department（部门）”与“instructor（教师）”的1:N关系，在department侧标“|”（一个部门），在instructor侧标“⊃”（多个教师），连线旁标注关系名“has”，直观体现“一个部门有多个教师”。  </li>
+<li>优势：符号简洁，基数约束一目了然，适合复杂系统的快速绘图；劣势：对弱实体、派生属性的表示不够直观，需额外注释。</li>
+</ul>
 <h2 id="10">10. 章节总结<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <ul>
 <li>E-R模型用于概念设计，帮助构建清晰的数据库结构。</li>

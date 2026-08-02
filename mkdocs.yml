@@ -280,10 +280,10 @@ markdown_extensions:
 
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js  # Mermaid (CDN)
-  - javascripts/mermaid.js        # Mermaid 初始化配置
-  - javascripts/extra.js          # MathJax 数学公式配置
+  - javascripts/mermaid.js?v=9     # Mermaid 初始化配置（v9：版本号用于强制刷新 CDN 缓存）
+  - javascripts/extra.js           # MathJax 数学公式配置
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/mermaid.css       # Mermaid 样式覆盖
+  - stylesheets/mermaid.css?v=9    # Mermaid 样式覆盖（v9：版本号用于强制刷新 CDN 缓存）

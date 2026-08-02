@@ -51,6 +51,8 @@
     
       <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
     
+      <link rel="stylesheet" href="../../../../../stylesheets/mermaid.css">
+    
     <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -10728,6 +10730,40 @@
 <p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.1 | 第6–42页</p>
 </blockquote>
 <p>关系是离散数学的核心概念之一，它刻画了不同集合元素之间或同一集合元素之间的<strong>联系与对应规则</strong>。§9.1 从关系的定义出发，系统引入了二元关系的数学表示、关键性质（自反性、对称性、反对称性、传递性）以及关系的组合与幂运算，为后续等价关系、偏序关系和关系闭包等内容奠定基础。</p>
+<pre class="mermaid"><code>mindmap
+  root((半群与群))
+    代数结构基础
+      "集合 + 二元运算"
+      "关键性质：封闭、结合、交换"
+      "特殊元素：单位元、逆元"
+    半群与幺半群
+      半群
+        "封闭 + 结合律"
+      幺半群
+        "半群 + 单位元"
+      子半群与生成
+    群
+      定义
+        "幺半群 + 每个元素有逆元"
+      阿贝尔群
+        "满足交换律"
+      子群与循环群
+      典型例子
+        "整数加群、对称群 Sₙ、置换群"
+    结构间的联系
+      同态与同构
+        "保持运算的映射"
+        "同构：结构完全相同"
+      同余关系
+        "与运算相容的等价关系"
+      商结构
+        "由同余关系划分得到的商半群/商群"
+    核心定理
+      同态基本定理
+        "同态像 ≅ 商结构（核的商）"
+    历史背景与应用
+      "源于伽罗瓦的群论思想"
+      "应用于编码、拓扑、方程求解等"</code></pre>
 <hr />
 <h3 id="911">9.1.1 关系的基本定义与相关概念<a class="headerlink" href="#911" title="Permanent link">&para;</a></h3>
 <h4 id="9111">9.1.1.1 关系的定义<a class="headerlink" href="#9111" title="Permanent link">&para;</a></h4>
@@ -12884,6 +12920,10 @@ R = {(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3)
     
     
       <script src="../../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+      
+        <script src="../../../../../javascripts/mermaid.js"></script>
       
         <script src="../../../../../javascripts/extra.js"></script>
       

@@ -1,5 +1,4 @@
-// 自定义JS文件，如需自定义脚本请在此编辑
-
+// MathJax 数学公式渲染配置
 window.MathJax = {
   options: {
     ignoreHtmlClass: ".*",

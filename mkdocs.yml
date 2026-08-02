@@ -279,11 +279,10 @@ markdown_extensions:
       permalink: true # 固定标题位置为当前位置
 
 extra_javascript:
-  - https://cdn.jsdelivr.net/npm/mermaid@11.16.0/dist/mermaid.min.js  # Mermaid (CDN)
-  - javascripts/mermaid-theme.js?v=3     # Mermaid 主题：复刻 DeepSeek 思维导图配色（v1：版本号用于强制刷新 CDN 缓存）
+  - javascripts/mermaid.mjs     # Mermaid 加载器（ESM，含 mindmap 配色配置）
   - javascripts/extra.js           # MathJax 数学公式配置
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:
   - stylesheets/extra.css
-  - stylesheets/mermaid-theme.css?v=3    # Mermaid 样式辅助：配合 mermaid-theme.js 配色（v1：版本号用于强制刷新 CDN 缓存）
+  - stylesheets/mindmap.css    # 思维导图容器样式（配合 mermaid.mjs 配色）

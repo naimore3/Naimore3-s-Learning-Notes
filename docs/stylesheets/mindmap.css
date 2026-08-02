@@ -1,0 +1,19 @@
+/**
+ * 思维导图（mindmap）专用样式
+ * ============================
+ * 本文件独立管理 mindmap 图表的容器级样式，与 mermaid.mjs / mindmap.mjs 解耦。
+ *
+ * 职责边界说明：
+ *   - 节点配色（背景 / 文字 / 连线色）→ docs/javascripts/mindmap.mjs（themeVariables）
+ *   - 容器布局样式（宽度 / 居中 / 滚动）→ 本文件
+ *
+ * 注意：Material 将渲染后的 SVG 放入 closed shadow DOM，外部 CSS 无法穿透
+ * 修改节点内部样式，因此本文件只作用于 .mermaid 容器元素本身。
+ */
+
+/* 图表容器：水平居中 + 超宽时横向滚动，避免撑破页面 */
+.mermaid {
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 auto;
+}

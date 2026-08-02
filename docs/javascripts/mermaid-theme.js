@@ -1,21 +1,24 @@
 /*
  * Mermaid 主题配置 —— 复刻 DeepSeek 思维导图配色
  *
- * 目标：mermaid 默认主题（classic 圆角风格）渲染，配色与 DeepSeek 思维导图完全一致。
+ * 目标：mermaid 渲染配色与 DeepSeek 思维导图完全一致（classic 圆角风格）。
  * 所有色值均直接取自 DeepSeek 思维导图导出的 SVG（mermaid mindmap classic 渲染产物）：
  *   - cScale0-11      分支填充色（section-N → cScale(N+1)，12 色循环）
  *   - cScaleLabel0-11 分支文字色（蓝、紫分支为白色，其余黑色）
  *   - cScaleInv0-11   分支节点底部横线色（填充色色相 +180°）
  *   - git0 / gitBranchLabel0  根节点背景（深蓝）/ 根节点文字（白）
  *
- * Material for MkDocs 会自动调用 mermaid.initialize()，
- * 因此拦截 initialize 注入 themeVariables，其余配置（Material 的 themeCSS 等）保持不变。
+ * 实现要点（多重保险，确保在任何加载时序下主题都生效）：
+ *   1. theme 使用 "base"：mermaid 为自定义而设计的基础主题，themeVariables 完全生效
+ *      （"default" 主题的 updateColors() 派生逻辑在部分场景会回退默认色板）。
+ *   2. 包装 mermaid.initialize：Material for MkDocs 会自动调用，注入主题变量与 themeCSS。
+ *   3. 包装 mermaid.render：每次渲染前强制重新注入主题配置——无论 Material 何时调用、
+ *      配置是否被覆盖，渲染必定使用本主题（彻底消除时序竞态）。
+ *   4. 若 mermaid 尚未加载（jsDelivr 失败时 Material 会兜底从 unpkg 动态加载），
+ *      通过拦截 window.mermaid 赋值，在 Material 调用 initialize() 之前同步完成包装。
+ *   5. mindmap 文字颜色通过 themeCSS 注入（Material 把 SVG 放进 closed Shadow DOM，
+ *      页面级 CSS 无法穿透；themeCSS 随 SVG 注入 shadow 内部）。
  * 配套样式见 stylesheets/mermaid-theme.css。
- *
- * 注意：不能在 mermaid 加载前直接 return。若 jsDelivr CDN 加载失败，
- * Material 会兜底从 unpkg.com 动态加载 mermaid——那样主题就永远不会生效。
- * 因此 mermaid 未就绪时，通过拦截 window.mermaid 赋值，在 Material 调用
- * initialize() 之前同步完成注入（setter 触发，无竞态）。
  */
 
 (function () {
@@ -74,10 +77,7 @@
     };
 
     /*
-     * mindmap 文字颜色修正（注入 themeCSS）：
-     * Material for MkDocs 会把渲染出的 SVG 放进 closed Shadow DOM，页面级 CSS（mermaid-theme.css）
-     * 无法穿透；同时 Material 的 themeCSS 规则 `text:not([class]):last-child` 会把 mindmap 文字
-     * 染成主题文字色。因此这里通过 themeCSS 追加覆盖规则（随 SVG 注入 shadow 内部，与图表同作用域）：
+     * mindmap 文字颜色修正（注入 themeCSS，随 SVG 进入 closed Shadow DOM）：
      *   分支文字默认黑色；紫色分支（section-2）白色；根节点（深蓝底）白色。
      */
     var MM_THEME_EXTRA_MARK = "/*mm-theme-extra*/";
@@ -89,19 +89,35 @@
       ".mindmap-node.section-2 text:not([class]):last-child{fill:#ffffff;}" +
       ".mindmap-node.section-root text:not([class]):last-child{fill:#ffffff;}";
 
-    // 拦截 mermaid.initialize（Material for MkDocs 会自动调用），注入主题变量
-    var originalInit = m.initialize;
-    m.initialize = function (config) {
+    // 强制注入主题配置（initialize 与 render 共用）
+    function forceTheme(config) {
       config = config || {};
-      // 固定为主题默认 + classic 圆角风格（与 DeepSeek 一致）
-      config.theme = "default";
+      // theme 用 "base"：mermaid 为自定义设计的基础主题，themeVariables 完全生效
+      config.theme = "base";
       config.look = "classic";
-      // 注入色板，保留其余配置（如 Material 的 themeCSS）
       config.themeVariables = Object.assign({}, config.themeVariables, themeVariables);
       // 合并 themeCSS：先剥离上次追加的部分（幂等），再追加文字颜色规则
       var base = (config.themeCSS || "").replace(/\/\*mm-theme-extra\*\/[\s\S]*$/, "");
       config.themeCSS = base + mmThemeCss;
-      return originalInit(config);
+      return config;
+    }
+
+    // 包装 mermaid.initialize（Material for MkDocs 会自动调用）
+    var originalInit = m.initialize;
+    m.initialize = function (config) {
+      return originalInit(forceTheme(config));
+    };
+
+    // 包装 mermaid.render：每次渲染前强制注入——无论何时调用、配置如何，必定生效
+    var originalRender = m.render;
+    m.render = function (id, text, container) {
+      try {
+        var cfg = m.mermaidAPI.getConfig();
+        m.mermaidAPI.updateSiteConfig(forceTheme(cfg));
+      } catch (e) {
+        /* 忽略：若 API 不可用则退回 initialize 包装 */
+      }
+      return originalRender.call(this, id, text, container);
     };
 
     // 立即初始化（Material 后续调用时本配置依然生效）

@@ -302,7 +302,9 @@
   - **优先级排队（PQ）算法**：根据数据包优先级进行排队处理。  ![Weighted.jpeg](Weighted.jpeg)![Finishing.jpg](Finishing.jpg)
 
 #### 公式  
+
 \[ F_{i} = \max(A_{i}, F_{i-1}) + \frac{L_{i}}{W} \]  
+
 
 
 #### 公式含义  

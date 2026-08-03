@@ -146,9 +146,11 @@ Armstrong 公理是推导函数依赖的三大基本规则，具有**可靠性**
 
 #### **计算算法（举例说明）**
 设关系模式 \( R(A, B, C, G, H, I) \)，函数依赖集：
+
 \[
 F = \{ A \rightarrow B,\ A \rightarrow C,\ CG \rightarrow H,\ CG \rightarrow I,\ B \rightarrow H \}
 \]
+
 
 求 \( (AG)^+ \)：
 1. `result = {A, G}`
@@ -520,20 +522,26 @@ R2(J, L)   -- 原始依赖 JK → L 在投影后变为 JL → ?，但实际只�
 ### 1. 分解的基本要求
 
 #### （1）属性保留（Attribute Preservation）
+
 - **要求**：所有原始属性必须出现在至少一个子模式中，即  
-  \[
-  R = R_1 \cup R_2 \cup \dots \cup R_n
-  \]
+
+    \[
+    R = R_1 \cup R_2 \cup \dots \cup R_n
+    \]
+
 - **意义**：不能丢失任何属性信息。
 - **例子**：  
   若 \( R(A,B,C) \) 被分解为 \( R_1(A,B) \) 和 \( R_2(B,C) \)，则 \( A,B,C \) 全部保留 ✅；  
   若分解为 \( R_1(A,B) \) 和 \( R_2(A) \)，则 \( C \) 丢失 ❌。
 
 #### （2）无损连接（Lossless-join Decomposition）
+
 - **定义**：对任意合法关系实例 \( r(R) \)，将其投影到各子模式后再自然连接，能**完全恢复**原关系，即  
-  \[
-  r = \pi_{R_1}(r) \bowtie \pi_{R_2}(r) \bowtie \dots \bowtie \pi_{R_n}(r)
-  \]
+
+    \[
+    r = \pi_{R_1}(r) \bowtie \pi_{R_2}(r) \bowtie \dots \bowtie \pi_{R_n}(r)
+    \]
+
 - **重要性**：若非无损连接，分解后无法还原原始数据，导致**信息丢失**。
 - **反例（有损分解）**：  
   设 \( R(\text{SNO}, \text{DEPT}, \text{HEAD}) \)，函数依赖：  
@@ -553,11 +561,15 @@ R2(J, L)   -- 原始依赖 JK → L 在投影后变为 JL → ?，但实际只�
   连接结果会生成笛卡尔积：(s1,d1,h1), (s1,d1,h2)... 即使原表只有一行，也可能产生多行 ❌。
 
 #### （3）依赖保持（Dependency Preservation）
+
 - **定义**：分解后，所有原始函数依赖仍能在子模式中被“验证”或“强制执行”，形式化为：  
-  \[
-  (F_1 \cup F_2 \cup \dots \cup F_n)^+ = F^+
-  \]
-  其中 \( F_i \) 是 \( F^+ \) 中仅涉及 \( R_i \) 属性的依赖。
+
+    \[
+    (F_1 \cup F_2 \cup \dots \cup F_n)^+ = F^+
+    \]
+
+    其中 \( F_i \) 是 \( F^+ \) 中仅涉及 \( R_i \) 属性的依赖。
+
 - **意义**：若依赖未被保持，则无法在单个表中通过约束（如唯一性、外键）保证数据一致性，需应用层维护，易出错。
 - **例子**：  
   \( R(\text{SNO}, \text{DEPT}, \text{HEAD}) \)，\( F = \{\text{SNO} \rightarrow \text{DEPT},\ \text{DEPT} \rightarrow \text{HEAD}\} \)

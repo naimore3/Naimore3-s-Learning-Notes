@@ -10726,9 +10726,6 @@
   <h1>关系</h1>
 
 <h2 id="91-relations-and-their-properties">9.1 Relations and Their Properties（关系及其性质）<a class="headerlink" href="#91-relations-and-their-properties" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.1 | 第6–42页</p>
-</blockquote>
 <p>关系是离散数学的核心概念之一，它刻画了不同集合元素之间或同一集合元素之间的<strong>联系与对应规则</strong>。§9.1 从关系的定义出发，系统引入了二元关系的数学表示、关键性质（自反性、对称性、反对称性、传递性）以及关系的组合与幂运算，为后续等价关系、偏序关系和关系闭包等内容奠定基础。</p>
 <pre class="mermaid"><code>mindmap
   root((半群与群))
@@ -11133,9 +11130,6 @@ R = \{(1,1), (2,1), (3,2), (4,3)\}.
 </table>
 <hr />
 <h2 id="92-n-ary-relations-and-their-applicationsn">9.2 n-ary Relations and Their Applications（n元关系及其应用）<a class="headerlink" href="#92-n-ary-relations-and-their-applicationsn" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.2 | 第43–55页</p>
-</blockquote>
 <p>§9.1 聚焦于二元关系，§9.2 则将其<strong>推广至任意元数</strong>。n元关系是<strong>关系数据库（Relational Database）</strong>的数学基础，也是数据挖掘中关联规则分析的理论源头。本节重点包括n元关系的严格定义、数据库的基本术语（键、内涵/外延），以及三类核心数据库操作（选择、投影、连接），最后简要介绍数据挖掘中的<strong>支持度（Support）</strong>概念。</p>
 <hr />
 <h3 id="921-n">9.2.1 n元关系的定义与基本概念<a class="headerlink" href="#921-n" title="Permanent link">&para;</a></h3>
@@ -11599,9 +11593,6 @@ P_{i_1, i_2, \ldots, i_m}(R) = \{\, (a_{i_1}, a_{i_2}, \ldots, a_{i_m}) \mid (a_
 </table>
 <hr />
 <h2 id="93-representing-relations">9.3 Representing Relations 关系的表示<a class="headerlink" href="#93-representing-relations" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.3 | 第56–63页</p>
-</blockquote>
 <p>关系是集合中元素之间联系的抽象描述。为了便于存储、计算和分析，我们需要将关系以<strong>规范的数学形式</strong>表达出来。本节介绍两种最主要的二元关系表示方法——<strong>零一矩阵</strong>和<strong>有向图</strong>，并讨论如何通过这些表示快速判定关系的性质。两种方法各有优劣：矩阵表示适合计算机存储与代数运算，有向图表示适合可视化分析与直观理解。</p>
 <hr />
 <h3 id="931">9.3.1 关系的表示方法概述<a class="headerlink" href="#931" title="Permanent link">&para;</a></h3>
@@ -11947,9 +11938,6 @@ R = \{(a,a), (a,b), (b,a), (b,b), (b,c), (c,b), (c,c)\}
 </table>
 <hr />
 <h2 id="94-closures-of-relations">9.4 Closures of Relations（关系的闭包）<a class="headerlink" href="#94-closures-of-relations" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.4 | 第65–101页</p>
-</blockquote>
 <p>§9.1 至 §9.3 着重于<strong>描述</strong>和<strong>表示</strong>关系，§9.4 则转向<strong>关系的改造与扩充</strong>。闭包（Closure）是离散数学中一种重要的构造思想：给定一个关系，它可能缺乏某些良好性质（如自反性、对称性或传递性），我们希望在<strong>不改变原有关系核心内容的前提下</strong>，以<strong>最经济的方式</strong>添加最少的有序对，使得新关系具备所需性质。本节系统讲授自反闭包、对称闭包和传递闭包的定义、构造方法，并重点剖析传递闭包的计算——从基于路径的幂运算到高效的 <strong>Warshall 算法</strong>。</p>
 <hr />
 <h3 id="941">9.4.1 闭包的基本概念与定义<a class="headerlink" href="#941" title="Permanent link">&para;</a></h3>
@@ -12297,9 +12285,6 @@ R^* = \{(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,4)\},
 - 实现简单，效率高，是计算传递闭包的<strong>标准算法</strong>。</p>
 <hr />
 <h2 id="95-equivalence-relations">9.5 Equivalence Relations（等价关系）<a class="headerlink" href="#95-equivalence-relations" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.5 | 第102–143页</p>
-</blockquote>
 <p>等价关系是离散数学中<strong>最具贯穿性</strong>的概念之一。它将集合中的元素按照某种“等价标准”进行分类，使得同一类中的元素在某种意义下视为相同。§9.5 系统讲授等价关系的严格定义、等价类的结构、以及等价关系与<strong>集合划分（Partition）</strong>之间的一一对应关系。这一对应关系是后续学习商集、同余类乃至抽象代数中陪集等概念的基石。</p>
 <hr />
 <h3 id="951">9.5.1 等价关系的定义与判定<a class="headerlink" href="#951" title="Permanent link">&para;</a></h3>
@@ -12571,9 +12556,6 @@ R = \{(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3
 </table>
 <hr />
 <h2 id="96-partial-orderings">9.6 Partial Orderings（偏序关系）<a class="headerlink" href="#96-partial-orderings" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p><strong>教材对应</strong>：Rosen <em>Discrete Mathematics and Its Applications</em>, 8th ed., Chapter 9.6 | 第145–207页</p>
-</blockquote>
 <p>§9.5 的等价关系以“分类”为目标，强调集合的划分；而 §9.6 的<strong>偏序关系（Partial Orderings）</strong>则以“比较”为目标，刻画元素之间的<strong>大小、先后或包含</strong>等次序结构。偏序集（Poset）是许多数学结构（如树、格、布尔代数）的基础。本节系统讲授偏序的定义、哈斯图的绘制方法、极值元素的查找、拓扑排序算法，以及特殊的偏序结构——<strong>格（Lattices）</strong>及其代数性质。</p>
 <hr />
 <h3 id="961-posets">9.6.1 偏序集（Posets）的基本概念<a class="headerlink" href="#961-posets" title="Permanent link">&para;</a></h3>

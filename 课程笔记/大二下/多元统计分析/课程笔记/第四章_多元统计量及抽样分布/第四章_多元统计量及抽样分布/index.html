@@ -8319,11 +8319,13 @@
 <h4 id="1">1. 中心化数据阵<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：用于刻画数据相对于均值的偏差程度，矩阵元素由各变量观测值与均值的偏差乘积之和构成。  </li>
-<li><strong>计算公式</strong>：<br />
-  [
-  a_{i j}=\sum_{\alpha=1}^{n}\left(X_{\alpha i}-\overline{X}<em _alpha="\alpha" j="j">{i}\right)\left(X</em>\right)
-  ]}-\overline{X}_{j<br />
-  其中，<span class="arithmatex">\(X_{\alpha i}\)</span>表示第<span class="arithmatex">\(\alpha\)</span>次观测中第<span class="arithmatex">\(i\)</span>个变量的值，<span class="arithmatex">\(\overline{X}_{i}\)</span>为第<span class="arithmatex">\(i\)</span>个变量的样本均值。  </li>
+<li>
+<p><strong>计算公式</strong>：  </p>
+<div class="arithmatex">\[
+a_{i j}=\sum_{\alpha=1}^{n}\left(X_{\alpha i}-\overline{X}_{i}\right)\left(X_{\alpha j}-\overline{X}_{j}\right)
+\]</div>
+<p>其中，<span class="arithmatex">\(X_{\alpha i}\)</span>表示第<span class="arithmatex">\(\alpha\)</span>次观测中第<span class="arithmatex">\(i\)</span>个变量的值，<span class="arithmatex">\(\overline{X}_{i}\)</span>为第<span class="arithmatex">\(i\)</span>个变量的样本均值。  </p>
+</li>
 </ul>
 <h4 id="2-a">2. 样本离差阵A<a class="headerlink" href="#2-a" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8361,13 +8363,13 @@
 <p><span class="arithmatex">\(a_{22} = \sum(X_{\alpha2}-\overline{X}_2)^2 = 0^2 + 1^2 + (-1)^2 = 2\)</span>  </p>
 </li>
 <li>
-<p><strong>构造样本离差阵A</strong>：<br />
-   [
-   A = \begin{pmatrix}
-   8 &amp; 4 \
-   4 &amp; 2
-   \end{pmatrix}
-   ]  </p>
+<p><strong>构造样本离差阵A</strong>：  </p>
+<div class="arithmatex">\[
+A = \begin{pmatrix}
+8 &amp; 4 \\
+4 &amp; 2
+\end{pmatrix}
+\]</div>
 </li>
 </ol>
 <h3 id="_15">四、关键要点总结<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
@@ -8417,35 +8419,49 @@
 <h3 id="_19">四、求解方法与实例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="1-hotelling-t2">1. Hotelling <span class="arithmatex">\(T^2\)</span>统计量计算实例<a class="headerlink" href="#1-hotelling-t2" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：设<span class="arithmatex">\(p=2\)</span>，样本均值向量<span class="arithmatex">\(\overline{X} = (50, 4)\)</span>，样本离差阵<span class="arithmatex">\(A = \begin{pmatrix}136 &amp; -6 \\ -6 &amp; 2\end{pmatrix}\)</span>，总体均值<span class="arithmatex">\(\mu = (45, 3)\)</span>，计算<span class="arithmatex">\(T^2\)</span>统计量并检验均值差异。  </p>
-<p><strong>解题步骤：</strong><br />
-1. <strong>计算样本协差阵</strong>：<span class="arithmatex">\(S = \frac{A}{n-1}\)</span>，假设<span class="arithmatex">\(n=4\)</span>，则<span class="arithmatex">\(S = \frac{1}{3}\begin{pmatrix}136 &amp; -6 \\ -6 &amp; 2\end{pmatrix} = \begin{pmatrix}45.33 &amp; -2 \\ -2 &amp; 0.67\end{pmatrix}\)</span>。<br />
-2. <strong>构造<span class="arithmatex">\(T^2\)</span>统计量</strong>：<br />
-   [
-   T^2 = n(\overline{X} - \mu)'S^{-1}(\overline{X} - \mu)
-   ]<br />
-   - 计算均值差：<span class="arithmatex">\(\overline{X} - \mu = (50-45, 4-3) = (5, 1)\)</span><br />
-   - 计算<span class="arithmatex">\(S^{-1}\)</span>：<br />
-     [
-     S = \begin{pmatrix}45.33 &amp; -2 \ -2 &amp; 0.67\end{pmatrix}, \quad S^{-1} = \frac{1}{45.33×0.67 - (-2)^2}\begin{pmatrix}0.67 &amp; 2 \ 2 &amp; 45.33\end{pmatrix} \approx \begin{pmatrix}0.023 &amp; 0.69 \ 0.69 &amp; 15.63\end{pmatrix}
-     ]<br />
-   - 代入计算：<br />
-     [
-     T^2 = 4 \times (5, 1) \begin{pmatrix}0.023 &amp; 0.69 \ 0.69 &amp; 15.63\end{pmatrix} \begin{pmatrix}5 \ 1\end{pmatrix}
-     ]<br />
-     [
-     = 4 \times [5×0.023 + 1×0.69, \, 5×0.69 + 1×15.63] \begin{pmatrix}5 \ 1\end{pmatrix}
-     ]<br />
-     [
-     = 4 \times [0.115 + 0.69, \, 3.45 + 15.63] \begin{pmatrix}5 \ 1\end{pmatrix}
-     ]<br />
-     [
-     = 4 \times (0.805, 19.08) \begin{pmatrix}5 \ 1\end{pmatrix} = 4 \times (0.805×5 + 19.08×1) = 4 \times (4.025 + 19.08) = 4 \times 23.105 = 92.42
-     ]<br />
-3. <strong>转化为F分布</strong>：<br />
-   [
-   \frac{n-p+1}{np}T^2 = \frac{4-2+1}{4×2}×92.42 = \frac{3}{8}×92.42 \approx 34.66 \sim F(2, 4-2+1)=F(2,3)
-   ]<br />
-4. <strong>统计推断</strong>：查F分布表，<span class="arithmatex">\(F_{0.05}(2,3)=9.55\)</span>，由于34.66 &gt; 9.55，拒绝原假设，认为总体均值存在显著差异。  </p>
+<p><strong>解题步骤：</strong>  </p>
+<ol>
+<li><strong>计算样本协差阵</strong>：<span class="arithmatex">\(S = \frac{A}{n-1}\)</span>，假设<span class="arithmatex">\(n=4\)</span>，则<span class="arithmatex">\(S = \frac{1}{3}\begin{pmatrix}136 &amp; -6 \\ -6 &amp; 2\end{pmatrix} = \begin{pmatrix}45.33 &amp; -2 \\ -2 &amp; 0.67\end{pmatrix}\)</span>。  </li>
+<li>
+<p><strong>构造<span class="arithmatex">\(T^2\)</span>统计量</strong>：  </p>
+<div class="arithmatex">\[
+T^2 = n(\overline{X} - \mu)'S^{-1}(\overline{X} - \mu)
+\]</div>
+</li>
+<li>
+<p>计算均值差：<span class="arithmatex">\(\overline{X} - \mu = (50-45, 4-3) = (5, 1)\)</span>  </p>
+</li>
+<li>
+<p>计算<span class="arithmatex">\(S^{-1}\)</span>：  </p>
+<div class="arithmatex">\[
+S = \begin{pmatrix}45.33 &amp; -2 \\ -2 &amp; 0.67\end{pmatrix}, \quad S^{-1} = \frac{1}{45.33×0.67 - (-2)^2}\begin{pmatrix}0.67 &amp; 2 \\ 2 &amp; 45.33\end{pmatrix} \approx \begin{pmatrix}0.023 &amp; 0.69 \\ 0.69 &amp; 15.63\end{pmatrix}
+\]</div>
+</li>
+<li>
+<p>代入计算：  </p>
+<div class="arithmatex">\[
+T^2 = 4 \times (5, 1) \begin{pmatrix}0.023 &amp; 0.69 \\ 0.69 &amp; 15.63\end{pmatrix} \begin{pmatrix}5 \\ 1\end{pmatrix}
+\]</div>
+<div class="arithmatex">\[
+= 4 \times [5×0.023 + 1×0.69, \, 5×0.69 + 1×15.63] \begin{pmatrix}5 \\ 1\end{pmatrix}
+\]</div>
+<div class="arithmatex">\[
+= 4 \times [0.115 + 0.69, \, 3.45 + 15.63] \begin{pmatrix}5 \\ 1\end{pmatrix}
+\]</div>
+<div class="arithmatex">\[
+= 4 \times (0.805, 19.08) \begin{pmatrix}5 \\ 1\end{pmatrix} = 4 \times (0.805×5 + 19.08×1) = 4 \times (4.025 + 19.08) = 4 \times 23.105 = 92.42
+\]</div>
+</li>
+<li>
+<p><strong>转化为F分布</strong>：  </p>
+<div class="arithmatex">\[
+\frac{n-p+1}{np}T^2 = \frac{4-2+1}{4×2}×92.42 = \frac{3}{8}×92.42 \approx 34.66 \sim F(2, 4-2+1)=F(2,3)
+\]</div>
+</li>
+<li>
+<p><strong>统计推断</strong>：查F分布表，<span class="arithmatex">\(F_{0.05}(2,3)=9.55\)</span>，由于34.66 &gt; 9.55，拒绝原假设，认为总体均值存在显著差异。  </p>
+</li>
+</ol>
 <h4 id="2-wilks">2. Wilks Λ统计量应用实例<a class="headerlink" href="#2-wilks" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：设<span class="arithmatex">\(p=1\)</span>，<span class="arithmatex">\(A \sim \chi^2(10)\)</span>，<span class="arithmatex">\(B \sim \chi^2(5)\)</span>，计算<span class="arithmatex">\(\Lambda = \frac{A}{A+B}\)</span>并转化为F分布。  </p>
 <p><strong>解题步骤：</strong><br />
@@ -8520,7 +8536,7 @@
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

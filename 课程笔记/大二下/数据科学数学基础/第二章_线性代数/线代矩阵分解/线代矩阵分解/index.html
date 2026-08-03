@@ -8609,26 +8609,30 @@
    - 消元系数作为<span class="arithmatex">\(L\)</span>的下三角元素：<br />
 <span class="arithmatex">\(L = \begin{bmatrix}1 &amp; 0 &amp; 0 \\ 4 &amp; 1 &amp; 0 \\ 8 &amp; \frac{7}{3} &amp; 1\end{bmatrix}\)</span>（对角线为1，下方元素为消元倍数）。  </p>
 <p><strong>步骤2：解方程 <span class="arithmatex">\(Ax = b\)</span></strong><br />
-已知 <span class="arithmatex">\(b = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix}\)</span>，分解为：<br />
-1. <strong>前向替换求解 <span class="arithmatex">\(Lc = b\)</span></strong>：<br />
-   [
-   \begin{cases}
-   c_1 = 1 \
-   4c_1 + c_2 = 2 \implies c_2 = 2 - 4 \times 1 = -2 \
-   8c_1 + \frac{7}{3}c_2 + c_3 = 3 \implies 8 \times 1 + \frac{7}{3} \times (-2) + c_3 = 3 \implies c_3 = 3 - 8 + \frac{14}{3} = \frac{1}{3}
-   \end{cases}
-   ]<br />
-   得 <span class="arithmatex">\(c = \begin{bmatrix}1 \\ -2 \\ \frac{1}{3}\end{bmatrix}\)</span>。  </p>
+已知 <span class="arithmatex">\(b = \begin{bmatrix}1 \\ 2 \\ 3\end{bmatrix}\)</span>，分解为：  </p>
 <ol>
-<li><strong>后向替换求解 <span class="arithmatex">\(Ux = c\)</span></strong>：<br />
-   [
-   \begin{cases}
-   -3x_3 = \frac{1}{3} \implies x_3 = -\frac{1}{9} \
-   -3x_2 - 6x_3 = -2 \implies -3x_2 - 6 \times (-\frac{1}{9}) = -2 \implies -3x_2 + \frac{2}{3} = -2 \implies x_2 = \frac{8}{9} \
-   x_1 + 2x_2 + 3x_3 = 1 \implies x_1 + 2 \times \frac{8}{9} + 3 \times (-\frac{1}{9}) = 1 \implies x_1 = 1 - \frac{16}{9} + \frac{3}{9} = -\frac{4}{9}
-   \end{cases}
-   ]<br />
-   最终解为 <span class="arithmatex">\(x = \begin{bmatrix}-\frac{4}{9} \\ \frac{8}{9} \\ -\frac{1}{9}\end{bmatrix}\)</span>。  </li>
+<li>
+<p><strong>前向替换求解 <span class="arithmatex">\(Lc = b\)</span></strong>：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+c_1 = 1 \\
+4c_1 + c_2 = 2 \implies c_2 = 2 - 4 \times 1 = -2 \\
+8c_1 + \frac{7}{3}c_2 + c_3 = 3 \implies 8 \times 1 + \frac{7}{3} \times (-2) + c_3 = 3 \implies c_3 = 3 - 8 + \frac{14}{3} = \frac{1}{3}
+\end{cases}
+\]</div>
+<p>得 <span class="arithmatex">\(c = \begin{bmatrix}1 \\ -2 \\ \frac{1}{3}\end{bmatrix}\)</span>。  </p>
+</li>
+<li>
+<p><strong>后向替换求解 <span class="arithmatex">\(Ux = c\)</span></strong>：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+-3x_3 = \frac{1}{3} \implies x_3 = -\frac{1}{9} \\
+-3x_2 - 6x_3 = -2 \implies -3x_2 - 6 \times (-\frac{1}{9}) = -2 \implies -3x_2 + \frac{2}{3} = -2 \implies x_2 = \frac{8}{9} \\
+x_1 + 2x_2 + 3x_3 = 1 \implies x_1 + 2 \times \frac{8}{9} + 3 \times (-\frac{1}{9}) = 1 \implies x_1 = 1 - \frac{16}{9} + \frac{3}{9} = -\frac{4}{9}
+\end{cases}
+\]</div>
+<p>最终解为 <span class="arithmatex">\(x = \begin{bmatrix}-\frac{4}{9} \\ \frac{8}{9} \\ -\frac{1}{9}\end{bmatrix}\)</span>。  </p>
+</li>
 </ol>
 <h3 id="_9">四、重点总结<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
@@ -8637,9 +8641,9 @@
 </ul>
 <h2 id="_10">特征值分解<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <h3 id="_11">一、定义与条件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p><strong>定义</strong>：若矩阵 <span class="arithmatex">\(A\)</span> 存在 <span class="arithmatex">\(n\)</span> 个线性无关的特征向量 <span class="arithmatex">\(\{x_1, x_2, \dots, x_n\}\)</span>，其对应的特征值为 <span class="arithmatex">\(\{\lambda_1, \lambda_2, \dots, \lambda_n\}\)</span>，则可将 <span class="arithmatex">\(A\)</span> 分解为：<br />
-[ A = X\Lambda X^{-1} ]<br />
-其中，<span class="arithmatex">\(X = [x_1, x_2, \dots, x_n]\)</span> 为可逆矩阵（由特征向量组成），<span class="arithmatex">\(\Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n)\)</span> 为对角矩阵。  </p>
+<p><strong>定义</strong>：若矩阵 <span class="arithmatex">\(A\)</span> 存在 <span class="arithmatex">\(n\)</span> 个线性无关的特征向量 <span class="arithmatex">\(\{x_1, x_2, \dots, x_n\}\)</span>，其对应的特征值为 <span class="arithmatex">\(\{\lambda_1, \lambda_2, \dots, \lambda_n\}\)</span>，则可将 <span class="arithmatex">\(A\)</span> 分解为：  </p>
+<div class="arithmatex">\[ A = X\Lambda X^{-1} \]</div>
+<p>其中，<span class="arithmatex">\(X = [x_1, x_2, \dots, x_n]\)</span> 为可逆矩阵（由特征向量组成），<span class="arithmatex">\(\Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_n)\)</span> 为对角矩阵。  </p>
 <p><strong>条件</strong>：<br />
 1. <span class="arithmatex">\(A\)</span> 可对角化（即特征向量线性无关）。<br />
 2. 若 <span class="arithmatex">\(A\)</span> 为对称矩阵，则必可<strong>正交对角化</strong>，即存在正交矩阵 <span class="arithmatex">\(Q\)</span> 使得 <span class="arithmatex">\(A = Q\Lambda Q^T\)</span>（<span class="arithmatex">\(Q^T = Q^{-1}\)</span>）。  </p>
@@ -8656,40 +8660,48 @@
    - 将所有特征向量单位化，构成正交矩阵 <span class="arithmatex">\(Q\)</span>。  </p>
 <h3 id="_13">三、应用：马氏链（状态转移建模）<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><strong>场景</strong>：用于描述系统状态随时间的转移概率，如人口迁移、网页排名等。<br />
-<strong>核心思想</strong>：若状态转移矩阵 <span class="arithmatex">\(A\)</span> 可对角化，则 <span class="arithmatex">\(k\)</span> 步转移后的状态为：<br />
-[ u_k = A^k u_0 = X\Lambda^k X^{-1} u_0 ]<br />
-其中，<span class="arithmatex">\(u_0\)</span> 为初始状态向量，<span class="arithmatex">\(\Lambda^k\)</span> 可通过特征值幂次快速计算。  </p>
+<strong>核心思想</strong>：若状态转移矩阵 <span class="arithmatex">\(A\)</span> 可对角化，则 <span class="arithmatex">\(k\)</span> 步转移后的状态为：  </p>
+<div class="arithmatex">\[ u_k = A^k u_0 = X\Lambda^k X^{-1} u_0 \]</div>
+<p>其中，<span class="arithmatex">\(u_0\)</span> 为初始状态向量，<span class="arithmatex">\(\Lambda^k\)</span> 可通过特征值幂次快速计算。  </p>
 <h3 id="_14">四、示例解析<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p><strong>例1：对称矩阵的正交对角化</strong><br />
 设对称矩阵 <span class="arithmatex">\(S = \begin{bmatrix}0 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; -1 \\ 1 &amp; -1 &amp; 0\end{bmatrix}\)</span>，求其特征值分解。  </p>
 <p><strong>步骤1：求特征值</strong><br />
-特征多项式：<br />
-[ |S - \lambda I| = \begin{vmatrix}-\lambda &amp; 1 &amp; 1 \ 1 &amp; -\lambda &amp; -1 \ 1 &amp; -1 &amp; -\lambda\end{vmatrix} = (1 - \lambda)^2(2 + \lambda) ]<br />
-解得特征值：<span class="arithmatex">\(\lambda_1 = -2\)</span>（单根），<span class="arithmatex">\(\lambda_2 = \lambda_3 = 1\)</span>（二重根）。  </p>
-<p><strong>步骤2：求特征向量</strong><br />
-- 对 <span class="arithmatex">\(\lambda_1 = -2\)</span>，解 <span class="arithmatex">\((S + 2I)x = 0\)</span>：<br />
-  [
-  \begin{bmatrix}2 &amp; 1 &amp; 1 \ 1 &amp; 2 &amp; -1 \ 1 &amp; -1 &amp; 2\end{bmatrix} \sim \begin{bmatrix}1 &amp; 0 &amp; 1 \ 0 &amp; 1 &amp; -1 \ 0 &amp; 0 &amp; 0\end{bmatrix} \implies x_1 = [1, -1, -1]^T
-  ]<br />
-  单位化：<span class="arithmatex">\(q_1 = \frac{x_1}{\|x_1\|} = \left[\frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}}\right]^T\)</span>。  </p>
+特征多项式：  </p>
+<div class="arithmatex">\[ |S - \lambda I| = \begin{vmatrix}-\lambda &amp; 1 &amp; 1 \\ 1 &amp; -\lambda &amp; -1 \\ 1 &amp; -1 &amp; -\lambda\end{vmatrix} = (1 - \lambda)^2(2 + \lambda) \]</div>
+<p>解得特征值：<span class="arithmatex">\(\lambda_1 = -2\)</span>（单根），<span class="arithmatex">\(\lambda_2 = \lambda_3 = 1\)</span>（二重根）。  </p>
+<p><strong>步骤2：求特征向量</strong>  </p>
 <ul>
-<li>对 <span class="arithmatex">\(\lambda_2 = \lambda_3 = 1\)</span>，解 <span class="arithmatex">\((S - I)x = 0\)</span>：<br />
-  [
-  \begin{bmatrix}-1 &amp; 1 &amp; 1 \ 1 &amp; -1 &amp; -1 \ 1 &amp; -1 &amp; -1\end{bmatrix} \sim \begin{bmatrix}1 &amp; -1 &amp; -1 \ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0\end{bmatrix} \implies \text{基础解系为 } x_2 = [1, 1, 0]^T, x_3 = [1, 0, 1]^T
-  ]<br />
-<strong>正交化</strong>（Gram-Schmidt）：  </li>
-<li>取 <span class="arithmatex">\(v_2 = x_2 = [1, 1, 0]^T\)</span>，单位化：<span class="arithmatex">\(q_2 = \frac{v_2}{\|v_2\|} = \left[\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right]^T\)</span>。  </li>
-<li>对 <span class="arithmatex">\(x_3\)</span> 正交化：<br />
-    [
-    v_3 = x_3 - \frac{x_3 \cdot q_2}{q_2 \cdot q_2} q_2 = [1, 0, 1]^T - \frac{1}{2}[1, 1, 0]^T = \left[\frac{1}{2}, -\frac{1}{2}, 1\right]^T
-    ]<br />
-    单位化：<span class="arithmatex">\(q_3 = \frac{v_3}{\|v_3\|} = \left[\frac{1}{\sqrt{6}}, -\frac{1}{\sqrt{6}}, \frac{\sqrt{2}}{\sqrt{3}}\right]^T\)</span>。  </li>
+<li>
+<p>对 <span class="arithmatex">\(\lambda_1 = -2\)</span>，解 <span class="arithmatex">\((S + 2I)x = 0\)</span>：  </p>
+<div class="arithmatex">\[
+\begin{bmatrix}2 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; -1 \\ 1 &amp; -1 &amp; 2\end{bmatrix} \sim \begin{bmatrix}1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; -1 \\ 0 &amp; 0 &amp; 0\end{bmatrix} \implies x_1 = [1, -1, -1]^T
+\]</div>
+<p>单位化：<span class="arithmatex">\(q_1 = \frac{x_1}{\|x_1\|} = \left[\frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}}, -\frac{1}{\sqrt{3}}\right]^T\)</span>。  </p>
+</li>
+<li>
+<p>对 <span class="arithmatex">\(\lambda_2 = \lambda_3 = 1\)</span>，解 <span class="arithmatex">\((S - I)x = 0\)</span>：  </p>
+<div class="arithmatex">\[
+\begin{bmatrix}-1 &amp; 1 &amp; 1 \\ 1 &amp; -1 &amp; -1 \\ 1 &amp; -1 &amp; -1\end{bmatrix} \sim \begin{bmatrix}1 &amp; -1 &amp; -1 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0\end{bmatrix} \implies \text{基础解系为 } x_2 = [1, 1, 0]^T, x_3 = [1, 0, 1]^T
+\]</div>
+<p><strong>正交化</strong>（Gram-Schmidt）：  </p>
+</li>
+<li>
+<p>取 <span class="arithmatex">\(v_2 = x_2 = [1, 1, 0]^T\)</span>，单位化：<span class="arithmatex">\(q_2 = \frac{v_2}{\|v_2\|} = \left[\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}, 0\right]^T\)</span>。  </p>
+</li>
+<li>
+<p>对 <span class="arithmatex">\(x_3\)</span> 正交化：  </p>
+<div class="arithmatex">\[
+v_3 = x_3 - \frac{x_3 \cdot q_2}{q_2 \cdot q_2} q_2 = [1, 0, 1]^T - \frac{1}{2}[1, 1, 0]^T = \left[\frac{1}{2}, -\frac{1}{2}, 1\right]^T
+\]</div>
+<p>单位化：<span class="arithmatex">\(q_3 = \frac{v_3}{\|v_3\|} = \left[\frac{1}{\sqrt{6}}, -\frac{1}{\sqrt{6}}, \frac{\sqrt{2}}{\sqrt{3}}\right]^T\)</span>。  </p>
+</li>
 </ul>
-<p><strong>步骤3：构造正交矩阵 <span class="arithmatex">\(Q\)</span> 和对角矩阵 <span class="arithmatex">\(\Lambda\)</span></strong><br />
-[
-Q = [q_1, q_2, q_3] = \begin{bmatrix}\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} \ -\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{6}} \ -\frac{1}{\sqrt{3}} &amp; 0 &amp; \frac{\sqrt{2}}{\sqrt{3}}\end{bmatrix}, \quad \Lambda = \begin{bmatrix}-2 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 1\end{bmatrix}
-]<br />
-最终分解：<span class="arithmatex">\(S = Q\Lambda Q^T\)</span>。  </p>
+<p><strong>步骤3：构造正交矩阵 <span class="arithmatex">\(Q\)</span> 和对角矩阵 <span class="arithmatex">\(\Lambda\)</span></strong>  </p>
+<div class="arithmatex">\[
+Q = [q_1, q_2, q_3] = \begin{bmatrix}\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; \frac{1}{\sqrt{6}} \\ -\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}} &amp; -\frac{1}{\sqrt{6}} \\ -\frac{1}{\sqrt{3}} &amp; 0 &amp; \frac{\sqrt{2}}{\sqrt{3}}\end{bmatrix}, \quad \Lambda = \begin{bmatrix}-2 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1\end{bmatrix}
+\]</div>
+<p>最终分解：<span class="arithmatex">\(S = Q\Lambda Q^T\)</span>。  </p>
 <p><strong>例2：马氏链应用——人口迁移模型</strong><br />
 设某地区人口迁移矩阵为 <span class="arithmatex">\(A = \begin{bmatrix}0.97 &amp; 0.05 \\ 0.03 &amp; 0.95\end{bmatrix}\)</span>，初始城市人口占比 <span class="arithmatex">\(u_0 = \begin{bmatrix}0.4 \\ 0.6\end{bmatrix}\)</span>（总人口100万），求1年后人口分布。  </p>
 <p><strong>步骤1：特征值分解 <span class="arithmatex">\(A\)</span></strong><br />
@@ -8698,16 +8710,16 @@ Q = [q_1, q_2, q_3] = \begin{bmatrix}\frac{1}{\sqrt{3}} &amp; \frac{1}{\sqrt{2}}
   - <span class="arithmatex">\(\lambda_1 = 1\)</span>：<span class="arithmatex">\(x_1 = [5, 3]^T\)</span>（单位化后 <span class="arithmatex">\(q_1 = \left[\frac{5}{\sqrt{34}}, \frac{3}{\sqrt{34}}\right]^T\)</span>）。<br />
   - <span class="arithmatex">\(\lambda_2 = 0.92\)</span>：<span class="arithmatex">\(x_2 = [1, -1]^T\)</span>（单位化后 <span class="arithmatex">\(q_2 = \left[\frac{1}{\sqrt{2}}, -\frac{1}{\sqrt{2}}\right]^T\)</span>）。  </p>
 <p><strong>步骤2：计算 <span class="arithmatex">\(u_1 = A u_0\)</span></strong><br />
-直接计算：<br />
-[
-u_1 = \begin{bmatrix}0.97 &amp; 0.05 \ 0.03 &amp; 0.95\end{bmatrix} \begin{bmatrix}0.4 \ 0.6\end{bmatrix} = \begin{bmatrix}0.4 \times 0.97 + 0.6 \times 0.05 \ 0.4 \times 0.03 + 0.6 \times 0.95\end{bmatrix} = \begin{bmatrix}0.418 \ 0.582\end{bmatrix}
-]<br />
-即1年后城市人口41.8万，农村人口58.2万。  </p>
-<p><strong>补充说明</strong>：通过特征值分解可快速计算 <span class="arithmatex">\(k\)</span> 年后状态：<br />
-[
+直接计算：  </p>
+<div class="arithmatex">\[
+u_1 = \begin{bmatrix}0.97 &amp; 0.05 \\ 0.03 &amp; 0.95\end{bmatrix} \begin{bmatrix}0.4 \\ 0.6\end{bmatrix} = \begin{bmatrix}0.4 \times 0.97 + 0.6 \times 0.05 \\ 0.4 \times 0.03 + 0.6 \times 0.95\end{bmatrix} = \begin{bmatrix}0.418 \\ 0.582\end{bmatrix}
+\]</div>
+<p>即1年后城市人口41.8万，农村人口58.2万。  </p>
+<p><strong>补充说明</strong>：通过特征值分解可快速计算 <span class="arithmatex">\(k\)</span> 年后状态：  </p>
+<div class="arithmatex">\[
 u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \text{ 为初始状态在特征向量基下的坐标})
-]<br />
-当 <span class="arithmatex">\(k \to \infty\)</span> 时，<span class="arithmatex">\(\lambda_2^k \to 0\)</span>，状态收敛于稳态 <span class="arithmatex">\(c_1 x_1\)</span>。  </p>
+\]</div>
+<p>当 <span class="arithmatex">\(k \to \infty\)</span> 时，<span class="arithmatex">\(\lambda_2^k \to 0\)</span>，状态收敛于稳态 <span class="arithmatex">\(c_1 x_1\)</span>。  </p>
 <h3 id="_15">五、重点总结<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>对称矩阵优势</strong>：必可正交对角化，特征向量正交，计算更高效（如例1）。  </li>
@@ -8716,11 +8728,13 @@ u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \
 </ul>
 <h2 id="svd">奇异值分解（SVD）<a class="headerlink" href="#svd" title="Permanent link">&para;</a></h2>
 <h3 id="_16">一、核心定义与类型<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
-<p><strong>定义</strong>：对任意 <span class="arithmatex">\(m \times n\)</span> 实矩阵 <span class="arithmatex">\(A\)</span>，存在正交矩阵 <span class="arithmatex">\(U_{m \times m}\)</span>、<span class="arithmatex">\(V_{n \times n}\)</span> 和对角矩阵 <span class="arithmatex">\(\Sigma_{m \times n}\)</span>（对角线元素为奇异值 <span class="arithmatex">\(\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_r &gt; 0\)</span>），使得：<br />
-[ A = U \Sigma V^T ]<br />
-- <strong>左奇异向量</strong>：<span class="arithmatex">\(U\)</span> 的列向量，对应 <span class="arithmatex">\(A A^T\)</span> 的特征向量。<br />
-- <strong>右奇异向量</strong>：<span class="arithmatex">\(V\)</span> 的列向量，对应 <span class="arithmatex">\(A^T A\)</span> 的特征向量。<br />
-- <strong>奇异值</strong>：<span class="arithmatex">\(\sigma_i = \sqrt{\lambda_i}\)</span>，<span class="arithmatex">\(\lambda_i\)</span> 为 <span class="arithmatex">\(A^T A\)</span> 或 <span class="arithmatex">\(A A^T\)</span> 的非零特征值。  </p>
+<p><strong>定义</strong>：对任意 <span class="arithmatex">\(m \times n\)</span> 实矩阵 <span class="arithmatex">\(A\)</span>，存在正交矩阵 <span class="arithmatex">\(U_{m \times m}\)</span>、<span class="arithmatex">\(V_{n \times n}\)</span> 和对角矩阵 <span class="arithmatex">\(\Sigma_{m \times n}\)</span>（对角线元素为奇异值 <span class="arithmatex">\(\sigma_1 \geq \sigma_2 \geq \dots \geq \sigma_r &gt; 0\)</span>），使得：  </p>
+<div class="arithmatex">\[ A = U \Sigma V^T \]</div>
+<ul>
+<li><strong>左奇异向量</strong>：<span class="arithmatex">\(U\)</span> 的列向量，对应 <span class="arithmatex">\(A A^T\)</span> 的特征向量。  </li>
+<li><strong>右奇异向量</strong>：<span class="arithmatex">\(V\)</span> 的列向量，对应 <span class="arithmatex">\(A^T A\)</span> 的特征向量。  </li>
+<li><strong>奇异值</strong>：<span class="arithmatex">\(\sigma_i = \sqrt{\lambda_i}\)</span>，<span class="arithmatex">\(\lambda_i\)</span> 为 <span class="arithmatex">\(A^T A\)</span> 或 <span class="arithmatex">\(A A^T\)</span> 的非零特征值。  </li>
+</ul>
 <h4 id="_17">类型<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <ol>
 <li><strong>紧奇异值分解</strong>  </li>
@@ -8763,9 +8777,13 @@ u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \
 </ol>
 <h4 id="a_m-times-n">计算步骤（以 <span class="arithmatex">\(A_{m \times n}\)</span> 为例）<a class="headerlink" href="#a_m-times-n" title="Permanent link">&para;</a></h4>
 <ol>
-<li><strong>计算协方差矩阵 <span class="arithmatex">\(A^T A\)</span></strong>：<br />
-   [ A^T A = \begin{bmatrix} \vdots &amp; \vdots &amp; \vdots \ v_1 &amp; v_2 &amp; \dots &amp; v_n \ \vdots &amp; \vdots &amp; \vdots \end{bmatrix} \begin{bmatrix} \vdots &amp; v_1 &amp; \vdots \ \vdots &amp; v_2 &amp; \vdots \ \vdots &amp; v_n &amp; \vdots \end{bmatrix} = \sum_{i=1}^n v_i v_i^T ]  </li>
-<li><strong>特征值分解 <span class="arithmatex">\(A^T A = V \Lambda V^T\)</span></strong>：  </li>
+<li>
+<p><strong>计算协方差矩阵 <span class="arithmatex">\(A^T A\)</span></strong>：  </p>
+<div class="arithmatex">\[ A^T A = \begin{bmatrix} \vdots &amp; \vdots &amp; \vdots \\ v_1 &amp; v_2 &amp; \dots &amp; v_n \\ \vdots &amp; \vdots &amp; \vdots \end{bmatrix} \begin{bmatrix} \vdots &amp; v_1 &amp; \vdots \\ \vdots &amp; v_2 &amp; \vdots \\ \vdots &amp; v_n &amp; \vdots \end{bmatrix} = \sum_{i=1}^n v_i v_i^T \]</div>
+</li>
+<li>
+<p><strong>特征值分解 <span class="arithmatex">\(A^T A = V \Lambda V^T\)</span></strong>：  </p>
+</li>
 <li>特征值 <span class="arithmatex">\(\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_r &gt; 0\)</span>，对应特征向量 <span class="arithmatex">\(v_1, \dots, v_r\)</span>。  </li>
 <li><strong>构造 <span class="arithmatex">\(\Sigma\)</span> 和 <span class="arithmatex">\(U\)</span></strong>：  </li>
 <li><span class="arithmatex">\(\Sigma\)</span>：对角线为 <span class="arithmatex">\(\sigma_i = \sqrt{\lambda_i}\)</span>，其余为0。  </li>
@@ -8775,26 +8793,26 @@ u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \
 <p><strong>例：紧奇异值分解与截断奇异值分解</strong><br />
 设矩阵 <span class="arithmatex">\(A = \begin{bmatrix}1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 4 \\ 0 &amp; 3 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 2 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}\)</span>（<span class="arithmatex">\(5 \times 4\)</span>，<span class="arithmatex">\(\text{rank}(A) = 3\)</span>）。  </p>
 <h4 id="1-at-a">步骤1：求 <span class="arithmatex">\(A^T A\)</span> 及其特征值分解<a class="headerlink" href="#1-at-a" title="Permanent link">&para;</a></h4>
-<p>[ A^T A = \begin{bmatrix}1^2 + 2^2 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 3^2 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 4^2\end{bmatrix} = \begin{bmatrix}5 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 9 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 16\end{bmatrix} ]<br />
-特征值：<span class="arithmatex">\(\lambda_1 = 16\)</span>，<span class="arithmatex">\(\lambda_2 = 9\)</span>，<span class="arithmatex">\(\lambda_3 = 5\)</span>，<span class="arithmatex">\(\lambda_4 = 0\)</span>（对应奇异值 <span class="arithmatex">\(\sigma_1 = 4\)</span>，<span class="arithmatex">\(\sigma_2 = 3\)</span>，<span class="arithmatex">\(\sigma_3 = \sqrt{5}\)</span>，<span class="arithmatex">\(\sigma_4 = 0\)</span>）。  </p>
+<div class="arithmatex">\[ A^T A = \begin{bmatrix}1^2 + 2^2 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 3^2 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 4^2\end{bmatrix} = \begin{bmatrix}5 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 9 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 16\end{bmatrix} \]</div>
+<p>特征值：<span class="arithmatex">\(\lambda_1 = 16\)</span>，<span class="arithmatex">\(\lambda_2 = 9\)</span>，<span class="arithmatex">\(\lambda_3 = 5\)</span>，<span class="arithmatex">\(\lambda_4 = 0\)</span>（对应奇异值 <span class="arithmatex">\(\sigma_1 = 4\)</span>，<span class="arithmatex">\(\sigma_2 = 3\)</span>，<span class="arithmatex">\(\sigma_3 = \sqrt{5}\)</span>，<span class="arithmatex">\(\sigma_4 = 0\)</span>）。  </p>
 <h4 id="2-v">步骤2：构造右奇异向量矩阵 <span class="arithmatex">\(V\)</span>**<a class="headerlink" href="#2-v" title="Permanent link">&para;</a></h4>
-<p>特征向量为标准正交基：<br />
-[ v_1 = \begin{bmatrix}0 \ 0 \ 0 \ 1\end{bmatrix}, \quad v_2 = \begin{bmatrix}0 \ 1 \ 0 \ 0\end{bmatrix}, \quad v_3 = \begin{bmatrix}1 \ 0 \ 0 \ 0\end{bmatrix}, \quad v_4 = \begin{bmatrix}0 \ 0 \ 1 \ 0\end{bmatrix} ]<br />
-[ V = \begin{bmatrix}v_1 &amp; v_2 &amp; v_3 &amp; v_4\end{bmatrix} = \begin{bmatrix}0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 \ 1 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}^T \quad (\text{注意：示例中 } V^T \text{ 为转置形式}) ]  </p>
+<p>特征向量为标准正交基：  </p>
+<div class="arithmatex">\[ v_1 = \begin{bmatrix}0 \\ 0 \\ 0 \\ 1\end{bmatrix}, \quad v_2 = \begin{bmatrix}0 \\ 1 \\ 0 \\ 0\end{bmatrix}, \quad v_3 = \begin{bmatrix}1 \\ 0 \\ 0 \\ 0\end{bmatrix}, \quad v_4 = \begin{bmatrix}0 \\ 0 \\ 1 \\ 0\end{bmatrix} \]</div>
+<div class="arithmatex">\[ V = \begin{bmatrix}v_1 &amp; v_2 &amp; v_3 &amp; v_4\end{bmatrix} = \begin{bmatrix}0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 1 &amp; 0 &amp; 0 &amp; 0\end{bmatrix}^T \quad (\text{注意：示例中 } V^T \text{ 为转置形式}) \]</div>
 <h4 id="3-u">步骤3：构造左奇异向量矩阵 <span class="arithmatex">\(U\)</span>**<a class="headerlink" href="#3-u" title="Permanent link">&para;</a></h4>
 <ul>
 <li>对 <span class="arithmatex">\(\sigma_1 = 4\)</span>：<span class="arithmatex">\(u_1 = \frac{A v_1}{4} = \frac{1}{4} \begin{bmatrix}0 \\ 4 \\ 0 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}0 \\ 1 \\ 0 \\ 0 \\ 0\end{bmatrix}\)</span>  </li>
 <li>对 <span class="arithmatex">\(\sigma_2 = 3\)</span>：<span class="arithmatex">\(u_2 = \frac{A v_2}{3} = \frac{1}{3} \begin{bmatrix}0 \\ 0 \\ 3 \\ 0 \\ 0\end{bmatrix} = \begin{bmatrix}0 \\ 0 \\ 1 \\ 0 \\ 0\end{bmatrix}\)</span>  </li>
 <li>对 <span class="arithmatex">\(\sigma_3 = \sqrt{5}\)</span>：<span class="arithmatex">\(u_3 = \frac{A v_3}{\sqrt{5}} = \frac{1}{\sqrt{5}} \begin{bmatrix}1 \\ 0 \\ 0 \\ 0 \\ 2\end{bmatrix} = \begin{bmatrix}1/\sqrt{5} \\ 0 \\ 0 \\ 0 \\ 2/\sqrt{5}\end{bmatrix}\)</span>  </li>
-<li>扩充正交基（<span class="arithmatex">\(m=5\)</span>，需补充2个向量，如标准基 <span class="arithmatex">\(e_4 = [0,0,0,1,0]^T\)</span>，<span class="arithmatex">\(e_5 = [\sqrt{0.8}, 0, 0, 0, -\sqrt{0.2}]^T\)</span> 以正交于 <span class="arithmatex">\(u_1, u_2, u_3\)</span>）：<br />
-[ U = \begin{bmatrix}0 &amp; 0 &amp; 1/\sqrt{5} &amp; 0 &amp; \sqrt{0.8} \ 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 2/\sqrt{5} &amp; 0 &amp; -\sqrt{0.2}\end{bmatrix} ]  </li>
+<li>扩充正交基（<span class="arithmatex">\(m=5\)</span>，需补充2个向量，如标准基 <span class="arithmatex">\(e_4 = [0,0,0,1,0]^T\)</span>，<span class="arithmatex">\(e_5 = [\sqrt{0.8}, 0, 0, 0, -\sqrt{0.2}]^T\)</span> 以正交于 <span class="arithmatex">\(u_1, u_2, u_3\)</span>）：  </li>
 </ul>
+<div class="arithmatex">\[ U = \begin{bmatrix}0 &amp; 0 &amp; 1/\sqrt{5} &amp; 0 &amp; \sqrt{0.8} \\ 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 2/\sqrt{5} &amp; 0 &amp; -\sqrt{0.2}\end{bmatrix} \]</div>
 <h4 id="4r3">步骤4：紧奇异值分解（<span class="arithmatex">\(r=3\)</span>）<a class="headerlink" href="#4r3" title="Permanent link">&para;</a></h4>
-<p>[ U_r = U[:, 1:3] = \begin{bmatrix}0 &amp; 0 &amp; 1/\sqrt{5} \ 1 &amp; 0 &amp; 0 \ 0 &amp; 1 &amp; 0 \ 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 2/\sqrt{5}\end{bmatrix}, \quad \Sigma_r = \begin{bmatrix}4 &amp; 0 &amp; 0 \ 0 &amp; 3 &amp; 0 \ 0 &amp; 0 &amp; \sqrt{5}\end{bmatrix}, \quad V_r = V[:, 1:3] = \begin{bmatrix}0 &amp; 0 &amp; 1 \ 0 &amp; 1 &amp; 0 \ 1 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0\end{bmatrix} ]<br />
-[ A = U_r \Sigma_r V_r^T ]  </p>
+<div class="arithmatex">\[ U_r = U[:, 1:3] = \begin{bmatrix}0 &amp; 0 &amp; 1/\sqrt{5} \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 2/\sqrt{5}\end{bmatrix}, \quad \Sigma_r = \begin{bmatrix}4 &amp; 0 &amp; 0 \\ 0 &amp; 3 &amp; 0 \\ 0 &amp; 0 &amp; \sqrt{5}\end{bmatrix}, \quad V_r = V[:, 1:3] = \begin{bmatrix}0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0\end{bmatrix} \]</div>
+<div class="arithmatex">\[ A = U_r \Sigma_r V_r^T \]</div>
 <h4 id="5-k2">步骤5：截断奇异值分解（取 <span class="arithmatex">\(k=2\)</span>）<a class="headerlink" href="#5-k2" title="Permanent link">&para;</a></h4>
-<p>[ U_k = U[:, 1:2] = \begin{bmatrix}0 &amp; 0 \ 1 &amp; 0 \ 0 &amp; 1 \ 0 &amp; 0 \ 0 &amp; 0\end{bmatrix}, \quad \Sigma_k = \begin{bmatrix}4 &amp; 0 \ 0 &amp; 3\end{bmatrix}, \quad V_k = V[:, 1:2] = \begin{bmatrix}0 &amp; 0 \ 0 &amp; 1 \ 1 &amp; 0 \ 0 &amp; 0\end{bmatrix} ]<br />
-[ A \approx U_k \Sigma_k V_k^T = \begin{bmatrix}0 &amp; 0 \ 1 &amp; 0 \ 0 &amp; 1 \ 0 &amp; 0 \ 0 &amp; 0\end{bmatrix} \begin{bmatrix}4 &amp; 0 \ 0 &amp; 3\end{bmatrix} \begin{bmatrix}0 &amp; 0 &amp; 1 &amp; 0 \ 0 &amp; 1 &amp; 0 &amp; 0\end{bmatrix} = \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 4 &amp; 0 \ 0 &amp; 3 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0 \ 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix} ]  </p>
+<div class="arithmatex">\[ U_k = U[:, 1:2] = \begin{bmatrix}0 &amp; 0 \\ 1 &amp; 0 \\ 0 &amp; 1 \\ 0 &amp; 0 \\ 0 &amp; 0\end{bmatrix}, \quad \Sigma_k = \begin{bmatrix}4 &amp; 0 \\ 0 &amp; 3\end{bmatrix}, \quad V_k = V[:, 1:2] = \begin{bmatrix}0 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; 0 \\ 0 &amp; 0\end{bmatrix} \]</div>
+<div class="arithmatex">\[ A \approx U_k \Sigma_k V_k^T = \begin{bmatrix}0 &amp; 0 \\ 1 &amp; 0 \\ 0 &amp; 1 \\ 0 &amp; 0 \\ 0 &amp; 0\end{bmatrix} \begin{bmatrix}4 &amp; 0 \\ 0 &amp; 3\end{bmatrix} \begin{bmatrix}0 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 0\end{bmatrix} = \begin{bmatrix}0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 4 &amp; 0 \\ 0 &amp; 3 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 0\end{bmatrix} \]</div>
 <h3 id="_21">五、重点总结<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>紧奇异值分解</strong>：保留全部非零奇异值，精确表示矩阵秩结构，用于理论分析。  </li>
@@ -8816,11 +8834,13 @@ u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \
 <h4 id="1">1. <strong>数据规范化</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>目的</strong>：消除变量量纲影响，使各变量均值为0，方差为1。  </li>
-<li><strong>方法</strong>：<br />
-  [
-  x_i^* = \frac{x_i - \bar{x}_i}{\sqrt{\text{var}(x_i)}}
-  ]<br />
-  其中，<span class="arithmatex">\(\bar{x}_i\)</span> 为变量均值，<span class="arithmatex">\(\text{var}(x_i)\)</span> 为方差。  </li>
+<li>
+<p><strong>方法</strong>：  </p>
+<div class="arithmatex">\[
+x_i^* = \frac{x_i - \bar{x}_i}{\sqrt{\text{var}(x_i)}}
+\]</div>
+<p>其中，<span class="arithmatex">\(\bar{x}_i\)</span> 为变量均值，<span class="arithmatex">\(\text{var}(x_i)\)</span> 为方差。  </p>
+</li>
 </ul>
 <h4 id="2">2. <strong>正交变换与方差最大化</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8838,12 +8858,16 @@ u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \
 <h3 id="_24">三、求解方法：基于协方差矩阵的特征值分解<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="1_1">1. <strong>数学原理</strong><a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li>设原始数据的协方差矩阵为 <span class="arithmatex">\(\Sigma\)</span>，其特征值分解为：<br />
-  [
-  \Sigma = Q \Lambda Q^T
-  ]<br />
-  其中，<span class="arithmatex">\(Q\)</span> 为正交矩阵（列向量为特征向量），<span class="arithmatex">\(\Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_m)\)</span> 为特征值对角矩阵（<span class="arithmatex">\(\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_m \geq 0\)</span>）。  </li>
-<li><strong>主成分表达式</strong>：第 <span class="arithmatex">\(i\)</span> 个主成分 <span class="arithmatex">\(y_i = q_i^T x\)</span>，其中 <span class="arithmatex">\(q_i\)</span> 为 <span class="arithmatex">\(\Sigma\)</span> 的第 <span class="arithmatex">\(i\)</span> 个特征向量。  </li>
+<li>
+<p>设原始数据的协方差矩阵为 <span class="arithmatex">\(\Sigma\)</span>，其特征值分解为：  </p>
+<div class="arithmatex">\[
+\Sigma = Q \Lambda Q^T
+\]</div>
+<p>其中，<span class="arithmatex">\(Q\)</span> 为正交矩阵（列向量为特征向量），<span class="arithmatex">\(\Lambda = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_m)\)</span> 为特征值对角矩阵（<span class="arithmatex">\(\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_m \geq 0\)</span>）。  </p>
+</li>
+<li>
+<p><strong>主成分表达式</strong>：第 <span class="arithmatex">\(i\)</span> 个主成分 <span class="arithmatex">\(y_i = q_i^T x\)</span>，其中 <span class="arithmatex">\(q_i\)</span> 为 <span class="arithmatex">\(\Sigma\)</span> 的第 <span class="arithmatex">\(i\)</span> 个特征向量。  </p>
+</li>
 </ul>
 <h4 id="2_1">2. <strong>关键步骤</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
 <ol>
@@ -8859,15 +8883,15 @@ u_k = c_1 \lambda_1^k x_1 + c_2 \lambda_2^k x_2 \quad (\text{其中 } c_1, c_2 \
 <h3 id="_25">四、示例解析：学生成绩主成分分析<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p><strong>问题</strong>：对4门课程（语文、外语、数学、物理）的学生成绩数据进行主成分分析，提取主成分并解释其意义。  </p>
 <h4 id="1_2">1. <strong>数据与规范化</strong><a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
-<p>假设标准化后的样本相关矩阵 <span class="arithmatex">\(R\)</span> 如下：<br />
-[
+<p>假设标准化后的样本相关矩阵 <span class="arithmatex">\(R\)</span> 如下：  </p>
+<div class="arithmatex">\[
 R = \begin{bmatrix}
-1 &amp; 0.44 &amp; 0.29 &amp; 0.33 \
-0.44 &amp; 1 &amp; 0.35 &amp; 0.32 \
-0.29 &amp; 0.35 &amp; 1 &amp; 0.60 \
+1 &amp; 0.44 &amp; 0.29 &amp; 0.33 \\
+0.44 &amp; 1 &amp; 0.35 &amp; 0.32 \\
+0.29 &amp; 0.35 &amp; 1 &amp; 0.60 \\
 0.33 &amp; 0.32 &amp; 0.60 &amp; 1
 \end{bmatrix}
-]  </p>
+\]</div>
 <h4 id="2_2">2. <strong>特征值分解</strong><a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h4>
 <p>求解 <span class="arithmatex">\(R\)</span> 的特征值和特征向量，前2个最大特征值及对应特征向量如下：<br />
 | 主成分 | 特征值 <span class="arithmatex">\(\lambda_i\)</span> | 方差贡献率 <span class="arithmatex">\(\eta_i\)</span> | 累计贡献率 | 特征向量 <span class="arithmatex">\(q_i\)</span> |<br />
@@ -8876,16 +8900,24 @@ R = \begin{bmatrix}
 | <span class="arithmatex">\(y_2\)</span> | 0.873               | 21.8%                | 76.1%      | [0.574, 0.486, -0.476, -0.456] |  </p>
 <h4 id="3_1">3. <strong>构造主成分</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>第一主成分（整体成绩）</strong>：<br />
-  [
-  y_1 = 0.460x_1 + 0.476x_2 + 0.523x_3 + 0.537x_4
-  ]  </li>
-<li>各课程系数均为正且相近，反映学生的整体成绩水平，物理成绩权重最大（0.537）。  </li>
-<li><strong>第二主成分（文理科差异）</strong>：<br />
-  [
-  y_2 = 0.574x_1 + 0.486x_2 - 0.476x_3 - 0.456x_4
-  ]  </li>
-<li>语文、外语系数为正，数学、物理系数为负，反映文科与理科成绩的差异。  </li>
+<li>
+<p><strong>第一主成分（整体成绩）</strong>：  </p>
+<div class="arithmatex">\[
+y_1 = 0.460x_1 + 0.476x_2 + 0.523x_3 + 0.537x_4
+\]</div>
+</li>
+<li>
+<p>各课程系数均为正且相近，反映学生的整体成绩水平，物理成绩权重最大（0.537）。  </p>
+</li>
+<li>
+<p><strong>第二主成分（文理科差异）</strong>：  </p>
+<div class="arithmatex">\[
+y_2 = 0.574x_1 + 0.486x_2 - 0.476x_3 - 0.456x_4
+\]</div>
+</li>
+<li>
+<p>语文、外语系数为正，数学、物理系数为负，反映文科与理科成绩的差异。  </p>
+</li>
 </ul>
 <h4 id="4">4. <strong>降维与解释</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8975,7 +9007,7 @@ R = \begin{bmatrix}
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -8275,21 +8275,27 @@
 <h2 id="_5"><img alt="exported_image.png" src="../exported_image.png" /><a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <h3 id="_6">详细总结<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="lsa">一、潜在语义分析（LSA）<a class="headerlink" href="#lsa" title="Permanent link">&para;</a></h4>
-<p><strong>目标</strong>：通过矩阵分解发现文本与单词的潜在话题关系，提升语义相似度准确性。<br />
-1. <strong>单词向量空间模型</strong><br />
-   - <strong>表示方法</strong>：单词-文本矩阵 <span class="arithmatex">\(X_{m×n}\)</span>，元素为TF-IDF值，反映单词在文本中的重要性：<br />
-     [
-     \text{TF-IDF}<em ij="ij">{ij} = \frac{\text{tf}</em>
-     ]}}{\text{tf}_{\cdot j}} \log\frac{\text{df}}{\text{df}_i<br />
-     - <span class="arithmatex">\(\text{tf}_{ij}\)</span>：单词<span class="arithmatex">\(i\)</span>在文本<span class="arithmatex">\(j\)</span>中的频数；<span class="arithmatex">\(\text{df}_i\)</span>：含单词<span class="arithmatex">\(i\)</span>的文本数。<br />
-   - <strong>缺陷</strong>：无法处理一词多义（如“apple”）和多词一义（如“airplane”与“aircraft”）。  </p>
+<p><strong>目标</strong>：通过矩阵分解发现文本与单词的潜在话题关系，提升语义相似度准确性。  </p>
 <ol>
-<li><strong>话题向量空间模型</strong>  </li>
+<li><strong>单词向量空间模型</strong>  </li>
 <li>
-<p><strong>核心思想</strong>：将文本表示为话题向量的线性组合，通过<strong>截断奇异值分解（SVD）</strong>实现：<br />
-     [
-     X \approx U_k \Sigma_k V_k^T
-     ]  </p>
+<p><strong>表示方法</strong>：单词-文本矩阵 <span class="arithmatex">\(X_{m×n}\)</span>，元素为TF-IDF值，反映单词在文本中的重要性：  </p>
+<div class="arithmatex">\[
+\text{TF-IDF}_{ij} = \frac{\text{tf}_{ij}}{\text{tf}_{\cdot j}} \log\frac{\text{df}}{\text{df}_i}
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\text{tf}_{ij}\)</span>：单词<span class="arithmatex">\(i\)</span>在文本<span class="arithmatex">\(j\)</span>中的频数；<span class="arithmatex">\(\text{df}_i\)</span>：含单词<span class="arithmatex">\(i\)</span>的文本数。  </li>
+<li><strong>缺陷</strong>：无法处理一词多义（如“apple”）和多词一义（如“airplane”与“aircraft”）。  </li>
+</ul>
+</li>
+<li>
+<p><strong>话题向量空间模型</strong>  </p>
+</li>
+<li>
+<p><strong>核心思想</strong>：将文本表示为话题向量的线性组合，通过<strong>截断奇异值分解（SVD）</strong>实现：  </p>
+<div class="arithmatex">\[
+X \approx U_k \Sigma_k V_k^T
+\]</div>
 <ul>
 <li><span class="arithmatex">\(U_k\)</span>：话题向量空间（左奇异向量），每列表示一个话题。  </li>
 <li><span class="arithmatex">\(\Sigma_k V_k^T\)</span>：文本在话题空间的表示，每列对应一个文本的话题权重。  </li>
@@ -8329,11 +8335,15 @@
 <li>
 <p><strong>Bias-SVD</strong>：  </p>
 <ul>
-<li>引入全局平均分<span class="arithmatex">\(u\)</span>、用户偏置<span class="arithmatex">\(b_u\)</span>、物品偏置<span class="arithmatex">\(b_i\)</span>：<br />
-   [
-   \hat{r}_{ui} = u + b_u + b_i + p_u^T q_i
-   ]  </li>
-<li>目标函数：<span class="arithmatex">\(\min \sum(r_{ui}-u-b_u-b_i-p_u^T q_i)^2 + \lambda(\|p_u\|^2+\|q_i\|^2+\|b_u\|^2+\|b_i\|^2)\)</span>。  </li>
+<li>
+<p>引入全局平均分<span class="arithmatex">\(u\)</span>、用户偏置<span class="arithmatex">\(b_u\)</span>、物品偏置<span class="arithmatex">\(b_i\)</span>：  </p>
+<div class="arithmatex">\[
+\hat{r}_{ui} = u + b_u + b_i + p_u^T q_i
+\]</div>
+</li>
+<li>
+<p>目标函数：<span class="arithmatex">\(\min \sum(r_{ui}-u-b_u-b_i-p_u^T q_i)^2 + \lambda(\|p_u\|^2+\|q_i\|^2+\|b_u\|^2+\|b_i\|^2)\)</span>。  </p>
+</li>
 </ul>
 </li>
 <li>
@@ -8356,15 +8366,17 @@
 <li>
 <p><strong>切图准则</strong>  </p>
 </li>
-<li><strong>RatioCut</strong>：最小化割边权重和，同时最大化子图节点数：<br />
-     [
-     \text{RatioCut} = \sum_i \frac{W(A_i, \bar{A_i})}{|A_i|}
-     ]  </li>
 <li>
-<p><strong>NCut</strong>：基于子图权重和<span class="arithmatex">\(vol(A_i)\)</span>，更鲁棒：<br />
-     [
-     \text{NCut} = \sum_i \frac{W(A_i, \bar{A_i})}{vol(A_i)}
-     ]  </p>
+<p><strong>RatioCut</strong>：最小化割边权重和，同时最大化子图节点数：  </p>
+<div class="arithmatex">\[
+\text{RatioCut} = \sum_i \frac{W(A_i, \bar{A_i})}{|A_i|}
+\]</div>
+</li>
+<li>
+<p><strong>NCut</strong>：基于子图权重和<span class="arithmatex">\(vol(A_i)\)</span>，更鲁棒：  </p>
+<div class="arithmatex">\[
+\text{NCut} = \sum_i \frac{W(A_i, \bar{A_i})}{vol(A_i)}
+\]</div>
 </li>
 <li>
 <p><strong>算法流程（以NCut为例）</strong>  </p>
@@ -8400,13 +8412,19 @@
 - 将文本从<strong>单词向量空间</strong>转换到<strong>话题向量空间</strong>，以话题向量表示文本语义，提升文本相似度计算的准确性。<br />
 - 通过<strong>截断奇异值分解（SVD）</strong>或<strong>非负矩阵分解（NMF）</strong>实现矩阵降维，发现文本集合中的隐含话题结构。  </p>
 <h3 id="_11">二、单词向量空间模型的局限性<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p><strong>表示方法</strong>：<br />
-- <strong>单词-文本矩阵（X）</strong>：元素为单词在文本中的<strong>TF-IDF值</strong>，反映单词重要性：<br />
-  [
-  \text{TF-IDF}<em ij="ij">{ij} = \frac{\text{tf}</em>
-  ]}}{\text{tf}_{\cdot j}} \log\frac{\text{df}}{\text{df}_i<br />
-  - <span class="arithmatex">\(\text{tf}_{ij}\)</span>：单词<span class="arithmatex">\(i\)</span>在文本<span class="arithmatex">\(j\)</span>中的频数；<span class="arithmatex">\(\text{df}_i\)</span>：含单词<span class="arithmatex">\(i\)</span>的文本数。<br />
-- <strong>相似度计算</strong>：向量内积或余弦相似度，假设“共同单词越多，语义越相似”。  </p>
+<p><strong>表示方法</strong>：  </p>
+<ul>
+<li>
+<p><strong>单词-文本矩阵（X）</strong>：元素为单词在文本中的<strong>TF-IDF值</strong>，反映单词重要性：  </p>
+<div class="arithmatex">\[
+\text{TF-IDF}_{ij} = \frac{\text{tf}_{ij}}{\text{tf}_{\cdot j}} \log\frac{\text{df}}{\text{df}_i}
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(\text{tf}_{ij}\)</span>：单词<span class="arithmatex">\(i\)</span>在文本<span class="arithmatex">\(j\)</span>中的频数；<span class="arithmatex">\(\text{df}_i\)</span>：含单词<span class="arithmatex">\(i\)</span>的文本数。  </p>
+</li>
+<li><strong>相似度计算</strong>：向量内积或余弦相似度，假设“共同单词越多，语义越相似”。  </li>
+</ul>
 <p><strong>缺陷</strong>：<br />
 1. <strong>一词多义</strong>：如“apple”可能表示“水果”或“品牌”，单词向量空间无法区分。<br />
 2. <strong>多词一义</strong>：如“airplane”与“aircraft”视为不同单词，导致相似文本相似度计算偏低。  </p>
@@ -8421,17 +8439,23 @@
 2. <strong>话题向量空间构建</strong>：分解得到的左矩阵（如SVD中的<span class="arithmatex">\(U_k\)</span>或NMF中的<span class="arithmatex">\(W\)</span>）即为话题向量空间。<br />
 3. <strong>文本话题表示</strong>：右矩阵（如SVD中的<span class="arithmatex">\(\Sigma_k V_k^T\)</span>或NMF中的<span class="arithmatex">\(H\)</span>）表示文本在话题空间中的投影。  </p>
 <h3 id="svd">四、求解方法：截断奇异值分解（SVD）<a class="headerlink" href="#svd" title="Permanent link">&para;</a></h3>
-<p><strong>算法流程</strong>：<br />
-1. <strong>构造单词-文本矩阵</strong> <span class="arithmatex">\(X_{m \times n}\)</span>（<span class="arithmatex">\(m\)</span>为单词数，<span class="arithmatex">\(n\)</span>为文本数）。<br />
-2. <strong>截断SVD分解</strong>：<br />
-   [
-   X \approx U_k \Sigma_k V_k^T
-   ]<br />
-   - <span class="arithmatex">\(U_k\)</span>：<span class="arithmatex">\(m \times k\)</span> 矩阵，列向量为话题向量（左奇异向量），表示每个话题中单词的权重。<br />
-   - <span class="arithmatex">\(\Sigma_k\)</span>：<span class="arithmatex">\(k \times k\)</span> 对角矩阵，奇异值按降序排列，反映话题的重要性。<br />
-   - <span class="arithmatex">\(V_k^T\)</span>：<span class="arithmatex">\(k \times n\)</span> 矩阵，行向量为文本的话题权重（右奇异向量）。<br />
-3. <strong>话题与文本表示</strong>：<br />
-   - 每个话题由<span class="arithmatex">\(U_k\)</span>的列向量表示，文本由<span class="arithmatex">\(V_k^T\)</span>的行向量表示。  </p>
+<p><strong>算法流程</strong>：  </p>
+<ol>
+<li><strong>构造单词-文本矩阵</strong> <span class="arithmatex">\(X_{m \times n}\)</span>（<span class="arithmatex">\(m\)</span>为单词数，<span class="arithmatex">\(n\)</span>为文本数）。  </li>
+<li>
+<p><strong>截断SVD分解</strong>：  </p>
+<div class="arithmatex">\[
+X \approx U_k \Sigma_k V_k^T
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(U_k\)</span>：<span class="arithmatex">\(m \times k\)</span> 矩阵，列向量为话题向量（左奇异向量），表示每个话题中单词的权重。  </p>
+</li>
+<li><span class="arithmatex">\(\Sigma_k\)</span>：<span class="arithmatex">\(k \times k\)</span> 对角矩阵，奇异值按降序排列，反映话题的重要性。  </li>
+<li><span class="arithmatex">\(V_k^T\)</span>：<span class="arithmatex">\(k \times n\)</span> 矩阵，行向量为文本的话题权重（右奇异向量）。  </li>
+<li><strong>话题与文本表示</strong>：  </li>
+<li>每个话题由<span class="arithmatex">\(U_k\)</span>的列向量表示，文本由<span class="arithmatex">\(V_k^T\)</span>的行向量表示。  </li>
+</ol>
 <p><strong>示例</strong>：<br />
 <strong>输入</strong>：11×9单词-文本矩阵（9个文本，11个单词的频数，如“investing”在多个文本中高频出现）。<br />
 <strong>截断SVD（<span class="arithmatex">\(k=3\)</span>）</strong>：<br />
@@ -8452,20 +8476,28 @@
    - 话题1（奇异值最大）可能代表“投资”相关话题，包含“investing”“market”等单词。<br />
    - 文本T6在话题1和话题2的权重较高，可能同时涉及“投资”和“家庭”话题。  </p>
 <h3 id="nmf">五、求解方法：非负矩阵分解（NMF）<a class="headerlink" href="#nmf" title="Permanent link">&para;</a></h3>
-<p><strong>算法流程</strong>：<br />
-1. <strong>构造非负单词-文本矩阵</strong> <span class="arithmatex">\(X_{m \times n} \geq 0\)</span>。<br />
-2. <strong>分解目标</strong>：寻找非负矩阵<span class="arithmatex">\(W_{m \times k}\)</span>（话题向量）和<span class="arithmatex">\(H_{k \times n}\)</span>（文本话题权重），使得：<br />
-   [
-   X \approx W \times H
-   ]<br />
-3. <strong>优化目标</strong>（平方损失函数）：<br />
-   [
-   \min_{W,H} \frac{1}{2} | X - W H |^2 \quad \text{s.t.} \quad W \geq 0, H \geq 0
-   ]<br />
-4. <strong>梯度下降更新规则</strong>：<br />
-   [
-   W_{il} \leftarrow W_{il} \cdot \frac{(X H^T)<em il="il">{il}}{(W H H^T)</em> \cdot \frac{(W^T X)}}, \quad H_{lj} \leftarrow H_{lj<em lj="lj">{lj}}{(W^T W H)</em>
-   ]  }</p>
+<p><strong>算法流程</strong>：  </p>
+<ol>
+<li><strong>构造非负单词-文本矩阵</strong> <span class="arithmatex">\(X_{m \times n} \geq 0\)</span>。  </li>
+<li>
+<p><strong>分解目标</strong>：寻找非负矩阵<span class="arithmatex">\(W_{m \times k}\)</span>（话题向量）和<span class="arithmatex">\(H_{k \times n}\)</span>（文本话题权重），使得：  </p>
+<div class="arithmatex">\[
+X \approx W \times H
+\]</div>
+</li>
+<li>
+<p><strong>优化目标</strong>（平方损失函数）：  </p>
+<div class="arithmatex">\[
+\min_{W,H} \frac{1}{2} \| X - W H \|^2 \quad \text{s.t.} \quad W \geq 0, H \geq 0
+\]</div>
+</li>
+<li>
+<p><strong>梯度下降更新规则</strong>：  </p>
+<div class="arithmatex">\[
+W_{il} \leftarrow W_{il} \cdot \frac{(X H^T)_{il}}{(W H H^T)_{il}}, \quad H_{lj} \leftarrow H_{lj} \cdot \frac{(W^T X)_{lj}}{(W^T W H)_{lj}}
+\]</div>
+</li>
+</ol>
 <p><strong>示例</strong>：<br />
 假设单词-文本矩阵<span class="arithmatex">\(X\)</span>同SVD示例，分解后得到：<br />
 - <strong>话题向量矩阵<span class="arithmatex">\(W\)</span></strong>：非负元素，如“investing”在话题1的权重为0.8，“book”为0.1。<br />
@@ -8516,18 +8548,26 @@
 <p><strong>基本思想</strong>：<br />
 - <strong>基于用户的协同过滤（UserCF）</strong>：根据用户间的兴趣相似度推荐物品（“人以群分”）。<br />
 - <strong>基于物品的协同过滤（ItemCF）</strong>：根据物品间的特征相似度推荐物品（“物以类聚”）。  </p>
-<p><strong>关键步骤</strong>：<br />
-1. <strong>构建评分矩阵</strong>：<span class="arithmatex">\(R_{m \times n}\)</span>（<span class="arithmatex">\(m\)</span>为用户数，<span class="arithmatex">\(n\)</span>为物品数），元素<span class="arithmatex">\(r_{ui}\)</span>为用户<span class="arithmatex">\(u\)</span>对物品<span class="arithmatex">\(i\)</span>的评分。<br />
-2. <strong>相似度计算</strong>：<br />
-   - <strong>余弦相似度</strong>：<br />
-     [
-     \text{sim}(x, y) = \frac{x \cdot y}{|x| |y|}
-     ]<br />
-   - <strong>皮尔逊相关系数</strong>：<br />
-     [
-     \text{sim}(x, y) = \frac{\sum(x_k - \bar{x})(y_k - \bar{y})}{\sqrt{\sum(x_k - \bar{x})^2 \sum(y_k - \bar{y})^2}}
-     ]<br />
-3. <strong>评分预测</strong>：通过相似用户/物品的评分加权平均预测未知评分。  </p>
+<p><strong>关键步骤</strong>：  </p>
+<ol>
+<li><strong>构建评分矩阵</strong>：<span class="arithmatex">\(R_{m \times n}\)</span>（<span class="arithmatex">\(m\)</span>为用户数，<span class="arithmatex">\(n\)</span>为物品数），元素<span class="arithmatex">\(r_{ui}\)</span>为用户<span class="arithmatex">\(u\)</span>对物品<span class="arithmatex">\(i\)</span>的评分。  </li>
+<li><strong>相似度计算</strong>：  </li>
+<li>
+<p><strong>余弦相似度</strong>：  </p>
+<div class="arithmatex">\[
+\text{sim}(x, y) = \frac{x \cdot y}{\|x\| \|y\|}
+\]</div>
+</li>
+<li>
+<p><strong>皮尔逊相关系数</strong>：  </p>
+<div class="arithmatex">\[
+\text{sim}(x, y) = \frac{\sum(x_k - \bar{x})(y_k - \bar{y})}{\sqrt{\sum(x_k - \bar{x})^2 \sum(y_k - \bar{y})^2}}
+\]</div>
+</li>
+<li>
+<p><strong>评分预测</strong>：通过相似用户/物品的评分加权平均预测未知评分。  </p>
+</li>
+</ol>
 <p><strong>示例：用户A的图书推荐</strong><br />
 - <strong>用户兴趣</strong>：用户A喜欢“侦探小说、科普图书、计算机技术书”，用户B喜欢“数学、机器学习”。<br />
 - <strong>UserCF步骤</strong>：<br />
@@ -8541,32 +8581,40 @@
 - <strong>稀疏性问题</strong>：评分矩阵稀疏时，相似度计算不准确。  </p>
 <h3 id="_18">三、矩阵分解方法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
-将评分矩阵分解为<strong>用户潜在特征矩阵<span class="arithmatex">\(P\)</span></strong>和<strong>物品潜在特征矩阵<span class="arithmatex">\(Q\)</span></strong>，通过低维 latent 空间捕捉用户兴趣和物品属性：<br />
-[
-R \approx P \times Q^T, \quad \hat{r}<em k="1">{ui} = p_u^T q_i = \sum</em>
-]}^K p_{uk} q_{ki<br />
-其中，<span class="arithmatex">\(K\)</span>为潜在特征数（如“科幻”“悬疑”等话题）。  </p>
+将评分矩阵分解为<strong>用户潜在特征矩阵<span class="arithmatex">\(P\)</span></strong>和<strong>物品潜在特征矩阵<span class="arithmatex">\(Q\)</span></strong>，通过低维 latent 空间捕捉用户兴趣和物品属性：  </p>
+<div class="arithmatex">\[
+R \approx P \times Q^T, \quad \hat{r}_{ui} = p_u^T q_i = \sum_{k=1}^K p_{uk} q_{ki}
+\]</div>
+<p>其中，<span class="arithmatex">\(K\)</span>为潜在特征数（如“科幻”“悬疑”等话题）。  </p>
 <h4 id="1-funk-svd">1. Funk-SVD<a class="headerlink" href="#1-funk-svd" title="Permanent link">&para;</a></h4>
-<p><strong>优化目标</strong>：<br />
-[
-\min_{P, Q} \sum_{(u,i) \in R} (r_{ui} - p_u^T q_i)^2 + \lambda (|p_u|^2 + |q_i|^2)
-]<br />
-- 第一项为<strong>损失函数</strong>，衡量预测评分与真实评分的误差；<br />
-- 第二项为<strong>正则化项</strong>，防止过拟合。  </p>
-<p><strong>求解方法</strong>：随机梯度下降（SGD）<br />
-1. <strong>初始化</strong>：随机初始化<span class="arithmatex">\(P\)</span>和<span class="arithmatex">\(Q\)</span>。<br />
-2. <strong>梯度计算</strong>：<br />
-   [
-   \frac{\partial L}{\partial p_u} = -2(r_{ui} - p_u^T q_i) q_i + 2\lambda p_u, \quad \frac{\partial L}{\partial q_i} = -2(r_{ui} - p_u^T q_i) p_u + 2\lambda q_i
-   ]<br />
-3. <strong>参数更新</strong>：<br />
-   [
-   p_u \leftarrow p_u + \eta (2(r_{ui} - \hat{r}<em ui="ui">{ui}) q_i - 2\lambda p_u)<br />
-   ]<br />
-   [
-   q_i \leftarrow q_i + \eta (2(r</em>) p_u - 2\lambda q_i)} - \hat{r}_{ui<br />
-   ]<br />
-   （<span class="arithmatex">\(\eta\)</span>为学习率）  </p>
+<p><strong>优化目标</strong>：  </p>
+<div class="arithmatex">\[
+\min_{P, Q} \sum_{(u,i) \in R} (r_{ui} - p_u^T q_i)^2 + \lambda (\|p_u\|^2 + \|q_i\|^2)
+\]</div>
+<ul>
+<li>第一项为<strong>损失函数</strong>，衡量预测评分与真实评分的误差；  </li>
+<li>第二项为<strong>正则化项</strong>，防止过拟合。  </li>
+</ul>
+<p><strong>求解方法</strong>：随机梯度下降（SGD）  </p>
+<ol>
+<li><strong>初始化</strong>：随机初始化<span class="arithmatex">\(P\)</span>和<span class="arithmatex">\(Q\)</span>。  </li>
+<li>
+<p><strong>梯度计算</strong>：  </p>
+<div class="arithmatex">\[
+\frac{\partial L}{\partial p_u} = -2(r_{ui} - p_u^T q_i) q_i + 2\lambda p_u, \quad \frac{\partial L}{\partial q_i} = -2(r_{ui} - p_u^T q_i) p_u + 2\lambda q_i
+\]</div>
+</li>
+<li>
+<p><strong>参数更新</strong>：  </p>
+<div class="arithmatex">\[
+p_u \leftarrow p_u + \eta (2(r_{ui} - \hat{r}_{ui}) q_i - 2\lambda p_u)  
+\]</div>
+<div class="arithmatex">\[
+q_i \leftarrow q_i + \eta (2(r_{ui} - \hat{r}_{ui}) p_u - 2\lambda q_i)  
+\]</div>
+<p>（<span class="arithmatex">\(\eta\)</span>为学习率）  </p>
+</li>
+</ol>
 <p><strong>示例：电影评分预测</strong><br />
 - <strong>输入</strong>：6用户×12电影评分矩阵（部分已知，如用户1对电影21评1分，对电影62未评分）。<br />
 - <strong>分解过程</strong>：<br />
@@ -8574,35 +8622,39 @@ R \approx P \times Q^T, \quad \hat{r}<em k="1">{ui} = p_u^T q_i = \sum</em>
   2. 迭代更新<span class="arithmatex">\(P\)</span>和<span class="arithmatex">\(Q\)</span>，使预测评分<span class="arithmatex">\(\hat{r}_{ui}\)</span>接近真实值。<br />
 - <strong>输出</strong>：用户1对电影62的预测评分为3.5分（基于潜在特征“动作片”的偏好）。  </p>
 <h4 id="2-bias-svd">2. Bias-SVD（带偏置的矩阵分解）<a class="headerlink" href="#2-bias-svd" title="Permanent link">&para;</a></h4>
-<p><strong>改进点</strong>：引入<strong>全局偏置项</strong>，区分用户评分习惯和物品固有属性：<br />
-[
+<p><strong>改进点</strong>：引入<strong>全局偏置项</strong>，区分用户评分习惯和物品固有属性：  </p>
+<div class="arithmatex">\[
 \hat{r}_{ui} = \mu + b_u + b_i + p_u^T q_i
-]<br />
-- <span class="arithmatex">\(\mu\)</span>：全局平均分；<br />
-- <span class="arithmatex">\(b_u\)</span>：用户偏置（如用户A评分普遍偏高）；<br />
-- <span class="arithmatex">\(b_i\)</span>：物品偏置（如热门电影评分普遍较高）。  </p>
-<p><strong>优化目标</strong>：<br />
-[
-\min_{P, Q, b_u, b_i} \sum_{(u,i) \in R} (r_{ui} - \mu - b_u - b_i - p_u^T q_i)^2 + \lambda (|p_u|^2 + |q_i|^2 + b_u^2 + b_i^2)
-]  </p>
-<p><strong>求解方法</strong>：SGD同时更新<span class="arithmatex">\(P, Q, b_u, b_i\)</span><br />
-[
-b_u \leftarrow b_u + \eta (2(r_{ui} - \hat{r}<em ui="ui">{ui}) - 2\lambda b_u)<br />
-]<br />
-[
-b_i \leftarrow b_i + \eta (2(r</em>) - 2\lambda b_i)} - \hat{r}_{ui<br />
-]  </p>
+\]</div>
+<ul>
+<li><span class="arithmatex">\(\mu\)</span>：全局平均分；  </li>
+<li><span class="arithmatex">\(b_u\)</span>：用户偏置（如用户A评分普遍偏高）；  </li>
+<li><span class="arithmatex">\(b_i\)</span>：物品偏置（如热门电影评分普遍较高）。  </li>
+</ul>
+<p><strong>优化目标</strong>：  </p>
+<div class="arithmatex">\[
+\min_{P, Q, b_u, b_i} \sum_{(u,i) \in R} (r_{ui} - \mu - b_u - b_i - p_u^T q_i)^2 + \lambda (\|p_u\|^2 + \|q_i\|^2 + b_u^2 + b_i^2)
+\]</div>
+<p><strong>求解方法</strong>：SGD同时更新<span class="arithmatex">\(P, Q, b_u, b_i\)</span>  </p>
+<div class="arithmatex">\[
+b_u \leftarrow b_u + \eta (2(r_{ui} - \hat{r}_{ui}) - 2\lambda b_u)  
+\]</div>
+<div class="arithmatex">\[
+b_i \leftarrow b_i + \eta (2(r_{ui} - \hat{r}_{ui}) - 2\lambda b_i)  
+\]</div>
 <p><strong>示例：用户评分修正</strong><br />
 - 用户1评分普遍偏低（<span class="arithmatex">\(b_u = -0.5\)</span>），电影62为热门影片（<span class="arithmatex">\(b_i = 0.8\)</span>），全局平均分<span class="arithmatex">\(\mu = 3.5\)</span>。<br />
 - 预测评分：<span class="arithmatex">\(\hat{r}_{ui} = 3.5 - 0.5 + 0.8 + p_u^T q_i = 3.8 + p_u^T q_i\)</span>，提升准确性。  </p>
 <h3 id="lsa_2">四、隐含语义分析（LSA）的应用<a class="headerlink" href="#lsa_2" title="Permanent link">&para;</a></h3>
-<p><strong>思路</strong>：将用户-物品交互矩阵视为“单词-文本矩阵”，通过<strong>截断SVD</strong>挖掘潜在特征（类似话题分析）：<br />
-[
+<p><strong>思路</strong>：将用户-物品交互矩阵视为“单词-文本矩阵”，通过<strong>截断SVD</strong>挖掘潜在特征（类似话题分析）：  </p>
+<div class="arithmatex">\[
 R \approx U_k \Sigma_k V_k^T
-]<br />
-- <span class="arithmatex">\(U_k\)</span>：用户潜在特征矩阵；<br />
-- <span class="arithmatex">\(V_k\)</span>：物品潜在特征矩阵；<br />
-- <span class="arithmatex">\(\Sigma_k\)</span>：奇异值矩阵（特征重要性）。  </p>
+\]</div>
+<ul>
+<li><span class="arithmatex">\(U_k\)</span>：用户潜在特征矩阵；  </li>
+<li><span class="arithmatex">\(V_k\)</span>：物品潜在特征矩阵；  </li>
+<li><span class="arithmatex">\(\Sigma_k\)</span>：奇异值矩阵（特征重要性）。  </li>
+</ul>
 <p><strong>优势</strong>：<br />
 - 处理高维稀疏矩阵，降低计算复杂度；<br />
 - 捕捉用户和物品的隐含关联（如用户对“科幻”话题的偏好）。  </p>
@@ -8662,23 +8714,33 @@ R \approx U_k \Sigma_k V_k^T
 <h3 id="_23">二、关键步骤与方法<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <h4 id="1-w">1. <strong>构图（构建邻接矩阵 <span class="arithmatex">\(W\)</span>）</strong><a class="headerlink" href="#1-w" title="Permanent link">&para;</a></h4>
 <p><strong>目标</strong>：量化样本间的相似度，形成图结构。<br />
-<strong>方法</strong>：<br />
-- <strong>K-近邻法（KNN）</strong>：<br />
-  - 对每个样本，连接最近的<span class="arithmatex">\(k\)</span>个邻居，权重为高斯核函数值：<br />
-    [
-    w_{ij} = 
-    \begin{cases} 
-    \exp\left(-\frac{|x_i - x_j|<sup>2}{2\sigma</sup>2}\right), &amp; x_i \in KNN(x_j) \text{ 或 } x_j \in KNN(x_i) \
-    0, &amp; \text{否则}
-    \end{cases}
-    ]<br />
-  - 确保对称性（双向近邻）。<br />
-- <strong>全连接法（高斯核）</strong>：<br />
-  - 所有样本点连边，权重为高斯核值：<br />
-    [
-    w_{ij} = \exp\left(-\frac{|x_i - x_j|<sup>2}{2\sigma</sup>2}\right)
-    ]<br />
-  - 适用于数据分布密集的场景。  </p>
+<strong>方法</strong>：  </p>
+<ul>
+<li><strong>K-近邻法（KNN）</strong>：  </li>
+<li>
+<p>对每个样本，连接最近的<span class="arithmatex">\(k\)</span>个邻居，权重为高斯核函数值：  </p>
+<div class="arithmatex">\[
+w_{ij} = 
+\begin{cases} 
+\exp\left(-\frac{\|x_i - x_j\|^2}{2\sigma^2}\right), &amp; x_i \in KNN(x_j) \text{ 或 } x_j \in KNN(x_i) \\
+0, &amp; \text{否则}
+\end{cases}
+\]</div>
+</li>
+<li>
+<p>确保对称性（双向近邻）。  </p>
+</li>
+<li><strong>全连接法（高斯核）</strong>：  </li>
+<li>
+<p>所有样本点连边，权重为高斯核值：  </p>
+<div class="arithmatex">\[
+w_{ij} = \exp\left(-\frac{\|x_i - x_j\|^2}{2\sigma^2}\right)
+\]</div>
+</li>
+<li>
+<p>适用于数据分布密集的场景。  </p>
+</li>
+</ul>
 <p><strong>示例</strong>：<br />
 - 样本集：二维平面上的“月牙形”数据点（紫色和红色点局部接近，全局分离）。<br />
 - <strong>邻接矩阵构建</strong>：<br />
@@ -8686,37 +8748,55 @@ R \approx U_k \Sigma_k V_k^T
 <h4 id="2-d-l">2. <strong>构建度矩阵 <span class="arithmatex">\(D\)</span> 与拉普拉斯矩阵 <span class="arithmatex">\(L\)</span></strong><a class="headerlink" href="#2-d-l" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>度矩阵 <span class="arithmatex">\(D\)</span></strong>：对角矩阵，<span class="arithmatex">\(D_{ii} = \sum_j w_{ij}\)</span>（节点<span class="arithmatex">\(i\)</span>的边权和）。  </li>
-<li><strong>拉普拉斯矩阵 <span class="arithmatex">\(L\)</span></strong>：<br />
-  [
-  L = D - W
-  ]<br />
-<strong>性质</strong>：对称半正定，<span class="arithmatex">\(f^T L f = \frac{1}{2}\sum_{i,j} w_{ij}(f_i - f_j)^2\)</span>，衡量向量<span class="arithmatex">\(f\)</span>在图上的光滑性。  </li>
+<li>
+<p><strong>拉普拉斯矩阵 <span class="arithmatex">\(L\)</span></strong>：  </p>
+<div class="arithmatex">\[
+L = D - W
+\]</div>
+<p><strong>性质</strong>：对称半正定，<span class="arithmatex">\(f^T L f = \frac{1}{2}\sum_{i,j} w_{ij}(f_i - f_j)^2\)</span>，衡量向量<span class="arithmatex">\(f\)</span>在图上的光滑性。  </p>
+</li>
 </ul>
 <h4 id="3">3. <strong>切图准则与优化目标</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<p><strong>目标</strong>：找到最优切分，使簇内连接紧密，簇间连接稀疏。<br />
-- <strong>RatioCut（比率切图）</strong>：<br />
-  [
-  \text{RatioCut} = \sum_{i=1}^k \frac{W(A_i, \bar{A_i})}{|A_i|}
-  ]<br />
-  - 其中，<span class="arithmatex">\(W(A_i, \bar{A_i})\)</span>为簇<span class="arithmatex">\(A_i\)</span>与其他簇的边权和，<span class="arithmatex">\(|A_i|\)</span>为簇内节点数。<br />
-  - <strong>优化目标</strong>：最小化割边权重和，同时最大化簇内节点数，避免划分出孤立小簇。<br />
-- <strong>NCut（归一化切图）</strong>：<br />
-  [
-  \text{NCut} = \sum_{i=1}^k \frac{W(A_i, \bar{A_i})}{\text{vol}(A_i)}
-  ]<br />
-  - <span class="arithmatex">\(\text{vol}(A_i) = \sum_{v \in A_i} d_v\)</span>（簇内节点度之和），归一化处理使切分更均衡。  </p>
+<p><strong>目标</strong>：找到最优切分，使簇内连接紧密，簇间连接稀疏。  </p>
+<ul>
+<li>
+<p><strong>RatioCut（比率切图）</strong>：  </p>
+<div class="arithmatex">\[
+\text{RatioCut} = \sum_{i=1}^k \frac{W(A_i, \bar{A_i})}{|A_i|}
+\]</div>
+</li>
+<li>
+<p>其中，<span class="arithmatex">\(W(A_i, \bar{A_i})\)</span>为簇<span class="arithmatex">\(A_i\)</span>与其他簇的边权和，<span class="arithmatex">\(|A_i|\)</span>为簇内节点数。  </p>
+</li>
+<li><strong>优化目标</strong>：最小化割边权重和，同时最大化簇内节点数，避免划分出孤立小簇。  </li>
+<li>
+<p><strong>NCut（归一化切图）</strong>：  </p>
+<div class="arithmatex">\[
+\text{NCut} = \sum_{i=1}^k \frac{W(A_i, \bar{A_i})}{\text{vol}(A_i)}
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(\text{vol}(A_i) = \sum_{v \in A_i} d_v\)</span>（簇内节点度之和），归一化处理使切分更均衡。  </p>
+</li>
+</ul>
 <h4 id="4">4. <strong>特征值分解与聚类</strong><a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
 <p><strong>理论基础</strong>：<br />
 - 拉普拉斯矩阵的特征向量对应图的低频信号，最小特征值对应的特征向量可用于簇划分。<br />
 - <strong>瑞利商定理</strong>：对于对称矩阵<span class="arithmatex">\(L\)</span>，最小特征值对应瑞利商<span class="arithmatex">\(R(L, f) = \frac{f^T L f}{f^T f}\)</span>的最小值，此时<span class="arithmatex">\(f\)</span>为最优切分向量。  </p>
-<p><strong>求解步骤</strong>：<br />
-1. <strong>标准化拉普拉斯矩阵</strong>：<br />
-   [
-   L_{\text{norm}} = D^{-1/2} L D^{-1/2}
-   ]<br />
-2. <strong>求解前<span class="arithmatex">\(k\)</span>个最小特征值对应的特征向量</strong>，构成矩阵<span class="arithmatex">\(F \in \mathbb{R}^{n \times k}\)</span>。<br />
-3. <strong>行标准化</strong>：将<span class="arithmatex">\(F\)</span>的每行归一化为单位向量。<br />
-4. <strong>传统聚类</strong>：对标准化后的行向量应用K-means等算法，得到离散簇划分。  </p>
+<p><strong>求解步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>标准化拉普拉斯矩阵</strong>：  </p>
+<div class="arithmatex">\[
+L_{\text{norm}} = D^{-1/2} L D^{-1/2}
+\]</div>
+</li>
+<li>
+<p><strong>求解前<span class="arithmatex">\(k\)</span>个最小特征值对应的特征向量</strong>，构成矩阵<span class="arithmatex">\(F \in \mathbb{R}^{n \times k}\)</span>。  </p>
+</li>
+<li><strong>行标准化</strong>：将<span class="arithmatex">\(F\)</span>的每行归一化为单位向量。  </li>
+<li><strong>传统聚类</strong>：对标准化后的行向量应用K-means等算法，得到离散簇划分。  </li>
+</ol>
 <h3 id="_24">三、示例解析：二维月牙形数据聚类<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p><strong>输入</strong>：二维平面上两类“月牙形”数据点（紫色和红色，共100个样本）。  </p>
 <p><strong>步骤1：构图（全连接法，<span class="arithmatex">\(\sigma=0.5\)</span>）</strong><br />
@@ -8828,7 +8908,7 @@ R \approx U_k \Sigma_k V_k^T
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

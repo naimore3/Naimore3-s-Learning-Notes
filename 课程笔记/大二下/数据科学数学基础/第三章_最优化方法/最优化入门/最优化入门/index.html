@@ -8406,13 +8406,19 @@
   - 若 <span class="arithmatex">\( S \)</span> 是凸集，则 <span class="arithmatex">\( kS = \{ ks \mid s \in S \} \)</span> 是凸集。<br />
   - 若 <span class="arithmatex">\( S \)</span> 和 <span class="arithmatex">\( T \)</span> 是凸集，则 <span class="arithmatex">\( S + T = \{ s + t \mid s \in S, t \in T \} \)</span> 是凸集。<br />
   - <strong>任意凸集的交集仍是凸集</strong>，如多个半空间的交集构成凸多面体。  </p>
-<p><strong>2. 超平面分离定理</strong><br />
-- <strong>定理</strong>：若 <span class="arithmatex">\( S_1 \)</span> 和 <span class="arithmatex">\( S_2 \)</span> 是不相交的凸集，则存在非零向量 <span class="arithmatex">\( p \)</span> 和常数 <span class="arithmatex">\( \alpha \)</span>，使得：<br />
-  [
-  S_1 \subseteq { x \mid p^T x \leq \alpha }, \quad S_2 \subseteq { x \mid p^T x \geq \alpha }
-  ]<br />
-  - <strong>应用</strong>：机器学习中的SVM算法基于此定理，通过寻找超平面分离不同类别数据。<br />
-- <strong>引理</strong>：若 <span class="arithmatex">\( y \)</span> 是凸集 <span class="arithmatex">\( S \)</span> 外一点，则存在超平面分离 <span class="arithmatex">\( y \)</span> 和 <span class="arithmatex">\( S \)</span>，即存在 <span class="arithmatex">\( p \neq 0 \)</span> 使得 <span class="arithmatex">\( p^T x \leq \alpha &lt; p^T y \)</span> 对任意 <span class="arithmatex">\( x \in S \)</span> 成立。  </p>
+<p><strong>2. 超平面分离定理</strong>  </p>
+<ul>
+<li>
+<p><strong>定理</strong>：若 <span class="arithmatex">\( S_1 \)</span> 和 <span class="arithmatex">\( S_2 \)</span> 是不相交的凸集，则存在非零向量 <span class="arithmatex">\( p \)</span> 和常数 <span class="arithmatex">\( \alpha \)</span>，使得：  </p>
+<div class="arithmatex">\[
+S_1 \subseteq \{ x \mid p^T x \leq \alpha \}, \quad S_2 \subseteq \{ x \mid p^T x \geq \alpha \}
+\]</div>
+</li>
+<li>
+<p><strong>应用</strong>：机器学习中的SVM算法基于此定理，通过寻找超平面分离不同类别数据。  </p>
+</li>
+<li><strong>引理</strong>：若 <span class="arithmatex">\( y \)</span> 是凸集 <span class="arithmatex">\( S \)</span> 外一点，则存在超平面分离 <span class="arithmatex">\( y \)</span> 和 <span class="arithmatex">\( S \)</span>，即存在 <span class="arithmatex">\( p \neq 0 \)</span> 使得 <span class="arithmatex">\( p^T x \leq \alpha &lt; p^T y \)</span> 对任意 <span class="arithmatex">\( x \in S \)</span> 成立。  </li>
+</ul>
 <h3 id="_13">三、凸集的判定与示例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><strong>1. 判定方法</strong><br />
 - <strong>几何直观</strong>：集合内任意两点连线不“穿出”集合边界。<br />
@@ -8488,12 +8494,18 @@
 - <strong>上方图（epi f）</strong>：<span class="arithmatex">\( \{(x, t) \mid f(x) \leq t\} \)</span>，直观表示函数“上方”区域。<br />
 - <strong>闭函数</strong>：若上方图 <span class="arithmatex">\( \text{epi } f \)</span> 是闭集，则 <span class="arithmatex">\( f \)</span> 为闭函数，常用于保证优化问题解的存在性。  </p>
 <h3 id="_19">二、凸函数的定义与分类<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p><strong>1. 凸函数</strong><br />
-- <strong>定义</strong>：设 <span class="arithmatex">\( f \)</span> 为适当函数，定义域 <span class="arithmatex">\( \text{dom } f \)</span> 为凸集，且对任意 <span class="arithmatex">\( x, y \in \text{dom } f \)</span> 和 <span class="arithmatex">\( 0 \leq \theta \leq 1 \)</span>，满足：<br />
-  [
-  f(\theta x + (1-\theta)y) \leq \theta f(x) + (1-\theta)f(y)
-  ]<br />
-  - <strong>几何意义</strong>：函数图像上任意两点连线不在图像下方。  </p>
+<p><strong>1. 凸函数</strong>  </p>
+<ul>
+<li>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( f \)</span> 为适当函数，定义域 <span class="arithmatex">\( \text{dom } f \)</span> 为凸集，且对任意 <span class="arithmatex">\( x, y \in \text{dom } f \)</span> 和 <span class="arithmatex">\( 0 \leq \theta \leq 1 \)</span>，满足：  </p>
+<div class="arithmatex">\[
+f(\theta x + (1-\theta)y) \leq \theta f(x) + (1-\theta)f(y)
+\]</div>
+</li>
+<li>
+<p><strong>几何意义</strong>：函数图像上任意两点连线不在图像下方。  </p>
+</li>
+</ul>
 <p><strong>2. 严格凸函数</strong><br />
 - <strong>定义</strong>：不等式严格成立（<span class="arithmatex">\( &lt; \)</span> 替代 <span class="arithmatex">\( \leq \)</span>），即不存在平坦区域，极值唯一。  </p>
 <p><strong>3. 常见凸函数与凹函数</strong><br />
@@ -8510,28 +8522,40 @@
 - <strong>示例</strong>：验证 <span class="arithmatex">\( f(X) = -\log \det X \)</span>（<span class="arithmatex">\( X \succ 0 \)</span>）是否为凸函数：<br />
   - 取直线 <span class="arithmatex">\( X + tV \)</span>（<span class="arithmatex">\( V \)</span> 为对称矩阵），则 <span class="arithmatex">\( g(t) = -\log \det(X + tV) \)</span>。<br />
   - 利用特征值分解证明 <span class="arithmatex">\( g(t) \)</span> 是凸函数（细节见文档推导）。  </p>
-<p><strong>2. 一阶条件（可微函数）</strong><br />
-- <strong>条件</strong>：<span class="arithmatex">\( f \)</span> 可微且对任意 <span class="arithmatex">\( x, y \in \text{dom } f \)</span>，有：<br />
-  [
-  f(y) \geq f(x) + \nabla f(x)^T(y - x)
-  ]<br />
-  - <strong>几何意义</strong>：函数在 <span class="arithmatex">\( x \)</span> 处的切平面始终位于函数图像下方。<br />
-- <strong>证明（必要性）</strong>：<br />
-  由凸函数定义，<span class="arithmatex">\( f(x + t(y - x)) \leq (1 - t)f(x) + tf(y) \)</span>，令 <span class="arithmatex">\( t \to 0 \)</span> 取极限得一阶不等式。<br />
-- <strong>证明（充分性）</strong>：<br />
-  构造 <span class="arithmatex">\( z = \theta x + (1 - \theta)y \)</span>，应用一阶条件于 <span class="arithmatex">\( x \)</span> 和 <span class="arithmatex">\( y \)</span>，相加后得凸函数定义式。  </p>
+<p><strong>2. 一阶条件（可微函数）</strong>  </p>
+<ul>
+<li>
+<p><strong>条件</strong>：<span class="arithmatex">\( f \)</span> 可微且对任意 <span class="arithmatex">\( x, y \in \text{dom } f \)</span>，有：  </p>
+<div class="arithmatex">\[
+f(y) \geq f(x) + \nabla f(x)^T(y - x)
+\]</div>
+</li>
+<li>
+<p><strong>几何意义</strong>：函数在 <span class="arithmatex">\( x \)</span> 处的切平面始终位于函数图像下方。  </p>
+</li>
+<li><strong>证明（必要性）</strong>：<br />
+  由凸函数定义，<span class="arithmatex">\( f(x + t(y - x)) \leq (1 - t)f(x) + tf(y) \)</span>，令 <span class="arithmatex">\( t \to 0 \)</span> 取极限得一阶不等式。  </li>
+<li><strong>证明（充分性）</strong>：<br />
+  构造 <span class="arithmatex">\( z = \theta x + (1 - \theta)y \)</span>，应用一阶条件于 <span class="arithmatex">\( x \)</span> 和 <span class="arithmatex">\( y \)</span>，相加后得凸函数定义式。  </li>
+</ul>
 <p><strong>3. 二阶条件（二阶可微函数）</strong><br />
 - <strong>条件</strong>：海森矩阵 <span class="arithmatex">\( \nabla^2 f(x) \succeq 0 \)</span>（半正定）对任意 <span class="arithmatex">\( x \in \text{dom } f \)</span> 成立。<br />
   - 若 <span class="arithmatex">\( \nabla^2 f(x) \succ 0 \)</span>（正定），则 <span class="arithmatex">\( f \)</span> 是严格凸函数。<br />
 - <strong>示例</strong>：二次函数 <span class="arithmatex">\( f(x) = \frac{1}{2}x^T Px + q^T x + r \)</span>：<br />
   - 梯度 <span class="arithmatex">\( \nabla f(x) = Px + q \)</span>，海森矩阵 <span class="arithmatex">\( \nabla^2 f(x) = P \)</span>。<br />
   - 当 <span class="arithmatex">\( P \succeq 0 \)</span> 时，<span class="arithmatex">\( f(x) \)</span> 是凸函数；当 <span class="arithmatex">\( P \succ 0 \)</span> 时，是严格凸函数。  </p>
-<p><strong>4. 梯度单调性</strong><br />
-- <strong>条件</strong>：梯度 <span class="arithmatex">\( \nabla f \)</span> 是单调映射，即对任意 <span class="arithmatex">\( x, y \)</span>，有：<br />
-  [
-  (\nabla f(x) - \nabla f(y))^T(x - y) \geq 0
-  ]<br />
-- <strong>等价性</strong>：与一阶条件等价，适用于分析优化算法收敛性。  </p>
+<p><strong>4. 梯度单调性</strong>  </p>
+<ul>
+<li>
+<p><strong>条件</strong>：梯度 <span class="arithmatex">\( \nabla f \)</span> 是单调映射，即对任意 <span class="arithmatex">\( x, y \)</span>，有：  </p>
+<div class="arithmatex">\[
+(\nabla f(x) - \nabla f(y))^T(x - y) \geq 0
+\]</div>
+</li>
+<li>
+<p><strong>等价性</strong>：与一阶条件等价，适用于分析优化算法收敛性。  </p>
+</li>
+</ul>
 <h3 id="_21">四、凸函数的性质与应用<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p><strong>1. Jensen不等式</strong><br />
 - <strong>基础形式</strong>：对凸函数 <span class="arithmatex">\( f \)</span>，有 <span class="arithmatex">\( f(\theta x + (1-\theta)y) \leq \theta f(x) + (1-\theta)f(y) \)</span>。<br />
@@ -8582,15 +8606,17 @@
 <h2 id="_23">凸规划<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
 <h3 id="_24">一、核心定义与问题形式<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p><strong>定义</strong>：<br />
-凸规划是一类特殊的优化问题，其<strong>目标函数为凸函数</strong>，<strong>不等式约束函数为凹函数</strong>，<strong>等式约束函数为线性函数</strong>。其一般形式为：<br />
-[
+凸规划是一类特殊的优化问题，其<strong>目标函数为凸函数</strong>，<strong>不等式约束函数为凹函数</strong>，<strong>等式约束函数为线性函数</strong>。其一般形式为：  </p>
+<div class="arithmatex">\[
 \begin{aligned}
-\min &amp; \quad f(x) \
-\text{s.t.} &amp; \quad g_i(x) \leq 0, \quad i=1,2,\dots,m \quad \text{（凹函数）} \
+\min &amp; \quad f(x) \\
+\text{s.t.} &amp; \quad g_i(x) \leq 0, \quad i=1,2,\dots,m \quad \text{（凹函数）} \\
 &amp; \quad h_j(x) = 0, \quad j=1,2,\dots,l \quad \text{（线性函数）}
 \end{aligned}
-]<br />
-- <strong>核心性质</strong>：凸规划的<strong>局部最优解必定是全局最优解</strong>，且最优解的集合为凸集。  </p>
+\]</div>
+<ul>
+<li><strong>核心性质</strong>：凸规划的<strong>局部最优解必定是全局最优解</strong>，且最优解的集合为凸集。  </li>
+</ul>
 <h3 id="_25">二、凸规划与非凸规划的对比<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -8624,18 +8650,20 @@
 </tbody>
 </table>
 <p><strong>示例</strong>：<br />
-<strong>非凸规划</strong>：<br />
-[
-\min \quad x_1^2 + x_2^2 \
+<strong>非凸规划</strong>：  </p>
+<div class="arithmatex">\[
+\min \quad x_1^2 + x_2^2 \\
 \text{s.t.} \quad \frac{x_1}{1 + x_2^2} \leq 0 \quad \text{（非线性非凹约束）}
-]<br />
-<strong>凸规划</strong>：<br />
-[
-\min \quad x_1^2 + x_2^2 \
-\text{s.t.} \quad x_1 \leq 0 \quad \text{（线性凹约束，因 <span class="arithmatex">\(g(x)=-x_1\)</span> 是凸函数，故 <span class="arithmatex">\(x_1 \leq 0\)</span> 等价于凹约束）} \
+\]</div>
+<p><strong>凸规划</strong>：  </p>
+<div class="arithmatex">\[
+\min \quad x_1^2 + x_2^2 \\
+\text{s.t.} \quad x_1 \leq 0 \quad \text{（线性凹约束，因 \(g(x)=-x_1\) 是凸函数，故 \(x_1 \leq 0\) 等价于凹约束）} \\
 \quad \quad x_1 + x_2 = 0 \quad \text{（线性等式约束）}
-]<br />
-- <strong>等价性说明</strong>：两问题定义域相同，但第一个约束为非线性非凹，第二个约束为线性，故前者非凸、后者凸。  </p>
+\]</div>
+<ul>
+<li><strong>等价性说明</strong>：两问题定义域相同，但第一个约束为非线性非凹，第二个约束为线性，故前者非凸、后者凸。  </li>
+</ul>
 <h3 id="_26">三、关键定理：局部最优解即全局最优解<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p><strong>定理内容</strong>：<br />
 若 <span class="arithmatex">\(x\)</span> 是凸规划的局部最优解，则 <span class="arithmatex">\(x\)</span> 必为全局最优解。  </p>
@@ -8650,15 +8678,15 @@
 - <strong>牛顿法</strong>：利用二阶导数信息，收敛速度更快，适用于二次凸函数。<br />
 - <strong>拉格朗日乘数法</strong>：处理带约束的凸规划，通过引入拉格朗日乘子将约束问题转化为无约束问题。  </p>
 <p><strong>2. 示例：线性规划（凸规划特例）</strong><br />
-<strong>问题</strong>：<br />
-[
-\max \quad 6x_1 + 4x_2 \
-\text{s.t.} \quad 2x_1 + x_2 \leq 10 \
-\quad \quad x_1 + x_2 \leq 8 \
-\quad \quad x_2 \leq 7 \
+<strong>问题</strong>：  </p>
+<div class="arithmatex">\[
+\max \quad 6x_1 + 4x_2 \\
+\text{s.t.} \quad 2x_1 + x_2 \leq 10 \\
+\quad \quad x_1 + x_2 \leq 8 \\
+\quad \quad x_2 \leq 7 \\
 \quad \quad x_1, x_2 \geq 0
-]<br />
-<strong>求解步骤</strong>：<br />
+\]</div>
+<p><strong>求解步骤</strong>：<br />
 1. <strong>确定可行域</strong>：由不等式约束画出凸多边形，顶点为 <span class="arithmatex">\((0,0)\)</span>、<span class="arithmatex">\((0,7)\)</span>、<span class="arithmatex">\((2,6)\)</span>、<span class="arithmatex">\((5,0)\)</span>、<span class="arithmatex">\((8,0)\)</span>（但需验证是否满足所有约束）。<br />
 2. <strong>顶点评估</strong>：<br />
    - <span class="arithmatex">\((0,0)\)</span>：目标值 <span class="arithmatex">\(0\)</span><br />
@@ -8728,45 +8756,57 @@
 <ol>
 <li><strong>目标函数展开</strong>：  </li>
 </ol>
-<p>[
-   f(x) = \frac{1}{2} \left[(x_1 + 2x_2 - 10)^2 + (3x_1 + 4x_2 - 20)^2 + (5x_1 + 6x_2 - 30)^2\right]
-   ]<br />
-2. <strong>求梯度</strong>：<br />
-   [
-   \nabla f(x) = A^T(Ax - b) = \begin{bmatrix}1 &amp; 3 &amp; 5 \ 2 &amp; 4 &amp; 6\end{bmatrix} \left( \begin{bmatrix}1 &amp; 2 \ 3 &amp; 4 \ 5 &amp; 6\end{bmatrix} \begin{bmatrix}x_1 \ x_2\end{bmatrix} - \begin{bmatrix}10 \ 20 \ 30\end{bmatrix} \right)
-   ]<br />
-   计算得：<br />
-   [
-   \nabla f(x) = \begin{bmatrix}35x_1 + 44x_2 - 220 \ 44x_1 + 56x_2 - 280\end{bmatrix}
-   ]<br />
-3. <strong>令梯度为零</strong>：<br />
-   [
-   \begin{cases}
-   35x_1 + 44x_2 = 220 \
-   44x_1 + 56x_2 = 280
-   \end{cases}
-   ]<br />
-4. <strong>求解线性方程组</strong>：<br />
-   - 系数矩阵行列式 <span class="arithmatex">\(35 \times 56 - 44 \times 44 = -4 \neq 0\)</span>，唯一解为 <span class="arithmatex">\(x_1 = 0\)</span>，<span class="arithmatex">\(x_2 = 5\)</span>。<br />
-5. <strong>验证凸性</strong>：<br />
-   - 海森矩阵 <span class="arithmatex">\(A^TA = \begin{bmatrix}35 &amp; 44 \\ 44 &amp; 56\end{bmatrix}\)</span> 正定（特征值均正），故为全局最优解。  </p>
+<div class="arithmatex">\[
+f(x) = \frac{1}{2} \left[(x_1 + 2x_2 - 10)^2 + (3x_1 + 4x_2 - 20)^2 + (5x_1 + 6x_2 - 30)^2\right]
+\]</div>
+<ol>
+<li>
+<p><strong>求梯度</strong>：  </p>
+<div class="arithmatex">\[
+\nabla f(x) = A^T(Ax - b) = \begin{bmatrix}1 &amp; 3 &amp; 5 \\ 2 &amp; 4 &amp; 6\end{bmatrix} \left( \begin{bmatrix}1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6\end{bmatrix} \begin{bmatrix}x_1 \\ x_2\end{bmatrix} - \begin{bmatrix}10 \\ 20 \\ 30\end{bmatrix} \right)
+\]</div>
+<p>计算得：  </p>
+<div class="arithmatex">\[
+\nabla f(x) = \begin{bmatrix}35x_1 + 44x_2 - 220 \\ 44x_1 + 56x_2 - 280\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>令梯度为零</strong>：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+35x_1 + 44x_2 = 220 \\
+44x_1 + 56x_2 = 280
+\end{cases}
+\]</div>
+</li>
+<li>
+<p><strong>求解线性方程组</strong>：  </p>
+</li>
+<li>系数矩阵行列式 <span class="arithmatex">\(35 \times 56 - 44 \times 44 = -4 \neq 0\)</span>，唯一解为 <span class="arithmatex">\(x_1 = 0\)</span>，<span class="arithmatex">\(x_2 = 5\)</span>。  </li>
+<li><strong>验证凸性</strong>：  </li>
+<li>海森矩阵 <span class="arithmatex">\(A^TA = \begin{bmatrix}35 &amp; 44 \\ 44 &amp; 56\end{bmatrix}\)</span> 正定（特征值均正），故为全局最优解。  </li>
+</ol>
 <p><strong>结论</strong>：最优解 <span class="arithmatex">\(x = \begin{bmatrix}0 \\ 5\end{bmatrix}\)</span>，目标值 <span class="arithmatex">\(f(x) = 50\)</span>。  </p>
 <h3 id="_33">三、最小二乘问题的扩展<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p><strong>1. 正则化最小二乘</strong><br />
-<strong>问题形式</strong>：<br />
-[
-\min_{x} \frac{1}{2}|Ax - b|_2^2 + \mu |x|_2^2 \quad (\ell_2 \text{正则化})
-]<br />
-- <strong>作用</strong>：防止过拟合，<span class="arithmatex">\(\mu &gt; 0\)</span> 平衡拟合误差与解的光滑性。<br />
-- <strong>解析解</strong>：<span class="arithmatex">\(x = (A^TA + \mu I)^{-1}A^Tb\)</span>。  </p>
+<strong>问题形式</strong>：  </p>
+<div class="arithmatex">\[
+\min_{x} \frac{1}{2}\|Ax - b\|_2^2 + \mu \|x\|_2^2 \quad (\ell_2 \text{正则化})
+\]</div>
+<ul>
+<li><strong>作用</strong>：防止过拟合，<span class="arithmatex">\(\mu &gt; 0\)</span> 平衡拟合误差与解的光滑性。  </li>
+<li><strong>解析解</strong>：<span class="arithmatex">\(x = (A^TA + \mu I)^{-1}A^Tb\)</span>。  </li>
+</ul>
 <p><strong>2. 非线性最小二乘</strong><br />
-<strong>问题形式</strong>：<br />
-[
+<strong>问题形式</strong>：  </p>
+<div class="arithmatex">\[
 \min_{x} \sum_{i=1}^m r_i(x)^2, \quad r_i(x) \text{为非线性函数}
-]<br />
-- <strong>求解方法</strong>：<br />
-  - <strong>梯度下降</strong>：<span class="arithmatex">\(x_{k+1} = x_k - \alpha \sum_{i=1}^m r_i(x_k) \nabla r_i(x_k)\)</span>。<br />
-  - <strong>高斯-牛顿法</strong>：利用雅可比矩阵线性化，迭代求解 <span class="arithmatex">\(J^TJ \Delta x = -J^Tr\)</span>。  </p>
+\]</div>
+<ul>
+<li><strong>求解方法</strong>：  </li>
+<li><strong>梯度下降</strong>：<span class="arithmatex">\(x_{k+1} = x_k - \alpha \sum_{i=1}^m r_i(x_k) \nabla r_i(x_k)\)</span>。  </li>
+<li><strong>高斯-牛顿法</strong>：利用雅可比矩阵线性化，迭代求解 <span class="arithmatex">\(J^TJ \Delta x = -J^Tr\)</span>。  </li>
+</ul>
 <p><strong>示例：指数拟合</strong><br />
 <strong>问题</strong>：拟合数据 <span class="arithmatex">\(\{(1, 2), (2, 5), (3, 10)\}\)</span> 到模型 <span class="arithmatex">\(y = ae^{bx}\)</span>。<br />
 <strong>步骤</strong>：<br />
@@ -8812,12 +8852,14 @@
 <h2 id="_35">数据科学中的最优化应用<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h2>
 <h3 id="_36">一、最小二乘问题<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <p><strong>核心定义</strong>：<br />
-最小二乘问题旨在最小化误差的平方和，形式为：<br />
-[
+最小二乘问题旨在最小化误差的平方和，形式为：  </p>
+<div class="arithmatex">\[
 \min_{x \in \mathbb{R}^n} \sum_{i=1}^{m} r_i^2(x)
-]<br />
-- <strong>线性最小二乘</strong>：当 <span class="arithmatex">\( r_i(x) = a_i^T x - b_i \)</span> 时，目标函数为二次凸函数，可通过矩阵运算高效求解。<br />
-- <strong>非线性最小二乘</strong>：当 <span class="arithmatex">\( r_i(x) \)</span> 为非线性函数时，需迭代算法求解。  </p>
+\]</div>
+<ul>
+<li><strong>线性最小二乘</strong>：当 <span class="arithmatex">\( r_i(x) = a_i^T x - b_i \)</span> 时，目标函数为二次凸函数，可通过矩阵运算高效求解。  </li>
+<li><strong>非线性最小二乘</strong>：当 <span class="arithmatex">\( r_i(x) \)</span> 为非线性函数时，需迭代算法求解。  </li>
+</ul>
 <p><strong>求解方法</strong>：<br />
 1. <strong>线性最小二乘（解析法）</strong>：<br />
    - 目标函数：<span class="arithmatex">\( f(x) = \frac{1}{2}\|Ax - b\|_2^2 \)</span>（<span class="arithmatex">\( A \)</span> 为设计矩阵，<span class="arithmatex">\( b \)</span> 为观测值）。<br />
@@ -8826,16 +8868,22 @@
    - 如高斯-牛顿法：利用雅可比矩阵线性化，迭代更新 <span class="arithmatex">\( x_{k+1} = x_k - (J^T J)^{-1} J^T r \)</span>。  </p>
 <p><strong>示例：线性回归拟合</strong><br />
 <strong>问题</strong>：用线性模型 <span class="arithmatex">\( y = \theta_1 x + \theta_0 \)</span> 拟合数据点 <span class="arithmatex">\((1, 2)\)</span>、<span class="arithmatex">\((2, 4)\)</span>、<span class="arithmatex">\((3, 6)\)</span>。<br />
-<strong>步骤</strong>：<br />
-1. <strong>构造矩阵</strong>：<br />
-   [
-   A = \begin{bmatrix}1 &amp; 1 \ 1 &amp; 2 \ 1 &amp; 3\end{bmatrix}, \quad b = \begin{bmatrix}2 \ 4 \ 6\end{bmatrix}
-   ]<br />
-2. <strong>计算最优解</strong>：<br />
-   [
-   x = (A^T A)^{-1} A^T b = \begin{bmatrix}1 &amp; 1 &amp; 1 \ 1 &amp; 2 &amp; 3\end{bmatrix}^{-1} \begin{bmatrix}1 &amp; 1 &amp; 1 \ 1 &amp; 2 &amp; 3\end{bmatrix} \begin{bmatrix}2 \ 4 \ 6\end{bmatrix} = \begin{bmatrix}0 \ 2\end{bmatrix}
-   ]<br />
-<strong>结论</strong>：拟合模型为 <span class="arithmatex">\( y = 2x \)</span>，误差平方和为0（完美拟合）。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>构造矩阵</strong>：  </p>
+<div class="arithmatex">\[
+A = \begin{bmatrix}1 &amp; 1 \\ 1 &amp; 2 \\ 1 &amp; 3\end{bmatrix}, \quad b = \begin{bmatrix}2 \\ 4 \\ 6\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>计算最优解</strong>：  </p>
+<div class="arithmatex">\[
+x = (A^T A)^{-1} A^T b = \begin{bmatrix}1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3\end{bmatrix}^{-1} \begin{bmatrix}1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3\end{bmatrix} \begin{bmatrix}2 \\ 4 \\ 6\end{bmatrix} = \begin{bmatrix}0 \\ 2\end{bmatrix}
+\]</div>
+<p><strong>结论</strong>：拟合模型为 <span class="arithmatex">\( y = 2x \)</span>，误差平方和为0（完美拟合）。  </p>
+</li>
+</ol>
 <h3 id="_37">二、正则化技术<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
 在目标函数中加入正则项，平衡拟合误差与解的复杂度，防止过拟合。常见形式：<br />
@@ -8846,34 +8894,46 @@
 - <strong>迭代法</strong>：如梯度下降法，对正则项求导后更新参数。  </p>
 <p><strong>示例：带 <span class="arithmatex">\(\ell_2\)</span> 正则化的线性回归</strong><br />
 <strong>问题</strong>：拟合数据 <span class="arithmatex">\( A = \begin{bmatrix}1 &amp; 1 \\ 1 &amp; 2 \\ 1 &amp; 3\end{bmatrix}, b = \begin{bmatrix}2 \\ 4 \\ 7\end{bmatrix} \)</span>，取 <span class="arithmatex">\(\mu = 0.1\)</span>。<br />
-<strong>步骤</strong>：<br />
-1. <strong>构造正则化矩阵</strong>：<br />
-   [
-   A^T A + \mu I = \begin{bmatrix}3 &amp; 6 \ 6 &amp; 14\end{bmatrix} + 0.1\begin{bmatrix}1 &amp; 0 \ 0 &amp; 1\end{bmatrix} = \begin{bmatrix}3.1 &amp; 6 \ 6 &amp; 14.1\end{bmatrix}
-   ]<br />
-2. <strong>求解</strong>：<br />
-   [
-   x = (A^T A + \mu I)^{-1} A^T b = \begin{bmatrix}1.32 \ 1.88\end{bmatrix}
-   ]<br />
-<strong>结论</strong>：拟合模型为 <span class="arithmatex">\( y = 1.88x + 1.32 \)</span>，正则化抑制了过拟合风险。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>构造正则化矩阵</strong>：  </p>
+<div class="arithmatex">\[
+A^T A + \mu I = \begin{bmatrix}3 &amp; 6 \\ 6 &amp; 14\end{bmatrix} + 0.1\begin{bmatrix}1 &amp; 0 \\ 0 &amp; 1\end{bmatrix} = \begin{bmatrix}3.1 &amp; 6 \\ 6 &amp; 14.1\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>求解</strong>：  </p>
+<div class="arithmatex">\[
+x = (A^T A + \mu I)^{-1} A^T b = \begin{bmatrix}1.32 \\ 1.88\end{bmatrix}
+\]</div>
+<p><strong>结论</strong>：拟合模型为 <span class="arithmatex">\( y = 1.88x + 1.32 \)</span>，正则化抑制了过拟合风险。  </p>
+</li>
+</ol>
 <h3 id="mle">三、最大似然估计（MLE）<a class="headerlink" href="#mle" title="Permanent link">&para;</a></h3>
 <p><strong>核心定义</strong>：<br />
-通过最大化观测数据的似然函数，估计概率分布参数。若数据 <span class="arithmatex">\( b_i = a_i^T x + \varepsilon_i \)</span>，且噪声 <span class="arithmatex">\(\varepsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span>，则对数似然函数为：<br />
-[
-\ell(x) = -\frac{m}{2}\ln(2\pi\sigma^2) - \frac{1}{2\sigma^2}|Ax - b|_2^2
-]<br />
-<strong>与最小二乘的关系</strong>：高斯噪声下，最大似然估计等价于最小二乘问题。  </p>
+通过最大化观测数据的似然函数，估计概率分布参数。若数据 <span class="arithmatex">\( b_i = a_i^T x + \varepsilon_i \)</span>，且噪声 <span class="arithmatex">\(\varepsilon_i \sim \mathcal{N}(0, \sigma^2)\)</span>，则对数似然函数为：  </p>
+<div class="arithmatex">\[
+\ell(x) = -\frac{m}{2}\ln(2\pi\sigma^2) - \frac{1}{2\sigma^2}\|Ax - b\|_2^2
+\]</div>
+<p><strong>与最小二乘的关系</strong>：高斯噪声下，最大似然估计等价于最小二乘问题。  </p>
 <p><strong>求解方法</strong>：<br />
 1. <strong>解析法</strong>：对高斯分布，直接求导得最小二乘解。<br />
 2. <strong>数值法</strong>：对非高斯分布，如泊松分布，使用梯度上升法最大化似然函数。  </p>
 <p><strong>示例：高斯噪声下的MLE</strong><br />
 <strong>问题</strong>：已知数据 <span class="arithmatex">\( b = Ax + \varepsilon \)</span>，<span class="arithmatex">\(\varepsilon \sim \mathcal{N}(0, 1)\)</span>，求 <span class="arithmatex">\( x \)</span> 的最大似然估计。<br />
-<strong>步骤</strong>：<br />
-1. <strong>对数似然函数</strong>：<br />
-   [
-   \ell(x) = -\frac{1}{2}|Ax - b|_2^2 + \text{常数}
-   ]<br />
-2. <strong>最大化等价于最小化</strong>：<span class="arithmatex">\( \min \|Ax - b\|_2^2 \)</span>，解为最小二乘解 <span class="arithmatex">\( x = (A^T A)^{-1} A^T b \)</span>。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>对数似然函数</strong>：  </p>
+<div class="arithmatex">\[
+\ell(x) = -\frac{1}{2}\|Ax - b\|_2^2 + \text{常数}
+\]</div>
+</li>
+<li>
+<p><strong>最大化等价于最小化</strong>：<span class="arithmatex">\( \min \|Ax - b\|_2^2 \)</span>，解为最小二乘解 <span class="arithmatex">\( x = (A^T A)^{-1} A^T b \)</span>。  </p>
+</li>
+</ol>
 <h3 id="_38">四、机器学习中的最优化问题<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <p><strong>1. 线性回归</strong><br />
 - <strong>目标函数</strong>：<span class="arithmatex">\( \min \frac{1}{2N}\|Ax - b\|_2^2 + \mu \|x\|_2^2 \)</span>（正则化版本）。<br />
@@ -8883,13 +8943,19 @@
 - <strong>求解</strong>：梯度下降，梯度为 <span class="arithmatex">\( \frac{1}{N} \sum_{i=1}^N \frac{-b_i a_i e^{-b_i a_i^T x}}{1 + e^{-b_i a_i^T x}} + 2\mu x \)</span>。  </p>
 <p><strong>示例：二分类逻辑回归</strong><br />
 <strong>问题</strong>：用逻辑回归区分两类数据，特征矩阵 <span class="arithmatex">\( A \)</span> 和标签 <span class="arithmatex">\( b \in \{-1, 1\} \)</span>。<br />
-<strong>步骤</strong>：<br />
-1. <strong>初始化参数</strong>：<span class="arithmatex">\( x_0 = 0 \)</span>。<br />
-2. <strong>迭代更新</strong>：<br />
-   [
-   x_{k+1} = x_k - \alpha \left( \frac{1}{N} \sum_{i=1}^N \frac{-b_i a_i e^{-b_i a_i^T x_k}}{1 + e^{-b_i a_i^T x_k}} + 2\mu x_k \right)
-   ]<br />
-3. <strong>收敛条件</strong>：梯度范数小于阈值，输出最终 <span class="arithmatex">\( x \)</span>。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li><strong>初始化参数</strong>：<span class="arithmatex">\( x_0 = 0 \)</span>。  </li>
+<li>
+<p><strong>迭代更新</strong>：  </p>
+<div class="arithmatex">\[
+x_{k+1} = x_k - \alpha \left( \frac{1}{N} \sum_{i=1}^N \frac{-b_i a_i e^{-b_i a_i^T x_k}}{1 + e^{-b_i a_i^T x_k}} + 2\mu x_k \right)
+\]</div>
+</li>
+<li>
+<p><strong>收敛条件</strong>：梯度范数小于阈值，输出最终 <span class="arithmatex">\( x \)</span>。  </p>
+</li>
+</ol>
 <h3 id="_39">五、重点总结<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -8990,7 +9056,7 @@
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

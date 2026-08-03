@@ -8730,13 +8730,21 @@
 <h3 id="_7">二、前向传播算法：从“输入”到“输出”的预测过程<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>前向传播（Forward Propagation）是“逐层计算激活输出”的过程，核心是“线性组合+激活函数”，最终得到模型的预测结果（用于分类或回归）（🔶1-194~🔶1-198）。</p>
 <h4 id="1_7">1. 前向传播的核心公式（课件推导）<a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h4>
-<p>对第l层（从1到L），计算逻辑如下：
-1. <strong>线性组合</strong>：计算第l层的线性输出<span class="arithmatex">\(Z^{(l)}\)</span>（融合上一层的激活输出、权值和偏置）：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(Z^{(l)} = \omega^{(l-1)} \cdot A^{(l-1)} + B^{(l-1)}\)</span>\)</span><br />
-   （矩阵乘法：<span class="arithmatex">\(\omega^{(l-1)}\)</span>（<span class="arithmatex">\(D^{(l)}×D^{(l-1)}\)</span>） × <span class="arithmatex">\(A^{(l-1)}\)</span>（<span class="arithmatex">\(D^{(l-1)}×1\)</span>） → <span class="arithmatex">\(D^{(l)}×1\)</span>，再加上偏置<span class="arithmatex">\(B^{(l-1)}\)</span>（<span class="arithmatex">\(D^{(l)}×1\)</span>））
-2. <strong>激活处理</strong>：用激活函数<span class="arithmatex">\(\sigma(\cdot)\)</span>处理<span class="arithmatex">\(Z^{(l)}\)</span>，得到第l层的激活输出<span class="arithmatex">\(A^{(l)}\)</span>（确保模型能拟合非线性关系）：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(A^{(l)} = \sigma(Z^{(l)})\)</span>\)</span>
-3. <strong>输出结果</strong>：当l=L（输出层）时，<span class="arithmatex">\(A^{(L)}\)</span>即为模型的<strong>预测输出</strong>（如MNIST中<span class="arithmatex">\(A^{(2)}\)</span>是10维向量，对应0~9的预测概率）。</p>
+<p>对第l层（从1到L），计算逻辑如下：</p>
+<ol>
+<li>
+<p><strong>线性组合</strong>：计算第l层的线性输出<span class="arithmatex">\(Z^{(l)}\)</span>（融合上一层的激活输出、权值和偏置）：  </p>
+<div class="arithmatex">\[Z^{(l)} = \omega^{(l-1)} \cdot A^{(l-1)} + B^{(l-1)}\]</div>
+<p>（矩阵乘法：<span class="arithmatex">\(\omega^{(l-1)}\)</span>（<span class="arithmatex">\(D^{(l)}×D^{(l-1)}\)</span>） × <span class="arithmatex">\(A^{(l-1)}\)</span>（<span class="arithmatex">\(D^{(l-1)}×1\)</span>） → <span class="arithmatex">\(D^{(l)}×1\)</span>，再加上偏置<span class="arithmatex">\(B^{(l-1)}\)</span>（<span class="arithmatex">\(D^{(l)}×1\)</span>））</p>
+</li>
+<li>
+<p><strong>激活处理</strong>：用激活函数<span class="arithmatex">\(\sigma(\cdot)\)</span>处理<span class="arithmatex">\(Z^{(l)}\)</span>，得到第l层的激活输出<span class="arithmatex">\(A^{(l)}\)</span>（确保模型能拟合非线性关系）：  </p>
+<div class="arithmatex">\[A^{(l)} = \sigma(Z^{(l)})\]</div>
+</li>
+<li>
+<p><strong>输出结果</strong>：当l=L（输出层）时，<span class="arithmatex">\(A^{(L)}\)</span>即为模型的<strong>预测输出</strong>（如MNIST中<span class="arithmatex">\(A^{(2)}\)</span>是10维向量，对应0~9的预测概率）。</p>
+</li>
+</ol>
 <h4 id="2_6">2. 前向传播的步骤（课件流程）<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
 <p>以“2层网络”（输入层0→隐藏层1→输出层2）为例，步骤如下（🔶1-195~🔶1-198）：
 1. <strong>初始化输入</strong>：输入层（第0层）<span class="arithmatex">\(A^{(0)} = x\)</span>（x为样本向量，如<span class="arithmatex">\(x=[x_1, x_2, ..., x_{784}]^T\)</span>，MNIST的784维像素）；
@@ -8761,19 +8769,25 @@
 <h5 id="_8">实例计算步骤：<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
 <ol>
 <li><strong>隐藏层（第1层）计算</strong>：  </li>
-<li>线性输出<span class="arithmatex">\(Z^{(1)} = \omega^{(0)} \cdot A^{(0)} + B^{(0)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(Z^{(1)} = \begin{bmatrix} 0.2×1.0 + 0.3×0.8 \\ 0.1×1.0 + 0.4×0.8 \end{bmatrix} + \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} = \begin{bmatrix} 0.2+0.24 \\ 0.1+0.32 \end{bmatrix} + \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} = \begin{bmatrix} 0.54 \\ 0.62 \end{bmatrix}\)</span>\)</span>  </li>
 <li>
-<p>激活输出<span class="arithmatex">\(A^{(1)} = \sigma(Z^{(1)})\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(A^{(1)} = \begin{bmatrix} \frac{1}{1+e^{-0.54}} \\ \frac{1}{1+e^{-0.62}} \end{bmatrix} \approx \begin{bmatrix} 0.632 \\ 0.650 \end{bmatrix}\)</span>\)</span>（Sigmoid计算：<span class="arithmatex">\(e^{-0.54}≈0.583\)</span>，<span class="arithmatex">\(1/(1+0.583)≈0.632\)</span>）；</p>
+<p>线性输出<span class="arithmatex">\(Z^{(1)} = \omega^{(0)} \cdot A^{(0)} + B^{(0)}\)</span>：  </p>
+<div class="arithmatex">\[Z^{(1)} = \begin{bmatrix} 0.2×1.0 + 0.3×0.8 \\ 0.1×1.0 + 0.4×0.8 \end{bmatrix} + \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} = \begin{bmatrix} 0.2+0.24 \\ 0.1+0.32 \end{bmatrix} + \begin{bmatrix} 0.1 \\ 0.2 \end{bmatrix} = \begin{bmatrix} 0.54 \\ 0.62 \end{bmatrix}\]</div>
+</li>
+<li>
+<p>激活输出<span class="arithmatex">\(A^{(1)} = \sigma(Z^{(1)})\)</span>：  </p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(A^{(1)} = \begin{bmatrix} \frac{1}{1+e^{-0.54}} \\ \frac{1}{1+e^{-0.62}} \end{bmatrix} \approx \begin{bmatrix} 0.632 \\ 0.650 \end{bmatrix}\)</span>\)</span>（Sigmoid计算：<span class="arithmatex">\(e^{-0.54}≈0.583\)</span>，<span class="arithmatex">\(1/(1+0.583)≈0.632\)</span>）；</p>
 </li>
 <li>
 <p><strong>输出层（第2层）计算</strong>：  </p>
 </li>
-<li>线性输出<span class="arithmatex">\(Z^{(2)} = \omega^{(1)} \cdot A^{(1)} + B^{(1)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(Z^{(2)} = [0.5×0.632 + 0.6×0.650] + 0.3 = [0.316 + 0.39] + 0.3 = 1.006\)</span>\)</span>  </li>
-<li>激活输出<span class="arithmatex">\(A^{(2)} = \sigma(Z^{(2)})\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(A^{(2)} = \frac{1}{1+e^{-1.006}} ≈ 0.732\)</span>\)</span>（即模型预测值为0.732，与真实值0.7有误差）。</li>
+<li>
+<p>线性输出<span class="arithmatex">\(Z^{(2)} = \omega^{(1)} \cdot A^{(1)} + B^{(1)}\)</span>：  </p>
+<div class="arithmatex">\[Z^{(2)} = [0.5×0.632 + 0.6×0.650] + 0.3 = [0.316 + 0.39] + 0.3 = 1.006\]</div>
+</li>
+<li>
+<p>激活输出<span class="arithmatex">\(A^{(2)} = \sigma(Z^{(2)})\)</span>：  </p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(A^{(2)} = \frac{1}{1+e^{-1.006}} ≈ 0.732\)</span>\)</span>（即模型预测值为0.732，与真实值0.7有误差）。</p>
+</li>
 </ol>
 <h5 id="_9">实例结论：<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
 <p>前向传播完成“输入→预测输出”的过程，当前误差为<span class="arithmatex">\(e = y - A^{(2)} = 0.7 - 0.732 = -0.032\)</span>，后续需通过<strong>反向传播</strong>调整参数以减小误差。</p>
@@ -8794,47 +8808,49 @@
 <h5 id="1l2delta2">（1）输出层（L=2）的敏感度<span class="arithmatex">\(\delta^{(2)}\)</span>与梯度<a class="headerlink" href="#1l2delta2" title="Permanent link">&para;</a></h5>
 <ul>
 <li>
-<p>敏感度<span class="arithmatex">\(\delta^{(2)}\)</span>：因<span class="arithmatex">\(A^{(2)} = \sigma(Z^{(2)})\)</span>，根据链式法则：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\delta^{(2)} = \frac{\partial J}{\partial Z^{(2)}} = \frac{\partial J}{\partial A^{(2)}} \cdot \frac{\partial A^{(2)}}{\partial Z^{(2)}}\)</span>\)</span><br />
-  代入<span class="arithmatex">\(J = \frac{1}{2}(y - A^{(2)})^2\)</span>（<span class="arithmatex">\(\frac{\partial J}{\partial A^{(2)}} = -(y - A^{(2)})\)</span>）和Sigmoid导数（<span class="arithmatex">\(\frac{\partial A^{(2)}}{\partial Z^{(2)}} = A^{(2)}(1 - A^{(2)})\)</span>），得：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\delta^{(2)} = -(y - A^{(2)}) \circ A^{(2)} \circ (1 - A^{(2)})\)</span>\)</span><br />
-  （<span class="arithmatex">\(\circ\)</span>为<strong>哈达玛积</strong>，课件🔶1-214定义：同维度向量对应元素相乘，如<span class="arithmatex">\([a,b] \circ [c,d] = [ac, bd]\)</span>）</p>
+<p>敏感度<span class="arithmatex">\(\delta^{(2)}\)</span>：因<span class="arithmatex">\(A^{(2)} = \sigma(Z^{(2)})\)</span>，根据链式法则：  </p>
+<div class="arithmatex">\[\delta^{(2)} = \frac{\partial J}{\partial Z^{(2)}} = \frac{\partial J}{\partial A^{(2)}} \cdot \frac{\partial A^{(2)}}{\partial Z^{(2)}}\]</div>
+<p>代入<span class="arithmatex">\(J = \frac{1}{2}(y - A^{(2)})^2\)</span>（<span class="arithmatex">\(\frac{\partial J}{\partial A^{(2)}} = -(y - A^{(2)})\)</span>）和Sigmoid导数（<span class="arithmatex">\(\frac{\partial A^{(2)}}{\partial Z^{(2)}} = A^{(2)}(1 - A^{(2)})\)</span>），得：  </p>
+<div class="arithmatex">\[\delta^{(2)} = -(y - A^{(2)}) \circ A^{(2)} \circ (1 - A^{(2)})\]</div>
+<p>（<span class="arithmatex">\(\circ\)</span>为<strong>哈达玛积</strong>，课件🔶1-214定义：同维度向量对应元素相乘，如<span class="arithmatex">\([a,b] \circ [c,d] = [ac, bd]\)</span>）</p>
 </li>
 <li>
-<p>输出层权值<span class="arithmatex">\(\omega^{(1)}\)</span>的梯度（需调整的方向）：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla \omega^{(1)} = \frac{\partial J}{\partial \omega^{(1)}} = \delta^{(2)} \cdot (A^{(1)})^T\)</span>\)</span><br />
-  （权值的梯度=输出层敏感度 × 隐藏层激活输出的转置，因<span class="arithmatex">\(\omega^{(1)}\)</span>连接<span class="arithmatex">\(A^{(1)}\)</span>和<span class="arithmatex">\(Z^{(2)}\)</span>）</p>
+<p>输出层权值<span class="arithmatex">\(\omega^{(1)}\)</span>的梯度（需调整的方向）：  </p>
+<div class="arithmatex">\[\nabla \omega^{(1)} = \frac{\partial J}{\partial \omega^{(1)}} = \delta^{(2)} \cdot (A^{(1)})^T\]</div>
+<p>（权值的梯度=输出层敏感度 × 隐藏层激活输出的转置，因<span class="arithmatex">\(\omega^{(1)}\)</span>连接<span class="arithmatex">\(A^{(1)}\)</span>和<span class="arithmatex">\(Z^{(2)}\)</span>）</p>
 </li>
 <li>
-<p>输出层偏置<span class="arithmatex">\(B^{(1)}\)</span>的梯度：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla B^{(1)} = \frac{\partial J}{\partial B^{(1)}} = \delta^{(2)}\)</span>\)</span><br />
-  （偏置的梯度=输出层敏感度，因偏置直接加到<span class="arithmatex">\(Z^{(2)}\)</span>，导数为1）</p>
+<p>输出层偏置<span class="arithmatex">\(B^{(1)}\)</span>的梯度：  </p>
+<div class="arithmatex">\[\nabla B^{(1)} = \frac{\partial J}{\partial B^{(1)}} = \delta^{(2)}\]</div>
+<p>（偏置的梯度=输出层敏感度，因偏置直接加到<span class="arithmatex">\(Z^{(2)}\)</span>，导数为1）</p>
 </li>
 </ul>
 <h5 id="2l1delta1">（2）隐藏层（l=1）的敏感度<span class="arithmatex">\(\delta^{(1)}\)</span>与梯度<a class="headerlink" href="#2l1delta1" title="Permanent link">&para;</a></h5>
 <ul>
 <li>
-<p>敏感度<span class="arithmatex">\(\delta^{(1)}\)</span>：隐藏层的误差由输出层的误差传递而来，根据链式法则（课件🔶1-220~🔶1-221）：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\delta^{(1)} = \frac{\partial J}{\partial Z^{(1)}} = \frac{\partial J}{\partial Z^{(2)}} \cdot \frac{\partial Z^{(2)}}{\partial A^{(1)}} \cdot \frac{\partial A^{(1)}}{\partial Z^{(1)}}\)</span>\)</span><br />
-  代入<span class="arithmatex">\(\frac{\partial J}{\partial Z^{(2)}} = \delta^{(2)}\)</span>、<span class="arithmatex">\(\frac{\partial Z^{(2)}}{\partial A^{(1)}} = (\omega^{(1)})^T\)</span>（<span class="arithmatex">\(Z^{(2)} = \omega^{(1)}A^{(1)} + B^{(1)}\)</span>，对<span class="arithmatex">\(A^{(1)}\)</span>求导为<span class="arithmatex">\(\omega^{(1)}\)</span>的转置）、Sigmoid导数<span class="arithmatex">\(\frac{\partial A^{(1)}}{\partial Z^{(1)}} = A^{(1)}(1 - A^{(1)})\)</span>，得：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\delta^{(1)} = \left[ (\omega^{(1)})^T \cdot \delta^{(2)} \right] \circ A^{(1)} \circ (1 - A^{(1)})\)</span>\)</span></p>
+<p>敏感度<span class="arithmatex">\(\delta^{(1)}\)</span>：隐藏层的误差由输出层的误差传递而来，根据链式法则（课件🔶1-220~🔶1-221）：  </p>
+<div class="arithmatex">\[\delta^{(1)} = \frac{\partial J}{\partial Z^{(1)}} = \frac{\partial J}{\partial Z^{(2)}} \cdot \frac{\partial Z^{(2)}}{\partial A^{(1)}} \cdot \frac{\partial A^{(1)}}{\partial Z^{(1)}}\]</div>
+<p>代入<span class="arithmatex">\(\frac{\partial J}{\partial Z^{(2)}} = \delta^{(2)}\)</span>、<span class="arithmatex">\(\frac{\partial Z^{(2)}}{\partial A^{(1)}} = (\omega^{(1)})^T\)</span>（<span class="arithmatex">\(Z^{(2)} = \omega^{(1)}A^{(1)} + B^{(1)}\)</span>，对<span class="arithmatex">\(A^{(1)}\)</span>求导为<span class="arithmatex">\(\omega^{(1)}\)</span>的转置）、Sigmoid导数<span class="arithmatex">\(\frac{\partial A^{(1)}}{\partial Z^{(1)}} = A^{(1)}(1 - A^{(1)})\)</span>，得：  </p>
+<div class="arithmatex">\[\delta^{(1)} = \left[ (\omega^{(1)})^T \cdot \delta^{(2)} \right] \circ A^{(1)} \circ (1 - A^{(1)})\]</div>
 </li>
 <li>
-<p>隐藏层权值<span class="arithmatex">\(\omega^{(0)}\)</span>的梯度：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla \omega^{(0)} = \frac{\partial J}{\partial \omega^{(0)}} = \delta^{(1)} \cdot (A^{(0)})^T\)</span>\)</span><br />
-  （逻辑同输出层：权值连接<span class="arithmatex">\(A^{(0)}\)</span>和<span class="arithmatex">\(Z^{(1)}\)</span>，梯度=隐藏层敏感度 × 输入层激活输出的转置）</p>
+<p>隐藏层权值<span class="arithmatex">\(\omega^{(0)}\)</span>的梯度：  </p>
+<div class="arithmatex">\[\nabla \omega^{(0)} = \frac{\partial J}{\partial \omega^{(0)}} = \delta^{(1)} \cdot (A^{(0)})^T\]</div>
+<p>（逻辑同输出层：权值连接<span class="arithmatex">\(A^{(0)}\)</span>和<span class="arithmatex">\(Z^{(1)}\)</span>，梯度=隐藏层敏感度 × 输入层激活输出的转置）</p>
 </li>
 <li>
-<p>隐藏层偏置<span class="arithmatex">\(B^{(0)}\)</span>的梯度：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla B^{(0)} = \frac{\partial J}{\partial B^{(0)}} = \delta^{(1)}\)</span>\)</span></p>
+<p>隐藏层偏置<span class="arithmatex">\(B^{(0)}\)</span>的梯度：  </p>
+<div class="arithmatex">\[\nabla B^{(0)} = \frac{\partial J}{\partial B^{(0)}} = \delta^{(1)}\]</div>
 </li>
 </ul>
 <h5 id="3_5">（3）参数调整（梯度下降）<a class="headerlink" href="#3_5" title="Permanent link">&para;</a></h5>
-<p>得到梯度后，沿“梯度负方向”调整权值和偏置（课件🔶1-226），公式为：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\omega^{(l)} = \omega^{(l)} - \eta \cdot \nabla \omega^{(l)}\)</span>\)</span><br />
-<span class="arithmatex">\(<span class="arithmatex">\(B^{(l)} = B^{(l)} - \eta \cdot \nabla B^{(l)}\)</span>\)</span><br />
-- <span class="arithmatex">\(\eta\)</span>：学习率（课件🔶1-108~🔶1-110），控制调整幅度（如<span class="arithmatex">\(\eta=0.1\)</span>，过大会震荡，过小收敛慢）；
-- 负号：表示“沿代价函数减小的方向”调整（梯度方向是代价增大最快的方向，负方向即减小最快）。</p>
+<p>得到梯度后，沿“梯度负方向”调整权值和偏置（课件🔶1-226），公式为：  </p>
+<div class="arithmatex">\[\omega^{(l)} = \omega^{(l)} - \eta \cdot \nabla \omega^{(l)}\]</div>
+<div class="arithmatex">\[B^{(l)} = B^{(l)} - \eta \cdot \nabla B^{(l)}\]</div>
+<ul>
+<li><span class="arithmatex">\(\eta\)</span>：学习率（课件🔶1-108~🔶1-110），控制调整幅度（如<span class="arithmatex">\(\eta=0.1\)</span>，过大会震荡，过小收敛慢）；</li>
+<li>负号：表示“沿代价函数减小的方向”调整（梯度方向是代价增大最快的方向，负方向即减小最快）。</li>
+</ul>
 <h4 id="4_2">4. 反向传播实例（承接前向传播实例，完整闭环）<a class="headerlink" href="#4_2" title="Permanent link">&para;</a></h4>
 <p>沿用前向传播的简化模型：
 - 已知前向结果：<span class="arithmatex">\(A^{(0)}=[1.0,0.8]^T\)</span>，<span class="arithmatex">\(A^{(1)}≈[0.632,0.650]^T\)</span>，<span class="arithmatex">\(A^{(2)}≈0.732\)</span>，真实标签<span class="arithmatex">\(y=0.7\)</span>，误差<span class="arithmatex">\(e=0.7-0.732=-0.032\)</span>；
@@ -8844,37 +8860,41 @@
 <h5 id="l2delta2">第一步：计算输出层（L=2）的敏感度<span class="arithmatex">\(\delta^{(2)}\)</span>与梯度<a class="headerlink" href="#l2delta2" title="Permanent link">&para;</a></h5>
 <ol>
 <li>
-<p>敏感度<span class="arithmatex">\(\delta^{(2)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\delta^{(2)} = -(y - A^{(2)}) \cdot A^{(2)} \cdot (1 - A^{(2)})\)</span>\)</span><br />
-   （因输出层是1维，哈达玛积退化为普通乘法）<br />
-   代入数值：<span class="arithmatex">\(-(0.7 - 0.732) × 0.732 × (1 - 0.732) = -(-0.032) × 0.732 × 0.268 ≈ 0.032 × 0.196 ≈ 0.0063\)</span></p>
+<p>敏感度<span class="arithmatex">\(\delta^{(2)}\)</span>：  </p>
+<div class="arithmatex">\[\delta^{(2)} = -(y - A^{(2)}) \cdot A^{(2)} \cdot (1 - A^{(2)})\]</div>
+<p>（因输出层是1维，哈达玛积退化为普通乘法）<br />
+代入数值：<span class="arithmatex">\(-(0.7 - 0.732) × 0.732 × (1 - 0.732) = -(-0.032) × 0.732 × 0.268 ≈ 0.032 × 0.196 ≈ 0.0063\)</span></p>
 </li>
 <li>
-<p>输出层权值梯度<span class="arithmatex">\(\nabla \omega^{(1)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla \omega^{(1)} = \delta^{(2)} \cdot (A^{(1)})^T = 0.0063 × [0.632, 0.650] ≈ [0.00398, 0.00410]\)</span>\)</span></p>
+<p>输出层权值梯度<span class="arithmatex">\(\nabla \omega^{(1)}\)</span>：  </p>
+<div class="arithmatex">\[\nabla \omega^{(1)} = \delta^{(2)} \cdot (A^{(1)})^T = 0.0063 × [0.632, 0.650] ≈ [0.00398, 0.00410]\]</div>
 </li>
 <li>
-<p>输出层偏置梯度<span class="arithmatex">\(\nabla B^{(1)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla B^{(1)} = \delta^{(2)} ≈ 0.0063\)</span>\)</span></p>
+<p>输出层偏置梯度<span class="arithmatex">\(\nabla B^{(1)}\)</span>：  </p>
+<div class="arithmatex">\[\nabla B^{(1)} = \delta^{(2)} ≈ 0.0063\]</div>
 </li>
 </ol>
 <h5 id="l1delta1">第二步：计算隐藏层（l=1）的敏感度<span class="arithmatex">\(\delta^{(1)}\)</span>与梯度<a class="headerlink" href="#l1delta1" title="Permanent link">&para;</a></h5>
 <ol>
-<li>敏感度<span class="arithmatex">\(\delta^{(1)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\delta^{(1)} = \left[ (\omega^{(1)})^T \cdot \delta^{(2)} \right] \circ A^{(1)} \circ (1 - A^{(1)})\)</span>\)</span>  </li>
-<li>第一步：计算<span class="arithmatex">\((\omega^{(1)})^T \cdot \delta^{(2)}\)</span>（<span class="arithmatex">\(\omega^{(1)}\)</span>是1×2，转置后2×1）：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\begin{bmatrix} 0.5 \\ 0.6 \end{bmatrix} × 0.0063 ≈ \begin{bmatrix} 0.00315 \\ 0.00378 \end{bmatrix}\)</span>\)</span>  </li>
 <li>
-<p>第二步：哈达玛积计算（对应元素相乘）：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\begin{bmatrix} 0.00315 × 0.632 × (1 - 0.632) \\ 0.00378 × 0.650 × (1 - 0.650) \end{bmatrix} ≈ \begin{bmatrix} 0.00315 × 0.632 × 0.368 \\ 0.00378 × 0.650 × 0.350 \end{bmatrix} ≈ \begin{bmatrix} 0.00073 \\ 0.00085 \end{bmatrix}\)</span>\)</span></p>
+<p>敏感度<span class="arithmatex">\(\delta^{(1)}\)</span>：  </p>
+<div class="arithmatex">\[\delta^{(1)} = \left[ (\omega^{(1)})^T \cdot \delta^{(2)} \right] \circ A^{(1)} \circ (1 - A^{(1)})\]</div>
 </li>
 <li>
-<p>隐藏层权值梯度<span class="arithmatex">\(\nabla \omega^{(0)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla \omega^{(0)} = \delta^{(1)} \cdot (A^{(0)})^T = \begin{bmatrix} 0.00073 \\ 0.00085 \end{bmatrix} × [1.0, 0.8] ≈ \begin{bmatrix} 0.00073×1.0 &amp; 0.00073×0.8 \\ 0.00085×1.0 &amp; 0.00085×0.8 \end{bmatrix} ≈ \begin{bmatrix} 0.00073 &amp; 0.00058 \\ 0.00085 &amp; 0.00068 \end{bmatrix}\)</span>\)</span></p>
+<p>第一步：计算<span class="arithmatex">\((\omega^{(1)})^T \cdot \delta^{(2)}\)</span>（<span class="arithmatex">\(\omega^{(1)}\)</span>是1×2，转置后2×1）：  </p>
+<div class="arithmatex">\[\begin{bmatrix} 0.5 \\ 0.6 \end{bmatrix} × 0.0063 ≈ \begin{bmatrix} 0.00315 \\ 0.00378 \end{bmatrix}\]</div>
 </li>
 <li>
-<p>隐藏层偏置梯度<span class="arithmatex">\(\nabla B^{(0)}\)</span>：<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\nabla B^{(0)} = \delta^{(1)} ≈ \begin{bmatrix} 0.00073 \\ 0.00085 \end{bmatrix}\)</span>\)</span></p>
+<p>第二步：哈达玛积计算（对应元素相乘）：  </p>
+<div class="arithmatex">\[\begin{bmatrix} 0.00315 × 0.632 × (1 - 0.632) \\ 0.00378 × 0.650 × (1 - 0.650) \end{bmatrix} ≈ \begin{bmatrix} 0.00315 × 0.632 × 0.368 \\ 0.00378 × 0.650 × 0.350 \end{bmatrix} ≈ \begin{bmatrix} 0.00073 \\ 0.00085 \end{bmatrix}\]</div>
+</li>
+<li>
+<p>隐藏层权值梯度<span class="arithmatex">\(\nabla \omega^{(0)}\)</span>：  </p>
+<div class="arithmatex">\[\nabla \omega^{(0)} = \delta^{(1)} \cdot (A^{(0)})^T = \begin{bmatrix} 0.00073 \\ 0.00085 \end{bmatrix} × [1.0, 0.8] ≈ \begin{bmatrix} 0.00073×1.0 &amp; 0.00073×0.8 \\ 0.00085×1.0 &amp; 0.00085×0.8 \end{bmatrix} ≈ \begin{bmatrix} 0.00073 &amp; 0.00058 \\ 0.00085 &amp; 0.00068 \end{bmatrix}\]</div>
+</li>
+<li>
+<p>隐藏层偏置梯度<span class="arithmatex">\(\nabla B^{(0)}\)</span>：  </p>
+<div class="arithmatex">\[\nabla B^{(0)} = \delta^{(1)} ≈ \begin{bmatrix} 0.00073 \\ 0.00085 \end{bmatrix}\]</div>
 </li>
 </ol>
 <h5 id="_12">第三步：调整参数（梯度下降）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
@@ -8990,7 +9010,7 @@
       
         <script src="../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

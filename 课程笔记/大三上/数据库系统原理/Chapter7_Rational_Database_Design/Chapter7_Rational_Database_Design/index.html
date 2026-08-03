@@ -10069,10 +10069,10 @@
 <h4 id="_3"><strong>定义</strong><a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>给定属性集 <span class="arithmatex">\( \alpha \)</span> 和函数依赖集 <span class="arithmatex">\( F \)</span>，<span class="arithmatex">\( \alpha^+ \)</span> 表示在 <span class="arithmatex">\( F \)</span> 下能被 <span class="arithmatex">\( \alpha \)</span> 函数决定的所有属性的集合。</p>
 <h4 id="_4"><strong>计算算法（举例说明）</strong><a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<p>设关系模式 <span class="arithmatex">\( R(A, B, C, G, H, I) \)</span>，函数依赖集：
-[
-F = { A \rightarrow B, A \rightarrow C, CG \rightarrow H, CG \rightarrow I, B \rightarrow H }
-]</p>
+<p>设关系模式 <span class="arithmatex">\( R(A, B, C, G, H, I) \)</span>，函数依赖集：</p>
+<div class="arithmatex">\[
+F = \{ A \rightarrow B,\ A \rightarrow C,\ CG \rightarrow H,\ CG \rightarrow I,\ B \rightarrow H \}
+\]</div>
 <p>求 <span class="arithmatex">\( (AG)^+ \)</span>：
 1. <code>result = {A, G}</code>
 2. 应用 <code>A → B</code> 和 <code>A → C</code> → <code>result = {A, B, C, G}</code>
@@ -10442,22 +10442,30 @@ F = { A \rightarrow B, A \rightarrow C, CG \rightarrow H, CG \rightarrow I, B \r
 <h3 id="1_2">1. 分解的基本要求<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
 <h4 id="1attribute-preservation">（1）属性保留（Attribute Preservation）<a class="headerlink" href="#1attribute-preservation" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>要求</strong>：所有原始属性必须出现在至少一个子模式中，即<br />
-  [
-  R = R_1 \cup R_2 \cup \dots \cup R_n
-  ]</li>
-<li><strong>意义</strong>：不能丢失任何属性信息。</li>
+<li>
+<p><strong>要求</strong>：所有原始属性必须出现在至少一个子模式中，即  </p>
+<div class="arithmatex">\[
+R = R_1 \cup R_2 \cup \dots \cup R_n
+\]</div>
+</li>
+<li>
+<p><strong>意义</strong>：不能丢失任何属性信息。</p>
+</li>
 <li><strong>例子</strong>：<br />
   若 <span class="arithmatex">\( R(A,B,C) \)</span> 被分解为 <span class="arithmatex">\( R_1(A,B) \)</span> 和 <span class="arithmatex">\( R_2(B,C) \)</span>，则 <span class="arithmatex">\( A,B,C \)</span> 全部保留 ✅；<br />
   若分解为 <span class="arithmatex">\( R_1(A,B) \)</span> 和 <span class="arithmatex">\( R_2(A) \)</span>，则 <span class="arithmatex">\( C \)</span> 丢失 ❌。</li>
 </ul>
 <h4 id="2lossless-join-decomposition">（2）无损连接（Lossless-join Decomposition）<a class="headerlink" href="#2lossless-join-decomposition" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>定义</strong>：对任意合法关系实例 <span class="arithmatex">\( r(R) \)</span>，将其投影到各子模式后再自然连接，能<strong>完全恢复</strong>原关系，即<br />
-  [
-  r = \pi_{R_1}(r) \bowtie \pi_{R_2}(r) \bowtie \dots \bowtie \pi_{R_n}(r)
-  ]</li>
-<li><strong>重要性</strong>：若非无损连接，分解后无法还原原始数据，导致<strong>信息丢失</strong>。</li>
+<li>
+<p><strong>定义</strong>：对任意合法关系实例 <span class="arithmatex">\( r(R) \)</span>，将其投影到各子模式后再自然连接，能<strong>完全恢复</strong>原关系，即  </p>
+<div class="arithmatex">\[
+r = \pi_{R_1}(r) \bowtie \pi_{R_2}(r) \bowtie \dots \bowtie \pi_{R_n}(r)
+\]</div>
+</li>
+<li>
+<p><strong>重要性</strong>：若非无损连接，分解后无法还原原始数据，导致<strong>信息丢失</strong>。</p>
+</li>
 <li><strong>反例（有损分解）</strong>：<br />
   设 <span class="arithmatex">\( R(\text{SNO}, \text{DEPT}, \text{HEAD}) \)</span>，函数依赖：  </li>
 <li><code>SNO → DEPT</code>  </li>
@@ -10474,12 +10482,16 @@ F = { A \rightarrow B, A \rightarrow C, CG \rightarrow H, CG \rightarrow I, B \r
 <p>连接结果会生成笛卡尔积：(s1,d1,h1), (s1,d1,h2)... 即使原表只有一行，也可能产生多行 ❌。</p>
 <h4 id="3dependency-preservation">（3）依赖保持（Dependency Preservation）<a class="headerlink" href="#3dependency-preservation" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>定义</strong>：分解后，所有原始函数依赖仍能在子模式中被“验证”或“强制执行”，形式化为：<br />
-  [
-  (F_1 \cup F_2 \cup \dots \cup F_n)^+ = F^+
-  ]
-  其中 <span class="arithmatex">\( F_i \)</span> 是 <span class="arithmatex">\( F^+ \)</span> 中仅涉及 <span class="arithmatex">\( R_i \)</span> 属性的依赖。</li>
-<li><strong>意义</strong>：若依赖未被保持，则无法在单个表中通过约束（如唯一性、外键）保证数据一致性，需应用层维护，易出错。</li>
+<li>
+<p><strong>定义</strong>：分解后，所有原始函数依赖仍能在子模式中被“验证”或“强制执行”，形式化为：  </p>
+<div class="arithmatex">\[
+(F_1 \cup F_2 \cup \dots \cup F_n)^+ = F^+
+\]</div>
+<p>其中 <span class="arithmatex">\( F_i \)</span> 是 <span class="arithmatex">\( F^+ \)</span> 中仅涉及 <span class="arithmatex">\( R_i \)</span> 属性的依赖。</p>
+</li>
+<li>
+<p><strong>意义</strong>：若依赖未被保持，则无法在单个表中通过约束（如唯一性、外键）保证数据一致性，需应用层维护，易出错。</p>
+</li>
 <li><strong>例子</strong>：<br />
 <span class="arithmatex">\( R(\text{SNO}, \text{DEPT}, \text{HEAD}) \)</span>，<span class="arithmatex">\( F = \{\text{SNO} \rightarrow \text{DEPT},\ \text{DEPT} \rightarrow \text{HEAD}\} \)</span></li>
 </ul>
@@ -10962,7 +10974,7 @@ F = { A \rightarrow B, A \rightarrow C, CG \rightarrow H, CG \rightarrow I, B \r
       
         <script src="../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

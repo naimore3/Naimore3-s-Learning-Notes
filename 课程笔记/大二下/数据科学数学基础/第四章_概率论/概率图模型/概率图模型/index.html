@@ -8886,11 +8886,11 @@
 <li><strong>基本思想与定义</strong>  </li>
 <li>基于有向图的随机游走模型（一阶马尔可夫链），平稳分布即为PageRank值，表示结点重要度。  </li>
 <li>
-<p><strong>一般定义</strong>：引入阻尼因子<span class="arithmatex">\(d\)</span>（通常0.85），平衡按链接跳转（概率d）和随机跳转（概率1-d），公式为：<br />
-     [
-     PR(v_i)=d\sum_{v_j\in M(v_i)}\frac{PR(v_j)}{L(v_j)}+\frac{1-d}{n}
-     ]<br />
-     其中<span class="arithmatex">\(M(v_i)\)</span>为指向<span class="arithmatex">\(v_i\)</span>的节点集合，<span class="arithmatex">\(L(v_j)\)</span>为<span class="arithmatex">\(v_j\)</span>的出边数。</p>
+<p><strong>一般定义</strong>：引入阻尼因子<span class="arithmatex">\(d\)</span>（通常0.85），平衡按链接跳转（概率d）和随机跳转（概率1-d），公式为：  </p>
+<div class="arithmatex">\[
+PR(v_i)=d\sum_{v_j\in M(v_i)}\frac{PR(v_j)}{L(v_j)}+\frac{1-d}{n}
+\]</div>
+<p>其中<span class="arithmatex">\(M(v_i)\)</span>为指向<span class="arithmatex">\(v_i\)</span>的节点集合，<span class="arithmatex">\(L(v_j)\)</span>为<span class="arithmatex">\(v_j\)</span>的出边数。</p>
 </li>
 <li>
 <p><strong>计算方法</strong>  </p>
@@ -8937,18 +8937,24 @@
   - <strong>引入独立假设后</strong>：联合概率可分解为K个条件概率的乘积，参数量大幅减少。  </p>
 <h3 id="_11">二、图结构的可视化作用<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>通过图结构直观表示变量间的条件独立关系。<br />
-<strong>示例</strong>：<br />
-- <strong>变量</strong>：4个二值变量 <span class="arithmatex">\(X_1, X_2, X_3, X_4\)</span>。<br />
-- <strong>条件独立关系</strong>：<br />
-  - 已知 <span class="arithmatex">\(X_1\)</span> 时，<span class="arithmatex">\(X_2\)</span> 和 <span class="arithmatex">\(X_3\)</span> 独立，即：<br />
-    [
-    p(X_2 | X_1, X_3) = p(X_2 | X_1), \quad p(X_3 | X_1, X_2) = p(X_3 | X_1)
-    ]<br />
-  - 已知 <span class="arithmatex">\(X_2\)</span> 和 <span class="arithmatex">\(X_3\)</span> 时，<span class="arithmatex">\(X_4\)</span> 和 <span class="arithmatex">\(X_1\)</span> 独立，即：<br />
-    [
-    p(X_4 | X_1, X_2, X_3) = p(X_4 | X_2, X_3)
-    ]<br />
-- <strong>图形化表示</strong>：<br />
+<strong>示例</strong>：  </p>
+<ul>
+<li><strong>变量</strong>：4个二值变量 <span class="arithmatex">\(X_1, X_2, X_3, X_4\)</span>。  </li>
+<li><strong>条件独立关系</strong>：  </li>
+<li>
+<p>已知 <span class="arithmatex">\(X_1\)</span> 时，<span class="arithmatex">\(X_2\)</span> 和 <span class="arithmatex">\(X_3\)</span> 独立，即：  </p>
+<div class="arithmatex">\[
+p(X_2 | X_1, X_3) = p(X_2 | X_1), \quad p(X_3 | X_1, X_2) = p(X_3 | X_1)
+\]</div>
+</li>
+<li>
+<p>已知 <span class="arithmatex">\(X_2\)</span> 和 <span class="arithmatex">\(X_3\)</span> 时，<span class="arithmatex">\(X_4\)</span> 和 <span class="arithmatex">\(X_1\)</span> 独立，即：  </p>
+<div class="arithmatex">\[
+p(X_4 | X_1, X_2, X_3) = p(X_4 | X_2, X_3)
+\]</div>
+</li>
+<li>
+<p><strong>图形化表示</strong>：<br />
   <div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
 <span class="normal"><a href="#__codelineno-0-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a>X1 ── X2  
@@ -8956,6 +8962,8 @@
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3"></a>└─ X3 ── X4  
 </span></code></pre></div></td></tr></table></div>
   （边表示依赖关系，无直接边表示条件独立）  </p>
+</li>
+</ul>
 <h3 id="_12">三、图模型的三个基本问题<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="1">1. <strong>表示问题</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8984,11 +8992,15 @@
 <li><strong>特点</strong>：  </li>
 <li>用<strong>有向非循环图（DAG）</strong>表示因果关系。  </li>
 <li>边表示“因果依赖”，无中间变量使两节点条件独立。  </li>
-<li><strong>联合概率分解</strong>：<br />
-  [
-  p(X) = \prod_{k=1}^K p(X_k | \text{父节点集合 of } X_k)
-  ]  </li>
-<li><strong>示例</strong>：疾病-症状网络（疾病→症状，如感冒→发烧）。  </li>
+<li>
+<p><strong>联合概率分解</strong>：  </p>
+<div class="arithmatex">\[
+p(X) = \prod_{k=1}^K p(X_k | \text{父节点集合 of } X_k)
+\]</div>
+</li>
+<li>
+<p><strong>示例</strong>：疾病-症状网络（疾病→症状，如感冒→发烧）。  </p>
+</li>
 </ul>
 <h4 id="2_1">2. <strong>无向图模型（马尔可夫随机场）</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
 <ul>
@@ -9115,73 +9127,77 @@
 </table>
 <h3 id="_19">四、求解方法与示例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="1_5">1. <strong>概率计算问题：前向算法示例</strong><a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：假设隐藏状态 <span class="arithmatex">\(Q = \{\text{晴}, \text{雨}\}\)</span>，观测 <span class="arithmatex">\(V = \{\text{干燥}, \text{潮湿}\}\)</span>，初始状态分布 <span class="arithmatex">\(\pi = [0.6, 0.4]\)</span>（晴=0.6，雨=0.4），转移矩阵 <span class="arithmatex">\(A\)</span> 和观测矩阵 <span class="arithmatex">\(B\)</span> 如下：<br />
-[
-A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begin{bmatrix} 0.8 &amp; 0.2 \ 0.3 &amp; 0.7 \end{bmatrix}
-]<br />
-观测序列 <span class="arithmatex">\(O = (\text{干燥}, \text{潮湿})\)</span>，计算 <span class="arithmatex">\(P(O \mid \lambda)\)</span>。  </p>
-<p><strong>解题步骤（前向算法）</strong>：<br />
-1. <strong>初始化前向变量</strong>（<span class="arithmatex">\(t=1\)</span>）：<br />
-   [
-   \alpha_1(\text{晴}) = \pi(\text{晴}) \cdot B(\text{干燥} \mid \text{晴}) = 0.6 \times 0.8 = 0.48<br />
-   ]<br />
-   [
-   \alpha_1(\text{雨}) = \pi(\text{雨}) \cdot B(\text{干燥} \mid \text{雨}) = 0.4 \times 0.3 = 0.12<br />
-   ]  </p>
+<p><strong>问题</strong>：假设隐藏状态 <span class="arithmatex">\(Q = \{\text{晴}, \text{雨}\}\)</span>，观测 <span class="arithmatex">\(V = \{\text{干燥}, \text{潮湿}\}\)</span>，初始状态分布 <span class="arithmatex">\(\pi = [0.6, 0.4]\)</span>（晴=0.6，雨=0.4），转移矩阵 <span class="arithmatex">\(A\)</span> 和观测矩阵 <span class="arithmatex">\(B\)</span> 如下：  </p>
+<div class="arithmatex">\[
+A = \begin{bmatrix} 0.7 &amp; 0.3 \\ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begin{bmatrix} 0.8 &amp; 0.2 \\ 0.3 &amp; 0.7 \end{bmatrix}
+\]</div>
+<p>观测序列 <span class="arithmatex">\(O = (\text{干燥}, \text{潮湿})\)</span>，计算 <span class="arithmatex">\(P(O \mid \lambda)\)</span>。  </p>
+<p><strong>解题步骤（前向算法）</strong>：  </p>
 <ol>
 <li>
-<p><strong>递推计算前向变量</strong>（<span class="arithmatex">\(t=2\)</span>）：<br />
-   [
-   \alpha_2(\text{晴}) = \left[\alpha_1(\text{晴}) \cdot A(\text{晴} \to \text{晴}) + \alpha_1(\text{雨}) \cdot A(\text{雨} \to \text{晴})\right] \cdot B(\text{潮湿} \mid \text{晴})<br />
-   ]<br />
-   [
-   = (0.48 \times 0.7 + 0.12 \times 0.4) \times 0.2 = (0.336 + 0.048) \times 0.2 = 0.0768<br />
-   ]<br />
-   [
-   \alpha_2(\text{雨}) = \left[\alpha_1(\text{晴}) \cdot A(\text{晴} \to \text{雨}) + \alpha_1(\text{雨}) \cdot A(\text{雨} \to \text{雨})\right] \cdot B(\text{潮湿} \mid \text{雨})<br />
-   ]<br />
-   [
-   = (0.48 \times 0.3 + 0.12 \times 0.6) \times 0.7 = (0.144 + 0.072) \times 0.7 = 0.1512<br />
-   ]  </p>
+<p><strong>初始化前向变量</strong>（<span class="arithmatex">\(t=1\)</span>）：  </p>
+<div class="arithmatex">\[
+\alpha_1(\text{晴}) = \pi(\text{晴}) \cdot B(\text{干燥} \mid \text{晴}) = 0.6 \times 0.8 = 0.48  
+\]</div>
+<div class="arithmatex">\[
+\alpha_1(\text{雨}) = \pi(\text{雨}) \cdot B(\text{干燥} \mid \text{雨}) = 0.4 \times 0.3 = 0.12  
+\]</div>
 </li>
 <li>
-<p><strong>求和得到结果</strong>：<br />
-   [
-   P(O \mid \lambda) = \alpha_2(\text{晴}) + \alpha_2(\text{雨}) = 0.0768 + 0.1512 = 0.228<br />
-   ]  </p>
+<p><strong>递推计算前向变量</strong>（<span class="arithmatex">\(t=2\)</span>）：  </p>
+<div class="arithmatex">\[
+\alpha_2(\text{晴}) = \left[\alpha_1(\text{晴}) \cdot A(\text{晴} \to \text{晴}) + \alpha_1(\text{雨}) \cdot A(\text{雨} \to \text{晴})\right] \cdot B(\text{潮湿} \mid \text{晴})  
+\]</div>
+<div class="arithmatex">\[
+= (0.48 \times 0.7 + 0.12 \times 0.4) \times 0.2 = (0.336 + 0.048) \times 0.2 = 0.0768  
+\]</div>
+<div class="arithmatex">\[
+\alpha_2(\text{雨}) = \left[\alpha_1(\text{晴}) \cdot A(\text{晴} \to \text{雨}) + \alpha_1(\text{雨}) \cdot A(\text{雨} \to \text{雨})\right] \cdot B(\text{潮湿} \mid \text{雨})  
+\]</div>
+<div class="arithmatex">\[
+= (0.48 \times 0.3 + 0.12 \times 0.6) \times 0.7 = (0.144 + 0.072) \times 0.7 = 0.1512  
+\]</div>
+</li>
+<li>
+<p><strong>求和得到结果</strong>：  </p>
+<div class="arithmatex">\[
+P(O \mid \lambda) = \alpha_2(\text{晴}) + \alpha_2(\text{雨}) = 0.0768 + 0.1512 = 0.228  
+\]</div>
 </li>
 </ol>
 <h4 id="2_5">2. <strong>预测问题：维特比算法示例</strong><a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：沿用上述HMM参数，观测序列 <span class="arithmatex">\(O = (\text{干燥}, \text{潮湿})\)</span>，求最可能的状态序列 <span class="arithmatex">\(I\)</span>。  </p>
-<p><strong>解题步骤（维特比算法）</strong>：<br />
-1. <strong>初始化维特比变量</strong>（<span class="arithmatex">\(t=1\)</span>）：<br />
-   [
-   \delta_1(\text{晴}) = \pi(\text{晴}) \cdot B(\text{干燥} \mid \text{晴}) = 0.48, \quad \psi_1(\text{晴}) = -<br />
-   ]<br />
-   [
-   \delta_1(\text{雨}) = \pi(\text{雨}) \cdot B(\text{干燥} \mid \text{雨}) = 0.12, \quad \psi_1(\text{雨}) = -<br />
-   ]  </p>
+<p><strong>解题步骤（维特比算法）</strong>：  </p>
 <ol>
 <li>
-<p><strong>递推计算维特比变量</strong>（<span class="arithmatex">\(t=2\)</span>）：<br />
-   [
-   \delta_2(\text{晴}) = \max_{\text{状态} s \in Q} \left[\delta_1(s) \cdot A(s \to \text{晴})\right] \cdot B(\text{潮湿} \mid \text{晴})<br />
-   ]<br />
-   [
-   = \max(0.48 \times 0.7, 0.12 \times 0.4) \times 0.2 = \max(0.336, 0.048) \times 0.2 = 0.336 \times 0.2 = 0.0672<br />
-   ]<br />
-   [
-   \psi_2(\text{晴}) = \text{晴} \quad (\text{来自状态晴的转移})<br />
-   ]<br />
-   [
-   \delta_2(\text{雨}) = \max_{\text{状态} s \in Q} \left[\delta_1(s) \cdot A(s \to \text{雨})\right] \cdot B(\text{潮湿} \mid \text{雨})<br />
-   ]<br />
-   [
-   = \max(0.48 \times 0.3, 0.12 \times 0.6) \times 0.7 = \max(0.144, 0.072) \times 0.7 = 0.144 \times 0.7 = 0.1008<br />
-   ]<br />
-   [
-   \psi_2(\text{雨}) = \text{晴} \quad (\text{来自状态晴的转移})<br />
-   ]  </p>
+<p><strong>初始化维特比变量</strong>（<span class="arithmatex">\(t=1\)</span>）：  </p>
+<div class="arithmatex">\[
+\delta_1(\text{晴}) = \pi(\text{晴}) \cdot B(\text{干燥} \mid \text{晴}) = 0.48, \quad \psi_1(\text{晴}) = -  
+\]</div>
+<div class="arithmatex">\[
+\delta_1(\text{雨}) = \pi(\text{雨}) \cdot B(\text{干燥} \mid \text{雨}) = 0.12, \quad \psi_1(\text{雨}) = -  
+\]</div>
+</li>
+<li>
+<p><strong>递推计算维特比变量</strong>（<span class="arithmatex">\(t=2\)</span>）：  </p>
+<div class="arithmatex">\[
+\delta_2(\text{晴}) = \max_{\text{状态} s \in Q} \left[\delta_1(s) \cdot A(s \to \text{晴})\right] \cdot B(\text{潮湿} \mid \text{晴})  
+\]</div>
+<div class="arithmatex">\[
+= \max(0.48 \times 0.7, 0.12 \times 0.4) \times 0.2 = \max(0.336, 0.048) \times 0.2 = 0.336 \times 0.2 = 0.0672  
+\]</div>
+<div class="arithmatex">\[
+\psi_2(\text{晴}) = \text{晴} \quad (\text{来自状态晴的转移})  
+\]</div>
+<div class="arithmatex">\[
+\delta_2(\text{雨}) = \max_{\text{状态} s \in Q} \left[\delta_1(s) \cdot A(s \to \text{雨})\right] \cdot B(\text{潮湿} \mid \text{雨})  
+\]</div>
+<div class="arithmatex">\[
+= \max(0.48 \times 0.3, 0.12 \times 0.6) \times 0.7 = \max(0.144, 0.072) \times 0.7 = 0.144 \times 0.7 = 0.1008  
+\]</div>
+<div class="arithmatex">\[
+\psi_2(\text{雨}) = \text{晴} \quad (\text{来自状态晴的转移})  
+\]</div>
 </li>
 <li>
 <p><strong>回溯最优路径</strong>：  </p>
@@ -9211,12 +9227,14 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 <p><strong>势函数（Potential Function）</strong>：定义在最大团上的非负函数，通常表示为 <span class="arithmatex">\(\Psi_C(Y_C) = \exp\{-E(Y_C)\}\)</span>，其中 <span class="arithmatex">\(E(Y_C)\)</span> 为能量函数。  </p>
 </li>
 <li>
-<p><strong>联合概率分解公式</strong>：<br />
-  [
-  P(Y) = \frac{1}{Z} \prod_{C} \Psi_C(Y_C), \quad Z = \sum_Y \prod_C \Psi_C(Y_C)
-  ]  </p>
+<p><strong>联合概率分解公式</strong>：  </p>
+<div class="arithmatex">\[
+P(Y) = \frac{1}{Z} \prod_{C} \Psi_C(Y_C), \quad Z = \sum_Y \prod_C \Psi_C(Y_C)
+\]</div>
 </li>
-<li><span class="arithmatex">\(Z\)</span> 为规范化因子，确保概率和为1。  </li>
+<li>
+<p><span class="arithmatex">\(Z\)</span> 为规范化因子，确保概率和为1。  </p>
+</li>
 </ul>
 <h4 id="2_6">2. <strong>求解方法：因子分解步骤</strong><a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
 <ol>
@@ -9224,24 +9242,30 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 <li><strong>定义势函数</strong>：根据领域知识或数据，为每个最大团设计势函数（如指数形式）。  </li>
 <li><strong>计算规范化因子</strong>：对所有可能的变量取值求和，归一化联合概率。  </li>
 </ol>
-<p><strong>示例：图像像素依赖模型</strong><br />
-- <strong>图结构</strong>：4个像素节点 <span class="arithmatex">\(Y_1, Y_2, Y_3, Y_4\)</span> 构成正方形，边表示相邻像素的依赖关系。<br />
-- <strong>最大团识别</strong>：<br />
-  - 边相连的两节点团：<span class="arithmatex">\(\{Y_1,Y_2\}, \{Y_2,Y_3\}, \{Y_3,Y_4\}, \{Y_4,Y_1\}\)</span>（均为最大团，因无法加入第三个节点保持全连接）。<br />
-- <strong>联合概率分解</strong>：<br />
-  [
-  P(Y) = \frac{1}{Z} \Psi_{12}(Y_1,Y_2) \Psi_{23}(Y_2,Y_3) \Psi_{34}(Y_3,Y_4) \Psi_{41}(Y_4,Y_1)
-  ]<br />
-  - 势函数 <span class="arithmatex">\(\Psi_{ij}(Y_i,Y_j)\)</span> 可表示相邻像素颜色相似度（如颜色差异越小，势函数值越高）。  </p>
+<p><strong>示例：图像像素依赖模型</strong>  </p>
+<ul>
+<li><strong>图结构</strong>：4个像素节点 <span class="arithmatex">\(Y_1, Y_2, Y_3, Y_4\)</span> 构成正方形，边表示相邻像素的依赖关系。  </li>
+<li><strong>最大团识别</strong>：  </li>
+<li>边相连的两节点团：<span class="arithmatex">\(\{Y_1,Y_2\}, \{Y_2,Y_3\}, \{Y_3,Y_4\}, \{Y_4,Y_1\}\)</span>（均为最大团，因无法加入第三个节点保持全连接）。  </li>
+<li>
+<p><strong>联合概率分解</strong>：  </p>
+<div class="arithmatex">\[
+P(Y) = \frac{1}{Z} \Psi_{12}(Y_1,Y_2) \Psi_{23}(Y_2,Y_3) \Psi_{34}(Y_3,Y_4) \Psi_{41}(Y_4,Y_1)
+\]</div>
+</li>
+<li>
+<p>势函数 <span class="arithmatex">\(\Psi_{ij}(Y_i,Y_j)\)</span> 可表示相邻像素颜色相似度（如颜色差异越小，势函数值越高）。  </p>
+</li>
+</ul>
 <h3 id="crf">二、条件随机场（CRF）<a class="headerlink" href="#crf" title="Permanent link">&para;</a></h3>
 <h4 id="1_7">1. <strong>定义与类型</strong><a class="headerlink" href="#1_7" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p><strong>条件随机场</strong>：给定输入变量 <span class="arithmatex">\(X\)</span> 时，输出变量 <span class="arithmatex">\(Y\)</span> 构成的马尔可夫随机场，即 <span class="arithmatex">\(P(Y|X)\)</span> 满足马尔可夫性：<br />
-  [
-  P(Y_v | X, Y_w, w \neq v) = P(Y_v | X, Y_w, w \sim v)
-  ]<br />
-  （<span class="arithmatex">\(w \sim v\)</span> 表示与 <span class="arithmatex">\(v\)</span> 相邻的节点）。  </p>
+<p><strong>条件随机场</strong>：给定输入变量 <span class="arithmatex">\(X\)</span> 时，输出变量 <span class="arithmatex">\(Y\)</span> 构成的马尔可夫随机场，即 <span class="arithmatex">\(P(Y|X)\)</span> 满足马尔可夫性：  </p>
+<div class="arithmatex">\[
+P(Y_v | X, Y_w, w \neq v) = P(Y_v | X, Y_w, w \sim v)
+\]</div>
+<p>（<span class="arithmatex">\(w \sim v\)</span> 表示与 <span class="arithmatex">\(v\)</span> 相邻的节点）。  </p>
 </li>
 <li>
 <p><strong>线性链条件随机场（Linear Chain CRF）</strong>：  </p>
@@ -9251,11 +9275,15 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 </ul>
 <h4 id="2_7">2. <strong>参数化形式与求解</strong><a class="headerlink" href="#2_7" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>因子分解</strong>：基于相邻节点的势函数（转移特征和状态特征）。<br />
-  [
-  P(y|x) = \frac{1}{Z(x)} \exp\left( \sum_{i,k} \lambda_k t_k(y_{i-1}, y_i, x, i) + \sum_{i,l} \mu_l s_l(y_i, x, i) \right)
-  ]  </li>
-<li><strong>转移特征 <span class="arithmatex">\(t_k\)</span></strong>：定义在边 <span class="arithmatex">\((y_{i-1}, y_i)\)</span> 上，依赖前一状态和当前状态（如“前一标签为名词，当前标签为动词”的概率）。  </li>
+<li>
+<p><strong>因子分解</strong>：基于相邻节点的势函数（转移特征和状态特征）。  </p>
+<div class="arithmatex">\[
+P(y|x) = \frac{1}{Z(x)} \exp\left( \sum_{i,k} \lambda_k t_k(y_{i-1}, y_i, x, i) + \sum_{i,l} \mu_l s_l(y_i, x, i) \right)
+\]</div>
+</li>
+<li>
+<p><strong>转移特征 <span class="arithmatex">\(t_k\)</span></strong>：定义在边 <span class="arithmatex">\((y_{i-1}, y_i)\)</span> 上，依赖前一状态和当前状态（如“前一标签为名词，当前标签为动词”的概率）。  </p>
+</li>
 <li><strong>状态特征 <span class="arithmatex">\(s_l\)</span></strong>：定义在节点 <span class="arithmatex">\(y_i\)</span> 上，依赖当前状态和输入 <span class="arithmatex">\(x\)</span>（如“当前词是‘跑步’，标签为动词”的概率）。  </li>
 <li>
 <p><span class="arithmatex">\(\lambda_k, \mu_l\)</span>：特征权重，通过学习确定。  </p>
@@ -9314,12 +9342,16 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 <ul>
 <li><strong>基本定义</strong>（强连通非周期性图）：<br />
   当图满足强连通且非周期性时，随机游走的概率分布收敛于唯一平稳分布 <span class="arithmatex">\(R\)</span>，即PageRank值，满足 <span class="arithmatex">\(R = MR\)</span>。  </li>
-<li><strong>一般定义</strong>（任意有向图）：<br />
-  引入<strong>平滑项</strong>解决图非强连通或存在悬挂节点（无出边）的问题：<br />
-  [
-  R = dMR + \frac{1-d}{n}\mathbf{1}
-  ]  </li>
-<li><span class="arithmatex">\(d\)</span>：阻尼因子（平衡结构跳转与随机跳转）；  </li>
+<li>
+<p><strong>一般定义</strong>（任意有向图）：<br />
+  引入<strong>平滑项</strong>解决图非强连通或存在悬挂节点（无出边）的问题：  </p>
+<div class="arithmatex">\[
+R = dMR + \frac{1-d}{n}\mathbf{1}
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(d\)</span>：阻尼因子（平衡结构跳转与随机跳转）；  </p>
+</li>
 <li><span class="arithmatex">\(\frac{1-d}{n}\mathbf{1}\)</span>：随机跳转的均匀分布，确保平稳分布存在。  </li>
 </ul>
 <h3 id="_26">三、求解方法<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
@@ -9328,29 +9360,35 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 <li><strong>步骤</strong>：  </li>
 <li>初始化概率向量 <span class="arithmatex">\(R_0 = [1/n, 1/n, \dots, 1/n]^T\)</span>。  </li>
 <li>迭代计算 <span class="arithmatex">\(R_{t+1} = dMR_t + \frac{1-d}{n}\mathbf{1}\)</span>，直至 <span class="arithmatex">\(R_{t+1}\)</span> 与 <span class="arithmatex">\(R_t\)</span> 差异小于阈值（如 <span class="arithmatex">\(10^{-6}\)</span>）。  </li>
-<li><strong>示例</strong>：<br />
-<strong>问题</strong>：简化网页图（4节点A、B、C、D），转移矩阵 <span class="arithmatex">\(M\)</span> 如下，取 <span class="arithmatex">\(d=0.8\)</span>，求PageRank值。<br />
-  [
-  M = \begin{bmatrix}
-  0 &amp; 1/2 &amp; 0 &amp; 0 \
-  1/3 &amp; 0 &amp; 0 &amp; 1/2 \
-  1/3 &amp; 0 &amp; 1 &amp; 1/2 \
-  1/3 &amp; 1/2 &amp; 0 &amp; 0
-  \end{bmatrix}
-  ]<br />
-<strong>解题步骤</strong>：  </li>
-<li>计算 <span class="arithmatex">\(dM\)</span> 和 <span class="arithmatex">\(\frac{1-d}{n}\mathbf{1}\)</span>：<br />
-     [
-     dM = 0.8 \times M = \begin{bmatrix}
-     0 &amp; 0.4 &amp; 0 &amp; 0 \
-     8/30 &amp; 0 &amp; 0 &amp; 0.4 \
-     8/30 &amp; 0 &amp; 0.8 &amp; 0.4 \
-     8/30 &amp; 0.4 &amp; 0 &amp; 0
-     \end{bmatrix}, \quad \frac{1-d}{n}\mathbf{1} = \begin{bmatrix}
-     0.05 \ 0.05 \ 0.05 \ 0.05
-     \end{bmatrix}
-     ]  </li>
-<li>迭代计算：  <ul>
+<li>
+<p><strong>示例</strong>：<br />
+<strong>问题</strong>：简化网页图（4节点A、B、C、D），转移矩阵 <span class="arithmatex">\(M\)</span> 如下，取 <span class="arithmatex">\(d=0.8\)</span>，求PageRank值。  </p>
+<div class="arithmatex">\[
+M = \begin{bmatrix}
+0 &amp; 1/2 &amp; 0 &amp; 0 \\
+1/3 &amp; 0 &amp; 0 &amp; 1/2 \\
+1/3 &amp; 0 &amp; 1 &amp; 1/2 \\
+1/3 &amp; 1/2 &amp; 0 &amp; 0
+\end{bmatrix}
+\]</div>
+<p><strong>解题步骤</strong>：  </p>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(dM\)</span> 和 <span class="arithmatex">\(\frac{1-d}{n}\mathbf{1}\)</span>：  </p>
+<div class="arithmatex">\[
+dM = 0.8 \times M = \begin{bmatrix}
+0 &amp; 0.4 &amp; 0 &amp; 0 \\
+8/30 &amp; 0 &amp; 0 &amp; 0.4 \\
+8/30 &amp; 0 &amp; 0.8 &amp; 0.4 \\
+8/30 &amp; 0.4 &amp; 0 &amp; 0
+\end{bmatrix}, \quad \frac{1-d}{n}\mathbf{1} = \begin{bmatrix}
+0.05 \\ 0.05 \\ 0.05 \\ 0.05
+\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p>迭代计算：  </p>
+<ul>
 <li><span class="arithmatex">\(R_0 = [0.25, 0.25, 0.25, 0.25]^T\)</span>  </li>
 <li><span class="arithmatex">\(R_1 = dMR_0 + \text{平滑项} = [0.15, 0.2167, 0.4167, 0.2167]^T\)</span>  </li>
 <li>继续迭代直至收敛，最终得到 <span class="arithmatex">\(R \approx [0.101, 0.128, 0.635, 0.136]^T\)</span>（节点C的PageRank值最高）。  </li>
@@ -9367,15 +9405,19 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 <li><strong>示例</strong>：<br />
 <strong>问题</strong>：3节点图，转移矩阵 <span class="arithmatex">\(M = \begin{bmatrix}0 &amp; 0 &amp; 1 \\ 1/2 &amp; 0 &amp; 0 \\ 1/2 &amp; 1 &amp; 0\end{bmatrix}\)</span>，<span class="arithmatex">\(d=0.85\)</span>，求PageRank。<br />
 <strong>解题步骤</strong>：  </li>
-<li>构造转移矩阵 <span class="arithmatex">\(A = 0.85M + 0.15/3E\)</span>：<br />
-     [
-     A = \begin{bmatrix}
-     0.05 &amp; 0.05 &amp; 0.9 \
-     0.475 &amp; 0.05 &amp; 0.05 \
-     0.475 &amp; 0.9 &amp; 0.05
-     \end{bmatrix}
-     ]  </li>
-<li>初始化 <span class="arithmatex">\(x_0 = [1, 1, 1]^T\)</span>，迭代计算：  <ul>
+<li>
+<p>构造转移矩阵 <span class="arithmatex">\(A = 0.85M + 0.15/3E\)</span>：  </p>
+<div class="arithmatex">\[
+A = \begin{bmatrix}
+0.05 &amp; 0.05 &amp; 0.9 \\
+0.475 &amp; 0.05 &amp; 0.05 \\
+0.475 &amp; 0.9 &amp; 0.05
+\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p>初始化 <span class="arithmatex">\(x_0 = [1, 1, 1]^T\)</span>，迭代计算：  </p>
+<ul>
 <li><span class="arithmatex">\(y_1 = Ax_0 = [1, 0.575, 1.425]^T\)</span>，归一化 <span class="arithmatex">\(x_1 = [0.7018, 0.4035, 1]^T\)</span>  </li>
 <li>继续迭代至收敛，最终 <span class="arithmatex">\(R \approx [0.3877, 0.2149, 0.3974]^T\)</span>。  </li>
 </ul>
@@ -9401,17 +9443,21 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
 </ul>
 <h3 id="_28">五、重点总结<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>核心公式</strong>：<br />
-  [
-  \text{一般PageRank：} \quad PR(v_i) = d\sum_{v_j \in M(v_i)}\frac{PR(v_j)}{L(v_j)} + \frac{1-d}{n}
-  ]<br />
-  （<span class="arithmatex">\(M(v_i)\)</span>：指向 <span class="arithmatex">\(v_i\)</span> 的节点集；<span class="arithmatex">\(L(v_j)\)</span>：<span class="arithmatex">\(v_j\)</span> 的出边数）。  </li>
-<li><strong>算法对比</strong>：<br />
+<li>
+<p><strong>核心公式</strong>：  </p>
+<div class="arithmatex">\[
+\text{一般PageRank：} \quad PR(v_i) = d\sum_{v_j \in M(v_i)}\frac{PR(v_j)}{L(v_j)} + \frac{1-d}{n}
+\]</div>
+<p>（<span class="arithmatex">\(M(v_i)\)</span>：指向 <span class="arithmatex">\(v_i\)</span> 的节点集；<span class="arithmatex">\(L(v_j)\)</span>：<span class="arithmatex">\(v_j\)</span> 的出边数）。  </p>
+</li>
+<li>
+<p><strong>算法对比</strong>：<br />
   | 方法       | 优点                  | 缺点                  | 适用场景         |<br />
   |------------|-----------------------|-----------------------|------------------|<br />
   | 迭代算法   | 简单直观，易实现      | 收敛速度较慢          | 中小型图         |<br />
   | 幂法       | 收敛快，适合大规模图  | 需矩阵运算优化        | 互联网级图       |<br />
-  | 代数算法   | 精确解                | 计算复杂度高          | 小规模图         |  </li>
+  | 代数算法   | 精确解                | 计算复杂度高          | 小规模图         |  </p>
+</li>
 <li><strong>应用本质</strong>：通过图的拓扑结构建模结点依赖，将重要性量化为概率分布，适用于排序与关键结点识别。</li>
 </ul>
 
@@ -9476,7 +9522,7 @@ A = \begin{bmatrix} 0.7 &amp; 0.3 \ 0.4 &amp; 0.6 \end{bmatrix}, \quad B = \begi
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

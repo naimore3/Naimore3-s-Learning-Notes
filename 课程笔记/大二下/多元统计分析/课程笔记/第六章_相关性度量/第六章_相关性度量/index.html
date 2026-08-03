@@ -9182,25 +9182,33 @@
 </ul>
 <h4 id="2_3">2. 数据矩阵表示<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>设<span class="arithmatex">\(n\)</span>个样本，每个样本有<span class="arithmatex">\(m\)</span>个特征，数据矩阵为：
-  $$
-  X = \begin{pmatrix}
-  x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1m} \
-  x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2m} \
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
-  x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nm}
-  \end{pmatrix}
-  $$</li>
-<li>样本<span class="arithmatex">\(i\)</span>和<span class="arithmatex">\(j\)</span>的特征向量为<span class="arithmatex">\(x_i=(x_{i1}, x_{i2}, \dots, x_{im})^T\)</span>，<span class="arithmatex">\(x_j=(x_{j1}, x_{j2}, \dots, x_{jm})^T\)</span></li>
+<li>
+<p>设<span class="arithmatex">\(n\)</span>个样本，每个样本有<span class="arithmatex">\(m\)</span>个特征，数据矩阵为：</p>
+<div class="arithmatex">\[
+X = \begin{pmatrix}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1m} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2m} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n1} &amp; x_{n2} &amp; \cdots &amp; x_{nm}
+\end{pmatrix}
+\]</div>
+</li>
+<li>
+<p>样本<span class="arithmatex">\(i\)</span>和<span class="arithmatex">\(j\)</span>的特征向量为<span class="arithmatex">\(x_i=(x_{i1}, x_{i2}, \dots, x_{im})^T\)</span>，<span class="arithmatex">\(x_j=(x_{j1}, x_{j2}, \dots, x_{jm})^T\)</span></p>
+</li>
 </ul>
 <h3 id="632">6.3.2 常见距离度量方法<a class="headerlink" href="#632" title="Permanent link">&para;</a></h3>
 <h4 id="1-euclidean-distance">1. 欧氏距离（Euclidean distance）<a class="headerlink" href="#1-euclidean-distance" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：最常用的直线距离，忽略特征量纲影响</li>
-<li><strong>公式</strong>：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{ij} = \sqrt{\sum_{k=1}^{m}(x_{ik} - x_{jk})^2}\)</span>\)</span>
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{ij}^2 = \sum_{k=1}^{m}(x_{ik} - x_{jk})^2 \quad (\text{欧氏距离平方})\)</span>\)</span></li>
-<li><strong>求解步骤</strong>：</li>
+<li>
+<p><strong>公式</strong>：</p>
+<div class="arithmatex">\[d_{ij} = \sqrt{\sum_{k=1}^{m}(x_{ik} - x_{jk})^2}\]</div>
+<div class="arithmatex">\[d_{ij}^2 = \sum_{k=1}^{m}(x_{ik} - x_{jk})^2 \quad (\text{欧氏距离平方})\]</div>
+</li>
+<li>
+<p><strong>求解步骤</strong>：</p>
+</li>
 <li>计算各特征差的平方</li>
 <li>求和后开平方</li>
 <li><strong>例子</strong>：计算三城市指标的欧氏距离（表6.3.1）
@@ -9208,27 +9216,39 @@
   |---|---|---|---|
   | 甲(A) | 160 | 60 | 115 |
   | 乙(B) | 110 | 43 | 93 |</li>
-<li>步骤：
-    <span class="arithmatex">\(<span class="arithmatex">\(d_{AB} = \sqrt{(160-110)^2 + (60-43)^2 + (115-93)^2} = \sqrt{50^2 + 17^2 + 22^2} = \sqrt{2500+289+484} = \sqrt{3273} \approx 57.21\)</span>\)</span></li>
+<li>
+<p>步骤：</p>
+<div class="arithmatex">\[d_{AB} = \sqrt{(160-110)^2 + (60-43)^2 + (115-93)^2} = \sqrt{50^2 + 17^2 + 22^2} = \sqrt{2500+289+484} = \sqrt{3273} \approx 57.21\]</div>
+</li>
 </ul>
 <h4 id="2-minkowski-distance">2. 明氏距离（Minkowski distance）<a class="headerlink" href="#2-minkowski-distance" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：欧氏距离的推广，通过参数<span class="arithmatex">\(q\)</span>调整距离度量方式</li>
-<li><strong>公式</strong>：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{ij}(q) = \left(\sum_{k=1}^{m}|x_{ik} - x_{jk}|^q\right)^{1/q}\)</span>\)</span></li>
-<li><span class="arithmatex">\(q=1\)</span>：曼哈顿距离（Manhattan distance），<span class="arithmatex">\(d_{ij}(1) = \sum_{k=1}^{m}|x_{ik} - x_{jk}|\)</span></li>
+<li>
+<p><strong>公式</strong>：</p>
+<div class="arithmatex">\[d_{ij}(q) = \left(\sum_{k=1}^{m}|x_{ik} - x_{jk}|^q\right)^{1/q}\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(q=1\)</span>：曼哈顿距离（Manhattan distance），<span class="arithmatex">\(d_{ij}(1) = \sum_{k=1}^{m}|x_{ik} - x_{jk}|\)</span></p>
+</li>
 <li><span class="arithmatex">\(q=2\)</span>：欧氏距离</li>
 <li><span class="arithmatex">\(q \to \infty\)</span>：切比雪夫距离（Chebychev distance），<span class="arithmatex">\(d_{ij}(\infty) = \max_k|x_{ik} - x_{jk}|\)</span></li>
-<li><strong>例子</strong>：计算甲乙城市的曼哈顿距离
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{AB}(1) = |160-110| + |60-43| + |115-93| = 50+17+22=89\)</span>\)</span></li>
+<li>
+<p><strong>例子</strong>：计算甲乙城市的曼哈顿距离</p>
+<div class="arithmatex">\[d_{AB}(1) = |160-110| + |60-43| + |115-93| = 50+17+22=89\]</div>
+</li>
 </ul>
 <h4 id="3-mahalanobis-distance">3. 马氏距离（Mahalanobis distance）<a class="headerlink" href="#3-mahalanobis-distance" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：考虑特征相关性和方差的统计距离，消除量纲影响</li>
-<li><strong>公式</strong>：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{ij} = \sqrt{(x_i - x_j)^T\Sigma^{-1}(x_i - x_j)}\)</span>\)</span>
-  其中<span class="arithmatex">\(\Sigma\)</span>为样本协方差矩阵</li>
-<li><strong>求解步骤</strong>：</li>
+<li>
+<p><strong>公式</strong>：</p>
+<div class="arithmatex">\[d_{ij} = \sqrt{(x_i - x_j)^T\Sigma^{-1}(x_i - x_j)}\]</div>
+<p>其中<span class="arithmatex">\(\Sigma\)</span>为样本协方差矩阵</p>
+</li>
+<li>
+<p><strong>求解步骤</strong>：</p>
+</li>
 <li>计算样本均值向量<span class="arithmatex">\(\bar{x}\)</span>和协方差矩阵<span class="arithmatex">\(\Sigma\)</span></li>
 <li>计算样本差向量<span class="arithmatex">\(x_i - x_j\)</span></li>
 <li>计算协方差矩阵的逆<span class="arithmatex">\(\Sigma^{-1}\)</span></li>
@@ -9237,52 +9257,70 @@
 <li>步骤：<ol>
 <li>样本差向量：<span class="arithmatex">\(x_A - x_B = (50, 17, 22)^T\)</span></li>
 <li>协方差矩阵逆：<span class="arithmatex">\(\Sigma^{-1} = \begin{pmatrix}1/1300 &amp; 0 &amp; 0 \\ 0 &amp; 1/163 &amp; 0 \\ 0 &amp; 0 &amp; 1/401.3\end{pmatrix}\)</span></li>
-<li>计算：
-$$
-(x_A - x_B)<sup -1="-1">T\Sigma</sup>(x_A - x_B) = 50^2/1300 + 17^2/163 + 22^2/401.3 \approx 1.923 + 1.773 + 1.206 = 4.902
-$$
-<span class="arithmatex">\(<span class="arithmatex">\(d_{AB} = \sqrt{4.902} \approx 2.25\)</span>\)</span></li>
+<li>
+<p>计算：</p>
+<div class="arithmatex">\[
+(x_A - x_B)^T\Sigma^{-1}(x_A - x_B) = 50^2/1300 + 17^2/163 + 22^2/401.3 \approx 1.923 + 1.773 + 1.206 = 4.902
+\]</div>
+<div class="arithmatex">\[d_{AB} = \sqrt{4.902} \approx 2.25\]</div>
+</li>
 </ol>
 </li>
 </ul>
 <h4 id="4-canberra-distance">4. 兰氏距离（Canberra distance）<a class="headerlink" href="#4-canberra-distance" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：适用于正数值特征，减少量纲影响的距离</li>
-<li><strong>公式</strong>：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{ij} = \sum_{k=1}^{m}\frac{|x_{ik} - x_{jk}|}{x_{ik} + x_{jk}}\)</span>\)</span></li>
-<li><strong>例子</strong>：计算甲乙城市的兰氏距离</li>
-<li>步骤：
-    <span class="arithmatex">\(<span class="arithmatex">\(d_{AB} = \frac{|160-110|}{160+110} + \frac{|60-43|}{60+43} + \frac{|115-93|}{115+93}\)</span>\)</span>
-    <span class="arithmatex">\(<span class="arithmatex">\(= \frac{50}{270} + \frac{17}{103} + \frac{22}{208} \approx 0.185 + 0.165 + 0.106 = 0.456\)</span>\)</span></li>
+<li>
+<p><strong>公式</strong>：</p>
+<div class="arithmatex">\[d_{ij} = \sum_{k=1}^{m}\frac{|x_{ik} - x_{jk}|}{x_{ik} + x_{jk}}\]</div>
+</li>
+<li>
+<p><strong>例子</strong>：计算甲乙城市的兰氏距离</p>
+</li>
+<li>
+<p>步骤：</p>
+<div class="arithmatex">\[d_{AB} = \frac{|160-110|}{160+110} + \frac{|60-43|}{60+43} + \frac{|115-93|}{115+93}\]</div>
+<div class="arithmatex">\[= \frac{50}{270} + \frac{17}{103} + \frac{22}{208} \approx 0.185 + 0.165 + 0.106 = 0.456\]</div>
+</li>
 </ul>
 <h4 id="5">5. 自定义距离<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>定义</strong>：根据需求自定义距离函数，如加权距离：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{ij} = \sqrt{\sum_{k=1}^{m}w_k(x_{ik} - x_{jk})^2}\)</span>\)</span>
-  其中<span class="arithmatex">\(w_k\)</span>为特征权重</li>
+<li>
+<p><strong>定义</strong>：根据需求自定义距离函数，如加权距离：</p>
+<div class="arithmatex">\[d_{ij} = \sqrt{\sum_{k=1}^{m}w_k(x_{ik} - x_{jk})^2}\]</div>
+<p>其中<span class="arithmatex">\(w_k\)</span>为特征权重</p>
+</li>
 </ul>
 <h3 id="633">6.3.3 相似系数<a class="headerlink" href="#633" title="Permanent link">&para;</a></h3>
 <h4 id="1-cosine-similarity">1. 余弦相似度（Cosine similarity）<a class="headerlink" href="#1-cosine-similarity" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：衡量向量方向的相似性，忽略长度差异</li>
-<li><strong>公式</strong>：
-  <span class="arithmatex">\(<span class="arithmatex">\(\cos\theta_{ij} = \frac{\sum_{k=1}^{m}x_{ik}x_{jk}}{\sqrt{\sum_{k=1}^{m}x_{ik}^2}\sqrt{\sum_{k=1}^{m}x_{jk}^2}}\)</span>\)</span></li>
-<li><strong>求解步骤</strong>：</li>
+<li>
+<p><strong>公式</strong>：</p>
+<div class="arithmatex">\[\cos\theta_{ij} = \frac{\sum_{k=1}^{m}x_{ik}x_{jk}}{\sqrt{\sum_{k=1}^{m}x_{ik}^2}\sqrt{\sum_{k=1}^{m}x_{jk}^2}}\]</div>
+</li>
+<li>
+<p><strong>求解步骤</strong>：</p>
+</li>
 <li>计算两向量的点积</li>
 <li>计算两向量的模长</li>
 <li>代入公式计算</li>
 <li><strong>例子</strong>：计算向量<span class="arithmatex">\(x=(1,2,3)\)</span>和<span class="arithmatex">\(y=(2,4,6)\)</span>的余弦相似度</li>
-<li>步骤：
-    <span class="arithmatex">\(<span class="arithmatex">\(\text{点积} = 1×2 + 2×4 + 3×6 = 2+8+18=28\)</span>\)</span>
-    <span class="arithmatex">\(<span class="arithmatex">\(|x| = \sqrt{1^2+2^2+3^2} = \sqrt{14}, \quad |y| = \sqrt{2^2+4^2+6^2} = \sqrt{56}=2\sqrt{14}\)</span>\)</span>
-    <span class="arithmatex">\(<span class="arithmatex">\(\cos\theta = \frac{28}{\sqrt{14}×2\sqrt{14}} = \frac{28}{2×14}=1\)</span>\)</span>
-    （两向量共线，相似度为1）</li>
+<li>
+<p>步骤：</p>
+<div class="arithmatex">\[\text{点积} = 1×2 + 2×4 + 3×6 = 2+8+18=28\]</div>
+<div class="arithmatex">\[|x| = \sqrt{1^2+2^2+3^2} = \sqrt{14}, \quad |y| = \sqrt{2^2+4^2+6^2} = \sqrt{56}=2\sqrt{14}\]</div>
+<div class="arithmatex">\[\cos\theta = \frac{28}{\sqrt{14}×2\sqrt{14}} = \frac{28}{2×14}=1\]</div>
+<p>（两向量共线，相似度为1）</p>
+</li>
 </ul>
 <h4 id="2_4">2. 相似系数与距离的关系<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
 <ul>
-<li>距离越大，相似系数越小，如：
-  <span class="arithmatex">\(<span class="arithmatex">\(\text{相似系数} = 1 - \frac{d_{ij}}{d_{\text{max}}}\)</span>\)</span>
-  其中<span class="arithmatex">\(d_{\text{max}}\)</span>为最大距离</li>
+<li>
+<p>距离越大，相似系数越小，如：</p>
+<div class="arithmatex">\[\text{相似系数} = 1 - \frac{d_{ij}}{d_{\text{max}}}\]</div>
+<p>其中<span class="arithmatex">\(d_{\text{max}}\)</span>为最大距离</p>
+</li>
 </ul>
 <h3 id="634">6.3.4 距离分类<a class="headerlink" href="#634" title="Permanent link">&para;</a></h3>
 <h4 id="1-dissimilarities">1. 不相似性测度（Dissimilarities）<a class="headerlink" href="#1-dissimilarities" title="Permanent link">&para;</a></h4>
@@ -9327,15 +9365,17 @@ $$
 <h3 id="636">6.3.6 距离矩阵与应用<a class="headerlink" href="#636" title="Permanent link">&para;</a></h3>
 <h4 id="1_5">1. 距离矩阵定义<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li>设<span class="arithmatex">\(n\)</span>个样本，距离矩阵<span class="arithmatex">\(D\)</span>为：
-  $$
-  D = \begin{pmatrix}
-  0 &amp; d_{12} &amp; d_{13} &amp; \cdots &amp; d_{1n} \
-  d_{21} &amp; 0 &amp; d_{23} &amp; \cdots &amp; d_{2n} \
-  \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
-  d_{n1} &amp; d_{n2} &amp; d_{n3} &amp; \cdots &amp; 0
-  \end{pmatrix}
-  $$</li>
+<li>
+<p>设<span class="arithmatex">\(n\)</span>个样本，距离矩阵<span class="arithmatex">\(D\)</span>为：</p>
+<div class="arithmatex">\[
+D = \begin{pmatrix}
+0 &amp; d_{12} &amp; d_{13} &amp; \cdots &amp; d_{1n} \\
+d_{21} &amp; 0 &amp; d_{23} &amp; \cdots &amp; d_{2n} \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+d_{n1} &amp; d_{n2} &amp; d_{n3} &amp; \cdots &amp; 0
+\end{pmatrix}
+\]</div>
+</li>
 </ul>
 <h4 id="2_5">2. 应用场景<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h4>
 <ul>
@@ -9351,11 +9391,17 @@ $$
 </ul>
 <h4 id="2_6">2. 计算步骤<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
 <ul>
-<li>原始单位：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{AB} = \sqrt{(5-10)^2 + (10-1)^2} = \sqrt{25+81} = \sqrt{106} \approx 10.3\)</span>\)</span></li>
-<li>变换单位：
-  <span class="arithmatex">\(<span class="arithmatex">\(d_{AB} = \sqrt{(0.05-0.1)^2 + (10-1)^2} = \sqrt{0.0025+81} \approx \sqrt{81.0025} \approx 9.0\)</span>\)</span></li>
-<li><strong>结论</strong>：欧氏距离受量纲影响，需标准化后再计算</li>
+<li>
+<p>原始单位：</p>
+<div class="arithmatex">\[d_{AB} = \sqrt{(5-10)^2 + (10-1)^2} = \sqrt{25+81} = \sqrt{106} \approx 10.3\]</div>
+</li>
+<li>
+<p>变换单位：</p>
+<div class="arithmatex">\[d_{AB} = \sqrt{(0.05-0.1)^2 + (10-1)^2} = \sqrt{0.0025+81} \approx \sqrt{81.0025} \approx 9.0\]</div>
+</li>
+<li>
+<p><strong>结论</strong>：欧氏距离受量纲影响，需标准化后再计算</p>
+</li>
 </ul>
 
 
@@ -9419,7 +9465,7 @@ $$
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

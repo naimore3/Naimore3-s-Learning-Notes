@@ -8303,12 +8303,16 @@
 <h2 id="_10">梯度下降法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <h3 id="_11">一、核心概念与迭代框架<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p><strong>定义</strong>：<br />
-梯度下降法是一种<strong>无约束优化算法</strong>，通过迭代更新参数，沿目标函数<strong>负梯度方向</strong>（最速下降方向）搜索最小值点。其核心流程为：<br />
-1. <strong>确定搜索方向</strong>：负梯度方向 <span class="arithmatex">\(d^k = -\nabla f(x^k)\)</span>。<br />
-2. <strong>确定步长</strong>：通过线搜索（精确或非精确）确定最优步长 <span class="arithmatex">\(\alpha_k\)</span>，迭代公式为：<br />
-   [
-   x^{k+1} = x^k + \alpha_k d^k = x^k - \alpha_k \nabla f(x^k)
-   ]  </p>
+梯度下降法是一种<strong>无约束优化算法</strong>，通过迭代更新参数，沿目标函数<strong>负梯度方向</strong>（最速下降方向）搜索最小值点。其核心流程为：  </p>
+<ol>
+<li><strong>确定搜索方向</strong>：负梯度方向 <span class="arithmatex">\(d^k = -\nabla f(x^k)\)</span>。  </li>
+<li>
+<p><strong>确定步长</strong>：通过线搜索（精确或非精确）确定最优步长 <span class="arithmatex">\(\alpha_k\)</span>，迭代公式为：  </p>
+<div class="arithmatex">\[
+x^{k+1} = x^k + \alpha_k d^k = x^k - \alpha_k \nabla f(x^k)
+\]</div>
+</li>
+</ol>
 <p><strong>关键术语</strong>：<br />
 - <strong>线搜索（Line Search）</strong>：<br />
   - <strong>精确线搜索</strong>：求一元函数 <span class="arithmatex">\(\phi(\alpha) = f(x^k + \alpha d^k)\)</span> 的最小值点，计算量较大。<br />
@@ -8318,47 +8322,59 @@
 <p><strong>前提条件</strong>：<br />
 - 目标函数 <span class="arithmatex">\(f(x)\)</span> 为<strong>凸函数</strong>且<strong>梯度L-利普希茨连续</strong>（存在常数 <span class="arithmatex">\(L&gt;0\)</span>，使得 <span class="arithmatex">\(\|\nabla f(x) - \nabla f(y)\| \leq L\|x - y\|\)</span>）。<br />
 - 极小值 <span class="arithmatex">\(f^*\)</span> 存在且可达。  </p>
-<p><strong>核心定理</strong>：<br />
-1. <strong>二次上界</strong>：<br />
-   对任意 <span class="arithmatex">\(x, y\)</span>，有<br />
-   [
-   f(y) \leq f(x) + \nabla f(x)^T(y - x) + \frac{L}{2}|y - x|^2
-   ]<br />
-<strong>证明</strong>：利用积分中值定理和梯度利普希茨条件，推导见文档公式。  </p>
+<p><strong>核心定理</strong>：  </p>
 <ol>
-<li><strong>收敛速度</strong>：<br />
+<li>
+<p><strong>二次上界</strong>：<br />
+   对任意 <span class="arithmatex">\(x, y\)</span>，有  </p>
+<div class="arithmatex">\[
+f(y) \leq f(x) + \nabla f(x)^T(y - x) + \frac{L}{2}\|y - x\|^2
+\]</div>
+<p><strong>证明</strong>：利用积分中值定理和梯度利普希茨条件，推导见文档公式。  </p>
+</li>
+<li>
+<p><strong>收敛速度</strong>：<br />
    取固定步长 <span class="arithmatex">\(0 &lt; \alpha &lt; \frac{1}{L}\)</span>，则迭代点列 <span class="arithmatex">\(\{x^k\}\)</span> 的函数值收敛到最优值，且收敛速度为 <strong><span class="arithmatex">\(O(\frac{1}{k})\)</span></strong>（次线性收敛）。<br />
-<strong>证明</strong>：通过递推不等式累加，结合凸函数性质，可得：<br />
-   [
-   f(x^k) - f^* \leq \frac{|x^0 - x<sup>*|</sup>2}{2k\alpha}
-   ]  </li>
+<strong>证明</strong>：通过递推不等式累加，结合凸函数性质，可得：  </p>
+<div class="arithmatex">\[
+f(x^k) - f^* \leq \frac{\|x^0 - x^*\|^2}{2k\alpha}
+\]</div>
+</li>
 </ol>
 <h3 id="_13">三、求解方法与示例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p><strong>1. 精确线搜索求解二次函数</strong><br />
 <strong>示例</strong>：<br />
 目标函数：<span class="arithmatex">\(f(x, y) = x^2 + 10y^2\)</span>（正定二次函数，极小点为 <span class="arithmatex">\((0,0)\)</span>）。<br />
-<strong>步骤</strong>：<br />
-1. <strong>初始点</strong>：<span class="arithmatex">\(x^0 = (10, 1)\)</span>，梯度 <span class="arithmatex">\(\nabla f(x^0) = (20, 20)\)</span>。<br />
-2. <strong>搜索方向</strong>：<span class="arithmatex">\(d^0 = -\nabla f(x^0) = (-20, -20)\)</span>。<br />
-3. <strong>精确线搜索</strong>：求 <span class="arithmatex">\(\alpha_0 = \arg\min_\alpha f(x^0 + \alpha d^0)\)</span>。<br />
-   代入得：<br />
-   [
-   f(10-20\alpha, 1-20\alpha) = (10-20\alpha)^2 + 10(1-20\alpha)^2<br />
-   ]<br />
-   对 <span class="arithmatex">\(\alpha\)</span> 求导并令导数为零，解得 <span class="arithmatex">\(\alpha_0 = \frac{11}{500} = 0.022\)</span>。<br />
-4. <strong>迭代更新</strong>：<br />
-   [
-   x^1 = (10 - 20\times0.022, 1 - 20\times0.022) = (9.56, 0.56)
-   ]<br />
-5. <strong>重复迭代</strong>：经多次迭代后收敛至 <span class="arithmatex">\((0,0)\)</span>，路径呈“之字形”（因等高线为椭圆，梯度方向垂直于等高线）。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li><strong>初始点</strong>：<span class="arithmatex">\(x^0 = (10, 1)\)</span>，梯度 <span class="arithmatex">\(\nabla f(x^0) = (20, 20)\)</span>。  </li>
+<li><strong>搜索方向</strong>：<span class="arithmatex">\(d^0 = -\nabla f(x^0) = (-20, -20)\)</span>。  </li>
+<li>
+<p><strong>精确线搜索</strong>：求 <span class="arithmatex">\(\alpha_0 = \arg\min_\alpha f(x^0 + \alpha d^0)\)</span>。<br />
+   代入得：  </p>
+<div class="arithmatex">\[
+f(10-20\alpha, 1-20\alpha) = (10-20\alpha)^2 + 10(1-20\alpha)^2  
+\]</div>
+<p>对 <span class="arithmatex">\(\alpha\)</span> 求导并令导数为零，解得 <span class="arithmatex">\(\alpha_0 = \frac{11}{500} = 0.022\)</span>。  </p>
+</li>
+<li>
+<p><strong>迭代更新</strong>：  </p>
+<div class="arithmatex">\[
+x^1 = (10 - 20\times0.022, 1 - 20\times0.022) = (9.56, 0.56)
+\]</div>
+</li>
+<li>
+<p><strong>重复迭代</strong>：经多次迭代后收敛至 <span class="arithmatex">\((0,0)\)</span>，路径呈“之字形”（因等高线为椭圆，梯度方向垂直于等高线）。  </p>
+</li>
+</ol>
 <p><strong>2. 固定步长梯度下降</strong><br />
 <strong>示例</strong>：<br />
 目标函数同上，取固定步长 <span class="arithmatex">\(\alpha = 0.085\)</span>。<br />
-<strong>迭代公式</strong>：<br />
-[
-x^{k+1} = (x_k - 0.085\times2x_k,  y_k - 0.085\times20y_k) = (0.83x_k, 0.3y_k)
-]<br />
-<strong>收敛路径</strong>：<br />
+<strong>迭代公式</strong>：  </p>
+<div class="arithmatex">\[
+x^{k+1} = (x_k - 0.085\times2x_k, \ y_k - 0.085\times20y_k) = (0.83x_k, 0.3y_k)
+\]</div>
+<p><strong>收敛路径</strong>：<br />
 - 第1次迭代：<span class="arithmatex">\(x^1 = (8.3, 0.3)\)</span><br />
 - 第15次迭代：接近 <span class="arithmatex">\((0,0)\)</span>，收敛速度受限于二次函数的<strong>条件数</strong>（最大与最小特征值之比，此处为10，导致等高线扁平，迭代路径折返）。  </p>
 <h3 id="_14">四、重点总结<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
@@ -8393,11 +8409,11 @@ x^{k+1} = (x_k - 0.085\times2x_k,  y_k - 0.085\times20y_k) = (0.83x_k, 0.3y_k)
 <h3 id="_16">一、经典牛顿法<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
 利用目标函数的<strong>二阶泰勒展开</strong>近似局部模型，通过求解牛顿方程构造搜索方向，实现<strong>二阶收敛</strong>（局部收敛速度快）。<br />
-<strong>迭代格式</strong>：<br />
-[
-x^{k+1} = x^k - \left(\nabla^2 f(x<sup -1="-1">k)\right)</sup> \nabla f(x^k)
-]<br />
-其中，<span class="arithmatex">\(\nabla^2 f(x^k)\)</span> 为海瑟矩阵（二阶导数矩阵），<span class="arithmatex">\(\nabla f(x^k)\)</span> 为梯度向量。<br />
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
+x^{k+1} = x^k - \left(\nabla^2 f(x^k)\right)^{-1} \nabla f(x^k)
+\]</div>
+<p>其中，<span class="arithmatex">\(\nabla^2 f(x^k)\)</span> 为海瑟矩阵（二阶导数矩阵），<span class="arithmatex">\(\nabla f(x^k)\)</span> 为梯度向量。<br />
 <strong>关键步骤</strong>：<br />
 1. <strong>计算梯度</strong>：<span class="arithmatex">\(\nabla f(x^k)\)</span>。<br />
 2. <strong>计算海瑟矩阵</strong>：<span class="arithmatex">\(\nabla^2 f(x^k)\)</span>，需正定以保证搜索方向为下降方向。<br />
@@ -8410,14 +8426,20 @@ x^{k+1} = x^k - \left(\nabla^2 f(x<sup -1="-1">k)\right)</sup> \nabla f(x^k)
 <h3 id="_17">二、修正牛顿法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p><strong>改进目的</strong>：<br />
 解决经典牛顿法的<strong>稳定性问题</strong>（如海瑟矩阵非正定、初始点较远时收敛慢）。<br />
-<strong>核心改进</strong>：<br />
-1. <strong>线搜索确定步长</strong>：引入非精确线搜索（如Armijo条件），替代固定步长，确保函数值充分下降。<br />
-2. <strong>海瑟矩阵修正</strong>：<br />
-   - 若 <span class="arithmatex">\(\nabla^2 f(x^k)\)</span> 非正定，添加正定矩阵 <span class="arithmatex">\(E^k\)</span> 使其正定（如 <span class="arithmatex">\(E^k = \mu_k I\)</span>，<span class="arithmatex">\(\mu_k &gt; 0\)</span> 为常数），即求解修正牛顿方程：<br />
-     [
-     \left(\nabla^2 f(x^k) + E^k\right) d^k = -\nabla f(x^k)
-     ]<br />
-   - 确保搜索方向为下降方向（<span class="arithmatex">\(d^k \cdot \nabla f(x^k) &lt; 0\)</span>）。  </p>
+<strong>核心改进</strong>：  </p>
+<ol>
+<li><strong>线搜索确定步长</strong>：引入非精确线搜索（如Armijo条件），替代固定步长，确保函数值充分下降。  </li>
+<li><strong>海瑟矩阵修正</strong>：  </li>
+<li>
+<p>若 <span class="arithmatex">\(\nabla^2 f(x^k)\)</span> 非正定，添加正定矩阵 <span class="arithmatex">\(E^k\)</span> 使其正定（如 <span class="arithmatex">\(E^k = \mu_k I\)</span>，<span class="arithmatex">\(\mu_k &gt; 0\)</span> 为常数），即求解修正牛顿方程：  </p>
+<div class="arithmatex">\[
+\left(\nabla^2 f(x^k) + E^k\right) d^k = -\nabla f(x^k)
+\]</div>
+</li>
+<li>
+<p>确保搜索方向为下降方向（<span class="arithmatex">\(d^k \cdot \nabla f(x^k) &lt; 0\)</span>）。  </p>
+</li>
+</ol>
 <p><strong>算法流程</strong>：<br />
 1. 给定初始点 <span class="arithmatex">\(x^0\)</span>，迭代次数 <span class="arithmatex">\(k=0\)</span>。<br />
 2. 计算梯度 <span class="arithmatex">\(\nabla f(x^k)\)</span> 和海瑟矩阵 <span class="arithmatex">\(\nabla^2 f(x^k)\)</span>。<br />
@@ -8426,56 +8448,76 @@ x^{k+1} = x^k - \left(\nabla^2 f(x<sup -1="-1">k)\right)</sup> \nabla f(x^k)
 5. 更新参数：<span class="arithmatex">\(x^{k+1} = x^k + \alpha_k d^k\)</span>。<br />
 6. 重复直至收敛（梯度范数小于阈值）。  </p>
 <h3 id="_18">三、牛顿法在逻辑回归中的应用<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
-<p><strong>逻辑回归目标函数</strong>：<br />
-[
-\ell(x) = \frac{1}{m} \sum_{i=1}^m \ln\left(1 + \exp(-b_i a_i^T x)\right) + \lambda |x|_2^2
-]<br />
-其中，<span class="arithmatex">\(a_i\)</span> 为特征向量，<span class="arithmatex">\(b_i \in \{-1, 1\}\)</span> 为标签，<span class="arithmatex">\(\lambda\)</span> 为正则化参数。  </p>
-<p><strong>1. 梯度与海瑟矩阵计算</strong><br />
-- <strong>梯度</strong>：<br />
-  [
-  \nabla \ell(x) = -\frac{1}{m} A^T (b - p(x)) + 2\lambda x
-  ]<br />
-  其中，<span class="arithmatex">\(p(x)_i = \frac{1}{1 + \exp(-b_i a_i^T x)}\)</span> 为预测概率，<span class="arithmatex">\(A = [a_1, a_2, \dots, a_m]^T\)</span> 为特征矩阵，<span class="arithmatex">\(b = [b_1, b_2, \dots, b_m]^T\)</span> 为标签向量。<br />
-- <strong>海瑟矩阵</strong>：<br />
-  [
-  \nabla^2 \ell(x) = \frac{1}{m} A^T W(x) A + 2\lambda I
-  ]<br />
-  其中，<span class="arithmatex">\(W(x)\)</span> 为对角矩阵，对角线元素为 <span class="arithmatex">\(p(x)_i (1 - p(x)_i)\)</span>。  </p>
-<p><strong>2. 牛顿法迭代格式</strong><br />
-[
-x^{k+1} = x^k - \left(\nabla^2 \ell(x<sup -1="-1">k)\right)</sup> \nabla \ell(x^k)
-]<br />
-<strong>修正牛顿法调整</strong>：<br />
+<p><strong>逻辑回归目标函数</strong>：  </p>
+<div class="arithmatex">\[
+\ell(x) = \frac{1}{m} \sum_{i=1}^m \ln\left(1 + \exp(-b_i a_i^T x)\right) + \lambda \|x\|_2^2
+\]</div>
+<p>其中，<span class="arithmatex">\(a_i\)</span> 为特征向量，<span class="arithmatex">\(b_i \in \{-1, 1\}\)</span> 为标签，<span class="arithmatex">\(\lambda\)</span> 为正则化参数。  </p>
+<p><strong>1. 梯度与海瑟矩阵计算</strong>  </p>
+<ul>
+<li>
+<p><strong>梯度</strong>：  </p>
+<div class="arithmatex">\[
+\nabla \ell(x) = -\frac{1}{m} A^T (b - p(x)) + 2\lambda x
+\]</div>
+<p>其中，<span class="arithmatex">\(p(x)_i = \frac{1}{1 + \exp(-b_i a_i^T x)}\)</span> 为预测概率，<span class="arithmatex">\(A = [a_1, a_2, \dots, a_m]^T\)</span> 为特征矩阵，<span class="arithmatex">\(b = [b_1, b_2, \dots, b_m]^T\)</span> 为标签向量。  </p>
+</li>
+<li>
+<p><strong>海瑟矩阵</strong>：  </p>
+<div class="arithmatex">\[
+\nabla^2 \ell(x) = \frac{1}{m} A^T W(x) A + 2\lambda I
+\]</div>
+<p>其中，<span class="arithmatex">\(W(x)\)</span> 为对角矩阵，对角线元素为 <span class="arithmatex">\(p(x)_i (1 - p(x)_i)\)</span>。  </p>
+</li>
+</ul>
+<p><strong>2. 牛顿法迭代格式</strong>  </p>
+<div class="arithmatex">\[
+x^{k+1} = x^k - \left(\nabla^2 \ell(x^k)\right)^{-1} \nabla \ell(x^k)
+\]</div>
+<p><strong>修正牛顿法调整</strong>：<br />
 若 <span class="arithmatex">\(\nabla^2 \ell(x^k)\)</span> 非正定，添加 <span class="arithmatex">\(\mu I\)</span> 使其正定（<span class="arithmatex">\(\mu &gt; 0\)</span> 较小，如 <span class="arithmatex">\(\mu = 1e-6\)</span>）。  </p>
 <p><strong>3. 示例：二分类逻辑回归</strong><br />
 <strong>问题设定</strong>：<br />
 - 特征矩阵 <span class="arithmatex">\(A = \begin{bmatrix}1 &amp; 1 \\ 1 &amp; 2 \\ 1 &amp; 3\end{bmatrix}\)</span>，标签 <span class="arithmatex">\(b = \begin{bmatrix}-1 \\ 1 \\ 1\end{bmatrix}\)</span>，正则化参数 <span class="arithmatex">\(\lambda = 0\)</span>（无正则化）。<br />
 - 初始点 <span class="arithmatex">\(x^0 = (0, 0)^T\)</span>。  </p>
-<p><strong>迭代步骤</strong>：<br />
-1. <strong>第1次迭代</strong>：<br />
-   - 计算 <span class="arithmatex">\(p(x^0)\)</span>：<br />
-     [
-     p(x^0)_i = \frac{1}{1 + \exp(-b_i \cdot 0)} = 0.5 \quad (\forall i)
-     ]<br />
-   - 梯度：<br />
-     [
-     \nabla \ell(x^0) = -\frac{1}{3} A^T (b - 0.5 \cdot \mathbf{1}) = -\frac{1}{3} \begin{bmatrix}1 &amp; 1 &amp; 1 \ 1 &amp; 2 &amp; 3\end{bmatrix} \begin{bmatrix}-1 - 0.5 \ 1 - 0.5 \ 1 - 0.5\end{bmatrix} = -\frac{1}{3} \begin{bmatrix}0 \ 3\end{bmatrix} = \begin{bmatrix}0 \ -1\end{bmatrix}
-     ]<br />
-   - 海瑟矩阵：<br />
-     [
-     W(x^0) = \text{diag}(0.25, 0.25, 0.25), \quad \nabla^2 \ell(x^0) = \frac{1}{3} A^T W(x^0) A = \frac{1}{3} \begin{bmatrix}1.5 &amp; 3 \ 3 &amp; 7\end{bmatrix}
-     ]<br />
-   - 求解牛顿方程：<br />
-     [
-     \begin{bmatrix}1.5 &amp; 3 \ 3 &amp; 7\end{bmatrix} d^0 = \begin{bmatrix}0 \ 1\end{bmatrix} \implies d^0 = \begin{bmatrix}-2 \ 1\end{bmatrix}
-     ]<br />
-   - 更新参数（步长 <span class="arithmatex">\(\alpha_0 = 1\)</span>）：<br />
-     [
-     x^1 = x^0 + d^0 = (-2, 1)^T
-     ]<br />
-2. <strong>第2次迭代</strong>（略）：重复计算梯度和海瑟矩阵，直至收敛。<br />
+<p><strong>迭代步骤</strong>：  </p>
+<ol>
+<li><strong>第1次迭代</strong>：  </li>
+<li>
+<p>计算 <span class="arithmatex">\(p(x^0)\)</span>：  </p>
+<div class="arithmatex">\[
+p(x^0)_i = \frac{1}{1 + \exp(-b_i \cdot 0)} = 0.5 \quad (\forall i)
+\]</div>
+</li>
+<li>
+<p>梯度：  </p>
+<div class="arithmatex">\[
+\nabla \ell(x^0) = -\frac{1}{3} A^T (b - 0.5 \cdot \mathbf{1}) = -\frac{1}{3} \begin{bmatrix}1 &amp; 1 &amp; 1 \\ 1 &amp; 2 &amp; 3\end{bmatrix} \begin{bmatrix}-1 - 0.5 \\ 1 - 0.5 \\ 1 - 0.5\end{bmatrix} = -\frac{1}{3} \begin{bmatrix}0 \\ 3\end{bmatrix} = \begin{bmatrix}0 \\ -1\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p>海瑟矩阵：  </p>
+<div class="arithmatex">\[
+W(x^0) = \text{diag}(0.25, 0.25, 0.25), \quad \nabla^2 \ell(x^0) = \frac{1}{3} A^T W(x^0) A = \frac{1}{3} \begin{bmatrix}1.5 &amp; 3 \\ 3 &amp; 7\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p>求解牛顿方程：  </p>
+<div class="arithmatex">\[
+\begin{bmatrix}1.5 &amp; 3 \\ 3 &amp; 7\end{bmatrix} d^0 = \begin{bmatrix}0 \\ 1\end{bmatrix} \implies d^0 = \begin{bmatrix}-2 \\ 1\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p>更新参数（步长 <span class="arithmatex">\(\alpha_0 = 1\)</span>）：  </p>
+<div class="arithmatex">\[
+x^1 = x^0 + d^0 = (-2, 1)^T
+\]</div>
+</li>
+<li>
+<p><strong>第2次迭代</strong>（略）：重复计算梯度和海瑟矩阵，直至收敛。<br />
 <strong>结果</strong>：经数次迭代后收敛至最优解 <span class="arithmatex">\(x^* \approx (-1.5, 1)^T\)</span>，对应分类边界 <span class="arithmatex">\(a_i^T x^* = 0\)</span>。  </p>
+</li>
+</ol>
 <h3 id="_19">四、重点总结<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -8511,91 +8553,119 @@ x^{k+1} = x^k - \left(\nabla^2 \ell(x<sup -1="-1">k)\right)</sup> \nabla \ell(x^
 <h2 id="_20">共轭方向法<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
 <h3 id="_21">一、核心定义与理论基础<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <p><strong>共轭方向定义</strong>：<br />
-设 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(n \times n\)</span> 对称正定矩阵，若向量组 <span class="arithmatex">\(d^{(1)}, d^{(2)}, \dots, d^{(k)}\)</span> 满足两两正交条件：<br />
-[
-(d<sup>{(i)})</sup>T A d^{(j)} = 0 \quad (i \neq j)
-]<br />
-则称该向量组为 <strong>关于 <span class="arithmatex">\(A\)</span> 的共轭方向</strong>。<br />
+设 <span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(n \times n\)</span> 对称正定矩阵，若向量组 <span class="arithmatex">\(d^{(1)}, d^{(2)}, \dots, d^{(k)}\)</span> 满足两两正交条件：  </p>
+<div class="arithmatex">\[
+(d^{(i)})^T A d^{(j)} = 0 \quad (i \neq j)
+\]</div>
+<p>则称该向量组为 <strong>关于 <span class="arithmatex">\(A\)</span> 的共轭方向</strong>。<br />
 <strong>核心性质</strong>：<br />
 - 共轭向量组线性无关（定理1）。<br />
 - 对于正定二次函数 <span class="arithmatex">\(f(x) = \frac{1}{2}x^T A x + b^T x + c\)</span>，沿共轭方向搜索至多 <span class="arithmatex">\(n\)</span> 步可达极小点（定理3）。  </p>
 <h3 id="fr">二、共轭梯度法（FR法）<a class="headerlink" href="#fr" title="Permanent link">&para;</a></h3>
 <p><strong>算法思想</strong>：<br />
 针对正定二次函数，通过迭代构造共轭方向，结合一维搜索实现有限步收敛。<br />
-<strong>迭代步骤</strong>：<br />
-1. <strong>初始方向</strong>：取负梯度方向 <span class="arithmatex">\(d^{(1)} = -\nabla f(x^{(1)})\)</span>。<br />
-2. <strong>共轭方向更新</strong>：<br />
-   [
-   d^{(k)} = -g_k + \beta_{k-1} d^{(k-1)}, \quad \beta_{k-1} = \frac{|g_k|<sup>2}{|g_{k-1}|</sup>2}
-   ]<br />
-   其中 <span class="arithmatex">\(g_k = \nabla f(x^{(k)})\)</span> 为梯度向量。<br />
-3. <strong>一维搜索</strong>：<br />
-   [
-   \lambda_k = \frac{g_k^T g_k}{(d<sup>{(k)})</sup>T A d^{(k)}}, \quad x^{(k+1)} = x^{(k)} + \lambda_k d^{(k)}
-   ]<br />
-<strong>关键定理</strong>：<br />
-- <strong>定理3</strong>：对于 <span class="arithmatex">\(n\)</span> 维正定二次函数，沿 <span class="arithmatex">\(n\)</span> 个共轭方向搜索，至多 <span class="arithmatex">\(n\)</span> 步收敛至极小点 <span class="arithmatex">\(x^*\)</span>，即 <span class="arithmatex">\(x^{(n)} = x^*\)</span>。  </p>
+<strong>迭代步骤</strong>：  </p>
+<ol>
+<li><strong>初始方向</strong>：取负梯度方向 <span class="arithmatex">\(d^{(1)} = -\nabla f(x^{(1)})\)</span>。  </li>
+<li>
+<p><strong>共轭方向更新</strong>：  </p>
+<div class="arithmatex">\[
+d^{(k)} = -g_k + \beta_{k-1} d^{(k-1)}, \quad \beta_{k-1} = \frac{\|g_k\|^2}{\|g_{k-1}\|^2}
+\]</div>
+<p>其中 <span class="arithmatex">\(g_k = \nabla f(x^{(k)})\)</span> 为梯度向量。  </p>
+</li>
+<li>
+<p><strong>一维搜索</strong>：  </p>
+<div class="arithmatex">\[
+\lambda_k = \frac{g_k^T g_k}{(d^{(k)})^T A d^{(k)}}, \quad x^{(k+1)} = x^{(k)} + \lambda_k d^{(k)}
+\]</div>
+<p><strong>关键定理</strong>：  </p>
+</li>
+<li>
+<p><strong>定理3</strong>：对于 <span class="arithmatex">\(n\)</span> 维正定二次函数，沿 <span class="arithmatex">\(n\)</span> 个共轭方向搜索，至多 <span class="arithmatex">\(n\)</span> 步收敛至极小点 <span class="arithmatex">\(x^*\)</span>，即 <span class="arithmatex">\(x^{(n)} = x^*\)</span>。  </p>
+</li>
+</ol>
 <h3 id="_22">三、求解方法与示例<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p><strong>示例：三维正定二次函数优化</strong><br />
-<strong>目标函数</strong>：<br />
-[
+<strong>目标函数</strong>：  </p>
+<div class="arithmatex">\[
 f(x) = x_1^2 + \frac{1}{2}x_2^2 + \frac{1}{2}x_3^2, \quad A = \text{diag}(2, 1, 1)
-]<br />
-<strong>初始点</strong>：<span class="arithmatex">\(x^{(1)} = (1, 1, 1)^T\)</span>，目标：求极小点 <span class="arithmatex">\(x^* = (0, 0, 0)^T\)</span>。  </p>
-<p><strong>迭代过程</strong>：<br />
-1. <strong>第1次迭代（<span class="arithmatex">\(k=1\)</span>）</strong>：<br />
-   - 梯度：<span class="arithmatex">\(g_1 = \nabla f(x^{(1)}) = (2, 1, 1)^T\)</span>。<br />
-   - 初始方向：<span class="arithmatex">\(d^{(1)} = -g_1 = (-2, -1, -1)^T\)</span>（因 <span class="arithmatex">\(k=1\)</span>，<span class="arithmatex">\(\beta_0 = 0\)</span>）。<br />
-   - 步长 <span class="arithmatex">\(\lambda_1\)</span>：<br />
-     [
-     \lambda_1 = \frac{g_1^T g_1}{(d<sup>{(1)})</sup>T A d^{(1)}} = \frac{2^2 + 1^2 + 1<sup>2}{(-2)</sup>2 \times 2 + (-1)^2 \times 1 + (-1)^2 \times 1} = \frac{6}{8 + 1 + 1} = \frac{6}{10} = 0.6
-     ]<br />
-   - 更新参数：<br />
-     [
-     x^{(2)} = x^{(1)} + \lambda_1 d^{(1)} = (1 - 2 \times 0.6, 1 - 1 \times 0.6, 1 - 1 \times 0.6) = (-0.2, 0.4, 0.4)^T
-     ]  </p>
+\]</div>
+<p><strong>初始点</strong>：<span class="arithmatex">\(x^{(1)} = (1, 1, 1)^T\)</span>，目标：求极小点 <span class="arithmatex">\(x^* = (0, 0, 0)^T\)</span>。  </p>
+<p><strong>迭代过程</strong>：  </p>
 <ol>
-<li><strong>第2次迭代（<span class="arithmatex">\(k=2\)</span>）</strong>：  </li>
-<li>梯度：<span class="arithmatex">\(g_2 = \nabla f(x^{(2)}) = (-0.4, 0.4, 0.4)^T\)</span>。  </li>
-<li>共轭方向系数：<br />
-     [
-     \beta_1 = \frac{|g_2|<sup>2}{|g_1|</sup>2} = \frac{(-0.4)^2 + 0.4^2 + 0.4<sup>2}{2</sup>2 + 1^2 + 1^2} = \frac{0.48}{6} = 0.08
-     ]  </li>
-<li>搜索方向：<br />
-     [
-     d^{(2)} = -g_2 + \beta_1 d^{(1)} = (0.4, -0.4, -0.4)^T + 0.08(-2, -1, -1)^T = (0.24, -0.48, -0.48)^T
-     ]  </li>
-<li>步长 <span class="arithmatex">\(\lambda_2\)</span>：<br />
-     [
-     \lambda_2 = \frac{g_2^T g_2}{(d<sup>{(2)})</sup>T A d^{(2)}} = \frac{0.48}{0.24^2 \times 2 + (-0.48)^2 \times 1 + (-0.48)^2 \times 1} = \frac{0.48}{0.1152 + 0.2304 + 0.2304} = 1
-     ]  </li>
+<li><strong>第1次迭代（<span class="arithmatex">\(k=1\)</span>）</strong>：  </li>
+<li>梯度：<span class="arithmatex">\(g_1 = \nabla f(x^{(1)}) = (2, 1, 1)^T\)</span>。  </li>
+<li>初始方向：<span class="arithmatex">\(d^{(1)} = -g_1 = (-2, -1, -1)^T\)</span>（因 <span class="arithmatex">\(k=1\)</span>，<span class="arithmatex">\(\beta_0 = 0\)</span>）。  </li>
 <li>
-<p>更新参数：<br />
-     [
-     x^{(3)} = x^{(2)} + \lambda_2 d^{(2)} = (-0.2 + 0.24, 0.4 - 0.48, 0.4 - 0.48) = (0.04, -0.08, -0.08)^T
-     ]  </p>
+<p>步长 <span class="arithmatex">\(\lambda_1\)</span>：  </p>
+<div class="arithmatex">\[
+\lambda_1 = \frac{g_1^T g_1}{(d^{(1)})^T A d^{(1)}} = \frac{2^2 + 1^2 + 1^2}{(-2)^2 \times 2 + (-1)^2 \times 1 + (-1)^2 \times 1} = \frac{6}{8 + 1 + 1} = \frac{6}{10} = 0.6
+\]</div>
+</li>
+<li>
+<p>更新参数：  </p>
+<div class="arithmatex">\[
+x^{(2)} = x^{(1)} + \lambda_1 d^{(1)} = (1 - 2 \times 0.6, 1 - 1 \times 0.6, 1 - 1 \times 0.6) = (-0.2, 0.4, 0.4)^T
+\]</div>
+</li>
+<li>
+<p><strong>第2次迭代（<span class="arithmatex">\(k=2\)</span>）</strong>：  </p>
+</li>
+<li>梯度：<span class="arithmatex">\(g_2 = \nabla f(x^{(2)}) = (-0.4, 0.4, 0.4)^T\)</span>。  </li>
+<li>
+<p>共轭方向系数：  </p>
+<div class="arithmatex">\[
+\beta_1 = \frac{\|g_2\|^2}{\|g_1\|^2} = \frac{(-0.4)^2 + 0.4^2 + 0.4^2}{2^2 + 1^2 + 1^2} = \frac{0.48}{6} = 0.08
+\]</div>
+</li>
+<li>
+<p>搜索方向：  </p>
+<div class="arithmatex">\[
+d^{(2)} = -g_2 + \beta_1 d^{(1)} = (0.4, -0.4, -0.4)^T + 0.08(-2, -1, -1)^T = (0.24, -0.48, -0.48)^T
+\]</div>
+</li>
+<li>
+<p>步长 <span class="arithmatex">\(\lambda_2\)</span>：  </p>
+<div class="arithmatex">\[
+\lambda_2 = \frac{g_2^T g_2}{(d^{(2)})^T A d^{(2)}} = \frac{0.48}{0.24^2 \times 2 + (-0.48)^2 \times 1 + (-0.48)^2 \times 1} = \frac{0.48}{0.1152 + 0.2304 + 0.2304} = 1
+\]</div>
+</li>
+<li>
+<p>更新参数：  </p>
+<div class="arithmatex">\[
+x^{(3)} = x^{(2)} + \lambda_2 d^{(2)} = (-0.2 + 0.24, 0.4 - 0.48, 0.4 - 0.48) = (0.04, -0.08, -0.08)^T
+\]</div>
 </li>
 <li>
 <p><strong>第3次迭代（<span class="arithmatex">\(k=3\)</span>）</strong>：  </p>
 </li>
 <li>梯度：<span class="arithmatex">\(g_3 = \nabla f(x^{(3)}) = (0.08, -0.08, -0.08)^T\)</span>。  </li>
-<li>共轭方向系数：<br />
-     [
-     \beta_2 = \frac{|g_3|<sup>2}{|g_2|</sup>2} = \frac{0.08^2 \times 3}{0.48} = 0.04
-     ]  </li>
-<li>搜索方向：<br />
-     [
-     d^{(3)} = -g_3 + \beta_2 d^{(2)} = (-0.08, 0.08, 0.08)^T + 0.04(0.24, -0.48, -0.48)^T = (-0.0704, 0.0608, 0.0608)^T
-     ]  </li>
-<li>步长 <span class="arithmatex">\(\lambda_3\)</span>：<br />
-     [
-     \lambda_3 = \frac{g_3^T g_3}{(d<sup>{(3)})</sup>T A d^{(3)}} = \frac{0.0192}{0.0704^2 \times 2 + 0.0608^2 \times 1 + 0.0608^2 \times 1} = 1
-     ]  </li>
-<li>更新参数：<br />
-     [
-     x^{(4)} = x^{(3)} + \lambda_3 d^{(3)} = (0, 0, 0)^T = x^<em>
-     ]<br />
-</em><em>结论</em>*：3步迭代后精确收敛至极小点，验证定理3的有限步收敛性。  </li>
+<li>
+<p>共轭方向系数：  </p>
+<div class="arithmatex">\[
+\beta_2 = \frac{\|g_3\|^2}{\|g_2\|^2} = \frac{0.08^2 \times 3}{0.48} = 0.04
+\]</div>
+</li>
+<li>
+<p>搜索方向：  </p>
+<div class="arithmatex">\[
+d^{(3)} = -g_3 + \beta_2 d^{(2)} = (-0.08, 0.08, 0.08)^T + 0.04(0.24, -0.48, -0.48)^T = (-0.0704, 0.0608, 0.0608)^T
+\]</div>
+</li>
+<li>
+<p>步长 <span class="arithmatex">\(\lambda_3\)</span>：  </p>
+<div class="arithmatex">\[
+\lambda_3 = \frac{g_3^T g_3}{(d^{(3)})^T A d^{(3)}} = \frac{0.0192}{0.0704^2 \times 2 + 0.0608^2 \times 1 + 0.0608^2 \times 1} = 1
+\]</div>
+</li>
+<li>
+<p>更新参数：  </p>
+<div class="arithmatex">\[
+x^{(4)} = x^{(3)} + \lambda_3 d^{(3)} = (0, 0, 0)^T = x^*
+\]</div>
+<p><strong>结论</strong>：3步迭代后精确收敛至极小点，验证定理3的有限步收敛性。  </p>
+</li>
 </ol>
 <h3 id="_23">四、算法特点与应用<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <table>
@@ -8636,120 +8706,134 @@ f(x) = x_1^2 + \frac{1}{2}x_2^2 + \frac{1}{2}x_3^2, \quad A = \text{diag}(2, 1, 
 <h3 id="sgd">一、随机梯度下降（SGD）<a class="headerlink" href="#sgd" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
 在传统梯度下降法基础上，通过随机采样部分样本计算梯度，降低每次迭代的计算量，适用于大规模数据场景。<br />
-<strong>迭代格式</strong>：<br />
-[
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
 x^{k+1} = x^k - \alpha_k \nabla f_{s_k}(x^k)
-]<br />
-其中，<span class="arithmatex">\(s_k\)</span> 为随机采样的单个样本索引，<span class="arithmatex">\(\nabla f_{s_k}(x^k)\)</span> 为该样本的梯度，<span class="arithmatex">\(\alpha_k\)</span> 为学习率（步长）。<br />
+\]</div>
+<p>其中，<span class="arithmatex">\(s_k\)</span> 为随机采样的单个样本索引，<span class="arithmatex">\(\nabla f_{s_k}(x^k)\)</span> 为该样本的梯度，<span class="arithmatex">\(\alpha_k\)</span> 为学习率（步长）。<br />
 <strong>变种：小批量SGD</strong>：<br />
-采样一小批量样本 <span class="arithmatex">\(I_k\)</span>，计算平均梯度：<br />
-[
+采样一小批量样本 <span class="arithmatex">\(I_k\)</span>，计算平均梯度：  </p>
+<div class="arithmatex">\[
 x^{k+1} = x^k - \frac{\alpha_k}{|I_k|} \sum_{s \in I_k} \nabla f_s(x^k)
-]<br />
-<strong>优势</strong>：<br />
+\]</div>
+<p><strong>优势</strong>：<br />
 - 计算效率高：每次迭代仅需计算少量样本梯度，时间复杂度为 <span class="arithmatex">\(O(1)\)</span> 或 <span class="arithmatex">\(O(batch\_size)\)</span>。<br />
 - 适用于非凸问题：对噪声有一定鲁棒性，可能跳出局部极小值。  </p>
 <p><strong>示例：线性回归</strong><br />
 <strong>目标函数</strong>：<span class="arithmatex">\(f(x) = \frac{1}{N} \sum_{i=1}^N (a_i^T x - b_i)^2\)</span>，其中 <span class="arithmatex">\(N=1000\)</span>，采样 <span class="arithmatex">\(s_k=1\)</span>（单样本SGD）。<br />
-<strong>步骤</strong>：<br />
-1. 初始化 <span class="arithmatex">\(x^0 = 0\)</span>，学习率 <span class="arithmatex">\(\alpha = 0.01\)</span>。<br />
-2. 随机选取样本 <span class="arithmatex">\(i=5\)</span>，计算梯度：<br />
-   [
-   \nabla f_5(x^0) = 2(a_5^T x^0 - b_5) a_5 = 2(-b_5) a_5 \quad (\text{因 } x^0=0)
-   ]<br />
-3. 更新参数：<br />
-   [
-   x^1 = x^0 - \alpha \nabla f_5(x^0) = 0 + 2\alpha b_5 a_5
-   ]<br />
-4. 重复迭代直至收敛。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li>初始化 <span class="arithmatex">\(x^0 = 0\)</span>，学习率 <span class="arithmatex">\(\alpha = 0.01\)</span>。  </li>
+<li>
+<p>随机选取样本 <span class="arithmatex">\(i=5\)</span>，计算梯度：  </p>
+<div class="arithmatex">\[
+\nabla f_5(x^0) = 2(a_5^T x^0 - b_5) a_5 = 2(-b_5) a_5 \quad (\text{因 } x^0=0)
+\]</div>
+</li>
+<li>
+<p>更新参数：  </p>
+<div class="arithmatex">\[
+x^1 = x^0 - \alpha \nabla f_5(x^0) = 0 + 2\alpha b_5 a_5
+\]</div>
+</li>
+<li>
+<p>重复迭代直至收敛。  </p>
+</li>
+</ol>
 <h3 id="momentum">二、动量法（Momentum）<a class="headerlink" href="#momentum" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
 引入<strong>惯性项</strong>累积历史梯度方向，减少震荡，加速收敛。<br />
-<strong>迭代格式</strong>：<br />
-[
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
 v^{k+1} = \mu v^k - \alpha_k \nabla f_{s_k}(x^k), \quad x^{k+1} = x^k + v^{k+1}
-]<br />
-其中，<span class="arithmatex">\(\mu \in [0, 1)\)</span> 为动量系数，通常取 <span class="arithmatex">\(\mu=0.9\)</span>。<br />
+\]</div>
+<p>其中，<span class="arithmatex">\(\mu \in [0, 1)\)</span> 为动量系数，通常取 <span class="arithmatex">\(\mu=0.9\)</span>。<br />
 <strong>直观解释</strong>：<br />
 - 当连续梯度方向一致时，惯性项叠加使步长增大；方向改变时，惯性项衰减，抑制震荡。  </p>
 <p><strong>示例：二次函数优化</strong><br />
 <strong>目标函数</strong>：<span class="arithmatex">\(f(x) = x^2 + 10y^2\)</span>，初始点 <span class="arithmatex">\((10, 1)\)</span>，<span class="arithmatex">\(\mu=0.9\)</span>，<span class="arithmatex">\(\alpha=0.085\)</span>。<br />
-<strong>步骤</strong>：<br />
-1. 初始速度 <span class="arithmatex">\(v^0 = 0\)</span>，梯度 <span class="arithmatex">\(\nabla f(x^0) = (20, 20)\)</span>。<br />
-2. 第1次迭代：<br />
-   [
-   v^1 = 0.9 \times 0 - 0.085 \times (20, 20) = (-1.7, -1.7)<br />
-   ]<br />
-   [
-   x^1 = (10, 1) + (-1.7, -1.7) = (8.3, -0.7)
-   ]<br />
-3. 第2次迭代：<br />
-   [
-   \nabla f(x^1) = (16.6, -14), \quad v^2 = 0.9 \times (-1.7, -1.7) - 0.085 \times (16.6, -14) = (-3.025, 0.595)<br />
-   ]<br />
-   [
-   x^2 = (8.3, -0.7) + (-3.025, 0.595) = (5.275, -0.105)<br />
-   ]<br />
-<strong>优势</strong>：相比标准SGD，迭代路径更平滑，收敛速度更快。  </p>
+<strong>步骤</strong>：  </p>
+<ol>
+<li>初始速度 <span class="arithmatex">\(v^0 = 0\)</span>，梯度 <span class="arithmatex">\(\nabla f(x^0) = (20, 20)\)</span>。  </li>
+<li>
+<p>第1次迭代：  </p>
+<div class="arithmatex">\[
+v^1 = 0.9 \times 0 - 0.085 \times (20, 20) = (-1.7, -1.7)  
+\]</div>
+<div class="arithmatex">\[
+x^1 = (10, 1) + (-1.7, -1.7) = (8.3, -0.7)
+\]</div>
+</li>
+<li>
+<p>第2次迭代：  </p>
+<div class="arithmatex">\[
+\nabla f(x^1) = (16.6, -14), \quad v^2 = 0.9 \times (-1.7, -1.7) - 0.085 \times (16.6, -14) = (-3.025, 0.595)  
+\]</div>
+<div class="arithmatex">\[
+x^2 = (8.3, -0.7) + (-3.025, 0.595) = (5.275, -0.105)  
+\]</div>
+<p><strong>优势</strong>：相比标准SGD，迭代路径更平滑，收敛速度更快。  </p>
+</li>
+</ol>
 <h3 id="nesterov">三、Nesterov加速梯度法<a class="headerlink" href="#nesterov" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
 在动量法基础上，通过<strong>预更新参数</strong>计算梯度，实现对未来位置的校正，提升收敛速度。<br />
-<strong>迭代格式</strong>：<br />
-[
-y^{k+1} = x^k + \mu_k (x^k - x^{k-1})<br />
-]<br />
-[
-x^{k+1} = y^{k+1} - \alpha_k \nabla f_{s_k}(y^{k+1})<br />
-]<br />
-其中，<span class="arithmatex">\(\mu_k = \frac{k-1}{k+2}\)</span>（动态动量系数）。<br />
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
+y^{k+1} = x^k + \mu_k (x^k - x^{k-1})  
+\]</div>
+<div class="arithmatex">\[
+x^{k+1} = y^{k+1} - \alpha_k \nabla f_{s_k}(y^{k+1})  
+\]</div>
+<p>其中，<span class="arithmatex">\(\mu_k = \frac{k-1}{k+2}\)</span>（动态动量系数）。<br />
 <strong>直观解释</strong>：<br />
 - 先通过动量项预测下一位置 <span class="arithmatex">\(y^{k+1}\)</span>，再在预测点计算梯度，修正搜索方向，减少超前误差。  </p>
 <h3 id="_26">四、自适应步长算法<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="1-adagrad">1. AdaGrad<a class="headerlink" href="#1-adagrad" title="Permanent link">&para;</a></h4>
 <p><strong>核心思想</strong>：<br />
 根据历史梯度的累积平方调整步长，对高频分量采用小步长，低频分量采用大步长，适用于稀疏梯度场景。<br />
-<strong>迭代格式</strong>：<br />
-[
-G^{k+1} = G^k + g^{k+1} \odot g^{k+1}, \quad x^{k+1} = x^k - \frac{\alpha}{\sqrt{G^{k+1} + \varepsilon}} \odot g^{k+1}<br />
-]<br />
-其中，<span class="arithmatex">\(G^k\)</span> 为累积梯度平方和，<span class="arithmatex">\(\varepsilon=1e-8\)</span> 防止除零。<br />
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
+G^{k+1} = G^k + g^{k+1} \odot g^{k+1}, \quad x^{k+1} = x^k - \frac{\alpha}{\sqrt{G^{k+1} + \varepsilon}} \odot g^{k+1}  
+\]</div>
+<p>其中，<span class="arithmatex">\(G^k\)</span> 为累积梯度平方和，<span class="arithmatex">\(\varepsilon=1e-8\)</span> 防止除零。<br />
 <strong>示例</strong>：<br />
 梯度某分量频繁更新（如 <span class="arithmatex">\(g_1^k=0.1\)</span> 每次迭代），则 <span class="arithmatex">\(G_1^k\)</span> 累积增大，步长 <span class="arithmatex">\(\frac{\alpha}{\sqrt{G_1^k}}\)</span> 递减；若某分量稀疏（如 <span class="arithmatex">\(g_2^k\)</span> 偶尔出现），则步长较大。  </p>
 <h4 id="2-rmsprop">2. RMSProp<a class="headerlink" href="#2-rmsprop" title="Permanent link">&para;</a></h4>
 <p><strong>核心思想</strong>：<br />
 通过<strong>指数加权平均</strong>仅保留近期梯度信息，避免AdaGrad的步长过早衰减。<br />
-<strong>迭代格式</strong>：<br />
-[
-M^{k+1} = \rho M^k + (1-\rho) g^{k+1} \odot g^{k+1}, \quad x^{k+1} = x^k - \frac{\alpha}{\sqrt{M^{k+1} + \varepsilon}} \odot g^{k+1}<br />
-]<br />
-其中，<span class="arithmatex">\(\rho=0.9\)</span> 为衰减因子。  </p>
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
+M^{k+1} = \rho M^k + (1-\rho) g^{k+1} \odot g^{k+1}, \quad x^{k+1} = x^k - \frac{\alpha}{\sqrt{M^{k+1} + \varepsilon}} \odot g^{k+1}  
+\]</div>
+<p>其中，<span class="arithmatex">\(\rho=0.9\)</span> 为衰减因子。  </p>
 <h4 id="3-adadelta">3. AdaDelta<a class="headerlink" href="#3-adadelta" title="Permanent link">&para;</a></h4>
 <p><strong>核心思想</strong>：<br />
 同时累积梯度平方和参数更新量的平方，进一步平衡步长。<br />
-<strong>迭代格式</strong>：<br />
-[
-M^{k+1} = \rho M^k + (1-\rho) g^{k+1} \odot g^{k+1}<br />
-]<br />
-[
-D^{k+1} = \rho D^k + (1-\rho) \Delta x^{k+1} \odot \Delta x^{k+1}, \quad \Delta x^{k+1} = -\frac{\sqrt{D^k + \varepsilon}}{\sqrt{M^{k+1} + \varepsilon}} \odot g^{k+1}<br />
-]<br />
-[
-x^{k+1} = x^k + \Delta x^{k+1}<br />
-]  </p>
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
+M^{k+1} = \rho M^k + (1-\rho) g^{k+1} \odot g^{k+1}  
+\]</div>
+<div class="arithmatex">\[
+D^{k+1} = \rho D^k + (1-\rho) \Delta x^{k+1} \odot \Delta x^{k+1}, \quad \Delta x^{k+1} = -\frac{\sqrt{D^k + \varepsilon}}{\sqrt{M^{k+1} + \varepsilon}} \odot g^{k+1}  
+\]</div>
+<div class="arithmatex">\[
+x^{k+1} = x^k + \Delta x^{k+1}  
+\]</div>
 <h4 id="4-adam">4. Adam<a class="headerlink" href="#4-adam" title="Permanent link">&para;</a></h4>
 <p><strong>核心思想</strong>：<br />
 结合动量法与自适应步长，同时修正一阶矩和二阶矩的偏差。<br />
-<strong>迭代格式</strong>：<br />
-[
-S^{k+1} = \rho_1 S^k + (1-\rho_1) g^{k+1}, \quad M^{k+1} = \rho_2 M^k + (1-\rho_2) g^{k+1} \odot g^{k+1}<br />
-]<br />
-[
-\hat{S}^{k+1} = \frac{S<sup k_1="k+1">{k+1}}{1-\rho_1</sup> = \frac{M}}, \quad \hat{M}^{k+1<sup k_1="k+1">{k+1}}{1-\rho_2</sup>}<br />
-]<br />
-[
-x^{k+1} = x^k - \frac{\alpha}{\sqrt{\hat{M}^{k+1} + \varepsilon}} \odot \hat{S}^{k+1}<br />
-]<br />
-其中，<span class="arithmatex">\(\rho_1=0.9\)</span>，<span class="arithmatex">\(\rho_2=0.999\)</span>，<span class="arithmatex">\(\alpha=0.001\)</span>。  </p>
+<strong>迭代格式</strong>：  </p>
+<div class="arithmatex">\[
+S^{k+1} = \rho_1 S^k + (1-\rho_1) g^{k+1}, \quad M^{k+1} = \rho_2 M^k + (1-\rho_2) g^{k+1} \odot g^{k+1}  
+\]</div>
+<div class="arithmatex">\[
+\hat{S}^{k+1} = \frac{S^{k+1}}{1-\rho_1^{k+1}}, \quad \hat{M}^{k+1} = \frac{M^{k+1}}{1-\rho_2^{k+1}}  
+\]</div>
+<div class="arithmatex">\[
+x^{k+1} = x^k - \frac{\alpha}{\sqrt{\hat{M}^{k+1} + \varepsilon}} \odot \hat{S}^{k+1}  
+\]</div>
+<p>其中，<span class="arithmatex">\(\rho_1=0.9\)</span>，<span class="arithmatex">\(\rho_2=0.999\)</span>，<span class="arithmatex">\(\alpha=0.001\)</span>。  </p>
 <h3 id="_27">五、算法对比与应用场景<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -8873,7 +8957,7 @@ x^{k+1} = x^k - \frac{\alpha}{\sqrt{\hat{M}^{k+1} + \varepsilon}} \odot \hat{S}^
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

@@ -8506,12 +8506,14 @@
 <p><code>..</code>（双点）：代表父目录，是一个指向上级目录i节点的目录项（根目录 <code>/</code> 的 <code>..</code> 指向自身）。</p>
 </li>
 <li>
-<p><strong>目录的硬连接数计算公式</strong>：<br />
-  [
-  \text{目录的 link count} = 2 + \text{直属子目录的数量}
-  ]</p>
+<p><strong>目录的硬连接数计算公式</strong>：  </p>
+<div class="arithmatex">\[
+\text{目录的 link count} = 2 + \text{直属子目录的数量}
+\]</div>
 </li>
-<li>初始值为2（来自 <code>.</code> 和 <code>..</code>）；</li>
+<li>
+<p>初始值为2（来自 <code>.</code> 和 <code>..</code>）；</p>
+</li>
 <li>每创建一个<strong>子目录</strong>，该子目录中的 <code>..</code> 项会指向当前目录，从而使其link count加1；</li>
 <li>普通文件或符号链接的创建<strong>不会增加</strong>父目录的link count。</li>
 </ul>
@@ -8849,7 +8851,7 @@
       
         <script src="../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

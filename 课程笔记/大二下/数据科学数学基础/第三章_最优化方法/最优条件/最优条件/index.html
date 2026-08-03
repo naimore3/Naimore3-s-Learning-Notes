@@ -8752,9 +8752,13 @@
 </ul>
 <h5 id="3-h_jx0">3. 一般约束问题（含等式约束<span class="arithmatex">\(h_j(x)=0\)</span>）<a class="headerlink" href="#3-h_jx0" title="Permanent link">&para;</a></h5>
 <ul>
-<li><strong>Fritz John条件</strong>：存在不全为零的<span class="arithmatex">\(w_0\geq0\)</span>、<span class="arithmatex">\(w_i\geq0(i\in I)\)</span>和<span class="arithmatex">\(v_j\)</span>，使<br />
-<span class="arithmatex">\(<span class="arithmatex">\(w_0\nabla f(\bar{x})-\sum_{i\in I}w_i\nabla g_i(\bar{x})-\sum_{j=1}^lv_j\nabla h_j(\bar{x})=0.\)</span>\)</span>  </li>
-<li><strong>KKT条件</strong>：  </li>
+<li>
+<p><strong>Fritz John条件</strong>：存在不全为零的<span class="arithmatex">\(w_0\geq0\)</span>、<span class="arithmatex">\(w_i\geq0(i\in I)\)</span>和<span class="arithmatex">\(v_j\)</span>，使  </p>
+<div class="arithmatex">\[w_0\nabla f(\bar{x})-\sum_{i\in I}w_i\nabla g_i(\bar{x})-\sum_{j=1}^lv_j\nabla h_j(\bar{x})=0.\]</div>
+</li>
+<li>
+<p><strong>KKT条件</strong>：  </p>
+</li>
 <li><span class="arithmatex">\(\nabla L(\bar{x},w,v)=0\)</span>（<span class="arithmatex">\(L=f-w^Tg-v^Th\)</span>为拉格朗日函数），  </li>
 <li><span class="arithmatex">\(w_i\geq0\)</span>，<span class="arithmatex">\(w_ig_i(\bar{x})=0\)</span>，  </li>
 <li><span class="arithmatex">\(h_j(\bar{x})=0\)</span>。  </li>
@@ -8763,9 +8767,11 @@
 <h4 id="_8">三、二阶最优性条件（约束问题）<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>拉格朗日函数</strong>：<span class="arithmatex">\(L(x,w,v)=f(x)-w^Tg(x)-v^Th(x)\)</span>。  </li>
-<li><strong>二阶充分条件</strong>：若存在<span class="arithmatex">\((\bar{x},\bar{w},\bar{v})\)</span>满足KKT条件，且<span class="arithmatex">\(\nabla_x^2L(\bar{x},\bar{w},\bar{v})\)</span>在子空间<br />
-<span class="arithmatex">\(<span class="arithmatex">\(\bar{G}=\{d|\nabla g_i(\bar{x})^Td=0(w_i&gt;0),\nabla g_i(\bar{x})^Td\geq0(w_i=0),\nabla h_j(\bar{x})^Td=0\}\)</span>\)</span><br />
-  上正定，则<span class="arithmatex">\(\bar{x}\)</span>为严格局部极小点。  </li>
+<li>
+<p><strong>二阶充分条件</strong>：若存在<span class="arithmatex">\((\bar{x},\bar{w},\bar{v})\)</span>满足KKT条件，且<span class="arithmatex">\(\nabla_x^2L(\bar{x},\bar{w},\bar{v})\)</span>在子空间  </p>
+<div class="arithmatex">\[\bar{G}=\{d|\nabla g_i(\bar{x})^Td=0(w_i&gt;0),\nabla g_i(\bar{x})^Td\geq0(w_i=0),\nabla h_j(\bar{x})^Td=0\}\]</div>
+<p>上正定，则<span class="arithmatex">\(\bar{x}\)</span>为严格局部极小点。  </p>
+</li>
 </ul>
 <h4 id="_9">四、关键案例<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <table>
@@ -8856,41 +8862,57 @@
 <h3 id="_14">三、示例解析<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="1_5">示例1：无约束二次函数优化<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：求 <span class="arithmatex">\( f(x) = 5x_1^2 - 6x_1x_2 + 5x_2^2 \)</span> 的极小点。<br />
-<strong>求解步骤</strong>：<br />
-1. <strong>计算梯度</strong>：<br />
-   [
-   \nabla f(x) = \begin{pmatrix} 10x_1 - 6x_2 \ -6x_1 + 10x_2 \end{pmatrix}
-   ]<br />
-2. <strong>求解一阶条件</strong>：<br />
-   令 <span class="arithmatex">\( \nabla f(x) = 0 \)</span>，得方程组：<br />
-   [
-   \begin{cases} 10x_1 - 6x_2 = 0 \ -6x_1 + 10x_2 = 0 \end{cases} \implies x_1 = x_2 = 0<br />
-   ]<br />
-   驻点为 <span class="arithmatex">\( x^* = (0, 0)^T \)</span>。<br />
-3. <strong>计算海瑟矩阵并判断正定性</strong>：<br />
-   [
-   \nabla^2 f(x) = \begin{pmatrix} 10 &amp; -6 \ -6 &amp; 10 \end{pmatrix}
-   ]<br />
-   特征值计算：<span class="arithmatex">\( \lambda = 10 \pm 6 \)</span>，即 <span class="arithmatex">\( \lambda_1 = 16 \)</span>, <span class="arithmatex">\( \lambda_2 = 4 \)</span>，均为正数，故 <span class="arithmatex">\( \nabla^2 f(x^*) \)</span> 正定。<br />
+<strong>求解步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>计算梯度</strong>：  </p>
+<div class="arithmatex">\[
+\nabla f(x) = \begin{pmatrix} 10x_1 - 6x_2 \\ -6x_1 + 10x_2 \end{pmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>求解一阶条件</strong>：<br />
+   令 <span class="arithmatex">\( \nabla f(x) = 0 \)</span>，得方程组：  </p>
+<div class="arithmatex">\[
+\begin{cases} 10x_1 - 6x_2 = 0 \\ -6x_1 + 10x_2 = 0 \end{cases} \implies x_1 = x_2 = 0  
+\]</div>
+<p>驻点为 <span class="arithmatex">\( x^* = (0, 0)^T \)</span>。  </p>
+</li>
+<li>
+<p><strong>计算海瑟矩阵并判断正定性</strong>：  </p>
+<div class="arithmatex">\[
+\nabla^2 f(x) = \begin{pmatrix} 10 &amp; -6 \\ -6 &amp; 10 \end{pmatrix}
+\]</div>
+<p>特征值计算：<span class="arithmatex">\( \lambda = 10 \pm 6 \)</span>，即 <span class="arithmatex">\( \lambda_1 = 16 \)</span>, <span class="arithmatex">\( \lambda_2 = 4 \)</span>，均为正数，故 <span class="arithmatex">\( \nabla^2 f(x^*) \)</span> 正定。<br />
 <strong>结论</strong>：<span class="arithmatex">\( x^* = (0, 0)^T \)</span> 是全局极小点。  </p>
+</li>
+</ol>
 <h4 id="2_3">示例2：含鞍点的三次函数<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：分析 <span class="arithmatex">\( f(x) = x_1^3 - 3x_1x_2^2 \)</span> 的驻点性质。<br />
-<strong>求解步骤</strong>：<br />
-1. <strong>计算梯度</strong>：<br />
-   [
-   \nabla f(x) = \begin{pmatrix} 3x_1^2 - 3x_2^2 \ -6x_1x_2 \end{pmatrix}
-   ]<br />
-2. <strong>求解一阶条件</strong>：<br />
-   令 <span class="arithmatex">\( \nabla f(x) = 0 \)</span>，得：<br />
-   [
-   \begin{cases} x_1^2 = x_2^2 \ x_1x_2 = 0 \end{cases} \implies x^<em> = (0, 0)^T<br />
-   ]<br />
-3. </em><em>计算海瑟矩阵</em><em>：<br />
-   [
-   \nabla^2 f(x) = \begin{pmatrix} 6x_1 &amp; -6x_2 \ -6x_2 &amp; -6x_1 \end{pmatrix} \implies \nabla^2 f(0,0) = \begin{pmatrix} 0 &amp; 0 \ 0 &amp; 0 \end{pmatrix}
-   ]<br />
-   海瑟矩阵为零矩阵，无法通过二阶条件判断，需结合高阶导数或函数性质分析。<br />
-</em><em>结论</em>*：<span class="arithmatex">\( (0, 0) \)</span> 是驻点，且为鞍点（沿 <span class="arithmatex">\( x_1 \)</span> 轴方向函数值为 <span class="arithmatex">\( x_1^3 \)</span>，既有增大也有减小方向）。  </p>
+<strong>求解步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>计算梯度</strong>：  </p>
+<div class="arithmatex">\[
+\nabla f(x) = \begin{pmatrix} 3x_1^2 - 3x_2^2 \\ -6x_1x_2 \end{pmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>求解一阶条件</strong>：<br />
+   令 <span class="arithmatex">\( \nabla f(x) = 0 \)</span>，得：  </p>
+<div class="arithmatex">\[
+\begin{cases} x_1^2 = x_2^2 \\ x_1x_2 = 0 \end{cases} \implies x^* = (0, 0)^T  
+\]</div>
+</li>
+<li>
+<p><strong>计算海瑟矩阵</strong>：  </p>
+<div class="arithmatex">\[
+\nabla^2 f(x) = \begin{pmatrix} 6x_1 &amp; -6x_2 \\ -6x_2 &amp; -6x_1 \end{pmatrix} \implies \nabla^2 f(0,0) = \begin{pmatrix} 0 &amp; 0 \\ 0 &amp; 0 \end{pmatrix}
+\]</div>
+<p>海瑟矩阵为零矩阵，无法通过二阶条件判断，需结合高阶导数或函数性质分析。<br />
+<strong>结论</strong>：<span class="arithmatex">\( (0, 0) \)</span> 是驻点，且为鞍点（沿 <span class="arithmatex">\( x_1 \)</span> 轴方向函数值为 <span class="arithmatex">\( x_1^3 \)</span>，既有增大也有减小方向）。  </p>
+</li>
+</ol>
 <h3 id="_15">四、重点总结<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>无约束优化核心逻辑</strong>：通过梯度（一阶条件）找驻点，再用海瑟矩阵（二阶条件）判断极值类型。  </li>
@@ -8904,15 +8926,17 @@
 <h3 id="_17">一、核心概念与理论<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="1_6">1. <strong>约束极值问题的基本形式</strong><a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>一般形式</strong>：<br />
-  [
-  \begin{cases}
-  \min &amp; f(x) \
-  \text{s.t.} &amp; g_i(x) \geq 0  (i=1,2,\cdots,m) \
-  &amp; h_j(x) = 0  (j=1,2,\cdots,l)
-  \end{cases}
-  ]<br />
-  其中，<span class="arithmatex">\(S = \{x \mid g_i(x) \geq 0, h_j(x) = 0\}\)</span> 称为<strong>可行域</strong>，<span class="arithmatex">\(g_i(x) \geq 0\)</span> 为<strong>不等式约束</strong>，<span class="arithmatex">\(h_j(x) = 0\)</span> 为<strong>等式约束</strong>。  </li>
+<li>
+<p><strong>一般形式</strong>：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+\min &amp; f(x) \\
+\text{s.t.} &amp; g_i(x) \geq 0 \ (i=1,2,\cdots,m) \\
+&amp; h_j(x) = 0 \ (j=1,2,\cdots,l)
+\end{cases}
+\]</div>
+<p>其中，<span class="arithmatex">\(S = \{x \mid g_i(x) \geq 0, h_j(x) = 0\}\)</span> 称为<strong>可行域</strong>，<span class="arithmatex">\(g_i(x) \geq 0\)</span> 为<strong>不等式约束</strong>，<span class="arithmatex">\(h_j(x) = 0\)</span> 为<strong>等式约束</strong>。  </p>
+</li>
 </ul>
 <h4 id="2_4">2. <strong>关键方向定义</strong><a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8932,11 +8956,15 @@
 </ul>
 <h4 id="2-fritz-john">2. <strong>Fritz John条件</strong><a class="headerlink" href="#2-fritz-john" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>条件</strong>：若 <span class="arithmatex">\(\bar{x}\)</span> 是局部最优解，则存在不全为零的非负数 <span class="arithmatex">\(w_0, w_i (i \in I)\)</span>，使得：<br />
-  [
-  w_0 \nabla f(\bar{x}) - \sum_{i \in I} w_i \nabla g_i(\bar{x}) = 0
-  ]  </li>
-<li><strong>局限性</strong>：允许 <span class="arithmatex">\(w_0 = 0\)</span>，可能导致乘子全为零的平凡解，实际应用中需结合其他条件。  </li>
+<li>
+<p><strong>条件</strong>：若 <span class="arithmatex">\(\bar{x}\)</span> 是局部最优解，则存在不全为零的非负数 <span class="arithmatex">\(w_0, w_i (i \in I)\)</span>，使得：  </p>
+<div class="arithmatex">\[
+w_0 \nabla f(\bar{x}) - \sum_{i \in I} w_i \nabla g_i(\bar{x}) = 0
+\]</div>
+</li>
+<li>
+<p><strong>局限性</strong>：允许 <span class="arithmatex">\(w_0 = 0\)</span>，可能导致乘子全为零的平凡解，实际应用中需结合其他条件。  </p>
+</li>
 </ul>
 <h4 id="3-kktkarush-kuhn-tucker">3. <strong>KKT条件（Karush-Kuhn-Tucker条件）</strong><a class="headerlink" href="#3-kktkarush-kuhn-tucker" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8954,10 +8982,12 @@
 <h3 id="_19">三、一般约束问题的最优性条件（含等式约束）<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="1-fritz-john">1. <strong>Fritz John条件（扩展）</strong><a class="headerlink" href="#1-fritz-john" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>条件</strong>：若 <span class="arithmatex">\(\bar{x}\)</span> 是局部最优解，存在不全为零的非负数 <span class="arithmatex">\(w_0, w_i (i \in I)\)</span> 和实数 <span class="arithmatex">\(v_j\)</span>，使得：<br />
-  [
-  w_0 \nabla f(\bar{x}) - \sum_{i \in I} w_i \nabla g_i(\bar{x}) - \sum_{j=1}^l v_j \nabla h_j(\bar{x}) = 0
-  ]  </li>
+<li>
+<p><strong>条件</strong>：若 <span class="arithmatex">\(\bar{x}\)</span> 是局部最优解，存在不全为零的非负数 <span class="arithmatex">\(w_0, w_i (i \in I)\)</span> 和实数 <span class="arithmatex">\(v_j\)</span>，使得：  </p>
+<div class="arithmatex">\[
+w_0 \nabla f(\bar{x}) - \sum_{i \in I} w_i \nabla g_i(\bar{x}) - \sum_{j=1}^l v_j \nabla h_j(\bar{x}) = 0
+\]</div>
+</li>
 </ul>
 <h4 id="2-kkt">2. <strong>KKT条件（扩展）</strong><a class="headerlink" href="#2-kkt" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8979,15 +9009,17 @@
 </ul>
 <h4 id="2_5">2. <strong>二阶充分条件</strong><a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>条件</strong>：若 <span class="arithmatex">\(\bar{x}\)</span> 满足KKT条件，且 <span class="arithmatex">\(\nabla_x^2 L(\bar{x}, w, v)\)</span> 在子空间<br />
-  [
-  \bar{G} = \left{ d \mid \begin{array}{l}
-  \nabla g_i(\bar{x})^T d = 0  (i \in I, w_i &gt; 0) \
-  \nabla g_i(\bar{x})^T d \geq 0  (i \in I, w_i = 0) \
-  \nabla h_j(\bar{x})^T d = 0  (j=1,\cdots,l)
-  \end{array} \right}
-  ]<br />
-  上正定，则 <span class="arithmatex">\(\bar{x}\)</span> 是严格局部极小点。  </li>
+<li>
+<p><strong>条件</strong>：若 <span class="arithmatex">\(\bar{x}\)</span> 满足KKT条件，且 <span class="arithmatex">\(\nabla_x^2 L(\bar{x}, w, v)\)</span> 在子空间  </p>
+<div class="arithmatex">\[
+\bar{G} = \left\{ d \mid \begin{array}{l}
+\nabla g_i(\bar{x})^T d = 0 \ (i \in I, w_i &gt; 0) \\
+\nabla g_i(\bar{x})^T d \geq 0 \ (i \in I, w_i = 0) \\
+\nabla h_j(\bar{x})^T d = 0 \ (j=1,\cdots,l)
+\end{array} \right\}
+\]</div>
+<p>上正定，则 <span class="arithmatex">\(\bar{x}\)</span> 是严格局部极小点。  </p>
+</li>
 </ul>
 <h3 id="_21">五、求解方法与示例<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="1-kkt">1. <strong>基于KKT条件的求解步骤</strong><a class="headerlink" href="#1-kkt" title="Permanent link">&para;</a></h4>
@@ -8999,47 +9031,73 @@
 <li><strong>验证可行性与最优性</strong>：检查解是否满足所有约束，并用二阶条件或问题性质判断是否为极值点。  </li>
 </ol>
 <h4 id="2_6">2. <strong>示例：不等式约束优化问题</strong><a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：<br />
-[
+<p><strong>问题</strong>：  </p>
+<div class="arithmatex">\[
 \begin{cases}
-\min &amp; (x_1 - 1)^2 + x_2 \
-\text{s.t.} &amp; -x_1 - x_2 + 2 \geq 0  (g_1(x)) \
-&amp; x_2 \geq 0  (g_2(x))
+\min &amp; (x_1 - 1)^2 + x_2 \\
+\text{s.t.} &amp; -x_1 - x_2 + 2 \geq 0 \ (g_1(x)) \\
+&amp; x_2 \geq 0 \ (g_2(x))
 \end{cases}
-]<br />
-<strong>求解步骤</strong>：<br />
-1. <strong>计算梯度</strong>：<br />
-   [
-   \nabla f(x) = \begin{pmatrix} 2(x_1 - 1) \ 1 \end{pmatrix}, \quad \nabla g_1(x) = \begin{pmatrix} -1 \ -1 \end{pmatrix}, \quad \nabla g_2(x) = \begin{pmatrix} 0 \ 1 \end{pmatrix}
-   ]<br />
-2. <strong>假设起作用约束</strong>：<br />
-   - <strong>情况1</strong>：<span class="arithmatex">\(g_1(x) = 0\)</span> 且 <span class="arithmatex">\(g_2(x) = 0\)</span>（即 <span class="arithmatex">\(x_1 + x_2 = 2\)</span> 且 <span class="arithmatex">\(x_2 = 0\)</span>），解得 <span class="arithmatex">\(x_1 = 2\)</span>，<span class="arithmatex">\(x_2 = 0\)</span>，即 <span class="arithmatex">\(\bar{x} = (2, 0)^T\)</span>。<br />
-     - 建立KKT方程：<br />
-       [
-       \nabla f(\bar{x}) = w_1 \nabla g_1(\bar{x}) + w_2 \nabla g_2(\bar{x}) \implies \begin{pmatrix} 2(2-1) \ 1 \end{pmatrix} = w_1 \begin{pmatrix} -1 \ -1 \end{pmatrix} + w_2 \begin{pmatrix} 0 \ 1 \end{pmatrix}
-       ]<br />
-       解得：<span class="arithmatex">\(2 = -w_1\)</span>，<span class="arithmatex">\(1 = -w_1 + w_2\)</span>，显然 <span class="arithmatex">\(w_1 = -2 &lt; 0\)</span>，不满足非负性，舍去。<br />
-   - <strong>情况2</strong>：<span class="arithmatex">\(g_1(x) = 0\)</span> 且 <span class="arithmatex">\(g_2(x) &gt; 0\)</span>（即 <span class="arithmatex">\(x_2 &gt; 0\)</span>，对应 <span class="arithmatex">\(w_2 = 0\)</span>），解得 <span class="arithmatex">\(x_1 + x_2 = 2\)</span>，代入目标函数：<br />
-     [
-     f(x) = (x_1 - 1)^2 + (2 - x_1) = x_1^2 - 2x_1 + 1 + 2 - x_1 = x_1^2 - 3x_1 + 3
-     ]<br />
-     求导得 <span class="arithmatex">\(2x_1 - 3 = 0 \implies x_1 = 1.5\)</span>，<span class="arithmatex">\(x_2 = 0.5\)</span>，即 <span class="arithmatex">\(\bar{x} = (1.5, 0.5)^T\)</span>。<br />
-     - 验证KKT条件：<br />
-       [
-       \nabla f(\bar{x}) = \begin{pmatrix} 1 \ 1 \end{pmatrix}, \quad w_1 \nabla g_1(\bar{x}) = w_1 \begin{pmatrix} -1 \ -1 \end{pmatrix}
-       ]<br />
-       由梯度条件得 <span class="arithmatex">\(w_1 = -1 &lt; 0\)</span>，不满足非负性，舍去。<br />
-   - <strong>情况3</strong>：<span class="arithmatex">\(g_1(x) &gt; 0\)</span> 且 <span class="arithmatex">\(g_2(x) = 0\)</span>（即 <span class="arithmatex">\(x_1 + x_2 &lt; 2\)</span> 且 <span class="arithmatex">\(x_2 = 0\)</span>，对应 <span class="arithmatex">\(w_1 = 0\)</span>），此时问题退化为无约束优化：<br />
-     [
-     f(x) = (x_1 - 1)^2 + 0 \implies \nabla f(x) = 2(x_1 - 1) = 0 \implies x_1 = 1, x_2 = 0
-     ]<br />
-     即 <span class="arithmatex">\(\bar{x} = (1, 0)^T\)</span>。<br />
-     - 验证KKT条件：<br />
-       [
-       \nabla f(\bar{x}) = \begin{pmatrix} 0 \ 1 \end{pmatrix}, \quad w_2 \nabla g_2(\bar{x}) = w_2 \begin{pmatrix} 0 \ 1 \end{pmatrix}
-       ]<br />
-       由梯度条件得 <span class="arithmatex">\(w_2 = 1 \geq 0\)</span>，互补松弛条件 <span class="arithmatex">\(w_2 g_2(\bar{x}) = 1 \times 0 = 0\)</span>，满足所有条件。<br />
-3. <strong>结论</strong>：唯一满足KKT条件的解为 <span class="arithmatex">\(\bar{x} = (1, 0)^T\)</span>，且由于目标函数为凸函数，约束为凹函数，该解为全局最优解。  </p>
+\]</div>
+<p><strong>求解步骤</strong>：  </p>
+<ol>
+<li>
+<p><strong>计算梯度</strong>：  </p>
+<div class="arithmatex">\[
+\nabla f(x) = \begin{pmatrix} 2(x_1 - 1) \\ 1 \end{pmatrix}, \quad \nabla g_1(x) = \begin{pmatrix} -1 \\ -1 \end{pmatrix}, \quad \nabla g_2(x) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>假设起作用约束</strong>：  </p>
+</li>
+<li>
+<p><strong>情况1</strong>：<span class="arithmatex">\(g_1(x) = 0\)</span> 且 <span class="arithmatex">\(g_2(x) = 0\)</span>（即 <span class="arithmatex">\(x_1 + x_2 = 2\)</span> 且 <span class="arithmatex">\(x_2 = 0\)</span>），解得 <span class="arithmatex">\(x_1 = 2\)</span>，<span class="arithmatex">\(x_2 = 0\)</span>，即 <span class="arithmatex">\(\bar{x} = (2, 0)^T\)</span>。  </p>
+<ul>
+<li>
+<p>建立KKT方程：  </p>
+<div class="arithmatex">\[
+\nabla f(\bar{x}) = w_1 \nabla g_1(\bar{x}) + w_2 \nabla g_2(\bar{x}) \implies \begin{pmatrix} 2(2-1) \\ 1 \end{pmatrix} = w_1 \begin{pmatrix} -1 \\ -1 \end{pmatrix} + w_2 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]</div>
+<p>解得：<span class="arithmatex">\(2 = -w_1\)</span>，<span class="arithmatex">\(1 = -w_1 + w_2\)</span>，显然 <span class="arithmatex">\(w_1 = -2 &lt; 0\)</span>，不满足非负性，舍去。  </p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>情况2</strong>：<span class="arithmatex">\(g_1(x) = 0\)</span> 且 <span class="arithmatex">\(g_2(x) &gt; 0\)</span>（即 <span class="arithmatex">\(x_2 &gt; 0\)</span>，对应 <span class="arithmatex">\(w_2 = 0\)</span>），解得 <span class="arithmatex">\(x_1 + x_2 = 2\)</span>，代入目标函数：  </p>
+<div class="arithmatex">\[
+f(x) = (x_1 - 1)^2 + (2 - x_1) = x_1^2 - 2x_1 + 1 + 2 - x_1 = x_1^2 - 3x_1 + 3
+\]</div>
+<p>求导得 <span class="arithmatex">\(2x_1 - 3 = 0 \implies x_1 = 1.5\)</span>，<span class="arithmatex">\(x_2 = 0.5\)</span>，即 <span class="arithmatex">\(\bar{x} = (1.5, 0.5)^T\)</span>。  </p>
+<ul>
+<li>
+<p>验证KKT条件：  </p>
+<div class="arithmatex">\[
+\nabla f(\bar{x}) = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad w_1 \nabla g_1(\bar{x}) = w_1 \begin{pmatrix} -1 \\ -1 \end{pmatrix}
+\]</div>
+<p>由梯度条件得 <span class="arithmatex">\(w_1 = -1 &lt; 0\)</span>，不满足非负性，舍去。  </p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>情况3</strong>：<span class="arithmatex">\(g_1(x) &gt; 0\)</span> 且 <span class="arithmatex">\(g_2(x) = 0\)</span>（即 <span class="arithmatex">\(x_1 + x_2 &lt; 2\)</span> 且 <span class="arithmatex">\(x_2 = 0\)</span>，对应 <span class="arithmatex">\(w_1 = 0\)</span>），此时问题退化为无约束优化：  </p>
+<div class="arithmatex">\[
+f(x) = (x_1 - 1)^2 + 0 \implies \nabla f(x) = 2(x_1 - 1) = 0 \implies x_1 = 1, x_2 = 0
+\]</div>
+<p>即 <span class="arithmatex">\(\bar{x} = (1, 0)^T\)</span>。  </p>
+<ul>
+<li>
+<p>验证KKT条件：  </p>
+<div class="arithmatex">\[
+\nabla f(\bar{x}) = \begin{pmatrix} 0 \\ 1 \end{pmatrix}, \quad w_2 \nabla g_2(\bar{x}) = w_2 \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+\]</div>
+<p>由梯度条件得 <span class="arithmatex">\(w_2 = 1 \geq 0\)</span>，互补松弛条件 <span class="arithmatex">\(w_2 g_2(\bar{x}) = 1 \times 0 = 0\)</span>，满足所有条件。  </p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>结论</strong>：唯一满足KKT条件的解为 <span class="arithmatex">\(\bar{x} = (1, 0)^T\)</span>，且由于目标函数为凸函数，约束为凹函数，该解为全局最优解。  </p>
+</li>
+</ol>
 <h3 id="_22">六、重点总结<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>约束优化核心逻辑</strong>：通过KKT条件联立目标函数与约束梯度，利用互补松弛性排除无效约束，结合凸性判断全局最优性。  </li>
@@ -9110,7 +9168,7 @@
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

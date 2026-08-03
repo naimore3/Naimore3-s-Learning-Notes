@@ -8598,16 +8598,20 @@
 1. <strong>定理4.4.1</strong>：终态接受语言可转换为空栈接受语言，通过引入辅助状态和栈底符号实现。<br />
 2. <strong>定理4.4.2</strong>：空栈接受语言可转换为终态接受语言，通过添加初始状态和终态实现。  </p>
 <h4 id="pda_2">三、PDA构造示例<a class="headerlink" href="#pda_2" title="Permanent link">&para;</a></h4>
-<p><strong>例1：识别<span class="arithmatex">\(L = \{a^nb^n \mid n≥0\}\)</span></strong><br />
-- <strong>状态设计</strong>：<span class="arithmatex">\(Q = \{q_0,q_1,q_2\}\)</span>（<span class="arithmatex">\(q_0\)</span>初始/终态，<span class="arithmatex">\(q_1\)</span>处理a，<span class="arithmatex">\(q_2\)</span>处理b）。<br />
-- <strong>转移规则</strong>：<br />
-  - <span class="arithmatex">\(\delta(q_0,a,z_0) = \{(q_1,az_0)\}\)</span>（压栈a）；<br />
-  - <span class="arithmatex">\(\delta(q_1,b,a) = \{(q_2,ε)\}\)</span>（弹栈a匹配b）；<br />
-  - <span class="arithmatex">\(\delta(q_2,ε,z_0) = \{(q_0,ε)\}\)</span>（栈空时返回终态）。<br />
-- <strong>格局示例</strong>：输入<span class="arithmatex">\(aabb\)</span>的识别过程为：<br />
-  [
-  (q_0,aabb,z_0) \vdash (q_1,abb,az_0) \vdash (q_1,bb,aaz_0) \vdash (q_2,b,az_0) \vdash (q_2,ε,z_0) \vdash (q_0,ε,ε)
-  ]  </p>
+<p><strong>例1：识别<span class="arithmatex">\(L = \{a^nb^n \mid n≥0\}\)</span></strong>  </p>
+<ul>
+<li><strong>状态设计</strong>：<span class="arithmatex">\(Q = \{q_0,q_1,q_2\}\)</span>（<span class="arithmatex">\(q_0\)</span>初始/终态，<span class="arithmatex">\(q_1\)</span>处理a，<span class="arithmatex">\(q_2\)</span>处理b）。  </li>
+<li><strong>转移规则</strong>：  </li>
+<li><span class="arithmatex">\(\delta(q_0,a,z_0) = \{(q_1,az_0)\}\)</span>（压栈a）；  </li>
+<li><span class="arithmatex">\(\delta(q_1,b,a) = \{(q_2,ε)\}\)</span>（弹栈a匹配b）；  </li>
+<li><span class="arithmatex">\(\delta(q_2,ε,z_0) = \{(q_0,ε)\}\)</span>（栈空时返回终态）。  </li>
+<li>
+<p><strong>格局示例</strong>：输入<span class="arithmatex">\(aabb\)</span>的识别过程为：  </p>
+<div class="arithmatex">\[
+(q_0,aabb,z_0) \vdash (q_1,abb,az_0) \vdash (q_1,bb,aaz_0) \vdash (q_2,b,az_0) \vdash (q_2,ε,z_0) \vdash (q_0,ε,ε)
+\]</div>
+</li>
+</ul>
 <p><strong>例2：识别回文语言<span class="arithmatex">\(\{\omega c \omega^T \mid \omega∈\{a,b\}^*\}\)</span>（DPDA）</strong><br />
 - <strong>思路</strong>：用栈存储<span class="arithmatex">\(\omega\)</span>，遇到分隔符<span class="arithmatex">\(c\)</span>后弹栈匹配<span class="arithmatex">\(\omega^T\)</span>。<br />
 - <strong>关键转移</strong>：<br />
@@ -8674,19 +8678,23 @@
 </ol>
 <h2 id="pda_3"><strong>下推自动机（PDA）的格局与接受方式</strong><a class="headerlink" href="#pda_3" title="Permanent link">&para;</a></h2>
 <h3 id="pda_4"><strong>一、PDA格局的定义与组成</strong><a class="headerlink" href="#pda_4" title="Permanent link">&para;</a></h3>
-<p><strong>格局</strong>是描述PDA瞬时工作状态的三元组，形式为：<br />
-[
+<p><strong>格局</strong>是描述PDA瞬时工作状态的三元组，形式为：  </p>
+<div class="arithmatex">\[
 \mathbf{(q, \omega, \alpha)}
-]<br />
-- <strong><span class="arithmatex">\(q\)</span></strong>：当前状态（有限控制器状态）。<br />
-- <strong><span class="arithmatex">\(\omega\)</span></strong>：待输入字符串（<span class="arithmatex">\(\omega = \varepsilon\)</span>表示输入已处理完毕）。<br />
-- <strong><span class="arithmatex">\(\alpha\)</span></strong>：下推栈内容（<span class="arithmatex">\(\alpha = \varepsilon\)</span>表示栈为空）。  </p>
+\]</div>
+<ul>
+<li><strong><span class="arithmatex">\(q\)</span></strong>：当前状态（有限控制器状态）。  </li>
+<li><strong><span class="arithmatex">\(\omega\)</span></strong>：待输入字符串（<span class="arithmatex">\(\omega = \varepsilon\)</span>表示输入已处理完毕）。  </li>
+<li><strong><span class="arithmatex">\(\alpha\)</span></strong>：下推栈内容（<span class="arithmatex">\(\alpha = \varepsilon\)</span>表示栈为空）。  </li>
+</ul>
 <p><strong>转移示例</strong>：<br />
-若转移函数<span class="arithmatex">\(\delta(q, a, Z) = \{(p, r)\}\)</span>，则格局转移可表示为：<br />
-[
+若转移函数<span class="arithmatex">\(\delta(q, a, Z) = \{(p, r)\}\)</span>，则格局转移可表示为：  </p>
+<div class="arithmatex">\[
 (q, a\omega, Z\alpha) \vdash (p, \omega, r\alpha)
-]<br />
-- <strong>含义</strong>：在状态<span class="arithmatex">\(q\)</span>，输入字符<span class="arithmatex">\(a\)</span>，栈顶符号<span class="arithmatex">\(Z\)</span>时，消耗<span class="arithmatex">\(a\)</span>，栈顶<span class="arithmatex">\(Z\)</span>替换为<span class="arithmatex">\(r\)</span>，状态转为<span class="arithmatex">\(p\)</span>，剩余输入变为<span class="arithmatex">\(\omega\)</span>。  </p>
+\]</div>
+<ul>
+<li><strong>含义</strong>：在状态<span class="arithmatex">\(q\)</span>，输入字符<span class="arithmatex">\(a\)</span>，栈顶符号<span class="arithmatex">\(Z\)</span>时，消耗<span class="arithmatex">\(a\)</span>，栈顶<span class="arithmatex">\(Z\)</span>替换为<span class="arithmatex">\(r\)</span>，状态转为<span class="arithmatex">\(p\)</span>，剩余输入变为<span class="arithmatex">\(\omega\)</span>。  </li>
+</ul>
 <p><strong>初始与终止格局</strong>：<br />
 - <strong>初始格局</strong>：<span class="arithmatex">\((q_0, \omega, z_0)\)</span>（<span class="arithmatex">\(q_0\)</span>为初始状态，<span class="arithmatex">\(z_0\)</span>为初始栈底符号）。<br />
 - <strong>终止格局</strong>：<br />
@@ -8695,20 +8703,28 @@
 <h3 id="pda_5"><strong>二、PDA接受语言的两种方式</strong><a class="headerlink" href="#pda_5" title="Permanent link">&para;</a></h3>
 <h4 id="1"><strong>1. 终态接受</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>定义</strong>：<br />
-  [
-  L(M) = {\omega \mid (q_0, \omega, z_0) \vdash^<em> (q, \varepsilon, \alpha),  q \in F,  \alpha \in \Gamma^</em>}
-  ]  </li>
-<li><strong>关键</strong>：以<strong>状态进入终态集<span class="arithmatex">\(F\)</span></strong>为接受条件，栈中内容不要求为空。  </li>
+<li>
+<p><strong>定义</strong>：  </p>
+<div class="arithmatex">\[
+L(M) = \{\omega \mid (q_0, \omega, z_0) \vdash^* (q, \varepsilon, \alpha), \ q \in F, \ \alpha \in \Gamma^*\}
+\]</div>
+</li>
+<li>
+<p><strong>关键</strong>：以<strong>状态进入终态集<span class="arithmatex">\(F\)</span></strong>为接受条件，栈中内容不要求为空。  </p>
+</li>
 <li><strong>示例</strong>：识别<span class="arithmatex">\(a^nb^n\)</span>的PDA（见下文示例），最终状态<span class="arithmatex">\(q_0 \in F\)</span>，栈空时接受。  </li>
 </ul>
 <h4 id="2"><strong>2. 空栈接受</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>定义</strong>：<br />
-  [
-  L(M) = {\omega \mid (q_0, \omega, z_0) \vdash^* (q, \varepsilon, \varepsilon),  q \in Q}
-  ]  </li>
-<li><strong>关键</strong>：以<strong>栈为空</strong>为接受条件，状态可为任意状态（此时<span class="arithmatex">\(F = \emptyset\)</span>）。  </li>
+<li>
+<p><strong>定义</strong>：  </p>
+<div class="arithmatex">\[
+L(M) = \{\omega \mid (q_0, \omega, z_0) \vdash^* (q, \varepsilon, \varepsilon), \ q \in Q\}
+\]</div>
+</li>
+<li>
+<p><strong>关键</strong>：以<strong>栈为空</strong>为接受条件，状态可为任意状态（此时<span class="arithmatex">\(F = \emptyset\)</span>）。  </p>
+</li>
 <li><strong>特点</strong>：终止状态与状态集无关，仅依赖栈是否为空。  </li>
 </ul>
 <h3 id="pdal-anbn-mid-n-geq-0"><strong>三、PDA构造示例：识别<span class="arithmatex">\(L = \{a^nb^n \mid n \geq 0\}\)</span></strong><a class="headerlink" href="#pdal-anbn-mid-n-geq-0" title="Permanent link">&para;</a></h3>
@@ -8719,19 +8735,21 @@
 <li><strong>接受条件</strong>：输入处理完毕且栈空时，通过<span class="arithmatex">\(\varepsilon\)</span>转移回到初始状态<span class="arithmatex">\(q_0\)</span>（终态）。  </li>
 </ul>
 <h4 id="2_1"><strong>2. 形式定义</strong><a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
-<p>[
+<div class="arithmatex">\[
 M = (Q, T, \Gamma, \delta, q_0, z_0, F)
-]<br />
-- <strong>状态集</strong>：<span class="arithmatex">\(Q = \{q_0, q_1, q_2\}\)</span>（<span class="arithmatex">\(q_0\)</span>为初态/终态，<span class="arithmatex">\(q_1\)</span>处理<span class="arithmatex">\(a\)</span>，<span class="arithmatex">\(q_2\)</span>处理<span class="arithmatex">\(b\)</span>）。<br />
-- <strong>输入字母表</strong>：<span class="arithmatex">\(T = \{a, b\}\)</span>。<br />
-- <strong>栈字母表</strong>：<span class="arithmatex">\(\Gamma = \{z_0, a\}\)</span>（<span class="arithmatex">\(z_0\)</span>为栈底符号）。<br />
-- <strong>终态集</strong>：<span class="arithmatex">\(F = \{q_0\}\)</span>。<br />
-- <strong>转移函数</strong>：<br />
-  - <span class="arithmatex">\(\delta(q_0, a, z_0) = \{(q_1, az_0)\}\)</span>（压栈<span class="arithmatex">\(a\)</span>）。<br />
-  - <span class="arithmatex">\(\delta(q_1, a, a) = \{(q_1, aa)\}\)</span>（连续压栈<span class="arithmatex">\(a\)</span>）。<br />
-  - <span class="arithmatex">\(\delta(q_1, b, a) = \{(q_2, \varepsilon)\}\)</span>（弹栈<span class="arithmatex">\(a\)</span>匹配<span class="arithmatex">\(b\)</span>）。<br />
-  - <span class="arithmatex">\(\delta(q_2, \varepsilon, z_0) = \{(q_0, \varepsilon)\}\)</span>（栈底<span class="arithmatex">\(z_0\)</span>为空时返回终态）。<br />
-  - <span class="arithmatex">\(\delta(q_2, b, a) = \{(q_2, \varepsilon)\}\)</span>（连续弹栈<span class="arithmatex">\(a\)</span>匹配<span class="arithmatex">\(b\)</span>）。  </p>
+\]</div>
+<ul>
+<li><strong>状态集</strong>：<span class="arithmatex">\(Q = \{q_0, q_1, q_2\}\)</span>（<span class="arithmatex">\(q_0\)</span>为初态/终态，<span class="arithmatex">\(q_1\)</span>处理<span class="arithmatex">\(a\)</span>，<span class="arithmatex">\(q_2\)</span>处理<span class="arithmatex">\(b\)</span>）。  </li>
+<li><strong>输入字母表</strong>：<span class="arithmatex">\(T = \{a, b\}\)</span>。  </li>
+<li><strong>栈字母表</strong>：<span class="arithmatex">\(\Gamma = \{z_0, a\}\)</span>（<span class="arithmatex">\(z_0\)</span>为栈底符号）。  </li>
+<li><strong>终态集</strong>：<span class="arithmatex">\(F = \{q_0\}\)</span>。  </li>
+<li><strong>转移函数</strong>：  </li>
+<li><span class="arithmatex">\(\delta(q_0, a, z_0) = \{(q_1, az_0)\}\)</span>（压栈<span class="arithmatex">\(a\)</span>）。  </li>
+<li><span class="arithmatex">\(\delta(q_1, a, a) = \{(q_1, aa)\}\)</span>（连续压栈<span class="arithmatex">\(a\)</span>）。  </li>
+<li><span class="arithmatex">\(\delta(q_1, b, a) = \{(q_2, \varepsilon)\}\)</span>（弹栈<span class="arithmatex">\(a\)</span>匹配<span class="arithmatex">\(b\)</span>）。  </li>
+<li><span class="arithmatex">\(\delta(q_2, \varepsilon, z_0) = \{(q_0, \varepsilon)\}\)</span>（栈底<span class="arithmatex">\(z_0\)</span>为空时返回终态）。  </li>
+<li><span class="arithmatex">\(\delta(q_2, b, a) = \{(q_2, \varepsilon)\}\)</span>（连续弹栈<span class="arithmatex">\(a\)</span>匹配<span class="arithmatex">\(b\)</span>）。  </li>
+</ul>
 <h4 id="3"><strong>3. 图形表示</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <div class="language-text highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
 <span class="normal"><a href="#__codelineno-0-2">2</a></span>
@@ -8744,16 +8762,16 @@ M = (Q, T, \Gamma, \delta, q_0, z_0, F)
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5"></a>q2 ──(b, a/ε)──&gt; q2  
 </span></code></pre></div></td></tr></table></div>
 <h4 id="4-aabb"><strong>4. 格局转移示例（输入<span class="arithmatex">\(aabb\)</span>）</strong><a class="headerlink" href="#4-aabb" title="Permanent link">&para;</a></h4>
-<p>[
-\begin{align<em>}
-&amp;(q_0, aabb, z_0) \vdash (q_1, abb, az_0) \quad \text{（压栈<span class="arithmatex">\(a\)</span>）} \
-&amp;\vdash (q_1, bb, aaz_0) \quad \text{（再压栈<span class="arithmatex">\(a\)</span>）} \
-&amp;\vdash (q_2, b, az_0) \quad \text{（弹栈<span class="arithmatex">\(a\)</span>匹配<span class="arithmatex">\(b\)</span>）} \
-&amp;\vdash (q_2, \varepsilon, z_0) \quad \text{（再弹栈<span class="arithmatex">\(a\)</span>匹配<span class="arithmatex">\(b\)</span>）} \
-&amp;\vdash (q_0, \varepsilon, \varepsilon) \quad \text{（栈空，进入终态）} \
-\end{align</em>}
-]<br />
-<strong>结论</strong>：输入被接受，符合终态接受条件。  </p>
+<div class="arithmatex">\[
+\begin{align*}
+&amp;(q_0, aabb, z_0) \vdash (q_1, abb, az_0) \quad \text{（压栈\(a\)）} \\
+&amp;\vdash (q_1, bb, aaz_0) \quad \text{（再压栈\(a\)）} \\
+&amp;\vdash (q_2, b, az_0) \quad \text{（弹栈\(a\)匹配\(b\)）} \\
+&amp;\vdash (q_2, \varepsilon, z_0) \quad \text{（再弹栈\(a\)匹配\(b\)）} \\
+&amp;\vdash (q_0, \varepsilon, \varepsilon) \quad \text{（栈空，进入终态）} \\
+\end{align*}
+\]</div>
+<p><strong>结论</strong>：输入被接受，符合终态接受条件。  </p>
 <h3 id="_7"><strong>四、课堂练习与关键要点</strong><a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="1-pdal-ambn-mid-m-neq-n-m-n-geq-1"><strong>1. 练习：构造PDA识别<span class="arithmatex">\(L = \{a^mb^n \mid m \neq n, m, n \geq 1\}\)</span></strong><a class="headerlink" href="#1-pdal-ambn-mid-m-neq-n-m-n-geq-1" title="Permanent link">&para;</a></h4>
 <ul>
@@ -9128,7 +9146,7 @@ M = (Q, T, \Gamma, \delta, q_0, z_0, F)
       
         <script src="../../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

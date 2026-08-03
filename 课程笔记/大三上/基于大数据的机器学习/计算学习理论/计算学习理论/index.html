@@ -7970,11 +7970,11 @@
 <ul>
 <li><strong>定义</strong>：在训练集上被假设 <span class="arithmatex">\(h\)</span> 误分类的样本比例。</li>
 <li>
-<p>这是指，在给定的训练数据集 <span class="arithmatex">\(\mathcal{D}_{\text{train}}\)</span> 上，模型 <span class="arithmatex">\(h\)</span> 对于每个输入 <span class="arithmatex">\(x_i\)</span> 的预测标签与真实标签 <span class="arithmatex">\(y_i\)</span> 不一致的比例。形式化表达为：
-    [
-    \hat{E}(h) = \frac{1}{|\mathcal{D}<em _in="\in" _mathcal_D="\mathcal{D" _x_="(x," y_="y)">{\text{train}}|} \sum</em>(h(x) \neq y)
-    ]
-    其中，}_{\text{train}}} \mathbb{I<span class="arithmatex">\(\mathbb{I}\)</span> 是指示函数，当条件成立时返回1，否则返回0。</p>
+<p>这是指，在给定的训练数据集 <span class="arithmatex">\(\mathcal{D}_{\text{train}}\)</span> 上，模型 <span class="arithmatex">\(h\)</span> 对于每个输入 <span class="arithmatex">\(x_i\)</span> 的预测标签与真实标签 <span class="arithmatex">\(y_i\)</span> 不一致的比例。形式化表达为：</p>
+<div class="arithmatex">\[
+\hat{E}(h) = \frac{1}{|\mathcal{D}_{\text{train}}|} \sum_{(x, y) \in \mathcal{D}_{\text{train}}} \mathbb{I}(h(x) \neq y)
+\]</div>
+<p>其中，<span class="arithmatex">\(\mathbb{I}\)</span> 是指示函数，当条件成立时返回1，否则返回0。</p>
 </li>
 <li>
 <p><strong>特点</strong>：这是可以直接计算得到的量，因为它完全基于训练集中的数据点来评估模型的表现。然而，它并不能直接反映模型在未见过的数据上的表现能力。</p>
@@ -8009,21 +8009,25 @@
 </li>
 <li>
 <p><strong>形式化定义</strong>（基于PPT第15页）：
-  考虑实例空间 <span class="arithmatex">\(X\)</span> 上的概念类 <span class="arithmatex">\(\mathcal{C}\)</span>，学习器 <span class="arithmatex">\(L\)</span> 使用假设空间 <span class="arithmatex">\(\mathcal{H}\)</span>。若对任意目标概念 <span class="arithmatex">\(c \in \mathcal{C}\)</span>、任意数据分布 <span class="arithmatex">\(\mathcal{D}\)</span>、任意 <span class="arithmatex">\(\varepsilon \in (0, 1/2)\)</span> 和 <span class="arithmatex">\(\delta \in (0, 1/2)\)</span>，学习器 <span class="arithmatex">\(L\)</span> 都能以至少 <span class="arithmatex">\(1 - \delta\)</span> 的概率输出一个假设 <span class="arithmatex">\(h \in \mathcal{H}\)</span>，使得其真实错误率满足：
-  $$
-  E(h) = \Pr_{x \sim \mathcal{D}}[h(x) \neq c(x)] \leq \varepsilon,
-  $$
-  则称概念类 <span class="arithmatex">\(\mathcal{C}\)</span> 在假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 下是<strong>PAC可学习的</strong>。</p>
+  考虑实例空间 <span class="arithmatex">\(X\)</span> 上的概念类 <span class="arithmatex">\(\mathcal{C}\)</span>，学习器 <span class="arithmatex">\(L\)</span> 使用假设空间 <span class="arithmatex">\(\mathcal{H}\)</span>。若对任意目标概念 <span class="arithmatex">\(c \in \mathcal{C}\)</span>、任意数据分布 <span class="arithmatex">\(\mathcal{D}\)</span>、任意 <span class="arithmatex">\(\varepsilon \in (0, 1/2)\)</span> 和 <span class="arithmatex">\(\delta \in (0, 1/2)\)</span>，学习器 <span class="arithmatex">\(L\)</span> 都能以至少 <span class="arithmatex">\(1 - \delta\)</span> 的概率输出一个假设 <span class="arithmatex">\(h \in \mathcal{H}\)</span>，使得其真实错误率满足：</p>
+<div class="arithmatex">\[
+E(h) = \Pr_{x \sim \mathcal{D}}[h(x) \neq c(x)] \leq \varepsilon,
+\]</div>
+<p>则称概念类 <span class="arithmatex">\(\mathcal{C}\)</span> 在假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 下是<strong>PAC可学习的</strong>。</p>
 </li>
 <li>
 <p><strong>计算效率要求</strong>：</p>
 </li>
-<li>学习所需的时间（以及样本数 <span class="arithmatex">\(m\)</span>）必须是以下参数的<strong>多项式函数</strong>：
-    $$
-    \text{poly}\left( \frac{1}{\varepsilon}, \frac{1}{\delta}, N, \text{size}(c) \right),
-    $$
-    其中 <span class="arithmatex">\(N\)</span> 是实例描述长度，<span class="arithmatex">\(\text{size}(c)\)</span> 是目标概念的表示大小。</li>
-<li>PPT特别指出：“时间复杂度与样本复杂度密切相关”，因此后续重点分析<strong>样本复杂度</strong>。</li>
+<li>
+<p>学习所需的时间（以及样本数 <span class="arithmatex">\(m\)</span>）必须是以下参数的<strong>多项式函数</strong>：</p>
+<div class="arithmatex">\[
+\text{poly}\left( \frac{1}{\varepsilon}, \frac{1}{\delta}, N, \text{size}(c) \right),
+\]</div>
+<p>其中 <span class="arithmatex">\(N\)</span> 是实例描述长度，<span class="arithmatex">\(\text{size}(c)\)</span> 是目标概念的表示大小。</p>
+</li>
+<li>
+<p>PPT特别指出：“时间复杂度与样本复杂度密切相关”，因此后续重点分析<strong>样本复杂度</strong>。</p>
+</li>
 </ul>
 <hr />
 <h3 id="2-realizable-case">2. 可分情形（Realizable Case）<a class="headerlink" href="#2-realizable-case" title="Permanent link">&para;</a></h3>
@@ -8045,22 +8049,26 @@
 </li>
 <li>若某假设 <span class="arithmatex">\(h\)</span> 满足 <span class="arithmatex">\(E(h) &gt; \varepsilon\)</span>，则它在单个随机样本上预测正确的概率 <span class="arithmatex">\(&lt; 1 - \varepsilon\)</span>；</li>
 <li>因此，在 <span class="arithmatex">\(m\)</span> 个独立样本上全部预测正确的概率 <span class="arithmatex">\(&lt; (1 - \varepsilon)^m \leq e^{-\varepsilon m}\)</span>；</li>
-<li>假设空间中有 <span class="arithmatex">\(|\mathcal{H}|\)</span> 个假设，其中“坏假设”（即 <span class="arithmatex">\(E(h) &gt; \varepsilon\)</span> 但在训练集上全对）的总概率不超过：
-     $$
-     |\mathcal{H}| \cdot e^{-\varepsilon m}
-     $$</li>
-<li>要求该概率 <span class="arithmatex">\(\leq \delta\)</span>，即：
-     $$
-     |\mathcal{H}| e^{-\varepsilon m} \leq \delta
-     $$</li>
+<li>
+<p>假设空间中有 <span class="arithmatex">\(|\mathcal{H}|\)</span> 个假设，其中“坏假设”（即 <span class="arithmatex">\(E(h) &gt; \varepsilon\)</span> 但在训练集上全对）的总概率不超过：</p>
+<div class="arithmatex">\[
+|\mathcal{H}| \cdot e^{-\varepsilon m}
+\]</div>
+</li>
+<li>
+<p>要求该概率 <span class="arithmatex">\(\leq \delta\)</span>，即：</p>
+<div class="arithmatex">\[
+|\mathcal{H}| e^{-\varepsilon m} \leq \delta
+\]</div>
+</li>
 <li>
 <p>解得<strong>样本复杂度下界</strong>：</p>
 </li>
 <li>
-<p><strong>样本复杂度</strong>（有限 <span class="arithmatex">\(\mathcal{H}\)</span>）：
-  $$
-  m \geq \frac{1}{\varepsilon} \left( \ln |\mathcal{H}| + \ln \frac{1}{\delta} \right)
-  $$</p>
+<p><strong>样本复杂度</strong>（有限 <span class="arithmatex">\(\mathcal{H}\)</span>）：</p>
+<div class="arithmatex">\[
+m \geq \frac{1}{\varepsilon} \left( \ln |\mathcal{H}| + \ln \frac{1}{\delta} \right)
+\]</div>
 </li>
 <li>
 <p><strong>实例说明</strong>（PPT 第21页）：</p>
@@ -8082,46 +8090,50 @@
 </li>
 <li>不再追求逼近未知的 <span class="arithmatex">\(c\)</span>，而是逼近假设空间中<strong>最优假设</strong> <span class="arithmatex">\(h^* = \arg\min_{h' \in \mathcal{H}} E(h')\)</span>；</li>
 <li>
-<p>要求所学假设 <span class="arithmatex">\(h\)</span> 满足：
-    $$
-    E(h) \leq \min_{h' \in \mathcal{H}} E(h') + \varepsilon
-    $$</p>
+<p>要求所学假设 <span class="arithmatex">\(h\)</span> 满足：</p>
+<div class="arithmatex">\[
+E(h) \leq \min_{h' \in \mathcal{H}} E(h') + \varepsilon
+\]</div>
 </li>
 <li>
 <p><strong>不可知PAC可学习性定义</strong>（PPT 第26–27页）：</p>
 </li>
 <li>
-<p>若存在学习算法 <span class="arithmatex">\(L\)</span>，对任意分布 <span class="arithmatex">\(\mathcal{D}\)</span>、任意 <span class="arithmatex">\(\varepsilon, \delta \in (0,1)\)</span>，当样本数 <span class="arithmatex">\(m \geq \text{poly}(1/\varepsilon, 1/\delta, \dots)\)</span> 时，
-    $$
-    \Pr\left[ E(h) - \min_{h' \in \mathcal{H}} E(h') \leq \varepsilon \right] \geq 1 - \delta,
-    $$
-    则称 <span class="arithmatex">\(\mathcal{H}\)</span> 是<strong>不可知PAC可学习的</strong>。</p>
+<p>若存在学习算法 <span class="arithmatex">\(L\)</span>，对任意分布 <span class="arithmatex">\(\mathcal{D}\)</span>、任意 <span class="arithmatex">\(\varepsilon, \delta \in (0,1)\)</span>，当样本数 <span class="arithmatex">\(m \geq \text{poly}(1/\varepsilon, 1/\delta, \dots)\)</span> 时，</p>
+<div class="arithmatex">\[
+\Pr\left[ E(h) - \min_{h' \in \mathcal{H}} E(h') \leq \varepsilon \right] \geq 1 - \delta,
+\]</div>
+<p>则称 <span class="arithmatex">\(\mathcal{H}\)</span> 是<strong>不可知PAC可学习的</strong>。</p>
 </li>
 <li>
 <p><strong>关键工具</strong>：<strong>Hoeffding不等式</strong></p>
 </li>
-<li>对任意固定假设 <span class="arithmatex">\(h\)</span>，其经验误差 <span class="arithmatex">\(\hat{E}(h)\)</span> 与真实误差 <span class="arithmatex">\(E(h)\)</span> 满足：
-    $$
-    \Pr\left[ |\hat{E}(h) - E(h)| \geq \varepsilon \right] \leq 2 \exp(-2 \varepsilon^2 m)
-    $$</li>
+<li>
+<p>对任意固定假设 <span class="arithmatex">\(h\)</span>，其经验误差 <span class="arithmatex">\(\hat{E}(h)\)</span> 与真实误差 <span class="arithmatex">\(E(h)\)</span> 满足：</p>
+<div class="arithmatex">\[
+\Pr\left[ |\hat{E}(h) - E(h)| \geq \varepsilon \right] \leq 2 \exp(-2 \varepsilon^2 m)
+\]</div>
+</li>
 <li>
 <p>但需对<strong>所有</strong> <span class="arithmatex">\(h \in \mathcal{H}\)</span> 同时成立 → 使用<strong>并集界</strong>（Union Bound）。</p>
 </li>
 <li>
 <p><strong>推导过程</strong>（PPT 第25页）：</p>
 </li>
-<li>对所有 <span class="arithmatex">\(h \in \mathcal{H}\)</span>，有：
-    $$
-    \Pr\left[ \exists h \in \mathcal{H}: |\hat{E}(h) - E(h)| \geq \varepsilon \right] \leq |\mathcal{H}| \cdot 2 \exp(-2 \varepsilon^2 m)
-    $$</li>
+<li>
+<p>对所有 <span class="arithmatex">\(h \in \mathcal{H}\)</span>，有：</p>
+<div class="arithmatex">\[
+\Pr\left[ \exists h \in \mathcal{H}: |\hat{E}(h) - E(h)| \geq \varepsilon \right] \leq |\mathcal{H}| \cdot 2 \exp(-2 \varepsilon^2 m)
+\]</div>
+</li>
 <li>
 <p>令该概率 <span class="arithmatex">\(\leq \delta\)</span>，解得：</p>
 </li>
 <li>
-<p><strong>样本复杂度</strong>（有限 <span class="arithmatex">\(\mathcal{H}\)</span>）：
-  $$
-  m \geq \frac{1}{2\varepsilon^2} \left( \ln (2|\mathcal{H}|) + \ln \frac{1}{\delta} \right)
-  $$</p>
+<p><strong>样本复杂度</strong>（有限 <span class="arithmatex">\(\mathcal{H}\)</span>）：</p>
+<div class="arithmatex">\[
+m \geq \frac{1}{2\varepsilon^2} \left( \ln (2|\mathcal{H}|) + \ln \frac{1}{\delta} \right)
+\]</div>
 </li>
 <li>
 <p><strong>对比可分情形</strong>：</p>
@@ -8168,19 +8180,25 @@
 <li>
 <p><strong>增长函数</strong>（Growth Function）<span class="arithmatex">\(\Pi_{\mathcal{H}}(m)\)</span>：</p>
 </li>
-<li>定义为假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 对任意大小为 <span class="arithmatex">\(m\)</span> 的数据集所能产生的最大对分数目。
-    $$
-    \Pi_{\mathcal{H}}(m) = \max_{x_1,...,x_m \in X} |{(h(x_1),...,h(x_m)) : h \in \mathcal{H}}|
-    $$</li>
-<li>性质：显然有 <span class="arithmatex">\(\Pi_{\mathcal{H}}(m) \leq 2^m\)</span>；但对于某些复杂的假设空间，即使其是无限的，<span class="arithmatex">\(\Pi_{\mathcal{H}}(m)\)</span> 也可能远小于 <span class="arithmatex">\(2^m\)</span>。</li>
+<li>
+<p>定义为假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 对任意大小为 <span class="arithmatex">\(m\)</span> 的数据集所能产生的最大对分数目。</p>
+<div class="arithmatex">\[
+\Pi_{\mathcal{H}}(m) = \max_{x_1,...,x_m \in X} |\{(h(x_1),...,h(x_m)) : h \in \mathcal{H}\}|
+\]</div>
+</li>
+<li>
+<p>性质：显然有 <span class="arithmatex">\(\Pi_{\mathcal{H}}(m) \leq 2^m\)</span>；但对于某些复杂的假设空间，即使其是无限的，<span class="arithmatex">\(\Pi_{\mathcal{H}}(m)\)</span> 也可能远小于 <span class="arithmatex">\(2^m\)</span>。</p>
+</li>
 </ul>
 <h3 id="3-vcvapnik-chervonenkis-dimension">3. VC维（Vapnik-Chervonenkis Dimension）<a class="headerlink" href="#3-vcvapnik-chervonenkis-dimension" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>定义</strong>：</li>
-<li>假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 的VC维是指能够被 <span class="arithmatex">\(\mathcal{H}\)</span> 打散的最大样本数。
-    $$
-    \text{VC}(\mathcal{H}) = \max { m : \Pi_{\mathcal{H}}(m) = 2^m }
-    $$</li>
+<li>
+<p>假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 的VC维是指能够被 <span class="arithmatex">\(\mathcal{H}\)</span> 打散的最大样本数。</p>
+<div class="arithmatex">\[
+\text{VC}(\mathcal{H}) = \max \{ m : \Pi_{\mathcal{H}}(m) = 2^m \}
+\]</div>
+</li>
 <li>
 <p>换句话说，如果存在某个大小为 <span class="arithmatex">\(d\)</span> 的数据集可以被 <span class="arithmatex">\(\mathcal{H}\)</span> 打散，但不存在任何大小为 <span class="arithmatex">\(d+1\)</span> 的数据集可以被 <span class="arithmatex">\(\mathcal{H}\)</span> 打散，则 <span class="arithmatex">\(\text{VC}(\mathcal{H}) = d\)</span>。</p>
 </li>
@@ -8194,29 +8212,37 @@
 <h3 id="4-vc">4. VC维与增长函数的关系<a class="headerlink" href="#4-vc" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>Sauer-Shelah引理</strong>：</li>
-<li>当假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 的VC维为 <span class="arithmatex">\(d\)</span> 时，其增长函数满足如下不等式：
-    $$
-    \Pi_{\mathcal{H}}(m) \leq \sum_{i=0}^{d} \binom{m}{i} \leq \left( \frac{em}{d} \right)^d
-    $$</li>
-<li>这个结果说明，尽管假设空间可能是无限的，但如果它的VC维有限，则其增长函数的增长速度受到限制，不会超过多项式级别。</li>
+<li>
+<p>当假设空间 <span class="arithmatex">\(\mathcal{H}\)</span> 的VC维为 <span class="arithmatex">\(d\)</span> 时，其增长函数满足如下不等式：</p>
+<div class="arithmatex">\[
+\Pi_{\mathcal{H}}(m) \leq \sum_{i=0}^{d} \binom{m}{i} \leq \left( \frac{em}{d} \right)^d
+\]</div>
+</li>
+<li>
+<p>这个结果说明，尽管假设空间可能是无限的，但如果它的VC维有限，则其增长函数的增长速度受到限制，不会超过多项式级别。</p>
+</li>
 </ul>
 <h3 id="5-vc">5. 基于VC维的泛化误差界<a class="headerlink" href="#5-vc" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>泛化误差界</strong>：</li>
-<li>对于任意假设 <span class="arithmatex">\(h \in \mathcal{H}\)</span>，在独立同分布的数据集上，经验误差 <span class="arithmatex">\(\hat{E}(h)\)</span> 与真实误差 <span class="arithmatex">\(E(h)\)</span> 之间的差距可以用以下公式估计：
-    $$
-    |E(h) - \hat{E}(h)| \leq \sqrt{ \frac{8}{m} \left( d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right) }
-    $$</li>
+<li>
+<p>对于任意假设 <span class="arithmatex">\(h \in \mathcal{H}\)</span>，在独立同分布的数据集上，经验误差 <span class="arithmatex">\(\hat{E}(h)\)</span> 与真实误差 <span class="arithmatex">\(E(h)\)</span> 之间的差距可以用以下公式估计：</p>
+<div class="arithmatex">\[
+|E(h) - \hat{E}(h)| \leq \sqrt{ \frac{8}{m} \left( d \ln \frac{2em}{d} + \ln \frac{4}{\delta} \right) }
+\]</div>
+</li>
 <li>
 <p>这里 <span class="arithmatex">\(d = \text{VC}(\mathcal{H})\)</span> 是假设空间的VC维，<span class="arithmatex">\(m\)</span> 是样本数量，<span class="arithmatex">\(\delta\)</span> 是置信水平参数。</p>
 </li>
 <li>
 <p><strong>样本复杂度</strong>（不可知PAC）：</p>
 </li>
-<li>为了确保上述误差界成立的概率至少为 <span class="arithmatex">\(1 - \delta\)</span>，所需的最小样本数 <span class="arithmatex">\(m\)</span> 应满足：
-    $$
-    m \geq \frac{1}{\varepsilon} \left( 4 \log \frac{2}{\delta} + 8d \log \frac{13}{\varepsilon} \right)
-    $$</li>
+<li>
+<p>为了确保上述误差界成立的概率至少为 <span class="arithmatex">\(1 - \delta\)</span>，所需的最小样本数 <span class="arithmatex">\(m\)</span> 应满足：</p>
+<div class="arithmatex">\[
+m \geq \frac{1}{\varepsilon} \left( 4 \log \frac{2}{\delta} + 8d \log \frac{13}{\varepsilon} \right)
+\]</div>
+</li>
 <li>
 <p>这表明，随着允许的误差 <span class="arithmatex">\(\varepsilon\)</span> 减小或者置信度 <span class="arithmatex">\(1 - \delta\)</span> 提高，所需样本数会相应增加。</p>
 </li>
@@ -8335,7 +8361,7 @@
       
         <script src="../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

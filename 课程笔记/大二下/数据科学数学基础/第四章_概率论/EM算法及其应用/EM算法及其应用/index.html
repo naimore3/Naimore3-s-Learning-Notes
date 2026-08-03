@@ -9370,18 +9370,26 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <li><strong>初始化参数</strong>：选取初始值<span class="arithmatex">\(\theta^{(0)}=(\pi^{(0)}, p^{(0)}, q^{(0)})\)</span>。  </li>
 <li><strong>E步（计算期望）</strong>：  </li>
 <li>利用当前参数<span class="arithmatex">\(\theta^{(i)}\)</span>，计算隐变量<span class="arithmatex">\(Z\)</span>的条件期望（即观测数据来自某模型的概率）。  </li>
-<li><strong>三硬币模型E步公式</strong>：<br />
-     [
-     \mu_j^{(i+1)} = \frac{\pi^{(i)} (p<sup y_j="y_j">{(i)})</sup> (1-p<sup 1-y_j="1-y_j">{(i)})</sup> (p}}{\pi^{(i)<sup y_j="y_j">{(i)})</sup> (1-p<sup 1-y_j="1-y_j">{(i)})</sup>) (q} + (1-\pi^{(i)<sup y_j="y_j">{(i)})</sup> (1-q<sup 1-y_j="1-y_j">{(i)})</sup>
-     ]}<br />
-     其中<span class="arithmatex">\(\mu_j^{(i+1)}\)</span>表示第<span class="arithmatex">\(j\)</span>次观测来自硬币B的概率。  </li>
-<li><strong>M步（最大化期望）</strong>：  </li>
+<li>
+<p><strong>三硬币模型E步公式</strong>：  </p>
+<div class="arithmatex">\[
+\mu_j^{(i+1)} = \frac{\pi^{(i)} (p^{(i)})^{y_j} (1-p^{(i)})^{1-y_j}}{\pi^{(i)} (p^{(i)})^{y_j} (1-p^{(i)})^{1-y_j} + (1-\pi^{(i)}) (q^{(i)})^{y_j} (1-q^{(i)})^{1-y_j}}
+\]</div>
+<p>其中<span class="arithmatex">\(\mu_j^{(i+1)}\)</span>表示第<span class="arithmatex">\(j\)</span>次观测来自硬币B的概率。  </p>
+</li>
+<li>
+<p><strong>M步（最大化期望）</strong>：  </p>
+</li>
 <li>基于E步结果更新参数，最大化似然函数下界。  </li>
-<li><strong>三硬币模型M步公式</strong>：<br />
-     [
-     \pi^{(i+1)} = \frac{1}{n} \sum_{j=1}^n \mu_j^{(i+1)}, \quad p^{(i+1)} = \frac{\sum_{j=1}^n \mu_j^{(i+1)} y_j}{\sum_{j=1}^n \mu_j^{(i+1)}}, \quad q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+1)})}
-     ]  </li>
-<li><strong>迭代终止条件</strong>：当参数变化量小于阈值（如<span class="arithmatex">\(\|\theta^{(i+1)}-\theta^{(i)}\| &lt; \varepsilon\)</span>）或似然函数增长停滞时停止。  </li>
+<li>
+<p><strong>三硬币模型M步公式</strong>：  </p>
+<div class="arithmatex">\[
+\pi^{(i+1)} = \frac{1}{n} \sum_{j=1}^n \mu_j^{(i+1)}, \quad p^{(i+1)} = \frac{\sum_{j=1}^n \mu_j^{(i+1)} y_j}{\sum_{j=1}^n \mu_j^{(i+1)}}, \quad q^{(i+1)} = \frac{\sum_{j=1}^n (1-\mu_j^{(i+1)}) y_j}{\sum_{j=1}^n (1-\mu_j^{(i+1)})}
+\]</div>
+</li>
+<li>
+<p><strong>迭代终止条件</strong>：当参数变化量小于阈值（如<span class="arithmatex">\(\|\theta^{(i+1)}-\theta^{(i)}\| &lt; \varepsilon\)</span>）或似然函数增长停滞时停止。  </p>
+</li>
 </ol>
 <h4 id="3_1">3. <strong>关键性质</strong><a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <ul>
@@ -9397,40 +9405,70 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <li><strong>难点</strong>：隐变量<span class="arithmatex">\(Z\)</span>（硬币A的结果）不可观测，似然函数含求和项，无解析解。  </li>
 </ul>
 <h4 id="2-em_1">2. <strong>求解方法：EM算法</strong><a class="headerlink" href="#2-em_1" title="Permanent link">&para;</a></h4>
-<p><strong>步骤解析</strong>：<br />
-1. <strong>初始化参数</strong>：<br />
-   - 例：取初值<span class="arithmatex">\(\theta^{(0)} = (0.5, 0.5, 0.5)\)</span>（硬币A、B、C均为均匀硬币）。<br />
-2. <strong>第一次迭代（<span class="arithmatex">\(i=0\)</span>）</strong>：<br />
-   - <strong>E步</strong>：计算每个观测<span class="arithmatex">\(y_j\)</span>来自硬币B的概率<span class="arithmatex">\(\mu_j^{(1)}\)</span>。<br />
-     - 对于<span class="arithmatex">\(y_j=1\)</span>：<br />
-       [
-       \mu_j^{(1)} = \frac{0.5 \times 0.5^1 \times 0.5^0}{0.5 \times 0.5 + 0.5 \times 0.5} = 0.5
-       ]<br />
-     - 对于<span class="arithmatex">\(y_j=0\)</span>：<br />
-       [
-       \mu_j^{(1)} = \frac{0.5 \times 0.5^0 \times 0.5^1}{0.5 \times 0.5 + 0.5 \times 0.5} = 0.5
-       ]<br />
-   - <strong>M步</strong>：<br />
-     - 计算<span class="arithmatex">\(\pi^{(1)}\)</span>：<span class="arithmatex">\(\pi^{(1)} = \frac{1}{10} \times (0.5 \times 10) = 0.5\)</span><br />
-     - 计算<span class="arithmatex">\(p^{(1)}\)</span>：观测中1的个数为6，0的个数为4，<br />
-       [
-       p^{(1)} = \frac{0.5 \times 6}{0.5 \times 10} = 0.6
-       ]<br />
-     - 计算<span class="arithmatex">\(q^{(1)}\)</span>：<br />
-       [
-       q^{(1)} = \frac{(1-0.5) \times 6}{(1-0.5) \times 10} = 0.6
-       ]<br />
-3. <strong>第二次迭代（<span class="arithmatex">\(i=1\)</span>）</strong>：<br />
-   - <strong>E步</strong>：参数更新为<span class="arithmatex">\(\theta^{(1)}=(0.5, 0.6, 0.6)\)</span>，重新计算<span class="arithmatex">\(\mu_j^{(2)}\)</span>。<br />
-     - 对于<span class="arithmatex">\(y_j=1\)</span>：<br />
-       [
-       \mu_j^{(2)} = \frac{0.5 \times 0.6^1 \times 0.4^0}{0.5 \times 0.6 + 0.5 \times 0.6} = 0.5
-       ]<br />
-     - 对于<span class="arithmatex">\(y_j=0\)</span>：<br />
-       [
-       \mu_j^{(2)} = \frac{0.5 \times 0.4^1 \times 0.6^0}{0.5 \times 0.4 + 0.5 \times 0.4} = 0.5
-       ]<br />
-   - <strong>M步</strong>：参数不变，迭代收敛，结果为<span class="arithmatex">\(\pi=0.5, p=0.6, q=0.6\)</span>。  </p>
+<p><strong>步骤解析</strong>：  </p>
+<ol>
+<li><strong>初始化参数</strong>：  </li>
+<li>例：取初值<span class="arithmatex">\(\theta^{(0)} = (0.5, 0.5, 0.5)\)</span>（硬币A、B、C均为均匀硬币）。  </li>
+<li><strong>第一次迭代（<span class="arithmatex">\(i=0\)</span>）</strong>：  </li>
+<li>
+<p><strong>E步</strong>：计算每个观测<span class="arithmatex">\(y_j\)</span>来自硬币B的概率<span class="arithmatex">\(\mu_j^{(1)}\)</span>。  </p>
+<ul>
+<li>
+<p>对于<span class="arithmatex">\(y_j=1\)</span>：  </p>
+<div class="arithmatex">\[
+\mu_j^{(1)} = \frac{0.5 \times 0.5^1 \times 0.5^0}{0.5 \times 0.5 + 0.5 \times 0.5} = 0.5
+\]</div>
+</li>
+<li>
+<p>对于<span class="arithmatex">\(y_j=0\)</span>：  </p>
+<div class="arithmatex">\[
+\mu_j^{(1)} = \frac{0.5 \times 0.5^0 \times 0.5^1}{0.5 \times 0.5 + 0.5 \times 0.5} = 0.5
+\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>M步</strong>：  </p>
+<ul>
+<li>计算<span class="arithmatex">\(\pi^{(1)}\)</span>：<span class="arithmatex">\(\pi^{(1)} = \frac{1}{10} \times (0.5 \times 10) = 0.5\)</span>  </li>
+<li>
+<p>计算<span class="arithmatex">\(p^{(1)}\)</span>：观测中1的个数为6，0的个数为4，  </p>
+<div class="arithmatex">\[
+p^{(1)} = \frac{0.5 \times 6}{0.5 \times 10} = 0.6
+\]</div>
+</li>
+<li>
+<p>计算<span class="arithmatex">\(q^{(1)}\)</span>：  </p>
+<div class="arithmatex">\[
+q^{(1)} = \frac{(1-0.5) \times 6}{(1-0.5) \times 10} = 0.6
+\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>第二次迭代（<span class="arithmatex">\(i=1\)</span>）</strong>：  </p>
+</li>
+<li>
+<p><strong>E步</strong>：参数更新为<span class="arithmatex">\(\theta^{(1)}=(0.5, 0.6, 0.6)\)</span>，重新计算<span class="arithmatex">\(\mu_j^{(2)}\)</span>。  </p>
+<ul>
+<li>
+<p>对于<span class="arithmatex">\(y_j=1\)</span>：  </p>
+<div class="arithmatex">\[
+\mu_j^{(2)} = \frac{0.5 \times 0.6^1 \times 0.4^0}{0.5 \times 0.6 + 0.5 \times 0.6} = 0.5
+\]</div>
+</li>
+<li>
+<p>对于<span class="arithmatex">\(y_j=0\)</span>：  </p>
+<div class="arithmatex">\[
+\mu_j^{(2)} = \frac{0.5 \times 0.4^1 \times 0.6^0}{0.5 \times 0.4 + 0.5 \times 0.4} = 0.5
+\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>M步</strong>：参数不变，迭代收敛，结果为<span class="arithmatex">\(\pi=0.5, p=0.6, q=0.6\)</span>。  </p>
+</li>
+</ol>
 <h4 id="3_2">3. <strong>初值影响示例</strong><a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>初值<span class="arithmatex">\(\theta^{(0)}=(0.4, 0.6, 0.7)\)</span></strong>：  </li>
@@ -9440,27 +9478,35 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <h3 id="em_4">三、EM算法数学推导要点<a class="headerlink" href="#em_4" title="Permanent link">&para;</a></h3>
 <h4 id="1_2">1. <strong>目标函数与难点</strong><a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>不完全数据对数似然函数</strong>：<br />
-  [
-  L(\theta) = \log P(Y|\theta) = \log \sum_Z P(Y,Z|\theta)
-  ]<br />
-  难点：求和项的对数无法直接求导，需通过不等式放缩构造下界。  </li>
+<li>
+<p><strong>不完全数据对数似然函数</strong>：  </p>
+<div class="arithmatex">\[
+L(\theta) = \log P(Y|\theta) = \log \sum_Z P(Y,Z|\theta)
+\]</div>
+<p>难点：求和项的对数无法直接求导，需通过不等式放缩构造下界。  </p>
+</li>
 </ul>
 <h4 id="2-jensen">2. <strong>Jensen不等式的应用</strong><a class="headerlink" href="#2-jensen" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>核心推导</strong>：<br />
-  [
-  L(\theta) - L(\theta^{(i)}) \geq \sum_Z P(Z|Y,\theta^{(i)}) \log \frac{P(Y,Z|\theta)}{P(Y,Z|\theta^{(i)})}
-  ]<br />
-  定义下界函数<span class="arithmatex">\(B(\theta, \theta^{(i)})\)</span>，通过最大化<span class="arithmatex">\(B\)</span>间接优化<span class="arithmatex">\(L(\theta)\)</span>。  </li>
+<li>
+<p><strong>核心推导</strong>：  </p>
+<div class="arithmatex">\[
+L(\theta) - L(\theta^{(i)}) \geq \sum_Z P(Z|Y,\theta^{(i)}) \log \frac{P(Y,Z|\theta)}{P(Y,Z|\theta^{(i)})}
+\]</div>
+<p>定义下界函数<span class="arithmatex">\(B(\theta, \theta^{(i)})\)</span>，通过最大化<span class="arithmatex">\(B\)</span>间接优化<span class="arithmatex">\(L(\theta)\)</span>。  </p>
+</li>
 </ul>
 <h4 id="3-q">3. <strong>Q函数的作用</strong><a class="headerlink" href="#3-q" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>定义</strong>：<br />
-  [
-  Q(\theta, \theta^{(i)}) = E_Z[\log P(Y,Z|\theta) | Y, \theta^{(i)}]
-  ]  </li>
-<li>本质：完全数据对数似然函数在当前参数下的期望，作为<span class="arithmatex">\(L(\theta)\)</span>的逼近目标。  </li>
+<li>
+<p><strong>定义</strong>：  </p>
+<div class="arithmatex">\[
+Q(\theta, \theta^{(i)}) = E_Z[\log P(Y,Z|\theta) | Y, \theta^{(i)}]
+\]</div>
+</li>
+<li>
+<p>本质：完全数据对数似然函数在当前参数下的期望，作为<span class="arithmatex">\(L(\theta)\)</span>的逼近目标。  </p>
+</li>
 <li><strong>M步等价于</strong>：<span class="arithmatex">\(\theta^{(i+1)} = \arg\max_\theta Q(\theta, \theta^{(i)})\)</span>。  </li>
 </ul>
 <h3 id="_11">四、总结<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
@@ -9484,11 +9530,15 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <h3 id="_13">二、收敛性定理详解<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="1-1">1. <strong>定理1：似然函数序列的单调性</strong><a class="headerlink" href="#1-1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>内容</strong>：设 <span class="arithmatex">\( P(Y|\theta) \)</span> 为观测数据的似然函数，<span class="arithmatex">\( \{\theta^{(i)}\} \)</span> 为EM算法的参数序列，对应似然函数序列 <span class="arithmatex">\( \{P(Y|\theta^{(i)})\} \)</span> 单调递增，即：<br />
-  [
-  P(Y|\theta^{(i+1)}) \geq P(Y|\theta^{(i)})
-  ]  </li>
-<li><strong>证明要点</strong>：  </li>
+<li>
+<p><strong>内容</strong>：设 <span class="arithmatex">\( P(Y|\theta) \)</span> 为观测数据的似然函数，<span class="arithmatex">\( \{\theta^{(i)}\} \)</span> 为EM算法的参数序列，对应似然函数序列 <span class="arithmatex">\( \{P(Y|\theta^{(i)})\} \)</span> 单调递增，即：  </p>
+<div class="arithmatex">\[
+P(Y|\theta^{(i+1)}) \geq P(Y|\theta^{(i)})
+\]</div>
+</li>
+<li>
+<p><strong>证明要点</strong>：  </p>
+</li>
 <li>利用<strong>Jensen不等式</strong>构造似然函数差的下界，证明每次迭代后似然函数非递减。  </li>
 <li>数学表达式：通过 <span class="arithmatex">\( H(\theta, \theta^{(i)}) = \sum_Z \log P(Z|Y,\theta) P(Z|Y,\theta^{(i)}) \)</span> 推导，结合不等式 <span class="arithmatex">\( \sum_Z \log \frac{P_1}{P_2} \cdot P_2 \leq \log \sum_Z P_1 \)</span>（其中 <span class="arithmatex">\( P_1, P_2 \)</span> 为概率分布），得出 <span class="arithmatex">\( H(\theta^{(i+1)}, \theta^{(i)}) \leq H(\theta^{(i)}, \theta^{(i)}) \)</span>，从而证明似然函数单调递增。  </li>
 </ul>
@@ -9574,11 +9624,15 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <h4 id="1_6">1. <strong>模型定义与作用</strong><a class="headerlink" href="#1_6" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>定义</strong>：高斯混合模型是由<strong>多个高斯分布线性组合而成的概率模型</strong>，用于描述多模态数据（即数据呈现多个密集簇状分布）。  </li>
-<li><strong>数学表达式</strong>：<br />
-  [
-  P(y|\theta) = \sum_{k=1}^{K} \alpha_k \phi(y|\theta_k), \quad \text{其中}  \alpha_k \geq 0,  \sum_{k=1}^{K} \alpha_k = 1
-  ]  </li>
-<li><span class="arithmatex">\( \alpha_k \)</span>：第<span class="arithmatex">\( k \)</span>个高斯分模型的权重（选择概率）；  </li>
+<li>
+<p><strong>数学表达式</strong>：  </p>
+<div class="arithmatex">\[
+P(y|\theta) = \sum_{k=1}^{K} \alpha_k \phi(y|\theta_k), \quad \text{其中} \ \alpha_k \geq 0, \ \sum_{k=1}^{K} \alpha_k = 1
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\( \alpha_k \)</span>：第<span class="arithmatex">\( k \)</span>个高斯分模型的权重（选择概率）；  </p>
+</li>
 <li><span class="arithmatex">\( \phi(y|\theta_k) \)</span>：第<span class="arithmatex">\( k \)</span>个高斯分模型的概率密度函数，参数<span class="arithmatex">\( \theta_k = (\mu_k, \sigma_k^2) \)</span>。  </li>
 </ul>
 <h4 id="2_4">2. <strong>应用场景</strong><a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h4>
@@ -9597,13 +9651,19 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <h4 id="2-em_2">2. <strong>EM算法流程</strong><a class="headerlink" href="#2-em_2" title="Permanent link">&para;</a></h4>
 <p><strong>步骤1：初始化参数</strong><br />
 - 设定分模型个数<span class="arithmatex">\( K \)</span>，初始化各分模型的参数<span class="arithmatex">\( \theta_k^{(0)}=(\mu_k^{(0)}, \sigma_k^{2(0)}) \)</span>和权重<span class="arithmatex">\( \alpha_k^{(0)} \)</span>（如随机初始化或基于先验知识）。  </p>
-<p><strong>步骤2：E步（计算响应度）</strong><br />
-- <strong>目标</strong>：计算每个观测数据<span class="arithmatex">\( y_j \)</span>来自第<span class="arithmatex">\( k \)</span>个分模型的概率（响应度，Responsibility）。<br />
-- <strong>公式</strong>：<br />
-  [
-  \hat{\gamma}<em jk="jk">{jk} = P(\gamma</em> \phi(y_j|\theta_k}=1 | y_j, \theta^{(i)}) = \frac{\alpha_k^{(i)<sup K="K">{(i)})}{\sum_{m=1}</sup>
-  ]} \alpha_m^{(i)} \phi(y_j|\theta_m^{(i)})<br />
-  - <span class="arithmatex">\( \phi(y_j|\theta_k^{(i)}) = \frac{1}{\sqrt{2\pi\sigma_k^{2(i)}}} \exp\left(-\frac{(y_j-\mu_k^{(i)})^2}{2\sigma_k^{2(i)}}\right) \)</span>为高斯概率密度。  </p>
+<p><strong>步骤2：E步（计算响应度）</strong>  </p>
+<ul>
+<li><strong>目标</strong>：计算每个观测数据<span class="arithmatex">\( y_j \)</span>来自第<span class="arithmatex">\( k \)</span>个分模型的概率（响应度，Responsibility）。  </li>
+<li>
+<p><strong>公式</strong>：  </p>
+<div class="arithmatex">\[
+\hat{\gamma}_{jk} = P(\gamma_{jk}=1 | y_j, \theta^{(i)}) = \frac{\alpha_k^{(i)} \phi(y_j|\theta_k^{(i)})}{\sum_{m=1}^{K} \alpha_m^{(i)} \phi(y_j|\theta_m^{(i)})}
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\( \phi(y_j|\theta_k^{(i)}) = \frac{1}{\sqrt{2\pi\sigma_k^{2(i)}}} \exp\left(-\frac{(y_j-\mu_k^{(i)})^2}{2\sigma_k^{2(i)}}\right) \)</span>为高斯概率密度。  </p>
+</li>
+</ul>
 <p><strong>步骤3：M步（更新模型参数）</strong><br />
 - <strong>目标</strong>：基于响应度更新分模型参数和权重，最大化似然函数下界。<br />
 - <strong>更新公式</strong>：<br />
@@ -9626,13 +9686,17 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
   - 男生分布：<span class="arithmatex">\( \mu_1^{(0)}=1.64 \, \text{m}, \sigma_1^{2(0)}=0.06 \, \text{m}^2 \)</span>（假设均值为1.64，方差较小）；<br />
   - 女生分布：<span class="arithmatex">\( \mu_2^{(0)}=1.56 \, \text{m}, \sigma_2^{2(0)}=0.04 \, \text{m}^2 \)</span>；<br />
   - 权重：<span class="arithmatex">\( \alpha_1^{(0)}=\alpha_2^{(0)}=0.5 \)</span>（假设男女样本数相等）。  </p>
-<p><strong>Step 2：E步计算响应度</strong><br />
-- 对每个身高数据<span class="arithmatex">\( y_j \)</span>，计算其属于男生的概率<span class="arithmatex">\( \hat{\gamma}_{j1} \)</span>和女生的概率<span class="arithmatex">\( \hat{\gamma}_{j2}=1-\hat{\gamma}_{j1} \)</span>。<br />
-  - 例：某样本<span class="arithmatex">\( y_j=1.70 \, \text{m} \)</span>，<br />
-    [
-    \hat{\gamma}_{j1} = \frac{0.5 \cdot \phi(1.70|1.64, 0.06)}{0.5 \cdot \phi(1.70|1.64, 0.06) + 0.5 \cdot \phi(1.70|1.56, 0.04)}
-    ]<br />
-    计算得<span class="arithmatex">\( \hat{\gamma}_{j1} \approx 0.8 \)</span>，即该样本有80%概率属于男生分布。  </p>
+<p><strong>Step 2：E步计算响应度</strong>  </p>
+<ul>
+<li>对每个身高数据<span class="arithmatex">\( y_j \)</span>，计算其属于男生的概率<span class="arithmatex">\( \hat{\gamma}_{j1} \)</span>和女生的概率<span class="arithmatex">\( \hat{\gamma}_{j2}=1-\hat{\gamma}_{j1} \)</span>。  </li>
+<li>
+<p>例：某样本<span class="arithmatex">\( y_j=1.70 \, \text{m} \)</span>，  </p>
+<div class="arithmatex">\[
+\hat{\gamma}_{j1} = \frac{0.5 \cdot \phi(1.70|1.64, 0.06)}{0.5 \cdot \phi(1.70|1.64, 0.06) + 0.5 \cdot \phi(1.70|1.56, 0.04)}
+\]</div>
+<p>计算得<span class="arithmatex">\( \hat{\gamma}_{j1} \approx 0.8 \)</span>，即该样本有80%概率属于男生分布。  </p>
+</li>
+</ul>
 <p><strong>Step 3：M步更新参数</strong><br />
 - <strong>男生分布参数更新</strong>：<br />
   - 均值：<span class="arithmatex">\( \mu_1^{(1)} = \frac{\sum_{j=1}^{200} \hat{\gamma}_{j1} y_j}{\sum_{j=1}^{200} \hat{\gamma}_{j1}} \)</span>（加权平均，高响应度样本贡献更大）；<br />
@@ -9751,27 +9815,43 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 <p><strong>步骤1：明确完全数据与隐变量</strong><br />
 - <strong>完全数据</strong>：<span class="arithmatex">\( (O, I) \)</span>（观测序列+状态序列）。<br />
 - <strong>对数似然函数</strong>：<span class="arithmatex">\( \log P(O, I | \lambda) = \log \left[ \pi_{i_1} \prod_{t=1}^{T-1} a_{i_t i_{t+1}} \prod_{t=1}^T b_{i_t}(o_t) \right] \)</span>。  </p>
-<p><strong>步骤2：E步（计算Q函数）</strong><br />
-- <strong>Q函数定义</strong>：<br />
-  [
-  Q(\lambda, \bar{\lambda}) = E_I \left[ \log P(O, I | \lambda) \mid O, \bar{\lambda} \right] = \sum_I \log P(O, I | \lambda) \cdot P(I \mid O, \bar{\lambda})
-  ]<br />
-  - 其中 <span class="arithmatex">\( P(I \mid O, \bar{\lambda}) \)</span> 是在当前参数 <span class="arithmatex">\( \bar{\lambda} \)</span> 下，状态序列 <span class="arithmatex">\( I \)</span> 的后验概率。  </p>
+<p><strong>步骤2：E步（计算Q函数）</strong>  </p>
+<ul>
+<li>
+<p><strong>Q函数定义</strong>：  </p>
+<div class="arithmatex">\[
+Q(\lambda, \bar{\lambda}) = E_I \left[ \log P(O, I | \lambda) \mid O, \bar{\lambda} \right] = \sum_I \log P(O, I | \lambda) \cdot P(I \mid O, \bar{\lambda})
+\]</div>
+</li>
+<li>
+<p>其中 <span class="arithmatex">\( P(I \mid O, \bar{\lambda}) \)</span> 是在当前参数 <span class="arithmatex">\( \bar{\lambda} \)</span> 下，状态序列 <span class="arithmatex">\( I \)</span> 的后验概率。  </p>
+</li>
+</ul>
 <p><strong>步骤3：M步（最大化Q函数更新参数）</strong><br />
-通过拉格朗日乘子法，分别对 <span class="arithmatex">\( \pi, A, B \)</span> 求偏导并最大化，得到更新公式：<br />
-1. <strong>初始状态概率 <span class="arithmatex">\( \pi_i \)</span></strong>：<br />
-   [
-   \pi_i = \frac{P(i_1 = q_i \mid O, \bar{\lambda})}{P(O \mid \bar{\lambda})} = P(i_1 = q_i \mid O, \bar{\lambda})
-   ]<br />
-2. <strong>状态转移矩阵 <span class="arithmatex">\( a_{ij} \)</span></strong>：<br />
-   [
-   a_{ij} = \frac{\sum_{t=1}^{T-1} P(i_t = q_i, i_{t+1} = q_j \mid O, \bar{\lambda})}{\sum_{t=1}^{T-1} P(i_t = q_i \mid O, \bar{\lambda})}
-   ]<br />
-3. <strong>观测概率矩阵 <span class="arithmatex">\( b_j(k) \)</span></strong>：<br />
-   [
-   b_j(k) = \frac{\sum_{t=1}^T P(i_t = q_j \mid O, \bar{\lambda}) \cdot \delta(o_t, v_k)}{\sum_{t=1}^T P(i_t = q_j \mid O, \bar{\lambda})}
-   ]<br />
-   - <span class="arithmatex">\( \delta(o_t, v_k) = 1 \)</span> 当 <span class="arithmatex">\( o_t = v_k \)</span>，否则为0。  </p>
+通过拉格朗日乘子法，分别对 <span class="arithmatex">\( \pi, A, B \)</span> 求偏导并最大化，得到更新公式：  </p>
+<ol>
+<li>
+<p><strong>初始状态概率 <span class="arithmatex">\( \pi_i \)</span></strong>：  </p>
+<div class="arithmatex">\[
+\pi_i = \frac{P(i_1 = q_i \mid O, \bar{\lambda})}{P(O \mid \bar{\lambda})} = P(i_1 = q_i \mid O, \bar{\lambda})
+\]</div>
+</li>
+<li>
+<p><strong>状态转移矩阵 <span class="arithmatex">\( a_{ij} \)</span></strong>：  </p>
+<div class="arithmatex">\[
+a_{ij} = \frac{\sum_{t=1}^{T-1} P(i_t = q_i, i_{t+1} = q_j \mid O, \bar{\lambda})}{\sum_{t=1}^{T-1} P(i_t = q_i \mid O, \bar{\lambda})}
+\]</div>
+</li>
+<li>
+<p><strong>观测概率矩阵 <span class="arithmatex">\( b_j(k) \)</span></strong>：  </p>
+<div class="arithmatex">\[
+b_j(k) = \frac{\sum_{t=1}^T P(i_t = q_j \mid O, \bar{\lambda}) \cdot \delta(o_t, v_k)}{\sum_{t=1}^T P(i_t = q_j \mid O, \bar{\lambda})}
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\( \delta(o_t, v_k) = 1 \)</span> 当 <span class="arithmatex">\( o_t = v_k \)</span>，否则为0。  </p>
+</li>
+</ol>
 <p><strong>步骤4：迭代终止</strong><br />
 重复E步和M步，直至参数变化量小于阈值或对数似然函数收敛。  </p>
 <h3 id="_20">四、实例解析：盒子和球模型参数学习<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
@@ -9794,21 +9874,29 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
 - 利用前向-后向变量计算：<br />
   - <span class="arithmatex">\( P(i_t = q_i \mid O, \bar{\lambda}) = \frac{\alpha_t(i) \beta_t(i)}{P(O \mid \bar{\lambda})} \)</span>，<br />
   - <span class="arithmatex">\( P(i_t = q_i, i_{t+1} = q_j \mid O, \bar{\lambda}) = \frac{\alpha_t(i) a_{ij} b_j(o_{t+1}) \beta_{t+1}(j)}{P(O \mid \bar{\lambda})} \)</span>。  </p>
-<p><strong>Step 3：M步更新参数</strong><br />
-- <strong>更新 <span class="arithmatex">\( \pi \)</span></strong>：<br />
-  [
-  \pi_i = P(i_1 = q_i \mid O, \bar{\lambda}) = \frac{\alpha_1(i)}{P(O \mid \bar{\lambda})}
-  ]<br />
-- <strong>更新 <span class="arithmatex">\( a_{ij} \)</span></strong>：<br />
-  以盒子1→盒子2为例，<br />
-  [
-  a_{12} = \frac{\sum_{t=1}^{4} P(i_t=\text{盒子1}, i_{t+1}=\text{盒子2} \mid O, \bar{\lambda})}{\sum_{t=1}^{4} P(i_t=\text{盒子1} \mid O, \bar{\lambda})}
-  ]<br />
-- <strong>更新 <span class="arithmatex">\( b_j(\text{红球}) \)</span></strong>：<br />
-  以盒子2为例，<br />
-  [
-  b_2(\text{红球}) = \frac{\sum_{t=1}^5 P(i_t=\text{盒子2} \mid O, \bar{\lambda}) \cdot \delta(o_t, \text{红球})}{\sum_{t=1}^5 P(i_t=\text{盒子2} \mid O, \bar{\lambda})}
-  ]  </p>
+<p><strong>Step 3：M步更新参数</strong>  </p>
+<ul>
+<li>
+<p><strong>更新 <span class="arithmatex">\( \pi \)</span></strong>：  </p>
+<div class="arithmatex">\[
+\pi_i = P(i_1 = q_i \mid O, \bar{\lambda}) = \frac{\alpha_1(i)}{P(O \mid \bar{\lambda})}
+\]</div>
+</li>
+<li>
+<p><strong>更新 <span class="arithmatex">\( a_{ij} \)</span></strong>：<br />
+  以盒子1→盒子2为例，  </p>
+<div class="arithmatex">\[
+a_{12} = \frac{\sum_{t=1}^{4} P(i_t=\text{盒子1}, i_{t+1}=\text{盒子2} \mid O, \bar{\lambda})}{\sum_{t=1}^{4} P(i_t=\text{盒子1} \mid O, \bar{\lambda})}
+\]</div>
+</li>
+<li>
+<p><strong>更新 <span class="arithmatex">\( b_j(\text{红球}) \)</span></strong>：<br />
+  以盒子2为例，  </p>
+<div class="arithmatex">\[
+b_2(\text{红球}) = \frac{\sum_{t=1}^5 P(i_t=\text{盒子2} \mid O, \bar{\lambda}) \cdot \delta(o_t, \text{红球})}{\sum_{t=1}^5 P(i_t=\text{盒子2} \mid O, \bar{\lambda})}
+\]</div>
+</li>
+</ul>
 <p><strong>Step 4：迭代优化</strong><br />
 重复E步和M步，直至参数稳定。例如，若观测中前两帧为红球，后两帧为白球，最后一帧为红球，迭代后盒子2和盒子3的观测概率可能分别偏向红球和白球，状态转移矩阵更符合“盒子2/3以0.4左、0.6右转移”的规则。  </p>
 <h3 id="_21">五、总结<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
@@ -9905,7 +9993,7 @@ EM算法核心步骤为<strong>E步（计算期望）</strong>和<strong>M步（
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

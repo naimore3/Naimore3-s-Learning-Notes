@@ -8387,52 +8387,70 @@
 </ol>
 <h2 id="_10">对偶原理与线性规划对偶问题总结<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
 <h3 id="_11">一、核心概念：线性规划对偶问题<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p><strong>原问题标准形式</strong>（以极小化为例）：<br />
-[
+<p><strong>原问题标准形式</strong>（以极小化为例）：  </p>
+<div class="arithmatex">\[
 \begin{cases}
-\min &amp; c^T x \
-\text{s.t.} &amp; Ax \geq b \
+\min &amp; c^T x \\
+\text{s.t.} &amp; Ax \geq b \\
 &amp; x \geq 0
 \end{cases}
-]<br />
-- <strong>变量</strong>：<span class="arithmatex">\(x \in \mathbb{R}^n\)</span> 为决策变量，<span class="arithmatex">\(c\)</span> 为价值系数向量，<span class="arithmatex">\(A\)</span> 为约束矩阵，<span class="arithmatex">\(b\)</span> 为右端项向量。  </p>
-<p><strong>对偶问题形式</strong>：<br />
-[
+\]</div>
+<ul>
+<li><strong>变量</strong>：<span class="arithmatex">\(x \in \mathbb{R}^n\)</span> 为决策变量，<span class="arithmatex">\(c\)</span> 为价值系数向量，<span class="arithmatex">\(A\)</span> 为约束矩阵，<span class="arithmatex">\(b\)</span> 为右端项向量。  </li>
+</ul>
+<p><strong>对偶问题形式</strong>：  </p>
+<div class="arithmatex">\[
 \begin{cases}
-\max &amp; w^T b \
-\text{s.t.} &amp; w^T A \leq c^T \
+\max &amp; w^T b \\
+\text{s.t.} &amp; w^T A \leq c^T \\
 &amp; w \geq 0
 \end{cases}
-]<br />
-- <strong>变量</strong>：<span class="arithmatex">\(w \in \mathbb{R}^m\)</span> 为对偶变量，对应原问题的 <span class="arithmatex">\(m\)</span> 个约束条件。  </p>
+\]</div>
+<ul>
+<li><strong>变量</strong>：<span class="arithmatex">\(w \in \mathbb{R}^m\)</span> 为对偶变量，对应原问题的 <span class="arithmatex">\(m\)</span> 个约束条件。  </li>
+</ul>
 <p><strong>关键关系</strong>：<br />
 - 原问题是 <strong>极小化</strong>，对偶问题是 <strong>极大化</strong>（min ↔ max）。<br />
 - 原问题的 <strong>约束矩阵转置</strong> 构成对偶问题的约束矩阵（<span class="arithmatex">\(A \to A^T\)</span>）。<br />
 - 原问题的 <strong>右端项 <span class="arithmatex">\(b\)</span></strong> 成为对偶问题的价值系数，原问题的 <strong>价值系数 <span class="arithmatex">\(c\)</span></strong> 成为对偶问题的右端项（<span class="arithmatex">\(b \leftrightarrow c\)</span>）。<br />
 - 原问题约束的 <strong>不等式方向反转</strong>（<span class="arithmatex">\(\geq \to \leq\)</span>）。  </p>
 <h3 id="_12">二、对偶问题的对偶是原问题（对偶性定理）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p><strong>推导过程</strong>：<br />
-1. <strong>对偶问题</strong>（以矩阵形式表示）：<br />
-   [
-   \max  w^T b \quad \text{s.t.}  w^T A \leq c^T,  w \geq 0
-   ]<br />
-2. <strong>将对偶问题转换为原问题形式</strong>：<br />
-   - 目标函数：<span class="arithmatex">\(\max \ w^T b \equiv \min \ -w^T b\)</span><br />
-   - 约束条件：<span class="arithmatex">\(w^T A \leq c^T \equiv -w^T A \geq -c^T\)</span><br />
-     令 <span class="arithmatex">\(w^T = u\)</span>，则对偶问题等价于：<br />
-     [
-     \min  -u b \quad \text{s.t.}  -A^T u \geq -c,  u \geq 0
-     ]<br />
-3. <strong>构造对偶问题的对偶问题</strong>：<br />
-   - 原问题（对偶问题的对偶）变量设为 <span class="arithmatex">\(x\)</span>，则：<br />
-     [
-     \max  (-c)^T x \quad \text{s.t.}  (-A<sup>T)</sup>T x \leq -b,  x \geq 0
-     ]<br />
-   - 化简得：<br />
-     [
-     \max  -c^T x \quad \text{s.t.}  A x \leq -b,  x \geq 0 \quad \text{（此处可能存在符号修正，实际应为与原问题一致的约束）}
-     ]<br />
-     最终通过符号调整，可证明对偶问题的对偶 <strong>等价于原问题</strong>。  </p>
+<p><strong>推导过程</strong>：  </p>
+<ol>
+<li>
+<p><strong>对偶问题</strong>（以矩阵形式表示）：  </p>
+<div class="arithmatex">\[
+\max \ w^T b \quad \text{s.t.} \ w^T A \leq c^T, \ w \geq 0
+\]</div>
+</li>
+<li>
+<p><strong>将对偶问题转换为原问题形式</strong>：  </p>
+</li>
+<li>目标函数：<span class="arithmatex">\(\max \ w^T b \equiv \min \ -w^T b\)</span>  </li>
+<li>
+<p>约束条件：<span class="arithmatex">\(w^T A \leq c^T \equiv -w^T A \geq -c^T\)</span><br />
+     令 <span class="arithmatex">\(w^T = u\)</span>，则对偶问题等价于：  </p>
+<div class="arithmatex">\[
+\min \ -u b \quad \text{s.t.} \ -A^T u \geq -c, \ u \geq 0
+\]</div>
+</li>
+<li>
+<p><strong>构造对偶问题的对偶问题</strong>：  </p>
+</li>
+<li>
+<p>原问题（对偶问题的对偶）变量设为 <span class="arithmatex">\(x\)</span>，则：  </p>
+<div class="arithmatex">\[
+\max \ (-c)^T x \quad \text{s.t.} \ (-A^T)^T x \leq -b, \ x \geq 0
+\]</div>
+</li>
+<li>
+<p>化简得：  </p>
+<div class="arithmatex">\[
+\max \ -c^T x \quad \text{s.t.} \ A x \leq -b, \ x \geq 0 \quad \text{（此处可能存在符号修正，实际应为与原问题一致的约束）}
+\]</div>
+<p>最终通过符号调整，可证明对偶问题的对偶 <strong>等价于原问题</strong>。  </p>
+</li>
+</ol>
 <p><strong>结论</strong>：对偶问题与原问题互为对偶，形成对偶对称性。  </p>
 <h3 id="_13">三、求解方法：对偶问题的转换规则<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="1">1. <strong>对称形式对偶规划要点</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
@@ -8449,15 +8467,15 @@
 <li>若原问题约束为 <span class="arithmatex">\(\leq\)</span>，对偶变量符号为 <strong><span class="arithmatex">\(\geq 0\)</span></strong>；若为 <span class="arithmatex">\(\geq\)</span>，对偶变量符号为 <strong><span class="arithmatex">\(\leq 0\)</span></strong>（需结合具体转换规则）。  </li>
 </ul>
 <h3 id="_14">四、示例：线性规划对偶问题求解<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p><strong>原问题</strong>（例1，选自文档）：<br />
-[
+<p><strong>原问题</strong>（例1，选自文档）：  </p>
+<div class="arithmatex">\[
 \begin{cases}
-\min &amp; 8x_1 + 16x_2 + 12x_3 \
-\text{s.t.} &amp; x_1 + 4x_2 \geq 2 \
-&amp; 2x_1 + 4x_2 + 4x_3 \geq 3 \
+\min &amp; 8x_1 + 16x_2 + 12x_3 \\
+\text{s.t.} &amp; x_1 + 4x_2 \geq 2 \\
+&amp; 2x_1 + 4x_2 + 4x_3 \geq 3 \\
 &amp; x_1, x_2, x_3 \geq 0
 \end{cases}
-]  </p>
+\]</div>
 <p><strong>求解对偶问题步骤</strong>：<br />
 1. <strong>确定原问题参数</strong>：<br />
    - 价值系数向量：<span class="arithmatex">\(c = [8, 16, 12]^T\)</span><br />
@@ -8476,16 +8494,16 @@
 </li>
 <li><strong>变量符号</strong>：<span class="arithmatex">\(w_1, w_2 \geq 0\)</span>  </li>
 </ol>
-<p><strong>对偶问题最终形式</strong>：<br />
-[
+<p><strong>对偶问题最终形式</strong>：  </p>
+<div class="arithmatex">\[
 \begin{cases}
-\max &amp; 2w_1 + 3w_2 \
-\text{s.t.} &amp; w_1 + 2w_2 \leq 8 \
-&amp; 4w_1 + 4w_2 \leq 16 \
-&amp; 4w_2 \leq 12 \
+\max &amp; 2w_1 + 3w_2 \\
+\text{s.t.} &amp; w_1 + 2w_2 \leq 8 \\
+&amp; 4w_1 + 4w_2 \leq 16 \\
+&amp; 4w_2 \leq 12 \\
 &amp; w_1, w_2 \geq 0
 \end{cases}
-]  </p>
+\]</div>
 <p><strong>验证对偶性定理</strong>：<br />
 - 若继续对上述对偶问题求对偶，可通过同样规则还原为原问题，证明对偶的对称性。  </p>
 <h3 id="_15">五、重点总结<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
@@ -8533,66 +8551,92 @@
 | 缩放不变性   | 不不变（随 <span class="arithmatex">\(w, b\)</span> 变化） | 不变（仅与超平面位置有关） |<br />
 | 物理意义     | 带符号的“相对距离”      | 标准化的“绝对距离”      |  </p>
 <h3 id="_19">三、硬间隔最大化支持向量机（线性可分）<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<p><strong>目标</strong>：寻找超平面，使几何间隔最大化，即：<br />
-[
-\max \quad \gamma = \frac{2}{|w|} \quad \text{s.t.} \quad y_i(w^T x_i + b) \geq 1 \quad (i=1,2,\dots,n)
-]<br />
-- <strong>等价优化问题</strong>：最小化 <span class="arithmatex">\(\frac{1}{2}\|w\|^2\)</span>（凸二次规划问题），约束为 <span class="arithmatex">\(y_i(w^T x_i + b) \geq 1\)</span>。  </p>
-<p><strong>求解方法：对偶法</strong><br />
-1. <strong>构造Lagrange函数</strong>：<br />
-[
-L(w, b, \alpha) = \frac{1}{2}|w|^2 - \sum_{i=1}^n \alpha_i \left(y_i(w^T x_i + b) - 1\right), \quad \alpha_i \geq 0
-]<br />
-2. <strong>对 <span class="arithmatex">\(w, b\)</span> 求极小值</strong>：<br />
-   - 求导并令梯度为零：<br />
-     [
-     w = \sum_{i=1}^n \alpha_i y_i x_i, \quad \sum_{i=1}^n \alpha_i y_i = 0
-     ]<br />
-   - 代入化简得对偶函数：<br />
-     [
-     \theta(\alpha) = \sum_{i=1}^n \alpha_i - \frac{1}{2} \sum_{i,j=1}^n \alpha_i \alpha_j y_i y_j x_i^T x_j
-     ]<br />
-3. <strong>对 <span class="arithmatex">\(\alpha\)</span> 求极大值</strong>：<br />
-[
-\max_\alpha \quad \theta(\alpha) \quad \text{s.t.} \quad \sum_{i=1}^n \alpha_i y_i = 0,  \alpha_i \geq 0
-]<br />
-4. <strong>求解后验参数</strong>：<br />
-   - 最优 <span class="arithmatex">\(w^*\)</span>：<span class="arithmatex">\(w^* = \sum_{i=1}^n \alpha_i^* y_i x_i\)</span><br />
-   - 最优 <span class="arithmatex">\(b^*\)</span>：对支持向量 <span class="arithmatex">\(x_j\)</span>（<span class="arithmatex">\(\alpha_j^* &gt; 0\)</span>），<span class="arithmatex">\(b^* = y_j - w^{*T} x_j\)</span>。  </p>
+<p><strong>目标</strong>：寻找超平面，使几何间隔最大化，即：  </p>
+<div class="arithmatex">\[
+\max \quad \gamma = \frac{2}{\|w\|} \quad \text{s.t.} \quad y_i(w^T x_i + b) \geq 1 \quad (i=1,2,\dots,n)
+\]</div>
+<ul>
+<li><strong>等价优化问题</strong>：最小化 <span class="arithmatex">\(\frac{1}{2}\|w\|^2\)</span>（凸二次规划问题），约束为 <span class="arithmatex">\(y_i(w^T x_i + b) \geq 1\)</span>。  </li>
+</ul>
+<p><strong>求解方法：对偶法</strong>  </p>
+<ol>
+<li><strong>构造Lagrange函数</strong>：  </li>
+</ol>
+<div class="arithmatex">\[
+L(w, b, \alpha) = \frac{1}{2}\|w\|^2 - \sum_{i=1}^n \alpha_i \left(y_i(w^T x_i + b) - 1\right), \quad \alpha_i \geq 0
+\]</div>
+<ol>
+<li><strong>对 <span class="arithmatex">\(w, b\)</span> 求极小值</strong>：  </li>
+<li>
+<p>求导并令梯度为零：  </p>
+<div class="arithmatex">\[
+w = \sum_{i=1}^n \alpha_i y_i x_i, \quad \sum_{i=1}^n \alpha_i y_i = 0
+\]</div>
+</li>
+<li>
+<p>代入化简得对偶函数：  </p>
+<div class="arithmatex">\[
+\theta(\alpha) = \sum_{i=1}^n \alpha_i - \frac{1}{2} \sum_{i,j=1}^n \alpha_i \alpha_j y_i y_j x_i^T x_j
+\]</div>
+</li>
+<li>
+<p><strong>对 <span class="arithmatex">\(\alpha\)</span> 求极大值</strong>：  </p>
+</li>
+</ol>
+<div class="arithmatex">\[
+\max_\alpha \quad \theta(\alpha) \quad \text{s.t.} \quad \sum_{i=1}^n \alpha_i y_i = 0, \ \alpha_i \geq 0
+\]</div>
+<ol>
+<li><strong>求解后验参数</strong>：  </li>
+<li>最优 <span class="arithmatex">\(w^*\)</span>：<span class="arithmatex">\(w^* = \sum_{i=1}^n \alpha_i^* y_i x_i\)</span>  </li>
+<li>最优 <span class="arithmatex">\(b^*\)</span>：对支持向量 <span class="arithmatex">\(x_j\)</span>（<span class="arithmatex">\(\alpha_j^* &gt; 0\)</span>），<span class="arithmatex">\(b^* = y_j - w^{*T} x_j\)</span>。  </li>
+</ol>
 <p><strong>支持向量</strong>：<br />
 - 满足 <span class="arithmatex">\(y_i(w^T x_i + b) = 1\)</span> 的样本点，决定超平面位置，其余样本不影响决策边界。  </p>
 <h3 id="svm">四、示例：硬间隔SVM求解<a class="headerlink" href="#svm" title="Permanent link">&para;</a></h3>
 <p><strong>问题</strong>：已知正例点 <span class="arithmatex">\(x_1=(1,2)^T, x_2=(2,3)^T, x_3=(3,3)^T\)</span>，负例点 <span class="arithmatex">\(x_4=(2,1)^T, x_5=(3,2)^T\)</span>，求最大间隔超平面。  </p>
-<p><strong>步骤</strong>：<br />
-1. <strong>定义样本与标签</strong>：<br />
-   - 正例：<span class="arithmatex">\(y_1=y_2=y_3=+1\)</span>，负例：<span class="arithmatex">\(y_4=y_5=-1\)</span>。<br />
-2. <strong>构造对偶问题</strong>：<br />
-   - 目标函数：<br />
-     [
-     \max \quad \sum_{i=1}^5 \alpha_i - \frac{1}{2} \sum_{i,j=1}^5 \alpha_i \alpha_j y_i y_j (x_i \cdot x_j)
-     ]<br />
-   - 约束：<span class="arithmatex">\(\alpha_1 + \alpha_2 + \alpha_3 - \alpha_4 - \alpha_5 = 0\)</span>，<span class="arithmatex">\(\alpha_i \geq 0\)</span>。<br />
-3. <strong>计算样本内积矩阵</strong>：<br />
+<p><strong>步骤</strong>：  </p>
+<ol>
+<li><strong>定义样本与标签</strong>：  </li>
+<li>正例：<span class="arithmatex">\(y_1=y_2=y_3=+1\)</span>，负例：<span class="arithmatex">\(y_4=y_5=-1\)</span>。  </li>
+<li><strong>构造对偶问题</strong>：  </li>
+<li>
+<p>目标函数：  </p>
+<div class="arithmatex">\[
+\max \quad \sum_{i=1}^5 \alpha_i - \frac{1}{2} \sum_{i,j=1}^5 \alpha_i \alpha_j y_i y_j (x_i \cdot x_j)
+\]</div>
+</li>
+<li>
+<p>约束：<span class="arithmatex">\(\alpha_1 + \alpha_2 + \alpha_3 - \alpha_4 - \alpha_5 = 0\)</span>，<span class="arithmatex">\(\alpha_i \geq 0\)</span>。  </p>
+</li>
+<li><strong>计算样本内积矩阵</strong>：<br />
    | <span class="arithmatex">\(x_i \cdot x_j\)</span> | <span class="arithmatex">\(x_1\)</span> | <span class="arithmatex">\(x_2\)</span> | <span class="arithmatex">\(x_3\)</span> | <span class="arithmatex">\(x_4\)</span> | <span class="arithmatex">\(x_5\)</span> |<br />
    |-------------------|---------|---------|---------|---------|---------|<br />
    | <span class="arithmatex">\(x_1\)</span>           | 5       | 8       | 9       | 4       | 5       |<br />
    | <span class="arithmatex">\(x_2\)</span>           | 8       | 13      | 15      | 7       | 12      |<br />
    | <span class="arithmatex">\(x_3\)</span>           | 9       | 15      | 18      | 9       | 15      |<br />
    | <span class="arithmatex">\(x_4\)</span>           | 4       | 7       | 9       | 5       | 8       |<br />
-   | <span class="arithmatex">\(x_5\)</span>           | 5       | 12      | 15      | 8       | 13      |<br />
-4. <strong>求解对偶问题</strong>（简化假设仅 <span class="arithmatex">\(\alpha_1, \alpha_4 &gt; 0\)</span>）：<br />
-   - 设 <span class="arithmatex">\(\alpha_1 = \alpha, \alpha_4 = \alpha\)</span>（由约束 <span class="arithmatex">\(\alpha_1 - \alpha_4 = 0\)</span>），其余 <span class="arithmatex">\(\alpha_i=0\)</span>，代入目标函数：<br />
-     [
-     \max \quad 2\alpha - \frac{1}{2} \left( \alpha^2 (1 \cdot 1 \cdot 5) + \alpha^2 (-1 \cdot -1 \cdot 5) - 2\alpha^2 (1 \cdot -1 \cdot 4) \right)
-     ]<br />
-     化简得：<span class="arithmatex">\(\max \quad 2\alpha - 7\alpha^2\)</span>，解得 <span class="arithmatex">\(\alpha = \frac{1}{7}\)</span>。<br />
-5. <strong>计算最优参数</strong>：<br />
-   - <span class="arithmatex">\(w^* = \alpha y_1 x_1 + \alpha y_4 x_4 = \frac{1}{7}(x_1 - x_4) = \frac{1}{7}(-1, 1)^T\)</span><br />
-   - 取支持向量 <span class="arithmatex">\(x_1\)</span>，计算 <span class="arithmatex">\(b^* = y_1 - w^{*T} x_1 = 1 - \frac{1}{7}(-1 \cdot 1 + 1 \cdot 2) = \frac{6}{7}\)</span>。<br />
-6. <strong>超平面方程</strong>：<br />
-   [
-   -\frac{1}{7}x_1 + \frac{1}{7}x_2 + \frac{6}{7} = 0 \quad \Rightarrow \quad -x_1 + x_2 + 6 = 0 \quad \text{（化简为）} \quad x_2 = x_1 - 6
-   ]  </p>
+   | <span class="arithmatex">\(x_5\)</span>           | 5       | 12      | 15      | 8       | 13      |  </li>
+<li><strong>求解对偶问题</strong>（简化假设仅 <span class="arithmatex">\(\alpha_1, \alpha_4 &gt; 0\)</span>）：  </li>
+<li>
+<p>设 <span class="arithmatex">\(\alpha_1 = \alpha, \alpha_4 = \alpha\)</span>（由约束 <span class="arithmatex">\(\alpha_1 - \alpha_4 = 0\)</span>），其余 <span class="arithmatex">\(\alpha_i=0\)</span>，代入目标函数：  </p>
+<div class="arithmatex">\[
+\max \quad 2\alpha - \frac{1}{2} \left( \alpha^2 (1 \cdot 1 \cdot 5) + \alpha^2 (-1 \cdot -1 \cdot 5) - 2\alpha^2 (1 \cdot -1 \cdot 4) \right)
+\]</div>
+<p>化简得：<span class="arithmatex">\(\max \quad 2\alpha - 7\alpha^2\)</span>，解得 <span class="arithmatex">\(\alpha = \frac{1}{7}\)</span>。  </p>
+</li>
+<li>
+<p><strong>计算最优参数</strong>：  </p>
+</li>
+<li><span class="arithmatex">\(w^* = \alpha y_1 x_1 + \alpha y_4 x_4 = \frac{1}{7}(x_1 - x_4) = \frac{1}{7}(-1, 1)^T\)</span>  </li>
+<li>取支持向量 <span class="arithmatex">\(x_1\)</span>，计算 <span class="arithmatex">\(b^* = y_1 - w^{*T} x_1 = 1 - \frac{1}{7}(-1 \cdot 1 + 1 \cdot 2) = \frac{6}{7}\)</span>。  </li>
+<li>
+<p><strong>超平面方程</strong>：  </p>
+<div class="arithmatex">\[
+-\frac{1}{7}x_1 + \frac{1}{7}x_2 + \frac{6}{7} = 0 \quad \Rightarrow \quad -x_1 + x_2 + 6 = 0 \quad \text{（化简为）} \quad x_2 = x_1 - 6
+\]</div>
+</li>
+</ol>
 <p><strong>结果可视化</strong>：<br />
 - 超平面：<span class="arithmatex">\(x_2 = x_1 - 6\)</span><br />
 - 间隔边界：<span class="arithmatex">\(x_2 = x_1 - 4\)</span> 和 <span class="arithmatex">\(x_2 = x_1 - 8\)</span><br />
@@ -8600,11 +8644,15 @@ L(w, b, \alpha) = \frac{1}{2}|w|^2 - \sum_{i=1}^n \alpha_i \left(y_i(w^T x_i + b
 <h3 id="svm_1">五、软间隔与非线性SVM（扩展）<a class="headerlink" href="#svm_1" title="Permanent link">&para;</a></h3>
 <h4 id="1_2">1. <strong>软间隔最大化（含噪音数据）</strong><a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>目标</strong>：允许少量样本误分类，引入松弛变量 <span class="arithmatex">\(\xi_i \geq 0\)</span>，目标函数为：<br />
-  [
-  \min \quad \frac{1}{2}|w|^2 + C \sum_{i=1}^n \xi_i \quad \text{s.t.} \quad y_i(w^T x_i + b) \geq 1 - \xi_i,  \xi_i \geq 0
-  ]  </li>
-<li><span class="arithmatex">\(C\)</span>：惩罚参数，平衡间隔大小与误分类代价。  </li>
+<li>
+<p><strong>目标</strong>：允许少量样本误分类，引入松弛变量 <span class="arithmatex">\(\xi_i \geq 0\)</span>，目标函数为：  </p>
+<div class="arithmatex">\[
+\min \quad \frac{1}{2}\|w\|^2 + C \sum_{i=1}^n \xi_i \quad \text{s.t.} \quad y_i(w^T x_i + b) \geq 1 - \xi_i, \ \xi_i \geq 0
+\]</div>
+</li>
+<li>
+<p><span class="arithmatex">\(C\)</span>：惩罚参数，平衡间隔大小与误分类代价。  </p>
+</li>
 </ul>
 <h4 id="2-svm">2. <strong>非线性SVM（核技巧）</strong><a class="headerlink" href="#2-svm" title="Permanent link">&para;</a></h4>
 <ul>
@@ -8652,101 +8700,145 @@ L(w, b, \alpha) = \frac{1}{2}|w|^2 - \sum_{i=1}^n \alpha_i \left(y_i(w^T x_i + b
 <h2 id="_21">对偶与感知机总结<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
 <h3 id="_22">一、感知机模型基础<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <p><strong>定义</strong>：<br />
-感知机是<strong>二分类线性判别模型</strong>，用于解决线性可分问题。其数学表达式为：<br />
-[
+感知机是<strong>二分类线性判别模型</strong>，用于解决线性可分问题。其数学表达式为：  </p>
+<div class="arithmatex">\[
 f(x) = \text{sign}(w^T x + b)
-]<br />
-- <strong>输入</strong>：特征向量 <span class="arithmatex">\(x \in \mathbb{R}^n\)</span><br />
-- <strong>输出</strong>：类别 <span class="arithmatex">\(y \in \{-1, +1\}\)</span><br />
-- <strong>超平面</strong>：决策边界 <span class="arithmatex">\(w^T x + b = 0\)</span>，将空间分为正负两类。  </p>
+\]</div>
+<ul>
+<li><strong>输入</strong>：特征向量 <span class="arithmatex">\(x \in \mathbb{R}^n\)</span>  </li>
+<li><strong>输出</strong>：类别 <span class="arithmatex">\(y \in \{-1, +1\}\)</span>  </li>
+<li><strong>超平面</strong>：决策边界 <span class="arithmatex">\(w^T x + b = 0\)</span>，将空间分为正负两类。  </li>
+</ul>
 <p><strong>核心思想</strong>：<br />
 通过迭代调整参数 <span class="arithmatex">\(w, b\)</span>，使误分类点到超平面的距离之和最小。  </p>
-<p><strong>损失函数</strong>：<br />
-[
+<p><strong>损失函数</strong>：  </p>
+<div class="arithmatex">\[
 L(w, b) = -\sum_{x_i \in M} y_i (w^T x_i + b)
-]<br />
-- <span class="arithmatex">\(M\)</span>：误分类点集合<br />
-- <strong>特点</strong>：非负函数，误分类点越少或距离越近，损失越小。  </p>
+\]</div>
+<ul>
+<li><span class="arithmatex">\(M\)</span>：误分类点集合  </li>
+<li><strong>特点</strong>：非负函数，误分类点越少或距离越近，损失越小。  </li>
+</ul>
 <h3 id="_23">二、感知机学习算法（原始形式）<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
-<p><strong>求解方法：随机梯度下降法</strong><br />
-1. <strong>初始化参数</strong>：取 <span class="arithmatex">\(w_0 = 0, b_0 = 0\)</span> 或任意初值。<br />
-2. <strong>迭代更新</strong>：<br />
-   - 选取误分类点 <span class="arithmatex">\((x_i, y_i)\)</span>，即满足 <span class="arithmatex">\(y_i (w^T x_i + b) \leq 0\)</span>。<br />
-   - 更新规则：<br />
-     [
-     w \leftarrow w + \eta y_i x_i, \quad b \leftarrow b + \eta y_i
-     ]<br />
-     其中 <span class="arithmatex">\(\eta \in (0, 1]\)</span> 为学习率。<br />
-3. <strong>终止条件</strong>：无误分类点或达到最大迭代次数。  </p>
+<p><strong>求解方法：随机梯度下降法</strong>  </p>
+<ol>
+<li><strong>初始化参数</strong>：取 <span class="arithmatex">\(w_0 = 0, b_0 = 0\)</span> 或任意初值。  </li>
+<li><strong>迭代更新</strong>：  </li>
+<li>选取误分类点 <span class="arithmatex">\((x_i, y_i)\)</span>，即满足 <span class="arithmatex">\(y_i (w^T x_i + b) \leq 0\)</span>。  </li>
+<li>
+<p>更新规则：  </p>
+<div class="arithmatex">\[
+w \leftarrow w + \eta y_i x_i, \quad b \leftarrow b + \eta y_i
+\]</div>
+<p>其中 <span class="arithmatex">\(\eta \in (0, 1]\)</span> 为学习率。  </p>
+</li>
+<li>
+<p><strong>终止条件</strong>：无误分类点或达到最大迭代次数。  </p>
+</li>
+</ol>
 <p><strong>示例：二维线性可分数据分类</strong><br />
 <strong>问题</strong>：已知正例点 <span class="arithmatex">\(x_1=(1,1)^T, x_2=(2,2)^T\)</span>，负例点 <span class="arithmatex">\(x_3=(1,-1)^T\)</span>，用感知机算法求分类超平面。  </p>
-<p><strong>步骤</strong>：<br />
-1. <strong>初始化</strong>：<span class="arithmatex">\(w = (0, 0)^T, b = 0, \eta = 1\)</span>。<br />
-2. <strong>迭代过程</strong>：<br />
-   - <strong>第1次</strong>：选取 <span class="arithmatex">\(x_1=(1,1)^T, y_1=+1\)</span>，此时 <span class="arithmatex">\(w^T x_1 + b = 0 \leq 0\)</span>（误分类），更新：<br />
-     [
-     w = (0 + 1 \cdot 1 \cdot 1, 0 + 1 \cdot 1 \cdot 1) = (1, 1), \quad b = 0 + 1 \cdot 1 = 1
-     ]<br />
-     超平面：<span class="arithmatex">\(x_1 + x_2 + 1 = 0\)</span>。<br />
-   - <strong>第2次</strong>：检查 <span class="arithmatex">\(x_3=(1,-1)^T, y_3=-1\)</span>，计算 <span class="arithmatex">\(1 \cdot 1 + 1 \cdot (-1) + 1 = 1 &gt; 0\)</span>（正确分类）。<br />
-   - <strong>第3次</strong>：选取 <span class="arithmatex">\(x_2=(2,2)^T, y_2=+1\)</span>，计算 <span class="arithmatex">\(1 \cdot 2 + 1 \cdot 2 + 1 = 5 &gt; 0\)</span>（正确分类）。<br />
-   - <strong>当前无误分类点，算法终止</strong>。<br />
-3. <strong>最终超平面</strong>：<span class="arithmatex">\(x_1 + x_2 + 1 = 0\)</span>。  </p>
+<p><strong>步骤</strong>：  </p>
+<ol>
+<li><strong>初始化</strong>：<span class="arithmatex">\(w = (0, 0)^T, b = 0, \eta = 1\)</span>。  </li>
+<li><strong>迭代过程</strong>：  </li>
+<li>
+<p><strong>第1次</strong>：选取 <span class="arithmatex">\(x_1=(1,1)^T, y_1=+1\)</span>，此时 <span class="arithmatex">\(w^T x_1 + b = 0 \leq 0\)</span>（误分类），更新：  </p>
+<div class="arithmatex">\[
+w = (0 + 1 \cdot 1 \cdot 1, 0 + 1 \cdot 1 \cdot 1) = (1, 1), \quad b = 0 + 1 \cdot 1 = 1
+\]</div>
+<p>超平面：<span class="arithmatex">\(x_1 + x_2 + 1 = 0\)</span>。  </p>
+</li>
+<li>
+<p><strong>第2次</strong>：检查 <span class="arithmatex">\(x_3=(1,-1)^T, y_3=-1\)</span>，计算 <span class="arithmatex">\(1 \cdot 1 + 1 \cdot (-1) + 1 = 1 &gt; 0\)</span>（正确分类）。  </p>
+</li>
+<li><strong>第3次</strong>：选取 <span class="arithmatex">\(x_2=(2,2)^T, y_2=+1\)</span>，计算 <span class="arithmatex">\(1 \cdot 2 + 1 \cdot 2 + 1 = 5 &gt; 0\)</span>（正确分类）。  </li>
+<li><strong>当前无误分类点，算法终止</strong>。  </li>
+<li><strong>最终超平面</strong>：<span class="arithmatex">\(x_1 + x_2 + 1 = 0\)</span>。  </li>
+</ol>
 <h3 id="_24">三、感知机模型的对偶形式<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p><strong>核心思想</strong>：<br />
-将参数 <span class="arithmatex">\(w, b\)</span> 表示为样本的线性组合，减少计算量。<br />
-- 设每个样本 <span class="arithmatex">\((x_i, y_i)\)</span> 被更新 <span class="arithmatex">\(n_i\)</span> 次，则：<br />
-  [
-  w = \sum_{i=1}^n n_i \eta y_i x_i, \quad b = \sum_{i=1}^n n_i \eta y_i
-  ]<br />
-- <strong>对偶形式模型</strong>：<br />
-  [
-  f(x) = \text{sign}\left( \sum_{i=1}^n n_i \eta y_i (x_i \cdot x) + \sum_{i=1}^n n_i \eta y_i \right)
-  ]  </p>
-<p><strong>求解方法</strong>：<br />
-1. <strong>初始化计数</strong>：<span class="arithmatex">\(n_i = 0\)</span>（<span class="arithmatex">\(i=1,2,\dots,n\)</span>）。<br />
-2. <strong>计算Gram矩阵</strong>：预计算样本内积矩阵 <span class="arithmatex">\(G = [x_i \cdot x_j]_{n \times n}\)</span>，加速后续计算。<br />
-3. <strong>迭代更新</strong>：<br />
-   - 选取误分类点 <span class="arithmatex">\((x_j, y_j)\)</span>，即满足：<br />
-     [
-     y_j \left( \sum_{i=1}^n n_i \eta y_i (x_i \cdot x_j) + \sum_{i=1}^n n_i \eta y_i \right) \leq 0
-     ]<br />
-   - 更新 <span class="arithmatex">\(n_j \leftarrow n_j + 1\)</span>。<br />
-4. <strong>终止条件</strong>：无误分类点。  </p>
+将参数 <span class="arithmatex">\(w, b\)</span> 表示为样本的线性组合，减少计算量。  </p>
+<ul>
+<li>
+<p>设每个样本 <span class="arithmatex">\((x_i, y_i)\)</span> 被更新 <span class="arithmatex">\(n_i\)</span> 次，则：  </p>
+<div class="arithmatex">\[
+w = \sum_{i=1}^n n_i \eta y_i x_i, \quad b = \sum_{i=1}^n n_i \eta y_i
+\]</div>
+</li>
+<li>
+<p><strong>对偶形式模型</strong>：  </p>
+<div class="arithmatex">\[
+f(x) = \text{sign}\left( \sum_{i=1}^n n_i \eta y_i (x_i \cdot x) + \sum_{i=1}^n n_i \eta y_i \right)
+\]</div>
+</li>
+</ul>
+<p><strong>求解方法</strong>：  </p>
+<ol>
+<li><strong>初始化计数</strong>：<span class="arithmatex">\(n_i = 0\)</span>（<span class="arithmatex">\(i=1,2,\dots,n\)</span>）。  </li>
+<li><strong>计算Gram矩阵</strong>：预计算样本内积矩阵 <span class="arithmatex">\(G = [x_i \cdot x_j]_{n \times n}\)</span>，加速后续计算。  </li>
+<li><strong>迭代更新</strong>：  </li>
+<li>
+<p>选取误分类点 <span class="arithmatex">\((x_j, y_j)\)</span>，即满足：  </p>
+<div class="arithmatex">\[
+y_j \left( \sum_{i=1}^n n_i \eta y_i (x_i \cdot x_j) + \sum_{i=1}^n n_i \eta y_i \right) \leq 0
+\]</div>
+</li>
+<li>
+<p>更新 <span class="arithmatex">\(n_j \leftarrow n_j + 1\)</span>。  </p>
+</li>
+<li><strong>终止条件</strong>：无误分类点。  </li>
+</ol>
 <p><strong>示例：对偶形式求解同一问题</strong><br />
 <strong>问题</strong>：同上例，使用对偶形式求解。  </p>
-<p><strong>步骤</strong>：<br />
-1. <strong>初始化</strong>：<span class="arithmatex">\(n_1 = n_2 = n_3 = 0, \eta = 1\)</span>。<br />
-2. <strong>计算Gram矩阵</strong>：<br />
-   [
-   G = \begin{bmatrix}
-   x_1 \cdot x_1 = 2 &amp; x_1 \cdot x_2 = 4 &amp; x_1 \cdot x_3 = 0 \
-   x_2 \cdot x_1 = 4 &amp; x_2 \cdot x_2 = 8 &amp; x_2 \cdot x_3 = 0 \
-   x_3 \cdot x_1 = 0 &amp; x_3 \cdot x_2 = 0 &amp; x_3 \cdot x_3 = 2
-   \end{bmatrix}
-   ]<br />
-3. <strong>迭代过程</strong>：<br />
-   - <strong>第1次</strong>：选取 <span class="arithmatex">\(x_1=(1,1)^T, y_1=+1\)</span>，此时 <span class="arithmatex">\(n_1=1\)</span>，计算：<br />
-     [
-     w = 1 \cdot 1 \cdot (1,1) = (1,1), \quad b = 1 \cdot 1 = 1
-     ]<br />
-   - <strong>第2次</strong>：检查 <span class="arithmatex">\(x_3=(1,-1)^T, y_3=-1\)</span>，计算：<br />
-     [
-     y_3 \left( n_1 \eta y_1 (x_1 \cdot x_3) + b \right) = -1 \cdot (1 \cdot 1 \cdot 0 + 1) = -1 \leq 0 \quad \text{（误分类）}
-     ]<br />
-     更新 <span class="arithmatex">\(n_3=1\)</span>，计算：<br />
-     [
-     w = (1,1) + 1 \cdot (-1) \cdot (1,-1) = (0, 2), \quad b = 1 + 1 \cdot (-1) = 0
-     ]<br />
-   - <strong>第3次</strong>：检查 <span class="arithmatex">\(x_1=(1,1)^T, y_1=+1\)</span>，计算：<br />
-     [
-     y_1 \left( n_1 \eta y_1 (x_1 \cdot x_1) + n_3 \eta y_3 (x_3 \cdot x_1) + b \right) = 1 \cdot (1 \cdot 2 + 1 \cdot (-1) \cdot 0 + 0) = 2 &gt; 0 \quad \text{（正确分类）}
-     ]<br />
-   - <strong>后续无误分类点，算法终止</strong>。<br />
-4. <strong>最终参数</strong>：<br />
-   [
-   w = (0, 2), \quad b = 0 \quad \Rightarrow \quad \text{超平面：}  2x_2 = 0 \quad \text{即}  x_2 = 0
-   ]  </p>
+<p><strong>步骤</strong>：  </p>
+<ol>
+<li><strong>初始化</strong>：<span class="arithmatex">\(n_1 = n_2 = n_3 = 0, \eta = 1\)</span>。  </li>
+<li>
+<p><strong>计算Gram矩阵</strong>：  </p>
+<div class="arithmatex">\[
+G = \begin{bmatrix}
+x_1 \cdot x_1 = 2 &amp; x_1 \cdot x_2 = 4 &amp; x_1 \cdot x_3 = 0 \\
+x_2 \cdot x_1 = 4 &amp; x_2 \cdot x_2 = 8 &amp; x_2 \cdot x_3 = 0 \\
+x_3 \cdot x_1 = 0 &amp; x_3 \cdot x_2 = 0 &amp; x_3 \cdot x_3 = 2
+\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>迭代过程</strong>：  </p>
+</li>
+<li>
+<p><strong>第1次</strong>：选取 <span class="arithmatex">\(x_1=(1,1)^T, y_1=+1\)</span>，此时 <span class="arithmatex">\(n_1=1\)</span>，计算：  </p>
+<div class="arithmatex">\[
+w = 1 \cdot 1 \cdot (1,1) = (1,1), \quad b = 1 \cdot 1 = 1
+\]</div>
+</li>
+<li>
+<p><strong>第2次</strong>：检查 <span class="arithmatex">\(x_3=(1,-1)^T, y_3=-1\)</span>，计算：  </p>
+<div class="arithmatex">\[
+y_3 \left( n_1 \eta y_1 (x_1 \cdot x_3) + b \right) = -1 \cdot (1 \cdot 1 \cdot 0 + 1) = -1 \leq 0 \quad \text{（误分类）}
+\]</div>
+<p>更新 <span class="arithmatex">\(n_3=1\)</span>，计算：  </p>
+<div class="arithmatex">\[
+w = (1,1) + 1 \cdot (-1) \cdot (1,-1) = (0, 2), \quad b = 1 + 1 \cdot (-1) = 0
+\]</div>
+</li>
+<li>
+<p><strong>第3次</strong>：检查 <span class="arithmatex">\(x_1=(1,1)^T, y_1=+1\)</span>，计算：  </p>
+<div class="arithmatex">\[
+y_1 \left( n_1 \eta y_1 (x_1 \cdot x_1) + n_3 \eta y_3 (x_3 \cdot x_1) + b \right) = 1 \cdot (1 \cdot 2 + 1 \cdot (-1) \cdot 0 + 0) = 2 &gt; 0 \quad \text{（正确分类）}
+\]</div>
+</li>
+<li>
+<p><strong>后续无误分类点，算法终止</strong>。  </p>
+</li>
+<li>
+<p><strong>最终参数</strong>：  </p>
+<div class="arithmatex">\[
+w = (0, 2), \quad b = 0 \quad \Rightarrow \quad \text{超平面：} \ 2x_2 = 0 \quad \text{即} \ x_2 = 0
+\]</div>
+</li>
+</ol>
 <h3 id="_25">四、原始形式与对偶形式对比<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <table>
 <thead>
@@ -8845,7 +8937,7 @@ L(w, b) = -\sum_{x_i \in M} y_i (w^T x_i + b)
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

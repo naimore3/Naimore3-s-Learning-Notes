@@ -8240,17 +8240,19 @@
 <p><strong>处理长生成式（<span class="arithmatex">\( n \geq 2 \)</span>）</strong>：  </p>
 </li>
 <li><strong>步骤1</strong>：对生成式<span class="arithmatex">\( A \to D_1D_2\cdots D_n \)</span>，若<span class="arithmatex">\( D_i \)</span>为<strong>终结符</strong>，引入新非终结符<span class="arithmatex">\( B_i \)</span>并添加生成式<span class="arithmatex">\( B_i \to D_i \)</span>；若<span class="arithmatex">\( D_i \)</span>为<strong>非终结符</strong>，则令<span class="arithmatex">\( B_i = D_i \)</span>，将原生成式转换为<span class="arithmatex">\( A \to B_1B_2\cdots B_n \)</span>。  </li>
-<li><strong>步骤2</strong>：若<span class="arithmatex">\( n &gt; 2 \)</span>，进一步拆解为二元生成式链。例如：<br />
-     [
-     A \to B_1C_1, \quad C_1 \to B_2C_2, \quad \dots, \quad C_{n-1} \to B_{n-1}B_n
-     ]<br />
-     其中<span class="arithmatex">\( C_i \)</span>为新引入的非终结符，确保每个生成式右侧仅含<strong>2个非终结符</strong>。  </li>
+<li>
+<p><strong>步骤2</strong>：若<span class="arithmatex">\( n &gt; 2 \)</span>，进一步拆解为二元生成式链。例如：  </p>
+<div class="arithmatex">\[
+A \to B_1C_1, \quad C_1 \to B_2C_2, \quad \dots, \quad C_{n-1} \to B_{n-1}B_n
+\]</div>
+<p>其中<span class="arithmatex">\( C_i \)</span>为新引入的非终结符，确保每个生成式右侧仅含<strong>2个非终结符</strong>。  </p>
+</li>
 </ol>
 <h3 id="cnf_1"><strong>CNF构成示例</strong><a class="headerlink" href="#cnf_1" title="Permanent link">&para;</a></h3>
-<p><strong>原始文法</strong>（已预处理，无ε、循环、无用符号和单生成式）：<br />
-[
-G = ({A, B, S}, {a, b}, P, S), \quad P: S \to aAB \mid BA, A \to BBB \mid a, B \to AS \mid b
-]  </p>
+<p><strong>原始文法</strong>（已预处理，无ε、循环、无用符号和单生成式）：  </p>
+<div class="arithmatex">\[
+G = (\{A, B, S\}, \{a, b\}, P, S), \quad P: S \to aAB \mid BA,\ A \to BBB \mid a,\ B \to AS \mid b
+\]</div>
 <p><strong>转换过程</strong>：<br />
 1. <strong>直接符合CNF的生成式</strong>：<br />
    - <span class="arithmatex">\( S \to BA \)</span>（<span class="arithmatex">\( BA \)</span>为两个非终结符，符合<span class="arithmatex">\( A \to BC \)</span>）。<br />
@@ -8267,10 +8269,10 @@ G = ({A, B, S}, {a, b}, P, S), \quad P: S \to aAB \mid BA, A \to BBB \mid a, B \
 </ul>
 </li>
 </ol>
-<p><strong>等效CNF文法<span class="arithmatex">\( G_1 \)</span></strong>的生成式：<br />
-[
-P_1: \quad S \to BA \mid C_aC_1, C_a \to a, C_1 \to AB, A \to BC_2 \mid a, C_2 \to BB, B \to AS \mid b
-]  </p>
+<p><strong>等效CNF文法<span class="arithmatex">\( G_1 \)</span></strong>的生成式：  </p>
+<div class="arithmatex">\[
+P_1: \quad S \to BA \mid C_aC_1,\ C_a \to a,\ C_1 \to AB,\ A \to BC_2 \mid a,\ C_2 \to BB,\ B \to AS \mid b
+\]</div>
 <h3 id="_9"><strong>总结</strong><a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>核心目标</strong>：将任意上下文无关文法转换为仅含<strong>二元非终结符生成式</strong>和<strong>终结符生成式</strong>的规范形式，便于语法分析（如自底向上分析）。  </li>
@@ -8301,11 +8303,11 @@ P_1: \quad S \to BA \mid C_aC_1, C_a \to a, C_1 \to AB, A \to BC_2 \mid a, C_2 \
 <p><strong>消除左递归</strong>：  </p>
 </li>
 <li>
-<p>对最高序号的非终结符（如<span class="arithmatex">\( A_n \)</span>）的左递归生成式（如 <strong><span class="arithmatex">\( A_n \to A_n\gamma \)</span></strong>），引入新非终结符<span class="arithmatex">\( A_n' \)</span>，将其拆分为：<br />
-     [
-     A_n \to a\beta \mid a\beta A_n', \quad A_n' \to \gamma \mid \gamma A_n'
-     ]<br />
-     确保<span class="arithmatex">\( A_n \)</span>的生成式<strong>以终结符开头</strong>。  </p>
+<p>对最高序号的非终结符（如<span class="arithmatex">\( A_n \)</span>）的左递归生成式（如 <strong><span class="arithmatex">\( A_n \to A_n\gamma \)</span></strong>），引入新非终结符<span class="arithmatex">\( A_n' \)</span>，将其拆分为：  </p>
+<div class="arithmatex">\[
+A_n \to a\beta \mid a\beta A_n', \quad A_n' \to \gamma \mid \gamma A_n'
+\]</div>
+<p>确保<span class="arithmatex">\( A_n \)</span>的生成式<strong>以终结符开头</strong>。  </p>
 </li>
 <li>
 <p><strong>回代过程</strong>：  </p>
@@ -8320,40 +8322,58 @@ P_1: \quad S \to BA \mid C_aC_1, C_a \to a, C_1 \to AB, A \to BC_2 \mid a, C_2 \
 <li>对消除左递归时引入的新非终结符（如<span class="arithmatex">\( A_1', A_2', \dots \)</span>），通过代换使其生成式右部<strong>首字符也为终结符</strong>。  </li>
 </ol>
 <h3 id="gnf_1"><strong>GNF构成示例</strong><a class="headerlink" href="#gnf_1" title="Permanent link">&para;</a></h3>
-<p><strong>原始CNF文法</strong>：<br />
-[
+<p><strong>原始CNF文法</strong>：  </p>
+<div class="arithmatex">\[
 \begin{cases} 
-A \to BC \quad \text{①} \
-B \to CA \mid b \quad \text{②} \
+A \to BC \quad \text{①} \\
+B \to CA \mid b \quad \text{②} \\
 C \to AB \mid a \quad \text{③} 
 \end{cases}
-]  </p>
-<p><strong>转换步骤</strong>：<br />
-1. <strong>非终结符排序</strong>：设顺序为<span class="arithmatex">\( A \)</span>（低位）、<span class="arithmatex">\( B \)</span>、<span class="arithmatex">\( C \)</span>（高位）。<br />
-2. <strong>代换处理</strong>：<br />
-   - 对<span class="arithmatex">\( C \to AB \)</span>（<span class="arithmatex">\( A \)</span>序号低于<span class="arithmatex">\( C \)</span>），代入<span class="arithmatex">\( A \to BC \)</span>得：<br />
-     [
-     C \to BC B \mid a \quad \text{④}
-     ]<br />
-   - 再代入<span class="arithmatex">\( B \to CA \mid b \)</span>得：<br />
-     [
-     C \to CAC B \mid bC B \mid a \quad \text{⑤}
-     ]<br />
-3. <strong>消除左递归</strong>（针对<span class="arithmatex">\( C \to CACB \mid \dots \)</span>）：<br />
-   - 拆分为：<br />
-     [
-     C \to bCB \mid a \mid bCBC' \mid aC', \quad C' \to ACB \mid ACBC' \quad \text{⑥⑦}
-     ]<br />
-4. <strong>回代</strong>：<br />
-   - 将<span class="arithmatex">\( C \)</span>的生成式⑥代入<span class="arithmatex">\( B \to CA \mid b \)</span>，得：<br />
-     [
-     B \to bCBA \mid aA \mid bCBC'A \mid aC'A \mid b \quad \text{⑧}
-     ]<br />
-   - 将<span class="arithmatex">\( B \)</span>的生成式⑧代入<span class="arithmatex">\( A \to BC \)</span>，得：<br />
-     [
-     A \to bCBAC \mid aAC \mid bCBC'AC \mid aC'AC \mid bC \quad \text{⑨}
-     ]<br />
-   - 最终所有生成式均以终结符（<span class="arithmatex">\( a/b \)</span>）开头，符合GNF要求。  </p>
+\]</div>
+<p><strong>转换步骤</strong>：  </p>
+<ol>
+<li><strong>非终结符排序</strong>：设顺序为<span class="arithmatex">\( A \)</span>（低位）、<span class="arithmatex">\( B \)</span>、<span class="arithmatex">\( C \)</span>（高位）。  </li>
+<li><strong>代换处理</strong>：  </li>
+<li>
+<p>对<span class="arithmatex">\( C \to AB \)</span>（<span class="arithmatex">\( A \)</span>序号低于<span class="arithmatex">\( C \)</span>），代入<span class="arithmatex">\( A \to BC \)</span>得：  </p>
+<div class="arithmatex">\[
+C \to BC B \mid a \quad \text{④}
+\]</div>
+</li>
+<li>
+<p>再代入<span class="arithmatex">\( B \to CA \mid b \)</span>得：  </p>
+<div class="arithmatex">\[
+C \to CAC B \mid bC B \mid a \quad \text{⑤}
+\]</div>
+</li>
+<li>
+<p><strong>消除左递归</strong>（针对<span class="arithmatex">\( C \to CACB \mid \dots \)</span>）：  </p>
+</li>
+<li>
+<p>拆分为：  </p>
+<div class="arithmatex">\[
+C \to bCB \mid a \mid bCBC' \mid aC', \quad C' \to ACB \mid ACBC' \quad \text{⑥⑦}
+\]</div>
+</li>
+<li>
+<p><strong>回代</strong>：  </p>
+</li>
+<li>
+<p>将<span class="arithmatex">\( C \)</span>的生成式⑥代入<span class="arithmatex">\( B \to CA \mid b \)</span>，得：  </p>
+<div class="arithmatex">\[
+B \to bCBA \mid aA \mid bCBC'A \mid aC'A \mid b \quad \text{⑧}
+\]</div>
+</li>
+<li>
+<p>将<span class="arithmatex">\( B \)</span>的生成式⑧代入<span class="arithmatex">\( A \to BC \)</span>，得：  </p>
+<div class="arithmatex">\[
+A \to bCBAC \mid aAC \mid bCBC'AC \mid aC'AC \mid bC \quad \text{⑨}
+\]</div>
+</li>
+<li>
+<p>最终所有生成式均以终结符（<span class="arithmatex">\( a/b \)</span>）开头，符合GNF要求。  </p>
+</li>
+</ol>
 <h3 id="_10"><strong>核心要点总结</strong><a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <ul>
 <li><strong>目标</strong>：将任意上下文无关文法转换为<strong>右部以终结符开头</strong>的规范形式，便于语法分析（如递归下降法）。  </li>
@@ -8379,21 +8399,29 @@ C \to AB \mid a \quad \text{③}
 <h4 id="_13"><strong>三、示例分析：递归下降法的适用性</strong><a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <h5 id="1"><strong>例1：不适用递归下降法的文法</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h5>
 <ul>
-<li><strong>文法G</strong>：<br />
-  [
-  E \to F * F, \quad E \to F / F, \quad F \to \text{id}, \quad F \to (E)
-  ]  </li>
-<li><strong>问题</strong>：  </li>
+<li>
+<p><strong>文法G</strong>：  </p>
+<div class="arithmatex">\[
+E \to F * F, \quad E \to F / F, \quad F \to \text{id}, \quad F \to (E)
+\]</div>
+</li>
+<li>
+<p><strong>问题</strong>：  </p>
+</li>
 <li>两个E生成式均以非终结符 <strong>F</strong> 开头，而F可推导为任意长表达式（如<code>id</code>或<code>(E)</code>）。  </li>
 <li><strong>结论</strong>：<strong>无论超前查看多少字符，都无法区分应选择乘号（<code>*</code>）还是除号（<code>/</code>）的生成式</strong>，因此该文法不适用递归下降法。  </li>
 </ul>
 <h5 id="2gnf"><strong>例2：适用递归下降法的文法（经GNF转换）</strong><a class="headerlink" href="#2gnf" title="Permanent link">&para;</a></h5>
 <ul>
-<li><strong>文法G'</strong>：<br />
-  [
-  E \to \text{id}G, \quad E \to (EH, \quad G \to *F, \quad G \to /F, \quad F \to \text{id}, \quad F \to (E, \quad H \to )
-  ]  </li>
-<li><strong>改进点</strong>：  </li>
+<li>
+<p><strong>文法G'</strong>：  </p>
+<div class="arithmatex">\[
+E \to \text{id}G, \quad E \to (EH, \quad G \to *F, \quad G \to /F, \quad F \to \text{id}, \quad F \to (E, \quad H \to )
+\]</div>
+</li>
+<li>
+<p><strong>改进点</strong>：  </p>
+</li>
 <li>E的生成式以终结符 <strong>id</strong> 或 <strong>(</strong> 开头，G的生成式以 <strong><em>*</em> 或 </strong>/** 开头。  </li>
 <li><strong>结论</strong>：<strong>通过超前查看首字符（如<code>id</code>、<code>(</code>、<code>*</code>、<code>/</code>），可直接确定生成式</strong>，适用于递归下降法。  </li>
 </ul>
@@ -8492,7 +8520,7 @@ C \to AB \mid a \quad \text{③}
       
         <script src="../../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

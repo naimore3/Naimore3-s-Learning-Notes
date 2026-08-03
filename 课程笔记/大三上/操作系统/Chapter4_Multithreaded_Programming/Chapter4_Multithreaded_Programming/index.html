@@ -8581,16 +8581,22 @@
 <h3 id="422-amdahlspeedup">4.2.2 多核编程模型：Amdahl定律与Speedup计算<a class="headerlink" href="#422-amdahlspeedup" title="Permanent link">&para;</a></h3>
 <p>多核编程的性能评估与优化依赖Amdahl定律（并行加速比上限）与Speedup（实际加速比）计算，两者共同指导并行程序设计：</p>
 <h4 id="4221-amdahlamdahls-law">4.2.2.1 Amdahl定律（Amdahl's Law）<a class="headerlink" href="#4221-amdahlamdahls-law" title="Permanent link">&para;</a></h4>
-<p>Amdahl定律定义了并行程序性能提升的上限，核心是量化“串行部分”对加速比的限制：
-- <strong>核心公式</strong>：<br />
-  [
-  SP = \frac{1}{a + \frac{1 - a}{n}}
-  ]<br />
-  其中，<span class="arithmatex">\(SP\)</span> 为加速比，<span class="arithmatex">\(a\)</span> 为程序中无法并行化的串行部分占比（如任务分解、结果合并），<span class="arithmatex">\(n\)</span> 为并行处理节点数（CPU核心数）🔶2-1093、🔶2-1094。
-- <strong>关键结论</strong>：<br />
-  1. 若 <span class="arithmatex">\(a = 0\)</span>（完全并行），最大加速比 <span class="arithmatex">\(SP = n\)</span>；<br />
-  2. 若 <span class="arithmatex">\(a = 1\)</span>（完全串行），加速比 <span class="arithmatex">\(SP = 1\)</span>（无性能提升）；<br />
-  3. 当 <span class="arithmatex">\(n \to \infty\)</span> 时，加速比趋近于 <span class="arithmatex">\(1/a\)</span>，即串行部分决定了性能提升的上限，例如若 <span class="arithmatex">\(a = 0.1\)</span>（10%串行），即使核心数无限多，最大加速比也仅为10🔶2-1085、🔶2-1099。</p>
+<p>Amdahl定律定义了并行程序性能提升的上限，核心是量化“串行部分”对加速比的限制：</p>
+<ul>
+<li>
+<p><strong>核心公式</strong>：  </p>
+<div class="arithmatex">\[
+SP = \frac{1}{a + \frac{1 - a}{n}}
+\]</div>
+<p>其中，<span class="arithmatex">\(SP\)</span> 为加速比，<span class="arithmatex">\(a\)</span> 为程序中无法并行化的串行部分占比（如任务分解、结果合并），<span class="arithmatex">\(n\)</span> 为并行处理节点数（CPU核心数）🔶2-1093、🔶2-1094。</p>
+</li>
+<li>
+<p><strong>关键结论</strong>：  </p>
+</li>
+<li>若 <span class="arithmatex">\(a = 0\)</span>（完全并行），最大加速比 <span class="arithmatex">\(SP = n\)</span>；  </li>
+<li>若 <span class="arithmatex">\(a = 1\)</span>（完全串行），加速比 <span class="arithmatex">\(SP = 1\)</span>（无性能提升）；  </li>
+<li>当 <span class="arithmatex">\(n \to \infty\)</span> 时，加速比趋近于 <span class="arithmatex">\(1/a\)</span>，即串行部分决定了性能提升的上限，例如若 <span class="arithmatex">\(a = 0.1\)</span>（10%串行），即使核心数无限多，最大加速比也仅为10🔶2-1085、🔶2-1099。</li>
+</ul>
 <h4 id="4222-speedup">4.2.2.2 Speedup（并行加速比）计算<a class="headerlink" href="#4222-speedup" title="Permanent link">&para;</a></h4>
 <p>Speedup是衡量多核程序性能的核心指标，定义为“单处理器系统的运行时间”与“多处理器系统的运行时间”之比，文档中提供多种计算与验证方法：
 - <strong>基础计算逻辑</strong>：<span class="arithmatex">\(SP = \frac{T_1}{T_p}\)</span>，其中 <span class="arithmatex">\(T_1\)</span> 为单核心运行时间，<span class="arithmatex">\(T_p\)</span> 为 <span class="arithmatex">\(p\)</span> 个核心并行运行时间；理想加速比为 <span class="arithmatex">\(SP = p\)</span>（线性加速），实际因串行部分、通信开销等因素，加速比通常低于理想值🔶2-898、🔶2-1057。
@@ -9110,7 +9116,7 @@
       
         <script src="../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

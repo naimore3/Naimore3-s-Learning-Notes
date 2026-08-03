@@ -8827,63 +8827,83 @@
 - <span class="arithmatex">\(X_4 = (0.66, 1.12, -1.03)^T\)</span>
 - <span class="arithmatex">\(X_5 = (0.21, 0.16, -0.40)^T\)</span></p>
 <p>求协差阵 <span class="arithmatex">\(\Sigma\)</span> 的极大似然估计 <span class="arithmatex">\(\hat{\Sigma}\)</span> 和无偏估计 <span class="arithmatex">\(S\)</span>。</p>
-<p><strong>解题步骤</strong>：
-1. 计算样本均值向量 <span class="arithmatex">\(\bar{X}\)</span>：
-    - 甘油三酯均值：<span class="arithmatex">\(\bar{x}_1 = \frac{1.78 + 0.67 + 0.56 + 0.66 + 0.21}{5} = 0.776\)</span>
-    - 总胆固醇均值：<span class="arithmatex">\(\bar{x}_2 = \frac{0.83 + 0.96 + 0.83 + 1.12 + 0.16}{5} = 0.780\)</span>
-    - 高密度脂蛋白均值：<span class="arithmatex">\(\bar{x}_3 = \frac{-1.01 - 0.84 - 0.39 - 1.03 - 0.40}{5} = -0.574\)</span>
-    - 即 <span class="arithmatex">\(\bar{X} = (0.776, 0.780, -0.574)^T\)</span>。
-2. 计算各样本与均值的偏差向量：
-    - <span class="arithmatex">\(X_1 - \bar{X} = (1.78 - 0.776, 0.83 - 0.780, -1.01 + 0.574)^T = (1.004, 0.05, -0.436)^T\)</span>
-    - <span class="arithmatex">\(X_2 - \bar{X} = (0.67 - 0.776, 0.96 - 0.780, -0.84 + 0.574)^T = (-0.106, 0.18, -0.266)^T\)</span>
-    - <span class="arithmatex">\(X_3 - \bar{X} = (0.56 - 0.776, 0.83 - 0.780, -0.39 + 0.574)^T = (-0.216, 0.05, 0.184)^T\)</span>
-    - <span class="arithmatex">\(X_4 - \bar{X} = (0.66 - 0.776, 1.12 - 0.780, -1.03 + 0.574)^T = (-0.116, 0.34, -0.456)^T\)</span>
-    - <span class="arithmatex">\(X_5 - \bar{X} = (0.21 - 0.776, 0.16 - 0.780, -0.40 + 0.574)^T = (-0.566, -0.62, 0.174)^T\)</span>
-3. 计算偏差向量的外积并求和：
-    - 以第一个样本为例，外积为：
-    [
-    \begin{pmatrix}
-    1.004 \
-    0.05 \
-    -0.436
-    \end{pmatrix}
-    \begin{pmatrix}
-    1.004 &amp; 0.05 &amp; -0.436
-    \end{pmatrix}
-    = \begin{pmatrix}
-    1.008 &amp; 0.050 &amp; -0.438 \
-    0.050 &amp; 0.003 &amp; -0.022 \
-    -0.438 &amp; -0.022 &amp; 0.190
-    \end{pmatrix}
-    ]
-    - 同理计算其他样本外积并求和，得到：
-    [
-    \sum_{i=1}^5 (X_i - \bar{X})(X_i - \bar{X})^T = \begin{pmatrix}
-    1.751 &amp; 0.080 &amp; -0.240 \
-    0.080 &amp; 0.476 &amp; -0.200 \
-    -0.240 &amp; -0.200 &amp; 0.360
-    \end{pmatrix}
-    ]
-4. 计算极大似然估计 <span class="arithmatex">\(\hat{\Sigma}\)</span>：
-    - <span class="arithmatex">\(\hat{\Sigma} = \frac{1}{5} \times \begin{pmatrix}
-    1.751 &amp; 0.080 &amp; -0.240 \\
-    0.080 &amp; 0.476 &amp; -0.200 \\
-    -0.240 &amp; -0.200 &amp; 0.360
-    \end{pmatrix} = \begin{pmatrix}
-    0.350 &amp; 0.016 &amp; -0.048 \\
-    0.016 &amp; 0.095 &amp; -0.040 \\
-    -0.048 &amp; -0.040 &amp; 0.072
-    \end{pmatrix}\)</span>
-5. 计算无偏估计 <span class="arithmatex">\(S\)</span>：
-    - <span class="arithmatex">\(S = \frac{1}{5-1} \times \begin{pmatrix}
-    1.751 &amp; 0.080 &amp; -0.240 \\
-    0.080 &amp; 0.476 &amp; -0.200 \\
-    -0.240 &amp; -0.200 &amp; 0.360
-    \end{pmatrix} = \begin{pmatrix}
-    0.438 &amp; 0.020 &amp; -0.060 \\
-    0.020 &amp; 0.119 &amp; -0.050 \\
-    -0.060 &amp; -0.050 &amp; 0.090
-    \end{pmatrix}\)</span></p>
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li>计算样本均值向量 <span class="arithmatex">\(\bar{X}\)</span>：<ul>
+<li>甘油三酯均值：<span class="arithmatex">\(\bar{x}_1 = \frac{1.78 + 0.67 + 0.56 + 0.66 + 0.21}{5} = 0.776\)</span></li>
+<li>总胆固醇均值：<span class="arithmatex">\(\bar{x}_2 = \frac{0.83 + 0.96 + 0.83 + 1.12 + 0.16}{5} = 0.780\)</span></li>
+<li>高密度脂蛋白均值：<span class="arithmatex">\(\bar{x}_3 = \frac{-1.01 - 0.84 - 0.39 - 1.03 - 0.40}{5} = -0.574\)</span></li>
+<li>即 <span class="arithmatex">\(\bar{X} = (0.776, 0.780, -0.574)^T\)</span>。</li>
+</ul>
+</li>
+<li>计算各样本与均值的偏差向量：<ul>
+<li><span class="arithmatex">\(X_1 - \bar{X} = (1.78 - 0.776, 0.83 - 0.780, -1.01 + 0.574)^T = (1.004, 0.05, -0.436)^T\)</span></li>
+<li><span class="arithmatex">\(X_2 - \bar{X} = (0.67 - 0.776, 0.96 - 0.780, -0.84 + 0.574)^T = (-0.106, 0.18, -0.266)^T\)</span></li>
+<li><span class="arithmatex">\(X_3 - \bar{X} = (0.56 - 0.776, 0.83 - 0.780, -0.39 + 0.574)^T = (-0.216, 0.05, 0.184)^T\)</span></li>
+<li><span class="arithmatex">\(X_4 - \bar{X} = (0.66 - 0.776, 1.12 - 0.780, -1.03 + 0.574)^T = (-0.116, 0.34, -0.456)^T\)</span></li>
+<li><span class="arithmatex">\(X_5 - \bar{X} = (0.21 - 0.776, 0.16 - 0.780, -0.40 + 0.574)^T = (-0.566, -0.62, 0.174)^T\)</span></li>
+</ul>
+</li>
+<li>
+<p>计算偏差向量的外积并求和：</p>
+<ul>
+<li>
+<p>以第一个样本为例，外积为：</p>
+<div class="arithmatex">\[
+\begin{pmatrix}
+1.004 \\
+0.05 \\
+-0.436
+\end{pmatrix}
+\begin{pmatrix}
+1.004 &amp; 0.05 &amp; -0.436
+\end{pmatrix}
+= \begin{pmatrix}
+1.008 &amp; 0.050 &amp; -0.438 \\
+0.050 &amp; 0.003 &amp; -0.022 \\
+-0.438 &amp; -0.022 &amp; 0.190
+\end{pmatrix}
+\]</div>
+</li>
+<li>
+<p>同理计算其他样本外积并求和，得到：</p>
+<div class="arithmatex">\[
+\sum_{i=1}^5 (X_i - \bar{X})(X_i - \bar{X})^T = \begin{pmatrix}
+1.751 &amp; 0.080 &amp; -0.240 \\
+0.080 &amp; 0.476 &amp; -0.200 \\
+-0.240 &amp; -0.200 &amp; 0.360
+\end{pmatrix}
+\]</div>
+</li>
+</ul>
+</li>
+<li>
+<p>计算极大似然估计 <span class="arithmatex">\(\hat{\Sigma}\)</span>：</p>
+<ul>
+<li><span class="arithmatex">\(\hat{\Sigma} = \frac{1}{5} \times \begin{pmatrix}
+1.751 &amp; 0.080 &amp; -0.240 \\
+0.080 &amp; 0.476 &amp; -0.200 \\
+-0.240 &amp; -0.200 &amp; 0.360
+\end{pmatrix} = \begin{pmatrix}
+0.350 &amp; 0.016 &amp; -0.048 \\
+0.016 &amp; 0.095 &amp; -0.040 \\
+-0.048 &amp; -0.040 &amp; 0.072
+\end{pmatrix}\)</span></li>
+</ul>
+</li>
+<li>计算无偏估计 <span class="arithmatex">\(S\)</span>：<ul>
+<li><span class="arithmatex">\(S = \frac{1}{5-1} \times \begin{pmatrix}
+1.751 &amp; 0.080 &amp; -0.240 \\
+0.080 &amp; 0.476 &amp; -0.200 \\
+-0.240 &amp; -0.200 &amp; 0.360
+\end{pmatrix} = \begin{pmatrix}
+0.438 &amp; 0.020 &amp; -0.060 \\
+0.020 &amp; 0.119 &amp; -0.050 \\
+-0.060 &amp; -0.050 &amp; 0.090
+\end{pmatrix}\)</span></li>
+</ul>
+</li>
+</ol>
 <h2 id="52_1">5.2 多元正态分布的假设检验<a class="headerlink" href="#52_1" title="Permanent link">&para;</a></h2>
 <h3 id="521_1">5.2.1 均值向量的检验<a class="headerlink" href="#521_1" title="Permanent link">&para;</a></h3>
 <h4 id="1_1">1. 一个多元正态总体均值向量的检验<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h4>
@@ -8904,26 +8924,36 @@
 | 3    | 0.56     | 0.83     | -0.39        |
 | 4    | 0.66     | 1.12     | -1.03        |
 | 5    | 0.21     | 0.16     | -0.40        |</p>
-<p><strong>解题步骤</strong>：
-1. 计算样本均值 <span class="arithmatex">\(\bar{X} = (0.776, 0.780, -0.574)^T\)</span>。
-2. 计算样本协差阵 <span class="arithmatex">\(S\)</span>（过程见5.1节例子），得：
-   [
-   S = \begin{pmatrix}
-   0.438 &amp; 0.020 &amp; -0.060 \
-   0.020 &amp; 0.119 &amp; -0.050 \
-   -0.060 &amp; -0.050 &amp; 0.090
-   \end{pmatrix}
-   ]
-3. 计算 <span class="arithmatex">\(T^2\)</span>：
-   [
-   T^2 = 5 \times (0.776-1.02, 0.780-2.73, -0.574-2.04) \times S^{-1} \times (0.776-1.02, 0.780-2.73, -0.574-2.04)^T
-   ]
-   经计算 <span class="arithmatex">\(T^2 = 295.743\)</span>。
-4. 转化为 <span class="arithmatex">\(F\)</span> 统计量：
-   [
-   F = \frac{(5-1)-3+1}{(5-1) \times 3} \times 295.743 = \frac{3}{12} \times 295.743 = 73.936
-   ]
-5. 查 <span class="arithmatex">\(F\)</span> 分布表，<span class="arithmatex">\(F_{0.05}(3, 2) = 19.16\)</span>，由于 <span class="arithmatex">\(73.936 &gt; 19.16\)</span>，拒绝 <span class="arithmatex">\(H_0\)</span>，即该单位男性血脂与正常均值有显著差异。</p>
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li>计算样本均值 <span class="arithmatex">\(\bar{X} = (0.776, 0.780, -0.574)^T\)</span>。</li>
+<li>
+<p>计算样本协差阵 <span class="arithmatex">\(S\)</span>（过程见5.1节例子），得：</p>
+<div class="arithmatex">\[
+S = \begin{pmatrix}
+0.438 &amp; 0.020 &amp; -0.060 \\
+0.020 &amp; 0.119 &amp; -0.050 \\
+-0.060 &amp; -0.050 &amp; 0.090
+\end{pmatrix}
+\]</div>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(T^2\)</span>：</p>
+<div class="arithmatex">\[
+T^2 = 5 \times (0.776-1.02, 0.780-2.73, -0.574-2.04) \times S^{-1} \times (0.776-1.02, 0.780-2.73, -0.574-2.04)^T
+\]</div>
+<p>经计算 <span class="arithmatex">\(T^2 = 295.743\)</span>。</p>
+</li>
+<li>
+<p>转化为 <span class="arithmatex">\(F\)</span> 统计量：</p>
+<div class="arithmatex">\[
+F = \frac{(5-1)-3+1}{(5-1) \times 3} \times 295.743 = \frac{3}{12} \times 295.743 = 73.936
+\]</div>
+</li>
+<li>
+<p>查 <span class="arithmatex">\(F\)</span> 分布表，<span class="arithmatex">\(F_{0.05}(3, 2) = 19.16\)</span>，由于 <span class="arithmatex">\(73.936 &gt; 19.16\)</span>，拒绝 <span class="arithmatex">\(H_0\)</span>，即该单位男性血脂与正常均值有显著差异。</p>
+</li>
+</ol>
 <h4 id="2_1">2. 两个多元正态总体均值向量的检验<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
 <h5 id="_12">求解方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
 <ul>
@@ -8940,33 +8970,43 @@
 | 美国 | 75   | 50   | 30   | 55   |
 | 日本 | 55   | 55   | 40   | 65   |
 | 日本 | 50   | 60   | 45   | 70   |</p>
-<p><strong>解题步骤</strong>：
-1. 计算样本均值：
-   - 美国企业：<span class="arithmatex">\(\bar{X} = (64, 43, 30.5, 63)^T\)</span>
-   - 日本企业：<span class="arithmatex">\(\bar{Y} = (50.5, 51, 40, 40.5)^T\)</span>
-2. 计算样本协差阵 <span class="arithmatex">\(S_1, S_2\)</span> 并合并：
-   [
-   S_p = \frac{9S_1 + 9S_2}{18}
-   ]
-   其中 <span class="arithmatex">\(S_1, S_2\)</span> 由样本偏差计算得（具体过程略），合并后：
-   [
-   S_p = \begin{pmatrix}
-   410 &amp; -170 &amp; -80 &amp; 84 \
-   -170 &amp; 422 &amp; 8 &amp; 422 \
-   -80 &amp; 8 &amp; 512.5 &amp; 60 \
-   84 &amp; 422 &amp; 60 &amp; 510
-   \end{pmatrix}
-   ]
-3. 计算 <span class="arithmatex">\(T^2\)</span>：
-   [
-   T^2 = \frac{10 \times 10}{20} \times (64-50.5, 43-51, 30.5-40, 63-40.5) \times S_p^{-1} \times (13.5, -8, -9.5, 22.5)^T
-   ]
-   经计算 <span class="arithmatex">\(T^2 = 146.13\)</span>。
-4. 转化为 <span class="arithmatex">\(F\)</span> 统计量：
-   [
-   F = \frac{(20-2)-4+1}{(20-2) \times 4} \times 146.13 = \frac{15}{72} \times 146.13 = 30.44
-   ]
-5. 查 <span class="arithmatex">\(F\)</span> 分布表，<span class="arithmatex">\(F_{0.01}(4, 15) = 4.89\)</span>，由于 <span class="arithmatex">\(30.44 &gt; 4.89\)</span>，拒绝 <span class="arithmatex">\(H_0\)</span>，即两国企业评价有显著差异。</p>
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li>计算样本均值：</li>
+<li>美国企业：<span class="arithmatex">\(\bar{X} = (64, 43, 30.5, 63)^T\)</span></li>
+<li>日本企业：<span class="arithmatex">\(\bar{Y} = (50.5, 51, 40, 40.5)^T\)</span></li>
+<li>
+<p>计算样本协差阵 <span class="arithmatex">\(S_1, S_2\)</span> 并合并：</p>
+<div class="arithmatex">\[
+S_p = \frac{9S_1 + 9S_2}{18}
+\]</div>
+<p>其中 <span class="arithmatex">\(S_1, S_2\)</span> 由样本偏差计算得（具体过程略），合并后：</p>
+<div class="arithmatex">\[
+S_p = \begin{pmatrix}
+410 &amp; -170 &amp; -80 &amp; 84 \\
+-170 &amp; 422 &amp; 8 &amp; 422 \\
+-80 &amp; 8 &amp; 512.5 &amp; 60 \\
+84 &amp; 422 &amp; 60 &amp; 510
+\end{pmatrix}
+\]</div>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(T^2\)</span>：</p>
+<div class="arithmatex">\[
+T^2 = \frac{10 \times 10}{20} \times (64-50.5, 43-51, 30.5-40, 63-40.5) \times S_p^{-1} \times (13.5, -8, -9.5, 22.5)^T
+\]</div>
+<p>经计算 <span class="arithmatex">\(T^2 = 146.13\)</span>。</p>
+</li>
+<li>
+<p>转化为 <span class="arithmatex">\(F\)</span> 统计量：</p>
+<div class="arithmatex">\[
+F = \frac{(20-2)-4+1}{(20-2) \times 4} \times 146.13 = \frac{15}{72} \times 146.13 = 30.44
+\]</div>
+</li>
+<li>
+<p>查 <span class="arithmatex">\(F\)</span> 分布表，<span class="arithmatex">\(F_{0.01}(4, 15) = 4.89\)</span>，由于 <span class="arithmatex">\(30.44 &gt; 4.89\)</span>，拒绝 <span class="arithmatex">\(H_0\)</span>，即两国企业评价有显著差异。</p>
+</li>
+</ol>
 <h4 id="3">3. 多个多元正态总体均值向量的检验（多元方差分析）<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
 <h5 id="_13">求解方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
 <ul>
@@ -8983,25 +9023,33 @@
 | 1组  | 200   | 72    | 34    | 17    |
 | 2组  | 310   | 122   | 30    | 21    |
 | 2组  | 260   | 59    | 37    | 11    |</p>
-<p><strong>解题步骤</strong>：
-1. 计算各组均值 <span class="arithmatex">\(\bar{X}_i\)</span> 和总均值 <span class="arithmatex">\(\bar{X}\)</span>：
-   - 1组均值：<span class="arithmatex">\(\bar{X}_1 = (238, 84, 32, 17)^T\)</span>
-   - 2组均值：<span class="arithmatex">\(\bar{X}_2 = (275, 90, 31, 18)^T\)</span>
-   - 3组均值：<span class="arithmatex">\(\bar{X}_3 = (292.75, 90.2, 31.75, 18.4)^T\)</span>
-   - 总均值：<span class="arithmatex">\(\bar{X} = (268.58, 88.07, 31.58, 18.07)^T\)</span>
-2. 计算组内离差阵 <span class="arithmatex">\(A\)</span> 和组间离差阵 <span class="arithmatex">\(B\)</span>：
-   [
-   A = \sum_{i=1}^3 \sum_{\alpha=1}^{n_i} (X_{i\alpha} - \bar{X}<em i_alpha="i\alpha">i)(X</em>} - \bar{X<em i="1">i)^T
-   ]
-   [
-   B = \sum</em>)^T
-   ]
-   计算得 }^3 n_i(\bar{X}_i - \bar{X})(\bar{X}_i - \bar{X<span class="arithmatex">\(|A| = 0.621\)</span>，<span class="arithmatex">\(|A+B| = 0.709\)</span>。
-3. 计算 <span class="arithmatex">\(\Lambda\)</span> 统计量：
-   [
-   \Lambda = \frac{0.621}{0.709} = 0.876
-   ]
-4. 转化为近似 <span class="arithmatex">\(F\)</span> 统计量（过程略），得 <span class="arithmatex">\(F = 7.6913\)</span>，查 <span class="arithmatex">\(F_{0.01}(4, 57) \approx 3.69\)</span>，由于 <span class="arithmatex">\(7.6913 &gt; 3.69\)</span>，拒绝 <span class="arithmatex">\(H_0\)</span>，即三组身体指标有显著差异。</p>
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li>计算各组均值 <span class="arithmatex">\(\bar{X}_i\)</span> 和总均值 <span class="arithmatex">\(\bar{X}\)</span>：</li>
+<li>1组均值：<span class="arithmatex">\(\bar{X}_1 = (238, 84, 32, 17)^T\)</span></li>
+<li>2组均值：<span class="arithmatex">\(\bar{X}_2 = (275, 90, 31, 18)^T\)</span></li>
+<li>3组均值：<span class="arithmatex">\(\bar{X}_3 = (292.75, 90.2, 31.75, 18.4)^T\)</span></li>
+<li>总均值：<span class="arithmatex">\(\bar{X} = (268.58, 88.07, 31.58, 18.07)^T\)</span></li>
+<li>
+<p>计算组内离差阵 <span class="arithmatex">\(A\)</span> 和组间离差阵 <span class="arithmatex">\(B\)</span>：</p>
+<div class="arithmatex">\[
+A = \sum_{i=1}^3 \sum_{\alpha=1}^{n_i} (X_{i\alpha} - \bar{X}_i)(X_{i\alpha} - \bar{X}_i)^T
+\]</div>
+<div class="arithmatex">\[
+B = \sum_{i=1}^3 n_i(\bar{X}_i - \bar{X})(\bar{X}_i - \bar{X})^T
+\]</div>
+<p>计算得 <span class="arithmatex">\(|A| = 0.621\)</span>，<span class="arithmatex">\(|A+B| = 0.709\)</span>。</p>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(\Lambda\)</span> 统计量：</p>
+<div class="arithmatex">\[
+\Lambda = \frac{0.621}{0.709} = 0.876
+\]</div>
+</li>
+<li>
+<p>转化为近似 <span class="arithmatex">\(F\)</span> 统计量（过程略），得 <span class="arithmatex">\(F = 7.6913\)</span>，查 <span class="arithmatex">\(F_{0.01}(4, 57) \approx 3.69\)</span>，由于 <span class="arithmatex">\(7.6913 &gt; 3.69\)</span>，拒绝 <span class="arithmatex">\(H_0\)</span>，即三组身体指标有显著差异。</p>
+</li>
+</ol>
 <h3 id="522_1">5.2.2 协差阵的检验<a class="headerlink" href="#522_1" title="Permanent link">&para;</a></h3>
 <h4 id="1-p">1. 一个p元正态总体协差阵的检验<a class="headerlink" href="#1-p" title="Permanent link">&para;</a></h4>
 <h5 id="_14">求解方法<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h5>
@@ -9023,35 +9071,49 @@
 </ul>
 <h5 id="55">例子（例5.5）<a class="headerlink" href="#55" title="Permanent link">&para;</a></h5>
 <p><strong>问题</strong>：检验例5.4中三组身体指标数据的协差阵是否相等（<span class="arithmatex">\(\alpha = 0.1\)</span>），每组20人（<span class="arithmatex">\(n_1 = n_2 = n_3 = 20\)</span>，<span class="arithmatex">\(n = 60\)</span>）。</p>
-<p><strong>解题步骤</strong>：
-1. 计算各组协差阵 <span class="arithmatex">\(S_1, S_2, S_3\)</span>（部分元素如下）：
-   - <span class="arithmatex">\(S_1\)</span> 主对角线元素：51705.0, 7021.5, 12288.95, 321.10
-   - <span class="arithmatex">\(S_2\)</span> 主对角线元素：43173.75, 9959.00, 12441.2, 476.8
-   - <span class="arithmatex">\(S_3\)</span> 主对角线元素：30530, 162178, 955.8, 413.8
-2. 计算合并协差阵 <span class="arithmatex">\(S_p\)</span>：
-   [
-   S_p = \frac{19S_1 + 19S_2 + 19S_3}{57}
-   ]
-3. 计算行列式对数和：
-   [
-   \sum_{i=1}^3 (n_i-1)\ln|S_i| = 19(\ln|S_1| + \ln|S_2| + \ln|S_3|)
-   ]
-   [
-   (n-k)\ln|S_p| = 57\ln|S_p|
-   ]
-4. 计算 <span class="arithmatex">\(M\)</span>：
-   [
-   M = -2\left[19(\ln|S_1| + \ln|S_2| + \ln|S_3|) - 57\ln|S_p|\right] = 22.6054
-   ]
-5. 计算校正因子 <span class="arithmatex">\(d\)</span>：
-   [
-   d = \frac{2 \times 4^2 + 3 \times 4 - 1}{6(4+1)(3-1)} \times 3 \times \left(\frac{1}{19} - \frac{1}{57}\right) = 0.1006
-   ]
-6. 计算校正统计量：
-   [
-   \xi = (1-d)M = (1-0.1006) \times 22.6054 = 20.3316
-   ]
-7. 查 <span class="arithmatex">\(\chi^2\)</span> 分布表，自由度 <span class="arithmatex">\(f = \frac{4 \times 5 \times 2}{2} = 20\)</span>，<span class="arithmatex">\(\chi_{0.10}^2(20) = 28.412\)</span>，由于 <span class="arithmatex">\(20.3316 &lt; 28.412\)</span>，不拒绝 <span class="arithmatex">\(H_0\)</span>，即认为三组协差阵相等。</p>
+<p><strong>解题步骤</strong>：</p>
+<ol>
+<li>计算各组协差阵 <span class="arithmatex">\(S_1, S_2, S_3\)</span>（部分元素如下）：</li>
+<li><span class="arithmatex">\(S_1\)</span> 主对角线元素：51705.0, 7021.5, 12288.95, 321.10</li>
+<li><span class="arithmatex">\(S_2\)</span> 主对角线元素：43173.75, 9959.00, 12441.2, 476.8</li>
+<li><span class="arithmatex">\(S_3\)</span> 主对角线元素：30530, 162178, 955.8, 413.8</li>
+<li>
+<p>计算合并协差阵 <span class="arithmatex">\(S_p\)</span>：</p>
+<div class="arithmatex">\[
+S_p = \frac{19S_1 + 19S_2 + 19S_3}{57}
+\]</div>
+</li>
+<li>
+<p>计算行列式对数和：</p>
+<div class="arithmatex">\[
+\sum_{i=1}^3 (n_i-1)\ln|S_i| = 19(\ln|S_1| + \ln|S_2| + \ln|S_3|)
+\]</div>
+<div class="arithmatex">\[
+(n-k)\ln|S_p| = 57\ln|S_p|
+\]</div>
+</li>
+<li>
+<p>计算 <span class="arithmatex">\(M\)</span>：</p>
+<div class="arithmatex">\[
+M = -2\left[19(\ln|S_1| + \ln|S_2| + \ln|S_3|) - 57\ln|S_p|\right] = 22.6054
+\]</div>
+</li>
+<li>
+<p>计算校正因子 <span class="arithmatex">\(d\)</span>：</p>
+<div class="arithmatex">\[
+d = \frac{2 \times 4^2 + 3 \times 4 - 1}{6(4+1)(3-1)} \times 3 \times \left(\frac{1}{19} - \frac{1}{57}\right) = 0.1006
+\]</div>
+</li>
+<li>
+<p>计算校正统计量：</p>
+<div class="arithmatex">\[
+\xi = (1-d)M = (1-0.1006) \times 22.6054 = 20.3316
+\]</div>
+</li>
+<li>
+<p>查 <span class="arithmatex">\(\chi^2\)</span> 分布表，自由度 <span class="arithmatex">\(f = \frac{4 \times 5 \times 2}{2} = 20\)</span>，<span class="arithmatex">\(\chi_{0.10}^2(20) = 28.412\)</span>，由于 <span class="arithmatex">\(20.3316 &lt; 28.412\)</span>，不拒绝 <span class="arithmatex">\(H_0\)</span>，即认为三组协差阵相等。</p>
+</li>
+</ol>
 <h2 id="53_1">5.3 案例分析及软件操作<a class="headerlink" href="#53_1" title="Permanent link">&para;</a></h2>
 <h3 id="531">5.3.1 多元正态性检验<a class="headerlink" href="#531" title="Permanent link">&para;</a></h3>
 <h4 id="_16">检验方法与原理<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
@@ -9245,7 +9307,7 @@
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

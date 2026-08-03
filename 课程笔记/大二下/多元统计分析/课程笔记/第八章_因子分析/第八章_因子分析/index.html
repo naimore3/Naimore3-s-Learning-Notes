@@ -9105,16 +9105,16 @@
 <ul>
 <li>
 <p><strong>数学表达式</strong>：<br />
-  设<span class="arithmatex">\(X=(X_1,X_2,\dots,X_p)^T\)</span>为可观测变量向量，<span class="arithmatex">\(F=(F_1,F_2,\dots,F_m)^T\)</span>为公共因子向量，<span class="arithmatex">\(\varepsilon=(\varepsilon_1,\varepsilon_2,\dots,\varepsilon_p)^T\)</span>为特殊因子向量，则因子分析模型可表示为：<br />
-  [
-  \begin{cases}
-  X_1 = a_{11}F_1 + a_{12}F_2 + \dots + a_{1m}F_m + \varepsilon_1 \
-  X_2 = a_{21}F_1 + a_{22}F_2 + \dots + a_{2m}F_m + \varepsilon_2 \
-  \vdots \
-  X_p = a_{p1}F_1 + a_{p2}F_2 + \dots + a_{pm}F_m + \varepsilon_p
-  \end{cases}
-  ]<br />
-  其中<span class="arithmatex">\(a_{ij}\)</span>为因子载荷，衡量第<span class="arithmatex">\(i\)</span>个变量与第<span class="arithmatex">\(j\)</span>个公共因子的相关程度。</p>
+  设<span class="arithmatex">\(X=(X_1,X_2,\dots,X_p)^T\)</span>为可观测变量向量，<span class="arithmatex">\(F=(F_1,F_2,\dots,F_m)^T\)</span>为公共因子向量，<span class="arithmatex">\(\varepsilon=(\varepsilon_1,\varepsilon_2,\dots,\varepsilon_p)^T\)</span>为特殊因子向量，则因子分析模型可表示为：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+X_1 = a_{11}F_1 + a_{12}F_2 + \dots + a_{1m}F_m + \varepsilon_1 \\
+X_2 = a_{21}F_1 + a_{22}F_2 + \dots + a_{2m}F_m + \varepsilon_2 \\
+\vdots \\
+X_p = a_{p1}F_1 + a_{p2}F_2 + \dots + a_{pm}F_m + \varepsilon_p
+\end{cases}
+\]</div>
+<p>其中<span class="arithmatex">\(a_{ij}\)</span>为因子载荷，衡量第<span class="arithmatex">\(i\)</span>个变量与第<span class="arithmatex">\(j\)</span>个公共因子的相关程度。</p>
 </li>
 <li>
 <p><strong>模型假设</strong>：  </p>
@@ -9127,37 +9127,37 @@
 <ul>
 <li>
 <p><strong>矩阵表示</strong>：<br />
-  模型可简写为：<br />
-  [
-  X = AF + \varepsilon
-  ]<br />
-  其中<span class="arithmatex">\(A=(a_{ij})_{p \times m}\)</span>为因子载荷阵，<span class="arithmatex">\(F\)</span>和<span class="arithmatex">\(\varepsilon\)</span>为列向量。</p>
+  模型可简写为：  </p>
+<div class="arithmatex">\[
+X = AF + \varepsilon
+\]</div>
+<p>其中<span class="arithmatex">\(A=(a_{ij})_{p \times m}\)</span>为因子载荷阵，<span class="arithmatex">\(F\)</span>和<span class="arithmatex">\(\varepsilon\)</span>为列向量。</p>
 </li>
 <li>
 <p><strong>协方差结构</strong>：<br />
-  若<span class="arithmatex">\(\text{Cov}(F)=\text{I}_m\)</span>（单位矩阵），<span class="arithmatex">\(\text{Cov}(\varepsilon)=\Psi=\text{diag}(\psi_1^2,\psi_2^2,\dots,\psi_p^2)\)</span>，则变量的协方差阵为：<br />
-  [
-  \Sigma = A A^T + \Psi
-  ]</p>
+  若<span class="arithmatex">\(\text{Cov}(F)=\text{I}_m\)</span>（单位矩阵），<span class="arithmatex">\(\text{Cov}(\varepsilon)=\Psi=\text{diag}(\psi_1^2,\psi_2^2,\dots,\psi_p^2)\)</span>，则变量的协方差阵为：  </p>
+<div class="arithmatex">\[
+\Sigma = A A^T + \Psi
+\]</div>
 </li>
 </ul>
 <h3 id="823">8.2.3 因子载荷的统计意义<a class="headerlink" href="#823" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p><strong>相关系数解释</strong>：<br />
-  因子载荷<span class="arithmatex">\(a_{ij}\)</span>表示变量<span class="arithmatex">\(X_i\)</span>与公共因子<span class="arithmatex">\(F_j\)</span>的相关系数，即：<br />
-  [
-  a_{ij} = \text{Corr}(X_i, F_j)
-  ]<br />
-  例：若<span class="arithmatex">\(a_{11}=0.8\)</span>，则变量<span class="arithmatex">\(X_1\)</span>与因子<span class="arithmatex">\(F_1\)</span>的线性相关性为0.8，说明<span class="arithmatex">\(F_1\)</span>对<span class="arithmatex">\(X_1\)</span>的影响较强。</p>
+  因子载荷<span class="arithmatex">\(a_{ij}\)</span>表示变量<span class="arithmatex">\(X_i\)</span>与公共因子<span class="arithmatex">\(F_j\)</span>的相关系数，即：  </p>
+<div class="arithmatex">\[
+a_{ij} = \text{Corr}(X_i, F_j)
+\]</div>
+<p>例：若<span class="arithmatex">\(a_{11}=0.8\)</span>，则变量<span class="arithmatex">\(X_1\)</span>与因子<span class="arithmatex">\(F_1\)</span>的线性相关性为0.8，说明<span class="arithmatex">\(F_1\)</span>对<span class="arithmatex">\(X_1\)</span>的影响较强。</p>
 </li>
 <li>
 <p><strong>方差贡献分解</strong>：<br />
-  变量<span class="arithmatex">\(X_i\)</span>的方差可分解为公共因子方差与特殊因子方差之和：<br />
-  [
-  \text{Var}(X_i) = \sum_{j=1}^m a_{ij}^2 + \psi_i^2
-  ]<br />
-  其中<span class="arithmatex">\(\sum_{j=1}^m a_{ij}^2\)</span>称为变量<span class="arithmatex">\(X_i\)</span>的<strong>共同度（Communality）</strong>，记为<span class="arithmatex">\(h_i^2\)</span>，表示公共因子解释<span class="arithmatex">\(X_i\)</span>方差的比例；<span class="arithmatex">\(\psi_i^2\)</span>为剩余方差，由特殊因子解释。</p>
+  变量<span class="arithmatex">\(X_i\)</span>的方差可分解为公共因子方差与特殊因子方差之和：  </p>
+<div class="arithmatex">\[
+\text{Var}(X_i) = \sum_{j=1}^m a_{ij}^2 + \psi_i^2
+\]</div>
+<p>其中<span class="arithmatex">\(\sum_{j=1}^m a_{ij}^2\)</span>称为变量<span class="arithmatex">\(X_i\)</span>的<strong>共同度（Communality）</strong>，记为<span class="arithmatex">\(h_i^2\)</span>，表示公共因子解释<span class="arithmatex">\(X_i\)</span>方差的比例；<span class="arithmatex">\(\psi_i^2\)</span>为剩余方差，由特殊因子解释。</p>
 </li>
 </ul>
 <h3 id="824">8.2.4 变量共同度与方差贡献率<a class="headerlink" href="#824" title="Permanent link">&para;</a></h3>
@@ -9168,11 +9168,11 @@
 </li>
 <li>
 <p><strong>方差贡献率</strong>：<br />
-  第<span class="arithmatex">\(j\)</span>个公共因子<span class="arithmatex">\(F_j\)</span>的方差贡献率定义为：<br />
-  [
-  \text{贡献率}<em i="1">j = \frac{\sum</em>
-  ]}^p a_{ij}^2}{p<br />
-  该指标衡量<span class="arithmatex">\(F_j\)</span>对所有变量的综合影响程度，贡献率越大，因子越重要。累计方差贡献率则为前<span class="arithmatex">\(k\)</span>个因子的贡献率之和，用于确定因子个数（如累计贡献率达80%以上时认为因子提取充分）。</p>
+  第<span class="arithmatex">\(j\)</span>个公共因子<span class="arithmatex">\(F_j\)</span>的方差贡献率定义为：  </p>
+<div class="arithmatex">\[
+\text{贡献率}_j = \frac{\sum_{i=1}^p a_{ij}^2}{p}
+\]</div>
+<p>该指标衡量<span class="arithmatex">\(F_j\)</span>对所有变量的综合影响程度，贡献率越大，因子越重要。累计方差贡献率则为前<span class="arithmatex">\(k\)</span>个因子的贡献率之和，用于确定因子个数（如累计贡献率达80%以上时认为因子提取充分）。</p>
 </li>
 </ul>
 <h3 id="825-spearman">8.2.5 案例：Spearman智力研究的因子模型<a class="headerlink" href="#825-spearman" title="Permanent link">&para;</a></h3>
@@ -9182,18 +9182,18 @@
 </li>
 <li>
 <p><strong>模型构建</strong>：<br />
-  以英语成绩<span class="arithmatex">\(E\)</span>和数学成绩<span class="arithmatex">\(M\)</span>为例，模型可表示为：<br />
-  [
-  \begin{cases}
-  E = a_E F + \varepsilon_E \
-  M = a_M F + \varepsilon_M
-  \end{cases}
-  ]<br />
-  根据相关矩阵，<span class="arithmatex">\(\text{Corr}(E,M)=0.64\)</span>，由因子模型可得：<br />
-  [
-  \text{Corr}(E,M) = a_E a_M \quad (\text{因} \text{Var}(F)=1, \text{Cov}(\varepsilon_E,\varepsilon_M)=0)
-  ]<br />
-  若假设<span class="arithmatex">\(a_E=0.8\)</span>，<span class="arithmatex">\(a_M=0.8\)</span>，则<span class="arithmatex">\(\text{Corr}(E,M)=0.64\)</span>，与实际数据一致。</p>
+  以英语成绩<span class="arithmatex">\(E\)</span>和数学成绩<span class="arithmatex">\(M\)</span>为例，模型可表示为：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+E = a_E F + \varepsilon_E \\
+M = a_M F + \varepsilon_M
+\end{cases}
+\]</div>
+<p>根据相关矩阵，<span class="arithmatex">\(\text{Corr}(E,M)=0.64\)</span>，由因子模型可得：  </p>
+<div class="arithmatex">\[
+\text{Corr}(E,M) = a_E a_M \quad (\text{因} \text{Var}(F)=1,\ \text{Cov}(\varepsilon_E,\varepsilon_M)=0)
+\]</div>
+<p>若假设<span class="arithmatex">\(a_E=0.8\)</span>，<span class="arithmatex">\(a_M=0.8\)</span>，则<span class="arithmatex">\(\text{Corr}(E,M)=0.64\)</span>，与实际数据一致。</p>
 </li>
 <li>
 <p><strong>共同度计算</strong>：<br />
@@ -9208,15 +9208,15 @@
 <ul>
 <li>
 <p><strong>商业企业形象评价模型</strong>：<br />
-  设消费者对商场的评价变量为<span class="arithmatex">\(X_1\)</span>（装修评分）、<span class="arithmatex">\(X_2\)</span>（服务态度评分）、<span class="arithmatex">\(X_3\)</span>（商品价格评分），潜在因子为<span class="arithmatex">\(F_1\)</span>（环境因子）、<span class="arithmatex">\(F_2\)</span>（服务因子），则模型为：<br />
-  [
-  \begin{cases}
-  X_1 = a_{11}F_1 + a_{12}F_2 + \varepsilon_1 \
-  X_2 = a_{21}F_1 + a_{22}F_2 + \varepsilon_2 \
-  X_3 = a_{31}F_1 + a_{32}F_2 + \varepsilon_3
-  \end{cases}
-  ]<br />
-  若<span class="arithmatex">\(a_{11}=0.9\)</span>，<span class="arithmatex">\(a_{12}=0.1\)</span>，则<span class="arithmatex">\(X_1\)</span>主要受<span class="arithmatex">\(F_1\)</span>（环境因子）影响；若<span class="arithmatex">\(a_{22}=0.8\)</span>，则<span class="arithmatex">\(X_2\)</span>主要受<span class="arithmatex">\(F_2\)</span>（服务因子）影响。</p>
+  设消费者对商场的评价变量为<span class="arithmatex">\(X_1\)</span>（装修评分）、<span class="arithmatex">\(X_2\)</span>（服务态度评分）、<span class="arithmatex">\(X_3\)</span>（商品价格评分），潜在因子为<span class="arithmatex">\(F_1\)</span>（环境因子）、<span class="arithmatex">\(F_2\)</span>（服务因子），则模型为：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+X_1 = a_{11}F_1 + a_{12}F_2 + \varepsilon_1 \\
+X_2 = a_{21}F_1 + a_{22}F_2 + \varepsilon_2 \\
+X_3 = a_{31}F_1 + a_{32}F_2 + \varepsilon_3
+\end{cases}
+\]</div>
+<p>若<span class="arithmatex">\(a_{11}=0.9\)</span>，<span class="arithmatex">\(a_{12}=0.1\)</span>，则<span class="arithmatex">\(X_1\)</span>主要受<span class="arithmatex">\(F_1\)</span>（环境因子）影响；若<span class="arithmatex">\(a_{22}=0.8\)</span>，则<span class="arithmatex">\(X_2\)</span>主要受<span class="arithmatex">\(F_2\)</span>（服务因子）影响。</p>
 </li>
 <li>
 <p><strong>共同度与贡献率计算</strong>：<br />
@@ -9322,14 +9322,18 @@
 <h2 id="84">8.4 因子旋转<a class="headerlink" href="#84" title="Permanent link">&para;</a></h2>
 <h3 id="841">8.4.1 因子旋转的本质与目的<a class="headerlink" href="#841" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>因子载荷的不唯一性</strong>：<br />
-  若<span class="arithmatex">\(A\)</span>是因子载荷阵，<span class="arithmatex">\(T\)</span>为正交矩阵，则<span class="arithmatex">\(AT\)</span>也是合法的载荷阵，即因子解不唯一。例如：<br />
-  [
-  X = AF + \varepsilon = (AT)(T^TF) + \varepsilon
-  ]<br />
-  其中<span class="arithmatex">\(T^TF\)</span>是新的公共因子向量，与原因子正交。</li>
-<li><strong>旋转的核心目标</strong>：<br />
-  通过正交或斜交变换，使因子载荷矩阵的结构简化，实现“<strong>简单结构</strong>”——载荷值向0和1两极分化，便于因子命名与解释。</li>
+<li>
+<p><strong>因子载荷的不唯一性</strong>：<br />
+  若<span class="arithmatex">\(A\)</span>是因子载荷阵，<span class="arithmatex">\(T\)</span>为正交矩阵，则<span class="arithmatex">\(AT\)</span>也是合法的载荷阵，即因子解不唯一。例如：  </p>
+<div class="arithmatex">\[
+X = AF + \varepsilon = (AT)(T^TF) + \varepsilon
+\]</div>
+<p>其中<span class="arithmatex">\(T^TF\)</span>是新的公共因子向量，与原因子正交。</p>
+</li>
+<li>
+<p><strong>旋转的核心目标</strong>：<br />
+  通过正交或斜交变换，使因子载荷矩阵的结构简化，实现“<strong>简单结构</strong>”——载荷值向0和1两极分化，便于因子命名与解释。</p>
+</li>
 </ul>
 <h3 id="842-orthogonal-rotation">8.4.2 正交旋转（Orthogonal Rotation）<a class="headerlink" href="#842-orthogonal-rotation" title="Permanent link">&para;</a></h3>
 <h4 id="varimax">方差最大法（Varimax）<a class="headerlink" href="#varimax" title="Permanent link">&para;</a></h4>
@@ -9337,24 +9341,30 @@
 <li><strong>Thurstone简单结构原则</strong>：<br />
   旋转后每个变量仅在一个因子上有高载荷，在其他因子上载荷接近0；每个因子应至少在几个变量上有高载荷，避免因子无实际意义。</li>
 <li><strong>Kaiser方差最大法步骤</strong>：  </li>
-<li><strong>目标函数</strong>：最大化各因子载荷平方的相对方差，公式为：<br />
-     [
-     V = \frac{1}{p} \sum_{j=1}^m \left[ \sum_{i=1}^p (a_{ij}^2 / h_i<sup>2)</sup>2 - \frac{1}{p} \left( \sum_{i=1}^p a_{ij}^2 / h_i^2 \right)^2 \right]
-     ]<br />
-     其中<span class="arithmatex">\(h_i^2\)</span>为变量共同度，最大化<span class="arithmatex">\(V\)</span>可使载荷矩阵每列元素平方值尽可能集中于0或1。</li>
-<li><strong>正交变换矩阵</strong>：<br />
-     对第<span class="arithmatex">\(l\)</span>和<span class="arithmatex">\(k\)</span>个因子，旋转矩阵<span class="arithmatex">\(T\)</span>为：<br />
-     [
-     T = \begin{pmatrix}
-     \cos\theta &amp; \sin\theta \
-     -\sin\theta &amp; \cos\theta
-     \end{pmatrix}
-     ]<br />
-     角度<span class="arithmatex">\(\theta\)</span>由下式确定：<br />
-     [
-     \tan4\theta = \frac{2\sum_{i=1}^p (a_{il}^2 - a_{ik}<sup>2)(a_{il}a_{ik}/h_i</sup>2)}{\sum_{i=1}^p (a_{il}^4 + a_{ik}^4 - 2(a_{il}a_{ik}/h_i<sup>2)</sup>2)}
-     ]</li>
-<li><strong>逐次旋转</strong>：对<span class="arithmatex">\(m\)</span>个因子逐对旋转（如先旋转<span class="arithmatex">\(F_1\)</span>与<span class="arithmatex">\(F_2\)</span>，再旋转<span class="arithmatex">\(F_1\)</span>与<span class="arithmatex">\(F_3\)</span>等），直至<span class="arithmatex">\(V\)</span>收敛。</li>
+<li>
+<p><strong>目标函数</strong>：最大化各因子载荷平方的相对方差，公式为：  </p>
+<div class="arithmatex">\[
+V = \frac{1}{p} \sum_{j=1}^m \left[ \sum_{i=1}^p (a_{ij}^2 / h_i^2)^2 - \frac{1}{p} \left( \sum_{i=1}^p a_{ij}^2 / h_i^2 \right)^2 \right]
+\]</div>
+<p>其中<span class="arithmatex">\(h_i^2\)</span>为变量共同度，最大化<span class="arithmatex">\(V\)</span>可使载荷矩阵每列元素平方值尽可能集中于0或1。</p>
+</li>
+<li>
+<p><strong>正交变换矩阵</strong>：<br />
+     对第<span class="arithmatex">\(l\)</span>和<span class="arithmatex">\(k\)</span>个因子，旋转矩阵<span class="arithmatex">\(T\)</span>为：  </p>
+<div class="arithmatex">\[
+T = \begin{pmatrix}
+\cos\theta &amp; \sin\theta \\
+-\sin\theta &amp; \cos\theta
+\end{pmatrix}
+\]</div>
+<p>角度<span class="arithmatex">\(\theta\)</span>由下式确定：  </p>
+<div class="arithmatex">\[
+\tan4\theta = \frac{2\sum_{i=1}^p (a_{il}^2 - a_{ik}^2)(a_{il}a_{ik}/h_i^2)}{\sum_{i=1}^p (a_{il}^4 + a_{ik}^4 - 2(a_{il}a_{ik}/h_i^2)^2)}
+\]</div>
+</li>
+<li>
+<p><strong>逐次旋转</strong>：对<span class="arithmatex">\(m\)</span>个因子逐对旋转（如先旋转<span class="arithmatex">\(F_1\)</span>与<span class="arithmatex">\(F_2\)</span>，再旋转<span class="arithmatex">\(F_1\)</span>与<span class="arithmatex">\(F_3\)</span>等），直至<span class="arithmatex">\(V\)</span>收敛。</p>
+</li>
 </ul>
 <h4 id="_16">案例：十项全能运动项目的方差最大旋转<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <ul>
@@ -9380,12 +9390,16 @@
 <li><strong>适用场景</strong>：当公共因子间存在相关性时，斜交旋转允许因子相关，更贴近实际数据结构。</li>
 <li><strong>核心步骤</strong>：  </li>
 <li><strong>先进行正交旋转</strong>（如方差最大法）得到正交因子载荷阵<span class="arithmatex">\(A\)</span>。  </li>
-<li><strong>构造斜交因子</strong>：通过幂变换生成斜交因子，公式为：<br />
-     [
-     a_{ij}^* = a_{ij} / |a_{ij}|^\delta \quad (\delta \geq 1，通常取2)
-     ]<br />
-     变换后因子间相关系数<span class="arithmatex">\(\Phi_{jk} = \sum_{i=1}^p a_{ij}^* a_{ik}^* / p\)</span>。  </li>
-<li><strong>标准化处理</strong>：确保因子方差为1，最终得到斜交载荷阵。</li>
+<li>
+<p><strong>构造斜交因子</strong>：通过幂变换生成斜交因子，公式为：  </p>
+<div class="arithmatex">\[
+a_{ij}^* = a_{ij} / |a_{ij}|^\delta \quad (\delta \geq 1，通常取2)
+\]</div>
+<p>变换后因子间相关系数<span class="arithmatex">\(\Phi_{jk} = \sum_{i=1}^p a_{ij}^* a_{ik}^* / p\)</span>。  </p>
+</li>
+<li>
+<p><strong>标准化处理</strong>：确保因子方差为1，最终得到斜交载荷阵。</p>
+</li>
 <li><strong>与正交旋转的对比</strong>：<br />
   | 方法       | 因子相关性 | 共同度变化 | 解释难度 |
   |------------|------------|------------|----------|
@@ -9401,13 +9415,17 @@
      |--------------|---------------|---------------|
      | “预防蛀牙”   | 0.96          | 0.02          |
      | “牙齿亮泽”   | 0.05          | 0.85          |</li>
-<li>幂变换（<span class="arithmatex">\(\delta=2\)</span>）：<br />
-     [
-     a_{ij}^* = a_{ij} / |a_{ij}|^2 = 1 / |a_{ij}| \quad (a_{ij} \neq 0)
-     ]<br />
-     如“预防蛀牙”在因子1的载荷变为<span class="arithmatex">\(1/0.96 \approx 1.04\)</span>，因子2的载荷变为<span class="arithmatex">\(1/0.02 = 50\)</span>（实际计算中会标准化）。  </li>
-<li>计算因子相关系数：<br />
-<span class="arithmatex">\(\Phi_{12} = \sum_{i=1}^6 a_{i1}^* a_{i2}^* / 6 \approx 0.35\)</span>，表明护牙与美牙因子存在中等程度相关。</li>
+<li>
+<p>幂变换（<span class="arithmatex">\(\delta=2\)</span>）：  </p>
+<div class="arithmatex">\[
+a_{ij}^* = a_{ij} / |a_{ij}|^2 = 1 / |a_{ij}| \quad (a_{ij} \neq 0)
+\]</div>
+<p>如“预防蛀牙”在因子1的载荷变为<span class="arithmatex">\(1/0.96 \approx 1.04\)</span>，因子2的载荷变为<span class="arithmatex">\(1/0.02 = 50\)</span>（实际计算中会标准化）。  </p>
+</li>
+<li>
+<p>计算因子相关系数：<br />
+<span class="arithmatex">\(\Phi_{12} = \sum_{i=1}^6 a_{i1}^* a_{i2}^* / 6 \approx 0.35\)</span>，表明护牙与美牙因子存在中等程度相关。</p>
+</li>
 <li><strong>结果意义</strong>：<br />
   斜交旋转后因子更符合现实逻辑（护牙与美牙并非完全独立），但解释时需同时考虑因子间相关性。</li>
 </ul>
@@ -9469,38 +9487,48 @@
      |------------|--------|--------|
      | GDP（<span class="arithmatex">\(Z_1\)</span>） | 0.94   | 0.13   |
      | 居民消费水平（<span class="arithmatex">\(Z_2\)</span>） | 0.21   | 0.84   |</li>
-<li><strong>计算得分系数</strong>：<br />
-     [
-     W = (A<sup -1="-1">TA)</sup>
-     0.31 &amp; 0.01 \
-     0.04 &amp; 0.38
-     \end{pmatrix}
-     ]  }A^T = \begin{pmatrix</li>
-<li><strong>计算因子得分</strong>：<br />
-     北京的因子得分为：<br />
-     [
-     \begin{cases}
-     F_1 = 0.31 \times 1.875 + 0.01 \times Z_2 \approx 0.581 \
-     F_2 = 0.04 \times 1.875 + 0.38 \times Z_2 \quad (\text{假设} Z_2=1.5 \text{时，} F_2 \approx 0.63)
-     \end{cases}
-     ]</li>
-<li><strong>结果解释</strong>：北京的<span class="arithmatex">\(F_1\)</span>得分0.581（高于均值），表明其经济总量指标表现较好；<span class="arithmatex">\(F_2\)</span>得分0.63，消费因子表现中等。</li>
+<li>
+<p><strong>计算得分系数</strong>：  </p>
+<div class="arithmatex">\[
+W = (A^TA)^{-1}A^T = \begin{pmatrix}
+0.31 &amp; 0.01 \\
+0.04 &amp; 0.38
+\end{pmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>计算因子得分</strong>：<br />
+     北京的因子得分为：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+F_1 = 0.31 \times 1.875 + 0.01 \times Z_2 \approx 0.581 \\
+F_2 = 0.04 \times 1.875 + 0.38 \times Z_2 \quad (\text{假设} Z_2=1.5 \text{时，} F_2 \approx 0.63)
+\end{cases}
+\]</div>
+</li>
+<li>
+<p><strong>结果解释</strong>：北京的<span class="arithmatex">\(F_1\)</span>得分0.581（高于均值），表明其经济总量指标表现较好；<span class="arithmatex">\(F_2\)</span>得分0.63，消费因子表现中等。</p>
+</li>
 </ul>
 <h3 id="853-regression-method">8.5.3 回归法（Regression Method）<a class="headerlink" href="#853-regression-method" title="Permanent link">&para;</a></h3>
 <h4 id="_19">方法原理与推导<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>核心思想</strong>：考虑因子与变量的统计相关性，通过回归模型估计因子得分，由Thomson（1951）提出，又称Thomson法。</li>
-<li><strong>数学推导</strong>：<br />
-  假设因子<span class="arithmatex">\(F\)</span>与变量<span class="arithmatex">\(X\)</span>的协方差为<span class="arithmatex">\(\text{Cov}(F,X)=A\)</span>，且<span class="arithmatex">\(\text{Var}(F)=I\)</span>，<span class="arithmatex">\(\text{Var}(X)=AA^T+\Psi\)</span>。根据回归理论，因子得分的最优线性无偏估计为：<br />
-  [
-  \hat{F} = A<sup>T(AA</sup>T+\Psi)^{-1}X
-  ]<br />
-  当变量标准化且<span class="arithmatex">\(\Psi\)</span>近似为对角阵时，简化为：<br />
-  [
-  \hat{F} = A<sup -1="-1">TR</sup>X
-  ]<br />
-  其中<span class="arithmatex">\(R\)</span>为相关矩阵。</li>
-<li><strong>SPSS实现</strong>：默认采用回归法计算因子得分，输出因子得分系数矩阵，得分公式为<span class="arithmatex">\(F_j = \sum_{i=1}^p w_{ij}Z_i\)</span>，其中<span class="arithmatex">\(w_{ij}\)</span>为系数矩阵元素。</li>
+<li>
+<p><strong>数学推导</strong>：<br />
+  假设因子<span class="arithmatex">\(F\)</span>与变量<span class="arithmatex">\(X\)</span>的协方差为<span class="arithmatex">\(\text{Cov}(F,X)=A\)</span>，且<span class="arithmatex">\(\text{Var}(F)=I\)</span>，<span class="arithmatex">\(\text{Var}(X)=AA^T+\Psi\)</span>。根据回归理论，因子得分的最优线性无偏估计为：  </p>
+<div class="arithmatex">\[
+\hat{F} = A^T(AA^T+\Psi)^{-1}X
+\]</div>
+<p>当变量标准化且<span class="arithmatex">\(\Psi\)</span>近似为对角阵时，简化为：  </p>
+<div class="arithmatex">\[
+\hat{F} = A^TR^{-1}X
+\]</div>
+<p>其中<span class="arithmatex">\(R\)</span>为相关矩阵。</p>
+</li>
+<li>
+<p><strong>SPSS实现</strong>：默认采用回归法计算因子得分，输出因子得分系数矩阵，得分公式为<span class="arithmatex">\(F_j = \sum_{i=1}^p w_{ij}Z_i\)</span>，其中<span class="arithmatex">\(w_{ij}\)</span>为系数矩阵元素。</p>
+</li>
 </ul>
 <h4 id="_20">案例：消费者牙膏偏好的因子得分计算<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <ul>
@@ -9516,14 +9544,18 @@
      |------------|------------|------------|
      | V1（标准化后） | 0.23       | -0.01      |
      | V2（标准化后） | -0.01      | 0.21       |</li>
-<li><strong>得分计算示例</strong>：某消费者的标准化评分<span class="arithmatex">\(Z_1=1.2\)</span>（V1），<span class="arithmatex">\(Z_2=0.8\)</span>（V2），则：<br />
-     [
-     \begin{cases}
-     F_1 = 0.23 \times 1.2 + (-0.01) \times 0.8 \approx 0.27 \
-     F_2 = (-0.01) \times 1.2 + 0.21 \times 0.8 \approx 0.16
-     \end{cases}
-     ]</li>
-<li><strong>结果应用</strong>：该消费者的<span class="arithmatex">\(F_1\)</span>得分0.27（高于均值），表明更关注护牙属性；<span class="arithmatex">\(F_2\)</span>得分0.16，对美牙属性关注度中等，可归为“护牙主导型”消费者。</li>
+<li>
+<p><strong>得分计算示例</strong>：某消费者的标准化评分<span class="arithmatex">\(Z_1=1.2\)</span>（V1），<span class="arithmatex">\(Z_2=0.8\)</span>（V2），则：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+F_1 = 0.23 \times 1.2 + (-0.01) \times 0.8 \approx 0.27 \\
+F_2 = (-0.01) \times 1.2 + 0.21 \times 0.8 \approx 0.16
+\end{cases}
+\]</div>
+</li>
+<li>
+<p><strong>结果应用</strong>：该消费者的<span class="arithmatex">\(F_1\)</span>得分0.27（高于均值），表明更关注护牙属性；<span class="arithmatex">\(F_2\)</span>得分0.16，对美牙属性关注度中等，可归为“护牙主导型”消费者。</p>
+</li>
 </ul>
 <h3 id="854">8.5.4 因子得分的性质与应用<a class="headerlink" href="#854" title="Permanent link">&para;</a></h3>
 <h4 id="_21">基本性质<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
@@ -9572,14 +9604,18 @@
   |------------|---------------------|---------------------|
   | 师生比（<span class="arithmatex">\(Z_1\)</span>） | 0.45                | 0.12                |
   | 论文数（<span class="arithmatex">\(Z_2\)</span>） | 0.11                | 0.89                |</li>
-<li><strong>得分计算</strong>：某高校<span class="arithmatex">\(Z_1=0.8\)</span>，<span class="arithmatex">\(Z_2=1.5\)</span>，则：<br />
-  [
-  \begin{cases}
-  F_1 = 0.45 \times 0.8 + 0.11 \times 1.5 = 0.525 \
-  F_2 = 0.12 \times 0.8 + 0.89 \times 1.5 = 1.437
-  \end{cases}
-  ]</li>
-<li><strong>评价结论</strong>：该高校<span class="arithmatex">\(F_2\)</span>得分1.437（高分），表明科研能力突出，但<span class="arithmatex">\(F_1\)</span>得分0.525（中等），教学质量有待提升。</li>
+<li>
+<p><strong>得分计算</strong>：某高校<span class="arithmatex">\(Z_1=0.8\)</span>，<span class="arithmatex">\(Z_2=1.5\)</span>，则：  </p>
+<div class="arithmatex">\[
+\begin{cases}
+F_1 = 0.45 \times 0.8 + 0.11 \times 1.5 = 0.525 \\
+F_2 = 0.12 \times 0.8 + 0.89 \times 1.5 = 1.437
+\end{cases}
+\]</div>
+</li>
+<li>
+<p><strong>评价结论</strong>：该高校<span class="arithmatex">\(F_2\)</span>得分1.437（高分），表明科研能力突出，但<span class="arithmatex">\(F_1\)</span>得分0.525（中等），教学质量有待提升。</p>
+</li>
 </ul>
 <h3 id="857">8.5.7 因子得分的注意事项<a class="headerlink" href="#857" title="Permanent link">&para;</a></h3>
 <ul>
@@ -9650,7 +9686,7 @@
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

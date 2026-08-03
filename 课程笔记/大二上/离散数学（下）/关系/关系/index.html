@@ -10767,11 +10767,11 @@
 <hr />
 <h3 id="911">9.1.1 关系的基本定义与相关概念<a class="headerlink" href="#911" title="Permanent link">&para;</a></h3>
 <h4 id="9111">9.1.1.1 关系的定义<a class="headerlink" href="#9111" title="Permanent link">&para;</a></h4>
-<p><strong>定义（二元关系 / binary relation）</strong>：设 <span class="arithmatex">\( A \)</span> 和 <span class="arithmatex">\( B \)</span> 为两个集合，从 <span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( B \)</span> 的<strong>二元关系</strong> <span class="arithmatex">\( R \)</span> 是笛卡尔积 <span class="arithmatex">\( A \times B \)</span> 的一个<strong>子集</strong>，即
-[
+<p><strong>定义（二元关系 / binary relation）</strong>：设 <span class="arithmatex">\( A \)</span> 和 <span class="arithmatex">\( B \)</span> 为两个集合，从 <span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( B \)</span> 的<strong>二元关系</strong> <span class="arithmatex">\( R \)</span> 是笛卡尔积 <span class="arithmatex">\( A \times B \)</span> 的一个<strong>子集</strong>，即</p>
+<div class="arithmatex">\[
 R \subseteq A \times B.
-]
-若 <span class="arithmatex">\( (a, b) \in R \)</span>，则记作 <span class="arithmatex">\( aRb \)</span>，读作“<span class="arithmatex">\( a \)</span> 与 <span class="arithmatex">\( b \)</span> 相关（under relation <span class="arithmatex">\( R \)</span>）”。</p>
+\]</div>
+<p>若 <span class="arithmatex">\( (a, b) \in R \)</span>，则记作 <span class="arithmatex">\( aRb \)</span>，读作“<span class="arithmatex">\( a \)</span> 与 <span class="arithmatex">\( b \)</span> 相关（under relation <span class="arithmatex">\( R \)</span>）”。</p>
 <p><strong>定义（n 元关系 / n-ary relation）</strong>：设 <span class="arithmatex">\( A_1, A_2, \ldots, A_n \)</span> 为 <span class="arithmatex">\( n \)</span> 个集合，一个 <span class="arithmatex">\( n \)</span> 元关系 <span class="arithmatex">\( R \)</span> 是笛卡尔积 <span class="arithmatex">\( A_1 \times A_2 \times \cdots \times A_n \)</span> 的子集。各集合 <span class="arithmatex">\( A_i \)</span> 称为关系的<strong>域（domains）</strong>，<span class="arithmatex">\( n \)</span> 称为关系的<strong>度（degree）</strong>。</p>
 <blockquote>
 <p><strong>说明</strong>：关系本质上是<strong>有序对的集合</strong>，因此所有集合运算（并、交、差、补）均可直接应用于关系。函数的定义域中每个元素恰好对应一个像，而关系允许一对多、多对一和多对多的映射，是函数概念的<strong>自然推广</strong>。</p>
@@ -10779,18 +10779,18 @@ R \subseteq A \times B.
 <h4 id="9112">9.1.1.2 关系的补关系与逆关系<a class="headerlink" href="#9112" title="Permanent link">&para;</a></h4>
 <ul>
 <li>
-<p><strong>补关系（Complementary Relation）</strong>：设 <span class="arithmatex">\( R \subseteq A \times B \)</span>，则 <span class="arithmatex">\( R \)</span> 的补关系定义为
-  [
-  \overline{R} = (A \times B) \setminus R = {(a, b) \mid (a, b) \notin R}.
-  ]
-  例如，在实数上，<span class="arithmatex">\( \overline{&lt;} = \ge \)</span>。</p>
+<p><strong>补关系（Complementary Relation）</strong>：设 <span class="arithmatex">\( R \subseteq A \times B \)</span>，则 <span class="arithmatex">\( R \)</span> 的补关系定义为</p>
+<div class="arithmatex">\[
+\overline{R} = (A \times B) \setminus R = \{(a, b) \mid (a, b) \notin R\}.
+\]</div>
+<p>例如，在实数上，<span class="arithmatex">\( \overline{&lt;} = \ge \)</span>。</p>
 </li>
 <li>
-<p><strong>逆关系（Inverse Relation）</strong>：设 <span class="arithmatex">\( R \subseteq A \times B \)</span>，则 <span class="arithmatex">\( R \)</span> 的逆关系 <span class="arithmatex">\( R^{-1} \subseteq B \times A \)</span> 定义为
-  [
-  R^{-1} = {(b, a) \mid (a, b) \in R}.
-  ]
-  例如，若 <span class="arithmatex">\( R \)</span> 表示“a 吃 b”，则 <span class="arithmatex">\( R^{-1} \)</span> 表示“b 被 a 吃”（被动语态）。</p>
+<p><strong>逆关系（Inverse Relation）</strong>：设 <span class="arithmatex">\( R \subseteq A \times B \)</span>，则 <span class="arithmatex">\( R \)</span> 的逆关系 <span class="arithmatex">\( R^{-1} \subseteq B \times A \)</span> 定义为</p>
+<div class="arithmatex">\[
+R^{-1} = \{(b, a) \mid (a, b) \in R\}.
+\]</div>
+<p>例如，若 <span class="arithmatex">\( R \)</span> 表示“a 吃 b”，则 <span class="arithmatex">\( R^{-1} \)</span> 表示“b 被 a 吃”（被动语态）。</p>
 </li>
 </ul>
 <blockquote>
@@ -10799,15 +10799,15 @@ R \subseteq A \times B.
 <hr />
 <h3 id="912-relations-on-a-set">9.1.2 集合上的关系（Relations on a Set）<a class="headerlink" href="#912-relations-on-a-set" title="Permanent link">&para;</a></h3>
 <p><strong>定义</strong>：若 <span class="arithmatex">\( R \subseteq A \times A \)</span>，即关系中的两个元素来自同一个集合 <span class="arithmatex">\( A \)</span>，则称 <span class="arithmatex">\( R \)</span> 为<strong>集合 <span class="arithmatex">\( A \)</span> 上的关系</strong>。</p>
-<p><strong>例（整除关系）</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，定义 <span class="arithmatex">\( R = \{(a, b) \mid a \text{ 整除 } b\} \)</span>，则
-[
-R = {(1,1), (1,2), (1,3), (1,4), (2,2), (2,4), (3,3), (4,4)}.
-]</p>
-<p><strong>计数问题</strong>：若 <span class="arithmatex">\( |A| = n \)</span>，则 <span class="arithmatex">\( A \times A \)</span> 有 <span class="arithmatex">\( n^2 \)</span> 个元素，因此 <span class="arithmatex">\( A \)</span> 上不同的二元关系共有
-[
-2<sup>{n</sup>2}
-]
-个（因为每个有序对可选择在关系中或不在关系中）。作为对比，<span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( A \)</span> 的函数仅有 <span class="arithmatex">\( n^n \)</span> 个，而 <span class="arithmatex">\( n^n = 2^{n\log n} \)</span> 增长速度远慢于 <span class="arithmatex">\( 2^{n^2} \)</span>。</p>
+<p><strong>例（整除关系）</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，定义 <span class="arithmatex">\( R = \{(a, b) \mid a \text{ 整除 } b\} \)</span>，则</p>
+<div class="arithmatex">\[
+R = \{(1,1), (1,2), (1,3), (1,4), (2,2), (2,4), (3,3), (4,4)\}.
+\]</div>
+<p><strong>计数问题</strong>：若 <span class="arithmatex">\( |A| = n \)</span>，则 <span class="arithmatex">\( A \times A \)</span> 有 <span class="arithmatex">\( n^2 \)</span> 个元素，因此 <span class="arithmatex">\( A \)</span> 上不同的二元关系共有</p>
+<div class="arithmatex">\[
+2^{n^2}
+\]</div>
+<p>个（因为每个有序对可选择在关系中或不在关系中）。作为对比，<span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( A \)</span> 的函数仅有 <span class="arithmatex">\( n^n \)</span> 个，而 <span class="arithmatex">\( n^n = 2^{n\log n} \)</span> 增长速度远慢于 <span class="arithmatex">\( 2^{n^2} \)</span>。</p>
 <hr />
 <h3 id="913">9.1.3 关系的核心性质<a class="headerlink" href="#913" title="Permanent link">&para;</a></h3>
 <p>本节是 §9.1 的重中之重。以下四个性质是判别和构造关系的基本工具。</p>
@@ -10893,10 +10893,10 @@ R = {(1,1), (1,2), (1,3), (1,4), (2,2), (2,4), (3,3), (4,4)}.
 <h3 id="914-combining-relations">9.1.4 关系的组合运算（Combining Relations）<a class="headerlink" href="#914-combining-relations" title="Permanent link">&para;</a></h3>
 <p>由于关系是集合，因此可进行<strong>并（union）</strong>、<strong>交（intersection）</strong>、<strong>差（difference）</strong> 和<strong>对称差</strong>等集合运算。</p>
 <h4 id="9141-composition">9.1.4.1 关系的复合运算（Composition）<a class="headerlink" href="#9141-composition" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是从 <span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( B \)</span> 的关系，<span class="arithmatex">\( S \)</span> 是从 <span class="arithmatex">\( B \)</span> 到 <span class="arithmatex">\( C \)</span> 的关系。<span class="arithmatex">\( R \)</span> 与 <span class="arithmatex">\( S \)</span> 的<strong>复合（composition）</strong>记作 <span class="arithmatex">\( S \circ R \)</span>，是从 <span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( C \)</span> 的关系，定义为
-[
-S \circ R = {(a, c) \mid \exists b \in B,\; (a, b) \in R \text{ 且 } (b, c) \in S }.
-]</p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是从 <span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( B \)</span> 的关系，<span class="arithmatex">\( S \)</span> 是从 <span class="arithmatex">\( B \)</span> 到 <span class="arithmatex">\( C \)</span> 的关系。<span class="arithmatex">\( R \)</span> 与 <span class="arithmatex">\( S \)</span> 的<strong>复合（composition）</strong>记作 <span class="arithmatex">\( S \circ R \)</span>，是从 <span class="arithmatex">\( A \)</span> 到 <span class="arithmatex">\( C \)</span> 的关系，定义为</p>
+<div class="arithmatex">\[
+S \circ R = \{(a, c) \mid \exists b \in B,\; (a, b) \in R \text{ 且 } (b, c) \in S \}.
+\]</div>
 <blockquote>
 <p><strong>注意书写顺序</strong>：<span class="arithmatex">\( S \circ R \)</span> 表示<strong>先执行 <span class="arithmatex">\( R \)</span>，再执行 <span class="arithmatex">\( S \)</span></strong>，这与函数的复合记号一致（<span class="arithmatex">\( (f \circ g)(x) = f(g(x)) \)</span>）。</p>
 </blockquote>
@@ -10906,10 +10906,10 @@ S \circ R = {(a, c) \mid \exists b \in B,\; (a, b) \in R \text{ 且 } (b, c) \in
 - <strong>归纳步</strong>：<span class="arithmatex">\( R^{n+1} = R^n \circ R \)</span>。</p>
 <p><strong>等价理解</strong>：<span class="arithmatex">\( (a, b) \in R^n \)</span> 当且仅当在关系 <span class="arithmatex">\( R \)</span> 的有向图中存在一条从 <span class="arithmatex">\( a \)</span> 到 <span class="arithmatex">\( b \)</span> 的<strong>长度为 <span class="arithmatex">\( n \)</span> 的路径</strong>。</p>
 <h4 id="9143-1">9.1.4.3 传递性与关系幂的关系（定理 1）<a class="headerlink" href="#9143-1" title="Permanent link">&para;</a></h4>
-<p><strong>定理 1</strong>：集合 <span class="arithmatex">\( A \)</span> 上的关系 <span class="arithmatex">\( R \)</span> 是传递的，当且仅当对所有的正整数 <span class="arithmatex">\( n \)</span>（<span class="arithmatex">\( n = 1, 2, 3, \ldots \)</span>），都有
-[
+<p><strong>定理 1</strong>：集合 <span class="arithmatex">\( A \)</span> 上的关系 <span class="arithmatex">\( R \)</span> 是传递的，当且仅当对所有的正整数 <span class="arithmatex">\( n \)</span>（<span class="arithmatex">\( n = 1, 2, 3, \ldots \)</span>），都有</p>
+<div class="arithmatex">\[
 R^n \subseteq R.
-]</p>
+\]</div>
 <blockquote>
 <p><strong>直觉理解</strong>：传递性保证了“任意长度的路径”都可以由“长度为 1 的边”替代，即从 <span class="arithmatex">\( a \)</span> 到 <span class="arithmatex">\( b \)</span> 的路径长度无论多长，其首尾元素一定直接相关。</p>
 </blockquote>
@@ -11002,15 +11002,15 @@ R^n \subseteq R.
 </blockquote>
 <hr />
 <h4 id="913-example-20">例 9.1.3：复合关系计算（教材 Example 20 详解）<a class="headerlink" href="#913-example-20" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：设 <span class="arithmatex">\( R \)</span> 是从 <span class="arithmatex">\( \{1,2,3\} \)</span> 到 <span class="arithmatex">\( \{1,2,3,4\} \)</span> 的关系：
-[
-R = {(1,1), (1,4), (2,3), (3,1), (3,4)},
-]
-设 <span class="arithmatex">\( S \)</span> 是从 <span class="arithmatex">\( \{1,2,3,4\} \)</span> 到 <span class="arithmatex">\( \{0,1,2\} \)</span> 的关系：
-[
-S = {(1,0), (2,0), (3,1), (3,2), (4,1)}.
-]
-求复合关系 <span class="arithmatex">\( S \circ R \)</span>。</p>
+<p><strong>问题</strong>：设 <span class="arithmatex">\( R \)</span> 是从 <span class="arithmatex">\( \{1,2,3\} \)</span> 到 <span class="arithmatex">\( \{1,2,3,4\} \)</span> 的关系：</p>
+<div class="arithmatex">\[
+R = \{(1,1), (1,4), (2,3), (3,1), (3,4)\},
+\]</div>
+<p>设 <span class="arithmatex">\( S \)</span> 是从 <span class="arithmatex">\( \{1,2,3,4\} \)</span> 到 <span class="arithmatex">\( \{0,1,2\} \)</span> 的关系：</p>
+<div class="arithmatex">\[
+S = \{(1,0), (2,0), (3,1), (3,2), (4,1)\}.
+\]</div>
+<p>求复合关系 <span class="arithmatex">\( S \circ R \)</span>。</p>
 <p><strong>解</strong>：</p>
 <p><strong>步骤 1</strong>：明确计算规则。<span class="arithmatex">\( S \circ R \)</span> 中的元素为 <span class="arithmatex">\( (a, c) \)</span>，需存在 <span class="arithmatex">\( b \)</span> 使 <span class="arithmatex">\( (a, b) \in R \)</span> 且 <span class="arithmatex">\( (b, c) \in S \)</span>。</p>
 <p><strong>步骤 2</strong>：逐项处理 <span class="arithmatex">\( R \)</span> 中的每个有序对：</p>
@@ -11035,11 +11035,11 @@ S \circ R = \{(1,0), (1,1), (2,1), (2,2), (3,0), (3,1)\}.
 </blockquote>
 <hr />
 <h4 id="914-example-22">例 9.1.4：关系幂的计算（教材 Example 22 详解）<a class="headerlink" href="#914-example-22" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：设集合 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，关系
-[
-R = {(1,1), (2,1), (3,2), (4,3)}.
-]
-求 <span class="arithmatex">\( R^2, R^3, R^4 \)</span>。</p>
+<p><strong>问题</strong>：设集合 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，关系</p>
+<div class="arithmatex">\[
+R = \{(1,1), (2,1), (3,2), (4,3)\}.
+\]</div>
+<p>求 <span class="arithmatex">\( R^2, R^3, R^4 \)</span>。</p>
 <p><strong>解</strong>：</p>
 <p><strong>步骤 1</strong>：理解映射链。可将 <span class="arithmatex">\( R \)</span> 视为从每个元素 <span class="arithmatex">\( a \)</span> 到其后继的映射（可能有多个，但这里每行恰好一个）：
 - <span class="arithmatex">\( 1 \to 1 \)</span>
@@ -11140,10 +11140,10 @@ R = {(1,1), (2,1), (3,2), (4,3)}.
 <hr />
 <h3 id="921-n">9.2.1 n元关系的定义与基本概念<a class="headerlink" href="#921-n" title="Permanent link">&para;</a></h3>
 <h4 id="9211">9.2.1.1 形式化定义<a class="headerlink" href="#9211" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( A_1, A_2, \ldots, A_n \)</span> 为 <span class="arithmatex">\( n \)</span> 个集合，一个 <strong><span class="arithmatex">\( n \)</span> 元关系（n-ary relation）</strong> <span class="arithmatex">\( R \)</span> 是这些集合的笛卡尔积的一个子集，即
-[
+<p><strong>定义</strong>：设 <span class="arithmatex">\( A_1, A_2, \ldots, A_n \)</span> 为 <span class="arithmatex">\( n \)</span> 个集合，一个 <strong><span class="arithmatex">\( n \)</span> 元关系（n-ary relation）</strong> <span class="arithmatex">\( R \)</span> 是这些集合的笛卡尔积的一个子集，即</p>
+<div class="arithmatex">\[
 R \subseteq A_1 \times A_2 \times \cdots \times A_n.
-]</p>
+\]</div>
 <ul>
 <li><strong>度（Degree）</strong>：<span class="arithmatex">\( n \)</span> 称为该关系的度，表示每个元组（tuple）中元素（或称分量）的个数。</li>
 <li><strong>域（Domain）</strong>：每个集合 <span class="arithmatex">\( A_i \)</span> 称为关系的一个域（domain），对应关系表中<strong>一个列</strong>的取值范围。</li>
@@ -11210,10 +11210,10 @@ R \subseteq A_1 \times A_2 \times \cdots \times A_n.
 <h3 id="923">9.2.3 关系数据库上的三类核心运算<a class="headerlink" href="#923" title="Permanent link">&para;</a></h3>
 <p>本节给出三个基本操作的定义与详细求解方法，它们是关系代数（Relational Algebra）的基石。</p>
 <h4 id="9231-selection-operator">9.2.3.1 选择运算（Selection Operator）<a class="headerlink" href="#9231-selection-operator" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是 <span class="arithmatex">\( n \)</span> 元关系，<span class="arithmatex">\( C \)</span> 是一个<strong>条件（谓词）</strong>，作用于 <span class="arithmatex">\( n \)</span> 元组上，返回真或假。<strong>选择运算</strong> <span class="arithmatex">\( s_C(R) \)</span> 定义为
-[
-s_C(R) = {\, \mathbf{a} \in R \mid C(\mathbf{a}) = \text{True} \,}.
-]</p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是 <span class="arithmatex">\( n \)</span> 元关系，<span class="arithmatex">\( C \)</span> 是一个<strong>条件（谓词）</strong>，作用于 <span class="arithmatex">\( n \)</span> 元组上，返回真或假。<strong>选择运算</strong> <span class="arithmatex">\( s_C(R) \)</span> 定义为</p>
+<div class="arithmatex">\[
+s_C(R) = \{\, \mathbf{a} \in R \mid C(\mathbf{a}) = \text{True} \,\}.
+\]</div>
 <ul>
 <li><strong>本质</strong>：<strong>按行筛选</strong>。从关系 <span class="arithmatex">\( R \)</span> 中选出所有满足条件 <span class="arithmatex">\( C \)</span> 的元组，组成一个新的关系（与 <span class="arithmatex">\( R \)</span> 具有相同的度）。</li>
 <li><strong>条件示例</strong>：<span class="arithmatex">\( \text{standing} = \text{“junior”} \lor \text{standing} = \text{“senior”} \)</span>（筛选出高年级学生）。</li>
@@ -11227,10 +11227,10 @@ s_C(R) = {\, \mathbf{a} \in R \mid C(\mathbf{a}) = \text{True} \,}.
 <li>结果关系的度与原关系相同。</li>
 </ol>
 <h4 id="9232-projection-operator">9.2.3.2 投影运算（Projection Operator）<a class="headerlink" href="#9232-projection-operator" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是 <span class="arithmatex">\( n \)</span> 元关系，取一个索引序列 <span class="arithmatex">\( (i_1, i_2, \ldots, i_m) \)</span>，其中 <span class="arithmatex">\( 1 \le i_k \le n \)</span> 且互不重复（通常按递增顺序选取，但也可指定顺序）。<strong>投影运算</strong> <span class="arithmatex">\( P_{i_1, i_2, \ldots, i_m}(R) \)</span> 定义为
-[
-P_{i_1, i_2, \ldots, i_m}(R) = {\, (a_{i_1}, a_{i_2}, \ldots, a_{i_m}) \mid (a_1, a_2, \ldots, a_n) \in R \,}.
-]</p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是 <span class="arithmatex">\( n \)</span> 元关系，取一个索引序列 <span class="arithmatex">\( (i_1, i_2, \ldots, i_m) \)</span>，其中 <span class="arithmatex">\( 1 \le i_k \le n \)</span> 且互不重复（通常按递增顺序选取，但也可指定顺序）。<strong>投影运算</strong> <span class="arithmatex">\( P_{i_1, i_2, \ldots, i_m}(R) \)</span> 定义为</p>
+<div class="arithmatex">\[
+P_{i_1, i_2, \ldots, i_m}(R) = \{\, (a_{i_1}, a_{i_2}, \ldots, a_{i_m}) \mid (a_1, a_2, \ldots, a_n) \in R \,\}.
+\]</div>
 <ul>
 <li><strong>本质</strong>：<strong>按列筛选</strong>。从关系 <span class="arithmatex">\( R \)</span> 中仅保留指定的若干列（域），并去除其他列。</li>
 <li><strong>重要特性</strong>：投影操作会自动<strong>删除重复元组</strong>（因为结果是一个集合，集合中不允许重复元素）。</li>
@@ -11265,14 +11265,18 @@ P_{i_1, i_2, \ldots, i_m}(R) = {\, (a_{i_1}, a_{i_2}, \ldots, a_{i_m}) \mid (a_1
 <p>本节最后简要引入了<strong>数据挖掘（Data Mining）</strong>中的基础概念，为后续章节中的组合计数与概率做铺垫。</p>
 <ul>
 <li><strong>项集（Itemset）</strong>：设 <span class="arithmatex">\( T = \{t_1, t_2, \ldots, t_k\} \)</span> 是一个事务（transaction）集合，每个事务包含若干项。一个项集 <span class="arithmatex">\( I \)</span> 是项的集合。</li>
-<li><strong>计数 <span class="arithmatex">\( \sigma(I) \)</span></strong>：项集 <span class="arithmatex">\( I \)</span> 的计数定义为包含 <span class="arithmatex">\( I \)</span> 的事务个数，即
-  [
-  \sigma(I) = \left| {\, t_i \in T \mid I \subseteq t_i \,} \right|.
-  ]</li>
-<li><strong>支持度（Support）</strong>：项集 <span class="arithmatex">\( I \)</span> 的支持度定义为随机选择的一个事务包含 <span class="arithmatex">\( I \)</span> 的概率，即
-  [
-  \text{support}(I) = \frac{\sigma(I)}{|T|}.
-  ]</li>
+<li>
+<p><strong>计数 <span class="arithmatex">\( \sigma(I) \)</span></strong>：项集 <span class="arithmatex">\( I \)</span> 的计数定义为包含 <span class="arithmatex">\( I \)</span> 的事务个数，即</p>
+<div class="arithmatex">\[
+\sigma(I) = \left| \{\, t_i \in T \mid I \subseteq t_i \,\} \right|.
+\]</div>
+</li>
+<li>
+<p><strong>支持度（Support）</strong>：项集 <span class="arithmatex">\( I \)</span> 的支持度定义为随机选择的一个事务包含 <span class="arithmatex">\( I \)</span> 的概率，即</p>
+<div class="arithmatex">\[
+\text{support}(I) = \frac{\sigma(I)}{|T|}.
+\]</div>
+</li>
 </ul>
 <blockquote>
 <p>支持度是关联规则挖掘（如“购物篮分析”）中最核心的度量之一，用于判断项集是否频繁出现。</p>
@@ -11542,10 +11546,10 @@ P_{i_1, i_2, \ldots, i_m}(R) = {\, (a_{i_1}, a_{i_2}, \ldots, a_{i_m}) \mid (a_1
 - 005：包含 → 计数 +1
 - 总计：<span class="arithmatex">\( \sigma(I) = 3 \)</span>。</p>
 <p><strong>步骤 2</strong>：确定总事务数 <span class="arithmatex">\( |T| = 5 \)</span>。</p>
-<p><strong>步骤 3</strong>：计算支持度：
-[
+<p><strong>步骤 3</strong>：计算支持度：</p>
+<div class="arithmatex">\[
 \text{support}(I) = \frac{\sigma(I)}{|T|} = \frac{3}{5} = 0.6 = 60\%.
-]</p>
+\]</div>
 <blockquote>
 <p><strong>最终答案</strong>：项集 {牛奶, 面包} 的计数为 3，支持度为 60%。</p>
 </blockquote>
@@ -11745,15 +11749,21 @@ m_{ij} =
 <h4 id="9333">9.3.3.3 有向图中的路径与关系幂<a class="headerlink" href="#9333" title="Permanent link">&para;</a></h4>
 <p>在有向图中，<strong>路径</strong>的概念为后续 §9.4 传递闭包的学习奠定基础。</p>
 <ul>
-<li><strong>路径</strong>：从顶点 <span class="arithmatex">\( a \)</span> 到顶点 <span class="arithmatex">\( b \)</span> 的一条长度为 <span class="arithmatex">\( n \)</span> 的路径，是一个边的序列：
-  [
-  (a, x_1), (x_1, x_2), \ldots, (x_{n-1}, b)
-  ]</li>
-<li><strong>关系幂</strong>：<span class="arithmatex">\( R^n \)</span> 表示所有长度为 <span class="arithmatex">\( n \)</span> 的路径所对应的关系，即
-  [
-  (a, b) \in R^n \iff \text{存在从 } a \text{ 到 } b \text{ 的长度为 } n \text{ 的路径}
-  ]</li>
-<li><strong>路径长度 0</strong>：约定从任意顶点到自身存在长度为 0 的路径，即 <span class="arithmatex">\( (a, a) \in R^0 \)</span>。</li>
+<li>
+<p><strong>路径</strong>：从顶点 <span class="arithmatex">\( a \)</span> 到顶点 <span class="arithmatex">\( b \)</span> 的一条长度为 <span class="arithmatex">\( n \)</span> 的路径，是一个边的序列：</p>
+<div class="arithmatex">\[
+(a, x_1), (x_1, x_2), \ldots, (x_{n-1}, b)
+\]</div>
+</li>
+<li>
+<p><strong>关系幂</strong>：<span class="arithmatex">\( R^n \)</span> 表示所有长度为 <span class="arithmatex">\( n \)</span> 的路径所对应的关系，即</p>
+<div class="arithmatex">\[
+(a, b) \in R^n \iff \text{存在从 } a \text{ 到 } b \text{ 的长度为 } n \text{ 的路径}
+\]</div>
+</li>
+<li>
+<p><strong>路径长度 0</strong>：约定从任意顶点到自身存在长度为 0 的路径，即 <span class="arithmatex">\( (a, a) \in R^0 \)</span>。</p>
+</li>
 </ul>
 <hr />
 <h3 id="934">9.3.4 两种表示方法的对比与综合示例<a class="headerlink" href="#934" title="Permanent link">&para;</a></h3>
@@ -11963,52 +11973,56 @@ R = \{(a,a), (a,b), (b,a), (b,b), (b,c), (c,b), (c,c)\}
 <h3 id="942">9.4.2 自反闭包与对称闭包<a class="headerlink" href="#942" title="Permanent link">&para;</a></h3>
 <p>这两种闭包的构造非常直接，本质上只需将“缺失”的必要元素补足即可。</p>
 <h4 id="9421-rr">9.4.2.1 自反闭包 <span class="arithmatex">\( r(R) \)</span><a class="headerlink" href="#9421-rr" title="Permanent link">&para;</a></h4>
-<p><strong>定义（定理 1）</strong>：设 <span class="arithmatex">\( R \subseteq A \times A \)</span>，<span class="arithmatex">\( I_A \)</span> 是 <span class="arithmatex">\( A \)</span> 上的恒等关系（即 <span class="arithmatex">\( I_A = \{(a, a) \mid a \in A\} \)</span>），则 <span class="arithmatex">\( R \)</span> 的自反闭包为
-[
+<p><strong>定义（定理 1）</strong>：设 <span class="arithmatex">\( R \subseteq A \times A \)</span>，<span class="arithmatex">\( I_A \)</span> 是 <span class="arithmatex">\( A \)</span> 上的恒等关系（即 <span class="arithmatex">\( I_A = \{(a, a) \mid a \in A\} \)</span>），则 <span class="arithmatex">\( R \)</span> 的自反闭包为</p>
+<div class="arithmatex">\[
 r(R) = R \cup I_A.
-]</p>
+\]</div>
 <ul>
 <li><strong>构造方法</strong>：将 <span class="arithmatex">\( A \)</span> 中所有尚未出现自环 <span class="arithmatex">\( (a, a) \)</span> 的元素，补入关系即可。</li>
 <li><strong>推论</strong>：<span class="arithmatex">\( R \)</span> 是自反的当且仅当 <span class="arithmatex">\( r(R) = R \)</span>。</li>
 </ul>
-<p><strong>例（自反闭包）</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3\} \)</span>，<span class="arithmatex">\( R = \{(1,1), (1,2), (2,3)\} \)</span>。则 <span class="arithmatex">\( I_A = \{(1,1), (2,2), (3,3)\} \)</span>，所以：
-[
-r(R) = {(1,1), (1,2), (2,3), (2,2), (3,3)}.
-]</p>
+<p><strong>例（自反闭包）</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3\} \)</span>，<span class="arithmatex">\( R = \{(1,1), (1,2), (2,3)\} \)</span>。则 <span class="arithmatex">\( I_A = \{(1,1), (2,2), (3,3)\} \)</span>，所以：</p>
+<div class="arithmatex">\[
+r(R) = \{(1,1), (1,2), (2,3), (2,2), (3,3)\}.
+\]</div>
 <h4 id="9422-sr">9.4.2.2 对称闭包 <span class="arithmatex">\( s(R) \)</span><a class="headerlink" href="#9422-sr" title="Permanent link">&para;</a></h4>
-<p><strong>定义（定理 2）</strong>：设 <span class="arithmatex">\( R \subseteq A \times A \)</span>，<span class="arithmatex">\( R^{-1} \)</span> 是 <span class="arithmatex">\( R \)</span> 的逆关系，则 <span class="arithmatex">\( R \)</span> 的对称闭包为
-[
+<p><strong>定义（定理 2）</strong>：设 <span class="arithmatex">\( R \subseteq A \times A \)</span>，<span class="arithmatex">\( R^{-1} \)</span> 是 <span class="arithmatex">\( R \)</span> 的逆关系，则 <span class="arithmatex">\( R \)</span> 的对称闭包为</p>
+<div class="arithmatex">\[
 s(R) = R \cup R^{-1}.
-]</p>
+\]</div>
 <ul>
 <li><strong>构造方法</strong>：对于 <span class="arithmatex">\( R \)</span> 中的每一个有序对 <span class="arithmatex">\( (a, b) \)</span>（其中 <span class="arithmatex">\( a \ne b \)</span>），若其反向对 <span class="arithmatex">\( (b, a) \)</span> 不在 <span class="arithmatex">\( R \)</span> 中，则将它补入关系。</li>
 <li><strong>推论</strong>：<span class="arithmatex">\( R \)</span> 是对称的当且仅当 <span class="arithmatex">\( s(R) = R \)</span>。</li>
 </ul>
-<p><strong>例（对称闭包）</strong>：设 <span class="arithmatex">\( A = \mathbb{Z}^+ \)</span>，<span class="arithmatex">\( R = \{(a, b) \mid a &lt; b\} \)</span>。则 <span class="arithmatex">\( R^{-1} = \{(b, a) \mid a &lt; b\} = \{(a, b) \mid a &gt; b\} \)</span>。因此：
-[
-s(R) = R \cup R^{-1} = {(a, b) \mid a &lt; b \text{ 或 } a &gt; b} = {(a, b) \mid a \ne b}.
-]
-即在正整数集合上，“小于”关系的对称闭包就是“不等于”关系。</p>
+<p><strong>例（对称闭包）</strong>：设 <span class="arithmatex">\( A = \mathbb{Z}^+ \)</span>，<span class="arithmatex">\( R = \{(a, b) \mid a &lt; b\} \)</span>。则 <span class="arithmatex">\( R^{-1} = \{(b, a) \mid a &lt; b\} = \{(a, b) \mid a &gt; b\} \)</span>。因此：</p>
+<div class="arithmatex">\[
+s(R) = R \cup R^{-1} = \{(a, b) \mid a &lt; b \text{ 或 } a &gt; b\} = \{(a, b) \mid a \ne b\}.
+\]</div>
+<p>即在正整数集合上，“小于”关系的对称闭包就是“不等于”关系。</p>
 <hr />
 <h3 id="943">9.4.3 传递闭包与连通关系<a class="headerlink" href="#943" title="Permanent link">&para;</a></h3>
 <p>传递闭包的构造远比前两者复杂，因为它可能需要补入无限多个有序对。为此，我们引入<strong>路径（Path）</strong>的概念作为理论工具。</p>
 <h4 id="9431-paths-and-powers">9.4.3.1 路径与关系幂（Paths and Powers）<a class="headerlink" href="#9431-paths-and-powers" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>路径（Path）</strong>：在有向图（或关系 <span class="arithmatex">\( R \)</span>）中，从节点 <span class="arithmatex">\( a \)</span> 到节点 <span class="arithmatex">\( b \)</span> 的一条<strong>长度为 <span class="arithmatex">\( n \)</span>（<span class="arithmatex">\( n \ge 1 \)</span>）</strong>的路径是一个有序边序列：
-  [
-  (a, x_1), (x_1, x_2), \ldots, (x_{n-1}, b),
-  ]
-  其中每条边都属于 <span class="arithmatex">\( R \)</span>。</li>
-<li><strong>长度 0 的路径</strong>：约定从任一节点到自身存在一条长度为 0 的路径。</li>
+<li>
+<p><strong>路径（Path）</strong>：在有向图（或关系 <span class="arithmatex">\( R \)</span>）中，从节点 <span class="arithmatex">\( a \)</span> 到节点 <span class="arithmatex">\( b \)</span> 的一条<strong>长度为 <span class="arithmatex">\( n \)</span>（<span class="arithmatex">\( n \ge 1 \)</span>）</strong>的路径是一个有序边序列：</p>
+<div class="arithmatex">\[
+(a, x_1), (x_1, x_2), \ldots, (x_{n-1}, b),
+\]</div>
+<p>其中每条边都属于 <span class="arithmatex">\( R \)</span>。</p>
+</li>
+<li>
+<p><strong>长度 0 的路径</strong>：约定从任一节点到自身存在一条长度为 0 的路径。</p>
+</li>
 <li><strong>关系幂 <span class="arithmatex">\( R^n \)</span></strong>：<span class="arithmatex">\( (a, b) \in R^n \)</span> 当且仅当在 <span class="arithmatex">\( R \)</span> 中存在一条从 <span class="arithmatex">\( a \)</span> 到 <span class="arithmatex">\( b \)</span> 的长度为 <span class="arithmatex">\( n \)</span> 的路径。</li>
 <li><strong>连通性（Connectivity）</strong>：若从 <span class="arithmatex">\( a \)</span> 到 <span class="arithmatex">\( b \)</span> 存在<strong>任意长度（<span class="arithmatex">\( n \ge 1 \)</span>）</strong>的路径，则称 <span class="arithmatex">\( a \)</span> 与 <span class="arithmatex">\( b \)</span> 是连通的。</li>
 </ul>
 <h4 id="9432">9.4.3.2 传递闭包的定义与定理<a class="headerlink" href="#9432" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：关系 <span class="arithmatex">\( R \)</span> 的传递闭包 <span class="arithmatex">\( R^* \)</span>（或称连通关系 <span class="arithmatex">\( R^{\infty} \)</span>）定义为所有正幂的并集：
-[
+<p><strong>定义</strong>：关系 <span class="arithmatex">\( R \)</span> 的传递闭包 <span class="arithmatex">\( R^* \)</span>（或称连通关系 <span class="arithmatex">\( R^{\infty} \)</span>）定义为所有正幂的并集：</p>
+<div class="arithmatex">\[
 R^* = \bigcup_{n=1}^{\infty} R^n = R^1 \cup R^2 \cup R^3 \cup \cdots.
-]
-即：<span class="arithmatex">\( (a, b) \in R^* \)</span> 当且仅当存在一条长度至少为 1 的路径从 <span class="arithmatex">\( a \)</span> 到达 <span class="arithmatex">\( b \)</span>。</p>
+\]</div>
+<p>即：<span class="arithmatex">\( (a, b) \in R^* \)</span> 当且仅当存在一条长度至少为 1 的路径从 <span class="arithmatex">\( a \)</span> 到达 <span class="arithmatex">\( b \)</span>。</p>
 <p><strong>定理 1（传递闭包的核心性质）</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的关系，则 <span class="arithmatex">\( R^* \)</span> 是 <span class="arithmatex">\( R \)</span> 的传递闭包。证明需验证三点：</p>
 <ol>
 <li><strong>包含 <span class="arithmatex">\( R \)</span></strong>：<span class="arithmatex">\( R \subseteq R^* \)</span>（因为 <span class="arithmatex">\( R = R^1 \subseteq \bigcup R^n \)</span>）；</li>
@@ -12050,11 +12064,15 @@ R^* = R \cup R^2 \cup \cdots \cup R^n.
 <li>递推关系：当考虑第 <span class="arithmatex">\( k \)</span> 个顶点时，路径有两种情况：</li>
 <li>路径不经过 <span class="arithmatex">\( a_k \)</span>：则 <span class="arithmatex">\( W_k[i][j] = 1 \)</span> 因 <span class="arithmatex">\( W_{k-1}[i][j] = 1 \)</span> 而成立；</li>
 <li>路径经过 <span class="arithmatex">\( a_k \)</span>：则必须 <span class="arithmatex">\( W_{k-1}[i][k] = 1 \)</span> 且 <span class="arithmatex">\( W_{k-1}[k][j] = 1 \)</span>。</li>
-<li>综合上述两种情形，递推公式为：
-  [
-  W_k[i][j] = W_{k-1}[i][j] \lor \big( W_{k-1}[i][k] \land W_{k-1}[k][j] \big).
-  ]</li>
-<li>最终结果：<span class="arithmatex">\( W_n = R^* \)</span>。</li>
+<li>
+<p>综合上述两种情形，递推公式为：</p>
+<div class="arithmatex">\[
+W_k[i][j] = W_{k-1}[i][j] \lor \big( W_{k-1}[i][k] \land W_{k-1}[k][j] \big).
+\]</div>
+</li>
+<li>
+<p>最终结果：<span class="arithmatex">\( W_n = R^* \)</span>。</p>
+</li>
 </ul>
 <p><strong>Warshall 算法操作步骤（实用版）</strong>：</p>
 <ol>
@@ -12070,16 +12088,16 @@ R^* = R \cup R^2 \cup \cdots \cup R^n.
 <h4 id="941-2">例 9.4.1：基于路径的传递闭包计算（定理 2 应用）<a class="headerlink" href="#941-2" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，关系 <span class="arithmatex">\( R = \{(1, 2), (2, 3), (3, 4), (2, 1)\} \)</span>。求传递闭包 <span class="arithmatex">\( R^* \)</span>。</p>
 <p><strong>解</strong>：</p>
-<p><strong>步骤 1</strong>：写出 <span class="arithmatex">\( R \)</span> 的零一矩阵 <span class="arithmatex">\( M_R \)</span>（按顺序 1, 2, 3, 4）：
-[
+<p><strong>步骤 1</strong>：写出 <span class="arithmatex">\( R \)</span> 的零一矩阵 <span class="arithmatex">\( M_R \)</span>（按顺序 1, 2, 3, 4）：</p>
+<div class="arithmatex">\[
 W_0 =
 \begin{bmatrix}
-0 &amp; 1 &amp; 0 &amp; 0 \
-1 &amp; 0 &amp; 1 &amp; 0 \
-0 &amp; 0 &amp; 0 &amp; 1 \
+0 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 \\
 0 &amp; 0 &amp; 0 &amp; 0
 \end{bmatrix}.
-]</p>
+\]</div>
 <p><strong>步骤 2</strong>：计算 <span class="arithmatex">\( R^2 = R \circ R \)</span>（长度为 2 的路径）：
 - <span class="arithmatex">\( 1 \to 2 \to 1 \)</span> ⇒ <span class="arithmatex">\( (1,1) \)</span>
 - <span class="arithmatex">\( 1 \to 2 \to 3 \)</span> ⇒ <span class="arithmatex">\( (1,3) \)</span>
@@ -12097,19 +12115,19 @@ W_0 =
 - <span class="arithmatex">\( (1,4) \)</span> 且 4 无后继 ⇒ 无新边
 - <span class="arithmatex">\( (2,3) \)</span> 且 3→4 ⇒ <span class="arithmatex">\( (2,4) \)</span>（已在 R² 中）
 - 所以 <span class="arithmatex">\( R^4 = \{(2,4)\} \)</span> 及其他已有边，无新元素。</p>
-<p><strong>步骤 5</strong>：根据定理 2，当 <span class="arithmatex">\( n = 4 \)</span> 时，只需合并到 <span class="arithmatex">\( R^4 \)</span>。因此：
-[
+<p><strong>步骤 5</strong>：根据定理 2，当 <span class="arithmatex">\( n = 4 \)</span> 时，只需合并到 <span class="arithmatex">\( R^4 \)</span>。因此：</p>
+<div class="arithmatex">\[
 R^* = R \cup R^2 \cup R^3 \cup R^4.
-]
-合并所有元素：
+\]</div>
+<p>合并所有元素：
 - 从 R：<span class="arithmatex">\( (1,2), (2,3), (3,4), (2,1) \)</span>
 - 从 R²：<span class="arithmatex">\( (1,1), (1,3), (2,2), (2,4) \)</span>
 - 从 R³：<span class="arithmatex">\( (1,4) \)</span>
 - 从 R⁴：无新元素</p>
-<p>因此：
-[
-R^* = {(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,4)}.
-]</p>
+<p>因此：</p>
+<div class="arithmatex">\[
+R^* = \{(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,4)\}.
+\]</div>
 <blockquote>
 <p><strong>验证</strong>：该结果确实是传递的，且为包含 <span class="arithmatex">\( R \)</span> 的最小传递关系。</p>
 </blockquote>
@@ -12187,11 +12205,11 @@ W_4 =
 0 &amp; 0 &amp; 0 &amp; 0
 \end{bmatrix}.
 \]</div>
-<p><strong>结果验证</strong>：由 <span class="arithmatex">\( W_4 \)</span> 读出的有序对为：
-[
-R^* = {(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,4)},
-]
-与例 9.4.1 的结果完全一致。Warshall 算法更为高效，尤其适合编程实现。</p>
+<p><strong>结果验证</strong>：由 <span class="arithmatex">\( W_4 \)</span> 读出的有序对为：</p>
+<div class="arithmatex">\[
+R^* = \{(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,4)\},
+\]</div>
+<p>与例 9.4.1 的结果完全一致。Warshall 算法更为高效，尤其适合编程实现。</p>
 <hr />
 <h4 id="943_1">例 9.4.3：自反闭包与对称闭包的综合运算<a class="headerlink" href="#943_1" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：设 <span class="arithmatex">\( A = \{a, b, c\} \)</span>，<span class="arithmatex">\( R = \{(a, b), (b, c)\} \)</span>。求 <span class="arithmatex">\( r(R) \)</span>、<span class="arithmatex">\( s(R) \)</span>，以及 <span class="arithmatex">\( s(r(R)) \)</span>（先取自反闭包，再取对称闭包）。</p>
@@ -12311,19 +12329,19 @@ R^* = {(1,1), (1,2), (1,3), (1,4), (2,1), (2,2), (2,3), (2,4), (3,4)},
 <hr />
 <h3 id="952-equivalence-classes">9.5.2 等价类（Equivalence Classes）<a class="headerlink" href="#952-equivalence-classes" title="Permanent link">&para;</a></h3>
 <h4 id="9521">9.5.2.1 定义与记号<a class="headerlink" href="#9521" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系。对于任意 <span class="arithmatex">\( a \in A \)</span>，定义 <span class="arithmatex">\( a \)</span> 的<strong>等价类（Equivalence Class）</strong>为
-[
-[a]_R = { b \in A \mid aRb }.
-]
-当关系 <span class="arithmatex">\( R \)</span> 明确时，可简写为 <span class="arithmatex">\( [a] \)</span>。每个 <span class="arithmatex">\( b \in [a]_R \)</span> 称为该等价类的<strong>代表元（Representative）</strong>。</p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系。对于任意 <span class="arithmatex">\( a \in A \)</span>，定义 <span class="arithmatex">\( a \)</span> 的<strong>等价类（Equivalence Class）</strong>为</p>
+<div class="arithmatex">\[
+[a]_R = \{ b \in A \mid aRb \}.
+\]</div>
+<p>当关系 <span class="arithmatex">\( R \)</span> 明确时，可简写为 <span class="arithmatex">\( [a] \)</span>。每个 <span class="arithmatex">\( b \in [a]_R \)</span> 称为该等价类的<strong>代表元（Representative）</strong>。</p>
 <blockquote>
 <p><strong>本质理解</strong>：等价类就是把所有与 <span class="arithmatex">\( a \)</span> 等价的元素“打包”在一起形成的集合。</p>
 </blockquote>
 <h4 id="9522-1">9.5.2.2 等价类的基本性质（引理 1）<a class="headerlink" href="#9522-1" title="Permanent link">&para;</a></h4>
-<p><strong>引理 1</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系，<span class="arithmatex">\( a, b \in A \)</span>。则
-[
+<p><strong>引理 1</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系，<span class="arithmatex">\( a, b \in A \)</span>。则</p>
+<div class="arithmatex">\[
 aRb \iff [a] = [b].
-]</p>
+\]</div>
 <ul>
 <li><strong>证明概要</strong>：</li>
 <li>若 <span class="arithmatex">\( aRb \)</span>，则任取 <span class="arithmatex">\( x \in [b] \)</span>，有 <span class="arithmatex">\( bRx \)</span>。由 <span class="arithmatex">\( aRb \)</span> 和传递性得 <span class="arithmatex">\( aRx \)</span>，所以 <span class="arithmatex">\( x \in [a] \)</span>，故 <span class="arithmatex">\( [b] \subseteq [a] \)</span>。对称地可证 <span class="arithmatex">\( [a] \subseteq [b] \)</span>，因此相等。</li>
@@ -12342,28 +12360,28 @@ aRb \iff [a] = [b].
 </ol>
 <p>即划分将 <span class="arithmatex">\( A \)</span> 分割成若干个<strong>两两不相交</strong>的“块”（blocks），且这些块的并集恰好是整个 <span class="arithmatex">\( A \)</span>。</p>
 <h4 id="9532">9.5.3.2 等价关系与划分的一一对应<a class="headerlink" href="#9532" title="Permanent link">&para;</a></h4>
-<p><strong>定理 1（由划分导出等价关系）</strong>：设 <span class="arithmatex">\( \mathcal{P} \)</span> 是集合 <span class="arithmatex">\( A \)</span> 的一个划分。定义关系 <span class="arithmatex">\( R \)</span> 为：
-[
+<p><strong>定理 1（由划分导出等价关系）</strong>：设 <span class="arithmatex">\( \mathcal{P} \)</span> 是集合 <span class="arithmatex">\( A \)</span> 的一个划分。定义关系 <span class="arithmatex">\( R \)</span> 为：</p>
+<div class="arithmatex">\[
 aRb \iff a \text{ 与 } b \text{ 属于 } \mathcal{P} \text{ 中的同一个块}.
-]
-则 <span class="arithmatex">\( R \)</span> 是 <span class="arithmatex">\( A \)</span> 上的等价关系。称 <span class="arithmatex">\( R \)</span> 为由划分 <span class="arithmatex">\( \mathcal{P} \)</span> <strong>确定的等价关系</strong>。</p>
+\]</div>
+<p>则 <span class="arithmatex">\( R \)</span> 是 <span class="arithmatex">\( A \)</span> 上的等价关系。称 <span class="arithmatex">\( R \)</span> 为由划分 <span class="arithmatex">\( \mathcal{P} \)</span> <strong>确定的等价关系</strong>。</p>
 <p><strong>定理 2（由等价关系导出划分）</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系。令 <span class="arithmatex">\( \mathcal{P} \)</span> 为所有等价类 <span class="arithmatex">\( [a]_R \)</span>（<span class="arithmatex">\( a \in A \)</span>）的集合，则 <span class="arithmatex">\( \mathcal{P} \)</span> 是 <span class="arithmatex">\( A \)</span> 的一个划分。</p>
 <blockquote>
 <p><strong>核心结论</strong>：集合上的<strong>等价关系</strong>与集合的<strong>划分</strong>之间存在<strong>一一对应</strong>。每一个等价关系唯一地确定一个划分（商集），反之亦然。</p>
 </blockquote>
 <h4 id="9533-quotient-set">9.5.3.3 商集（Quotient Set）<a class="headerlink" href="#9533-quotient-set" title="Permanent link">&para;</a></h4>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系。由 <span class="arithmatex">\( R \)</span> 的所有等价类组成的集合称为 <span class="arithmatex">\( A \)</span> 关于 <span class="arithmatex">\( R \)</span> 的<strong>商集（Quotient Set）</strong>，记作
-[
-A/R = { [a]_R \mid a \in A }.
-]
-商集即为等价关系所对应的划分。商集中元素的个数称为该等价关系的<strong>秩（Rank）</strong>。</p>
-<p><strong>例（模 3 同余）</strong>：在整数集合 <span class="arithmatex">\( \mathbb{Z} \)</span> 上，关系 <span class="arithmatex">\( a \equiv b \pmod{3} \)</span> 的等价类为：
-[
-[0] = {\ldots, -6, -3, 0, 3, 6, \ldots},\quad
-[1] = {\ldots, -5, -2, 1, 4, 7, \ldots},\quad
-[2] = {\ldots, -4, -1, 2, 5, 8, \ldots}.
-]
-因此商集为 <span class="arithmatex">\( \mathbb{Z}/\!\equiv_3 = \{[0], [1], [2]\} \)</span>，秩为 3。</p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( R \)</span> 是集合 <span class="arithmatex">\( A \)</span> 上的等价关系。由 <span class="arithmatex">\( R \)</span> 的所有等价类组成的集合称为 <span class="arithmatex">\( A \)</span> 关于 <span class="arithmatex">\( R \)</span> 的<strong>商集（Quotient Set）</strong>，记作</p>
+<div class="arithmatex">\[
+A/R = \{ [a]_R \mid a \in A \}.
+\]</div>
+<p>商集即为等价关系所对应的划分。商集中元素的个数称为该等价关系的<strong>秩（Rank）</strong>。</p>
+<p><strong>例（模 3 同余）</strong>：在整数集合 <span class="arithmatex">\( \mathbb{Z} \)</span> 上，关系 <span class="arithmatex">\( a \equiv b \pmod{3} \)</span> 的等价类为：</p>
+<div class="arithmatex">\[
+[0] = \{\ldots, -6, -3, 0, 3, 6, \ldots\},\quad
+[1] = \{\ldots, -5, -2, 1, 4, 7, \ldots\},\quad
+[2] = \{\ldots, -4, -1, 2, 5, 8, \ldots\}.
+\]</div>
+<p>因此商集为 <span class="arithmatex">\( \mathbb{Z}/\!\equiv_3 = \{[0], [1], [2]\} \)</span>，秩为 3。</p>
 <hr />
 <h3 id="954">9.5.4 等价关系的运算性质<a class="headerlink" href="#954" title="Permanent link">&para;</a></h3>
 <h4 id="9541">9.5.4.1 交集封闭性<a class="headerlink" href="#9541" title="Permanent link">&para;</a></h4>
@@ -12405,11 +12423,11 @@ A/R = { [a]_R \mid a \in A }.
 <hr />
 <h3 id="956">9.5.6 完整例题精解<a class="headerlink" href="#956" title="Permanent link">&para;</a></h3>
 <h4 id="951-example-7">例 9.5.1：判定等价关系并求商集（教材 Example 7 改编）<a class="headerlink" href="#951-example-7" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，关系
-[
-R = {(1,1), (1,2), (2,1), (2,2), (3,4), (4,3), (3,3), (4,4)}.
-]
-判定 <span class="arithmatex">\( R \)</span> 是否为等价关系。若是，求商集 <span class="arithmatex">\( A/R \)</span>。</p>
+<p><strong>问题</strong>：设 <span class="arithmatex">\( A = \{1, 2, 3, 4\} \)</span>，关系</p>
+<div class="arithmatex">\[
+R = \{(1,1), (1,2), (2,1), (2,2), (3,4), (4,3), (3,3), (4,4)\}.
+\]</div>
+<p>判定 <span class="arithmatex">\( R \)</span> 是否为等价关系。若是，求商集 <span class="arithmatex">\( A/R \)</span>。</p>
 <p><strong>解</strong>：</p>
 <p><strong>步骤 1（自反性检查）</strong>：<span class="arithmatex">\( A \)</span> 中元素为 1, 2, 3, 4，检查自环：
 - <span class="arithmatex">\( (1,1) \in R \)</span>，<span class="arithmatex">\( (2,2) \in R \)</span>，<span class="arithmatex">\( (3,3) \in R \)</span>，<span class="arithmatex">\( (4,4) \in R \)</span>。
@@ -12447,11 +12465,11 @@ R = {(1,1), (1,2), (2,1), (2,2), (3,4), (4,3), (3,3), (4,4)}.
 <p><strong>商集</strong>：<span class="arithmatex">\( \mathbb{Z}/R = \{[0], [1]\} \)</span>，即所有偶数的集合和所有奇数的集合。秩为 2。</p>
 <hr />
 <h4 id="953-1">例 9.5.3：由划分构造等价关系（教材定理 1 的应用）<a class="headerlink" href="#953-1" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：设集合 <span class="arithmatex">\( A = \{1, 2, 3, 4, 5\} \)</span>，给定划分
-[
-\mathcal{P} = {{1, 2}, {3, 4, 5}}.
-]
-求由该划分确定的等价关系 <span class="arithmatex">\( R \)</span>。</p>
+<p><strong>问题</strong>：设集合 <span class="arithmatex">\( A = \{1, 2, 3, 4, 5\} \)</span>，给定划分</p>
+<div class="arithmatex">\[
+\mathcal{P} = \{\{1, 2\}, \{3, 4, 5\}\}.
+\]</div>
+<p>求由该划分确定的等价关系 <span class="arithmatex">\( R \)</span>。</p>
 <p><strong>解</strong>：</p>
 <p><strong>步骤 1</strong>：对每个块，生成该块内所有有序对（即 <span class="arithmatex">\( A_i \times A_i \)</span>）：</p>
 <ul>
@@ -12459,10 +12477,10 @@ R = {(1,1), (1,2), (2,1), (2,2), (3,4), (4,3), (3,3), (4,4)}.
 <li>块 <span class="arithmatex">\( \{3, 4, 5\} \)</span>：<span class="arithmatex">\( \{3,4,5\} \times \{3,4,5\} \)</span>：</li>
 <li>包含 <span class="arithmatex">\( (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3), (5,4), (5,5) \)</span>。</li>
 </ul>
-<p><strong>步骤 2</strong>：取所有有序对的并集：
-[
-R = {(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3), (5,4), (5,5)}.
-]</p>
+<p><strong>步骤 2</strong>：取所有有序对的并集：</p>
+<div class="arithmatex">\[
+R = \{(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3), (5,4), (5,5)\}.
+\]</div>
 <p><strong>验证</strong>：该关系是自反、对称、传递的，且其等价类恰好为 <span class="arithmatex">\( \{1,2\} \)</span> 和 <span class="arithmatex">\( \{3,4,5\} \)</span>，与给定划分一致。</p>
 <hr />
 <h4 id="954-14">例 9.5.4：商集与秩的确定（教材例 14 扩展）<a class="headerlink" href="#954-14" title="Permanent link">&para;</a></h4>
@@ -12474,11 +12492,11 @@ R = {(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3)
 - <span class="arithmatex">\( [1] = \{\ldots, -7, -3, 1, 5, 9, 13, \ldots\} = \{ 4k + 1 \mid k \in \mathbb{Z} \} \)</span>；
 - <span class="arithmatex">\( [2] = \{\ldots, -6, -2, 2, 6, 10, 14, \ldots\} = \{ 4k + 2 \mid k \in \mathbb{Z} \} \)</span>；
 - <span class="arithmatex">\( [3] = \{\ldots, -5, -1, 3, 7, 11, 15, \ldots\} = \{ 4k + 3 \mid k \in \mathbb{Z} \} \)</span>。</p>
-<p><strong>步骤 3</strong>：商集为
-[
-\mathbb{Z}/!\equiv_4 = {[0], [1], [2], [3]}.
-]
-秩为 4。</p>
+<p><strong>步骤 3</strong>：商集为</p>
+<div class="arithmatex">\[
+\mathbb{Z}/\!\equiv_4 = \{[0], [1], [2], [3]\}.
+\]</div>
+<p>秩为 4。</p>
 <blockquote>
 <p><strong>推广</strong>：模 <span class="arithmatex">\( m \)</span> 同余关系的商集共有 <span class="arithmatex">\( m \)</span> 个等价类，秩为 <span class="arithmatex">\( m \)</span>。</p>
 </blockquote>
@@ -12693,18 +12711,24 @@ R = {(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3)
 <h4 id="9674">9.6.7.4 特殊格类型<a class="headerlink" href="#9674" title="Permanent link">&para;</a></h4>
 <ul>
 <li><strong>有界格（Bounded Lattice）</strong>：存在最大元 <span class="arithmatex">\( I \)</span> 和最小元 <span class="arithmatex">\( 0 \)</span>。</li>
-<li><strong>分配格（Distributive Lattice）</strong>：满足分配律
-  [
-  a \wedge (b \vee c) = (a \wedge b) \vee (a \wedge c),\quad
-  a \vee (b \wedge c) = (a \vee b) \wedge (a \vee c).
-  ]</li>
-<li><strong>有补格（Complemented Lattice）</strong>：有界格且每个元素 <span class="arithmatex">\( a \)</span> 都存在补元 <span class="arithmatex">\( a' \)</span>，使得 <span class="arithmatex">\( a \vee a' = I \)</span> 且 <span class="arithmatex">\( a \wedge a' = 0 \)</span>。</li>
+<li>
+<p><strong>分配格（Distributive Lattice）</strong>：满足分配律</p>
+<div class="arithmatex">\[
+a \wedge (b \vee c) = (a \wedge b) \vee (a \wedge c),\quad
+a \vee (b \wedge c) = (a \vee b) \wedge (a \vee c).
+\]</div>
+</li>
+<li>
+<p><strong>有补格（Complemented Lattice）</strong>：有界格且每个元素 <span class="arithmatex">\( a \)</span> 都存在补元 <span class="arithmatex">\( a' \)</span>，使得 <span class="arithmatex">\( a \vee a' = I \)</span> 且 <span class="arithmatex">\( a \wedge a' = 0 \)</span>。</p>
+</li>
 <li><strong>定理 7</strong>：在<strong>分配格</strong>中，补元若存在则<strong>唯一</strong>。</li>
-<li><strong>模格（Modular Lattice）</strong>：若 <span class="arithmatex">\( a \preceq c \)</span>，则
-  [
-  a \vee (b \wedge c) = (a \vee b) \wedge c.
-  ]
-  分配格都是模格，反之不成立。</li>
+<li>
+<p><strong>模格（Modular Lattice）</strong>：若 <span class="arithmatex">\( a \preceq c \)</span>，则</p>
+<div class="arithmatex">\[
+a \vee (b \wedge c) = (a \vee b) \wedge c.
+\]</div>
+<p>分配格都是模格，反之不成立。</p>
+</li>
 </ul>
 <blockquote>
 <p><strong>格的关系图谱</strong>：非模格 ⊂ 模格；分配格 ⊂ 模格；有补分配格即为<strong>布尔代数（Boolean Algebra）</strong>的前身。</p>
@@ -12923,7 +12947,7 @@ R = {(1,1), (1,2), (2,1), (2,2), (3,3), (3,4), (3,5), (4,3), (4,4), (4,5), (5,3)
       
         <script src="../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

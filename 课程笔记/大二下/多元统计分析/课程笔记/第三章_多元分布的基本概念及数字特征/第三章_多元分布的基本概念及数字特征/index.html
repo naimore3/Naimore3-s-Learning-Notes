@@ -8540,27 +8540,27 @@
 <h3 id="_21">方差/协差阵<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>定义</strong>：设 <span class="arithmatex">\( \boldsymbol{X} = (X_1, X_2, \dots, X_p)' \)</span>，其方差（协差阵）定义为：<br />
-  [
-  D(\boldsymbol{X}) \triangleq E\left[ (\boldsymbol{X} - E(\boldsymbol{X}))(\boldsymbol{X} - E(\boldsymbol{X}))' \right]
-  ]<br />
-  展开为 <span class="arithmatex">\( p \times p \)</span> 矩阵，元素为 <span class="arithmatex">\( \text{Cov}(X_i, X_j) \)</span>（<span class="arithmatex">\( i,j = 1, \dots, p \)</span> ），即：<br />
-  [
-  D(\boldsymbol{X}) = \begin{bmatrix} 
-  \text{Cov}(X_1,X_1) &amp; \text{Cov}(X_1,X_2) &amp; \dots &amp; \text{Cov}(X_1,X_p) \
-  \text{Cov}(X_2,X_1) &amp; \text{Cov}(X_2,X_2) &amp; \dots &amp; \text{Cov}(X_2,X_p) \
-  \vdots &amp; \vdots &amp; \ddots &amp; \vdots \
-  \text{Cov}(X_p,X_1) &amp; \text{Cov}(X_p,X_2) &amp; \dots &amp; \text{Cov}(X_p,X_p) 
-  \end{bmatrix}
-  ]<br />
-  简记 <span class="arithmatex">\( D(\boldsymbol{X}) = \boldsymbol{\Sigma} \)</span> 或 <span class="arithmatex">\( \text{Var}(\boldsymbol{X}) \)</span> ，其中 <span class="arithmatex">\( \text{Cov}(X_i, X_j) \)</span> 也记 <span class="arithmatex">\( \sigma_{ij} \)</span> ，即 <span class="arithmatex">\( \boldsymbol{\Sigma} = (\sigma_{ij})_{p \times p} \)</span> 。  </p>
+<p><strong>定义</strong>：设 <span class="arithmatex">\( \boldsymbol{X} = (X_1, X_2, \dots, X_p)' \)</span>，其方差（协差阵）定义为：  </p>
+<div class="arithmatex">\[
+D(\boldsymbol{X}) \triangleq E\left[ (\boldsymbol{X} - E(\boldsymbol{X}))(\boldsymbol{X} - E(\boldsymbol{X}))' \right]
+\]</div>
+<p>展开为 <span class="arithmatex">\( p \times p \)</span> 矩阵，元素为 <span class="arithmatex">\( \text{Cov}(X_i, X_j) \)</span>（<span class="arithmatex">\( i,j = 1, \dots, p \)</span> ），即：  </p>
+<div class="arithmatex">\[
+D(\boldsymbol{X}) = \begin{bmatrix} 
+\text{Cov}(X_1,X_1) &amp; \text{Cov}(X_1,X_2) &amp; \dots &amp; \text{Cov}(X_1,X_p) \\
+\text{Cov}(X_2,X_1) &amp; \text{Cov}(X_2,X_2) &amp; \dots &amp; \text{Cov}(X_2,X_p) \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\text{Cov}(X_p,X_1) &amp; \text{Cov}(X_p,X_2) &amp; \dots &amp; \text{Cov}(X_p,X_p) 
+\end{bmatrix}
+\]</div>
+<p>简记 <span class="arithmatex">\( D(\boldsymbol{X}) = \boldsymbol{\Sigma} \)</span> 或 <span class="arithmatex">\( \text{Var}(\boldsymbol{X}) \)</span> ，其中 <span class="arithmatex">\( \text{Cov}(X_i, X_j) \)</span> 也记 <span class="arithmatex">\( \sigma_{ij} \)</span> ，即 <span class="arithmatex">\( \boldsymbol{\Sigma} = (\sigma_{ij})_{p \times p} \)</span> 。  </p>
 </li>
 <li>
-<p><strong>推广（两随机向量协差阵）</strong>：设 <span class="arithmatex">\( \boldsymbol{Y} = (Y_1, Y_2, \dots, Y_p)' \)</span>，<span class="arithmatex">\(\boldsymbol{X}\)</span> 与 <span class="arithmatex">\(\boldsymbol{Y}\)</span> 的协差阵：<br />
-  [
-  \text{Cov}(\boldsymbol{X}, \boldsymbol{Y}) \triangleq E\left[ (\boldsymbol{X} - E(\boldsymbol{X}))(\boldsymbol{Y} - E(\boldsymbol{Y}))' \right]
-  ]<br />
-  当 <span class="arithmatex">\( \boldsymbol{X} = \boldsymbol{Y} \)</span> 时，退化为 <span class="arithmatex">\( D(\boldsymbol{X}) \)</span> 。  </p>
+<p><strong>推广（两随机向量协差阵）</strong>：设 <span class="arithmatex">\( \boldsymbol{Y} = (Y_1, Y_2, \dots, Y_p)' \)</span>，<span class="arithmatex">\(\boldsymbol{X}\)</span> 与 <span class="arithmatex">\(\boldsymbol{Y}\)</span> 的协差阵：  </p>
+<div class="arithmatex">\[
+\text{Cov}(\boldsymbol{X}, \boldsymbol{Y}) \triangleq E\left[ (\boldsymbol{X} - E(\boldsymbol{X}))(\boldsymbol{Y} - E(\boldsymbol{Y}))' \right]
+\]</div>
+<p>当 <span class="arithmatex">\( \boldsymbol{X} = \boldsymbol{Y} \)</span> 时，退化为 <span class="arithmatex">\( D(\boldsymbol{X}) \)</span> 。  </p>
 </li>
 <li>
 <p><strong>不相关与独立关系</strong>：若 <span class="arithmatex">\( \text{Cov}(\boldsymbol{X}, \boldsymbol{Y}) = \boldsymbol{0} \)</span>，称 <span class="arithmatex">\( \boldsymbol{X} \)</span> 与 <span class="arithmatex">\( \boldsymbol{Y} \)</span> 不相关；<strong>独立可推出不相关，但不相关一般推不出独立</strong> 。  </p>
@@ -8581,11 +8581,11 @@
 <h3 id="_22">相关阵<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>定义</strong>：若 <span class="arithmatex">\( \boldsymbol{X} = (X_1, X_2, \dots, X_p)' \)</span> 的协差阵存在，且各分量方差 <span class="arithmatex">\( D(X_i) &gt; 0 \)</span>，则相关阵 <span class="arithmatex">\( \boldsymbol{R} = \text{Corr}(\boldsymbol{X}) = (\rho_{ij})_{p \times p} \)</span> ，其中：<br />
-  [
-  \rho_{ij} = \frac{\text{Cov}(X_i, X_j)}{\sqrt{D(X_i)}\sqrt{D(X_j)}} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}}\sqrt{\sigma_{jj}}} \quad (i,j = 1, \dots, p)
-  ]<br />
-<span class="arithmatex">\( \rho_{ij} \)</span> 是 <span class="arithmatex">\( X_i \)</span> 与 <span class="arithmatex">\( X_j \)</span> 的<strong>相关系数</strong> 。  </p>
+<p><strong>定义</strong>：若 <span class="arithmatex">\( \boldsymbol{X} = (X_1, X_2, \dots, X_p)' \)</span> 的协差阵存在，且各分量方差 <span class="arithmatex">\( D(X_i) &gt; 0 \)</span>，则相关阵 <span class="arithmatex">\( \boldsymbol{R} = \text{Corr}(\boldsymbol{X}) = (\rho_{ij})_{p \times p} \)</span> ，其中：  </p>
+<div class="arithmatex">\[
+\rho_{ij} = \frac{\text{Cov}(X_i, X_j)}{\sqrt{D(X_i)}\sqrt{D(X_j)}} = \frac{\sigma_{ij}}{\sqrt{\sigma_{ii}}\sqrt{\sigma_{jj}}} \quad (i,j = 1, \dots, p)
+\]</div>
+<p><span class="arithmatex">\( \rho_{ij} \)</span> 是 <span class="arithmatex">\( X_i \)</span> 与 <span class="arithmatex">\( X_j \)</span> 的<strong>相关系数</strong> 。  </p>
 </li>
 <li>
 <p><strong>标准化变换</strong>：对 <span class="arithmatex">\( X_j \)</span> 做标准化 <span class="arithmatex">\( X_j^* = \frac{X_j - E(X_j)}{\sqrt{D(X_j)}} \)</span>（<span class="arithmatex">\( j = 1, \dots, p \)</span> ），构成新随机向量 <span class="arithmatex">\( \boldsymbol{X}^* = (X_1^*, X_2^*, \dots, X_p^*)' \)</span> 。  </p>
@@ -8622,10 +8622,10 @@
 <li><span class="arithmatex">\( \sigma_{21} = \text{Cov}(X_2, X_1) = 1 \)</span>（协方差对称，<span class="arithmatex">\( \sigma_{ij} = \sigma_{ji} \)</span> ）  </li>
 <li><span class="arithmatex">\( \sigma_{22} = \text{Cov}(X_2, X_2) = D(X_2) = 4 \)</span>  </li>
 </ol>
-<p>因此，协差阵：<br />
-   [
-   D(\boldsymbol{X}) = \begin{bmatrix} 1 &amp; 1 \ 1 &amp; 4 \end{bmatrix}
-   ]  </p>
+<p>因此，协差阵：  </p>
+<div class="arithmatex">\[
+D(\boldsymbol{X}) = \begin{bmatrix} 1 &amp; 1 \\ 1 &amp; 4 \end{bmatrix}
+\]</div>
 <ol>
 <li><strong>计算相关阵 <span class="arithmatex">\( \boldsymbol{R} \)</span></strong>：<br />
    先求相关系数 <span class="arithmatex">\( \rho_{ij} \)</span>：  </li>
@@ -8634,10 +8634,10 @@
 <li><span class="arithmatex">\( \rho_{21} = \rho_{12} = \frac{1}{2} \)</span>（相关系数对称 ）  </li>
 <li><span class="arithmatex">\( \rho_{22} = 1 \)</span>  </li>
 </ol>
-<p>因此，相关阵：<br />
-   [
-   \boldsymbol{R} = \begin{bmatrix} 1 &amp; \frac{1}{2} \ \frac{1}{2} &amp; 1 \end{bmatrix}
-   ]  </p>
+<p>因此，相关阵：  </p>
+<div class="arithmatex">\[
+\boldsymbol{R} = \begin{bmatrix} 1 &amp; \frac{1}{2} \\ \frac{1}{2} &amp; 1 \end{bmatrix}
+\]</div>
 <h4 id="_27">验证“标准化协差阵 = 相关阵”<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
 <p>构造标准化向量 <span class="arithmatex">\( \boldsymbol{X}^* = (X_1^*, X_2^*)' \)</span>，其中：<br />
 <span class="arithmatex">\( X_1^* = \frac{X_1 - E(X_1)}{\sqrt{D(X_1)}} = X_1 - 1 \)</span>，<span class="arithmatex">\( X_2^* = \frac{X_2 - E(X_2)}{\sqrt{D(X_2)}} = \frac{X_2 - 2}{2} \)</span>  </p>
@@ -8671,11 +8671,13 @@
 <li><strong>边缘分布正态性</strong>：若 <span class="arithmatex">\( \boldsymbol{X} \sim N_p(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，则其任意 <span class="arithmatex">\( q \)</span> 维子向量 <span class="arithmatex">\( \boldsymbol{X}^{(1)}=(X_1,X_2,\cdots,X_q)' \)</span> 也服从正态分布，即 <span class="arithmatex">\( \boldsymbol{X}^{(1)} \sim N_q(\boldsymbol{\mu}^{(1)},\boldsymbol{\Sigma}_{11}) \)</span>，其中 <span class="arithmatex">\( \boldsymbol{\mu}^{(1)} \)</span> 为 <span class="arithmatex">\( \boldsymbol{\mu} \)</span> 的前 <span class="arithmatex">\( q \)</span> 个分量，<span class="arithmatex">\( \boldsymbol{\Sigma}_{11} \)</span> 为 <span class="arithmatex">\( \boldsymbol{\Sigma} \)</span> 的前 <span class="arithmatex">\( q \)</span> 行前 <span class="arithmatex">\( q \)</span> 列子矩阵 。  </li>
 <li><strong>线性变换不变性</strong>：若 <span class="arithmatex">\( \boldsymbol{X} \sim N_p(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，<span class="arithmatex">\( \boldsymbol{A} \)</span> 为 <span class="arithmatex">\( s \times p \)</span> 常数矩阵，<span class="arithmatex">\( \boldsymbol{d} \)</span> 为 <span class="arithmatex">\( s \)</span> 维常数向量，则 <span class="arithmatex">\( \boldsymbol{A}\boldsymbol{X}+\boldsymbol{d} \sim N_s(\boldsymbol{A}\boldsymbol{\mu}+\boldsymbol{d},\boldsymbol{A}\boldsymbol{\Sigma}\boldsymbol{A}') \)</span> 。  </li>
 <li><strong>独立性与协方差阵</strong>：若 <span class="arithmatex">\( \boldsymbol{X} \sim N_p(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，则 <span class="arithmatex">\( X_1,X_2,\cdots,X_p \)</span> 相互独立的充要条件是 <span class="arithmatex">\( \boldsymbol{\Sigma} \)</span> 为对角阵 。  </li>
-<li><strong>条件分布正态性</strong>：若 <span class="arithmatex">\( \boldsymbol{X} \sim N_p(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，将 <span class="arithmatex">\( \boldsymbol{X},\boldsymbol{\mu},\boldsymbol{\Sigma} \)</span> 剖分为<br />
-  [
-  \boldsymbol{X}=\begin{bmatrix}\boldsymbol{X}<sup _2_="(2)">{(1)}\\boldsymbol{X}</sup>}\end{bmatrix}, \boldsymbol{\mu}=\begin{bmatrix}\boldsymbol{\mu<sup _2_="(2)">{(1)}\\boldsymbol{\mu}</sup>}\end{bmatrix}, \boldsymbol{\Sigma}=\begin{bmatrix}\boldsymbol{\Sigma<em 12="12">{11}&amp;\boldsymbol{\Sigma}</em>}\\boldsymbol{\Sigma<em 22="22">{21}&amp;\boldsymbol{\Sigma}</em>
-  ]}\end{bmatrix<br />
-  则在 <span class="arithmatex">\( \boldsymbol{X}^{(2)}=\boldsymbol{x}^{(2)} \)</span> 条件下，<span class="arithmatex">\( \boldsymbol{X}^{(1)} \)</span> 的条件分布为 <span class="arithmatex">\( N_q(\boldsymbol{\mu}^{(1)}+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}(\boldsymbol{x}^{(2)}-\boldsymbol{\mu}^{(2)}),\boldsymbol{\Sigma}_{11}-\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}\boldsymbol{\Sigma}_{21}) \)</span> 。</li>
+<li>
+<p><strong>条件分布正态性</strong>：若 <span class="arithmatex">\( \boldsymbol{X} \sim N_p(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，将 <span class="arithmatex">\( \boldsymbol{X},\boldsymbol{\mu},\boldsymbol{\Sigma} \)</span> 剖分为  </p>
+<div class="arithmatex">\[
+\boldsymbol{X}=\begin{bmatrix}\boldsymbol{X}^{(1)}\\\boldsymbol{X}^{(2)}\end{bmatrix}, \boldsymbol{\mu}=\begin{bmatrix}\boldsymbol{\mu}^{(1)}\\\boldsymbol{\mu}^{(2)}\end{bmatrix}, \boldsymbol{\Sigma}=\begin{bmatrix}\boldsymbol{\Sigma}_{11}&amp;\boldsymbol{\Sigma}_{12}\\\boldsymbol{\Sigma}_{21}&amp;\boldsymbol{\Sigma}_{22}\end{bmatrix}
+\]</div>
+<p>则在 <span class="arithmatex">\( \boldsymbol{X}^{(2)}=\boldsymbol{x}^{(2)} \)</span> 条件下，<span class="arithmatex">\( \boldsymbol{X}^{(1)} \)</span> 的条件分布为 <span class="arithmatex">\( N_q(\boldsymbol{\mu}^{(1)}+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}(\boldsymbol{x}^{(2)}-\boldsymbol{\mu}^{(2)}),\boldsymbol{\Sigma}_{11}-\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}\boldsymbol{\Sigma}_{21}) \)</span> 。</p>
+</li>
 </ul>
 <h4 id="_30">求解方法<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <ol>
@@ -8687,62 +8689,84 @@
 <h3 id="333">3.3.3 多元正态分布的几何直观<a class="headerlink" href="#333" title="Permanent link">&para;</a></h3>
 <h4 id="_31">二元正态分布等高线<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>等高线方程</strong>：二元正态密度函数 <span class="arithmatex">\( f(x_1,x_2)=C \)</span>（<span class="arithmatex">\( C&gt;0 \)</span>）的等高线满足<br />
-  [
-  \left(\frac{x_1-\mu_1}{\sigma_1}\right)^2 - 2\rho\left(\frac{x_1-\mu_1}{\sigma_1}\right)\left(\frac{x_2-\mu_2}{\sigma_2}\right) + \left(\frac{x_2-\mu_2}{\sigma_2}\right)^2 = a^2
-  ]<br />
-  其中 <span class="arithmatex">\( \rho \)</span> 为相关系数，该方程表示中心在 <span class="arithmatex">\( (\mu_1,\mu_2)' \)</span> 的椭圆 。  </li>
-<li><strong>参数影响</strong>：  </li>
+<li>
+<p><strong>等高线方程</strong>：二元正态密度函数 <span class="arithmatex">\( f(x_1,x_2)=C \)</span>（<span class="arithmatex">\( C&gt;0 \)</span>）的等高线满足  </p>
+<div class="arithmatex">\[
+\left(\frac{x_1-\mu_1}{\sigma_1}\right)^2 - 2\rho\left(\frac{x_1-\mu_1}{\sigma_1}\right)\left(\frac{x_2-\mu_2}{\sigma_2}\right) + \left(\frac{x_2-\mu_2}{\sigma_2}\right)^2 = a^2
+\]</div>
+<p>其中 <span class="arithmatex">\( \rho \)</span> 为相关系数，该方程表示中心在 <span class="arithmatex">\( (\mu_1,\mu_2)' \)</span> 的椭圆 。  </p>
+</li>
+<li>
+<p><strong>参数影响</strong>：  </p>
+</li>
 <li><span class="arithmatex">\( \sigma_1,\sigma_2 \)</span> 决定椭圆的长短轴长度，<span class="arithmatex">\( \rho \)</span> 决定椭圆的倾斜方向和扁平程度：<span class="arithmatex">\( |\rho| \)</span> 越接近1，椭圆越扁平；<span class="arithmatex">\( \rho=0 \)</span> 时，椭圆轴与坐标轴平行 。  </li>
 </ul>
 <h4 id="p_1">p维正态分布等高面<a class="headerlink" href="#p_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>等高面方程</strong>：<span class="arithmatex">\( p \)</span> 维正态密度函数 <span class="arithmatex">\( f(\boldsymbol{x})=C \)</span> 的等高面为<br />
-  [
-  (\boldsymbol{x}-\boldsymbol{\mu})'\boldsymbol{\Sigma}<sup>{-1}(\boldsymbol{x}-\boldsymbol{\mu})=a</sup>2 \quad (a \geq 0)
-  ]<br />
-  表示中心在 <span class="arithmatex">\( \boldsymbol{\mu} \)</span> 的椭球面，其形状由 <span class="arithmatex">\( \boldsymbol{\Sigma}^{-1} \)</span> 的特征值和特征向量决定 。  </li>
+<li>
+<p><strong>等高面方程</strong>：<span class="arithmatex">\( p \)</span> 维正态密度函数 <span class="arithmatex">\( f(\boldsymbol{x})=C \)</span> 的等高面为  </p>
+<div class="arithmatex">\[
+(\boldsymbol{x}-\boldsymbol{\mu})'\boldsymbol{\Sigma}^{-1}(\boldsymbol{x}-\boldsymbol{\mu})=a^2 \quad (a \geq 0)
+\]</div>
+<p>表示中心在 <span class="arithmatex">\( \boldsymbol{\mu} \)</span> 的椭球面，其形状由 <span class="arithmatex">\( \boldsymbol{\Sigma}^{-1} \)</span> 的特征值和特征向量决定 。  </p>
+</li>
 </ul>
 <h3 id="_32">示例解析<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <h4 id="4">例4：三维正态向量的线性变换<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>题目</strong>：若 <span class="arithmatex">\( \boldsymbol{X}=(X_1,X_2,X_3)' \sim N_3(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，其中<br />
-  [
-  \boldsymbol{\mu}=\begin{bmatrix}\mu_1\\mu_2\\mu_3\end{bmatrix}, \boldsymbol{\Sigma}=\begin{bmatrix}\sigma_{11}&amp;\sigma_{12}&amp;\sigma_{13}\\sigma_{21}&amp;\sigma_{22}&amp;\sigma_{23}\\sigma_{31}&amp;\sigma_{32}&amp;\sigma_{33}\end{bmatrix}
-  ]<br />
-  求 <span class="arithmatex">\( X_2 \)</span> 和 <span class="arithmatex">\( (X_1,-X_3)' \)</span> 的分布 。  </li>
-<li><strong>步骤</strong>：  </li>
+<li>
+<p><strong>题目</strong>：若 <span class="arithmatex">\( \boldsymbol{X}=(X_1,X_2,X_3)' \sim N_3(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，其中  </p>
+<div class="arithmatex">\[
+\boldsymbol{\mu}=\begin{bmatrix}\mu_1\\\mu_2\\\mu_3\end{bmatrix}, \boldsymbol{\Sigma}=\begin{bmatrix}\sigma_{11}&amp;\sigma_{12}&amp;\sigma_{13}\\\sigma_{21}&amp;\sigma_{22}&amp;\sigma_{23}\\\sigma_{31}&amp;\sigma_{32}&amp;\sigma_{33}\end{bmatrix}
+\]</div>
+<p>求 <span class="arithmatex">\( X_2 \)</span> 和 <span class="arithmatex">\( (X_1,-X_3)' \)</span> 的分布 。  </p>
+</li>
+<li>
+<p><strong>步骤</strong>：  </p>
+</li>
 <li><strong>求 <span class="arithmatex">\( X_2 \)</span> 的分布</strong>：<br />
      取线性组合系数向量 <span class="arithmatex">\( \boldsymbol{a}'=(0,1,0) \)</span>，则 <span class="arithmatex">\( \boldsymbol{a}'\boldsymbol{X}=X_2 \)</span>，其均值为 <span class="arithmatex">\( \boldsymbol{a}'\boldsymbol{\mu}=\mu_2 \)</span>，协方差为 <span class="arithmatex">\( \boldsymbol{a}'\boldsymbol{\Sigma}\boldsymbol{a}=\sigma_{22} \)</span>，故 <span class="arithmatex">\( X_2 \sim N(\mu_2,\sigma_{22}) \)</span> 。  </li>
-<li><strong>求 <span class="arithmatex">\( (X_1,-X_3)' \)</span> 的分布</strong>：<br />
-     取矩阵 <span class="arithmatex">\( \boldsymbol{A}=\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;-1\end{bmatrix} \)</span>，则 <span class="arithmatex">\( \boldsymbol{A}\boldsymbol{X}=(X_1,-X_3)' \)</span>，均值为<br />
-     [
-     \boldsymbol{A}\boldsymbol{\mu}=\begin{bmatrix}1&amp;0&amp;0\0&amp;0&amp;-1\end{bmatrix}\begin{bmatrix}\mu_1\\mu_2\\mu_3\end{bmatrix}=\begin{bmatrix}\mu_1\-\mu_3\end{bmatrix}
-     ]<br />
-     协方差阵为<br />
-     [
-     \boldsymbol{A}\boldsymbol{\Sigma}\boldsymbol{A}'=\begin{bmatrix}1&amp;0&amp;0\0&amp;0&amp;-1\end{bmatrix}\begin{bmatrix}\sigma_{11}&amp;\sigma_{12}&amp;\sigma_{13}\\sigma_{21}&amp;\sigma_{22}&amp;\sigma_{23}\\sigma_{31}&amp;\sigma_{32}&amp;\sigma_{33}\end{bmatrix}\begin{bmatrix}1&amp;0\0&amp;0\0&amp;-1\end{bmatrix}=\begin{bmatrix}\sigma_{11}&amp;-\sigma_{13}\-\sigma_{31}&amp;\sigma_{33}\end{bmatrix}
-     ]<br />
-     故 <span class="arithmatex">\( (X_1,-X_3)' \sim N_2\left(\begin{bmatrix}\mu_1\\-\mu_3\end{bmatrix},\begin{bmatrix}\sigma_{11}&amp;-\sigma_{13}\\-\sigma_{31}&amp;\sigma_{33}\end{bmatrix}\right) \)</span> 。  </li>
+<li>
+<p><strong>求 <span class="arithmatex">\( (X_1,-X_3)' \)</span> 的分布</strong>：<br />
+     取矩阵 <span class="arithmatex">\( \boldsymbol{A}=\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;-1\end{bmatrix} \)</span>，则 <span class="arithmatex">\( \boldsymbol{A}\boldsymbol{X}=(X_1,-X_3)' \)</span>，均值为  </p>
+<div class="arithmatex">\[
+\boldsymbol{A}\boldsymbol{\mu}=\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;-1\end{bmatrix}\begin{bmatrix}\mu_1\\\mu_2\\\mu_3\end{bmatrix}=\begin{bmatrix}\mu_1\\-\mu_3\end{bmatrix}
+\]</div>
+<p>协方差阵为  </p>
+<div class="arithmatex">\[
+\boldsymbol{A}\boldsymbol{\Sigma}\boldsymbol{A}'=\begin{bmatrix}1&amp;0&amp;0\\0&amp;0&amp;-1\end{bmatrix}\begin{bmatrix}\sigma_{11}&amp;\sigma_{12}&amp;\sigma_{13}\\\sigma_{21}&amp;\sigma_{22}&amp;\sigma_{23}\\\sigma_{31}&amp;\sigma_{32}&amp;\sigma_{33}\end{bmatrix}\begin{bmatrix}1&amp;0\\0&amp;0\\0&amp;-1\end{bmatrix}=\begin{bmatrix}\sigma_{11}&amp;-\sigma_{13}\\-\sigma_{31}&amp;\sigma_{33}\end{bmatrix}
+\]</div>
+<p>故 <span class="arithmatex">\( (X_1,-X_3)' \sim N_2\left(\begin{bmatrix}\mu_1\\-\mu_3\end{bmatrix},\begin{bmatrix}\sigma_{11}&amp;-\sigma_{13}\\-\sigma_{31}&amp;\sigma_{33}\end{bmatrix}\right) \)</span> 。  </p>
+</li>
 </ul>
 <h4 id="5">例5：服装标准制定中的条件分布应用<a class="headerlink" href="#5" title="Permanent link">&para;</a></h4>
 <ul>
-<li><strong>题目</strong>：对某年龄段女子身体测量5个指标 <span class="arithmatex">\( \boldsymbol{X}=(X_1,X_2,X_3,X_4,X_5)' \)</span>（身高、胸围、腰围、上体长、臀围），假设 <span class="arithmatex">\( \boldsymbol{X} \sim N_5(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，已知<br />
-  [
-  \boldsymbol{\mu}=\begin{bmatrix}154.98\83.39\70.26\61.32\91.52\end{bmatrix}, \boldsymbol{\Sigma}=\begin{bmatrix}29.66&amp;6.51&amp;1.85&amp;9.36&amp;10.34\6.51&amp;30.53&amp;25.54&amp;3.54&amp;19.53\1.85&amp;25.54&amp;39.86&amp;2.23&amp;20.70\9.36&amp;3.54&amp;2.23&amp;7.03&amp;5.21\10.34&amp;19.53&amp;20.70&amp;5.21&amp;27.36\end{bmatrix}
-  ]<br />
-  求以腰围 <span class="arithmatex">\( X_3 \)</span> 和胸围 <span class="arithmatex">\( X_2 \)</span> 为条件时，其他指标的条件期望 。  </li>
-<li><strong>步骤</strong>：  </li>
-<li><strong>确定分块</strong>：将 <span class="arithmatex">\( \boldsymbol{X} \)</span> 分为 <span class="arithmatex">\( \boldsymbol{X}^{(1)}=(X_1,X_4,X_5)' \)</span> 和 <span class="arithmatex">\( \boldsymbol{X}^{(2)}=(X_2,X_3)' \)</span>，对应<br />
-     [
-     \boldsymbol{\mu}^{(1)}=\begin{bmatrix}154.98\61.32\91.52\end{bmatrix}, \boldsymbol{\mu}^{(2)}=\begin{bmatrix}83.39\70.26\end{bmatrix}, \boldsymbol{\Sigma}<em 22="22">{12}=\begin{bmatrix}6.51&amp;1.85\3.54&amp;2.23\19.53&amp;20.70\end{bmatrix}, \boldsymbol{\Sigma}</em>
-     ]  }=\begin{bmatrix}30.53&amp;25.54\25.54&amp;39.86\end{bmatrix</li>
-<li><strong>计算条件均值</strong>：条件均值为<br />
-     [
-     \boldsymbol{\mu}<sup -1="-1">{(1)}+\boldsymbol{\Sigma}<em 22="22">{12}\boldsymbol{\Sigma}</em></sup>}(\boldsymbol{x<sup _2_="(2)">{(2)}-\boldsymbol{\mu}</sup>)
-     ]<br />
-     先求 <span class="arithmatex">\( \boldsymbol{\Sigma}_{22}^{-1} \)</span>，再计算 <span class="arithmatex">\( \boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1} \)</span>，最终得到在 <span class="arithmatex">\( X_2=x_2,X_3=x_3 \)</span> 时，<span class="arithmatex">\( X_1,X_4,X_5 \)</span> 的条件期望表达式 🔶6-95。  </li>
-<li><strong>应用意义</strong>：通过条件期望可根据胸围和腰围尺寸预测身高、上体长和臀围的平均水平，用于制定服装规格型号 。  </li>
+<li>
+<p><strong>题目</strong>：对某年龄段女子身体测量5个指标 <span class="arithmatex">\( \boldsymbol{X}=(X_1,X_2,X_3,X_4,X_5)' \)</span>（身高、胸围、腰围、上体长、臀围），假设 <span class="arithmatex">\( \boldsymbol{X} \sim N_5(\boldsymbol{\mu},\boldsymbol{\Sigma}) \)</span>，已知  </p>
+<div class="arithmatex">\[
+\boldsymbol{\mu}=\begin{bmatrix}154.98\\83.39\\70.26\\61.32\\91.52\end{bmatrix}, \boldsymbol{\Sigma}=\begin{bmatrix}29.66&amp;6.51&amp;1.85&amp;9.36&amp;10.34\\6.51&amp;30.53&amp;25.54&amp;3.54&amp;19.53\\1.85&amp;25.54&amp;39.86&amp;2.23&amp;20.70\\9.36&amp;3.54&amp;2.23&amp;7.03&amp;5.21\\10.34&amp;19.53&amp;20.70&amp;5.21&amp;27.36\end{bmatrix}
+\]</div>
+<p>求以腰围 <span class="arithmatex">\( X_3 \)</span> 和胸围 <span class="arithmatex">\( X_2 \)</span> 为条件时，其他指标的条件期望 。  </p>
+</li>
+<li>
+<p><strong>步骤</strong>：  </p>
+</li>
+<li>
+<p><strong>确定分块</strong>：将 <span class="arithmatex">\( \boldsymbol{X} \)</span> 分为 <span class="arithmatex">\( \boldsymbol{X}^{(1)}=(X_1,X_4,X_5)' \)</span> 和 <span class="arithmatex">\( \boldsymbol{X}^{(2)}=(X_2,X_3)' \)</span>，对应  </p>
+<div class="arithmatex">\[
+\boldsymbol{\mu}^{(1)}=\begin{bmatrix}154.98\\61.32\\91.52\end{bmatrix}, \boldsymbol{\mu}^{(2)}=\begin{bmatrix}83.39\\70.26\end{bmatrix}, \boldsymbol{\Sigma}_{12}=\begin{bmatrix}6.51&amp;1.85\\3.54&amp;2.23\\19.53&amp;20.70\end{bmatrix}, \boldsymbol{\Sigma}_{22}=\begin{bmatrix}30.53&amp;25.54\\25.54&amp;39.86\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>计算条件均值</strong>：条件均值为  </p>
+<div class="arithmatex">\[
+\boldsymbol{\mu}^{(1)}+\boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1}(\boldsymbol{x}^{(2)}-\boldsymbol{\mu}^{(2)})
+\]</div>
+<p>先求 <span class="arithmatex">\( \boldsymbol{\Sigma}_{22}^{-1} \)</span>，再计算 <span class="arithmatex">\( \boldsymbol{\Sigma}_{12}\boldsymbol{\Sigma}_{22}^{-1} \)</span>，最终得到在 <span class="arithmatex">\( X_2=x_2,X_3=x_3 \)</span> 时，<span class="arithmatex">\( X_1,X_4,X_5 \)</span> 的条件期望表达式 🔶6-95。  </p>
+</li>
+<li>
+<p><strong>应用意义</strong>：通过条件期望可根据胸围和腰围尺寸预测身高、上体长和臀围的平均水平，用于制定服装规格型号 。  </p>
+</li>
 </ul>
 <h3 id="_33">核心结论<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>多元正态分布的定义、性质及几何直观构成了多元统计分析的理论基础，其线性变换不变性和条件分布正态性在实际问题（如生物统计、工程测量、经济建模）中具有广泛应用。通过分块协方差阵和线性代数运算，可高效求解各类多元正态分布相关问题，尤其是在降维、预测和规格制定中发挥关键作用 🔶6-61🔶6-72。</p>
@@ -8808,7 +8832,7 @@
       
         <script src="../../../../../../javascripts/mermaid.mjs" type="module"></script>
       
-        <script src="../../../../../../javascripts/extra.js"></script>
+        <script src="../../../../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       

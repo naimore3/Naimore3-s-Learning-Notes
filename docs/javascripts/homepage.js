@@ -14,6 +14,17 @@
   // 标记 JS 可用（CSS 据此决定是否启用「先隐藏再显现」）
   document.documentElement.classList.add("nmd-js");
 
+  /* ---------- 4. 全屏 Hero 视口变量 ----------
+     100vw 含滚动条宽度而布局视口不含（经典滚动条系统相差 15~17px），
+     把差值写入 --nmd-sb，extra.css 的 hero 据此微调宽度与负边距，
+     使其精确贴齐布局视口左右边缘；overlay 滚动条系统差值为 0，无影响 */
+  function setViewportVars() {
+    var sb = window.innerWidth - document.documentElement.clientWidth;
+    document.documentElement.style.setProperty("--nmd-sb", sb + "px");
+  }
+  setViewportVars();
+  window.addEventListener("resize", setViewportVars);
+
   var prefersReduced = window.matchMedia
     ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
     : false;

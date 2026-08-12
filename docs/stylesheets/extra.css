@@ -87,15 +87,35 @@
 
 /* ---------- 3. Hero 全景区 ---------- */
 
+/* 全屏 Hero：破出内容容器铺满整屏宽（文章列水平居中、左右边距对称，
+   50% 与 -50vw 恰好抵消边距）；min-height 填满 sticky chrome 之下的首屏；
+   内容垂直居中；仅保留底部圆角曲线，柔和过渡到下方「回到正常布局」的区块。
+   --nmd-sb：homepage.js 写入的滚动条宽度补偿（100vw 含滚动条而布局视口
+   不含，经典滚动条系统相差 15~17px），无 JS 时回退 0px 与常规行为一致 */
 .md-typeset .nmd-hero {
   position: relative;
   overflow: hidden;
-  border-radius: 26px;
+  width: calc(100vw - var(--nmd-sb, 0px));
+  margin-inline: calc(50% - 50vw + var(--nmd-sb, 0px) / 2);
+  margin-top: 0;
+  min-height: calc(100vh - 2.4rem);
+  min-height: calc(100svh - 2.4rem); /* 小视口高（移动端地址栏），不支持则回退上一行 */
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 44px 44px;
   background: var(--nmd-grad-soft);
-  border: 1px solid var(--nmd-line);
-  box-shadow: var(--nmd-shadow);
-  padding: 88px 32px 72px;
+  border: none;
+  border-bottom: 1px solid var(--nmd-line);
+  padding: clamp(56px, 10vh, 96px) clamp(20px, 4vw, 36px) 0;
   text-align: center;
+}
+/* tabs 显示（≥1220px，对应主题 @media (max-width:76.234375em){.md-tabs{display:none}}）
+   时顶部多占 2.4rem，Hero 高度相应缩减，保证首屏恰好铺满 */
+@media screen and (min-width: 76.25em) {
+  .md-typeset .nmd-hero {
+    min-height: calc(100vh - 4.8rem);
+    min-height: calc(100svh - 4.8rem);
+  }
 }
 .md-typeset .nmd-hero-inner {
   position: relative;
@@ -103,7 +123,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: safe center; /* 内容超高时退回顶部对齐，避免两端被裁 */
+  flex: 1 1 auto;
+  min-height: 0;
 }
+
+/* ---------- 3.1 全屏 Hero 的布局补偿（仅首页生效） ----------
+   清零 hero 上方的主题预留空隙（.md-main__inner / .md-content__inner / ::before），
+   使 hero 顶部贴住 sticky header；
+   overflow-x: clip 防止 100vw 触发横向滚动条（clip 不会像 hidden 那样破坏内部 sticky 定位） */
+.md-main:has(.nmd-hero) { overflow-x: clip; }
+.md-main:has(.nmd-hero) .md-main__inner { margin-top: 0; }
+.md-main:has(.nmd-hero) .md-content__inner { padding-top: 0; }
+.md-main:has(.nmd-hero) .md-content__inner::before { display: none; }
 
 /* 极光漂浮光斑 */
 .md-typeset .nmd-aurora {
@@ -266,9 +298,10 @@
   gap: 14px;
 }
 
-/* 滚动提示 */
+/* 滚动提示（全屏 Hero 中钉在底部） */
 .md-typeset .nmd-scroll-hint {
-  margin-top: 44px;
+  margin-top: 0;
+  padding-bottom: clamp(20px, 4vh, 36px);
   font-size: 1.3rem;
   color: var(--nmd-muted);
   animation: nmd-bounce 2.2s ease-in-out infinite;
@@ -280,41 +313,75 @@
 
 /* ---------- 4. 项目缘起 ---------- */
 
+/* 引文卡：双词条卡并排 + 结论横幅（React Bits GradientText · Aceternity 卡片理念） */
 .md-typeset .nmd-quote {
-  position: relative;
   margin: 0 0 32px;
-  padding: 26px 30px 26px 64px;
-  border-radius: 18px;
-  background: var(--nmd-card);
+  padding: 28px 30px 26px;
+  border-radius: 20px;
+  background: var(--nmd-grad-soft);
   border: 1px solid var(--nmd-line);
-  color: var(--nmd-body);
-  font-size: 1.02rem;
-  line-height: 2;
   box-shadow: var(--nmd-shadow);
 }
-.md-typeset .nmd-quote::before {
-  content: "「";
-  position: absolute;
-  left: 22px;
-  top: 8px;
-  font-family: Georgia, "Noto Serif SC", "Songti SC", serif;
-  font-size: 3rem;
-  line-height: 1;
-  color: var(--nmd-pink);
+.md-typeset .nmd-idioms {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.md-typeset .nmd-idiom {
+  border-radius: 14px;
+  padding: 18px 20px 16px;
+  background: var(--nmd-card-2);
+  border: 1px solid var(--nmd-line);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.md-typeset .nmd-idiom:hover {
+  transform: translateY(-3px);
+  border-color: var(--nmd-purple);
+  box-shadow: var(--nmd-shadow-hover);
+}
+.md-typeset .nmd-idiom-name {
+  display: block;
+  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: var(--nmd-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 8px;
+}
+.md-typeset .nmd-idiom-name::after {
+  content: "";
+  display: block;
+  width: 34px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--nmd-grad);
+  margin-top: 8px;
   opacity: 0.55;
 }
-.md-typeset .nmd-quote strong {
-  color: var(--nmd-ink);
+.md-typeset .nmd-idiom p {
+  margin: 0;
+  color: var(--nmd-body);
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+.md-typeset .nmd-quote-more {
+  margin: 0;
+  color: var(--nmd-body);
+  font-size: 0.98rem;
+  line-height: 1.9;
+  padding-top: 14px;
+  border-top: 1px dashed var(--nmd-line);
+}
+.md-typeset .nmd-quote-more strong {
+  color: var(--nmd-pink-deep);
   font-weight: 700;
 }
-.md-typeset .nmd-quote mark {
-  background: linear-gradient(120deg, var(--nmd-pink-soft, #fbd9e6), transparent 75%);
-  color: inherit;
-  padding: 0 4px;
-  border-radius: 4px;
-}
 
-/* 卡片网格（聚光跟随卡片） */
+/* 卡片网格（Aceternity HoverBorderGradient 理念：悬停渐变描边流动 + 聚光跟随） */
 .md-typeset .nmd-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -335,6 +402,7 @@
   transform: translateY(-5px);
   box-shadow: var(--nmd-shadow-hover);
 }
+/* 聚光跟随（保留） */
 .md-typeset .nmd-spot::before {
   content: "";
   position: absolute;
@@ -344,13 +412,51 @@
   transition: opacity 0.35s ease;
   background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), var(--nmd-spot-glow), transparent 65%);
   pointer-events: none;
+  z-index: 0;
 }
 .md-typeset .nmd-spot:hover::before { opacity: 1; }
+/* 渐变描边：悬停时循环流动（mask 只留 1px 边框） */
+.md-typeset .nmd-spot::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-teal), var(--nmd-pink));
+  background-size: 300% 100%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+.md-typeset .nmd-spot:hover::after {
+  opacity: 1;
+  animation: nmd-border-flow 3.5s linear infinite;
+}
+@keyframes nmd-border-flow {
+  to { background-position: 300% 0; }
+}
 .md-typeset .nmd-spot-icon {
-  font-size: 1.7rem;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
   line-height: 1;
-  margin-bottom: 12px;
-  display: block;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  background: var(--nmd-grad-soft);
+  border: 1px solid var(--nmd-line);
+}
+.md-typeset .nmd-spot h3,
+.md-typeset .nmd-spot p {
+  position: relative;
+  z-index: 1;
 }
 .md-typeset .nmd-spot h3 {
   font-size: 1.08rem;
@@ -376,52 +482,68 @@
   border-radius: 0 12px 12px 0;
 }
 
-/* ---------- 5. 关于我 ---------- */
+/* ---------- 5. 关于我（图文交替排版） ---------- */
 
-.md-typeset .nmd-about-grid {
+/* 一行 = 一张图片 + 一段文字；偶数行图片右置，形成左右交错节奏
+   图片列 auto 精确匹配图片宽度（280px），文字列占满剩余空间自动换行
+   注意：用 nth-of-type 而非 nth-child —— 区块内第一个子元素是 <h2> 标题，
+   若用 nth-child 会把标题计入奇偶，导致图片被排进 1fr 弹性列而被压塌 */
+.md-typeset .nmd-fig-row {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  gap: 30px;
-  align-items: start;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 28px;
+  align-items: center;
+  margin-bottom: 30px;
 }
-/* 照片墙 Bento 拼贴 */
-.md-typeset .nmd-photo-mosaic {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: 118px;
-  gap: 12px;
+.md-typeset .nmd-fig-row:nth-of-type(even) {
+  grid-template-columns: minmax(0, 1fr) auto;
 }
-.md-typeset .nmd-photo {
+.md-typeset .nmd-fig-row:nth-of-type(even) .nmd-fig-media { order: 2; }
+.md-typeset .nmd-fig-media {
   margin: 0;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   border: 1px solid var(--nmd-line);
   background: var(--nmd-card-2);
   box-shadow: var(--nmd-shadow);
+  aspect-ratio: 4 / 3;
+  width: 280px;
+  max-width: 100%;
   transition: transform 0.25s ease;
 }
-.md-typeset .nmd-photo:hover { transform: scale(1.015); }
-.md-typeset .nmd-photo img {
+.md-typeset .nmd-fig-media:hover { transform: scale(1.012); }
+.md-typeset .nmd-fig-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   margin: 0;
-  filter: saturate(0.96);
 }
-.md-typeset .nmd-photo-1 { grid-row: span 2; }
-.md-typeset .nmd-photo-2 { grid-column: 2; }
-.md-typeset .nmd-photo-3 { grid-column: 2; }
-.md-typeset .nmd-photo-4 { grid-column: 3; grid-row: span 2; }
-
-.md-typeset .nmd-about-text {
-  font-size: 1.0rem;
+.md-typeset .nmd-fig-copy .nmd-fig-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--nmd-purple);
+}
+.md-typeset .nmd-fig-copy .nmd-fig-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--nmd-line);
+}
+.md-typeset .nmd-fig-copy p {
+  margin: 0 0 12px;
+  font-size: 0.98rem;
   line-height: 2;
   color: var(--nmd-body);
 }
-.md-typeset .nmd-about-text p { margin: 0 0 18px; }
-.md-typeset .nmd-about-text p:last-of-type { margin-bottom: 22px; }
-.md-typeset .nmd-about-text strong { color: var(--nmd-ink); }
+.md-typeset .nmd-fig-copy p:last-child { margin-bottom: 0; }
+.md-typeset .nmd-fig-copy strong { color: var(--nmd-ink); }
 
 /* 兴趣 chip 云 */
 .md-typeset .nmd-chip-cloud {
@@ -448,24 +570,17 @@
   transform: translateY(-2px);
 }
 
-/* 特长卡 */
+/* 特长卡：文字 + 证书缩略图 */
 .md-typeset .nmd-talent {
-  position: relative;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  gap: 22px;
+  align-items: center;
   border-radius: 18px;
   padding: 22px 24px;
   background: var(--nmd-grad-soft);
   border: 1px solid var(--nmd-line);
   box-shadow: var(--nmd-shadow);
-}
-.md-typeset .nmd-talent::after {
-  content: "🎺";
-  position: absolute;
-  right: 18px;
-  bottom: 10px;
-  font-size: 3.4rem;
-  opacity: 0.14;
-  pointer-events: none;
 }
 .md-typeset .nmd-talent h3 {
   font-size: 1.05rem;
@@ -479,6 +594,84 @@
   line-height: 1.85;
   color: var(--nmd-body);
   margin: 0;
+}
+.md-typeset .nmd-talent-media {
+  margin: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--nmd-line);
+  background: var(--nmd-card-2);
+  box-shadow: var(--nmd-shadow);
+  aspect-ratio: 3 / 4;
+  max-height: 240px;
+}
+.md-typeset .nmd-talent-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  margin: 0;
+}
+
+/* ---------- 5.5 我的照片（Coverflow 轮播） ---------- */
+
+/* 封面流布局：三张照片各带独立循环动画，负延迟错开 1/3 周期，
+   同一时刻中间那张完整展示（opacity 1），左右两侧各露出半透明的
+   前一张 / 后一张（opacity 0.45 + rotateY 倾斜），画面饱满无空白。
+   切换时照片 rotateY 翻转 + 位移，类似「开门/翻牌」的过渡效果。
+   三张总周期 18s（每张停留约 6s），负延迟使三张相位均匀分布 */
+.md-typeset .nmd-gallery {
+  position: relative;
+  height: 480px;
+  max-width: 980px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+.md-typeset .nmd-gallery-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 68%;
+  height: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid var(--nmd-line);
+  background: var(--nmd-card-2);
+  box-shadow: var(--nmd-shadow);
+  transform-style: preserve-3d;
+  animation: nmd-gallery-cycle 18s ease-in-out infinite;
+}
+.md-typeset .nmd-gallery-slide:nth-child(1) { animation-delay: 0s; }
+.md-typeset .nmd-gallery-slide:nth-child(2) { animation-delay: -6s; }
+.md-typeset .nmd-gallery-slide:nth-child(3) { animation-delay: -12s; }
+.md-typeset .nmd-gallery-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 0;
+}
+@keyframes nmd-gallery-cycle {
+  0%   { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
+  20%  { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
+  27%  { transform: translateX(55%) scale(0.8) rotateY(-28deg); opacity: 0.45; z-index: 2; }
+  46%  { transform: translateX(55%) scale(0.8) rotateY(-28deg); opacity: 0.45; z-index: 2; }
+  53%  { transform: translateX(92%) scale(0.72) rotateY(-36deg); opacity: 0; z-index: 1; }
+  60%  { transform: translateX(-92%) scale(0.72) rotateY(36deg); opacity: 0; z-index: 1; }
+  67%  { transform: translateX(-55%) scale(0.8) rotateY(28deg); opacity: 0.45; z-index: 2; }
+  86%  { transform: translateX(-55%) scale(0.8) rotateY(28deg); opacity: 0.45; z-index: 2; }
+  93%  { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
+  100% { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
+}
+
+/* 关于我：纯文字块（照片已移入上方 Gallery 轮播） */
+.md-typeset .nmd-fig-copy-full {
+  max-width: 42em;
+  margin: 0 0 30px;
 }
 
 /* ---------- 6. 学历时间线 ---------- */
@@ -624,11 +817,25 @@ html.nmd-js .md-typeset .nmd-reveal.is-visible {
 /* ---------- 9. 响应式 + 无障碍 ---------- */
 
 @media screen and (max-width: 720px) {
-  .md-typeset .nmd-hero { padding: 64px 20px 56px; }
-  .md-typeset .nmd-about-grid { grid-template-columns: 1fr; }
-  .md-typeset .nmd-photo-mosaic { grid-auto-rows: 150px; }
+  .md-typeset .nmd-hero { padding: clamp(48px, 8vh, 64px) 20px 0; }
+  /* 图文行窄屏改为单列：图片在上、文字在下，恢复自然阅读顺序 */
+  .md-typeset .nmd-fig-row,
+  .md-typeset .nmd-fig-row:nth-of-type(even) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .md-typeset .nmd-fig-row:nth-of-type(even) .nmd-fig-media { order: 0; }
+  .md-typeset .nmd-talent { grid-template-columns: 1fr; }
+  .md-typeset .nmd-talent-media { max-height: none; }
+  .md-typeset .nmd-idioms { grid-template-columns: 1fr; }
   .md-typeset .nmd-block { margin-top: 56px; }
-  .md-typeset .nmd-quote { padding: 22px 20px 22px 52px; }
+  .md-typeset .nmd-quote { padding: 22px 20px; }
+  /* Coverflow 窄屏：压低容器、加宽照片，保持三图同显不溢出 */
+  .md-typeset .nmd-gallery {
+    height: 300px;
+    max-width: 100%;
+  }
+  .md-typeset .nmd-gallery-slide { width: 76%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -639,6 +846,11 @@ html.nmd-js .md-typeset .nmd-reveal.is-visible {
   .md-typeset .nmd-scroll-hint {
     animation: none;
   }
+  /* 减弱动态：轮播停为静态封面流，三张同时可见，中间高亮两侧半透明 */
+  .md-typeset .nmd-gallery-slide { animation: none; }
+  .md-typeset .nmd-gallery-slide:nth-child(1) { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
+  .md-typeset .nmd-gallery-slide:nth-child(2) { transform: translateX(55%) scale(0.8) rotateY(-28deg); opacity: 0.45; z-index: 2; }
+  .md-typeset .nmd-gallery-slide:nth-child(3) { transform: translateX(-55%) scale(0.8) rotateY(28deg); opacity: 0.45; z-index: 2; }
   html.nmd-js .md-typeset .nmd-reveal {
     opacity: 1;
     transform: none;

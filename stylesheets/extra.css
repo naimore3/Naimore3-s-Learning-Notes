@@ -89,7 +89,7 @@
 
 /* 全屏 Hero：破出内容容器铺满整屏宽（文章列水平居中、左右边距对称，
    50% 与 -50vw 恰好抵消边距）；min-height 填满 sticky chrome 之下的首屏；
-   内容垂直居中；仅保留底部圆角曲线，柔和过渡到下方「回到正常布局」的区块。
+   内容垂直居中；使用直角边框，形成分割明确的首页封面效果。
    --nmd-sb：homepage.js 写入的滚动条宽度补偿（100vw 含滚动条而布局视口
    不含，经典滚动条系统相差 15~17px），无 JS 时回退 0px 与常规行为一致 */
 .md-typeset .nmd-hero {
@@ -102,7 +102,7 @@
   min-height: calc(100svh - 2.4rem); /* 小视口高（移动端地址栏），不支持则回退上一行 */
   display: flex;
   flex-direction: column;
-  border-radius: 0 0 44px 44px;
+  border-radius: 0;
   background: var(--nmd-grad-soft);
   border: none;
   border-bottom: 1px solid var(--nmd-line);
@@ -856,4 +856,250 @@ html.nmd-js .md-typeset .nmd-reveal.is-visible {
     transform: none;
     transition: none;
   }
+  /* 电影片头序列全量降级：隐藏态全部无效化、转场与开门不执行（内容立即可见） */
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-veil,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-doors,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-near,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-skip { display: none; }
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-avatar,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-eyebrow,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-sub,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-title,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-badges,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-cta {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    pointer-events: auto;
+    transition: none;
+  }
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-far,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-mid,
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-near {
+    transform: none;
+    transition: none;
+  }
+  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-veil { opacity: 0; }
+}
+
+/* ---------- 10. 电影片头序列（开门转场 / 分层视差 / 冷开场） ----------
+   状态机：.nmd-hero[data-nmd-seq="running"] 内按 data-nmd-phase="a"~"e"
+   分镜推进；非 running（无 JS / 已跳过 / 已结束）时所有隐藏态一律失效，
+   内容默认完整可见。时间轴由 homepage.js 的 initHeroSequence 驱动。 */
+
+.md-typeset .nmd-scene {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* 冷开场暗幕：近黑覆盖层（z1，位于极光之下，仅压暗背景） */
+.md-typeset .nmd-veil {
+  position: absolute;
+  inset: -16vh -40px -16vh -40px;
+  z-index: 1;
+  background: rgba(13, 11, 20, 0.92);
+  opacity: 0;
+  pointer-events: none;
+}
+[data-md-color-scheme="slate"] .md-typeset .nmd-veil {
+  background: rgba(5, 4, 9, 0.96);
+}
+
+/* 近景层：轻微暗角 + 扫描线质感（极克制，始终可见） */
+.md-typeset .nmd-layer-near {
+  position: absolute;
+  inset: -16vh -40px -16vh -40px;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 58%, rgba(18, 12, 26, 0.18) 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 4px);
+}
+[data-md-color-scheme="slate"] .md-typeset .nmd-layer-near {
+  background:
+    radial-gradient(120% 90% at 50% 40%, transparent 58%, rgba(0, 0, 0, 0.34) 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px);
+}
+
+/* 开门转场：两块各 50% 宽的玻璃霓虹门板（默认隐藏，仅序列进行中显示） */
+.md-typeset .nmd-doors {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  pointer-events: none;
+}
+.nmd-hero[data-nmd-seq="running"] .nmd-doors { display: block; }
+.md-typeset .nmd-door {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  will-change: transform;
+  background: linear-gradient(180deg, rgba(26, 21, 38, 0.86), rgba(13, 10, 22, 0.92));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+[data-md-color-scheme="slate"] .md-typeset .nmd-door {
+  background: linear-gradient(180deg, rgba(10, 8, 16, 0.92), rgba(5, 4, 9, 0.96));
+}
+.md-typeset .nmd-door-left { left: 0; transform: translateX(-102%); }
+.md-typeset .nmd-door-right { right: 0; transform: translateX(102%); }
+/* 中缝霓虹描边（pink/violet/cyan，呼应 --nmd-grad） */
+.md-typeset .nmd-door-left::after,
+.md-typeset .nmd-door-right::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--nmd-grad);
+  box-shadow: 0 0 14px rgba(124, 77, 255, 0.6), 0 0 32px rgba(236, 111, 163, 0.35);
+}
+.md-typeset .nmd-door-left::after { right: -1px; }
+.md-typeset .nmd-door-right::after { left: -1px; }
+/* Phase D：门板关闭；Phase E：门板打开 */
+.nmd-hero[data-nmd-phase="d"] .nmd-door-left {
+  transform: translateX(0);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="d"] .nmd-door-right {
+  transform: translateX(0);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="e"] .nmd-door-left {
+  transform: translateX(-102%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="e"] .nmd-door-right {
+  transform: translateX(102%);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* 跳过按钮（键盘可达，仅序列进行中显示） */
+.md-typeset .nmd-skip {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  z-index: 6;
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--nmd-muted);
+  background: var(--nmd-glass);
+  border: 1px solid var(--nmd-line);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.nmd-hero[data-nmd-seq="running"] .nmd-skip { display: inline-flex; }
+.md-typeset .nmd-skip:hover {
+  color: var(--nmd-pink);
+  border-color: var(--nmd-pink);
+  transform: translateY(-1px);
+}
+.md-typeset .nmd-skip:focus-visible {
+  outline: 2px solid var(--nmd-pink);
+  outline-offset: 2px;
+}
+
+/* Phase A：冷开场（无过渡，冷启动直落，避免反向闪现） */
+.nmd-hero[data-nmd-phase="a"] .nmd-veil { opacity: 1; }
+.nmd-hero[data-nmd-phase="a"] .nmd-hero-avatar,
+.nmd-hero[data-nmd-phase="a"] .nmd-hero-sub { opacity: 0; }
+.nmd-hero[data-nmd-phase="a"] .nmd-hero-eyebrow { opacity: 0; transform: translateY(10px); }
+.nmd-hero[data-nmd-phase="a"] .nmd-hero-title { opacity: 0; filter: blur(16px); transform: translateY(18px); }
+.nmd-hero[data-nmd-phase="a"] .nmd-hero-badges,
+.nmd-hero[data-nmd-phase="a"] .nmd-hero-cta {
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+}
+
+/* 进场过渡（仅 phase b~e，phase a 不参与，避免冷启动反向闪现） */
+.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-avatar,
+.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-eyebrow,
+.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-title,
+.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-sub,
+.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-badges,
+.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-cta {
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+              filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Phase B：显影建立（暗幕淡出、标题显影、头像/副题进入） */
+.nmd-hero[data-nmd-phase="b"] .nmd-veil {
+  opacity: 0;
+  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="b"] .nmd-hero-avatar { opacity: 1; }
+.nmd-hero[data-nmd-phase="b"] .nmd-hero-eyebrow { opacity: 1; transform: none; }
+.nmd-hero[data-nmd-phase="b"] .nmd-hero-title { opacity: 1; filter: blur(0); transform: none; }
+.nmd-hero[data-nmd-phase="b"] .nmd-hero-sub { opacity: 1; }
+.nmd-hero[data-nmd-phase="b"] .nmd-hero-badges,
+.nmd-hero[data-nmd-phase="b"] .nmd-hero-cta {
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+}
+
+/* Phase C：单镜头推进（分层视差 + 徽章/CTA 恢复完整可见） */
+.nmd-hero[data-nmd-seq="running"] .nmd-layer-far { transform: scale(1.1); }
+.nmd-hero[data-nmd-phase="c"] .nmd-layer-far,
+.nmd-hero[data-nmd-phase="d"] .nmd-layer-far,
+.nmd-hero[data-nmd-phase="e"] .nmd-layer-far {
+  transform: scale(1.04);
+  transition: transform 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="c"] .nmd-layer-mid,
+.nmd-hero[data-nmd-phase="d"] .nmd-layer-mid,
+.nmd-hero[data-nmd-phase="e"] .nmd-layer-mid {
+  transform: scale(1.06);
+  transition: transform 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="c"] .nmd-layer-near,
+.nmd-hero[data-nmd-phase="d"] .nmd-layer-near,
+.nmd-hero[data-nmd-phase="e"] .nmd-layer-near {
+  transform: scale(1.02);
+  transition: transform 2.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nmd-hero[data-nmd-phase="c"] .nmd-hero-badges,
+.nmd-hero[data-nmd-phase="c"] .nmd-hero-cta {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+/* 完成态（is-done）：停止 Hero 内全部无限动画，首屏结束后 CPU/GPU 回落 */
+.nmd-hero.is-done .nmd-blob,
+.nmd-hero.is-done .nmd-hero-avatar,
+.nmd-hero.is-done .nmd-grad-text,
+.nmd-hero.is-done .nmd-caret,
+.nmd-hero.is-done .nmd-scroll-hint { animation: none; }
+.nmd-hero.is-done .nmd-grad-text { background-position: 50% 50%; }
+.nmd-hero.is-done .nmd-caret { opacity: 0; }
+
+/* 移动端（电影片头降载：弱化 blur、缩小推进幅度、近景层减弱） */
+@media screen and (max-width: 720px) {
+  .md-typeset .nmd-blob { filter: blur(40px); }
+  .md-typeset .nmd-layer-near { opacity: 0.5; }
+  .md-typeset .nmd-skip { top: 12px; right: 12px; }
+  .nmd-hero[data-nmd-phase="c"] .nmd-layer-far,
+  .nmd-hero[data-nmd-phase="d"] .nmd-layer-far,
+  .nmd-hero[data-nmd-phase="e"] .nmd-layer-far { transform: scale(1.02); }
+  .nmd-hero[data-nmd-phase="c"] .nmd-layer-mid,
+  .nmd-hero[data-nmd-phase="d"] .nmd-layer-mid,
+  .nmd-hero[data-nmd-phase="e"] .nmd-layer-mid { transform: scale(1.03); }
+  .nmd-hero[data-nmd-phase="c"] .nmd-layer-near,
+  .nmd-hero[data-nmd-phase="d"] .nmd-layer-near,
+  .nmd-hero[data-nmd-phase="e"] .nmd-layer-near { transform: scale(1.01); }
 }

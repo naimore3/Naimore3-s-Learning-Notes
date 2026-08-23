@@ -9,13 +9,15 @@ hide:
 
 <!-- ================= BLOCK 1 · HERO ================= -->
 <section class="nmd-hero nmd-reveal" id="nmd-top" aria-label="墨海寻珠 欢迎页">
-  <div class="nmd-aurora" aria-hidden="true">
-    <span class="nmd-blob nmd-blob-1"></span>
-    <span class="nmd-blob nmd-blob-2"></span>
-    <span class="nmd-blob nmd-blob-3"></span>
-    <span class="nmd-blob nmd-blob-4"></span>
-  </div>
-  <div class="nmd-hero-inner">
+  <div class="nmd-scene">
+    <div class="nmd-veil" aria-hidden="true"></div>
+    <div class="nmd-layer-far nmd-aurora" aria-hidden="true">
+      <span class="nmd-blob nmd-blob-1"></span>
+      <span class="nmd-blob nmd-blob-2"></span>
+      <span class="nmd-blob nmd-blob-3"></span>
+      <span class="nmd-blob nmd-blob-4"></span>
+    </div>
+    <div class="nmd-layer-mid nmd-hero-inner">
     <div class="nmd-hero-avatar">
       <img src="主页/photo-3.jpg" alt="墨海寻珠的主人公" fetchpriority="high">
     </div>
@@ -34,6 +36,13 @@ hide:
       <a class="nmd-btn nmd-btn-ghost" href="#nmd-about">关于我</a>
     </div>
   </div>
+  <div class="nmd-layer-near" aria-hidden="true"></div>
+  </div>
+  <div class="nmd-doors" aria-hidden="true">
+    <div class="nmd-door nmd-door-left"></div>
+    <div class="nmd-door nmd-door-right"></div>
+  </div>
+  <button type="button" class="nmd-skip" id="nmd-skip">跳过片头</button>
   <div class="nmd-scroll-hint" aria-hidden="true">↓</div>
 </section>
 

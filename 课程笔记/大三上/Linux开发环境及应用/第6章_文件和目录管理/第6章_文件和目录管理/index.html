@@ -9280,7 +9280,7 @@
 </li>
 <li>
 <p><strong>典型示例解析</strong>（PPT 原文）：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>find<span class="w"> </span>ver1.d<span class="w"> </span>ver2.d<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.c&#39;</span><span class="w"> </span>-print
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>find<span class="w"> </span>ver1.d<span class="w"> </span>ver2.d<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.c'</span><span class="w"> </span>-print
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li><strong>遍历范围</strong>：从 <code>ver1.d</code> 和 <code>ver2.d</code> 两个目录开始，递归进入其所有子目录；</li>
@@ -9481,7 +9481,7 @@
 </li>
 <li>
 <p><strong>典型用法示例</strong>（PPT 原文）：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>find<span class="w"> </span>src<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.c&#39;</span><span class="w"> </span>-print<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span>-n<span class="w"> </span>--<span class="w"> </span>main
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>find<span class="w"> </span>src<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.c'</span><span class="w"> </span>-print<span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>grep<span class="w"> </span>-n<span class="w"> </span>--<span class="w"> </span>main
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li><strong>步骤解析</strong>：<ol>
@@ -9523,7 +9523,7 @@
 <p><strong>解决 shell 参数展开失败问题</strong>：<br />
     当目录中 <code>.dat</code> 文件数量极大时，<code>rm *.dat</code> 会导致 shell 展开后的参数列表过长而失败。<br />
     安全替代方案：
-    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;\.dat$&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>rm<span class="w"> </span>-f
+    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1"></a>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'\.dat$'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>xargs<span class="w"> </span>rm<span class="w"> </span>-f
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
 <li><code>ls</code> 列出所有文件；</li>

@@ -8556,7 +8556,7 @@
 </table>
 <ul>
 <li>因为 <span class="arithmatex">\(X \sim \pi(\lambda)\)</span>，所以 <span class="arithmatex">\(\lambda = E(X)\)</span>，用样本均值来估计总体的均值 <span class="arithmatex">\(E(X)\)</span>：
-<span class="arithmatex">\(<span class="arithmatex">\(\bar{x} = \frac{\sum_{k=0}^{6} k n_k}{\sum n_k} = \frac{1}{250}(0\times75 + 1\times90 + 2\times54 + 3\times22 + 4\times6 + 5\times2 + 6\times1) = 1.22\)</span>\)</span></li>
+$<span class="arithmatex">\(\bar{x} = \frac{\sum_{k=0}^{6} k n_k}{\sum n_k} = \frac{1}{250}(0\times75 + 1\times90 + 2\times54 + 3\times22 + 4\times6 + 5\times2 + 6\times1) = 1.22\)</span>$</li>
 <li>故 <span class="arithmatex">\(E(X) = \lambda\)</span> 的估计为 <strong>1.22</strong>。</li>
 </ul>
 <p><strong>点估计问题的一般提法</strong>：设总体 <span class="arithmatex">\(X\)</span> 的分布函数 <span class="arithmatex">\(F(x;\theta)\)</span> 的形式已知，<span class="arithmatex">\(\theta\)</span> 是待估参数，<span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span> 是 <span class="arithmatex">\(X\)</span> 的一个样本，<span class="arithmatex">\(x_1, x_2, \dots, x_n\)</span> 为相应的一个样本值。点估计问题就是要构造一个适当的统计量 <span class="arithmatex">\(\hat{\theta}(X_1, X_2, \dots, X_n)\)</span>，用它的观察值 <span class="arithmatex">\(\hat{\theta}(x_1, x_2, \dots, x_n)\)</span> 来估计未知参数 <span class="arithmatex">\(\theta\)</span>：</p>
@@ -8590,7 +8590,7 @@
 <li><span class="arithmatex">\(\mu_1 = E(X) = \dfrac{a+b}{2}\)</span>，<span class="arithmatex">\(\mu_2 = E(X^2) = D(X) + [E(X)]^2 = \dfrac{(b-a)^2}{12} + \dfrac{(a+b)^2}{4}\)</span>；</li>
 <li>令 <span class="arithmatex">\(\dfrac{a+b}{2} = A_1\)</span>，<span class="arithmatex">\(\dfrac{(b-a)^2}{12} + \dfrac{(a+b)^2}{4} = A_2\)</span>，即 <span class="arithmatex">\(\begin{cases} a + b = 2A_1, \\ b - a = \sqrt{12(A_2 - A_1^2)}; \end{cases}\)</span></li>
 <li>解方程组得到 <span class="arithmatex">\(a\)</span>、<span class="arithmatex">\(b\)</span> 的矩估计量分别为
-<span class="arithmatex">\(<span class="arithmatex">\(\hat{a} = A_1 - \sqrt{3(A_2 - A_1^2)} = \bar{X} - \sqrt{\frac{3}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2}, \qquad \hat{b} = A_1 + \sqrt{3(A_2 - A_1^2)} = \bar{X} + \sqrt{\frac{3}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2}\)</span>\)</span></li>
+$<span class="arithmatex">\(\hat{a} = A_1 - \sqrt{3(A_2 - A_1^2)} = \bar{X} - \sqrt{\frac{3}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2}, \qquad \hat{b} = A_1 + \sqrt{3(A_2 - A_1^2)} = \bar{X} + \sqrt{\frac{3}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2}\)</span>$</li>
 </ul>
 <p><strong>例 5（几何分布）</strong> 设总体 <span class="arithmatex">\(X\)</span> 服从几何分布，即有分布律 <span class="arithmatex">\(P\{X = k\} = p(1-p)^{k-1}\)</span>（<span class="arithmatex">\(k = 1, 2, \dots\)</span>），其中 <span class="arithmatex">\(p\)</span>（<span class="arithmatex">\(0 &lt; p &lt; 1\)</span>）未知，<span class="arithmatex">\((X_1, X_2, \dots, X_n)\)</span> 是来自总体 <span class="arithmatex">\(X\)</span> 的样本，求 <span class="arithmatex">\(p\)</span> 的估计量。</p>
 <ul>
@@ -8601,7 +8601,7 @@
 <ul>
 <li><span class="arithmatex">\(\mu_1 = E(X) = \mu\)</span>，<span class="arithmatex">\(\mu_2 = E(X^2) = D(X) + [E(X)]^2 = \sigma^2 + \mu^2\)</span>；</li>
 <li>令 <span class="arithmatex">\(\begin{cases} \mu = A_1, \\ \sigma^2 + \mu^2 = A_2, \end{cases}\)</span> 解方程组得到矩估计量分别为
-<span class="arithmatex">\(<span class="arithmatex">\(\hat{\mu} = A_1 = \bar{X}, \qquad \hat{\sigma}^2 = A_2 - A_1^2 = \frac{1}{n}\sum_{i=1}^{n} X_i^2 - \bar{X}^2 = \frac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2\)</span>\)</span></li>
+$<span class="arithmatex">\(\hat{\mu} = A_1 = \bar{X}, \qquad \hat{\sigma}^2 = A_2 - A_1^2 = \frac{1}{n}\sum_{i=1}^{n} X_i^2 - \bar{X}^2 = \frac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2\)</span>$</li>
 </ul>
 <blockquote>
 <p>上例表明：<strong>总体均值与方差的矩估计量的表达式不因不同的总体分布而异</strong>。例如 <span class="arithmatex">\(X \sim N(\mu, \sigma^2)\)</span>，<span class="arithmatex">\(\mu\)</span>、<span class="arithmatex">\(\sigma^2\)</span> 未知，即得 <span class="arithmatex">\(\mu\)</span>、<span class="arithmatex">\(\sigma^2\)</span> 的矩估计量 <span class="arithmatex">\(\hat{\mu} = \bar{X}\)</span>，<span class="arithmatex">\(\hat{\sigma}^2 = \dfrac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2\)</span>。
@@ -8630,7 +8630,7 @@
 <p><strong>例 7（两点分布）</strong> 设 <span class="arithmatex">\(X \sim B(1, p)\)</span>，<span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span> 是来自 <span class="arithmatex">\(X\)</span> 的一个样本，求 <span class="arithmatex">\(p\)</span> 的最大似然估计量。</p>
 <ul>
 <li><span class="arithmatex">\(X\)</span> 的分布律为 <span class="arithmatex">\(P\{X = x\} = p^x(1-p)^{1-x}\)</span>（<span class="arithmatex">\(x = 0, 1\)</span>），似然函数
-<span class="arithmatex">\(<span class="arithmatex">\(L(p) = \prod_{i=1}^{n} p^{x_i}(1-p)^{1-x_i} = p^{\sum x_i}(1-p)^{n - \sum x_i}\)</span>\)</span></li>
+$<span class="arithmatex">\(L(p) = \prod_{i=1}^{n} p^{x_i}(1-p)^{1-x_i} = p^{\sum x_i}(1-p)^{n - \sum x_i}\)</span>$</li>
 <li><span class="arithmatex">\(\ln L(p) = \left(\sum_{i=1}^{n} x_i\right)\ln p + \left(n - \sum_{i=1}^{n} x_i\right)\ln(1-p)\)</span>；</li>
 <li>令 <span class="arithmatex">\(\dfrac{d}{dp}\ln L(p) = \dfrac{\sum x_i}{p} - \dfrac{n - \sum x_i}{1-p} = 0\)</span>，解得 <span class="arithmatex">\(p\)</span> 的最大似然估计值 <span class="arithmatex">\(\hat{p} = \dfrac{1}{n}\sum_{i=1}^{n} x_i = \bar{x}\)</span>；</li>
 <li><span class="arithmatex">\(p\)</span> 的最大似然估计量为 <span class="arithmatex">\(\hat{p} = \dfrac{1}{n}\sum_{i=1}^{n} X_i = \bar{X}\)</span>。<strong>这一估计量与矩估计量是相同的</strong>。</li>
@@ -8638,7 +8638,7 @@
 <p><strong>例 8（泊松分布）</strong> 设 <span class="arithmatex">\(X\)</span> 服从参数为 <span class="arithmatex">\(\lambda\)</span>（<span class="arithmatex">\(\lambda &gt; 0\)</span>）的泊松分布，<span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span> 是来自 <span class="arithmatex">\(X\)</span> 的一个样本，求 <span class="arithmatex">\(\lambda\)</span> 的最大似然估计量。</p>
 <ul>
 <li>因为 <span class="arithmatex">\(X\)</span> 的分布律为 <span class="arithmatex">\(P\{X = x\} = \dfrac{\lambda^x}{x!}e^{-\lambda}\)</span>（<span class="arithmatex">\(x = 0, 1, 2, \dots\)</span>），所以 <span class="arithmatex">\(\lambda\)</span> 的似然函数为
-<span class="arithmatex">\(<span class="arithmatex">\(L(\lambda) = \prod_{i=1}^{n} \frac{\lambda^{x_i}}{x_i!}e^{-\lambda} = \frac{\lambda^{\sum x_i} e^{-n\lambda}}{\prod_{i=1}^{n}(x_i!)}\)</span>\)</span></li>
+$<span class="arithmatex">\(L(\lambda) = \prod_{i=1}^{n} \frac{\lambda^{x_i}}{x_i!}e^{-\lambda} = \frac{\lambda^{\sum x_i} e^{-n\lambda}}{\prod_{i=1}^{n}(x_i!)}\)</span>$</li>
 <li><span class="arithmatex">\(\ln L(\lambda) = -n\lambda + \left(\sum_{i=1}^{n} x_i\right)\ln\lambda - \sum_{i=1}^{n}\ln(x_i!)\)</span>；</li>
 <li>令 <span class="arithmatex">\(\dfrac{d}{d\lambda}\ln L(\lambda) = -n + \dfrac{\sum x_i}{\lambda} = 0\)</span>，解得 <span class="arithmatex">\(\lambda\)</span> 的最大似然估计值 <span class="arithmatex">\(\hat{\lambda} = \dfrac{1}{n}\sum_{i=1}^{n} x_i = \bar{x}\)</span>；</li>
 <li><span class="arithmatex">\(\lambda\)</span> 的最大似然估计量为 <span class="arithmatex">\(\hat{\lambda} = \bar{X}\)</span>。<strong>这一估计量与矩估计量是相同的</strong>。</li>
@@ -8646,7 +8646,7 @@
 <p><strong>例 9（正态分布）</strong> 设总体 <span class="arithmatex">\(X \sim N(\mu, \sigma^2)\)</span>，<span class="arithmatex">\(\mu\)</span>、<span class="arithmatex">\(\sigma^2\)</span> 为未知参数，<span class="arithmatex">\(x_1, x_2, \dots, x_n\)</span> 是来自 <span class="arithmatex">\(X\)</span> 的一个样本值，求 <span class="arithmatex">\(\mu\)</span> 和 <span class="arithmatex">\(\sigma^2\)</span> 的最大似然估计量。</p>
 <ul>
 <li><span class="arithmatex">\(X\)</span> 的概率密度为 <span class="arithmatex">\(f(x;\mu,\sigma^2) = \dfrac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\)</span>，似然函数
-<span class="arithmatex">\(<span class="arithmatex">\(L(\mu, \sigma^2) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}\)</span>\)</span></li>
+$<span class="arithmatex">\(L(\mu, \sigma^2) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi}\,\sigma}e^{-\frac{(x_i-\mu)^2}{2\sigma^2}}\)</span>$</li>
 <li><span class="arithmatex">\(\ln L(\mu, \sigma^2) = -\dfrac{n}{2}\ln(2\pi) - \dfrac{n}{2}\ln\sigma^2 - \dfrac{1}{2\sigma^2}\sum_{i=1}^{n}(x_i - \mu)^2\)</span>；</li>
 <li>令 <span class="arithmatex">\(\begin{cases} \dfrac{\partial}{\partial\mu}\ln L = 0, \\ \dfrac{\partial}{\partial\sigma^2}\ln L = 0, \end{cases}\)</span> 由 <span class="arithmatex">\(\dfrac{1}{\sigma^2}\left[\sum x_i - n\mu\right] = 0\)</span> 解得 <span class="arithmatex">\(\hat{\mu} = \bar{x}\)</span>；由 <span class="arithmatex">\(-\dfrac{n}{2\sigma^2} + \dfrac{1}{2(\sigma^2)^2}\sum(x_i-\mu)^2 = 0\)</span> 解得 <span class="arithmatex">\(\hat{\sigma}^2 = \dfrac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2\)</span>；</li>
 <li>故 <span class="arithmatex">\(\mu\)</span> 和 <span class="arithmatex">\(\sigma^2\)</span> 的最大似然估计量分别为 <span class="arithmatex">\(\hat{\mu} = \bar{X}\)</span>，<span class="arithmatex">\(\hat{\sigma}^2 = \dfrac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2\)</span>。<strong>它们与相应的矩估计量相同</strong>。</li>
@@ -8655,7 +8655,7 @@
 <ul>
 <li>记 <span class="arithmatex">\(x_{(l)} = \min(x_1, x_2, \dots, x_n)\)</span>，<span class="arithmatex">\(x_{(h)} = \max(x_1, x_2, \dots, x_n)\)</span>，<span class="arithmatex">\(X\)</span> 的概率密度为 <span class="arithmatex">\(f(x;a,b) = \begin{cases} \dfrac{1}{b-a}, &amp; a \leq x \leq b, \\ 0, &amp; \text{其他}; \end{cases}\)</span></li>
 <li>因为 <span class="arithmatex">\(a \leq x_1, x_2, \dots, x_n \leq b\)</span> 等价于 <span class="arithmatex">\(a \leq x_{(l)}\)</span>、<span class="arithmatex">\(x_{(h)} \leq b\)</span>，作为 <span class="arithmatex">\(a\)</span>、<span class="arithmatex">\(b\)</span> 的函数的似然函数为
-<span class="arithmatex">\(<span class="arithmatex">\(L(a, b) = \begin{cases} \dfrac{1}{(b-a)^n}, &amp; a \leq x_{(l)},\; b \geq x_{(h)}, \\ 0, &amp; \text{其他}; \end{cases}\)</span>\)</span></li>
+$<span class="arithmatex">\(L(a, b) = \begin{cases} \dfrac{1}{(b-a)^n}, &amp; a \leq x_{(l)},\; b \geq x_{(h)}, \\ 0, &amp; \text{其他}; \end{cases}\)</span>$</li>
 <li>于是对于满足条件 <span class="arithmatex">\(a \leq x_{(l)}\)</span>、<span class="arithmatex">\(b \geq x_{(h)}\)</span> 的任意 <span class="arithmatex">\(a\)</span>、<span class="arithmatex">\(b\)</span> 有 <span class="arithmatex">\(L(a, b) = \dfrac{1}{(b-a)^n} \leq \dfrac{1}{(x_{(h)} - x_{(l)})^n}\)</span>，即似然函数 <span class="arithmatex">\(L(a, b)\)</span> 在 <span class="arithmatex">\(a = x_{(l)}\)</span>、<span class="arithmatex">\(b = x_{(h)}\)</span> 时取到最大值；</li>
 <li><span class="arithmatex">\(a\)</span>、<span class="arithmatex">\(b\)</span> 的最大似然估计值为 <span class="arithmatex">\(\hat{a} = x_{(l)} = \min\limits_{1 \leq i \leq n} x_i\)</span>，<span class="arithmatex">\(\hat{b} = x_{(h)} = \max\limits_{1 \leq i \leq n} x_i\)</span>；</li>
 <li><span class="arithmatex">\(a\)</span>、<span class="arithmatex">\(b\)</span> 的最大似然估计量为 <span class="arithmatex">\(\hat{a} = \min\limits_{1 \leq i \leq n} X_i\)</span>，<span class="arithmatex">\(\hat{b} = \max\limits_{1 \leq i \leq n} X_i\)</span>。</li>
@@ -8683,10 +8683,10 @@
 <p><strong>例 2（样本方差的修正）</strong> 对于均值 <span class="arithmatex">\(\mu\)</span>、方差 <span class="arithmatex">\(\sigma^2 &gt; 0\)</span> 都存在的总体，若 <span class="arithmatex">\(\mu\)</span>、<span class="arithmatex">\(\sigma^2\)</span> 均为未知，则 <span class="arithmatex">\(\sigma^2\)</span> 的估计量 <span class="arithmatex">\(\hat{\sigma}^2 = \dfrac{1}{n}\sum_{i=1}^{n}(X_i - \bar{X})^2\)</span> 是<strong>有偏的</strong>（即不是无偏估计）。</p>
 <ul>
 <li><span class="arithmatex">\(\hat{\sigma}^2 = \dfrac{1}{n}\sum_{i=1}^{n} X_i^2 - \bar{X}^2 = A_2 - \bar{X}^2\)</span>，因为 <span class="arithmatex">\(E(A_2) = \mu_2 = \sigma^2 + \mu^2\)</span>，又因为 <span class="arithmatex">\(E(\bar{X}^2) = D(\bar{X}) + [E(\bar{X})]^2 = \dfrac{\sigma^2}{n} + \mu^2\)</span>，所以
-<span class="arithmatex">\(<span class="arithmatex">\(E(\hat{\sigma}^2) = E(A_2) - E(\bar{X}^2) = \frac{n-1}{n}\sigma^2 \neq \sigma^2\)</span>\)</span>
+$<span class="arithmatex">\(E(\hat{\sigma}^2) = E(A_2) - E(\bar{X}^2) = \frac{n-1}{n}\sigma^2 \neq \sigma^2\)</span>$
   所以 <span class="arithmatex">\(\hat{\sigma}^2\)</span> 是有偏的；</li>
 <li>若以 <span class="arithmatex">\(\dfrac{n}{n-1}\)</span> 乘 <span class="arithmatex">\(\hat{\sigma}^2\)</span>，所得到的估计量就是无偏的（这种方法称为<strong>无偏化</strong>）：
-<span class="arithmatex">\(<span class="arithmatex">\(E\left(\frac{n}{n-1}\hat{\sigma}^2\right) = \frac{n}{n-1}E(\hat{\sigma}^2) = \sigma^2\)</span>\)</span></li>
+$<span class="arithmatex">\(E\left(\frac{n}{n-1}\hat{\sigma}^2\right) = \frac{n}{n-1}E(\hat{\sigma}^2) = \sigma^2\)</span>$</li>
 <li>因为 <span class="arithmatex">\(\dfrac{n}{n-1}\hat{\sigma}^2 = \dfrac{1}{n-1}\sum_{i=1}^{n}(X_i - \bar{X})^2 = S^2\)</span>，即 <span class="arithmatex">\(S^2\)</span> 是 <span class="arithmatex">\(\sigma^2\)</span> 的无偏估计，<strong>故通常取 <span class="arithmatex">\(S^2\)</span> 作 <span class="arithmatex">\(\sigma^2\)</span> 的估计量</strong>。</li>
 </ul>
 <p><strong>例 3（正态总体 <span class="arithmatex">\(\sigma\)</span> 的无偏估计）</strong> 设 <span class="arithmatex">\(X_1, X_2, \dots, X_n\)</span> 是来自正态总体 <span class="arithmatex">\(N(\mu, \sigma^2)\)</span> 的样本，试求 <span class="arithmatex">\(\sigma^2\)</span> 的无偏估计量。</p>
@@ -8718,7 +8718,7 @@
 <ul>
 <li>由于 <span class="arithmatex">\(D(\hat{\theta}_1) = 4D(\bar{X}) = \dfrac{4}{n}D(X) = \dfrac{\theta^2}{3n}\)</span>（<span class="arithmatex">\(X \sim U[0,\theta]\)</span> 时 <span class="arithmatex">\(D(X) = \dfrac{\theta^2}{12}\)</span>）；</li>
 <li><span class="arithmatex">\(D(\hat{\theta}_2) = \left(\dfrac{n+1}{n}\right)^2 D(X_h)\)</span>，又因为 <span class="arithmatex">\(E(X_h) = \dfrac{n}{n+1}\theta\)</span>，<span class="arithmatex">\(E(X_h^2) = \dfrac{n}{n+2}\theta^2\)</span>，故 <span class="arithmatex">\(D(X_h) = E(X_h^2) - [E(X_h)]^2 = \dfrac{n}{(n+1)^2(n+2)}\theta^2\)</span>，从而
-<span class="arithmatex">\(<span class="arithmatex">\(D(\hat{\theta}_2) = \frac{1}{n(n+2)}\theta^2\)</span>\)</span></li>
+$<span class="arithmatex">\(D(\hat{\theta}_2) = \frac{1}{n(n+2)}\theta^2\)</span>$</li>
 <li>又 <span class="arithmatex">\(n \geq 2\)</span>，所以 <span class="arithmatex">\(D(\hat{\theta}_2) &lt; D(\hat{\theta}_1)\)</span>，<span class="arithmatex">\(\hat{\theta}_2\)</span> 较 <span class="arithmatex">\(\hat{\theta}_1\)</span> 有效。</li>
 </ul>
 <h3 id="724">7.2.4 相合性<a class="headerlink" href="#724" title="Permanent link">&para;</a></h3>
@@ -8760,7 +8760,7 @@
 <ul>
 <li>因为 <span class="arithmatex">\(\bar{X}\)</span> 是 <span class="arithmatex">\(\mu\)</span> 的无偏估计，且 <span class="arithmatex">\(U = \dfrac{\bar{X}-\mu}{\sigma/\sqrt{n}} \sim N(0,1)\)</span> 是不依赖于任何未知参数的随机变量；</li>
 <li>由标准正态分布的上 <span class="arithmatex">\(\alpha\)</span> 分位点的定义知 <span class="arithmatex">\(P\left\{\left|\dfrac{\bar{X}-\mu}{\sigma/\sqrt{n}}\right| &lt; z_{\alpha/2}\right\} = 1-\alpha\)</span>，即
-<span class="arithmatex">\(<span class="arithmatex">\(P\left\{\bar{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} &lt; \mu &lt; \bar{X} + \frac{\sigma}{\sqrt{n}}z_{\alpha/2}\right\} = 1-\alpha\)</span>\)</span></li>
+$<span class="arithmatex">\(P\left\{\bar{X} - \frac{\sigma}{\sqrt{n}}z_{\alpha/2} &lt; \mu &lt; \bar{X} + \frac{\sigma}{\sqrt{n}}z_{\alpha/2}\right\} = 1-\alpha\)</span>$</li>
 <li>于是得 <span class="arithmatex">\(\mu\)</span> 的一个置信水平为 <span class="arithmatex">\(1-\alpha\)</span> 的置信区间 <span class="arithmatex">\(\left(\bar{X} - \dfrac{\sigma}{\sqrt{n}}z_{\alpha/2},\; \bar{X} + \dfrac{\sigma}{\sqrt{n}}z_{\alpha/2}\right)\)</span>，常写成 <span class="arithmatex">\(\bar{X} \pm \dfrac{\sigma}{\sqrt{n}}z_{\alpha/2}\)</span>，其置信区间的长度为 <span class="arithmatex">\(\dfrac{2\sigma}{\sqrt{n}}z_{\alpha/2}\)</span>。</li>
 </ul>
 <p><strong>数值示例</strong>：若取 <span class="arithmatex">\(n = 16\)</span>，<span class="arithmatex">\(\sigma = 1\)</span>，<span class="arithmatex">\(\alpha = 0.05\)</span>，查表可得 <span class="arithmatex">\(z_{\alpha/2} = z_{0.025} = 1.96\)</span>，得置信水平为 0.95 的置信区间 <span class="arithmatex">\(\bar{X} \pm \dfrac{1}{\sqrt{16}}\times 1.96\)</span>。由一个样本值算得样本均值的观察值 <span class="arithmatex">\(\bar{x} = 5.20\)</span>，则置信区间为 <span class="arithmatex">\((5.20 \pm 0.49)\)</span>，即 <span class="arithmatex">\((4.71, 5.69)\)</span>。</p>
@@ -8772,7 +8772,7 @@
 <ul>
 <li>根据例 2，<span class="arithmatex">\(\mu\)</span> 的置信度为 <span class="arithmatex">\(1-\alpha\)</span> 的置信区间为 <span class="arithmatex">\(\left(\bar{X} \pm \dfrac{\sigma}{\sqrt{n}}z_{\alpha/2}\right)\)</span>；</li>
 <li>由 <span class="arithmatex">\(n = 9\)</span>，<span class="arithmatex">\(\sigma = 4\)</span>，<span class="arithmatex">\(\alpha = 0.05\)</span>，<span class="arithmatex">\(z_{0.025} = 1.96\)</span>，<span class="arithmatex">\(\bar{x} = 147.333\)</span> 知：
-<span class="arithmatex">\(<span class="arithmatex">\(\left(147.333 - \frac{4}{3}\times 1.96,\; 147.333 + \frac{4}{3}\times 1.96\right) = (144.720, 149.946)\)</span>\)</span></li>
+$<span class="arithmatex">\(\left(147.333 - \frac{4}{3}\times 1.96,\; 147.333 + \frac{4}{3}\times 1.96\right) = (144.720, 149.946)\)</span>$</li>
 <li><span class="arithmatex">\(\mu\)</span> 的置信度为 0.95 的置信区间为 <span class="arithmatex">\((144.720, 149.946)\)</span>。</li>
 </ul>
 <p><strong>小结</strong>：点估计不能反映估计的精度，故而本节引入了<strong>区间估计</strong>。求置信区间的一般步骤（分三步）。</p>
@@ -8786,7 +8786,7 @@
 <ul>
 <li><span class="arithmatex">\(\sigma = 10\)</span>，<span class="arithmatex">\(n = 12\)</span>，计算得 <span class="arithmatex">\(\bar{x} = 502.92\)</span>；</li>
 <li>(1) 当 <span class="arithmatex">\(\alpha = 0.10\)</span> 时，<span class="arithmatex">\(1-\dfrac{\alpha}{2} = 0.95\)</span>，查表得 <span class="arithmatex">\(z_{\alpha/2} = z_{0.05} = 1.645\)</span>：
-<span class="arithmatex">\(<span class="arithmatex">\(\bar{x} - \frac{10}{\sqrt{12}}\times 1.645 = 502.92 - 4.75 = 498.17, \qquad \bar{x} + \frac{10}{\sqrt{12}}\times 1.645 = 502.92 + 4.75 = 507.67\)</span>\)</span>
+$<span class="arithmatex">\(\bar{x} - \frac{10}{\sqrt{12}}\times 1.645 = 502.92 - 4.75 = 498.17, \qquad \bar{x} + \frac{10}{\sqrt{12}}\times 1.645 = 502.92 + 4.75 = 507.67\)</span>$
   即 <span class="arithmatex">\(\mu\)</span> 的置信度为 90% 的置信区间为 <span class="arithmatex">\((498.17, 507.67)\)</span>；</li>
 <li>(2) 当 <span class="arithmatex">\(\alpha = 0.05\)</span> 时，<span class="arithmatex">\(1-\dfrac{\alpha}{2} = 0.975\)</span>，查表得 <span class="arithmatex">\(z_{0.025} = 1.96\)</span>，同理可得 <span class="arithmatex">\(\mu\)</span> 的置信度为 95% 的置信区间为 <span class="arithmatex">\((497.26, 508.58)\)</span>。</li>
 </ul>

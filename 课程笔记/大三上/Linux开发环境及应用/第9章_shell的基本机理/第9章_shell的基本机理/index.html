@@ -9611,7 +9611,7 @@
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
 <span class="normal"><a href="#__codelineno-2-2">2</a></span>
 <span class="normal"><a href="#__codelineno-2-3">3</a></span>
-<span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">command</span><span class="w"> </span><span class="s">&lt;&lt;&#39;WORD&#39;</span>
+<span class="normal"><a href="#__codelineno-2-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nb">command</span><span class="w"> </span><span class="s">&lt;&lt;'WORD'</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="s">literal text with $VAR and `command`</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="s">...</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="s">WORD</span>
@@ -9621,7 +9621,7 @@
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
 <span class="normal"><a href="#__codelineno-3-3">3</a></span>
-<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt;'EOF'</span>
 </span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="s">Your home is $HOME</span>
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="s">Current time: $(date)</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="s">EOF</span>
@@ -9635,7 +9635,7 @@
 <li><strong>语法</strong>：<code>command &lt;&lt;&lt; "string"</code></li>
 <li><strong>说明</strong>：这是 Bash 特有的扩展功能，将<strong>一个字符串直接作为命令的标准输入</strong>，无需创建临时文件或使用管道。</li>
 <li><strong>示例</strong>：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>base64<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s1">&#39;hello&#39;</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>base64<span class="w"> </span><span class="o">&lt;&lt;&lt;</span><span class="w"> </span><span class="s1">'hello'</span>
 </span></code></pre></div></td></tr></table></div>
   等价于 <code>echo 'hello' | base64</code>，但更简洁高效。</li>
 <li><strong>特点</strong>：</li>
@@ -9815,7 +9815,7 @@
 <span class="normal"><a href="#__codelineno-7-2">2</a></span>
 <span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">read</span><span class="w"> </span>name
 </span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$name</span>
-</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$name</span><span class="s2">&quot;</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3"></a>ls<span class="w"> </span>-l<span class="w"> </span><span class="s2">"</span><span class="nv">$name</span><span class="s2">"</span>
 </span></code></pre></div></td></tr></table></div>
   此脚本首先提示用户输入一个文件或目录名，随后将其输出并列出其详细信息。这展示了 <code>read</code> 在构建简单交互式工具中的作用。</p>
 </li>
@@ -9928,7 +9928,7 @@ EOF</p>
 <li>
 <p><strong>在 C 语言程序中</strong>：<br />
   使用标准库函数 <code>getenv("VAR")</code> 获取环境变量值（需包含 <code>&lt;stdlib.h&gt;</code>）。例如：
-  <div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;HOME&quot;</span><span class="p">);</span>
+  <div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">home</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getenv</span><span class="p">(</span><span class="s">"HOME"</span><span class="p">);</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li>
@@ -10136,9 +10136,9 @@ EOF</p>
 <h4 id="_8">示例对比：<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span>
-<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nv">name</span><span class="o">=</span><span class="s2">&quot;world&quot;</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;Hello $name&#39;</span><span class="w">   </span><span class="c1"># 输出：Hello $name</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello </span><span class="nv">$name</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># 输出：Hello world</span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nv">name</span><span class="o">=</span><span class="s2">"world"</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'Hello $name'</span><span class="w">   </span><span class="c1"># 输出：Hello $name</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello </span><span class="nv">$name</span><span class="s2">"</span><span class="w">   </span><span class="c1"># 输出：Hello world</span>
 </span></code></pre></div></td></tr></table></div>
 <p>PPT强调：<strong>单引号最安全（绝对字面量），双引号最常用（兼顾变量与安全）</strong>。</p>
 <hr />
@@ -10149,7 +10149,7 @@ EOF</p>
 <p><strong>单引号内无法转义</strong>：<br />
   单引号内的任何字符（包括 <code>\</code> 和另一个单引号）都无特殊含义。因此，<strong>不能直接在单引号字符串中包含单引号</strong>。<br />
 <strong>解决技巧</strong>：使用 <code>'\''</code> 组合<br />
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;It&#39;</span><span class="se">\&#39;</span><span class="s1">&#39;s a test&#39;</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'It'</span><span class="se">\'</span><span class="s1">'s a test'</span>
 </span></code></pre></div></td></tr></table></div>
   原理：先结束单引号 <code>'It'</code>，再用 <code>\'</code>（在无引号环境中转义单引号），最后开启新单引号 <code>'s a test'</code>。</p>
 </li>
@@ -10196,7 +10196,7 @@ EOF</p>
 <p>PPT详细讨论了<strong>反撇号（<code>`</code>）中的嵌套命令替换及其转义需求</strong>。由于反撇号本身用于命令替换，若需在其内部再嵌套一个命令替换，则必须进行适当转义以避免语法冲突。</p>
 <ul>
 <li><strong>典型示例</strong>：计算当前年份减去 10 年：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>expr<span class="w"> </span><span class="se">\`</span>date<span class="w"> </span><span class="s1">&#39;+%Y&#39;</span><span class="se">\`</span><span class="w"> </span>-<span class="w"> </span><span class="m">10</span><span class="sb">`</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nv">year</span><span class="o">=</span><span class="sb">`</span>expr<span class="w"> </span><span class="se">\`</span>date<span class="w"> </span><span class="s1">'+%Y'</span><span class="se">\`</span><span class="w"> </span>-<span class="w"> </span><span class="m">10</span><span class="sb">`</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>
 <p><strong>解析步骤</strong>：</p>
@@ -10211,7 +10211,7 @@ EOF</p>
 </li>
 <li>内部反撇号前加 <code>\</code>，以防止它提前闭合外部反撇号；</li>
 <li>这种方式虽然可行，但可读性较差且容易出错。因此，<strong>PPT强烈推荐改用 <code>$(...)</code> 语法</strong>，它天然支持嵌套且更易读：
-    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nv">year</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%Y&#39;</span><span class="k">)</span><span class="w"> </span>-<span class="w"> </span><span class="m">10</span><span class="k">)</span>
+    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="nv">year</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="k">$(</span>date<span class="w"> </span><span class="s1">'+%Y'</span><span class="k">)</span><span class="w"> </span>-<span class="w"> </span><span class="m">10</span><span class="k">)</span>
 </span></code></pre></div></td></tr></table></div></li>
 </ul>
 <p>PPT总结：尽管反撇号仍广泛存在，但由于其局限性和潜在的复杂性，<strong>应优先采用 <code>$(...)</code> 格式</strong>。</p>
@@ -10235,17 +10235,17 @@ EOF</p>
 <span class="normal"><a href="#__codelineno-15-14">14</a></span>
 <span class="normal"><a href="#__codelineno-15-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="ch">#!/bin/bash</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2"></a>
-</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="c1"># 获取所有名为 &#39;myapp&#39; 的进程ID</span>
-</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="nv">pids</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;myapp&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="c1"># 获取所有名为 'myapp' 的进程ID</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="nv">pids</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">'myapp'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $2}'</span><span class="k">)</span>
 </span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5"></a>
 </span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="c1"># 检查是否找到匹配的进程</span>
-</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$pids</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;未找到名为 &#39;myapp&#39; 的进程&quot;</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="nv">$pids</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"未找到名为 'myapp' 的进程"</span>
 </span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9"></a><span class="k">else</span>
 </span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="w">    </span><span class="c1"># 终止所有找到的进程</span>
 </span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>pid<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$pids</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">        </span><span class="nb">kill</span><span class="w"> </span>-9<span class="w"> </span><span class="nv">$pid</span>
-</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;已终止进程 </span><span class="nv">$pid</span><span class="s2">&quot;</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"已终止进程 </span><span class="nv">$pid</span><span class="s2">"</span>
 </span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w">    </span><span class="k">done</span>
 </span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="k">fi</span>
 </span></code></pre></div></td></tr></table></div>

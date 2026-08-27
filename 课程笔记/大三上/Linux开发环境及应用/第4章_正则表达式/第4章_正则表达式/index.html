@@ -8807,7 +8807,7 @@
 <li>将 <code>04-26-1997</code> 转换为 <code>1997.04.26</code>；</li>
 <li><code>\1</code>=月，<code>\2</code>=日，<code>\3</code>=年。</li>
 <li>批量重命名示例：<br />
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sed<span class="w"> </span><span class="s1">&#39;s/.*-\([0-9][0-9]\).rmvb/mv &quot;&amp;&quot; &quot;第\1集.rmvb&quot;/&#39;</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>sed<span class="w"> </span><span class="s1">'s/.*-\([0-9][0-9]\).rmvb/mv "&amp;" "第\1集.rmvb"/'</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>输入：<code>[快视频...]-69.rmvb</code></li>
 <li>输出：<code>mv "[快视频...]-69.rmvb" "第69集.rmvb"</code></li>

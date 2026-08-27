@@ -8807,10 +8807,10 @@
 <ol>
 <li><strong>（<span class="arithmatex">\(\Rightarrow\)</span>）<span class="arithmatex">\(x * H = 0\)</span> 推出 <span class="arithmatex">\(x = e_H(b)\)</span></strong>：由 <span class="arithmatex">\(x * H = 0\)</span> 逐分量写出：</li>
 </ol>
-<p><span class="arithmatex">\(<span class="arithmatex">\(y_1 h_{1i} + y_2 h_{2i} + \cdots + y_m h_{mi} + x_i = 0 \qquad (i = 1, \ldots, r)\)</span>\)</span></p>
+<p>$<span class="arithmatex">\(y_1 h_{1i} + y_2 h_{2i} + \cdots + y_m h_{mi} + x_i = 0 \qquad (i = 1, \ldots, r)\)</span>$</p>
 <p>注意 <span class="arithmatex">\(x_i + x_i = 0\)</span>，把 <span class="arithmatex">\(x_i\)</span> 移到等式另一边得 <span class="arithmatex">\(x_i = y_1 h_{1i} + \cdots + y_m h_{mi}\)</span>。令 <span class="arithmatex">\(b_1 = y_1, \ldots, b_m = y_m\)</span>，则 <span class="arithmatex">\(x_1, \ldots, x_r\)</span> 恰好满足校验位的方程，故 <span class="arithmatex">\(x = e_H(b)\)</span>。
 2. <strong>（<span class="arithmatex">\(\Leftarrow\)</span>）<span class="arithmatex">\(x = e_H(b)\)</span> 推出 <span class="arithmatex">\(x * H = 0\)</span></strong>：若 <span class="arithmatex">\(x = e_H(b)\)</span>，把校验位方程两边同时加上 <span class="arithmatex">\(x_i\)</span>（利用 <span class="arithmatex">\(x_i + x_i = 0\)</span>）改写为</p>
-<p><span class="arithmatex">\(<span class="arithmatex">\(b_1 h_{1i} + b_2 h_{2i} + \cdots + b_m h_{mi} + x_i = 0 \qquad (i = 1, \ldots, r)\)</span>\)</span></p>
+<p>$<span class="arithmatex">\(b_1 h_{1i} + b_2 h_{2i} + \cdots + b_m h_{mi} + x_i = 0 \qquad (i = 1, \ldots, r)\)</span>$</p>
 <p>这正是 <span class="arithmatex">\(x * H = 0\)</span> 的逐分量形式。Q.E.D.</p>
 <p><strong>推论 2（<span class="arithmatex">\(e_H\)</span> 是群码）</strong>：<span class="arithmatex">\(e_H(B^m) = \{e_H(b) \mid b \in B^m\}\)</span> 是 <span class="arithmatex">\(B^n\)</span> 的子群。</p>
 <p><strong>证明</strong>：由定理 6，<span class="arithmatex">\(e_H(B^m) = \{x \in B^n \mid x * H = 0\} = \ker(f_H)\)</span>，由推论 1 它是正规子群，从而<strong><span class="arithmatex">\(e_H\)</span> 是群码</strong>。Q.E.D.</p>
@@ -8821,11 +8821,11 @@
 <ol>
 <li>写出生成矩阵（上半块取 <span class="arithmatex">\(H\)</span> 的前 2 行作为 <span class="arithmatex">\(H_{2 \times 3}\)</span>，左接 <span class="arithmatex">\(I_2\)</span>）：</li>
 </ol>
-<p><span class="arithmatex">\(<span class="arithmatex">\(e_H(B^2) = B^2 * \begin{bmatrix} I_2 &amp; H_{2 \times 3} \end{bmatrix} = \begin{bmatrix} 0 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; 0 \\ 1 &amp; 1 \end{bmatrix} * \begin{bmatrix} 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \end{bmatrix}\)</span>\)</span></p>
+<p>$<span class="arithmatex">\(e_H(B^2) = B^2 * \begin{bmatrix} I_2 &amp; H_{2 \times 3} \end{bmatrix} = \begin{bmatrix} 0 &amp; 0 \\ 0 &amp; 1 \\ 1 &amp; 0 \\ 1 &amp; 1 \end{bmatrix} * \begin{bmatrix} 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \end{bmatrix}\)</span>$</p>
 <ol>
 <li>逐行计算（每一行 = 对应消息向量乘生成矩阵，模 2）：</li>
 </ol>
-<p><span class="arithmatex">\(<span class="arithmatex">\(e_H(B^2) = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>\)</span></p>
+<p>$<span class="arithmatex">\(e_H(B^2) = \begin{bmatrix} 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; 1 &amp; 1 \\ 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1 \end{bmatrix}\)</span>$</p>
 <p>即码字集合 <span class="arithmatex">\(= \{00000,\ 01011,\ 10110,\ 11101\}\)</span>，对应 <span class="arithmatex">\(e_H(00) = 00000\)</span>，<span class="arithmatex">\(e_H(01) = 01011\)</span>，<span class="arithmatex">\(e_H(10) = 10110\)</span>，<span class="arithmatex">\(e_H(11) = 11101\)</span>。</p>
 <ol>
 <li><strong>验证</strong>（选做）：任一码字乘 <span class="arithmatex">\(H\)</span> 都得全零，例如 <span class="arithmatex">\(01011 * H = 0\)</span>（由定理 6 保证），且任意两码字异或仍是码字——确认这是一个群码。</li>
@@ -9130,7 +9130,7 @@
 <ol>
 <li><strong>译码演示</strong>：若收到 <span class="arithmatex">\(x_t = 001110\)</span>，则 <span class="arithmatex">\(f_H(x_t) = x_t * H = 101\)</span>，与陪集头 <span class="arithmatex">\(\varepsilon = 010000\)</span> 的特征值相同。于是</li>
 </ol>
-<p><span class="arithmatex">\(<span class="arithmatex">\(x = x_t \oplus \varepsilon = 001110 \oplus 010000 = 011110 = e_H(011)\)</span>\)</span></p>
+<p>$<span class="arithmatex">\(x = x_t \oplus \varepsilon = 001110 \oplus 010000 = 011110 = e_H(011)\)</span>$</p>
 <p>故 <span class="arithmatex">\(d(001110) = 011\)</span>——把 <span class="arithmatex">\(x_t\)</span> 译码为消息 <span class="arithmatex">\(011\)</span>。同时由 <span class="arithmatex">\(x_t = e_H(011) \oplus 010000\)</span> 可知：<strong>收到的字 = 正确码字 <span class="arithmatex">\(\oplus\)</span> 陪集头（错误模式）</strong>，<span class="arithmatex">\(010000\)</span> 正是被纠正的那 1 位差错。</p>
 <p><strong>一般译码与特征值译码的对比</strong>：</p>
 <table>

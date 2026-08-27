@@ -9103,7 +9103,7 @@
 <li><strong>自反</strong>：由等幂律，<span class="arithmatex">\(a = a \ast a\)</span>，故 <span class="arithmatex">\(a \preceq a\)</span> 对一切 <span class="arithmatex">\(a \in A\)</span> 成立。</li>
 <li><strong>反对称</strong>：设 <span class="arithmatex">\(a \preceq b\)</span> 且 <span class="arithmatex">\(b \preceq a\)</span>，则 <span class="arithmatex">\(a = a \ast b\)</span> 且 <span class="arithmatex">\(b = b \ast a\)</span>。由交换律 <span class="arithmatex">\(a = a \ast b = b \ast a = b\)</span>，故 <span class="arithmatex">\(a = b\)</span>。</li>
 <li><strong>传递</strong>：设 <span class="arithmatex">\(a \preceq b\)</span> 且 <span class="arithmatex">\(b \preceq c\)</span>，则 <span class="arithmatex">\(a = a \ast b\)</span>、<span class="arithmatex">\(b = b \ast c\)</span>。于是
-   <span class="arithmatex">\(<span class="arithmatex">\(a = a \ast b = a \ast (b \ast c) = (a \ast b) \ast c = a \ast c\)</span>\)</span>
+   $<span class="arithmatex">\(a = a \ast b = a \ast (b \ast c) = (a \ast b) \ast c = a \ast c\)</span>$
    故 <span class="arithmatex">\(a \preceq c\)</span>。</li>
 </ol>
 <p><strong>第 2 步：证明 <span class="arithmatex">\(a \ast b\)</span> 是 <span class="arithmatex">\(\{a, b\}\)</span> 的下界</strong>：</p>
@@ -9430,9 +9430,9 @@
 <p><strong>等边三角形的对称群 <span class="arithmatex">\(S_3\)</span></strong>：给定顶点为 1、2、3 的等边三角形，考虑它的对称变换。</p>
 <ol>
 <li><strong>三个旋转</strong>（绕中心 <span class="arithmatex">\(O\)</span> 逆时针旋转 <span class="arithmatex">\(120^\circ\)</span>、<span class="arithmatex">\(240^\circ\)</span>、<span class="arithmatex">\(360^\circ\)</span> 即 <span class="arithmatex">\(0^\circ\)</span>）：记作 <span class="arithmatex">\(f_1, f_2, f_3\)</span>，可写成置换：
-   <span class="arithmatex">\(<span class="arithmatex">\(f_1 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 1 &amp; 2 &amp; 3 \end{pmatrix},\quad f_2 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 3 &amp; 1 \end{pmatrix},\quad f_3 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 3 &amp; 1 &amp; 2 \end{pmatrix}\)</span>\)</span></li>
+   $<span class="arithmatex">\(f_1 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 1 &amp; 2 &amp; 3 \end{pmatrix},\quad f_2 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 3 &amp; 1 \end{pmatrix},\quad f_3 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 3 &amp; 1 &amp; 2 \end{pmatrix}\)</span>$</li>
 <li><strong>三个反射</strong>（关于对称轴 <span class="arithmatex">\(l_1, l_2, l_3\)</span>）：记作 <span class="arithmatex">\(g_1, g_2, g_3\)</span>：
-   <span class="arithmatex">\(<span class="arithmatex">\(g_1 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 2 \end{pmatrix},\quad g_2 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 3 &amp; 2 &amp; 1 \end{pmatrix},\quad g_3 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 1 &amp; 3 \end{pmatrix}\)</span>\)</span></li>
+   $<span class="arithmatex">\(g_1 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 1 &amp; 3 &amp; 2 \end{pmatrix},\quad g_2 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 3 &amp; 2 &amp; 1 \end{pmatrix},\quad g_3 = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 2 &amp; 1 &amp; 3 \end{pmatrix}\)</span>$</li>
 <li>设 <span class="arithmatex">\(S_3 = \{f_1, f_2, f_3, g_1, g_2, g_3\}\)</span>，引入运算 <span class="arithmatex">\(\ast\)</span>（复合，先做后一个变换、再做前一个），乘法表如下：</li>
 </ol>
 <table>
@@ -9643,7 +9643,7 @@
 </ul>
 </li>
 <li><strong><span class="arithmatex">\(R\)</span> 是同余关系</strong>：设 <span class="arithmatex">\(a\,R\,b\)</span> 且 <span class="arithmatex">\(c\,R\,d\)</span>，则 <span class="arithmatex">\(a^{-1}b \in N\)</span>、<span class="arithmatex">\(c^{-1}d \in N\)</span>。由 <span class="arithmatex">\(N\)</span> 正规，<span class="arithmatex">\(Nd = dN\)</span>，故存在 <span class="arithmatex">\(n \in N\)</span> 使 <span class="arithmatex">\(a^{-1}bd = dn\)</span>。于是
-   <span class="arithmatex">\(<span class="arithmatex">\((ac)^{-1}(bd) = (c^{-1}a^{-1})(bd) = c^{-1}(a^{-1}b)d = (c^{-1}d)n \in N\)</span>\)</span>
+   $<span class="arithmatex">\((ac)^{-1}(bd) = (c^{-1}a^{-1})(bd) = c^{-1}(a^{-1}b)d = (c^{-1}d)n \in N\)</span>$
    故 <span class="arithmatex">\(ac\,R\,bd\)</span>。</li>
 <li><strong><span class="arithmatex">\(N = [e]\)</span></strong>：<span class="arithmatex">\(x \in N \iff x^{-1}e = x^{-1} \in N \iff x\,R\,e \iff x \in [e]\)</span>（两个方向都成立）。Q.E.D.</li>
 </ol>

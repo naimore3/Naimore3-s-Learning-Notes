@@ -9243,7 +9243,7 @@
 </li>
 <li>
 <p>Shell 脚本中直接调用该程序即可参与逻辑判断：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>./my_program<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Success&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Failed&quot;</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1"></a>./my_program<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Success"</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Failed"</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li>
@@ -9317,8 +9317,8 @@
 <ul>
 <li>示例应用：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
-<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>/tmp<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Temporary directory exists&quot;</span>
-</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="o">[</span><span class="w"> </span>-s<span class="w"> </span>logfile<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Log file is empty or missing&quot;</span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="o">[</span><span class="w"> </span>-d<span class="w"> </span>/tmp<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Temporary directory exists"</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="o">[</span><span class="w"> </span>-s<span class="w"> </span>logfile<span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Log file is empty or missing"</span>
 </span></code></pre></div></td></tr></table></div></li>
 </ul>
 <blockquote>
@@ -9343,8 +9343,8 @@
 <li>
 <p>典型示例（来自 PPT）：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
-<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$a</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;empty string&quot;</span>
-</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">test</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No argument&quot;</span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$a</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"empty string"</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">test</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"No argument"</span>
 </span></code></pre></div></td></tr></table></div>
   其中 <code>$#</code> 表示传入脚本的参数个数，<code>test $# = 0</code> 用于判断是否未提供任何参数。</p>
 </li>
@@ -9398,7 +9398,7 @@
 </table>
 <ul>
 <li><strong>典型应用场景</strong>（PPT 示例）：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">test</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Too many files&quot;</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="nb">test</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span><span class="w"> </span>-ge<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Too many files"</span>
 </span></code></pre></div></td></tr></table></div>
   此处通过 <code>ls | wc -l</code> 获取当前目录文件数量，并判断是否 ≥100。</li>
 </ul>
@@ -9452,8 +9452,8 @@
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
 <span class="normal"><a href="#__codelineno-10-2">2</a></span>
 <span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nv">x</span><span class="o">=</span><span class="m">0</span>
-</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="o">{</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Inside: </span><span class="nv">$x</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
-</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Outside: </span><span class="nv">$x</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># 输出 Outside: 5</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="o">{</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Inside: </span><span class="nv">$x</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="o">}</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Outside: </span><span class="nv">$x</span><span class="s2">"</span><span class="w">   </span><span class="c1"># 输出 Outside: 5</span>
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
 <li><strong><code>( list )</code> —— 在子 Shell 中执行</strong>  </li>
@@ -9465,8 +9465,8 @@
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
 <span class="normal"><a href="#__codelineno-11-2">2</a></span>
 <span class="normal"><a href="#__codelineno-11-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="nv">x</span><span class="o">=</span><span class="m">0</span>
-</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="o">(</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Inside: </span><span class="nv">$x</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">)</span>
-</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Outside: </span><span class="nv">$x</span><span class="s2">&quot;</span><span class="w">   </span><span class="c1"># 输出 Outside: 0</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="o">(</span><span class="w"> </span><span class="nv">x</span><span class="o">=</span><span class="m">5</span><span class="p">;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Inside: </span><span class="nv">$x</span><span class="s2">"</span><span class="w"> </span><span class="o">)</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Outside: </span><span class="nv">$x</span><span class="s2">"</span><span class="w">   </span><span class="c1"># 输出 Outside: 0</span>
 </span></code></pre></div></td></tr></table></div></p>
 <blockquote>
 <p>PPT 明确指出：“花括号方式是在当前 shell 中执行；圆括号方式是在子 shell 中执行。”这一区别决定了何时使用哪种结构。</p>
@@ -9482,13 +9482,13 @@
 </ul>
 <p>正确示例：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
-<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="p">;</span><span class="w"> </span>date<span class="p">;</span><span class="w"> </span><span class="o">}</span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">;</span><span class="w"> </span>date<span class="p">;</span><span class="w"> </span><span class="o">}</span>
 </span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="o">{</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/tmp<span class="p">;</span><span class="w"> </span>pwd<span class="p">;</span><span class="w"> </span><span class="o">}</span><span class="w"> </span>&gt;<span class="w"> </span>output.txt
 </span></code></pre></div></td></tr></table></div></p>
 <p>错误示例：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
-<span class="normal"><a href="#__codelineno-13-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="o">{</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="o">}</span><span class="w">        </span><span class="c1"># 缺少空格，Shell 会尝试执行名为 &quot;{echo&quot; 的命令</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="w"> </span><span class="o">}</span><span class="w">      </span><span class="c1"># 缺少末尾分号（在单行中）</span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="o">{</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello"</span><span class="o">}</span><span class="w">        </span><span class="c1"># 缺少空格，Shell 会尝试执行名为 "{echo" 的命令</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="o">{</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello"</span><span class="w"> </span><span class="o">}</span><span class="w">      </span><span class="c1"># 缺少末尾分号（在单行中）</span>
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
 <li><strong>圆括号 <code>( )</code> 的宽松语法</strong>：</li>
@@ -9497,7 +9497,7 @@
 </ul>
 <p>正确示例：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
-<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="p">;</span><span class="w"> </span>date<span class="o">)</span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello"</span><span class="p">;</span><span class="w"> </span>date<span class="o">)</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="o">(</span><span class="nb">cd</span><span class="w"> </span>/tmp<span class="p">;</span><span class="w"> </span><span class="nb">pwd</span><span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cat
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
@@ -9540,7 +9540,7 @@
 <p><strong>换行与分号规则</strong>（PPT 强调的关键细节）：</p>
 </li>
 <li><code>then</code> <strong>可以与 <code>if</code> 写在同一行</strong>，但必须用分号 <code>;</code> 分隔：
-    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>file<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Exists&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
+    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span>file<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Exists"</span><span class="p">;</span><span class="w"> </span><span class="k">fi</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li><strong>不能直接将 <code>if</code> 和 <code>then</code> 连写</strong>（如 <code>if [ -f file ] then</code>），这会导致语法错误。</li>
 <li>
@@ -9555,11 +9555,11 @@
 <span class="normal"><a href="#__codelineno-18-5">5</a></span>
 <span class="normal"><a href="#__codelineno-18-6">6</a></span>
 <span class="normal"><a href="#__codelineno-18-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;No arguments provided.&quot;</span>
-</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-r<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;File not readable.&quot;</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"No arguments provided."</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3"></a><span class="k">elif</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-r<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"File not readable."</span>
 </span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5"></a><span class="k">else</span>
-</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span>cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="w">  </span>cat<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
 </span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7"></a><span class="k">fi</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -9614,11 +9614,11 @@
 <span class="normal"><a href="#__codelineno-20-3">3</a></span>
 <span class="normal"><a href="#__codelineno-20-4">4</a></span>
 <span class="normal"><a href="#__codelineno-20-5">5</a></span>
-<span class="normal"><a href="#__codelineno-20-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">  </span>start<span class="o">)</span><span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting service...&quot;</span><span class="p">;;</span>
-</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">  </span>stop<span class="o">)</span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Stopping service...&quot;</span><span class="p">;;</span>
-</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="w">  </span>restart<span class="p">|</span>reload<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Reloading...&quot;</span><span class="p">;;</span>
-</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="w">  </span>*<span class="o">)</span><span class="w">       </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart}&quot;</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;;</span>
+<span class="normal"><a href="#__codelineno-20-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">  </span>start<span class="o">)</span><span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Starting service..."</span><span class="p">;;</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">  </span>stop<span class="o">)</span><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Stopping service..."</span><span class="p">;;</span>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="w">  </span>restart<span class="p">|</span>reload<span class="o">)</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Reloading..."</span><span class="p">;;</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="w">  </span>*<span class="o">)</span><span class="w">       </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart}"</span><span class="p">;</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span><span class="p">;;</span>
 </span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="k">esac</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -9643,8 +9643,8 @@
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
 <span class="normal"><a href="#__codelineno-21-2">2</a></span>
 <span class="normal"><a href="#__codelineno-21-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="c1"># This is a full-line comment</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello&quot;</span><span class="w">  </span><span class="c1"># This is an end-of-line comment</span>
-</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;# This is NOT a comment, it&#39;s part of the string&quot;</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello"</span><span class="w">  </span><span class="c1"># This is an end-of-line comment</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"# This is NOT a comment, it's part of the string"</span>
 </span></code></pre></div></td></tr></table></div></p>
 <ul>
 <li><strong>注意事项</strong>：</li>
@@ -9739,7 +9739,7 @@
 <li>
 <p><strong>基本用法</strong>：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span>
-<span class="normal"><a href="#__codelineno-24-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>expr<span class="w"> </span><span class="s2">&quot;hello123&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s1">&#39;hello\([0-9]*\)&#39;</span>
+<span class="normal"><a href="#__codelineno-24-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1"></a>expr<span class="w"> </span><span class="s2">"hello123"</span><span class="w"> </span>:<span class="w"> </span><span class="s1">'hello\([0-9]*\)'</span>
 </span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2"></a><span class="c1"># 输出：123</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -9751,8 +9751,8 @@
   可使用：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span>
 <span class="normal"><a href="#__codelineno-26-2">2</a></span>
-<span class="normal"><a href="#__codelineno-26-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="nv">line</span><span class="o">=</span><span class="s2">&quot;64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.23 ms&quot;</span>
-</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="nv">rtt</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$line</span><span class="s2">&quot;</span><span class="w"> </span>:<span class="w"> </span><span class="s1">&#39;.*time=\([0-9.]*\) ms&#39;</span><span class="k">)</span>
+<span class="normal"><a href="#__codelineno-26-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="nv">line</span><span class="o">=</span><span class="s2">"64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=1.23 ms"</span>
+</span><span id="__span-26-2"><a id="__codelineno-26-2" name="__codelineno-26-2"></a><span class="nv">rtt</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="s2">"</span><span class="nv">$line</span><span class="s2">"</span><span class="w"> </span>:<span class="w"> </span><span class="s1">'.*time=\([0-9.]*\) ms'</span><span class="k">)</span>
 </span><span id="__span-26-3"><a id="__codelineno-26-3" name="__codelineno-26-3"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$rtt</span><span class="w">   </span><span class="c1"># 输出：1.23</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -9774,7 +9774,7 @@
 <ul>
 <li>
 <p><strong>工作原理</strong>：
-  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;command arg1 arg2&quot;</span>
+  <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-27-1"><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">"command arg1 arg2"</span>
 </span></code></pre></div></td></tr></table></div>
   等价于直接执行：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-28-1"><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="nb">command</span><span class="w"> </span>arg1<span class="w"> </span>arg2
@@ -9821,17 +9821,17 @@
 <span class="normal"><a href="#__codelineno-29-13">13</a></span>
 <span class="normal"><a href="#__codelineno-29-14">14</a></span>
 <span class="normal"><a href="#__codelineno-29-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-29-1"><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="c1"># 假设 cmd 是从配置中读取的命令字符串</span>
-</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="nv">cmd</span><span class="o">=</span><span class="s1">&#39;wget -O /data/page.html http://example.com&#39;</span>
+</span><span id="__span-29-2"><a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="nv">cmd</span><span class="o">=</span><span class="s1">'wget -O /data/page.html http://example.com'</span>
 </span><span id="__span-29-3"><a id="__codelineno-29-3" name="__codelineno-29-3"></a>
 </span><span id="__span-29-4"><a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="nv">attempt</span><span class="o">=</span><span class="m">0</span>
 </span><span id="__span-29-5"><a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="nv">max_attempts</span><span class="o">=</span><span class="m">3</span>
 </span><span id="__span-29-6"><a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$attempt</span><span class="w"> </span>-lt<span class="w"> </span><span class="nv">$max_attempts</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$cmd</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Success!&quot;</span>
+</span><span id="__span-29-7"><a id="__codelineno-29-7" name="__codelineno-29-7"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+</span><span id="__span-29-8"><a id="__codelineno-29-8" name="__codelineno-29-8"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Success!"</span>
 </span><span id="__span-29-9"><a id="__codelineno-29-9" name="__codelineno-29-9"></a><span class="w">    </span><span class="k">break</span>
 </span><span id="__span-29-10"><a id="__codelineno-29-10" name="__codelineno-29-10"></a><span class="w">  </span><span class="k">else</span>
 </span><span id="__span-29-11"><a id="__codelineno-29-11" name="__codelineno-29-11"></a><span class="w">    </span><span class="nv">attempt</span><span class="o">=</span><span class="k">$((</span><span class="nv">attempt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
-</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Attempt </span><span class="nv">$attempt</span><span class="s2"> failed. Retrying in 10 minutes...&quot;</span>
+</span><span id="__span-29-12"><a id="__codelineno-29-12" name="__codelineno-29-12"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Attempt </span><span class="nv">$attempt</span><span class="s2"> failed. Retrying in 10 minutes..."</span>
 </span><span id="__span-29-13"><a id="__codelineno-29-13" name="__codelineno-29-13"></a><span class="w">    </span>sleep<span class="w"> </span><span class="m">600</span>
 </span><span id="__span-29-14"><a id="__codelineno-29-14" name="__codelineno-29-14"></a><span class="w">  </span><span class="k">fi</span>
 </span><span id="__span-29-15"><a id="__codelineno-29-15" name="__codelineno-29-15"></a><span class="k">done</span>
@@ -9846,8 +9846,8 @@
 <p>⚠️ <strong>安全警告</strong>：<br />
 <code>eval</code> 若处理不可信输入（如用户输入、网络数据），极易导致<strong>命令注入漏洞</strong>。例如：
 <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
-<span class="normal"><a href="#__codelineno-30-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;rm -rf /&quot;</span><span class="w">   </span><span class="c1"># 恶意输入</span>
-</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$cmd</span><span class="s2">&quot;</span><span class="w">      </span><span class="c1"># 系统被删除！</span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-30-1"><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="nv">cmd</span><span class="o">=</span><span class="s2">"rm -rf /"</span><span class="w">   </span><span class="c1"># 恶意输入</span>
+</span><span id="__span-30-2"><a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="nv">$cmd</span><span class="s2">"</span><span class="w">      </span><span class="c1"># 系统被删除！</span>
 </span></code></pre></div></td></tr></table></div>
 因此，<strong>仅在完全可控的数据源上使用 <code>eval</code></strong>，否则应避免。</p>
 </blockquote>
@@ -9875,8 +9875,8 @@
 <span class="normal"><a href="#__codelineno-32-2">2</a></span>
 <span class="normal"><a href="#__codelineno-32-3">3</a></span>
 <span class="normal"><a href="#__codelineno-32-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-32-1"><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="c1"># script.sh</span>
-</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="nv">url</span><span class="o">=</span><span class="s2">&quot;http://example.com&quot;</span>
-</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="nv">cmd</span><span class="o">=</span><span class="s2">&quot;curl -s &#39;</span><span class="nv">$url</span><span class="s2">&#39;&quot;</span>
+</span><span id="__span-32-2"><a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="nv">url</span><span class="o">=</span><span class="s2">"http://example.com"</span>
+</span><span id="__span-32-3"><a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="nv">cmd</span><span class="o">=</span><span class="s2">"curl -s '</span><span class="nv">$url</span><span class="s2">'"</span>
 </span><span id="__span-32-4"><a id="__codelineno-32-4" name="__codelineno-32-4"></a><span class="nb">eval</span><span class="w"> </span><span class="nv">$cmd</span>
 </span></code></pre></div></td></tr></table></div>
   运行 <code>sh -x script.sh</code> 输出：
@@ -9884,9 +9884,9 @@
 <span class="normal"><a href="#__codelineno-33-2">2</a></span>
 <span class="normal"><a href="#__codelineno-33-3">3</a></span>
 <span class="normal"><a href="#__codelineno-33-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-33-1"><a id="__codelineno-33-1" name="__codelineno-33-1"></a>+ url=http://example.com
-</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a>+ cmd=&#39;curl -s &#39;\&#39;&#39;http://example.com&#39;\&#39;&#39;&#39;
-</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a>+ eval &#39;curl -s &#39;\&#39;&#39;http://example.com&#39;\&#39;&#39;&#39;
-</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a>++ curl -s &#39;http://example.com&#39;
+</span><span id="__span-33-2"><a id="__codelineno-33-2" name="__codelineno-33-2"></a>+ cmd='curl -s '\''http://example.com'\'''
+</span><span id="__span-33-3"><a id="__codelineno-33-3" name="__codelineno-33-3"></a>+ eval 'curl -s '\''http://example.com'\'''
+</span><span id="__span-33-4"><a id="__codelineno-33-4" name="__codelineno-33-4"></a>++ curl -s 'http://example.com'
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 </ul>
@@ -9924,11 +9924,11 @@
 <span class="normal"><a href="#__codelineno-35-6">6</a></span>
 <span class="normal"><a href="#__codelineno-35-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-35-1"><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="nv">i</span><span class="o">=</span><span class="m">10</span>
 </span><span id="__span-35-2"><a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">...&quot;</span>
+</span><span id="__span-35-3"><a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$i</span><span class="s2">..."</span>
 </span><span id="__span-35-4"><a id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="w">  </span><span class="nv">i</span><span class="o">=</span><span class="k">$((</span><span class="nv">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
 </span><span id="__span-35-5"><a id="__codelineno-35-5" name="__codelineno-35-5"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">1</span>
 </span><span id="__span-35-6"><a id="__codelineno-35-6" name="__codelineno-35-6"></a><span class="k">done</span>
-</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Go!&quot;</span>
+</span><span id="__span-35-7"><a id="__codelineno-35-7" name="__codelineno-35-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Go!"</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>
 <p><strong>等待文件消失（轮询机制）</strong>：
@@ -9938,7 +9938,7 @@
 <span class="normal"><a href="#__codelineno-36-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-36-1"><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="k">while</span><span class="w"> </span><span class="nb">test</span><span class="w"> </span>-r<span class="w"> </span>lockfile<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-36-2"><a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">5</span>
 </span><span id="__span-36-3"><a id="__codelineno-36-3" name="__codelineno-36-3"></a><span class="k">done</span>
-</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Lock released, proceeding.&quot;</span>
+</span><span id="__span-36-4"><a id="__codelineno-36-4" name="__codelineno-36-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Lock released, proceeding."</span>
 </span></code></pre></div></td></tr></table></div>
     此模式常用于进程间同步，如等待另一个程序释放锁文件。</p>
 </li>
@@ -9950,7 +9950,7 @@
 <span class="normal"><a href="#__codelineno-37-4">4</a></span>
 <span class="normal"><a href="#__codelineno-37-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-37-1"><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="nv">host</span><span class="o">=</span><span class="m">1</span>
 </span><span id="__span-37-2"><a id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="k">while</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$host</span><span class="w"> </span>-le<span class="w"> </span><span class="m">254</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="w">  </span>ping<span class="w"> </span>-c1<span class="w"> </span>-w1<span class="w"> </span><span class="m">192</span>.168.1.<span class="nv">$host</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Host </span><span class="nv">$host</span><span class="s2"> is up&quot;</span>
+</span><span id="__span-37-3"><a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="w">  </span>ping<span class="w"> </span>-c1<span class="w"> </span>-w1<span class="w"> </span><span class="m">192</span>.168.1.<span class="nv">$host</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Host </span><span class="nv">$host</span><span class="s2"> is up"</span>
 </span><span id="__span-37-4"><a id="__codelineno-37-4" name="__codelineno-37-4"></a><span class="w">  </span><span class="nv">host</span><span class="o">=</span><span class="k">$((</span><span class="nv">host</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1</span><span class="k">))</span>
 </span><span id="__span-37-5"><a id="__codelineno-37-5" name="__codelineno-37-5"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></p>
@@ -9977,7 +9977,7 @@
     <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span>
 <span class="normal"><a href="#__codelineno-39-2">2</a></span>
 <span class="normal"><a href="#__codelineno-39-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-39-1"><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Processing </span><span class="nv">$file</span><span class="s2">&quot;</span>
+</span><span id="__span-39-2"><a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Processing </span><span class="nv">$file</span><span class="s2">"</span>
 </span><span id="__span-39-3"><a id="__codelineno-39-3" name="__codelineno-39-3"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -9985,7 +9985,7 @@
 <p><strong>语法2：遍历位置参数（省略 <code>in</code> 子句）</strong>
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1">1</a></span>
 <span class="normal"><a href="#__codelineno-40-2">2</a></span>
-<span class="normal"><a href="#__codelineno-40-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="k">for</span><span class="w"> </span>name<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">   </span><span class="c1"># 等价于 for name in &quot;$@&quot;</span>
+<span class="normal"><a href="#__codelineno-40-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-40-1"><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="k">for</span><span class="w"> </span>name<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">   </span><span class="c1"># 等价于 for name in "$@"</span>
 </span><span id="__span-40-2"><a id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="w">  </span>commands
 </span><span id="__span-40-3"><a id="__codelineno-40-3" name="__codelineno-40-3"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></p>
@@ -9998,7 +9998,7 @@
 <span class="normal"><a href="#__codelineno-41-3">3</a></span>
 <span class="normal"><a href="#__codelineno-41-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-41-1"><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="c1"># 脚本 usage: ./script.sh file1 file2 file3</span>
 </span><span id="__span-41-2"><a id="__codelineno-41-2" name="__codelineno-41-2"></a><span class="k">for</span><span class="w"> </span>f<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$f</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$f</span><span class="s2"> exists&quot;</span>
+</span><span id="__span-41-3"><a id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"</span><span class="nv">$f</span><span class="s2"> exists"</span>
 </span><span id="__span-41-4"><a id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></li>
 </ul>
@@ -10049,7 +10049,7 @@
 <span class="normal"><a href="#__codelineno-45-4">4</a></span>
 <span class="normal"><a href="#__codelineno-45-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-45-1"><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 </span><span id="__span-45-2"><a id="__codelineno-45-2" name="__codelineno-45-2"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span>j<span class="w"> </span><span class="k">in</span><span class="w"> </span>a<span class="w"> </span>b<span class="w"> </span>c<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="w">    </span><span class="o">[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;2&quot;</span><span class="w"> </span>-a<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$j</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;b&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="m">2</span>
+</span><span id="__span-45-3"><a id="__codelineno-45-3" name="__codelineno-45-3"></a><span class="w">    </span><span class="o">[</span><span class="w"> </span><span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"2"</span><span class="w"> </span>-a<span class="w"> </span><span class="s2">"</span><span class="nv">$j</span><span class="s2">"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"b"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">break</span><span class="w"> </span><span class="m">2</span>
 </span><span id="__span-45-4"><a id="__codelineno-45-4" name="__codelineno-45-4"></a><span class="w">  </span><span class="k">done</span>
 </span><span id="__span-45-5"><a id="__codelineno-45-5" name="__codelineno-45-5"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></p>
@@ -10065,8 +10065,8 @@
 <span class="normal"><a href="#__codelineno-46-2">2</a></span>
 <span class="normal"><a href="#__codelineno-46-3">3</a></span>
 <span class="normal"><a href="#__codelineno-46-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-46-1"><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>*<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span><span class="w">   </span><span class="c1"># 跳过非普通文件</span>
-</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;File: </span><span class="nv">$file</span><span class="s2">&quot;</span>
+</span><span id="__span-46-2"><a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$file</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">continue</span><span class="w">   </span><span class="c1"># 跳过非普通文件</span>
+</span><span id="__span-46-3"><a id="__codelineno-46-3" name="__codelineno-46-3"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"File: </span><span class="nv">$file</span><span class="s2">"</span>
 </span><span id="__span-46-4"><a id="__codelineno-46-4" name="__codelineno-46-4"></a><span class="k">done</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -10081,7 +10081,7 @@
 <span class="normal"><a href="#__codelineno-47-2">2</a></span>
 <span class="normal"><a href="#__codelineno-47-3">3</a></span>
 <span class="normal"><a href="#__codelineno-47-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-47-1"><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>!<span class="w"> </span>-d<span class="w"> </span>/critical<span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Critical directory missing!&quot;</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
+</span><span id="__span-47-2"><a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Critical directory missing!"</span><span class="w"> </span>&gt;<span class="p">&amp;</span><span class="m">2</span>
 </span><span id="__span-47-3"><a id="__codelineno-47-3" name="__codelineno-47-3"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">1</span>
 </span><span id="__span-47-4"><a id="__codelineno-47-4" name="__codelineno-47-4"></a><span class="k">fi</span>
 </span></code></pre></div></td></tr></table></div></li>
@@ -10124,7 +10124,7 @@
 <span class="normal"><a href="#__codelineno-50-2">2</a></span>
 <span class="normal"><a href="#__codelineno-50-3">3</a></span>
 <span class="normal"><a href="#__codelineno-50-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-50-1"><a id="__codelineno-50-1" name="__codelineno-50-1"></a>greet<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Hello, </span><span class="nv">$1</span><span class="s2">!&quot;</span>
+</span><span id="__span-50-2"><a id="__codelineno-50-2" name="__codelineno-50-2"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Hello, </span><span class="nv">$1</span><span class="s2">!"</span>
 </span><span id="__span-50-3"><a id="__codelineno-50-3" name="__codelineno-50-3"></a><span class="o">}</span>
 </span><span id="__span-50-4"><a id="__codelineno-50-4" name="__codelineno-50-4"></a>greet<span class="w"> </span>World<span class="w">   </span><span class="c1"># 输出：Hello, World!</span>
 </span></code></pre></div></td></tr></table></div></p>
@@ -10149,9 +10149,9 @@
 <span class="normal"><a href="#__codelineno-51-2">2</a></span>
 <span class="normal"><a href="#__codelineno-51-3">3</a></span>
 <span class="normal"><a href="#__codelineno-51-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-51-1"><a id="__codelineno-51-1" name="__codelineno-51-1"></a>checkfile<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
+</span><span id="__span-51-2"><a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span>-f<span class="w"> </span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="m">1</span>
 </span><span id="__span-51-3"><a id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="o">}</span>
-</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4"></a>checkfile<span class="w"> </span>/etc/passwd<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Exists&quot;</span>
+</span><span id="__span-51-4"><a id="__codelineno-51-4" name="__codelineno-51-4"></a>checkfile<span class="w"> </span>/etc/passwd<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Exists"</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li>
@@ -10163,8 +10163,8 @@
 <span class="normal"><a href="#__codelineno-52-2">2</a></span>
 <span class="normal"><a href="#__codelineno-52-3">3</a></span>
 <span class="normal"><a href="#__codelineno-52-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-52-1"><a id="__codelineno-52-1" name="__codelineno-52-1"></a>demo<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">temp</span><span class="o">=</span><span class="s2">&quot;inside&quot;</span><span class="w">   </span><span class="c1"># 仅在函数内有效</span>
-</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="w">  </span><span class="nv">global</span><span class="o">=</span><span class="s2">&quot;visible&quot;</span><span class="w">      </span><span class="c1"># 全局可见</span>
+</span><span id="__span-52-2"><a id="__codelineno-52-2" name="__codelineno-52-2"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">temp</span><span class="o">=</span><span class="s2">"inside"</span><span class="w">   </span><span class="c1"># 仅在函数内有效</span>
+</span><span id="__span-52-3"><a id="__codelineno-52-3" name="__codelineno-52-3"></a><span class="w">  </span><span class="nv">global</span><span class="o">=</span><span class="s2">"visible"</span><span class="w">      </span><span class="c1"># 全局可见</span>
 </span><span id="__span-52-4"><a id="__codelineno-52-4" name="__codelineno-52-4"></a><span class="o">}</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>PPT 明确指出：“函数内定义的变量在函数外仍可见”，强调了 Shell 默认的全局作用域特性。</li>
@@ -10208,31 +10208,31 @@
 <span class="normal"><a href="#__codelineno-53-24">24</a></span>
 <span class="normal"><a href="#__codelineno-53-25">25</a></span>
 <span class="normal"><a href="#__codelineno-53-26">26</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-53-1"><a id="__codelineno-53-1" name="__codelineno-53-1"></a>get_attr<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">prompt</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span>
-</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">default</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$2</span><span class="s2">&quot;</span>
-</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">options</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$3</span><span class="s2">&quot;</span><span class="w">  </span><span class="c1"># 如 &quot;tcp|udp|icmp&quot;</span>
+</span><span id="__span-53-2"><a id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">prompt</span><span class="o">=</span><span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span>
+</span><span id="__span-53-3"><a id="__codelineno-53-3" name="__codelineno-53-3"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">default</span><span class="o">=</span><span class="s2">"</span><span class="nv">$2</span><span class="s2">"</span>
+</span><span id="__span-53-4"><a id="__codelineno-53-4" name="__codelineno-53-4"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span><span class="nv">options</span><span class="o">=</span><span class="s2">"</span><span class="nv">$3</span><span class="s2">"</span><span class="w">  </span><span class="c1"># 如 "tcp|udp|icmp"</span>
 </span><span id="__span-53-5"><a id="__codelineno-53-5" name="__codelineno-53-5"></a><span class="w">  </span><span class="nb">local</span><span class="w"> </span>input
 </span><span id="__span-53-6"><a id="__codelineno-53-6" name="__codelineno-53-6"></a>
 </span><span id="__span-53-7"><a id="__codelineno-53-7" name="__codelineno-53-7"></a><span class="w">  </span><span class="k">while</span><span class="w"> </span>true<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$prompt</span><span class="s2"> [</span><span class="nv">$default</span><span class="s2">]: &quot;</span><span class="w"> </span>input
+</span><span id="__span-53-8"><a id="__codelineno-53-8" name="__codelineno-53-8"></a><span class="w">    </span><span class="nb">read</span><span class="w"> </span>-p<span class="w"> </span><span class="s2">"</span><span class="nv">$prompt</span><span class="s2"> [</span><span class="nv">$default</span><span class="s2">]: "</span><span class="w"> </span>input
 </span><span id="__span-53-9"><a id="__codelineno-53-9" name="__codelineno-53-9"></a><span class="w">    </span><span class="nv">input</span><span class="o">=</span><span class="si">${</span><span class="nv">input</span><span class="k">:-</span><span class="nv">$default</span><span class="si">}</span><span class="w">   </span><span class="c1"># 若为空，使用默认值</span>
 </span><span id="__span-53-10"><a id="__codelineno-53-10" name="__codelineno-53-10"></a>
 </span><span id="__span-53-11"><a id="__codelineno-53-11" name="__codelineno-53-11"></a><span class="w">    </span><span class="c1"># 检查输入是否在允许列表中（简化版）</span>
-</span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$input</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+</span><span id="__span-53-12"><a id="__codelineno-53-12" name="__codelineno-53-12"></a><span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="s2">"</span><span class="nv">$input</span><span class="s2">"</span><span class="w"> </span><span class="k">in</span>
 </span><span id="__span-53-13"><a id="__codelineno-53-13" name="__codelineno-53-13"></a><span class="w">      </span>tcp<span class="p">|</span>udp<span class="p">|</span>icmp<span class="o">)</span>
-</span><span id="__span-53-14"><a id="__codelineno-53-14" name="__codelineno-53-14"></a><span class="w">        </span><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$4</span><span class="s2">=&#39;</span><span class="nv">$input</span><span class="s2">&#39;&quot;</span><span class="w">    </span><span class="c1"># 将结果写入调用者指定的变量</span>
+</span><span id="__span-53-14"><a id="__codelineno-53-14" name="__codelineno-53-14"></a><span class="w">        </span><span class="nb">eval</span><span class="w"> </span><span class="s2">"</span><span class="nv">$4</span><span class="s2">='</span><span class="nv">$input</span><span class="s2">'"</span><span class="w">    </span><span class="c1"># 将结果写入调用者指定的变量</span>
 </span><span id="__span-53-15"><a id="__codelineno-53-15" name="__codelineno-53-15"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
 </span><span id="__span-53-16"><a id="__codelineno-53-16" name="__codelineno-53-16"></a><span class="w">        </span><span class="p">;;</span>
 </span><span id="__span-53-17"><a id="__codelineno-53-17" name="__codelineno-53-17"></a><span class="w">      </span>*<span class="o">)</span>
-</span><span id="__span-53-18"><a id="__codelineno-53-18" name="__codelineno-53-18"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Invalid choice. Please select from: tcp, udp, icmp&quot;</span>
+</span><span id="__span-53-18"><a id="__codelineno-53-18" name="__codelineno-53-18"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">"Invalid choice. Please select from: tcp, udp, icmp"</span>
 </span><span id="__span-53-19"><a id="__codelineno-53-19" name="__codelineno-53-19"></a><span class="w">        </span><span class="p">;;</span>
 </span><span id="__span-53-20"><a id="__codelineno-53-20" name="__codelineno-53-20"></a><span class="w">    </span><span class="k">esac</span>
 </span><span id="__span-53-21"><a id="__codelineno-53-21" name="__codelineno-53-21"></a><span class="w">  </span><span class="k">done</span>
 </span><span id="__span-53-22"><a id="__codelineno-53-22" name="__codelineno-53-22"></a><span class="o">}</span>
 </span><span id="__span-53-23"><a id="__codelineno-53-23" name="__codelineno-53-23"></a>
 </span><span id="__span-53-24"><a id="__codelineno-53-24" name="__codelineno-53-24"></a><span class="c1"># 调用示例</span>
-</span><span id="__span-53-25"><a id="__codelineno-53-25" name="__codelineno-53-25"></a>get_attr<span class="w"> </span><span class="s2">&quot;Choose protocol&quot;</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span><span class="w"> </span><span class="s2">&quot;tcp|udp|icmp&quot;</span><span class="w"> </span>PROTO
-</span><span id="__span-53-26"><a id="__codelineno-53-26" name="__codelineno-53-26"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Selected: </span><span class="nv">$PROTO</span><span class="s2">&quot;</span>
+</span><span id="__span-53-25"><a id="__codelineno-53-25" name="__codelineno-53-25"></a>get_attr<span class="w"> </span><span class="s2">"Choose protocol"</span><span class="w"> </span><span class="s2">"tcp"</span><span class="w"> </span><span class="s2">"tcp|udp|icmp"</span><span class="w"> </span>PROTO
+</span><span id="__span-53-26"><a id="__codelineno-53-26" name="__codelineno-53-26"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Selected: </span><span class="nv">$PROTO</span><span class="s2">"</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li>
@@ -10274,12 +10274,12 @@
 </span><span id="__span-54-7"><a id="__codelineno-54-7" name="__codelineno-54-7"></a>
 </span><span id="__span-54-8"><a id="__codelineno-54-8" name="__codelineno-54-8"></a><span class="c1"># 主程序入口</span>
 </span><span id="__span-54-9"><a id="__codelineno-54-9" name="__codelineno-54-9"></a>main<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-</span><span id="__span-54-10"><a id="__codelineno-54-10" name="__codelineno-54-10"></a><span class="w">  </span>get_attr<span class="w"> </span><span class="s2">&quot;Enter hostname&quot;</span><span class="w"> </span><span class="s2">&quot;localhost&quot;</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>HOST
-</span><span id="__span-54-11"><a id="__codelineno-54-11" name="__codelineno-54-11"></a><span class="w">  </span>get_attr<span class="w"> </span><span class="s2">&quot;Enter port&quot;</span><span class="w"> </span><span class="s2">&quot;80&quot;</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span>PORT
-</span><span id="__span-54-12"><a id="__codelineno-54-12" name="__codelineno-54-12"></a><span class="w">  </span>setup_service<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOST</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$PORT</span><span class="s2">&quot;</span>
+</span><span id="__span-54-10"><a id="__codelineno-54-10" name="__codelineno-54-10"></a><span class="w">  </span>get_attr<span class="w"> </span><span class="s2">"Enter hostname"</span><span class="w"> </span><span class="s2">"localhost"</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span>HOST
+</span><span id="__span-54-11"><a id="__codelineno-54-11" name="__codelineno-54-11"></a><span class="w">  </span>get_attr<span class="w"> </span><span class="s2">"Enter port"</span><span class="w"> </span><span class="s2">"80"</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span>PORT
+</span><span id="__span-54-12"><a id="__codelineno-54-12" name="__codelineno-54-12"></a><span class="w">  </span>setup_service<span class="w"> </span><span class="s2">"</span><span class="nv">$HOST</span><span class="s2">"</span><span class="w"> </span><span class="s2">"</span><span class="nv">$PORT</span><span class="s2">"</span>
 </span><span id="__span-54-13"><a id="__codelineno-54-13" name="__codelineno-54-13"></a><span class="o">}</span>
 </span><span id="__span-54-14"><a id="__codelineno-54-14" name="__codelineno-54-14"></a>
-</span><span id="__span-54-15"><a id="__codelineno-54-15" name="__codelineno-54-15"></a>main<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</span><span id="__span-54-15"><a id="__codelineno-54-15" name="__codelineno-54-15"></a>main<span class="w"> </span><span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
 <li>
@@ -10295,7 +10295,7 @@
 <span class="normal"><a href="#__codelineno-55-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1"></a>curl<span class="w"> </span>-s<span class="w"> </span><span class="se">\</span>
 </span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2"></a><span class="w">     </span>--connect-timeout<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
 </span><span id="__span-55-3"><a id="__codelineno-55-3" name="__codelineno-55-3"></a><span class="w">     </span>--retry<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4"></a><span class="w">     </span><span class="s2">&quot;http://</span><span class="nv">$HOST</span><span class="s2">:</span><span class="nv">$PORT</span><span class="s2">/health&quot;</span>
+</span><span id="__span-55-4"><a id="__codelineno-55-4" name="__codelineno-55-4"></a><span class="w">     </span><span class="s2">"http://</span><span class="nv">$HOST</span><span class="s2">:</span><span class="nv">$PORT</span><span class="s2">/health"</span>
 </span></code></pre></div></td></tr></table></div></p>
 <p>错误示例：
   <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-56-1">1</a></span>

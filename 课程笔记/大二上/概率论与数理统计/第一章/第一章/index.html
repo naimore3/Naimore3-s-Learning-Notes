@@ -8871,7 +8871,7 @@
 </ol>
 <blockquote>
 <p>德摩根律可推广到任意多个事件：
-<span class="arithmatex">\(<span class="arithmatex">\(\overline{\bigcup_{k=1}^{n} A_k} = \bigcap_{k=1}^{n} \bar{A}_k, \qquad \overline{\bigcap_{k=1}^{n} A_k} = \bigcup_{k=1}^{n} \bar{A}_k\)</span>\)</span>
+$<span class="arithmatex">\(\overline{\bigcup_{k=1}^{n} A_k} = \bigcap_{k=1}^{n} \bar{A}_k, \qquad \overline{\bigcap_{k=1}^{n} A_k} = \bigcup_{k=1}^{n} \bar{A}_k\)</span>$
 它的直观意义是："至少一个发生"的对立是"全都不发生"；"全都发生"的对立是"至少一个不发生"。</p>
 </blockquote>
 <p><strong>集合与事件的对应关系</strong>：</p>
@@ -8975,7 +8975,7 @@
 <li><span class="arithmatex">\(0 \leq f_n(A) \leq 1\)</span>；</li>
 <li><span class="arithmatex">\(f_n(S) = 1\)</span>（必然事件在每次试验中都发生）；</li>
 <li>若 <span class="arithmatex">\(A_1, A_2, \dots, A_k\)</span> 是两两互不相容的事件，则
-<span class="arithmatex">\(<span class="arithmatex">\(f_n\left(\bigcup_{i=1}^{k} A_i\right) = \sum_{i=1}^{k} f_n(A_i)\)</span>\)</span></li>
+$<span class="arithmatex">\(f_n\left(\bigcup_{i=1}^{k} A_i\right) = \sum_{i=1}^{k} f_n(A_i)\)</span>$</li>
 </ol>
 <h3 id="132">1.3.2 频率的稳定性<a class="headerlink" href="#132" title="Permanent link">&para;</a></h3>
 <p>大量重复试验表明，当试验次数 <span class="arithmatex">\(n\)</span> 增大时，频率 <span class="arithmatex">\(f_n(A)\)</span> 会在<strong>某个常数</strong>附近摆动，并逐渐稳定于该常数，这种现象称为<strong>频率的稳定性</strong>。历史上有人作过抛硬币试验，其结果如下：</p>
@@ -9024,7 +9024,7 @@
 <li><strong>非负性</strong>：对每个事件 <span class="arithmatex">\(A\)</span>，有 <span class="arithmatex">\(P(A) \geq 0\)</span>；</li>
 <li><strong>规范性</strong>：<span class="arithmatex">\(P(S) = 1\)</span>；</li>
 <li><strong>可列可加性</strong>：若 <span class="arithmatex">\(A_1, A_2, \dots\)</span> 是两两互不相容的事件，则
-<span class="arithmatex">\(<span class="arithmatex">\(P\left(\bigcup_{k=1}^{\infty} A_k\right) = \sum_{k=1}^{\infty} P(A_k)\)</span>\)</span></li>
+$<span class="arithmatex">\(P\left(\bigcup_{k=1}^{\infty} A_k\right) = \sum_{k=1}^{\infty} P(A_k)\)</span>$</li>
 </ol>
 <p>则称 <span class="arithmatex">\(P(A)\)</span> 为事件 <span class="arithmatex">\(A\)</span> 的<strong>概率</strong>。</p>
 <h3 id="134">1.3.4 概率的基本性质<a class="headerlink" href="#134" title="Permanent link">&para;</a></h3>
@@ -9032,21 +9032,21 @@
 <ol>
 <li><strong>不可能事件的概率为零</strong>：<span class="arithmatex">\(P(\varnothing) = 0\)</span>。</li>
 <li><strong>有限可加性</strong>：若 <span class="arithmatex">\(A_1, A_2, \dots, A_n\)</span> 两两互不相容，则
-<span class="arithmatex">\(<span class="arithmatex">\(P\left(\bigcup_{k=1}^{n} A_k\right) = \sum_{k=1}^{n} P(A_k)\)</span>\)</span></li>
+$<span class="arithmatex">\(P\left(\bigcup_{k=1}^{n} A_k\right) = \sum_{k=1}^{n} P(A_k)\)</span>$</li>
 <li><strong>对立事件概率</strong>：<span class="arithmatex">\(P(\bar{A}) = 1 - P(A)\)</span>。</li>
 <li><strong>单调性</strong>：若 <span class="arithmatex">\(A \subset B\)</span>，则 <span class="arithmatex">\(P(A) \leq P(B)\)</span>，且 <span class="arithmatex">\(P(B - A) = P(B) - P(A)\)</span>。</li>
 <li><strong>有界性</strong>：对任意事件 <span class="arithmatex">\(A\)</span>，<span class="arithmatex">\(0 \leq P(A) \leq 1\)</span>。</li>
 <li><strong>加法公式（两事件的加法公式）</strong>：对任意两个事件 <span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>，
-<span class="arithmatex">\(<span class="arithmatex">\(P(A \cup B) = P(A) + P(B) - P(AB)\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A \cup B) = P(A) + P(B) - P(AB)\)</span>$</li>
 </ol>
 <p><strong>加法公式的推广</strong>：对任意 <span class="arithmatex">\(n\)</span> 个事件 <span class="arithmatex">\(A_1, A_2, \dots, A_n\)</span>，有
-<span class="arithmatex">\(<span class="arithmatex">\(P\left(\bigcup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} P(A_i) - \sum_{1 \leq i &lt; j \leq n} P(A_i A_j) + \sum_{1 \leq i &lt; j &lt; k \leq n} P(A_i A_j A_k) - \dots + (-1)^{n-1} P(A_1 A_2 \cdots A_n)\)</span>\)</span></p>
+$<span class="arithmatex">\(P\left(\bigcup_{i=1}^{n} A_i\right) = \sum_{i=1}^{n} P(A_i) - \sum_{1 \leq i &lt; j \leq n} P(A_i A_j) + \sum_{1 \leq i &lt; j &lt; k \leq n} P(A_i A_j A_k) - \dots + (-1)^{n-1} P(A_1 A_2 \cdots A_n)\)</span>$</p>
 <p><strong>例 4</strong> 设事件 <span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span> 的概率分别为 <span class="arithmatex">\(\dfrac{1}{3}\)</span> 和 <span class="arithmatex">\(\dfrac{1}{2}\)</span>，求在下列三种情况下 <span class="arithmatex">\(P(B - A)\)</span> 的值：</p>
 <ol>
 <li><span class="arithmatex">\(A\)</span> 与 <span class="arithmatex">\(B\)</span> 互斥：此时 <span class="arithmatex">\(B - A = B\)</span>，故 <span class="arithmatex">\(P(B - A) = P(B) = \dfrac{1}{2}\)</span>；</li>
 <li><span class="arithmatex">\(A \subset B\)</span>：此时 <span class="arithmatex">\(P(B - A) = P(B) - P(A) = \dfrac{1}{2} - \dfrac{1}{3} = \dfrac{1}{6}\)</span>；</li>
 <li><span class="arithmatex">\(P(AB) = \dfrac{1}{8}\)</span>：由 <span class="arithmatex">\(B = (B - A) \cup AB\)</span> 且 <span class="arithmatex">\(B - A\)</span> 与 <span class="arithmatex">\(AB\)</span> 互斥，得
-<span class="arithmatex">\(<span class="arithmatex">\(P(B - A) = P(B) - P(AB) = \frac{1}{2} - \frac{1}{8} = \frac{3}{8}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B - A) = P(B) - P(AB) = \frac{1}{2} - \frac{1}{8} = \frac{3}{8}\)</span>$</li>
 </ol>
 <hr />
 <h2 id="14">1.4 等可能概型<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
@@ -9062,9 +9062,9 @@
 <p><strong>模型一：摸球模型</strong></p>
 <ol>
 <li><strong>无放回地摸球</strong>（问题 1）：设袋中有 4 只白球和 2 只黑球，现从袋中无放回地依次摸出 2 只球，求这 2 只球都是白球的概率。
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = \frac{C_4^2}{C_6^2} = \frac{6}{15} = \frac{2}{5}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = \frac{C_4^2}{C_6^2} = \frac{6}{15} = \frac{2}{5}\)</span>$</li>
 <li><strong>有放回地摸球</strong>（问题 2）：设袋中有 4 只红球和 6 只黑球，现从袋中有放回地摸球 3 次，求前 2 次摸到黑球、第 3 次摸到红球的概率。
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = \frac{6 \times 6 \times 4}{10 \times 10 \times 10} = \frac{144}{1000} = 0.144\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = \frac{6 \times 6 \times 4}{10 \times 10 \times 10} = \frac{144}{1000} = 0.144\)</span>$</li>
 </ol>
 <blockquote>
 <p>有放回抽样与不放回抽样结果不同：有放回时各次抽取相互独立（每次都是从同样数量的球中取），不放回时后一次的结果受前一次影响（样本空间随抽取次数收缩）。</p>
@@ -9077,9 +9077,9 @@
 <p><strong>模型二：球放入杯子模型</strong></p>
 <ol>
 <li><strong>杯子容量无限</strong>（问题 1）：把 4 个球放到 3 个杯子中去（每个杯子可放任意多个球），求第 1、2 个杯子中各有两个球的概率。
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{C_4^2 C_2^2}{3^4} = \frac{6}{81} = \frac{2}{27}\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{C_4^2 C_2^2}{3^4} = \frac{6}{81} = \frac{2}{27}\)</span>$</li>
 <li><strong>每个杯子只能放一个球</strong>（问题 2）：把 4 个球放到 10 个杯子中去，每个杯子只能放一个球，求第 1 至第 4 个杯子各放一个球的概率。
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{P_4^4}{P_{10}^4} = \frac{4 \times 3 \times 2 \times 1}{10 \times 9 \times 8 \times 7} = \frac{1}{210}\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{P_4^4}{P_{10}^4} = \frac{4 \times 3 \times 2 \times 1}{10 \times 9 \times 8 \times 7} = \frac{1}{210}\)</span>$</li>
 </ol>
 <p><strong>课堂练习</strong>：</p>
 <ul>
@@ -9090,38 +9090,38 @@
 <p><strong>例 5（硬币问题）</strong> 将一枚硬币抛掷三次。</p>
 <ol>
 <li>设事件 <span class="arithmatex">\(A_1\)</span> 为"恰有一次出现正面"，求 <span class="arithmatex">\(P(A_1)\)</span>：
-<span class="arithmatex">\(<span class="arithmatex">\(S = \{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\}, \quad A_1 = \{HTT, THT, TTH\}, \quad P(A_1) = \frac{3}{8}\)</span>\)</span></li>
+$<span class="arithmatex">\(S = \{HHH, HHT, HTH, THH, HTT, THT, TTH, TTT\}, \quad A_1 = \{HTT, THT, TTH\}, \quad P(A_1) = \frac{3}{8}\)</span>$</li>
 <li>设事件 <span class="arithmatex">\(A_2\)</span> 为"至少有一次出现正面"，求 <span class="arithmatex">\(P(A_2)\)</span>：
-<span class="arithmatex">\(<span class="arithmatex">\(A_2 = \{HHH, HHT, HTH, THH, HTT, THT, TTH\}, \quad P(A_2) = \frac{7}{8}\)</span>\)</span></li>
+$<span class="arithmatex">\(A_2 = \{HHH, HHT, HTH, THH, HTT, THT, TTH\}, \quad P(A_2) = \frac{7}{8}\)</span>$</li>
 </ol>
 <p><strong>例 6（超几何分布）</strong> 设有 <span class="arithmatex">\(N\)</span> 件产品，其中有 <span class="arithmatex">\(D\)</span> 件次品，今从中任取 <span class="arithmatex">\(n\)</span> 件，问其中恰有 <span class="arithmatex">\(k\)</span>（<span class="arithmatex">\(k \leq D\)</span>）件次品的概率是多少？
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{C_D^k \, C_{N-D}^{n-k}}{C_N^n}\)</span>\)</span></p>
+$<span class="arithmatex">\(p = \frac{C_D^k \, C_{N-D}^{n-k}}{C_N^n}\)</span>$</p>
 <p><strong>例 7（整除问题）</strong> 在 1~2000 的整数中随机地取一个数，问取到的整数既不能被 6 整除、又不能被 8 整除的概率是多少？</p>
 <ul>
 <li>设 <span class="arithmatex">\(A\)</span> = "取到的数能被 6 整除"，<span class="arithmatex">\(B\)</span> = "取到的数能被 8 整除"；</li>
 <li>因 <span class="arithmatex">\(333 &lt; \dfrac{2000}{6} &lt; 334\)</span>，故 <span class="arithmatex">\(P(A) = \dfrac{333}{2000}\)</span>；又 <span class="arithmatex">\(\dfrac{2000}{8} = 250\)</span>，故 <span class="arithmatex">\(P(B) = \dfrac{250}{2000}\)</span>；因 <span class="arithmatex">\(\dfrac{2000}{24} = 83.\overline{3}\)</span>，故 <span class="arithmatex">\(P(AB) = \dfrac{83}{2000}\)</span>；</li>
 <li>所求（既不能被 6 整除又不能被 8 整除）为
-<span class="arithmatex">\(<span class="arithmatex">\(P(\bar{A}\bar{B}) = P(\overline{A \cup B}) = 1 - \big[P(A) + P(B) - P(AB)\big] = 1 - \frac{333 + 250 - 83}{2000} = 1 - \frac{500}{2000} = \frac{3}{4}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(\bar{A}\bar{B}) = P(\overline{A \cup B}) = 1 - \big[P(A) + P(B) - P(AB)\big] = 1 - \frac{333 + 250 - 83}{2000} = 1 - \frac{500}{2000} = \frac{3}{4}\)</span>$</li>
 </ul>
 <p><strong>例 8（分组问题）</strong> 将 15 名新生随机地平均分配到 3 个班中去，这 15 名新生中有 3 名是优秀生。求：</p>
 <ol>
 <li>每个班各分配到 1 名优秀生的概率：
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{3! \times C_{12}^4 C_8^4 C_4^4}{C_{15}^5 C_{10}^5 C_5^5} = \frac{25}{91}\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{3! \times C_{12}^4 C_8^4 C_4^4}{C_{15}^5 C_{10}^5 C_5^5} = \frac{25}{91}\)</span>$</li>
 <li>3 名优秀生分配在同一班的概率：
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{3 \times C_{12}^2 C_{10}^5 C_5^5}{C_{15}^5 C_{10}^5 C_5^5} = \frac{6}{91}\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{3 \times C_{12}^2 C_{10}^5 C_5^5}{C_{15}^5 C_{10}^5 C_5^5} = \frac{6}{91}\)</span>$</li>
 </ol>
 <p><strong>例 9（接待站问题）</strong> 某接待站在某一周曾接待过 12 次来访，已知这 12 次接待都是在<strong>周二和周四</strong>进行的，问是否可以推断接待时间是有规定的？</p>
 <ul>
 <li>若接待时间没有规定，12 次来访都在周二、周四进行的概率为
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{2^{12}}{7^{12}} = \left(\frac{2}{7}\right)^{12} \approx 0.0000003\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{2^{12}}{7^{12}} = \left(\frac{2}{7}\right)^{12} \approx 0.0000003\)</span>$</li>
 <li>这一概率非常小，说明"接待时间没有规定"的假设与观测事实严重不符，因而可以推断接待时间是有规定的（<strong>小概率事件在实际中几乎是不可能发生的</strong>）。</li>
 </ul>
 <p><strong>例 10（生日问题）</strong> 假设每人的生日在一年 365 天中的任一天是等可能的（都等于 <span class="arithmatex">\(1/365\)</span>），求 64 个人中至少有 2 人生日相同的概率。</p>
 <ul>
 <li>64 个人生日各不相同的概率为
-<span class="arithmatex">\(<span class="arithmatex">\(p_1 = \frac{365 \cdot 364 \cdots (365 - 64 + 1)}{365^{64}}\)</span>\)</span></li>
+$<span class="arithmatex">\(p_1 = \frac{365 \cdot 364 \cdots (365 - 64 + 1)}{365^{64}}\)</span>$</li>
 <li>故 64 个人中至少有 2 人生日相同的概率为
-<span class="arithmatex">\(<span class="arithmatex">\(p = 1 - \frac{365 \cdot 364 \cdots (365 - 64 + 1)}{365^{64}} = 0.997\)</span>\)</span></li>
+$<span class="arithmatex">\(p = 1 - \frac{365 \cdot 364 \cdots (365 - 64 + 1)}{365^{64}} = 0.997\)</span>$</li>
 </ul>
 <blockquote>
 <p>随机选取 <span class="arithmatex">\(n\)</span>（<span class="arithmatex">\(n \leq 365\)</span>）个人，其生日各不相同的概率为 <span class="arithmatex">\(\dfrac{365 \times 364 \times \cdots \times (365 - n + 1)}{365^{n}}\)</span>。用软件包数值计算得：</p>
@@ -9165,22 +9165,22 @@
 <li>设 <span class="arithmatex">\(x\)</span>、<span class="arithmatex">\(y\)</span> 分别为甲、乙两人到达的时刻，则 <span class="arithmatex">\(0 \leq x \leq T\)</span>，<span class="arithmatex">\(0 \leq y \leq T\)</span>，点 <span class="arithmatex">\((x, y)\)</span> 均匀分布在边长为 <span class="arithmatex">\(T\)</span> 的正方形内；</li>
 <li>两人会面的充要条件为 <span class="arithmatex">\(|x - y| \leq t\)</span>，对应正方形内两条直线 <span class="arithmatex">\(y - x = t\)</span> 与 <span class="arithmatex">\(x - y = t\)</span> 之间的带状区域；</li>
 <li>由几何概型，阴影部分面积与正方形面积之比即为所求：
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{T^2 - (T - t)^2}{T^2} = 1 - \left(1 - \frac{t}{T}\right)^2\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{T^2 - (T - t)^2}{T^2} = 1 - \left(1 - \frac{t}{T}\right)^2\)</span>$</li>
 </ul>
 <p><strong>例 12（公共汽车问题）</strong> 甲、乙两人约定在下午 1 时到 2 时之间到某站乘公共汽车，又这段时间内有四班公共汽车，它们的开车时刻分别为 1:15、1:30、1:45、2:00。如果甲、乙约定：(1) 见车就乘；(2) 最多等一辆车。求甲、乙同乘一车的概率。假定甲、乙两人到达车站的时刻是互相不牵连的，且每人在 1 时到 2 时的任何时刻到达车站是等可能的。</p>
 <ul>
 <li>设 <span class="arithmatex">\(x\)</span>、<span class="arithmatex">\(y\)</span> 分别为甲、乙两人到达的时刻，则 <span class="arithmatex">\(1 \leq x \leq 2\)</span>，<span class="arithmatex">\(1 \leq y \leq 2\)</span>，点 <span class="arithmatex">\((x, y)\)</span> 均匀分布在边长为 1 的正方形内；</li>
 <li>(1) <strong>见车就乘</strong>：同乘一车当且仅当两人落在同一班车的发车间隔内（四个间隔：1:00–1:15、1:15–1:30、1:30–1:45、1:45–2:00，各占边长 <span class="arithmatex">\(\dfrac{1}{4}\)</span>），故
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{4 \times \left(\dfrac{1}{4}\right)^2}{(2 - 1)^2} = \frac{1}{4}\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{4 \times \left(\dfrac{1}{4}\right)^2}{(2 - 1)^2} = \frac{1}{4}\)</span>$</li>
 <li>(2) <strong>最多等一辆车</strong>：同乘一车的情形包括"同乘一辆车"（概率 <span class="arithmatex">\(\dfrac{1}{4}\)</span>）与"相差一班车"（共 3 对相邻班次，每对概率 <span class="arithmatex">\(2 \times \left(\dfrac{1}{4}\right)^2 = \dfrac{1}{8}\)</span>），故
-<span class="arithmatex">\(<span class="arithmatex">\(p = \frac{1}{4} + 3 \times \frac{1}{16} \times 2 = \frac{1}{4} + \frac{6}{16} = \frac{5}{8}\)</span>\)</span></li>
+$<span class="arithmatex">\(p = \frac{1}{4} + 3 \times \frac{1}{16} \times 2 = \frac{1}{4} + \frac{6}{16} = \frac{5}{8}\)</span>$</li>
 </ul>
 <p><strong>例 13（蒲丰投针）</strong> 1777 年，法国科学家蒲丰（Buffon）提出了投针试验问题：平面上画有等距离为 <span class="arithmatex">\(a\)</span>（<span class="arithmatex">\(a &gt; 0\)</span>）的一些平行直线，现向此平面任意投掷一根长为 <span class="arithmatex">\(b\)</span>（<span class="arithmatex">\(b &lt; a\)</span>）的针，试求针与某一平行直线相交的概率。</p>
 <ul>
 <li>以 <span class="arithmatex">\(x\)</span> 表示针投到平面上时，针的中点 <span class="arithmatex">\(M\)</span> 到最近的一条平行直线的距离，<span class="arithmatex">\(\varphi\)</span> 表示针与该平行直线的夹角，则针落在平面上的位置可由 <span class="arithmatex">\((x, \varphi)\)</span> 完全确定；</li>
 <li>投针试验的所有可能结果与矩形区域 <span class="arithmatex">\(S = \left\{(x, \varphi) \;\middle|\; 0 \leq x \leq \dfrac{a}{2},\; 0 \leq \varphi \leq \pi\right\}\)</span> 中的所有点一一对应，这是一个几何概型问题；</li>
 <li>针与平行直线相交的条件为 <span class="arithmatex">\(x \leq \dfrac{b}{2} \sin\varphi\)</span>，故所求概率为
-<span class="arithmatex">\(<span class="arithmatex">\(P = \frac{\displaystyle\int_0^{\pi} \frac{b}{2} \sin\varphi \, d\varphi}{\dfrac{a}{2} \cdot \pi} = \frac{b}{\dfrac{a\pi}{2}} = \frac{2b}{a\pi}\)</span>\)</span></li>
+$<span class="arithmatex">\(P = \frac{\displaystyle\int_0^{\pi} \frac{b}{2} \sin\varphi \, d\varphi}{\dfrac{a}{2} \cdot \pi} = \frac{b}{\dfrac{a\pi}{2}} = \frac{2b}{a\pi}\)</span>$</li>
 </ul>
 <p><strong>蒲丰投针试验的应用及意义（蒙特卡罗方法）</strong>：由蒲丰投针公式 <span class="arithmatex">\(P = \dfrac{2b}{a\pi}\)</span> 可反解出 <span class="arithmatex">\(\pi = \dfrac{2b}{aP}\)</span>，用大量投针的频率 <span class="arithmatex">\(P \approx f_n\)</span> 即可近似估计 <span class="arithmatex">\(\pi\)</span> 的值。历史上 Wolf（1850，<span class="arithmatex">\(n = 5000\)</span>，<span class="arithmatex">\(\pi \approx 3.1596\)</span>）、Fox（1884，<span class="arithmatex">\(n = 1030\)</span>，<span class="arithmatex">\(\pi \approx 3.1595\)</span>）、Lazzerini（1901，<span class="arithmatex">\(n = 3408\)</span>，<span class="arithmatex">\(\pi \approx 3.1415929\)</span>）等人都做过此类试验。这种用随机试验（随机模拟）近似计算数值的方法称为<strong>蒙特卡罗（Monte Carlo）方法</strong>，它是现代计算数学中处理复杂数值问题的常用手段。</p>
 <hr />
@@ -9194,7 +9194,7 @@
 <li><span class="arithmatex">\(0 \leq P(B \mid A) \leq 1\)</span>；</li>
 <li><span class="arithmatex">\(P(S \mid A) = 1\)</span>，<span class="arithmatex">\(P(\varnothing \mid A) = 0\)</span>；</li>
 <li>若 <span class="arithmatex">\(B_1, B_2, \dots\)</span> 两两互不相容，则
-<span class="arithmatex">\(<span class="arithmatex">\(P\left(\bigcup_{k=1}^{\infty} B_k \;\middle|\; A\right) = \sum_{k=1}^{\infty} P(B_k \mid A)\)</span>\)</span></li>
+$<span class="arithmatex">\(P\left(\bigcup_{k=1}^{\infty} B_k \;\middle|\; A\right) = \sum_{k=1}^{\infty} P(B_k \mid A)\)</span>$</li>
 </ol>
 <blockquote>
 <p>条件概率 <span class="arithmatex">\(P(B \mid A)\)</span> 本质上是在"缩小了的样本空间" <span class="arithmatex">\(A\)</span> 上计算概率：事件 <span class="arithmatex">\(A\)</span> 发生以后，样本空间由 <span class="arithmatex">\(S\)</span> 收缩为 <span class="arithmatex">\(A\)</span>，事件 <span class="arithmatex">\(B\)</span> 在 <span class="arithmatex">\(A\)</span> 中的"份额" <span class="arithmatex">\(AB\)</span> 与 <span class="arithmatex">\(A\)</span> 之比即为条件概率。</p>
@@ -9204,13 +9204,13 @@
 <li>将产品编号：1、2、3 为一等品，4 号为二等品，以 <span class="arithmatex">\((i, j)\)</span> 表示第一次、第二次分别取到第 <span class="arithmatex">\(i\)</span> 号、第 <span class="arithmatex">\(j\)</span> 号产品；</li>
 <li>样本空间 <span class="arithmatex">\(S\)</span> 含 <span class="arithmatex">\(4 \times 3 = 12\)</span> 个样本点；<span class="arithmatex">\(A\)</span> 含 <span class="arithmatex">\(3 \times 3 = 9\)</span> 个样本点；<span class="arithmatex">\(AB\)</span> 含 <span class="arithmatex">\(3 \times 2 = 6\)</span> 个样本点；</li>
 <li>由条件概率公式（此处可直接用古典概型数样本点）：
-<span class="arithmatex">\(<span class="arithmatex">\(P(B \mid A) = \frac{P(AB)}{P(A)} = \frac{6/12}{9/12} = \frac{2}{3}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B \mid A) = \frac{P(AB)}{P(A)} = \frac{6/12}{9/12} = \frac{2}{3}\)</span>$</li>
 </ul>
 <p>（直观上：第一次取走 1 只一等品后，袋中剩 2 只一等品、1 只二等品共 3 只，第二次取到一等品的概率即为 2/3。）</p>
 <p><strong>例 15（动物寿命）</strong> 某种动物由出生算起活 20 岁以上的概率为 0.8，活到 25 岁以上的概率为 0.4。如果现在有一个 20 岁的这种动物，问它能活到 25 岁以上的概率是多少？</p>
 <ul>
 <li>设 <span class="arithmatex">\(A\)</span> 表示"能活 20 岁以上"的事件，<span class="arithmatex">\(B\)</span> 表示"能活 25 岁以上"的事件，则 <span class="arithmatex">\(B \subset A\)</span>，<span class="arithmatex">\(AB = B\)</span>；
-<span class="arithmatex">\(<span class="arithmatex">\(P(B \mid A) = \frac{P(AB)}{P(A)} = \frac{P(B)}{P(A)} = \frac{0.4}{0.8} = \frac{1}{2}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B \mid A) = \frac{P(AB)}{P(A)} = \frac{P(B)}{P(A)} = \frac{0.4}{0.8} = \frac{1}{2}\)</span>$</li>
 </ul>
 <h3 id="152">1.5.2 乘法公式<a class="headerlink" href="#152" title="Permanent link">&para;</a></h3>
 <p><strong>乘法公式</strong>：设 <span class="arithmatex">\(P(A) &gt; 0\)</span>，则</p>
@@ -9221,7 +9221,7 @@
 <ul>
 <li>设 <span class="arithmatex">\(A_i\)</span> 表示"第 <span class="arithmatex">\(i\)</span> 人抓到有字阄"的事件（<span class="arithmatex">\(i = 1, 2, 3, 4, 5\)</span>），则 <span class="arithmatex">\(P(A_1) = \dfrac{2}{5}\)</span>；</li>
 <li>对第 2 人，由全概率分解：
-<span class="arithmatex">\(<span class="arithmatex">\(P(A_2) = P(A_1)\,P(A_2 \mid A_1) + P(\bar{A}_1)\,P(A_2 \mid \bar{A}_1) = \frac{2}{5} \cdot \frac{1}{4} + \frac{3}{5} \cdot \frac{2}{4} = \frac{2}{5}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A_2) = P(A_1)\,P(A_2 \mid A_1) + P(\bar{A}_1)\,P(A_2 \mid \bar{A}_1) = \frac{2}{5} \cdot \frac{1}{4} + \frac{3}{5} \cdot \frac{2}{4} = \frac{2}{5}\)</span>$</li>
 <li>继续算下去可得 <span class="arithmatex">\(P(A_3) = P(A_4) = P(A_5) = \dfrac{2}{5}\)</span>，<strong>故抓阄与次序无关，各人抓到"有"字阄的概率都相同（都是 2/5）</strong>——先抓不占便宜，后抓不吃亏，这解释了日常生活中"抓阄"的公平性原理。</li>
 </ul>
 <p><strong>例 17（波利亚罐子模型）</strong> 设袋中装有 <span class="arithmatex">\(r\)</span> 只红球、<span class="arithmatex">\(t\)</span> 只白球，每次自袋中随机取出一球，然后放回并再放入 <span class="arithmatex">\(c\)</span> 只与所取出的球同色的球（即"增殖回置"，此模型被波利亚用来作为描述传染病的数学模型）。如此连续进行 <span class="arithmatex">\(n\)</span> 次，求第 <span class="arithmatex">\(n\)</span> 次取出红球的概率。</p>
@@ -9233,7 +9233,7 @@
 <ul>
 <li>以 <span class="arithmatex">\(A_i\)</span>（<span class="arithmatex">\(i = 1, 2, 3\)</span>）表示事件"透镜第 <span class="arithmatex">\(i\)</span> 次落下打破"，以 <span class="arithmatex">\(B\)</span> 表示事件"透镜落下三次而未打破"，则 <span class="arithmatex">\(B = \bar{A}_1 \bar{A}_2 \bar{A}_3\)</span>；</li>
 <li>由乘法公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(B) = P(\bar{A}_1)\,P(\bar{A}_2 \mid \bar{A}_1)\,P(\bar{A}_3 \mid \bar{A}_1 \bar{A}_2) = \frac{1}{2} \times \frac{3}{10} \times \frac{1}{10} = \frac{3}{200}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B) = P(\bar{A}_1)\,P(\bar{A}_2 \mid \bar{A}_1)\,P(\bar{A}_3 \mid \bar{A}_1 \bar{A}_2) = \frac{1}{2} \times \frac{3}{10} \times \frac{1}{10} = \frac{3}{200}\)</span>$</li>
 </ul>
 <h3 id="153">1.5.3 全概率公式<a class="headerlink" href="#153" title="Permanent link">&para;</a></h3>
 <p><strong>定义（样本空间的划分）</strong>：设 <span class="arithmatex">\(S\)</span> 为样本空间，若事件 <span class="arithmatex">\(B_1, B_2, \dots, B_n\)</span> 满足：</p>
@@ -9252,7 +9252,7 @@
 <li>设事件 <span class="arithmatex">\(A\)</span> 为"任取一件为次品"，事件 <span class="arithmatex">\(B_i\)</span> 为"任取一件为 <span class="arithmatex">\(i\)</span> 厂的产品"（<span class="arithmatex">\(i = 1, 2, 3\)</span>），则 <span class="arithmatex">\(B_1, B_2, B_3\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个划分；</li>
 <li><span class="arithmatex">\(P(B_1) = 0.3\)</span>，<span class="arithmatex">\(P(B_2) = 0.5\)</span>，<span class="arithmatex">\(P(B_3) = 0.2\)</span>；<span class="arithmatex">\(P(A \mid B_1) = 0.02\)</span>，<span class="arithmatex">\(P(A \mid B_2) = 0.01\)</span>，<span class="arithmatex">\(P(A \mid B_3) = 0.01\)</span>；</li>
 <li>由全概率公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = 0.02 \times 0.3 + 0.01 \times 0.5 + 0.01 \times 0.2 = 0.006 + 0.005 + 0.002 = 0.013\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = 0.02 \times 0.3 + 0.01 \times 0.5 + 0.01 \times 0.2 = 0.006 + 0.005 + 0.002 = 0.013\)</span>$</li>
 </ul>
 <h3 id="154">1.5.4 贝叶斯公式<a class="headerlink" href="#154" title="Permanent link">&para;</a></h3>
 <p><strong>贝叶斯公式</strong>：设试验 <span class="arithmatex">\(E\)</span> 的样本空间为 <span class="arithmatex">\(S\)</span>，<span class="arithmatex">\(A\)</span> 为 <span class="arithmatex">\(E\)</span> 的事件，<span class="arithmatex">\(B_1, B_2, \dots, B_n\)</span> 为 <span class="arithmatex">\(S\)</span> 的一个划分，且 <span class="arithmatex">\(P(A) &gt; 0\)</span>，<span class="arithmatex">\(P(B_i) &gt; 0\)</span>（<span class="arithmatex">\(i = 1, 2, \dots, n\)</span>），则</p>
@@ -9292,16 +9292,16 @@
 <li>设 <span class="arithmatex">\(A\)</span> 表示"取到的是一只次品"，<span class="arithmatex">\(B_i\)</span>（<span class="arithmatex">\(i = 1, 2, 3\)</span>）表示"所取到的产品是由第 <span class="arithmatex">\(i\)</span> 家工厂提供的"，则 <span class="arithmatex">\(B_1, B_2, B_3\)</span> 是样本空间 <span class="arithmatex">\(S\)</span> 的一个划分；</li>
 <li>已知 <span class="arithmatex">\(P(B_1) = 0.15\)</span>，<span class="arithmatex">\(P(B_2) = 0.80\)</span>，<span class="arithmatex">\(P(B_3) = 0.05\)</span>；<span class="arithmatex">\(P(A \mid B_1) = 0.02\)</span>，<span class="arithmatex">\(P(A \mid B_2) = 0.01\)</span>，<span class="arithmatex">\(P(A \mid B_3) = 0.03\)</span>；</li>
 <li>(1) 由全概率公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = P(A \mid B_1)P(B_1) + P(A \mid B_2)P(B_2) + P(A \mid B_3)P(B_3) = 0.003 + 0.008 + 0.0015 = 0.0125\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = P(A \mid B_1)P(B_1) + P(A \mid B_2)P(B_2) + P(A \mid B_3)P(B_3) = 0.003 + 0.008 + 0.0015 = 0.0125\)</span>$</li>
 <li>(2) 由贝叶斯公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(B_1 \mid A) = \frac{0.02 \times 0.15}{0.0125} = 0.24, \qquad P(B_2 \mid A) = \frac{0.01 \times 0.80}{0.0125} = 0.64, \qquad P(B_3 \mid A) = \frac{0.03 \times 0.05}{0.0125} = 0.12\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B_1 \mid A) = \frac{0.02 \times 0.15}{0.0125} = 0.24, \qquad P(B_2 \mid A) = \frac{0.01 \times 0.80}{0.0125} = 0.64, \qquad P(B_3 \mid A) = \frac{0.03 \times 0.05}{0.0125} = 0.12\)</span>$</li>
 <li>故这只次品来自<strong>第 2 家工厂</strong>的可能性最大。</li>
 </ul>
 <p><strong>例 21（机器调整）</strong> 对以往数据分析结果表明，当机器调整得良好时，产品的合格率为 98%，而当机器发生某种故障时，其合格率为 55%。每天早上机器开动时，机器调整良好的概率为 95%。试求已知某日早上第一件产品是合格品时，机器调整得良好的概率是多少？</p>
 <ul>
 <li>设 <span class="arithmatex">\(A\)</span> 为事件"产品合格"，<span class="arithmatex">\(B\)</span> 为事件"机器调整良好"，则 <span class="arithmatex">\(P(A \mid B) = 0.98\)</span>，<span class="arithmatex">\(P(A \mid \bar{B}) = 0.55\)</span>，<span class="arithmatex">\(P(B) = 0.95\)</span>，<span class="arithmatex">\(P(\bar{B}) = 0.05\)</span>；</li>
 <li>由贝叶斯公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(B \mid A) = \frac{P(A \mid B)\,P(B)}{P(A \mid B)\,P(B) + P(A \mid \bar{B})\,P(\bar{B})} = \frac{0.98 \times 0.95}{0.98 \times 0.95 + 0.55 \times 0.05} = \frac{0.931}{0.9585} = 0.97\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B \mid A) = \frac{P(A \mid B)\,P(B)}{P(A \mid B)\,P(B) + P(A \mid \bar{B})\,P(\bar{B})} = \frac{0.98 \times 0.95}{0.98 \times 0.95 + 0.55 \times 0.05} = \frac{0.931}{0.9585} = 0.97\)</span>$</li>
 <li>即当生产出第一件产品是合格品时，机器调整良好的概率为 <strong>0.97</strong>。</li>
 </ul>
 <blockquote>
@@ -9311,7 +9311,7 @@
 <ul>
 <li>因为 <span class="arithmatex">\(P(A \mid C) = 0.95\)</span>，<span class="arithmatex">\(P(A \mid \bar{C}) = 1 - P(\bar{A} \mid \bar{C}) = 0.05\)</span>，<span class="arithmatex">\(P(C) = 0.005\)</span>，<span class="arithmatex">\(P(\bar{C}) = 0.995\)</span>；</li>
 <li>由贝叶斯公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(C \mid A) = \frac{P(A \mid C)\,P(C)}{P(A \mid C)\,P(C) + P(A \mid \bar{C})\,P(\bar{C})} = \frac{0.95 \times 0.005}{0.95 \times 0.005 + 0.05 \times 0.995} = \frac{0.00475}{0.0545} = 0.087\)</span>\)</span></li>
+$<span class="arithmatex">\(P(C \mid A) = \frac{P(A \mid C)\,P(C)}{P(A \mid C)\,P(C) + P(A \mid \bar{C})\,P(\bar{C})} = \frac{0.95 \times 0.005}{0.95 \times 0.005 + 0.05 \times 0.995} = \frac{0.00475}{0.0545} = 0.087\)</span>$</li>
 <li>即平均 1000 个具有阳性反应的人中大约只有 <strong>87 人</strong>患有癌症。</li>
 </ul>
 <blockquote>
@@ -9321,7 +9321,7 @@
 <ul>
 <li><span class="arithmatex">\(P(AB)\)</span> 表示在样本空间 <span class="arithmatex">\(S\)</span> 中 <span class="arithmatex">\(AB\)</span> 发生的概率；<span class="arithmatex">\(P(B \mid A)\)</span> 表示在缩小的样本空间 <span class="arithmatex">\(S_A\)</span> 中 <span class="arithmatex">\(B\)</span> 发生的概率；</li>
 <li>用古典概率公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(B \mid A) = \frac{AB \text{ 中基本事件数}}{S_A \text{ 中基本事件数}}, \qquad P(AB) = \frac{AB \text{ 中基本事件数}}{S \text{ 中基本事件数}}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B \mid A) = \frac{AB \text{ 中基本事件数}}{S_A \text{ 中基本事件数}}, \qquad P(AB) = \frac{AB \text{ 中基本事件数}}{S \text{ 中基本事件数}}\)</span>$</li>
 <li>一般来说，<span class="arithmatex">\(P(B \mid A)\)</span> 比 <span class="arithmatex">\(P(AB)\)</span> 大。</li>
 </ul>
 <hr />
@@ -9370,30 +9370,30 @@
 </ol>
 <blockquote>
 <p>由定理 2 的结论 2 立即可得"至少一个发生"型问题的通法：若 <span class="arithmatex">\(A_1, A_2, \dots, A_n\)</span> 相互独立，则
-<span class="arithmatex">\(<span class="arithmatex">\(P\left(\bigcup_{i=1}^{n} A_i\right) = 1 - \prod_{i=1}^{n} \left(1 - P(A_i)\right)\)</span>\)</span></p>
+$<span class="arithmatex">\(P\left(\bigcup_{i=1}^{n} A_i\right) = 1 - \prod_{i=1}^{n} \left(1 - P(A_i)\right)\)</span>$</p>
 </blockquote>
 <h3 id="164">1.6.4 例题讲解<a class="headerlink" href="#164" title="Permanent link">&para;</a></h3>
 <p><strong>例 23（射击问题）</strong> 设每一名机枪射击手击落飞机的概率都是 0.2，若 10 名机枪射击手同时向一架飞机射击，问击落飞机的概率是多少？</p>
 <ul>
 <li>设事件 <span class="arithmatex">\(A_i\)</span> 为"第 <span class="arithmatex">\(i\)</span> 名射手击落飞机"（<span class="arithmatex">\(i = 1, 2, \dots, 10\)</span>），事件 <span class="arithmatex">\(B\)</span> 为"击落飞机"，则 <span class="arithmatex">\(B = A_1 \cup A_2 \cup \dots \cup A_{10}\)</span>；</li>
 <li>10 名射手同时射击相互独立，由对立事件与独立性：
-<span class="arithmatex">\(<span class="arithmatex">\(P(B) = 1 - P(\bar{A}_1 \bar{A}_2 \cdots \bar{A}_{10}) = 1 - P(\bar{A}_1)P(\bar{A}_2) \cdots P(\bar{A}_{10}) = 1 - (0.8)^{10} = 0.893\)</span>\)</span></li>
+$<span class="arithmatex">\(P(B) = 1 - P(\bar{A}_1 \bar{A}_2 \cdots \bar{A}_{10}) = 1 - P(\bar{A}_1)P(\bar{A}_2) \cdots P(\bar{A}_{10}) = 1 - (0.8)^{10} = 0.893\)</span>$</li>
 </ul>
 <p><strong>例 24（三人射击，全概率公式与独立性的综合）</strong> 甲、乙、丙三人同时对飞机进行射击，三人击中的概率分别为 0.4、0.5、0.7。飞机被一人击中而被击落的概率为 0.2，被两人击中而被击落的概率为 0.6，若三人都击中飞机必定被击落，求飞机被击落的概率。</p>
 <ul>
 <li>设 <span class="arithmatex">\(A_i\)</span> 表示"有 <span class="arithmatex">\(i\)</span> 个人击中飞机"，<span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>、<span class="arithmatex">\(C\)</span> 分别表示甲、乙、丙击中飞机，则 <span class="arithmatex">\(P(A) = 0.4\)</span>，<span class="arithmatex">\(P(B) = 0.5\)</span>，<span class="arithmatex">\(P(C) = 0.7\)</span>，三人射击相互独立；</li>
 <li>恰有一人击中：<span class="arithmatex">\(A_1 = A\bar{B}\bar{C} \cup \bar{A}B\bar{C} \cup \bar{A}\bar{B}C\)</span>，
-<span class="arithmatex">\(<span class="arithmatex">\(P(A_1) = 0.4 \times 0.5 \times 0.3 + 0.6 \times 0.5 \times 0.3 + 0.6 \times 0.5 \times 0.7 = 0.06 + 0.09 + 0.21 = 0.36\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A_1) = 0.4 \times 0.5 \times 0.3 + 0.6 \times 0.5 \times 0.3 + 0.6 \times 0.5 \times 0.7 = 0.06 + 0.09 + 0.21 = 0.36\)</span>$</li>
 <li>恰有两人击中：<span class="arithmatex">\(A_2 = AB\bar{C} \cup A\bar{B}C \cup \bar{A}BC\)</span>，得 <span class="arithmatex">\(P(A_2) = 0.14 + 0.06 + 0.21 = 0.41\)</span>；</li>
 <li>三人全击中：<span class="arithmatex">\(A_3 = ABC\)</span>，得 <span class="arithmatex">\(P(A_3) = 0.4 \times 0.5 \times 0.7 = 0.14\)</span>；</li>
 <li>由全概率公式，飞机被击落的概率为
-<span class="arithmatex">\(<span class="arithmatex">\(P = 0.2 \times 0.36 + 0.6 \times 0.41 + 1 \times 0.14 = 0.072 + 0.246 + 0.14 = 0.458\)</span>\)</span></li>
+$<span class="arithmatex">\(P = 0.2 \times 0.36 + 0.6 \times 0.41 + 1 \times 0.14 = 0.072 + 0.246 + 0.14 = 0.458\)</span>$</li>
 </ul>
 <p><strong>例 25（伯恩斯坦反例）</strong> 一个均匀的正四面体，其第一面染成红色，第二面染成白色，第三面染成黑色，而第四面同时染上红、白、黑三种颜色。现以 <span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>、<span class="arithmatex">\(C\)</span> 分别记投一次四面体出现红、白、黑颜色朝下的事件，问 <span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>、<span class="arithmatex">\(C\)</span> 是否相互独立？</p>
 <ul>
 <li>由于在四面体中红、白、黑分别出现在两个面上，因此 <span class="arithmatex">\(P(A) = P(B) = P(C) = \dfrac{1}{2}\)</span>；</li>
 <li>又由题意知 <span class="arithmatex">\(P(AB) = P(BC) = P(AC) = \dfrac{1}{4}\)</span>，故有
-<span class="arithmatex">\(<span class="arithmatex">\(P(AB) = P(A)P(B) = \frac{1}{4}, \qquad P(BC) = P(B)P(C) = \frac{1}{4}, \qquad P(AC) = P(A)P(C) = \frac{1}{4}\)</span>\)</span>
+$<span class="arithmatex">\(P(AB) = P(A)P(B) = \frac{1}{4}, \qquad P(BC) = P(B)P(C) = \frac{1}{4}, \qquad P(AC) = P(A)P(C) = \frac{1}{4}\)</span>$
 即三事件 <span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>、<span class="arithmatex">\(C\)</span> <strong>两两独立</strong>；</li>
 <li>但由于 <span class="arithmatex">\(P(ABC) = \dfrac{1}{4} \neq \dfrac{1}{8} = P(A)P(B)P(C)\)</span>，因此 <span class="arithmatex">\(A\)</span>、<span class="arithmatex">\(B\)</span>、<span class="arithmatex">\(C\)</span> <strong>不相互独立</strong>。</li>
 </ul>
@@ -9405,32 +9405,32 @@
 <li>设事件 <span class="arithmatex">\(A_i\)</span> 为"第 <span class="arithmatex">\(i\)</span> 次得 7 点"（<span class="arithmatex">\(i = 1, 2\)</span>），事件 <span class="arithmatex">\(B_i\)</span> 为"第 <span class="arithmatex">\(i\)</span> 次得 11 点"（<span class="arithmatex">\(i = 1, 2\)</span>），事件 <span class="arithmatex">\(A\)</span> 为"两次所得点数分别为 7 与 11"；</li>
 <li>一对骰子掷一次得 7 点有 6 种方式，得 11 点有 2 种方式，样本空间共 <span class="arithmatex">\(6 \times 6 = 36\)</span> 个等可能结果，故 <span class="arithmatex">\(P(A_i) = \dfrac{6}{36}\)</span>，<span class="arithmatex">\(P(B_i) = \dfrac{2}{36}\)</span>；</li>
 <li>两次抛掷相互独立，且"第一次 7、第二次 11"与"第一次 11、第二次 7"互斥：
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = P(A_1 B_2 \cup B_1 A_2) = P(A_1)P(B_2) + P(B_1)P(A_2) = \frac{6}{36} \times \frac{2}{36} + \frac{2}{36} \times \frac{6}{36} = \frac{1}{54}\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = P(A_1 B_2 \cup B_1 A_2) = P(A_1)P(B_2) + P(B_1)P(A_2) = \frac{6}{36} \times \frac{2}{36} + \frac{2}{36} \times \frac{6}{36} = \frac{1}{54}\)</span>$</li>
 </ul>
 <p><strong>例 27（串并联系统）</strong> 一个元件（或系统）能正常工作的概率称为元件（或系统）的<strong>可靠性</strong>。设有 4 个独立工作的元件 1、2、3、4 按先串联再并联的方式联结（称为<strong>串并联系统</strong>），设第 <span class="arithmatex">\(i\)</span> 个元件的可靠性为 <span class="arithmatex">\(p_i\)</span>（<span class="arithmatex">\(i = 1, 2, 3, 4\)</span>）。试求系统的可靠性。</p>
 <ul>
 <li>以 <span class="arithmatex">\(A_i\)</span>（<span class="arithmatex">\(i = 1, 2, 3, 4\)</span>）表示事件"第 <span class="arithmatex">\(i\)</span> 个元件正常工作"，以 <span class="arithmatex">\(A\)</span> 表示系统正常工作，则
-<span class="arithmatex">\(<span class="arithmatex">\(A = A_1 A_2 \cup A_3 A_4\)</span>\)</span></li>
+$<span class="arithmatex">\(A = A_1 A_2 \cup A_3 A_4\)</span>$</li>
 <li>由事件的独立性，得系统的可靠性：
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = P(A_1 A_2) + P(A_3 A_4) - P(A_1 A_2 A_3 A_4) = p_1 p_2 + p_3 p_4 - p_1 p_2 p_3 p_4\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = P(A_1 A_2) + P(A_3 A_4) - P(A_1 A_2 A_3 A_4) = p_1 p_2 + p_3 p_4 - p_1 p_2 p_3 p_4\)</span>$</li>
 </ul>
 <p><strong>例 28（乐器验收）</strong> 要验收一批（100 件）乐器。验收方案如下：自该批乐器中随机地取 3 件测试（设 3 件乐器的测试是相互独立的），如果 3 件中至少有一件在测试中被认为音色不纯，则这批乐器就被拒绝接收。设一件音色不纯的乐器经测试查出其为音色不纯的概率为 0.95；而一件音色纯的乐器经测试被误认为不纯的概率为 0.01。如果已知这 100 件乐器中恰有 4 件是音色不纯的，试问这批乐器被接收的概率是多少？</p>
 <ul>
 <li>设以 <span class="arithmatex">\(H_i\)</span>（<span class="arithmatex">\(i = 0, 1, 2, 3\)</span>）表示事件"随机地取出 3 件乐器，其中恰有 <span class="arithmatex">\(i\)</span> 件音色不纯"，则 <span class="arithmatex">\(H_0, H_1, H_2, H_3\)</span> 是 <span class="arithmatex">\(S\)</span> 的一个划分；以 <span class="arithmatex">\(A\)</span> 表示事件"这批乐器被接收"；</li>
 <li>一件音色纯的乐器经测试被认为音色纯的概率为 0.99，一件音色不纯的乐器经测试被认为音色纯的概率为 0.05，且三件乐器的测试是相互独立的，于是有
-<span class="arithmatex">\(<span class="arithmatex">\(P(A \mid H_0) = (0.99)^3, \qquad P(A \mid H_1) = (0.99)^2 \times 0.05, \qquad P(A \mid H_2) = 0.99 \times (0.05)^2, \qquad P(A \mid H_3) = (0.05)^3\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A \mid H_0) = (0.99)^3, \qquad P(A \mid H_1) = (0.99)^2 \times 0.05, \qquad P(A \mid H_2) = 0.99 \times (0.05)^2, \qquad P(A \mid H_3) = (0.05)^3\)</span>$</li>
 <li>而 <span class="arithmatex">\(P(H_0) = \dfrac{C_{96}^3}{C_{100}^3}\)</span>，<span class="arithmatex">\(P(H_1) = \dfrac{C_4^1 C_{96}^2}{C_{100}^3}\)</span>，<span class="arithmatex">\(P(H_2) = \dfrac{C_4^2 C_{96}^1}{C_{100}^3}\)</span>，<span class="arithmatex">\(P(H_3) = \dfrac{C_4^3}{C_{100}^3}\)</span>；</li>
 <li>故由全概率公式：
-<span class="arithmatex">\(<span class="arithmatex">\(P(A) = \sum_{i=0}^{3} P(A \mid H_i)\,P(H_i) = 0.8574 + 0.0055 + 0 + 0 = 0.8629\)</span>\)</span></li>
+$<span class="arithmatex">\(P(A) = \sum_{i=0}^{3} P(A \mid H_i)\,P(H_i) = 0.8574 + 0.0055 + 0 + 0 = 0.8629\)</span>$</li>
 </ul>
 <p><strong>例 29（乒乓球赛制公平性）</strong> 甲、乙两人进行乒乓球比赛，每局甲胜的概率为 <span class="arithmatex">\(p\)</span>（<span class="arithmatex">\(p \geq \dfrac{1}{2}\)</span>），问对甲而言，采用三局二胜制有利，还是采用五局三胜制有利？设各局胜负相互独立。</p>
 <ul>
 <li><strong>三局二胜制</strong>：甲最终获胜，胜局情况可能是"甲甲"、"乙甲甲"、"甲乙甲"，这三种情况互不相容，由独立性得甲最终获胜的概率为
-<span class="arithmatex">\(<span class="arithmatex">\(p_1 = p^2 + 2p^2(1 - p)\)</span>\)</span></li>
+$<span class="arithmatex">\(p_1 = p^2 + 2p^2(1 - p)\)</span>$</li>
 <li><strong>五局三胜制</strong>：甲最终获胜，至少需比赛 3 局，且最后一局必需是甲胜，而前面甲需胜二局（如比赛四局，胜局情况可能是"甲乙甲甲"、"乙甲甲甲"、"甲甲乙甲"），由独立性得甲最终获胜的概率为
-<span class="arithmatex">\(<span class="arithmatex">\(p_2 = p^3 + C_3^2\, p^3 (1 - p) + C_4^2\, p^3 (1 - p)^2\)</span>\)</span></li>
+$<span class="arithmatex">\(p_2 = p^3 + C_3^2\, p^3 (1 - p) + C_4^2\, p^3 (1 - p)^2\)</span>$</li>
 <li>作差：
-<span class="arithmatex">\(<span class="arithmatex">\(p_2 - p_1 = p^2(6p^3 - 15p^2 + 12p - 3) = 3p^2(p - 1)^2(2p - 1)\)</span>\)</span></li>
+$<span class="arithmatex">\(p_2 - p_1 = p^2(6p^3 - 15p^2 + 12p - 3) = 3p^2(p - 1)^2(2p - 1)\)</span>$</li>
 <li>当 <span class="arithmatex">\(p &gt; \dfrac{1}{2}\)</span> 时，<span class="arithmatex">\(p_2 &gt; p_1\)</span>；当 <span class="arithmatex">\(p = \dfrac{1}{2}\)</span> 时，<span class="arithmatex">\(p_2 = p_1 = \dfrac{1}{2}\)</span>。</li>
 </ul>
 <blockquote>

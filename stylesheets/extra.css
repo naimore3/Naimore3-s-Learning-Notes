@@ -7,57 +7,63 @@
 /* ---------- 1. 设计 Tokens（明暗双套，跟随 Material 主题） ---------- */
 
 [data-md-color-scheme="default"] {
-  --nmd-ink: #2d2a35;            /* 主文字 */
-  --nmd-body: #4a4557;           /* 正文 */
-  --nmd-muted: #857f95;          /* 次要文字 */
-  --nmd-canvas: #fff9fb;         /* 区块底 */
-  --nmd-card: #ffffff;           /* 卡片底 */
-  --nmd-card-2: #fdf1f6;         /* 次级卡底 */
-  --nmd-line: #f3d8e4;           /* 描边 */
-  --nmd-pink: #ec6fa3;           /* 樱粉主色 */
-  --nmd-pink-deep: #d94f8b;
-  --nmd-purple: #7c4dff;         /* 深紫 */
-  --nmd-purple-soft: rgba(124, 77, 255, 0.16);
-  --nmd-amber: #f6a64c;          /* 琥珀点缀 */
-  --nmd-teal: #2f9e9e;           /* 墨青点缀 */
-  --nmd-aurora-1: rgba(236, 111, 163, 0.5);
-  --nmd-aurora-2: rgba(124, 77, 255, 0.34);
-  --nmd-aurora-3: rgba(246, 166, 76, 0.32);
-  --nmd-aurora-4: rgba(47, 158, 158, 0.3);
-  --nmd-grad: linear-gradient(100deg, #ec6fa3 0%, #b26bff 50%, #7c4dff 100%);
-  --nmd-grad-soft: linear-gradient(130deg, #fdeef5 0%, #f6eeff 55%, #fff6ea 100%);
-  --nmd-shadow: 0 1px 2px rgba(45, 42, 53, 0.06), 0 10px 28px -14px rgba(45, 42, 53, 0.14);
-  --nmd-shadow-hover: 0 2px 6px rgba(45, 42, 53, 0.08), 0 20px 44px -18px rgba(124, 77, 255, 0.3);
-  --nmd-badge-bg: rgba(255, 255, 255, 0.6);
-  --nmd-spot-glow: rgba(236, 111, 163, 0.16);
-  --nmd-glass: rgba(255, 255, 255, 0.55);
+  --nmd-ink: #202538;
+  --nmd-body: #4b5067;
+  --nmd-muted: #7d8298;
+  --nmd-canvas: #f7f9ff;
+  --nmd-card: #ffffff;
+  --nmd-card-2: #eef2ff;
+  --nmd-line: #dfe4ff;
+  --nmd-pink: #ff2a6d;
+  --nmd-pink-deep: #d300c5;
+  --nmd-purple: #7c3aed;
+  --nmd-purple-soft: rgba(124, 58, 237, 0.18);
+  --nmd-amber: #f59e0b;
+  --nmd-teal: #14b8a6;
+  --nmd-cyan: #05d9e8;
+  --nmd-grid-line: rgba(5, 217, 232, 0.08);
+  --nmd-scan-line: rgba(5, 217, 232, 0.16);
+  --nmd-aurora-1: rgba(255, 42, 109, 0.34);
+  --nmd-aurora-2: rgba(5, 217, 232, 0.26);
+  --nmd-aurora-3: rgba(124, 58, 237, 0.24);
+  --nmd-aurora-4: rgba(245, 158, 11, 0.2);
+  --nmd-grad: linear-gradient(100deg, #ff2a6d 0%, #7c3aed 52%, #05d9e8 100%);
+  --nmd-grad-soft: radial-gradient(circle at 12% 8%, rgba(255, 42, 109, 0.12), transparent 32%), radial-gradient(circle at 88% 12%, rgba(5, 217, 232, 0.12), transparent 34%), linear-gradient(135deg, #f7f9ff 0%, #eef2ff 50%, #f7f9ff 100%);
+  --nmd-shadow: 0 18px 48px -30px rgba(32, 37, 56, 0.32);
+  --nmd-shadow-hover: 0 20px 56px -24px rgba(255, 42, 109, 0.28);
+  --nmd-badge-bg: rgba(255, 255, 255, 0.72);
+  --nmd-spot-glow: rgba(255, 42, 109, 0.18);
+  --nmd-glass: rgba(255, 255, 255, 0.62);
 }
 
 [data-md-color-scheme="slate"] {
-  --nmd-ink: #f0ecf6;
-  --nmd-body: #c9c3d6;
-  --nmd-muted: #8f88a3;
-  --nmd-canvas: #17151d;
-  --nmd-card: #211d2b;
-  --nmd-card-2: #2a2436;
-  --nmd-line: #3a3348;
-  --nmd-pink: #f48fb1;
-  --nmd-pink-deep: #ff7fb0;
-  --nmd-purple: #b39ddb;
-  --nmd-purple-soft: rgba(179, 157, 219, 0.22);
-  --nmd-amber: #ffb76e;
-  --nmd-teal: #64c5c5;
-  --nmd-aurora-1: rgba(214, 102, 156, 0.42);
-  --nmd-aurora-2: rgba(124, 77, 255, 0.4);
-  --nmd-aurora-3: rgba(214, 138, 61, 0.3);
-  --nmd-aurora-4: rgba(64, 158, 158, 0.3);
-  --nmd-grad: linear-gradient(100deg, #f48fb1 0%, #b39ddb 50%, #a884ff 100%);
-  --nmd-grad-soft: linear-gradient(130deg, #211b2c 0%, #181420 55%, #1e1722 100%);
-  --nmd-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 28px -14px rgba(0, 0, 0, 0.5);
-  --nmd-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.35), 0 20px 44px -18px rgba(179, 157, 219, 0.35);
-  --nmd-badge-bg: rgba(255, 255, 255, 0.07);
-  --nmd-spot-glow: rgba(179, 157, 219, 0.18);
-  --nmd-glass: rgba(255, 255, 255, 0.05);
+  --nmd-ink: #f4f1ff;
+  --nmd-body: #c8c5d8;
+  --nmd-muted: #8f8ba6;
+  --nmd-canvas: #05050a;
+  --nmd-card: #0d0d17;
+  --nmd-card-2: #11111d;
+  --nmd-line: #28263d;
+  --nmd-pink: #ff5c8a;
+  --nmd-pink-deep: #f23bc1;
+  --nmd-purple: #b26bff;
+  --nmd-purple-soft: rgba(178, 107, 255, 0.22);
+  --nmd-amber: #ffc75a;
+  --nmd-teal: #36d6cc;
+  --nmd-cyan: #33e3f1;
+  --nmd-grid-line: rgba(51, 227, 241, 0.07);
+  --nmd-scan-line: rgba(51, 227, 241, 0.2);
+  --nmd-aurora-1: rgba(255, 92, 138, 0.34);
+  --nmd-aurora-2: rgba(51, 227, 241, 0.22);
+  --nmd-aurora-3: rgba(178, 107, 255, 0.24);
+  --nmd-aurora-4: rgba(255, 199, 90, 0.18);
+  --nmd-grad: linear-gradient(100deg, #ff5c8a 0%, #b26bff 52%, #33e3f1 100%);
+  --nmd-grad-soft: radial-gradient(circle at 12% 8%, rgba(255, 92, 138, 0.16), transparent 34%), radial-gradient(circle at 88% 12%, rgba(51, 227, 241, 0.14), transparent 34%), linear-gradient(135deg, #05050a 0%, #0d0d17 55%, #05050a 100%);
+  --nmd-shadow: 0 20px 52px -28px rgba(0, 0, 0, 0.75);
+  --nmd-shadow-hover: 0 22px 58px -24px rgba(255, 92, 138, 0.28);
+  --nmd-badge-bg: rgba(255, 255, 255, 0.08);
+  --nmd-spot-glow: rgba(255, 92, 138, 0.2);
+  --nmd-glass: rgba(13, 13, 23, 0.66);
 }
 
 /* ---------- 2. 通用区块 ---------- */
@@ -1102,4 +1108,121 @@ html.nmd-js .md-typeset .nmd-reveal.is-visible {
   .nmd-hero[data-nmd-phase="c"] .nmd-layer-near,
   .nmd-hero[data-nmd-phase="d"] .nmd-layer-near,
   .nmd-hero[data-nmd-phase="e"] .nmd-layer-near { transform: scale(1.01); }
+}
+
+/* =============================================================
+   亮色赛博朋克增强层
+   ============================================================= */
+
+/* Hero 透视网格：极淡、内容之后、不可交互 */
+.md-typeset .nmd-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--nmd-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--nmd-grid-line) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 76%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 76%);
+}
+
+/* Hero 扫描线：单条光带从顶部扫到底部 */
+.md-typeset .nmd-hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 4;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, var(--nmd-scan-line), transparent);
+  opacity: 0.42;
+  animation: nmd-scan 3.2s linear infinite;
+}
+
+/* 粒子星尘层：纯 CSS，多组 radial-gradient 位移，移动端自动更轻 */
+.md-typeset .nmd-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 12% 22%, var(--nmd-pink) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 74% 16%, var(--nmd-cyan) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 38% 68%, var(--nmd-purple) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 84% 76%, var(--nmd-amber) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 20% 86%, var(--nmd-teal) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 56% 38%, var(--nmd-pink) 0 1px, transparent 1.5px);
+  background-size: 180px 180px, 220px 220px, 260px 260px, 200px 200px, 240px 240px, 280px 280px;
+  animation: nmd-particles-drift 26s linear infinite;
+  opacity: 0.7;
+  mix-blend-mode: normal;
+}
+
+@keyframes nmd-scan {
+  0% { transform: translateY(-140px); }
+  100% { transform: translateY(calc(100vh + 160px)); }
+}
+
+@keyframes nmd-particles-drift {
+  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
+  100% { background-position: 180px 180px, -220px 220px, 260px -260px, -200px -200px, 240px -240px, -280px 280px; }
+}
+
+/* 头像光环改为赛博多色旋转 */
+.md-typeset .nmd-hero-avatar {
+  background: conic-gradient(from 0deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan), var(--nmd-amber), var(--nmd-pink));
+  box-shadow:
+    0 12px 32px -10px rgba(255, 42, 109, 0.42),
+    0 0 18px rgba(5, 217, 232, 0.16);
+}
+
+/* HUD 化的眉题：状态点 + 等宽字距 */
+.md-typeset .nmd-hero-eyebrow {
+  font-family: "SFMono-Regular", "Cascadia Code", "Roboto Mono", monospace;
+  color: var(--nmd-cyan);
+  letter-spacing: 0.28em;
+}
+.md-typeset .nmd-hero-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--nmd-pink);
+  box-shadow: 0 0 12px var(--nmd-pink);
+}
+
+/* 区块标题增加赛博竖条：沿用原规则，改为亮色霓虹渐变 */
+.md-typeset .nmd-title::before {
+  background: linear-gradient(180deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan));
+  box-shadow: 0 0 14px rgba(255, 42, 109, 0.28);
+}
+
+/* 时间线改为三段霓虹线 */
+.md-typeset .nmd-timeline::before {
+  background: linear-gradient(var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan));
+}
+
+/* 按钮保持渐变，但提升发光 */
+.md-typeset .nmd-btn-primary {
+  box-shadow: 0 10px 28px -10px rgba(255, 42, 109, 0.62);
+}
+.md-typeset .nmd-btn-primary:hover {
+  box-shadow: 0 14px 34px -10px rgba(255, 42, 109, 0.76);
+}
+
+/* reduced-motion：彻底停掉新增粒子、网格和扫描线动画 */
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .nmd-hero::after,
+  .md-typeset .nmd-particles {
+    animation: none !important;
+  }
+  .md-typeset .nmd-particles {
+    opacity: 0.28;
+  }
 }

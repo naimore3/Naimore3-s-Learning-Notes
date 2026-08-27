@@ -8805,10 +8805,10 @@
 <p><strong>例 1（银行复利 / 账户增长）</strong>：设账户本金为 <span class="arithmatex">\(M_0\)</span>，每期利率为 <span class="arithmatex">\(P\%\)</span>，<span class="arithmatex">\(M_n\)</span> 表示第 <span class="arithmatex">\(n\)</span> 期末的金额。</p>
 <ol>
 <li><strong>建模</strong>：第 <span class="arithmatex">\(n\)</span> 期末金额 = 第 <span class="arithmatex">\(n-1\)</span> 期末金额 + 本期利息，即
-   <span class="arithmatex">\(<span class="arithmatex">\(M_n = M_{n-1} + \frac{P}{100} M_{n-1} = \left(1 + \frac{P}{100}\right) M_{n-1}\)</span>\)</span></li>
+   $<span class="arithmatex">\(M_n = M_{n-1} + \frac{P}{100} M_{n-1} = \left(1 + \frac{P}{100}\right) M_{n-1}\)</span>$</li>
 <li><strong>化简</strong>：令 <span class="arithmatex">\(r = 1 + \frac{P}{100}\)</span>，得 <span class="arithmatex">\(M_n = r M_{n-1}\)</span>，初始条件 <span class="arithmatex">\(M_0\)</span> 已知。</li>
 <li><strong>迭代求解</strong>（逐步回代）：
-   <span class="arithmatex">\(<span class="arithmatex">\(M_n = r M_{n-1} = r \cdot (r M_{n-2}) = r^2 M_{n-2} = \cdots = r^n M_0\)</span>\)</span></li>
+   $<span class="arithmatex">\(M_n = r M_{n-1} = r \cdot (r M_{n-2}) = r^2 M_{n-2} = \cdots = r^n M_0\)</span>$</li>
 <li><strong>结论</strong>：<span class="arithmatex">\(M_n = \left(1 + \frac{P}{100}\right)^n M_0\)</span>——这正是复利公式。</li>
 </ol>
 <blockquote>
@@ -8869,16 +8869,16 @@
 </ul>
 </li>
 <li><strong>迭代展开</strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(\begin{aligned}
+   $<span class="arithmatex">\(\begin{aligned}
    H_n &amp;= 2H_{n-1} + 1 \\
    &amp;= 2(2H_{n-2} + 1) + 1 = 2^2 H_{n-2} + 2 + 1 \\
    &amp;= 2^2(2H_{n-3} + 1) + 2 + 1 = 2^3 H_{n-3} + 2^2 + 2 + 1 \\
    &amp;\vdots \\
    &amp;= 2^{n-1} H_1 + 2^{n-2} + \cdots + 2 + 1 \\
    &amp;= 2^{n-1} + 2^{n-2} + \cdots + 2 + 1
-   \end{aligned}\)</span>\)</span></li>
+   \end{aligned}\)</span>$</li>
 <li><strong>等比数列求和</strong>：由 <span class="arithmatex">\(\sum_{j=0}^{n-1} ar^j = \frac{ar^n - a}{r - 1}\)</span>（取 <span class="arithmatex">\(a=1, r=2\)</span>）得
-   <span class="arithmatex">\(<span class="arithmatex">\(H_n = \sum_{j=0}^{n-1} 2^j = \frac{2^n - 1}{2 - 1} = 2^n - 1\)</span>\)</span></li>
+   $<span class="arithmatex">\(H_n = \sum_{j=0}^{n-1} 2^j = \frac{2^n - 1}{2 - 1} = 2^n - 1\)</span>$</li>
 <li><strong>答案</strong>：<span class="arithmatex">\(H_n = 2^n - 1\)</span>。例如 <span class="arithmatex">\(H_3 = 7\)</span>（传说中 64 个盘需 <span class="arithmatex">\(2^{64} - 1\)</span> 步）。</li>
 </ol>
 <blockquote>
@@ -8903,26 +8903,26 @@
 <p><strong>Catalan 数计算公式的推导</strong>：</p>
 <ol>
 <li>由 (2-11-1) 式及 <span class="arithmatex">\(h_2 = 1\)</span>，移项得
-   <span class="arithmatex">\(<span class="arithmatex">\(h_{n+1} - 2h_n = h_3 h_{n-1} + h_4 h_{n-2} + \cdots + h_{n-1} h_3\)</span>\)</span></li>
+   $<span class="arithmatex">\(h_{n+1} - 2h_n = h_3 h_{n-1} + h_4 h_{n-2} + \cdots + h_{n-1} h_3\)</span>$</li>
 <li>代入 (2-11-2) 式：
-   <span class="arithmatex">\(<span class="arithmatex">\(\frac{n-3}{2}\, h_n = \frac{n}{2}\left(h_{n+1} - 2h_n\right)\)</span>\)</span></li>
+   $<span class="arithmatex">\(\frac{n-3}{2}\, h_n = \frac{n}{2}\left(h_{n+1} - 2h_n\right)\)</span>$</li>
 <li>整理：<span class="arithmatex">\(2(n-3)h_n = n\, h_{n+1} - 2n\, h_n\)</span>，即
-   <span class="arithmatex">\(<span class="arithmatex">\(n\, h_{n+1} = (4n - 6)\, h_n\)</span>\)</span></li>
+   $<span class="arithmatex">\(n\, h_{n+1} = (4n - 6)\, h_n\)</span>$</li>
 <li>令 <span class="arithmatex">\(a_{n+1} = n\, h_{n+1}\)</span>（即 <span class="arithmatex">\(a_n = (n-1)h_n\)</span>），则 <span class="arithmatex">\(a_2 = h_2 = 1\)</span>，且
-   <span class="arithmatex">\(<span class="arithmatex">\(\frac{a_{n+1}}{a_n} = \frac{n\, h_{n+1}}{(n-1)h_n} = \frac{4n - 6}{n - 1} = \frac{(2n-2)(2n-3)}{(n-1)(n-1)}\)</span>\)</span></li>
+   $<span class="arithmatex">\(\frac{a_{n+1}}{a_n} = \frac{n\, h_{n+1}}{(n-1)h_n} = \frac{4n - 6}{n - 1} = \frac{(2n-2)(2n-3)}{(n-1)(n-1)}\)</span>$</li>
 <li><strong>连乘消去</strong>（望远镜积）：
-   <span class="arithmatex">\(<span class="arithmatex">\(a_{n+1} = \frac{a_{n+1}}{a_n} \cdot \frac{a_n}{a_{n-1}} \cdots \frac{a_3}{a_2} \cdot a_2 = \frac{(2n-2)!}{(n-1)!\,(n-1)!} = \binom{2n-2}{n-1}\)</span>\)</span></li>
+   $<span class="arithmatex">\(a_{n+1} = \frac{a_{n+1}}{a_n} \cdot \frac{a_n}{a_{n-1}} \cdots \frac{a_3}{a_2} \cdot a_2 = \frac{(2n-2)!}{(n-1)!\,(n-1)!} = \binom{2n-2}{n-1}\)</span>$</li>
 <li><strong>结论（Catalan 数公式）</strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(h_{n+1} = \frac{a_{n+1}}{n} = \frac{1}{n} \binom{2n-2}{n-1}\)</span>\)</span></li>
+   $<span class="arithmatex">\(h_{n+1} = \frac{a_{n+1}}{n} = \frac{1}{n} \binom{2n-2}{n-1}\)</span>$</li>
 </ol>
 <p><strong>例 1（<span class="arithmatex">\(h_6\)</span>）</strong>：<span class="arithmatex">\(h_6 = \dfrac{1}{5} \dbinom{8}{4} = \dfrac{1}{5} \times 70 = 14\)</span>，即凸六边形有 14 种三角剖分。</p>
 <p><strong>例 2（括号化方案数）</strong>：<span class="arithmatex">\(x_1 x_2 \cdots x_n\)</span> 是 <span class="arithmatex">\(n\)</span> 个数的乘积，依据乘法结合律、不改变顺序，只用括号表示成对的乘积。问有多少种不同的加括号方案？</p>
 <ol>
 <li><strong>建模</strong>：设 <span class="arithmatex">\(b_n\)</span> 为 <span class="arithmatex">\(n\)</span> 个数乘积的 <span class="arithmatex">\(n-1\)</span> 对括号插入方案数。按<strong>最后一次乘法</strong>的位置分成两部分（前 <span class="arithmatex">\(i\)</span> 个数与后 <span class="arithmatex">\(n-i\)</span> 个数）：
-   <span class="arithmatex">\(<span class="arithmatex">\(b_n = b_1 b_{n-1} + b_2 b_{n-2} + \cdots + b_{n-1} b_1, \quad b_1 = b_2 = 1\)</span>\)</span></li>
+   $<span class="arithmatex">\(b_n = b_1 b_{n-1} + b_2 b_{n-2} + \cdots + b_{n-1} b_1, \quad b_1 = b_2 = 1\)</span>$</li>
 <li><strong>与 Catalan 数挂钩</strong>：令 <span class="arithmatex">\(b_n = h_{n+1}\)</span>（<span class="arithmatex">\(n = 1, 2, 3, \ldots\)</span>），得 <span class="arithmatex">\(h_{n+1} = h_2 h_n + h_3 h_{n-1} + \cdots + h_n h_2\)</span>，且 <span class="arithmatex">\(b_1 = h_2 = 1\)</span>、<span class="arithmatex">\(b_2 = h_3 = 1\)</span>——与 (2-11-1) 完全一致，故 <span class="arithmatex">\(b_n\)</span> <strong>就是 Catalan 数</strong> <span class="arithmatex">\(h_{n+1}\)</span>。</li>
 <li><strong>计算（以 <span class="arithmatex">\(n = 4\)</span> 为例）</strong>：<span class="arithmatex">\(b_4 = h_5 = \dfrac{1}{4} \dbinom{6}{3} = 5\)</span>。四种数 <span class="arithmatex">\(x_1, x_2, x_3, x_4\)</span> 的 5 种加括号方案为：
-   <span class="arithmatex">\(<span class="arithmatex">\(((x_1 x_2) x_3) x_4, \quad (x_1 (x_2 x_3)) x_4, \quad (x_1 x_2)(x_3 x_4), \quad x_1 ((x_2 x_3) x_4), \quad x_1 (x_2 (x_3 x_4))\)</span>\)</span></li>
+   $<span class="arithmatex">\(((x_1 x_2) x_3) x_4, \quad (x_1 (x_2 x_3)) x_4, \quad (x_1 x_2)(x_3 x_4), \quad x_1 ((x_2 x_3) x_4), \quad x_1 (x_2 (x_3 x_4))\)</span>$</li>
 <li><strong>几何解释</strong>：每个加括号方案与一个 5 边形的三角剖分<strong>一一对应</strong>——把 <span class="arithmatex">\(x_1 \times x_2\)</span> 等二元运算用<strong>二叉树</strong>表示（两片叶子为乘数与被乘数、分支点为运算符），恰对应剖分中的三角形。例如 <span class="arithmatex">\(((x_1 x_2) x_3) x_4\)</span> 对应自根到叶依次展开的二叉树。</li>
 </ol>
 <p><strong>例 3（前缀 1 的累计数不小于 0 的累计数）</strong>：由 <span class="arithmatex">\(n\)</span> 个 1 和 <span class="arithmatex">\(n\)</span> 个 0 组成一个 <span class="arithmatex">\(2n\)</span> 位二进制数，要求从左到右扫描时 <strong>1 的累计数始终不小于 0 的累计数</strong>。求满足条件的数的个数。</p>
@@ -8933,7 +8933,7 @@
 <li><strong>关键变换（0 与 1 互换）</strong>：把"首次失衡点之后"的部分做 0↔1 互换，则该数变成由 <span class="arithmatex">\(n+1\)</span> 个 0 与 <span class="arithmatex">\(n-1\)</span> 个 1 组成的 <span class="arithmatex">\(2n\)</span> 位数。</li>
 <li><strong>一一对应</strong>：反过来，任何由 <span class="arithmatex">\(n+1\)</span> 个 0、<span class="arithmatex">\(n-1\)</span> 个 1 组成的 <span class="arithmatex">\(2n\)</span> 位数，因 0 比 1 多 2 个且位数 <span class="arithmatex">\(2n\)</span> 为偶数，必在某个奇数位首次出现 0 累计超过 1 累计；再做同样的互换即还原。故<strong>不合要求的 <span class="arithmatex">\(2n\)</span> 位数与"<span class="arithmatex">\(n+1\)</span> 个 0、<span class="arithmatex">\(n-1\)</span> 个 1 的排列"一一对应</strong>，其个数为 <span class="arithmatex">\(\binom{2n}{n+1}\)</span>。</li>
 <li><strong>结果</strong>：
- <span class="arithmatex">\(<span class="arithmatex">\(a_{2n} = \binom{2n}{n} - \binom{2n}{n+1} = (2n)! \left(\frac{1}{n!\, n!} - \frac{1}{(n-1)!\,(n+1)!}\right) = \frac{1}{n+1} \binom{2n}{n} = h_{n+2}\)</span>\)</span></li>
+ $<span class="arithmatex">\(a_{2n} = \binom{2n}{n} - \binom{2n}{n+1} = (2n)! \left(\frac{1}{n!\, n!} - \frac{1}{(n-1)!\,(n+1)!}\right) = \frac{1}{n+1} \binom{2n}{n} = h_{n+2}\)</span>$</li>
 </ol>
 </li>
 <li><strong>例示</strong>：<span class="arithmatex">\(10100101\)</span> 是由 4 个 0、4 个 1 组成的 8 位二进制数，扫描到第 5 位（打 * 处）时 0 的累计数 3 超过 1 的累计数 2，它对应由 3 个 1、5 个 0 组成的 <span class="arithmatex">\(10100010\)</span>。</li>
@@ -8950,7 +8950,7 @@
 <ol>
 <li><strong>路径化归</strong>：该条件 ⟺ 从 <span class="arithmatex">\((0,1)\)</span> 点出发、<strong>只经过对角线 <span class="arithmatex">\(y=x\)</span> 上方的点</strong>抵达 <span class="arithmatex">\((n-1, n)\)</span> 点（即把例 3 的起点抬高一格、终点平移一格）。</li>
 <li><strong>套用例 3 的结果</strong>：从 <span class="arithmatex">\((0,1)\)</span> 点通过"对角线及其上方"到达 <span class="arithmatex">\((n-1,n)\)</span> 点的路径数为
-   <span class="arithmatex">\(<span class="arithmatex">\(\binom{2n-2}{n-1} - \binom{2n-2}{n} = (2n-2)! \left(\frac{1}{(n-1)!\,(n-1)!} - \frac{1}{n!\,(n-2)!}\right) = \frac{1}{n} \binom{2n-2}{n-1} = h_{n+1}\)</span>\)</span></li>
+   $<span class="arithmatex">\(\binom{2n-2}{n-1} - \binom{2n-2}{n} = (2n-2)! \left(\frac{1}{(n-1)!\,(n-1)!} - \frac{1}{n!\,(n-2)!}\right) = \frac{1}{n} \binom{2n-2}{n-1} = h_{n+1}\)</span>$</li>
 </ol>
 <p><strong>Catalan 数小结</strong>：</p>
 <table>
@@ -9043,22 +9043,22 @@
 <p><strong>定理 1（二阶线性齐次）</strong>：设 <span class="arithmatex">\(a_n = c_1 a_{n-1} + c_2 a_{n-2}\)</span> 的特征方程为 <span class="arithmatex">\(r^2 - c_1 r - c_2 = 0\)</span>。</p>
 <ul>
 <li>(a) 若特征方程有两个<strong>不同</strong>的实根 <span class="arithmatex">\(r_1 \ne r_2\)</span>，则
-  <span class="arithmatex">\(<span class="arithmatex">\(a_n = \alpha_1 r_1^n + \alpha_2 r_2^n \quad (n \ge 0)\)</span>\)</span>
+  $<span class="arithmatex">\(a_n = \alpha_1 r_1^n + \alpha_2 r_2^n \quad (n \ge 0)\)</span>$
   其中 <span class="arithmatex">\(\alpha_1, \alpha_2\)</span> 由初始条件确定。</li>
 <li>(b) 若特征方程只有一个根 <span class="arithmatex">\(r_0\)</span>（重根），则
-  <span class="arithmatex">\(<span class="arithmatex">\(a_n = \alpha_1 r_0^n + \alpha_2 n r_0^n \quad (n \ge 0)\)</span>\)</span>
+  $<span class="arithmatex">\(a_n = \alpha_1 r_0^n + \alpha_2 n r_0^n \quad (n \ge 0)\)</span>$
   其中 <span class="arithmatex">\(\alpha_1, \alpha_2\)</span> 由初始条件确定。</li>
 </ul>
 <p><strong>定理 1(a) 的证明</strong>：设 <span class="arithmatex">\(s_1, s_2\)</span> 是 <span class="arithmatex">\(x^2 - c_1 x - c_2 = 0\)</span> 的两根，则 <span class="arithmatex">\(s_1^2 = c_1 s_1 + c_2\)</span>、<span class="arithmatex">\(s_2^2 = c_1 s_2 + c_2\)</span>。取 <span class="arithmatex">\(a_n = u s_1^n + v s_2^n\)</span>：</p>
 <ol>
 <li>先保证初始条件：取 <span class="arithmatex">\(u, v\)</span> 使 <span class="arithmatex">\(a_0 = u + v\)</span>、<span class="arithmatex">\(a_1 = u s_1 + v s_2\)</span> 成立。</li>
 <li>再验证满足递推关系（用 <span class="arithmatex">\(s_1^2 = c_1 s_1 + c_2\)</span> 替换平方项）：
-   <span class="arithmatex">\(<span class="arithmatex">\(\begin{aligned}
+   $<span class="arithmatex">\(\begin{aligned}
    a_n &amp;= u s_1^n + v s_2^n = u s_1^{n-2} s_1^2 + v s_2^{n-2} s_2^2 \\
    &amp;= u s_1^{n-2}(c_1 s_1 + c_2) + v s_2^{n-2}(c_1 s_2 + c_2) \\
    &amp;= c_1 (u s_1^{n-1} + v s_2^{n-1}) + c_2 (u s_1^{n-2} + v s_2^{n-2}) \\
    &amp;= c_1 a_{n-1} + c_2 a_{n-2}
-   \end{aligned}\)</span>\)</span></li>
+   \end{aligned}\)</span>$</li>
 <li>故 <span class="arithmatex">\(a_n = u s_1^n + v s_2^n\)</span> 正是该递推关系 + 初始条件定义的序列。Q.E.D.（(b) 的证明类似，略）</li>
 </ol>
 <p><strong>例（两不同根）</strong>：求解 <span class="arithmatex">\(a_n = a_{n-1} + 2a_{n-2}\)</span>，初始条件 <span class="arithmatex">\(a_0 = 2\)</span>、<span class="arithmatex">\(a_1 = 7\)</span>。</p>
@@ -9067,7 +9067,7 @@
 <li><strong>求根</strong>：<span class="arithmatex">\(r = \dfrac{1 \pm \sqrt{1 + 8}}{2} = \dfrac{1 \pm 3}{2}\)</span>，得 <span class="arithmatex">\(r_1 = 2\)</span>、<span class="arithmatex">\(r_2 = -1\)</span>。</li>
 <li><strong>写通解</strong>：<span class="arithmatex">\(a_n = \alpha_1 \cdot 2^n + \alpha_2 \cdot (-1)^n\)</span>。</li>
 <li><strong>代入初始条件解 <span class="arithmatex">\(\alpha\)</span></strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(\begin{cases} a_0 = 2 = \alpha_1 + \alpha_2 \\ a_1 = 7 = 2\alpha_1 - \alpha_2 \end{cases}\)</span>\)</span>
+   $<span class="arithmatex">\(\begin{cases} a_0 = 2 = \alpha_1 + \alpha_2 \\ a_1 = 7 = 2\alpha_1 - \alpha_2 \end{cases}\)</span>$
    由 <span class="arithmatex">\(\alpha_2 = 2 - \alpha_1\)</span> 代入第二式：<span class="arithmatex">\(7 = 2\alpha_1 - (2 - \alpha_1) = 3\alpha_1 - 2\)</span>，得 <span class="arithmatex">\(\alpha_1 = 3\)</span>、<span class="arithmatex">\(\alpha_2 = -1\)</span>。</li>
 <li><strong>答案</strong>：<span class="arithmatex">\(a_n = 3 \cdot 2^n - (-1)^n\)</span>。</li>
 <li><strong>检验</strong>：<span class="arithmatex">\(n \ge 0\)</span> 时序列为 <span class="arithmatex">\(2, 7, 11, 25, 47, 97, \ldots\)</span>（<span class="arithmatex">\(a_2 = 3 \cdot 4 - 1 = 11\)</span>，满足 <span class="arithmatex">\(a_2 = a_1 + 2a_0 = 7 + 4 = 11\)</span> ✓）。</li>
@@ -9106,9 +9106,9 @@
 <ol>
 <li><strong>求齐次通解</strong>：相伴齐次递推 <span class="arithmatex">\(a_n = 3a_{n-1}\)</span> 的特征方程 <span class="arithmatex">\(r - 3 = 0\)</span>，通解为 <span class="arithmatex">\(h(n) = \alpha \cdot 3^n\)</span>。</li>
 <li><strong>试特解</strong>：<span class="arithmatex">\(F(n) = 2n\)</span> 是 <span class="arithmatex">\(n\)</span> 的一次多项式，试 <span class="arithmatex">\(p(n) = cn + d\)</span>。代入递推式：
-   <span class="arithmatex">\(<span class="arithmatex">\(cn + d = 3\big(c(n-1) + d\big) + 2n = 3cn - 3c + 3d + 2n\)</span>\)</span></li>
+   $<span class="arithmatex">\(cn + d = 3\big(c(n-1) + d\big) + 2n = 3cn - 3c + 3d + 2n\)</span>$</li>
 <li><strong>比较系数</strong>：<span class="arithmatex">\(cn + d = (3c + 2)n + (3d - 3c)\)</span>，故
-   <span class="arithmatex">\(<span class="arithmatex">\(\begin{cases} c = 3c + 2 \Rightarrow c = -1 \\ d = 3d - 3c \Rightarrow 2d = -3 \Rightarrow d = -\tfrac{3}{2} \end{cases}\)</span>\)</span>
+   $<span class="arithmatex">\(\begin{cases} c = 3c + 2 \Rightarrow c = -1 \\ d = 3d - 3c \Rightarrow 2d = -3 \Rightarrow d = -\tfrac{3}{2} \end{cases}\)</span>$
    得特解 <span class="arithmatex">\(p(n) = -n - \dfrac{3}{2}\)</span>（验证：代入得 <span class="arithmatex">\(a_n\)</span> 序列 <span class="arithmatex">\(-\tfrac{5}{2}, -\tfrac{7}{2}, -\tfrac{9}{2}, \ldots\)</span> ✓）。</li>
 <li><strong>写通解</strong>：<span class="arithmatex">\(a_n = -n - \dfrac{3}{2} + \alpha \cdot 3^n\)</span>。</li>
 <li><strong>定 <span class="arithmatex">\(\alpha\)</span>（用 <span class="arithmatex">\(a_1 = 3\)</span>）</strong>：<span class="arithmatex">\(3 = -1 - \dfrac{3}{2} + 3\alpha \Rightarrow 3\alpha = \dfrac{11}{2} \Rightarrow \alpha = \dfrac{11}{6}\)</span>。</li>
@@ -9188,11 +9188,11 @@
 <p><strong>快速乘法（Fast Multiplication）</strong>：把两个 <span class="arithmatex">\(2n\)</span> 位（<span class="arithmatex">\(b\)</span> 进制）大数 <span class="arithmatex">\(c, d\)</span> 各拆成两半：<span class="arithmatex">\(c = b^n C_1 + C_0\)</span>、<span class="arithmatex">\(d = b^n D_1 + D_0\)</span>。</p>
 <ol>
 <li><strong>展开并重组</strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(\begin{aligned}
+   $<span class="arithmatex">\(\begin{aligned}
    cd &amp;= (b^n C_1 + C_0)(b^n D_1 + D_0) \\
    &amp;= b^{2n} C_1 D_1 + b^n (C_1 D_0 + C_0 D_1) + C_0 D_0 \\
    &amp;= (b^{2n} + b^n) C_1 D_1 + (b^n + 1) C_0 D_0 + b^n (C_1 - C_0)(D_0 - D_1)
-   \end{aligned}\)</span>\)</span>
+   \end{aligned}\)</span>$
    （第二个等号后补了 <span class="arithmatex">\(C_1 D_1 - C_1 D_1\)</span> 与 <span class="arithmatex">\(C_0 D_0 - C_0 D_0\)</span> 作差分解，并把最后一个多项式因式分解为 <span class="arithmatex">\((C_1 - C_0)(D_0 - D_1)\)</span>。）</li>
 <li><strong>关键</strong>：重组后只需要 <strong>3 个 <span class="arithmatex">\(n\)</span> 位数乘法</strong>（<span class="arithmatex">\(C_1 D_1\)</span>、<span class="arithmatex">\(C_0 D_0\)</span>、<span class="arithmatex">\((C_1-C_0)(D_0-D_1)\)</span>），其余都是加减法（<span class="arithmatex">\(\Theta(n)\)</span>）。</li>
 <li><strong>递推</strong>：<span class="arithmatex">\(T(2n) = 3T(n) + \Theta(n)\)</span>，即 <span class="arithmatex">\(T(n) = 3T(n/2) + \Theta(n)\)</span>，其中 <span class="arithmatex">\(a = 3\)</span>、<span class="arithmatex">\(b = 2\)</span>。</li>
@@ -9272,9 +9272,9 @@
 <ol>
 <li><strong>猜测</strong>：分治算法通常复杂度为 <span class="arithmatex">\(\Theta(n \log n)\)</span>，猜测 <span class="arithmatex">\(T(n) = n \log_2 n\)</span>；</li>
 <li><strong>验证</strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(T(n) = 2T(n/2) + n = 2\left(\frac{n}{2} \log_2 \frac{n}{2}\right) + n = n \log_2 n - n + n = n \log_2 n \quad \checkmark\)</span>\)</span></li>
+   $<span class="arithmatex">\(T(n) = 2T(n/2) + n = 2\left(\frac{n}{2} \log_2 \frac{n}{2}\right) + n = n \log_2 n - n + n = n \log_2 n \quad \checkmark\)</span>$</li>
 <li><strong>更一般的猜测</strong>：设 <span class="arithmatex">\(T(n) = a n \log_2 n + b n + c\)</span>，由 <span class="arithmatex">\(T(1) = 0\)</span> 得 <span class="arithmatex">\(b + c = 0\)</span>；代入递推：
-   <span class="arithmatex">\(<span class="arithmatex">\(T(n) = 2\left(a \frac{n}{2} \log_2 \frac{n}{2} + b\frac{n}{2} + c\right) + n = a n \log_2 n + (b + 1 - a)n + 2c\)</span>\)</span>
+   $<span class="arithmatex">\(T(n) = 2\left(a \frac{n}{2} \log_2 \frac{n}{2} + b\frac{n}{2} + c\right) + n = a n \log_2 n + (b + 1 - a)n + 2c\)</span>$
    应与 <span class="arithmatex">\(a n \log_2 n + b n + c\)</span> 相等，故 <span class="arithmatex">\(b + 1 - a = b \Rightarrow a = 1\)</span>，<span class="arithmatex">\(2c = c \Rightarrow c = 0\)</span>，进而 <span class="arithmatex">\(b = 0\)</span>；</li>
 <li><strong>结论</strong>：<span class="arithmatex">\(T(n) = n \log_2 n\)</span>。</li>
 </ol>
@@ -9282,7 +9282,7 @@
 <ol>
 <li><strong>换元</strong>：令 <span class="arithmatex">\(n = 2^k\)</span>，<span class="arithmatex">\(S(k) = T(2^k)\)</span>，则 <span class="arithmatex">\(S(k) = 2S(k-1) + 2^k\)</span>，<span class="arithmatex">\(S(0) = 0\)</span>，<span class="arithmatex">\(S(1) = 2\)</span>；</li>
 <li><strong>消去非齐次项</strong>：<span class="arithmatex">\(S(k) = 2S(k-1) + 2^k\)</span>，<span class="arithmatex">\(S(k-1) = 2S(k-2) + 2^{k-1}\)</span>。由后者 <span class="arithmatex">\(2^k = 2S(k-1) - 4S(k-2)\)</span>，代入前者：
-   <span class="arithmatex">\(<span class="arithmatex">\(S(k) = 2S(k-1) + \big(2S(k-1) - 4S(k-2)\big) = 4S(k-1) - 4S(k-2)\)</span>\)</span></li>
+   $<span class="arithmatex">\(S(k) = 2S(k-1) + \big(2S(k-1) - 4S(k-2)\big) = 4S(k-1) - 4S(k-2)\)</span>$</li>
 <li><strong>特征方程</strong>：<span class="arithmatex">\(r^2 - 4r + 4 = 0\)</span>，唯一根 <span class="arithmatex">\(r = 2\)</span>（重根）→ <span class="arithmatex">\(S(k) = (u + vk)\, 2^k\)</span>；</li>
 <li><strong>定系数</strong>：<span class="arithmatex">\(S(0) = 0 \Rightarrow u = 0\)</span>；<span class="arithmatex">\(S(1) = 2 \Rightarrow 2v = 2 \Rightarrow v = 1\)</span>；</li>
 <li><strong>结论</strong>：<span class="arithmatex">\(S(k) = k \cdot 2^k\)</span>，故 <span class="arithmatex">\(T(n) = T(2^k) = k 2^k = n \log_2 n\)</span>。</li>
@@ -9361,10 +9361,10 @@
 <p><strong>例 9</strong>：求 <span class="arithmatex">\((1+x)^{-n}\)</span> 与 <span class="arithmatex">\((1-x)^{-n}\)</span> 的生成函数（<span class="arithmatex">\(n \in \mathbb{Z}^+\)</span>）。</p>
 <ol>
 <li>由广义二项式定理：
-   <span class="arithmatex">\(<span class="arithmatex">\((1+x)^{-n} = \sum_{k=0}^{\infty} \binom{-n}{k} x^k = \sum_{k=0}^{\infty} (-1)^k \binom{n+k-1}{k} x^k\)</span>\)</span>
+   $<span class="arithmatex">\((1+x)^{-n} = \sum_{k=0}^{\infty} \binom{-n}{k} x^k = \sum_{k=0}^{\infty} (-1)^k \binom{n+k-1}{k} x^k\)</span>$
    （用恒等式 <span class="arithmatex">\(\binom{-n}{k} = (-1)^k \binom{n+k-1}{k}\)</span>。）</li>
 <li>以 <span class="arithmatex">\(-x\)</span> 替换 <span class="arithmatex">\(x\)</span>：
-   <span class="arithmatex">\(<span class="arithmatex">\((1-x)^{-n} = \sum_{k=0}^{\infty} \binom{n+k-1}{k} x^k\)</span>\)</span></li>
+   $<span class="arithmatex">\((1-x)^{-n} = \sum_{k=0}^{\infty} \binom{n+k-1}{k} x^k\)</span>$</li>
 <li><strong>结论</strong>：<span class="arithmatex">\(\dfrac{1}{(1-x)^n}\)</span> 中 <span class="arithmatex">\(x^k\)</span> 的系数为 <span class="arithmatex">\(\binom{n+k-1}{k}\)</span>——这正是"<span class="arithmatex">\(n\)</span> 种元素可重复取 <span class="arithmatex">\(k\)</span> 个"的组合数，生成函数自动给出了答案。</li>
 </ol>
 <h3 id="844">8.4.4 生成函数在计数中的应用<a class="headerlink" href="#844" title="Permanent link">&para;</a></h3>
@@ -9372,10 +9372,10 @@
 <ol>
 <li><strong>构造生成函数</strong>：<span class="arithmatex">\(e_1\)</span> 的取值 <span class="arithmatex">\(2,3,4,5\)</span> 对应因子 <span class="arithmatex">\((x^2 + x^3 + x^4 + x^5)\)</span>，<span class="arithmatex">\(e_2\)</span> 对应 <span class="arithmatex">\((x^3 + x^4 + x^5 + x^6)\)</span>，<span class="arithmatex">\(e_3\)</span> 对应 <span class="arithmatex">\((x^4 + x^5 + x^6 + x^7)\)</span>；</li>
 <li><strong>答案即系数</strong>：解的个数 = 乘积
-   <span class="arithmatex">\(<span class="arithmatex">\((x^2 + x^3 + x^4 + x^5)(x^3 + x^4 + x^5 + x^6)(x^4 + x^5 + x^6 + x^7)\)</span>\)</span>
+   $<span class="arithmatex">\((x^2 + x^3 + x^4 + x^5)(x^3 + x^4 + x^5 + x^6)(x^4 + x^5 + x^6 + x^7)\)</span>$
    中 <span class="arithmatex">\(x^{17}\)</span> 的系数；</li>
 <li><strong>计算</strong>：提出 <span class="arithmatex">\(x^{2+3+4} = x^9\)</span> 后，等价于求 <span class="arithmatex">\((1+x+x^2+x^3)^3\)</span> 中 <span class="arithmatex">\(x^8\)</span> 的系数。由 <span class="arithmatex">\((1+x+x^2+x^3)^3 = \left(\frac{1-x^4}{1-x}\right)^3 = (1 - 3x^4 + 3x^8 - x^{12})\sum_{k \ge 0} \binom{k+2}{2} x^k\)</span>，得系数
-   <span class="arithmatex">\(<span class="arithmatex">\(\binom{10}{2} - 3\binom{6}{2} + 3\binom{2}{2} = 45 - 45 + 3 = 3\)</span>\)</span></li>
+   $<span class="arithmatex">\(\binom{10}{2} - 3\binom{6}{2} + 3\binom{2}{2} = 45 - 45 + 3 = 3\)</span>$</li>
 <li><strong>答案</strong>：共有 <strong>3</strong> 组解（<span class="arithmatex">\((e_1, e_2, e_3) = (4,6,7), (5,5,7), (5,6,6)\)</span>）。</li>
 </ol>
 <blockquote>
@@ -9391,10 +9391,10 @@
 <ol>
 <li><strong>设生成函数</strong>：<span class="arithmatex">\(G(x) = \sum_{k=0}^{\infty} a_k x^k\)</span>。</li>
 <li><strong>把递推代入</strong>：由 <span class="arithmatex">\(a_k x^k = 3a_{k-1} x^k\)</span>，对 <span class="arithmatex">\(k \ge 1\)</span> 求和：
-   <span class="arithmatex">\(<span class="arithmatex">\(\sum_{k=1}^{\infty} a_k x^k = 3 \sum_{k=1}^{\infty} a_{k-1} x^k = 3x \sum_{k=0}^{\infty} a_k x^k = 3x\, G(x)\)</span>\)</span>
+   $<span class="arithmatex">\(\sum_{k=1}^{\infty} a_k x^k = 3 \sum_{k=1}^{\infty} a_{k-1} x^k = 3x \sum_{k=0}^{\infty} a_k x^k = 3x\, G(x)\)</span>$
    左边即 <span class="arithmatex">\(G(x) - a_0\)</span>，故 <span class="arithmatex">\(G(x) - a_0 = 3x\, G(x)\)</span>。</li>
 <li><strong>解出 <span class="arithmatex">\(G(x)\)</span></strong>：<span class="arithmatex">\(a_0 = 2\)</span>，故 <span class="arithmatex">\(G(x)(1 - 3x) = 2\)</span>，即
-   <span class="arithmatex">\(<span class="arithmatex">\(G(x) = \frac{2}{1 - 3x} = 2 \sum_{k=0}^{\infty} (3x)^k = \sum_{k=0}^{\infty} 2 \cdot 3^k x^k\)</span>\)</span></li>
+   $<span class="arithmatex">\(G(x) = \frac{2}{1 - 3x} = 2 \sum_{k=0}^{\infty} (3x)^k = \sum_{k=0}^{\infty} 2 \cdot 3^k x^k\)</span>$</li>
 <li><strong>读出系数</strong>：<span class="arithmatex">\(a_k = 2 \cdot 3^k\)</span>。（对照 §8.2 特征方程法：<span class="arithmatex">\(r - 3 = 0 \Rightarrow r = 3 \Rightarrow a_n = \alpha \cdot 3^n\)</span>，由 <span class="arithmatex">\(a_0 = 2\)</span> 得 <span class="arithmatex">\(\alpha = 2\)</span>，结果一致。）</li>
 </ol>
 <p><strong>例 17（偶数个 0 的码字）</strong>：设 <span class="arithmatex">\(a_n\)</span> 为"含偶数个 0 的 <span class="arithmatex">\(n\)</span> 位十进制码字"个数。用生成函数求解递推关系</p>
@@ -9402,11 +9402,11 @@
 <ol>
 <li><strong>设生成函数</strong>：<span class="arithmatex">\(G(x) = \sum_{n \ge 1} a_n x^n\)</span>，注意 <span class="arithmatex">\(\sum_{n \ge 1} 10^{n-1} x^n = \dfrac{x}{1 - 10x}\)</span>；</li>
 <li><strong>代入递推</strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(G(x) - 9x = 8x\, G(x) + \frac{x}{1 - 10x}\)</span>\)</span></li>
+   $<span class="arithmatex">\(G(x) - 9x = 8x\, G(x) + \frac{x}{1 - 10x}\)</span>$</li>
 <li><strong>解出 <span class="arithmatex">\(G(x)\)</span></strong>：
-   <span class="arithmatex">\(<span class="arithmatex">\(G(x) = \frac{1 - 9x}{(1 - 8x)(1 - 10x)}\)</span>\)</span></li>
+   $<span class="arithmatex">\(G(x) = \frac{1 - 9x}{(1 - 8x)(1 - 10x)}\)</span>$</li>
 <li><strong>（补充说明/拓展）部分分式展开</strong>：<span class="arithmatex">\(\dfrac{1 - 9x}{(1-8x)(1-10x)} = \dfrac{1}{2}\left(\dfrac{1}{1-8x} + \dfrac{1}{1-10x}\right)\)</span>，故
-   <span class="arithmatex">\(<span class="arithmatex">\(a_n = \frac{8^n + 10^n}{2}\)</span>\)</span>
+   $<span class="arithmatex">\(a_n = \frac{8^n + 10^n}{2}\)</span>$
    检验：<span class="arithmatex">\(a_1 = \frac{8+10}{2} = 9\)</span> ✓；<span class="arithmatex">\(a_2 = \frac{64+100}{2} = 82\)</span> ✓。</li>
 </ol>
 <blockquote>

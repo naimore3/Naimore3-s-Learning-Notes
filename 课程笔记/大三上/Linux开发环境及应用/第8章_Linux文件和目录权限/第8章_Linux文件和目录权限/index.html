@@ -9088,7 +9088,7 @@
     <div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
 <span class="normal"><a href="#__codelineno-8-2">2</a></span>
 <span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">umask</span><span class="p">(</span><span class="mo">077</span><span class="p">);</span><span class="w">                     </span><span class="c1">// 屏蔽组和其他权限</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">&quot;data.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_CREAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_WRONLY</span><span class="p">,</span><span class="w"> </span><span class="mo">0666</span><span class="p">);</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">fd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">open</span><span class="p">(</span><span class="s">"data.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">O_CREAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_WRONLY</span><span class="p">,</span><span class="w"> </span><span class="mo">0666</span><span class="p">);</span>
 </span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="c1">// 实际权限 = 0666 &amp; ~077 = 0600 → rw-------</span>
 </span></code></pre></div></td></tr></table></div></p>
 </li>
@@ -9110,7 +9110,7 @@
 </span></code></pre></div></td></tr></table></div></li>
 <li>此时文件对属主变为只读（如权限变为 <code>-r--r--r--</code>）。</li>
 <li>尝试追加内容将失败：
-    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;test&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>file<span class="w">   </span><span class="c1"># 报错：Permission denied</span>
+    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"test"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>file<span class="w">   </span><span class="c1"># 报错：Permission denied</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>
 <p><strong>但该文件仍可被删除</strong>，前提是其所在目录对当前用户具有写权限。<br />
@@ -9151,7 +9151,7 @@
 </li>
 <li>✅ <strong>可以修改已有文件的内容</strong>，只要该文件本身具有写权限。<br />
     例如：
-    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;update&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>existing.txt<span class="w">   </span><span class="c1"># 成功（若 existing.txt 可写）</span>
+    <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"update"</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>existing.txt<span class="w">   </span><span class="c1"># 成功（若 existing.txt 可写）</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li>原因：修改文件内容不涉及目录结构变更，仅需文件自身的 w 权限。</li>
 </ul>

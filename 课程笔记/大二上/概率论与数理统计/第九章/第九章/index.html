@@ -8681,7 +8681,7 @@
 <ul>
 <li><span class="arithmatex">\(\sum_{i=1}^{n_j}(X_{ij} - \bar{X}_{\cdot j})^2\)</span> 是 <span class="arithmatex">\(N(\mu_j, \sigma^2)\)</span> 的样本方差的 <span class="arithmatex">\(n_j - 1\)</span> 倍，即 <span class="arithmatex">\(\dfrac{\sum_{i=1}^{n_j}(X_{ij} - \bar{X}_{\cdot j})^2}{\sigma^2} \sim \chi^2(n_j - 1)\)</span>。又由于各 <span class="arithmatex">\(X_{ij}\)</span> 独立，由 <span class="arithmatex">\(\chi^2\)</span> 分布的可加性知 <span class="arithmatex">\(\dfrac{S_E}{\sigma^2} \sim \chi^2\left(\sum_{j=1}^{s}(n_j - 1)\right) = \chi^2(n - s)\)</span>。故 <strong><span class="arithmatex">\(S_E\)</span> 的自由度为 <span class="arithmatex">\(n - s\)</span></strong>，且 <span class="arithmatex">\(E(S_E) = (n-s)\sigma^2\)</span>；</li>
 <li>因为 <span class="arithmatex">\(\sum_{j=1}^{s} n_j(\bar{X}_{\cdot j} - \bar{X}) = \sum_{j=1}^{s}\sum_{i=1}^{n_j} X_{ij} - n\bar{X} = 0\)</span>，所以 <span class="arithmatex">\(S_A\)</span> 的自由度为 <span class="arithmatex">\(s - 1\)</span>。又因为 <span class="arithmatex">\(\bar{X} \sim N(\mu, \sigma^2/n)\)</span>，可算得
-<span class="arithmatex">\(<span class="arithmatex">\(E(S_A) = E\left[\sum_{j=1}^{s} n_j \bar{X}_{\cdot j}^2 - n\bar{X}^2\right] = (s-1)\sigma^2 + \sum_{j=1}^{s} n_j \delta_j^2\)</span>\)</span></li>
+$<span class="arithmatex">\(E(S_A) = E\left[\sum_{j=1}^{s} n_j \bar{X}_{\cdot j}^2 - n\bar{X}^2\right] = (s-1)\sigma^2 + \sum_{j=1}^{s} n_j \delta_j^2\)</span>$</li>
 <li><span class="arithmatex">\(S_A\)</span> 与 <span class="arithmatex">\(S_E\)</span> <strong>独立</strong>；<span class="arithmatex">\(H_0\)</span> 为真时 <span class="arithmatex">\(S_A/\sigma^2 \sim \chi^2(s-1)\)</span>。</li>
 </ul>
 <h3 id="915">9.1.5 假设检验问题的拒绝域<a class="headerlink" href="#915" title="Permanent link">&para;</a></h3>

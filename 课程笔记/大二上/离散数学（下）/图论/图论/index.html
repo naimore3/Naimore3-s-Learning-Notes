@@ -10160,7 +10160,7 @@
 <div class="arithmatex">\[D = \begin{bmatrix} \infty &amp; 1 &amp; 2 &amp; \infty \\ \infty &amp; \infty &amp; 3 &amp; 3 \\ \infty &amp; \infty &amp; \infty &amp; 2 \\ \infty &amp; \infty &amp; \infty &amp; \infty \end{bmatrix}\]</div>
 <ol>
 <li>求 <span class="arithmatex">\(D^2\)</span>（枚举中转点，逐项取 min）：
-   <span class="arithmatex">\(<span class="arithmatex">\(D^2 = \begin{bmatrix} \infty &amp; \infty &amp; 4 &amp; 4 \\ \infty &amp; \infty &amp; \infty &amp; 5 \\ \infty &amp; \infty &amp; \infty &amp; \infty \\ \infty &amp; \infty &amp; \infty &amp; \infty \end{bmatrix}\)</span>\)</span>
+   $<span class="arithmatex">\(D^2 = \begin{bmatrix} \infty &amp; \infty &amp; 4 &amp; 4 \\ \infty &amp; \infty &amp; \infty &amp; 5 \\ \infty &amp; \infty &amp; \infty &amp; \infty \\ \infty &amp; \infty &amp; \infty &amp; \infty \end{bmatrix}\)</span>$
    其中 <span class="arithmatex">\(d^{(2)}_{13} = d_{12} + d_{23} = 1 + 3 = 4\)</span>，<span class="arithmatex">\(d^{(2)}_{14} = \min(d_{12} + d_{24},\ d_{13} + d_{34}) = \min(1+3,\ 2+2) = 4\)</span>，<span class="arithmatex">\(d^{(2)}_{24} = d_{23} + d_{34} = 3 + 2 = 5\)</span>。</li>
 <li>求 <span class="arithmatex">\(D^3 = D^2 * D\)</span>：<span class="arithmatex">\(d^{(3)}_{14} = d^{(2)}_{13} + d_{34} = 4 + 2 = 6\)</span>，其余为 <span class="arithmatex">\(\infty\)</span>。</li>
 <li>$D^4 = D^3 * D = $ 零矩阵（<span class="arithmatex">\(\infty\)</span> 矩阵）。</li>
@@ -10387,11 +10387,11 @@
 <p><strong>例 3（用删除-收缩公式计算）</strong>：设 <span class="arithmatex">\(G\)</span> 为：三角形 <span class="arithmatex">\(a\text{-}b\text{-}c\)</span>，再加顶点 <span class="arithmatex">\(d\)</span> 仅与 <span class="arithmatex">\(a\)</span> 相连（边 <span class="arithmatex">\(e = \{a,d\}\)</span>）。</p>
 <ol>
 <li><strong>删除</strong> <span class="arithmatex">\(e\)</span>：<span class="arithmatex">\(G_e\)</span> = 三角形 <span class="arithmatex">\(K_3\)</span> + 孤立点 <span class="arithmatex">\(d\)</span>，由定理 1：
-   <span class="arithmatex">\(<span class="arithmatex">\(P_{G_e}(x) = x \cdot x(x-1)(x-2) = x^2(x-1)(x-2)\)</span>\)</span></li>
+   $<span class="arithmatex">\(P_{G_e}(x) = x \cdot x(x-1)(x-2) = x^2(x-1)(x-2)\)</span>$</li>
 <li><strong>收缩</strong> <span class="arithmatex">\(e\)</span>：合并 <span class="arithmatex">\(a, d\)</span> 后恰为 <span class="arithmatex">\(K_3\)</span>：
-   <span class="arithmatex">\(<span class="arithmatex">\(P_{G_e}(x) = x(x-1)(x-2)\)</span>\)</span></li>
+   $<span class="arithmatex">\(P_{G_e}(x) = x(x-1)(x-2)\)</span>$</li>
 <li>由定理 2：
-   <span class="arithmatex">\(<span class="arithmatex">\(P_G(x) = x^2(x-1)(x-2) - x(x-1)(x-2) = x(x-1)^2(x-2)\)</span>\)</span></li>
+   $<span class="arithmatex">\(P_G(x) = x^2(x-1)(x-2) - x(x-1)(x-2) = x(x-1)^2(x-2)\)</span>$</li>
 <li>使 <span class="arithmatex">\(P_G(x) &gt; 0\)</span> 的最小 <span class="arithmatex">\(x\)</span> 为 3 → <span class="arithmatex">\(\chi(G) = 3\)</span>。</li>
 </ol>
 <blockquote>

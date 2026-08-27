@@ -9412,7 +9412,7 @@
 <div class="arithmatex">\[S \circ R = \{(a,c) \mid \exists b \in B: (a,b) \in R \text{ 且 } (b,c) \in S\}\]</div>
 <ul>
 <li>例 20：<span class="arithmatex">\(R\)</span> 是从 <span class="arithmatex">\(\{1,2,3\}\)</span> 到 <span class="arithmatex">\(\{1,2,3,4\}\)</span> 的关系 <span class="arithmatex">\(R = \{(1,1),(1,4),(2,3),(3,1),(3,4)\}\)</span>，<span class="arithmatex">\(S\)</span> 是从 <span class="arithmatex">\(\{1,2,3,4\}\)</span> 到 <span class="arithmatex">\(\{0,1,2\}\)</span> 的关系 <span class="arithmatex">\(S = \{(1,0),(2,0),(3,1),(3,2),(4,1)\}\)</span>，则
-  <span class="arithmatex">\(<span class="arithmatex">\(S \circ R = \{(1,0),(1,1),(2,1),(2,2),(3,0),(3,1)\}\)</span>\)</span>
+  $<span class="arithmatex">\(S \circ R = \{(1,0),(1,1),(2,1),(2,2),(3,0),(3,1)\}\)</span>$
   例如 <span class="arithmatex">\((2,3) \in R\)</span> 且 <span class="arithmatex">\((3,1), (3,2) \in S\)</span>，故 <span class="arithmatex">\((2,1), (2,2) \in S \circ R\)</span>。</li>
 </ul>
 <p><strong>复合的复合 = 幂（powers）</strong>：</p>
@@ -9519,7 +9519,7 @@
 <div class="arithmatex">\[M_R[i][j] = 1 \iff (a_i, b_j) \in R; \qquad M_R[i][j] = 0 \iff (a_i, b_j) \notin R\]</div>
 <ul>
 <li>例（喜欢关系）：Joe 喜欢 Susan 与 Mary，Fred 喜欢 Mary，Mark 喜欢 Sally；行 = Joe, Fred, Mark，列 = Susan, Mary, Sally：
-  <span class="arithmatex">\(<span class="arithmatex">\(M_{Likes} = \begin{bmatrix} 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>\)</span></li>
+  $<span class="arithmatex">\(M_{Likes} = \begin{bmatrix} 1 &amp; 1 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{bmatrix}\)</span>$</li>
 <li>例：<span class="arithmatex">\(A=\{1,2,3\}\)</span>，<span class="arithmatex">\(B=\{1,2\}\)</span>，<span class="arithmatex">\(R=\{(2,1),(3,1),(3,2)\}\)</span> → 矩阵 <span class="arithmatex">\(\begin{bmatrix} 0 &amp; 0 \\ 1 &amp; 0 \\ 1 &amp; 1 \end{bmatrix}\)</span>（行 = 1,2,3；列 = 1,2）。</li>
 <li>例：<span class="arithmatex">\(A=\{1,2,3,4\}\)</span> 上 <span class="arithmatex">\(R\)</span> 含 <span class="arithmatex">\((1,1),(2,2),(3,3),(4,4),(1,2),(2,3),(1,3),(3,4)\)</span> → <span class="arithmatex">\(4 \times 4\)</span> 矩阵，对角元全 1，另有 <span class="arithmatex">\((1,2),(2,3),(1,3),(3,4)\)</span> 置 1。</li>
 </ul>
@@ -9633,7 +9633,7 @@ $$t(R)：\text{包含 } R \text{ 且传递的 } A \text{ 上最小的关系}\]</
 <p><strong>定理 3（传递闭包的路径刻画）</strong>：<span class="arithmatex">\(R\)</span> 是 <span class="arithmatex">\(A\)</span> 上的关系，<span class="arithmatex">\((a,b) \in t(R)\)</span> 当且仅当<strong>存在一条从 <span class="arithmatex">\(a\)</span> 到 <span class="arithmatex">\(b\)</span> 的长度 ≥ 1 的路径</strong>（即从 <span class="arithmatex">\(a\)</span> 出发沿 <span class="arithmatex">\(R\)</span> 的边能走到 <span class="arithmatex">\(b\)</span>）。</p>
 <ul>
 <li>推论（矩阵形式）：令 <span class="arithmatex">\(M_R\)</span> 为 <span class="arithmatex">\(R\)</span> 的矩阵，<span class="arithmatex">\(A\)</span> 有 <span class="arithmatex">\(n\)</span> 个元素，则
-  <span class="arithmatex">\(<span class="arithmatex">\(M_{t(R)} = M_R \lor M_R^2 \lor M_R^3 \lor \cdots \lor M_R^n\)</span>\)</span></li>
+  $<span class="arithmatex">\(M_{t(R)} = M_R \lor M_R^2 \lor M_R^3 \lor \cdots \lor M_R^n\)</span>$</li>
 <li>直观：<span class="arithmatex">\(R^k\)</span> 的元 <span class="arithmatex">\((a,b) = 1\)</span> ⇔ 存在<strong>恰好长度为 <span class="arithmatex">\(k\)</span></strong> 的 <span class="arithmatex">\(a \to b\)</span> 路径；"长度 ≥ 1 且 ≤ n"的路径并起来就是传递闭包。</li>
 </ul>
 <p><strong>为什么求和到 <span class="arithmatex">\(n\)</span> 就够</strong>：若存在长度 &gt; <span class="arithmatex">\(n\)</span> 的路径，中间必经过重复顶点，删去其中的环得到更短路径 → 最短路径长度 ≤ <span class="arithmatex">\(n-1\)</span>。因此只需考虑 <span class="arithmatex">\(k = 1, 2, \ldots, n\)</span>。</p>
@@ -9644,7 +9644,7 @@ $$t(R)：\text{包含 } R \text{ 且传递的 } A \text{ 上最小的关系}\]</
 <ol>
 <li><strong>初始</strong>：<span class="arithmatex">\(W_0 = M_R\)</span>（不允许中间顶点，即直接边或自环）。</li>
 <li><strong>递推</strong>（<span class="arithmatex">\(k = 1 \to n\)</span>）：新顶点 <span class="arithmatex">\(v_k\)</span> 被允许作为中间点：
-   <span class="arithmatex">\(<span class="arithmatex">\(W_k[i][j] = W_{k-1}[i][j] \lor \left( W_{k-1}[i][k] \land W_{k-1}[k][j] \right)\)</span>\)</span>
+   $<span class="arithmatex">\(W_k[i][j] = W_{k-1}[i][j] \lor \left( W_{k-1}[i][k] \land W_{k-1}[k][j] \right)\)</span>$
    即：<span class="arithmatex">\(i \to j\)</span> 的路径若不经过 <span class="arithmatex">\(v_k\)</span> 已可行；或者"<span class="arithmatex">\(i\)</span> 能到 <span class="arithmatex">\(v_k\)</span>"且"<span class="arithmatex">\(v_k\)</span> 能到 <span class="arithmatex">\(j\)</span>"，则 <span class="arithmatex">\(v_k\)</span> 可作跳板。</li>
 <li><strong>终止</strong>：<span class="arithmatex">\(W_n = M_{t(R)}\)</span>（中间顶点取尽所有顶点）。</li>
 </ol>
@@ -9667,15 +9667,15 @@ $$t(R)：\text{包含 } R \text{ 且传递的 } A \text{ 上最小的关系}\]</
 <p><strong>传递闭包例（完整手算）</strong>：设 <span class="arithmatex">\(A = \{1,2,3,4\}\)</span>，<span class="arithmatex">\(R = \{(1,2),(2,3),(3,4),(2,1)\}\)</span>。</p>
 <ol>
 <li>初始矩阵：
-   <span class="arithmatex">\(<span class="arithmatex">\(W_0 = M_R = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>\)</span></li>
+   $<span class="arithmatex">\(W_0 = M_R = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 0 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>$</li>
 <li><span class="arithmatex">\(k = 1\)</span>（允许顶点 1 作中间点）：第 1 列为 1 的行只有行 2，行 2 := 行 2 ∨ 行 1：
-   <span class="arithmatex">\(<span class="arithmatex">\(W_1 = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>\)</span></li>
+   $<span class="arithmatex">\(W_1 = \begin{bmatrix} 0 &amp; 1 &amp; 0 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>$</li>
 <li><span class="arithmatex">\(k = 2\)</span>（允许顶点 2）：第 2 列为 1 的行有行 1、行 2：行 1 := 行 1 ∨ 行 2，行 2 不变：
-   <span class="arithmatex">\(<span class="arithmatex">\(W_2 = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>\)</span></li>
+   $<span class="arithmatex">\(W_2 = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 0 \\ 1 &amp; 1 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>$</li>
 <li><span class="arithmatex">\(k = 3\)</span>（允许顶点 3）：第 3 列为 1 的行有行 1、行 2：行 1 := 行 1 ∨ 行 3，行 2 := 行 2 ∨ 行 3：
-   <span class="arithmatex">\(<span class="arithmatex">\(W_3 = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>\)</span></li>
+   $<span class="arithmatex">\(W_3 = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>$</li>
 <li><span class="arithmatex">\(k = 4\)</span>（允许顶点 4）：第 4 列为 1 的行以全 0 的行 4 为跳板，不变：
-   <span class="arithmatex">\(<span class="arithmatex">\(W_4 = M_{t(R)} = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>\)</span>
+   $<span class="arithmatex">\(W_4 = M_{t(R)} = \begin{bmatrix} 1 &amp; 1 &amp; 1 &amp; 1 \\ 1 &amp; 1 &amp; 1 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; 0 \end{bmatrix}\)</span>$
    验证：1 → 2 → 3 → 4 路径全通（1 可达 1（经 1→2→1）、2、3、4；2 可达 1（经 2→1）、3、4；3 仅可达 4；4 无出边）✓。</li>
 </ol>
 <p><strong>再例（幂求和法）</strong>：<span class="arithmatex">\(A = \{1,2,3\}\)</span>，<span class="arithmatex">\(R = \{(1,1),(1,2),(2,3)\}\)</span>：<span class="arithmatex">\(R^2 = \{(1,1),(1,2),(1,3)\}\)</span>（<span class="arithmatex">\((1,2) \in R\)</span> 且 <span class="arithmatex">\((2,3) \in R\)</span> ⇒ <span class="arithmatex">\((1,3) \in R^2\)</span>），<span class="arithmatex">\(R^3 = R^2\)</span>，故 <span class="arithmatex">\(t(R) = R \cup R^2 = \{(1,1),(1,2),(1,3),(2,3)\}\)</span>。</p>
@@ -10048,7 +10048,7 @@ $$t(R)：\text{包含 } R \text{ 且传递的 } A \text{ 上最小的关系}\]</
 <ul>
 <li><strong>注意</strong>：补元<strong>不必存在，也不必唯一</strong>——一个元素可以有多个补元（如钻石格 <span class="arithmatex">\(M_3\)</span> 中每个元素都有补，中间层的元素各有 2 个补）。</li>
 <li><strong>定理（补元唯一性）</strong>：在<strong>有界分配格</strong>中，若补元存在则<strong>唯一</strong>。证明（用分配律）：设 <span class="arithmatex">\(a'\)</span>、<span class="arithmatex">\(a''\)</span> 都是 <span class="arithmatex">\(a\)</span> 的补元，则
-  <span class="arithmatex">\(<span class="arithmatex">\(a' = a' \lor 0 = a' \lor (a \land a'') = (a' \lor a) \land (a' \lor a'') = I \land (a' \lor a'') = a' \lor a''\)</span>\)</span>
+  $<span class="arithmatex">\(a' = a' \lor 0 = a' \lor (a \land a'') = (a' \lor a) \land (a' \lor a'') = I \land (a' \lor a'') = a' \lor a''\)</span>$
   同理 <span class="arithmatex">\(a'' = a' \lor a''\)</span>，故 <span class="arithmatex">\(a' = a''\)</span>。</li>
 </ul>
 <p><strong>模格（modular lattice）</strong>：满足<strong>模律</strong>的格：对任意 <span class="arithmatex">\(a, b, c \in L\)</span>，若 <span class="arithmatex">\(a \le c\)</span>，则</p>

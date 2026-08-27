@@ -8820,7 +8820,7 @@
 <li><strong>定义</strong>：在源代码中直接写死配置值。</li>
 <li><strong>示例</strong>：<br />
   <div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
-<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#define SERVER &quot;180.249.151.131&quot;</span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#define SERVER "180.249.151.131"</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </span></code></pre></div></td></tr></table></div></li>
 <li><strong>问题</strong>：<br />
@@ -8876,7 +8876,7 @@
   - 特点：以单个连字符 <code>-</code> 开头，后接多字符选项名。<br />
   - 示例：<br />
     <div class="language-bash highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
-<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>find<span class="w"> </span>src<span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.c&#39;</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>dos2unix<span class="w"> </span>--keepdate<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1"></a>find<span class="w"> </span>src<span class="w"> </span>-name<span class="w"> </span><span class="s1">'*.c'</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>dos2unix<span class="w"> </span>--keepdate<span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2"></a>gcc<span class="w"> </span>-O0<span class="w"> </span>-Wall<span class="w"> </span>-g<span class="w"> </span>-masm<span class="o">=</span>intel<span class="w"> </span>-Wa,-ahl<span class="w"> </span>-c<span class="w"> </span>shudu.c
 </span></code></pre></div></td></tr></table></div>
   - 说明：选项可带参数（如 <code>-name '*.c'</code>），也可组合多个独立选项。</p>
@@ -9302,8 +9302,8 @@
 <li><strong><code>printf("%m")</code></strong>（GNU扩展）：在格式化输出中自动替换为当前 <code>errno</code> 对应的错误消息，无需显式调用 <code>strerror</code>。<br />
     示例：
     <div class="language-c highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
-<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">open</span><span class="p">(</span><span class="s">&quot;protected.txt&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
-</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Failed to open file: %m</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w">  </span><span class="c1">// 自动显示错误原因</span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">open</span><span class="p">(</span><span class="s">"protected.txt"</span><span class="p">,</span><span class="w"> </span><span class="n">O_RDONLY</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"Failed to open file: %m</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w">  </span><span class="c1">// 自动显示错误原因</span>
 </span></code></pre></div></td></tr></table></div></li>
 </ul>
 <blockquote>

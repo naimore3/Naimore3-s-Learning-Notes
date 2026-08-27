@@ -8,19 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2  # 检出代码
+      uses: actions/checkout@v4
+
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.8'  # 设置 Python 版本
+        python-version: '3.10'
+
     - name: Install dependencies
       run: |
-        pip install mkdocs  # 安装 mkdocs
-        pip install mkdocs-material  # 安装 mkdocs-material 主题
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
     - name: Build the MkDocs site
-      run: mkdocs build  # 构建 MkDocs 网站
+      run: mkdocs build
+
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./site  # mkdocs 构建输出目录为 site
+        publish_dir: ./site

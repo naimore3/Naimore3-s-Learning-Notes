@@ -162,10 +162,15 @@ export function buildScene(THREE, library) {
 
   // 店内内衬：倒扣房间（BackSide），四面内墙 + 地面 + 天花一次成形。
   // 阶段 2 靠它承接店内暖光、和室外冷色形成冷暖对比；阶段 3 往里面摆货架。
-  const roomZ0 = STORE.z0 + STORE.wall;
+  // EPS：内衬整体缩进 2mm，脱开外墙内表面（x0+wall / x1-wall / z0+wall）
+  // 与底座顶面（y=0），消除镜头移动时的 Z-Fighting 闪烁。
+  // 详见 .documents/首页Bug分析与修复.md 方案 A。
+  const EPS = 0.002;
+  const roomZ0 = STORE.z0 + STORE.wall + EPS;
   const roomZ1 = STORE.z1 - 0.02;
   const roomH = STORE.h - 0.06;
-  box(storeW - STORE.wall * 2, roomH, roomZ1 - roomZ0, storeCx, roomH / 2,
+  box(storeW - STORE.wall * 2 - EPS * 2, roomH, roomZ1 - roomZ0, storeCx,
+    roomH / 2 + EPS,
     (roomZ0 + roomZ1) / 2, mats.interior, false);
   // 后墙、左右侧墙、屋顶：刻意留出面向 +z 的整面开口，阶段 3 往里面放货架
   box(storeW, STORE.h, STORE.wall, storeCx, STORE.h / 2, STORE.z0 + STORE.wall / 2, mats.building);
@@ -203,13 +208,31 @@ export function buildScene(THREE, library) {
   glassPanel(doorGap / 2, storeCx - doorGap / 4, STORE.z1 + 0.015, "door:left");
   glassPanel(doorGap / 2, storeCx + doorGap / 4, STORE.z1 + 0.015, "door:right");
 
-  box(storeW, frameTop, 0.14, storeCx, glassTop + frameTop / 2, STORE.z1, mats.trim);
-  box(STORE.wall, glassH + frameTop, 0.14, STORE.x0 + STORE.wall / 2,
+  // 门洞两侧竖梃（方案 E）：门扇比固定玻璃凸出 15mm，斜视时视线会从
+  // 接缝（x = 0.36 / 1.64）的深度台阶"漏"进店内。竖梃占住台阶深度
+  // z ∈ [z1, z1+0.013]，前表面比门扇 0.615 退 2mm，堵死侧向通道且不与门共面。
+  // 详见 .documents/首页Bug分析与修复.md 方案 E（§7）。
+  const MULLION_W = 0.03;
+  const MULLION_D = 0.013;
+  box(MULLION_W, glassH, MULLION_D, innerX0 + fixedW, glassY,
+    STORE.z1 + MULLION_D / 2, mats.trim, false);
+  box(MULLION_W, glassH, MULLION_D, innerX1 - fixedW, glassY,
+    STORE.z1 + MULLION_D / 2, mats.trim, false);
+
+  // storefront trim（横梁 + 左右竖门框）在 x 向各缩 2mm：它们与侧墙共用
+  // x0..x0+wall / x1-wall..x1 区间，外侧面 x=x0/x1、内侧面 x=x0+wall/x1-wall
+  // 会与外墙共面，镜头在街角↔橱窗机位间移动时立柱闪动（白/灰面片翻转 +
+  // 墙/横梁描边黑线）。缩进后与墙各面拉开 2mm；重叠段本就埋在墙体内，外观无感。
+  // 详见 .documents/首页Bug分析与修复.md 方案 D（§6）。
+  box(storeW - EPS * 2, frameTop, 0.14, storeCx, glassTop + frameTop / 2, STORE.z1, mats.trim);
+  // 左右竖门框不描边：描边线的后侧棱线落在 x0+wall / x1-wall 平面上，
+  // 与侧墙内表面共面，镜头移动时会闪出两条黑边（描边 Z-Fighting）。
+  box(STORE.wall - EPS * 2, glassH + frameTop, 0.14, STORE.x0 + STORE.wall / 2,
     glassBottom + (glassH + frameTop) / 2,
-    STORE.z1, mats.trim);
-  box(STORE.wall, glassH + frameTop, 0.14, STORE.x1 - STORE.wall / 2,
+    STORE.z1, mats.trim, false);
+  box(STORE.wall - EPS * 2, glassH + frameTop, 0.14, STORE.x1 - STORE.wall / 2,
     glassBottom + (glassH + frameTop) / 2,
-    STORE.z1, mats.trim);
+    STORE.z1, mats.trim, false);
 
   // 门头招牌占位（阶段 4 换成 CanvasTexture 文字）+ 屋檐雨棚
   const awningY = glassTop + 0.07;

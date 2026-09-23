@@ -25,6 +25,8 @@ const SIDEWALK_TOP = 0.06; // 人行道比车行道高 6cm，形成路缘
 const ROAD_TOP = 0.01;
 const STORE = { x0: -1.0, x1: 3.0, z0: -2.6, z1: 0.6, h: 2.6, wall: 0.12 };
 const NEIGHBOR = { x0: -3.6, x1: -1.6, z0: -3.6, z1: 0.6, h: 3.4 };
+const EPS = 0.002;           // 2mm：共面脱开余量（方案 A/D/G 共用，见 .documents/首页Bug分析与修复.md）
+const CURB_Z0 = ROAD_Z0 - 0.1; // 1.8：路缘后沿 = 人行道前沿（方案 G：人行道收 10cm 让路缘原位独立）
 
 /** 灯光锚点：与几何同位，交给 materials.createLighting 使用（阶段 2） */
 export const LIGHT_ANCHORS = {
@@ -47,8 +49,8 @@ export const DRIP_LINE = {
 
 export const LAYOUT = {
   base: { size: BASE, thickness: BASE_THICKNESS },
-  road: { z0: ROAD_Z0, z1: BASE / 2 },
-  sidewalk: { z0: SIDEWALK_Z0, z1: ROAD_Z0, top: SIDEWALK_TOP },
+  road: { z0: ROAD_Z0, z1: BASE / 2 - EPS },
+  sidewalk: { z0: SIDEWALK_Z0, z1: CURB_Z0, top: SIDEWALK_TOP },
   store: STORE,
   neighbor: NEIGHBOR
 };
@@ -127,14 +129,19 @@ export function buildScene(THREE, library) {
   /* ---------- 1. 正方形底座（§2.1） ---------- */
   slab(BASE, BASE, 0, 0, 0, BASE_THICKNESS, mats.base);
 
-  /* ---------- 2. 车行道与人行道（§2.2 街角转折、§2.3 前景/中景） ---------- */
-  const roadDepth = BASE / 2 - ROAD_Z0;
-  slab(BASE, roadDepth, 0, (ROAD_Z0 + BASE / 2) / 2, ROAD_TOP, 0.02, mats.road);
+  /* ---------- 2. 车行道与人行道（§2.2 街角转折、§2.3 前景/中景） ----------
+     方案 G：三处几何脱开六组共面（.documents/首页Bug分析与修复.md §8）
+     1) 人行道前沿收到 CURB_Z0=1.8，让路缘原位独立（顶/前/侧不再共面）；
+     2) 路缘、车行道宽度缩 2*EPS，脱开底座侧面 x=±3.6；
+     3) 车行道前沿收 EPS，脱开底座前面 z=3.6。 */
+  const roadDepth = BASE / 2 - EPS - ROAD_Z0;
+  slab(BASE - EPS * 2, roadDepth, 0, (ROAD_Z0 + BASE / 2 - EPS) / 2,
+    ROAD_TOP, 0.02, mats.road);
 
-  const walkDepth = ROAD_Z0 - SIDEWALK_Z0;
-  slab(BASE, walkDepth, 0, (SIDEWALK_Z0 + ROAD_Z0) / 2, SIDEWALK_TOP, SIDEWALK_TOP, mats.sidewalk);
-  // 路缘：人行道临车行道的一条窄边
-  box(BASE, 0.08, 0.1, 0, SIDEWALK_TOP - 0.04, ROAD_Z0 - 0.05, mats.curb);
+  const walkDepth = CURB_Z0 - SIDEWALK_Z0;
+  slab(BASE, walkDepth, 0, (SIDEWALK_Z0 + CURB_Z0) / 2, SIDEWALK_TOP, SIDEWALK_TOP, mats.sidewalk);
+  // 路缘：人行道临车行道的一条窄边（原位不动，宽缩 2mm 脱开底座侧面）
+  box(BASE - EPS * 2, 0.08, 0.1, 0, SIDEWALK_TOP - 0.04, ROAD_Z0 - 0.05, mats.curb);
 
   /* 地面标线（阶段 4）：斑马线 / 停车位 / 排水沟 / 人行道盲道，
      全部用平面叠 CanvasTexture，尺寸与画布宽高比一一对应（不变形） */
@@ -164,8 +171,8 @@ export function buildScene(THREE, library) {
   // 阶段 2 靠它承接店内暖光、和室外冷色形成冷暖对比；阶段 3 往里面摆货架。
   // EPS：内衬整体缩进 2mm，脱开外墙内表面（x0+wall / x1-wall / z0+wall）
   // 与底座顶面（y=0），消除镜头移动时的 Z-Fighting 闪烁。
+  // EPS 常量定义在模块顶层（方案 A/D/G 共用）。
   // 详见 .documents/首页Bug分析与修复.md 方案 A。
-  const EPS = 0.002;
   const roomZ0 = STORE.z0 + STORE.wall + EPS;
   const roomZ1 = STORE.z1 - 0.02;
   const roomH = STORE.h - 0.06;

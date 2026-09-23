@@ -1,10 +1,10 @@
 # Three.js 微缩场景 · 环境配置与部署指南
 
 > 版本：v1  
-> 更新日期：2026-09-20  
+> 更新日期：2026-09-23  
 > 状态：**环境已落地**（Node/npm 入环境、Python 依赖补齐、three vendor 就位，见 §6「执行记录」）；Three.js 场景本体尚未开始实现。本篇只讲「环境怎么配、资源从哪来、远端要不要改」。  
 > 上游设计：[首页设计方案合集.md](首页设计方案合集.md)（v2 雨天便利店街角）  
-> 适用对象：本机开发（Local）与 GitHub Pages 部署（Remote）
+> 适用对象：本机开发（Local）与 Cloudflare Pages 部署（Remote）；GitHub Actions workflow 已于 2026-09-23 删除
 
 ## 0. 一条硬规则
 
@@ -15,19 +15,19 @@
 ```bash
 conda run -n naimore3-docs which node   # → .../envs/naimore3-docs/bin/node（环境自带）
 conda run -n naimore3-docs node -v      # → v22.23.2
-conda run -n naimore3-docs npm -v       # → 10.9.8
+conda run -n naimore3-docs npm -v       # → v10.9.8
 ```
 
-注意 `/usr/bin/node` 仍然存在（系统 node），它**不属于**本项目环境：直接 `node`、`npm` 或 `npx` 可能落到系统版本上。系统 node 会随机器、shell、PATH 漂移，只有 `naimore3-docs` 里的 node 才能和 [environment.yml](../environment.yml) 一起被复现，所以命令统一写成 `conda run -n naimore3-docs <cmd>`。
+注意 `/usr/bin/node` 仍然存在（系统 node），它**不属于**本项目环境：直接 `node`、`npm` 或 `npx` 可能落到系统版本上。系统 node 会随机器、shell、PATH 漂移，只有 `naimore3-docs` 里的 node 才能被复现，所以命令统一写成 `conda run -n naimore3-docs <cmd>`。
 
-仓库根目录的 [environment.yml](../environment.yml) 是唯一环境定义：`python=3.10` + `pip` + `nodejs=22`，Python 依赖（mkdocs、material、jieba、插件、pymdown-extensions）全部内联在它的 `pip:` 段里，并锁定为本地验证过的版本。**原来的 `requirements.txt` 已合并进来并删除**，新电脑只需这一个文件。
+仓库根目录的 [requirements.txt](../requirements.txt) 是 Python 依赖的唯一 pip 口径（版本锁定与原 `environment.yml` 的 `pip:` 段一致）。`environment.yml` 已于 2026-09-23 删除并回退为 `requirements.txt`：conda 负责 `python=3.10` / `nodejs=22`，pip 包一律从 `requirements.txt` 安装；远端 / Cloudflare Pages 只用 `pip install -r requirements.txt`，不引入 conda。
 
 ## 1. 依赖总览
 
 | 依赖 | 版本 | 用途 | 装在哪 | 是否提交进仓库 |
 |---|---|---|---|---|
 | Python | 3.10.x（本机 3.10.20） | MkDocs 构建 | conda env（仅 conda-forge） | 否 |
-| MkDocs / Material | 1.6.1 / 9.7.7 | 站点构建与主题 | conda env（pip，见 `environment.yml`） | 否 |
+| MkDocs / Material | 1.6.1 / 9.7.7 | 站点构建与主题 | conda env（pip，见 `requirements.txt`） | 否 |
 | pymdown-extensions | 11.0.2 | Markdown 扩展 | 同上 | 否 |
 | mkdocs-minify / redirects / git-revision-date | 0.8.0 / 1.2.3 / 1.6.0 | 已随步骤 2 装好；`mkdocs.yml` 尚未启用 | conda env（pip） | 否 |
 | jieba | 0.42.1 | 中文搜索分词（已生效） | conda env（pip） | 否 |
@@ -44,20 +44,22 @@ conda run -n naimore3-docs npm -v       # → 10.9.8
 
 ```bash
 git clone <repo> && cd Naimore3-s-Learning-Notes
-conda env create -f environment.yml     # 按 environment.yml 新建 naimore3-docs
+conda create -n naimore3-docs -c conda-forge python=3.10 pip
+conda install -n naimore3-docs -c conda-forge nodejs=22
 conda activate naimore3-docs
+pip install -r requirements.txt
 mkdocs serve                            # http://127.0.0.1:8000
 ```
 
-一条命令装完 Python、Node/npm 与全部 pip 依赖，不需要再手工装任何东西，也不需要联网取 three（three 已 vendor 在仓库里）。
+Python、Node/npm 与全部 pip 依赖装完即可本地开发，不需要联网取 three（three 已 vendor 在仓库里）。
 
-已在 2026-09-20 用 `conda env create -p <临时前缀> -f environment.yml` 实测：全新环境里 `mkdocs build` 成功，`javascripts/vendor/three/build/three.module.js` 正常产出（详见 §6）。
+已在 2026-09-20 用 `conda env create -p <临时前缀> -f environment.yml` 实测（当时文件还在）：全新环境里 `mkdocs build` 成功，`javascripts/vendor/three/build/three.module.js` 正常产出（详见 §6）。
 
-注意两点：
+注意三点：
 
-- `environment.yml` 只声明 `conda-forge` 一个 channel：python / pip / nodejs 都在里面，新电脑不必为 Anaconda 的 `defaults` channel 额外接受条款（已实测，29 个 conda 包全部来自 conda-forge）。
-- `python=3.10` 是范围约束，不同时间点装到的补丁版本可能不同（本次全新环境装到 3.10.21，本机原环境是 3.10.20）；要完全固定可改成 `python=3.10.20`。
-- 如果已按更早的文档建过环境，用增量同步即可：`conda env update -n naimore3-docs -f environment.yml`（不加 `--prune`，不会删掉你另外装的包）。
+- conda 只装 `python=3.10` / `pip` / `nodejs=22`，一律走 `conda-forge` channel，新电脑不必为 Anaconda 的 `defaults` channel 额外接受条款。
+- `python=3.10` 是范围约束，不同时间点装到的补丁版本可能不同（本机原环境是 3.10.20）；要完全固定可改成 `python=3.10.20`。
+- 已有环境同步 pip 依赖：`conda run -n naimore3-docs pip install -r requirements.txt`。
 
 ### 2.2 先自检
 
@@ -86,16 +88,11 @@ conda run -n naimore3-docs npm -v       # → 10.9.8
 
 若 `which node` 仍指向 `/usr/bin/node`，说明装的是系统 node，需要重新执行本步骤。
 
-### 2.4 步骤 2：补齐 Python 依赖，和 CI 对齐（已完成）
+### 2.4 步骤 2：补齐 Python 依赖，和部署侧对齐（已完成）
 
 ```bash
-# 现在只有这一个来源：environment.yml（原 requirements.txt 已合并进来）
-conda run -n naimore3-docs pip install \
-  mkdocs==1.6.1 mkdocs-material==9.7.7 jieba==0.42.1 \
-  mkdocs-minify-plugin==0.8.0 mkdocs-redirects==1.2.3 \
-  mkdocs-git-revision-date-localized-plugin==1.6.0 pymdown-extensions==11.0.2
-# 或直接同步整个环境（含 conda 段）：
-conda env update -n naimore3-docs -f environment.yml
+# 唯一来源：requirements.txt
+conda run -n naimore3-docs pip install -r requirements.txt
 ```
 
 补齐前本地只装了 `mkdocs`、`mkdocs-material`、`mkdocs-material-extensions`、`pymdown-extensions`、`mkdocs-get-deps`。实际新装：`jieba 0.42.1`、`mkdocs-minify-plugin 0.8.0`、`mkdocs-redirects 1.2.3`、`mkdocs-git-revision-date-localized-plugin 1.6.0`，以及依赖 `gitpython`、`gitdb`、`smmap`、`csscompressor`、`jsmin`、`htmlmin2`、`properdocs`；`mkdocs`（1.6.1）与 `mkdocs-material`（9.7.7）保持原版本。
@@ -152,7 +149,7 @@ docs/javascripts/vendor/three/
 ### 2.6 步骤 4：在 MkDocs 里注册（实现阶段要做的，先记下来）
 
 - `mkdocs.yml` 的 `extra_javascript` 增加场景入口模块（例如 `javascripts/convenience-scene.mjs`，文件规划见设计文档 §8.2）。
-- 首页用 import map 指向本仓库内的 three，**用相对路径，不要写 `/javascripts/...`**（GitHub Pages 项目站点部署在 `/<repo>/` 子路径下）：
+- 首页用 import map 指向本仓库内的 three，**用相对路径，不要写 `/javascripts/...`**（站点可能部署在子路径下，例如自定义域根路径或 `/<repo>/`）：
 
 ```html
 <script type="importmap">
@@ -194,119 +191,62 @@ conda run -n naimore3-docs bash -c 'cd tools/qa && npm init -y && npm install pl
 export PLAYWRIGHT_BROWSERS_PATH="$(pwd)/tools/qa/browsers"   # 加入 .gitignore
 ```
 
-## 3. 推送到远端（GitHub Pages）之后怎么配
+## 3. 推送到远端（Cloudflare Pages）之后怎么配
 
 ### 3.1 现状
 
-仓库现有工作流 `.github/workflows/gh-pages.yml`（依赖已改为从 `environment.yml` 读取，见 3.2）：
+GitHub Actions workflow `.github/workflows/gh-pages.yml` **已于 2026-09-23 删除**；部署改为 Cloudflare Pages 直接监听仓库：
 
 ```text
-checkout → setup-python 3.10
-        → 解析 environment.yml 的 pip 段 → pip install 这些包
-        → mkdocs build → peaceiris/actions-gh-pages@v4 发布 ./site 到 gh-pages 分支
+push main → Cloudflare Pages 拉取仓库
+         → pip install -r requirements.txt
+         → mkdocs build → 发布 ./site
 ```
 
-### 3.2 结论：走 vendor 方案时，远端**不需要** Node，也只需要一个依赖文件
+Cloudflare Pages 控制台关键配置：
 
-只要满足三件事：
+| 项 | 值 |
+|---|---|
+| 构建命令 | `pip install -r requirements.txt && mkdocs build` |
+| 构建输出目录 | `site` |
+| 根目录 | （留空） |
+| 生产分支 | `main` |
 
-1. vendor 文件已提交：
+构建环境自带 Python + pip，**不需要 conda，也不需要 Node**（three 已 vendor 进仓库）。
 
-   ```bash
-   git ls-files docs/javascripts/vendor | head
-   ```
+### 3.2 单文件大小限制（Cloudflare Pages 硬约束）
 
-2. vendor 目录没有被规则忽略（应无输出）：
+Cloudflare Pages **单文件上限 25 MiB**。构建会把 `docs/` 下所有静态文件（含 PDF）拷进 `site/`，任一文件超限会在资产校验阶段失败。
 
-   ```bash
-   git check-ignore -v docs/javascripts/vendor/three/build/three.module.js
-   ```
+- 已删除超限的 `医学神经生物学纲要.pdf`（41.7 MiB，2026-09-23 前后提交 `67b8613d`）。
+- 当前 `docs/` 最大约 24.75 MiB（`Thirteenth_Class_助教课6.pdf`），贴边但未超限；新增大文件前先确认 `< 25 MiB`。
 
-3. `environment.yml` 能在 CI 里装出与本地一致的 MkDocs。CI 的做法是：`pip install pyyaml` 之后用一段 Python 把 `environment.yml` 的 `pip:` 段打印成 requirements 列表，再 `pip install -r`，因此**不会出现第二个依赖文件**：
+### 3.3 远端不需要的三样东西
 
-   ```yaml
-       - name: Install dependencies (from environment.yml)
-         run: |
-           python -m pip install --upgrade pip pyyaml
-           python - <<'PY' > "$RUNNER_TEMP/pip-requirements.txt"
-           import yaml
+1. **conda / `environment.yml`**：Cloudflare 只用 `pip install -r requirements.txt`。
+2. **Node / npm**：站点构建与浏览器加载都不依赖 Node（见 §1）。
+3. **GitHub Actions workflow**：已删除；不要再新建 `.github/workflows/gh-pages.yml`，除非恢复 GitHub Pages 双部署。
 
-           with open("environment.yml", encoding="utf-8") as f:
-               data = yaml.safe_load(f)
+vendor 文件必须已提交且未被 ignore：
 
-           for dep in data.get("dependencies", []):
-               if isinstance(dep, dict):
-                   for pkg in dep.get("pip", []):
-                       print(pkg)
-           PY
-           python -m pip install -r "$RUNNER_TEMP/pip-requirements.txt"
-   ```
-
-   为什么不在 CI 里直接用 conda：Build 只要 Python 那半套依赖，conda 初始化会多几十秒并顺带装 Node；现在这样既保持单文件又保持构建速度。这段解析片段已在本地按同样写法实测，输出与 `environment.yml` 的 `pip:` 段逐行一致。
-
-推送 main 分支后 Actions 自动构建并发布，GitHub 侧无需任何环境配置。
-
-> 变更记录：原依赖文件 `requirements.txt` 已在 2026-09-20 合并进 `environment.yml` 并删除；若你本地有旧脚本仍引用它，改成读取 `environment.yml` 或直接 `conda env update -n naimore3-docs -f environment.yml`。
-
-### 3.3 GitHub 仓库侧需要确认的三处设置
-
-| 位置 | 设置 | 为什么 |
-|---|---|---|
-| Settings → Pages → Build and deployment | Source = **Deploy from a branch**，分支 `gh-pages`，目录 `/ (root)` | 工作流是把构建产物推到 `gh-pages` 分支，而不是让 Pages 自己构建 |
-| Settings → Actions → General → Workflow permissions | **Read and write permissions** | 否则 `GITHUB_TOKEN` 没有权限推送 `gh-pages` |
-| Settings → Actions → General | Actions 未被禁用 | 首次推送后确认 workflow 是绿色 |
-
-### 3.4 可选：让远端也完全复刻 conda 环境
-
-**方案 A（推荐，最小改动）**：保持 `setup-python`，只加两道校验，防止 vendor 漏提交导致线上 3D 白屏：
-
-```yaml
-    - name: Verify vendored three.js
-      run: |
-        test -f docs/javascripts/vendor/three/build/three.module.js
-        test -f docs/javascripts/vendor/three/examples/jsm/controls/OrbitControls.js
-
-    - name: Build the MkDocs site
-      run: mkdocs build
-
-    - name: Verify built output
-      run: test -f site/javascripts/vendor/three/build/three.module.js
+```bash
+git ls-files docs/javascripts/vendor | head
+git check-ignore -v docs/javascripts/vendor/three/build/three.module.js  # 应无输出
 ```
 
-**方案 B（完全对齐 conda）**：用仓库根目录的 `environment.yml` 在 CI 里复刻同一个环境：
-
-```yaml
-    - name: Set up Miniconda
-      uses: conda-incubator/setup-miniconda@v3
-      with:
-        miniconda-version: latest
-        activate-environment: naimore3-docs
-        environment-file: environment.yml
-        auto-activate-base: false
-
-    - name: Build the MkDocs site
-      shell: bash -el {0}
-      run: mkdocs build
-```
-
-方案 B 的意义只是「本地与远端同一份环境定义」；代价是 conda 初始化比 `setup-python` 慢一些（多几十秒），并且会连带安装 Node。**如果不需要在 CI 里重新拉取前端库，用方案 A 就够了。**
-
-### 3.5 其他远端注意点
-
-- 若以后在 `mkdocs.yml` 的 `plugins:` 里启用 `git-revision-date-localized`，`actions/checkout` 必须加 `with: fetch-depth: 0`，否则插件拿不到 git 历史会在 CI 报错（当前未启用，属于预留提醒）。
-- GitHub Pages 项目站点部署在 `/<repo>/` 子路径，所有资源引用（包括 vendor 与 import map）都用相对路径。
-- 不要在 CI 里缓存 `site/`；如要加缓存，缓存 `~/.cache/pip` 与 conda 的 `pkgs` 即可。
+> 变更记录：2026-09-23 起 `requirements.txt` 恢复为唯一 pip 依赖文件（`environment.yml` 已删除）；GitHub Pages workflow 已删除，远端唯一口径为 Cloudflare Pages。2026-09-20～21 曾短暂用 `environment.yml` + 解析 pip 段的 CI，细节保留在 §6 执行记录。
 
 ## 4. 环境自检清单
 
-- [ ] 新电脑：`conda env create -f environment.yml` 一次装完，不需要再手工补包
+- [ ] 新电脑：按 §2.1 三步创建 conda 环境并 `pip install -r requirements.txt`
 - [ ] `conda run -n naimore3-docs python -V` → Python 3.10.x
 - [ ] `conda run -n naimore3-docs which node` → 指向 `envs/naimore3-docs/bin/node`
 - [ ] `conda run -n naimore3-docs node -v` → v22.x
 - [ ] `conda run -n naimore3-docs mkdocs build` 成功，无路径 / 语法报错
 - [ ] `git ls-files docs/javascripts/vendor` 能看到 three 的运行时与 LICENSE
+- [ ] `site/` 内无单文件 ≥ 25 MiB（Cloudflare Pages 限制）
 - [ ] 首页 Network 面板无外部 CDN 请求（three、字体、样式全部来自本站）
-- [ ] 推送后 Actions 绿色，Pages 站点打开首页 3D 正常、控制台无报错
+- [ ] push 后 Cloudflare Pages 构建绿色，站点打开首页 3D 正常、控制台无报错
 
 ## 5. 与其它文档的关系
 
@@ -315,6 +255,17 @@ checkout → setup-python 3.10
 - 项目级环境与目录规范：`.codex/PROJECT.md` 第 2 节、根目录 `AGENTS.md` 第 2 节。
 
 ## 6. 执行记录
+
+### 2026-09-23 依赖口径回退 requirements.txt + 删除 GitHub Pages workflow
+
+动机：Cloudflare Pages 部署失败（`environment.yml` 不被识别；41.7 MiB PDF 超 25 MiB 限制）。
+
+| 项目 | 内容 |
+|---|---|
+| 依赖文件 | `environment.yml` 删除，恢复根目录 `requirements.txt`（7 个 pip 包版本锁定不变）；conda 只负责 `python=3.10` / `nodejs=22` |
+| workflow | 删除 `.github/workflows/gh-pages.yml`（GitHub Pages 不再更新）；部署唯一走 Cloudflare Pages |
+| 超限 PDF | `医学神经生物学纲要.pdf`（41.7 MiB）已在此前提交 `67b8613d` 删除；构建后 `site/` 最大约 24.75 MiB |
+| 验证 | `pip install -r requirements.txt` 全满足；`mkdocs build` exit 0（约 11 s） |
 
 ### 2026-09-21 阶段 7 发布验收（无头浏览器复核）
 

@@ -175,7 +175,7 @@ grep -o "<li>[^<]*<ul>" site/课程笔记/大二上/离散数学（下）/关系
 
 1. **乱码与层级无关**：之前看到的 `R:R:=`、`f`、`E` 等乱码是直接复制粘贴导致的文本变形，源文件字符完好。
 2. **CI 未锁依赖版本**：`.github/workflows/gh-pages.yml` 仅 `pip install mkdocs mkdocs-material`，本地是 mkdocs 1.6.1 / pymdown-extensions 11.0.1，线上构建版本随时间漂移，存在"本地正常、CI 异常"的隐患，建议固定到 `requirements.txt` 版本并安装。  
-   **2026-09-20 更新（已闭环）**：依赖现已全部锁定并内联进根目录 `environment.yml`，`requirements.txt` 已删除；CI 改为解析 `environment.yml` 的 `pip:` 段后安装，本地与线上同一份版本定义。
+   **2026-09-20 更新（已闭环）**：依赖锁定后曾短暂内联进 `environment.yml` 并由 CI 解析安装；**2026-09-23 再更新**：回退为根目录 `requirements.txt` 作为唯一 pip 口径，GitHub Pages workflow 已删除，远端部署改为 Cloudflare Pages（`pip install -r requirements.txt && mkdocs build`）。
 3. **MathJax CDN**：站点公式走 `cdn.jsdelivr.net`，大陆网络下偶发加载失败（失败时页面显示原始 `\(...\)` 文本而非公式），如需国内稳定可换 npmmirror 镜像或本地托管。
 
 ---

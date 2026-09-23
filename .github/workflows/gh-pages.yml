@@ -15,10 +15,35 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    # 依赖唯一来源是仓库根目录的 environment.yml（原 requirements.txt 已合并进去）。
+    # CI 只装其中的 pip 段：conda 段里的 nodejs 只供本地拉取前端库，构建不需要。
+    - name: Install dependencies (from environment.yml)
       run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        python -m pip install --upgrade pip pyyaml
+        python - <<'PY' > "$RUNNER_TEMP/pip-requirements.txt"
+        import yaml
+
+        with open("environment.yml", encoding="utf-8") as f:
+            data = yaml.safe_load(f)
+
+        for dep in data.get("dependencies", []):
+            if isinstance(dep, dict):
+                for pkg in dep.get("pip", []):
+                    print(pkg)
+        PY
+        echo "--- pip 依赖（来自 environment.yml） ---"
+        cat "$RUNNER_TEMP/pip-requirements.txt"
+        python -m pip install -r "$RUNNER_TEMP/pip-requirements.txt"
+
+    # 阶段 7 的发布验收：three 与场景用到 addons 都走 vendor 提交进仓库，
+    # 一旦漏提交，站点就会在运行时 404（本地看不出来）。这里先卡一道。
+    - name: Verify vendored three.js is present
+      run: |
+        test -f docs/javascripts/vendor/three/build/three.module.js
+        test -f docs/javascripts/vendor/three/examples/jsm/controls/OrbitControls.js
+        test -f docs/javascripts/vendor/three/examples/jsm/objects/Reflector.js
+        test -f docs/javascripts/vendor/three/LICENSE
+        echo "vendor OK: $(cat docs/javascripts/vendor/three/VERSION | head -1)"
 
     - name: Build the MkDocs site
       run: mkdocs build

@@ -4,6 +4,7 @@ theme:
 
   name: material
   language: zh
+  font: false # 不加载 Google Fonts 外链，改用系统字体栈（见 stylesheets/extra.css 第 0 节）
 
   palette:
   # Palette toggle for automatic mode
@@ -301,7 +302,8 @@ markdown_extensions:
 extra_javascript:
   - javascripts/mermaid.mjs     # Mermaid 加载器（ESM，含 mindmap 配色配置）
   - javascripts/mathjax.js         # MathJax 数学公式配置
-  - javascripts/homepage.js        # 首页微交互（打字机/滚动显现/聚光跟随，非首页零开销）
+  - javascripts/homepage.js        # 首页交互（章节淡入淡出/滚动进度/聚光跟随，非首页零开销）
+  - javascripts/three/convenience-scene.mjs  # 首页 Three.js 微缩场景入口（阶段 0：地台与天空；非首页零开销）
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 extra_css:

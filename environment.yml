@@ -1,0 +1,48 @@
+# =============================================================
+# 墨海寻珠 · conda 环境定义（本文件是唯一的环境口径）
+#
+# 新电脑上从零跑起来（三行）：
+#   git clone <repo> && cd Naimore3-s-Learning-Notes
+#   conda env create -f environment.yml      # 新建名为 naimore3-docs 的环境
+#   conda activate naimore3-docs && mkdocs serve
+#
+# 其它常用命令：
+#   conda env update -n naimore3-docs -f environment.yml   # 已有环境增量同步（不加 --prune，不动你另外装的包）
+#   conda run -n naimore3-docs <cmd>                       # 不切换 shell，临时执行一条命令
+#
+# 说明：
+# - Python 与 pip 依赖都写在本文件里（原 requirements.txt 已合并进来，该文件已删除）。
+# - 版本用 == 锁定为本地已验证的组合，换电脑装出来是同一套；确需放宽时把 == 改成 >=。
+#   注意：这里只锁直接依赖，间接依赖（如 babel、GitPython）由 pip 解析；要完全锁死可另存 pip freeze 结果。
+# - nodejs 只用于本地拉取 / 升级前端库（three），见 .documents/Three.js开发环境与部署配置.md；
+#   站点构建、运行与 GitHub Pages 部署都不依赖 Node。
+# - 运行时依赖的 three 已 vendor 进 docs/javascripts/vendor/three/，构建与浏览都不联网取包。
+# =============================================================
+
+name: naimore3-docs
+
+# 只用 conda-forge：python / pip / nodejs 都在这个 channel 里，
+# 新电脑上不需要再为 Anaconda 的 defaults channel 接受额外条款。
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.10
+  - pip
+  - nodejs=22
+
+  - pip:
+      # MkDocs 核心与 Material 主题
+      - mkdocs==1.6.1
+      - mkdocs-material==9.7.7
+
+      # 中文搜索分词（装好后 Material 的搜索会自动使用 jieba）
+      - jieba==0.42.1
+
+      # 常用插件（均已安装；是否启用看 mkdocs.yml 的 plugins:）
+      - mkdocs-minify-plugin==0.8.0
+      - mkdocs-redirects==1.2.3
+      - mkdocs-git-revision-date-localized-plugin==1.6.0
+
+      # Markdown 扩展
+      - pymdown-extensions==11.0.2

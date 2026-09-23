@@ -1,10 +1,40 @@
 /* =============================================================
    墨海寻珠 · 首页定制样式（nmd = Naimore Markdown Design）
-   设计文档：.documents/首页美化设计与工作日志.md
-   作用域：全部 .nmd-* 类仅用于 docs/index.md 首页分块
+   设计文档：.documents/首页设计方案合集.md（v2 雨夜便利店街角）
+             .codex/PROJECT.md（亮色优先的赛博朋克方向）
+   作用域：全部 .nmd-* 类仅用于 docs/index.md，其余页面不加载这些样式
+
+   目录
+     1  设计 tokens（明暗双套）
+     2  首页布局补偿
+     3  背景层：雨天街角（亮色=白天雨天 / 暗色=夜晚雨天，固定不滚动）
+     4  章节骨架与滚动淡入淡出
+     5  封面
+     6  章节标题与全息面板
+     7  缘起：词条 / 卡片 / 备注
+     8  关于我：文字块 / 标签 / 相册
+     9  学历时间线
+    10  尾声
+    11  响应式
+    12  无障碍与动效降级
    ============================================================= */
 
-/* ---------- 1. 设计 Tokens（明暗双套，跟随 Material 主题） ---------- */
+/* ---------- 0. 字体（全站，系统字体栈） ----------
+   仓库硬约束：不使用外部字体。mkdocs.yml 的 theme.font 已设为 false，
+   这里显式给出中英文系统字体栈，避免退回 Material 默认的 Roboto 外链。
+   中文标题仍由各标题规则单独指定 Georgia + 宋体系字体栈 */
+
+:root {
+  --md-text-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                  "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC",
+                  "Source Han Sans SC", Helvetica, Arial, sans-serif;
+  --md-text-font-family: var(--md-text-font);
+  --md-code-font: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono",
+                  Menlo, ui-monospace, monospace;
+  --md-code-font-family: var(--md-code-font);
+}
+
+/* ---------- 1. 设计 tokens（明暗双套，跟随 Material 主题） ---------- */
 
 [data-md-color-scheme="default"] {
   --nmd-ink: #202538;
@@ -21,19 +51,35 @@
   --nmd-amber: #f59e0b;
   --nmd-teal: #14b8a6;
   --nmd-cyan: #05d9e8;
-  --nmd-grid-line: rgba(5, 217, 232, 0.08);
-  --nmd-scan-line: rgba(5, 217, 232, 0.16);
-  --nmd-aurora-1: rgba(255, 42, 109, 0.34);
-  --nmd-aurora-2: rgba(5, 217, 232, 0.26);
-  --nmd-aurora-3: rgba(124, 58, 237, 0.24);
-  --nmd-aurora-4: rgba(245, 158, 11, 0.2);
   --nmd-grad: linear-gradient(100deg, #ff2a6d 0%, #7c3aed 52%, #05d9e8 100%);
-  --nmd-grad-soft: radial-gradient(circle at 12% 8%, rgba(255, 42, 109, 0.12), transparent 32%), radial-gradient(circle at 88% 12%, rgba(5, 217, 232, 0.12), transparent 34%), linear-gradient(135deg, #f7f9ff 0%, #eef2ff 50%, #f7f9ff 100%);
-  --nmd-shadow: 0 18px 48px -30px rgba(32, 37, 56, 0.32);
-  --nmd-shadow-hover: 0 20px 56px -24px rgba(255, 42, 109, 0.28);
-  --nmd-badge-bg: rgba(255, 255, 255, 0.72);
-  --nmd-spot-glow: rgba(255, 42, 109, 0.18);
-  --nmd-glass: rgba(255, 255, 255, 0.62);
+  --nmd-grad-soft: radial-gradient(circle at 12% 8%, rgba(255, 42, 109, 0.10), transparent 34%),
+                   radial-gradient(circle at 88% 12%, rgba(5, 217, 232, 0.10), transparent 36%),
+                   linear-gradient(135deg, #ffffff 0%, #f2f5ff 55%, #ffffff 100%);
+  --nmd-glass: rgba(255, 255, 255, 0.72);
+  --nmd-glass-strong: rgba(255, 255, 255, 0.9);
+  --nmd-shadow: 0 18px 48px -30px rgba(32, 37, 56, 0.34);
+  --nmd-shadow-hover: 0 22px 56px -26px rgba(255, 42, 109, 0.3);
+  --nmd-badge-bg: rgba(255, 255, 255, 0.78);
+  --nmd-spot-glow: rgba(255, 42, 109, 0.16);
+
+  /* 场景 tokens：亮色模式 = 白天雨天
+     阴天的亮灰蓝天光 + 湿滑路面 + 店内暖光，整体仍是浅色阅读体验 */
+  --nmd-sky-1: #bcc9d9;
+  --nmd-sky-2: #d3dde8;
+  --nmd-sky-3: #eaf0f6;
+  --nmd-horizon: rgba(255, 255, 255, 0.92);
+  --nmd-city: rgba(62, 82, 112, 0.2);
+  --nmd-window: rgba(255, 255, 255, 0.85);
+  --nmd-ground-1: #b7c3d2;
+  --nmd-ground-2: #dee5ed;
+  --nmd-grid: rgba(62, 82, 112, 0.16);
+  --nmd-wet: rgba(255, 255, 255, 0.4);
+  --nmd-shop: rgba(255, 180, 102, 0.55);
+  --nmd-shop-2: rgba(255, 42, 109, 0.18);
+  --nmd-rain: rgba(74, 100, 138, 0.3);
+  --nmd-rain-strength: 0.62;
+  --nmd-scene-vignette: rgba(32, 45, 64, 0.12);
+  --nmd-outline: #2b3446; /* 三渲二描边：低饱和墨蓝黑，不用纯黑死边（设计文档 §4.2） */
 }
 
 [data-md-color-scheme="slate"] {
@@ -51,497 +97,541 @@
   --nmd-amber: #ffc75a;
   --nmd-teal: #36d6cc;
   --nmd-cyan: #33e3f1;
-  --nmd-grid-line: rgba(51, 227, 241, 0.07);
-  --nmd-scan-line: rgba(51, 227, 241, 0.2);
-  --nmd-aurora-1: rgba(255, 92, 138, 0.34);
-  --nmd-aurora-2: rgba(51, 227, 241, 0.22);
-  --nmd-aurora-3: rgba(178, 107, 255, 0.24);
-  --nmd-aurora-4: rgba(255, 199, 90, 0.18);
   --nmd-grad: linear-gradient(100deg, #ff5c8a 0%, #b26bff 52%, #33e3f1 100%);
-  --nmd-grad-soft: radial-gradient(circle at 12% 8%, rgba(255, 92, 138, 0.16), transparent 34%), radial-gradient(circle at 88% 12%, rgba(51, 227, 241, 0.14), transparent 34%), linear-gradient(135deg, #05050a 0%, #0d0d17 55%, #05050a 100%);
+  --nmd-grad-soft: radial-gradient(circle at 12% 8%, rgba(255, 92, 138, 0.14), transparent 36%),
+                   radial-gradient(circle at 88% 12%, rgba(51, 227, 241, 0.12), transparent 36%),
+                   linear-gradient(135deg, #0d0d17 0%, #11111d 55%, #0d0d17 100%);
+  --nmd-glass: rgba(13, 13, 23, 0.66);
+  --nmd-glass-strong: rgba(14, 16, 28, 0.86);
   --nmd-shadow: 0 20px 52px -28px rgba(0, 0, 0, 0.75);
   --nmd-shadow-hover: 0 22px 58px -24px rgba(255, 92, 138, 0.28);
   --nmd-badge-bg: rgba(255, 255, 255, 0.08);
   --nmd-spot-glow: rgba(255, 92, 138, 0.2);
-  --nmd-glass: rgba(13, 13, 23, 0.66);
+
+  /* 场景 tokens：暗色模式 = 夜晚雨天
+     室外冷蓝潮湿 + 店内暖黄 + 霓虹招牌（#0f1626 → #1d2a45） */
+  --nmd-sky-1: #0f1626;
+  --nmd-sky-2: #16203a;
+  --nmd-sky-3: #1d2a45;
+  --nmd-horizon: rgba(51, 227, 241, 0.16);
+  --nmd-city: rgba(120, 165, 255, 0.12);
+  --nmd-window: rgba(255, 214, 150, 0.5);
+  --nmd-ground-1: #111a2c;
+  --nmd-ground-2: #0b1120;
+  --nmd-grid: rgba(51, 227, 241, 0.14);
+  --nmd-wet: rgba(51, 227, 241, 0.16);
+  --nmd-shop: rgba(255, 206, 144, 0.42);
+  --nmd-shop-2: rgba(255, 92, 138, 0.18);
+  --nmd-rain: rgba(160, 215, 255, 0.16);
+  --nmd-rain-strength: 0.5;
+  --nmd-scene-vignette: rgba(0, 0, 0, 0.42);
+  --nmd-outline: #3a465e; /* 夜雨描边比白天略亮，避免糊在深蓝底上 */
 }
 
-/* ---------- 2. 通用区块 ---------- */
+/* ---------- 2. 首页布局补偿 ----------
+   首页的章节与背景都是满视口宽度的，需要清零主题默认预留的外边距与内边距，
+   并允许左右溢出裁剪（overflow-x: clip 不会破坏内部 sticky 定位） */
 
-.md-typeset .nmd-block {
-  margin: 72px 0 0;
-}
-.md-typeset .nmd-title {
-  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
-  font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--nmd-ink);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 26px;
-}
-.md-typeset .nmd-title::before {
-  content: "";
-  width: 10px;
-  height: 26px;
-  border-radius: 6px;
-  background: var(--nmd-grad);
-  flex: none;
-}
+.md-main:has(.nmd-story) { overflow-x: clip; }
+.md-main:has(.nmd-story) .md-main__inner { margin-top: 0; }
+.md-main:has(.nmd-story) .md-content__inner { padding-top: 0; }
+.md-main:has(.nmd-story) .md-content__inner::before { display: none; }
+.md-main:has(.nmd-story) { background: transparent; }
 
-/* ---------- 3. Hero 全景区 ---------- */
+/* ---------- 3. 背景层：雨天街角 ----------
+   固定铺满视口、z-index 0、pointer-events: none；
+   --nmd-scroll（homepage.js 写入的 0~1 滚动进度）只用于极轻微的镜头漂移。
+   亮色模式是白天雨天（阴天亮灰蓝），暗色模式是夜晚雨天（冷蓝霓虹），
+   两套只差本文件第 1 节的 --nmd-sky-* / --nmd-ground-* / --nmd-rain* tokens。
+   Three.js 场景落地后由 #convenience-scene 内的 canvas 接管，这层作为 CSS 降级保留。 */
 
-/* 全屏 Hero：破出内容容器铺满整屏宽（文章列水平居中、左右边距对称，
-   50% 与 -50vw 恰好抵消边距）；min-height 填满 sticky chrome 之下的首屏；
-   内容垂直居中；使用直角边框，形成分割明确的首页封面效果。
-   --nmd-sb：homepage.js 写入的滚动条宽度补偿（100vw 含滚动条而布局视口
-   不含，经典滚动条系统相差 15~17px），无 JS 时回退 0px 与常规行为一致 */
-.md-typeset .nmd-hero {
-  position: relative;
+.md-typeset .nmd-scene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
   overflow: hidden;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--nmd-sky-1) 0%, var(--nmd-sky-2) 48%, var(--nmd-sky-3) 100%);
+  transform: translate3d(0, calc(var(--nmd-scroll, 0) * -4vh), 0) scale(1.06);
+}
+
+/* 天空：地平线雾气 + 稀疏雨点 */
+.md-typeset .nmd-scene-sky {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(120% 55% at 50% 82%, var(--nmd-horizon) 0%, transparent 62%),
+    radial-gradient(circle, var(--nmd-rain) 0 1px, transparent 1.4px),
+    radial-gradient(circle, var(--nmd-rain) 0 1px, transparent 1.4px);
+  background-size: 100% 100%, 190px 190px, 264px 264px;
+  background-position: 0 0, 0 0, 96px 128px;
+  opacity: 0.9;
+}
+
+/* 远景：城市剪影 + 零星亮着的窗 */
+.md-typeset .nmd-scene-city {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 43%;
+  height: 20%;
+  background-image:
+    radial-gradient(circle, var(--nmd-window) 0 1px, transparent 1.8px),
+    repeating-linear-gradient(90deg,
+      var(--nmd-city) 0 2.4rem,
+      transparent 2.4rem 3.2rem,
+      var(--nmd-city) 3.2rem 5rem,
+      transparent 5rem 8.6rem),
+    linear-gradient(180deg, transparent 0%, var(--nmd-city) 100%);
+  background-size: 2rem 1.6rem, auto, 100% 100%;
+  background-position: 0 100%, 0 0, 0 0;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 72%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 72%);
+  opacity: 0.75;
+}
+
+/* 便利店暖光：室外冷色雨夜里的唯一暖源 */
+.md-typeset .nmd-scene-glow {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: 26%;
+  height: 36%;
+  background:
+    radial-gradient(34% 60% at 30% 78%, var(--nmd-shop) 0%, transparent 70%),
+    radial-gradient(24% 46% at 70% 84%, var(--nmd-shop-2) 0%, transparent 72%),
+    radial-gradient(62% 42% at 50% 100%, var(--nmd-wet) 0%, transparent 74%);
+  filter: blur(16px);
+  animation: nmd-shop-breathe 9s ease-in-out infinite;
+}
+@keyframes nmd-shop-breathe {
+  0%, 100% { opacity: 0.82; }
+  50%      { opacity: 1; }
+}
+
+/* 湿地面：透视网格 + 积水反光 */
+.md-typeset .nmd-scene-ground {
+  position: absolute;
+  left: -30%;
+  right: -30%;
+  bottom: 0;
+  height: 150%;
+  transform: perspective(900px) rotateX(52deg);
+  transform-origin: bottom center;
+  background-image:
+    repeating-linear-gradient(90deg, var(--nmd-grid) 0 1px, transparent 1px 4.5rem),
+    repeating-linear-gradient(180deg, var(--nmd-grid) 0 1px, transparent 1px 3rem),
+    linear-gradient(180deg, var(--nmd-ground-1) 0%, var(--nmd-ground-2) 100%);
+  mask-image: linear-gradient(180deg, transparent 4%, #000 46%, #000 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 4%, #000 46%, #000 100%);
+}
+/* 地面反光条纹：竖向水痕，呼应店招与灯箱 */
+.md-typeset .nmd-scene-ground::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(90deg,
+    transparent 0 2.6rem,
+    var(--nmd-wet) 2.6rem 3.1rem,
+    transparent 3.1rem 6.4rem);
+  mask-image: linear-gradient(180deg, transparent 32%, #000 78%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 32%, #000 78%);
+  opacity: 0.6;
+}
+
+/* 降雨：两层不同角度的斜线，周期对齐 32px，位移一圈即无缝循环 */
+.md-typeset .nmd-scene-rain {
+  position: absolute;
+  inset: -25% -12%;
+  background-image:
+    repeating-linear-gradient(96deg,
+      transparent 0 30px,
+      var(--nmd-rain) 30px 32px),
+    repeating-linear-gradient(102deg,
+      transparent 0 14px,
+      var(--nmd-rain) 14px 16px,
+      transparent 16px 32px);
+  opacity: var(--nmd-rain-strength, 0.5);
+  animation: nmd-rain-fall 0.85s linear infinite;
+  will-change: transform;
+}
+@keyframes nmd-rain-fall {
+  from { transform: translate3d(0, -32px, 0); }
+  to   { transform: translate3d(0, 0, 0); }
+}
+
+/* 暗角：压住四周，让中部的文字与卡片更清楚 */
+.md-typeset .nmd-scene-layer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 90% at 50% 42%, transparent 52%, var(--nmd-scene-vignette) 100%);
+}
+
+/* ---------- 3.1 Three.js 接管（阶段 0） ----------
+   convenience-scene.mjs 渲染出第一帧后才给容器加 .is-live：
+   canvas 铺满视口，CSS 降级层淡出、容器不再缩放与漂移。
+   初始化失败或 WebGL 不可用时不会加这个类，降级层原样保留。 */
+.md-typeset .nmd-scene-layer canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.md-typeset .nmd-scene-layer.is-live {
+  background: none;
+  transform: none;
+}
+
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-sky,
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-city,
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-glow,
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-ground,
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-rain,
+.md-typeset .nmd-scene-layer.is-live::after {
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+/* 降级层自身的循环动画会覆盖 opacity，接管后一并停掉 */
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-glow,
+.md-typeset .nmd-scene-layer.is-live .nmd-scene-rain {
+  animation: none;
+}
+
+/* ---------- 3.2 指针事件与交互模式（阶段 6） ----------
+   画布默认 pointer-events: none，不抢页面滚动（设计文档 §14.8）。
+   桌面按住 Alt / Shift 进入交互模式：画布接管拖拽与滚轮，内容层让位给场景；
+   触屏不做修饰键，靠 touch-action: pan-y —— 竖向滑动继续滚页面，
+   横向拖动转动模型、双指捏合交给 OrbitControls 缩放。 */
+html.nmd-interact .md-typeset .nmd-story { pointer-events: none; }
+html.nmd-interact .md-typeset .nmd-scene-layer canvas {
+  pointer-events: auto;
+  cursor: grab;
+}
+html.nmd-interact .md-typeset .nmd-scene-layer canvas:active { cursor: grabbing; }
+html.nmd-interact .nmd-interact-hint { opacity: 0.55; }
+html.nmd-interact {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* 交互提示只在内容层出现，并且按指针类型二选一显示 */
+.md-typeset .nmd-hint-coarse { display: none; }
+
+@media (pointer: coarse) {
+  .md-typeset .nmd-story { pointer-events: none; }
+  /* 相册仍然可以长按保存 / 点开 */
+  .md-typeset .nmd-gallery img { pointer-events: auto; }
+  .md-typeset .nmd-scene-layer canvas {
+    pointer-events: auto;
+    touch-action: pan-y;
+  }
+  .md-typeset .nmd-hint-fine { display: none; }
+  .md-typeset .nmd-hint-coarse { display: inline; }
+}
+
+/* ---------- 4. 章节骨架与滚动淡入淡出 ---------- */
+
+.md-typeset .nmd-story {
+  position: relative;
+  z-index: 1;
   width: calc(100vw - var(--nmd-sb, 0px));
   margin-inline: calc(50% - 50vw + var(--nmd-sb, 0px) / 2);
-  margin-top: 0;
-  min-height: calc(100vh - 2.4rem);
-  min-height: calc(100svh - 2.4rem); /* 小视口高（移动端地址栏），不支持则回退上一行 */
-  display: flex;
-  flex-direction: column;
-  border-radius: 0;
-  background: var(--nmd-grad-soft);
-  border: none;
-  border-bottom: 1px solid var(--nmd-line);
-  padding: clamp(56px, 10vh, 96px) clamp(20px, 4vw, 36px) 0;
-  text-align: center;
 }
-/* tabs 显示（≥1220px，对应主题 @media (max-width:76.234375em){.md-tabs{display:none}}）
-   时顶部多占 2.4rem，Hero 高度相应缩减，保证首屏恰好铺满 */
+
+.md-typeset .nmd-chapter {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 48rem); /* 单一阅读列，所有子元素左右对齐 */
+  justify-content: center;
+  align-content: center;
+  gap: 18px;
+  min-height: calc(100vh - 2.4rem);
+  min-height: calc(100svh - 2.4rem);
+  padding: clamp(56px, 9vh, 96px) clamp(20px, 5vw, 64px);
+  text-align: left;
+}
+/* tabs 显示（≥1220px）时顶部多占 2.4rem，章节高度相应缩减 */
 @media screen and (min-width: 76.25em) {
-  .md-typeset .nmd-hero {
+  .md-typeset .nmd-chapter {
     min-height: calc(100vh - 4.8rem);
     min-height: calc(100svh - 4.8rem);
   }
 }
-.md-typeset .nmd-hero-inner {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: safe center; /* 内容超高时退回顶部对齐，避免两端被裁 */
-  flex: 1 1 auto;
-  min-height: 0;
-}
-
-/* ---------- 3.1 全屏 Hero 的布局补偿（仅首页生效） ----------
-   清零 hero 上方的主题预留空隙（.md-main__inner / .md-content__inner / ::before），
-   使 hero 顶部贴住 sticky header；
-   overflow-x: clip 防止 100vw 触发横向滚动条（clip 不会像 hidden 那样破坏内部 sticky 定位） */
-.md-main:has(.nmd-hero) { overflow-x: clip; }
-.md-main:has(.nmd-hero) .md-main__inner { margin-top: 0; }
-.md-main:has(.nmd-hero) .md-content__inner { padding-top: 0; }
-.md-main:has(.nmd-hero) .md-content__inner::before { display: none; }
-
-/* 极光漂浮光斑 */
-.md-typeset .nmd-aurora {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-}
-.md-typeset .nmd-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  animation: nmd-drift 18s ease-in-out infinite alternate;
-}
-.md-typeset .nmd-blob-1 { width: 360px; height: 360px; background: var(--nmd-aurora-1); top: -110px; left: -80px; }
-.md-typeset .nmd-blob-2 { width: 320px; height: 320px; background: var(--nmd-aurora-2); bottom: -120px; right: -60px; animation-delay: -6s; }
-.md-typeset .nmd-blob-3 { width: 240px; height: 240px; background: var(--nmd-aurora-3); top: 24%; right: 16%; animation-delay: -10s; }
-.md-typeset .nmd-blob-4 { width: 200px; height: 200px; background: var(--nmd-aurora-4); bottom: 12%; left: 18%; animation-delay: -14s; }
-@keyframes nmd-drift {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(48px, 36px) scale(1.18); }
-}
-
-/* 头像光环（conic 渐变旋转） */
-.md-typeset .nmd-hero-avatar {
-  width: 132px;
-  height: 132px;
-  border-radius: 50%;
-  padding: 5px;
-  margin: 0 auto 26px;
-  background: conic-gradient(from 0deg, #ec6fa3, #7c4dff, #f6a64c, #2f9e9e, #ec6fa3);
-  animation: nmd-ring-spin 9s linear infinite;
-  box-shadow: 0 12px 32px -10px rgba(124, 77, 255, 0.45);
-}
-.md-typeset .nmd-hero-avatar img {
+/* 章节内的直接子元素统一填满阅读列，保持左右边界一致 */
+.md-typeset .nmd-chapter > * {
   width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  border: 4px solid var(--nmd-card);
+}
+
+/* 淡入淡出：仅当 JS 成功建立观察器（.nmd-fade，由 homepage.js 添加）时才隐藏，
+   保证脚本未执行或中途出错时内容始终可见 */
+html.nmd-js .md-typeset .nmd-story.nmd-fade .nmd-chapter {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+html.nmd-js .md-typeset .nmd-story.nmd-fade .nmd-chapter.is-active {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- 5. 封面：只保留「墨海寻珠」四个字 ---------- */
+
+.md-typeset .nmd-chapter-cover {
+  text-align: center;
+  background: radial-gradient(60% 46% at 50% 46%, var(--nmd-horizon) 0%, transparent 72%);
+}
+.md-typeset .nmd-cover-title {
+  position: relative;
   margin: 0;
-}
-@keyframes nmd-ring-spin { to { transform: rotate(360deg); } }
-
-/* 眉题 + 渐变标题 */
-.md-typeset .nmd-hero-eyebrow {
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: var(--nmd-purple);
-  margin: 0 0 14px;
-}
-.md-typeset .nmd-hero-title {
-  margin: 0 0 16px;
+  padding-bottom: 24px;
   font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
-  font-size: clamp(2.8rem, 7vw, 4.6rem);
+  font-size: clamp(2.4rem, 8vw, 5.2rem);
   font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.15;
-}
-.md-typeset .nmd-grad-text {
-  background: var(--nmd-grad);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: nmd-grad-shift 7s ease-in-out infinite;
-}
-@keyframes nmd-grad-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50%      { background-position: 100% 50%; }
-}
-
-/* 打字机副题 */
-.md-typeset .nmd-hero-sub {
-  font-size: 1.08rem;
-  color: var(--nmd-body);
-  margin: 0 0 28px;
-  min-height: 1.9em;
-}
-.md-typeset .nmd-caret {
-  display: inline-block;
-  width: 2px;
-  height: 1.05em;
-  margin-left: 3px;
-  vertical-align: -0.15em;
-  background: var(--nmd-pink);
-  animation: nmd-blink 1s steps(1) infinite;
-}
-@keyframes nmd-blink { 50% { opacity: 0; } }
-
-/* 标签徽章 */
-.md-typeset .nmd-hero-badges {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin: 0 0 34px;
-}
-.md-typeset .nmd-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 15px;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em; /* 抵消末字后多出的字距，让标题视觉居中 */
   color: var(--nmd-ink);
-  background: var(--nmd-badge-bg);
-  border: 1px solid var(--nmd-line);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  text-shadow: 0 2px 24px var(--nmd-horizon);
 }
-.md-typeset .nmd-badge:hover {
-  transform: translateY(-2px);
-  border-color: var(--nmd-pink);
+/* 标题下的霓虹光带 */
+.md-typeset .nmd-cover-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(64%, 22rem);
+  height: 3px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: var(--nmd-grad);
+  box-shadow: 0 0 16px rgba(255, 42, 109, 0.45), 0 0 34px rgba(5, 217, 232, 0.28);
 }
 
-/* 按钮 */
-.md-typeset .nmd-btn {
+/* ---------- 6. 章节标题与全息面板 ---------- */
+
+.md-typeset .nmd-chapter-index {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 26px;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  margin: 0;
+  font-family: var(--md-code-font-family);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--nmd-purple);
 }
-.md-typeset .nmd-btn-primary {
-  background: var(--nmd-grad);
-  color: #fff;
-  box-shadow: 0 8px 24px -8px rgba(124, 77, 255, 0.55);
+.md-typeset .nmd-chapter-index::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--nmd-pink);
+  box-shadow: 0 0 12px var(--nmd-pink);
 }
-.md-typeset .nmd-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px -8px rgba(124, 77, 255, 0.65);
-  color: #fff;
-}
-.md-typeset .nmd-btn-ghost {
-  background: var(--nmd-glass);
-  color: var(--nmd-ink);
-  border: 1px solid var(--nmd-line);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-}
-.md-typeset .nmd-btn-ghost:hover {
-  transform: translateY(-2px);
-  color: var(--nmd-pink);
-  border-color: var(--nmd-pink);
-}
-.md-typeset .nmd-hero-cta {
+
+.md-typeset .nmd-chapter-title {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  align-items: center;
   gap: 14px;
+  margin: 0;
+  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--nmd-ink);
+}
+.md-typeset .nmd-chapter-title::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 26px;
+  border-radius: 6px;
+  background: linear-gradient(180deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan));
+  box-shadow: 0 0 14px rgba(255, 42, 109, 0.3);
 }
 
-/* 滚动提示（全屏 Hero 中钉在底部） */
-.md-typeset .nmd-scroll-hint {
-  margin-top: 0;
-  padding-bottom: clamp(20px, 4vh, 36px);
-  font-size: 1.3rem;
-  color: var(--nmd-muted);
-  animation: nmd-bounce 2.2s ease-in-out infinite;
-}
-@keyframes nmd-bounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(8px); }
+.md-typeset .nmd-chapter-lead {
+  margin: 0;
+  font-size: clamp(1rem, 1.6vw, 1.14rem);
+  letter-spacing: 0.04em;
+  color: var(--nmd-body);
 }
 
-/* ---------- 4. 项目缘起 ---------- */
-
-/* 引文卡：双词条卡并排 + 结论横幅（React Bits GradientText · Aceternity 卡片理念） */
-.md-typeset .nmd-quote {
-  margin: 0 0 32px;
-  padding: 28px 30px 26px;
+/* 全息玻璃面板：浅色玻璃 + 细霓虹描边，不做过度模糊 */
+.md-typeset .nmd-panel {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  padding: clamp(20px, 2.6vw, 32px) clamp(20px, 3vw, 38px);
   border-radius: 20px;
-  background: var(--nmd-grad-soft);
   border: 1px solid var(--nmd-line);
+  background: var(--nmd-glass-strong);
   box-shadow: var(--nmd-shadow);
+  -webkit-backdrop-filter: blur(8px) saturate(1.06);
+  backdrop-filter: blur(8px) saturate(1.06);
+  text-align: left;
 }
+.md-typeset .nmd-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 8%;
+  right: 8%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--nmd-pink), var(--nmd-cyan), transparent);
+  opacity: 0.6;
+}
+
+/* ---------- 7. 缘起：词条 / 卡片 / 备注 ---------- */
+
 .md-typeset .nmd-idioms {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 14px;
-  margin-bottom: 18px;
+  margin: 0 0 18px;
 }
 .md-typeset .nmd-idiom {
+  padding: 16px 18px;
   border-radius: 14px;
-  padding: 18px 20px 16px;
-  background: var(--nmd-card-2);
   border: 1px solid var(--nmd-line);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  background: var(--nmd-card-2);
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 .md-typeset .nmd-idiom:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   border-color: var(--nmd-purple);
-  box-shadow: var(--nmd-shadow-hover);
 }
 .md-typeset .nmd-idiom-name {
-  display: block;
-  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
-  font-size: 1.55rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  background: var(--nmd-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  display: inline-block;
   margin-bottom: 8px;
+  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--nmd-ink);
 }
 .md-typeset .nmd-idiom-name::after {
   content: "";
   display: block;
-  width: 34px;
+  width: 28px;
   height: 2px;
+  margin-top: 6px;
   border-radius: 2px;
   background: var(--nmd-grad);
-  margin-top: 8px;
-  opacity: 0.55;
 }
 .md-typeset .nmd-idiom p {
   margin: 0;
+  font-size: 0.84rem;
+  line-height: 1.8;
   color: var(--nmd-body);
-  font-size: 0.92rem;
-  line-height: 1.9;
 }
 .md-typeset .nmd-quote-more {
   margin: 0;
-  color: var(--nmd-body);
   font-size: 0.98rem;
-  line-height: 1.9;
-  padding-top: 14px;
-  border-top: 1px dashed var(--nmd-line);
+  line-height: 2;
+  color: var(--nmd-body);
 }
-.md-typeset .nmd-quote-more strong {
-  color: var(--nmd-pink-deep);
-  font-weight: 700;
-}
+.md-typeset .nmd-quote-more strong { color: var(--nmd-ink); }
 
-/* 卡片网格（Aceternity HoverBorderGradient 理念：悬停渐变描边流动 + 聚光跟随） */
+/* 卡片网格：悬停渐变描边流动 + 聚光跟随（--mx / --my 由 homepage.js 写入） */
 .md-typeset .nmd-card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin: 0 0 30px;
+  gap: 16px;
 }
 .md-typeset .nmd-spot {
   position: relative;
   overflow: hidden;
+  padding: 22px;
   border-radius: 18px;
-  background: var(--nmd-card);
   border: 1px solid var(--nmd-line);
-  padding: 26px 24px 22px;
+  background: var(--nmd-glass-strong);
   box-shadow: var(--nmd-shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  text-align: left;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 .md-typeset .nmd-spot:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: var(--nmd-shadow-hover);
 }
-/* 聚光跟随（保留） */
 .md-typeset .nmd-spot::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
   opacity: 0;
-  transition: opacity 0.35s ease;
-  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), var(--nmd-spot-glow), transparent 65%);
   pointer-events: none;
-  z-index: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 0%), var(--nmd-spot-glow), transparent 70%);
 }
 .md-typeset .nmd-spot:hover::before { opacity: 1; }
-/* 渐变描边：悬停时循环流动（mask 只留 1px 边框） */
+/* 渐变描边：mask 只保留 1px 边框，悬停时循环流动 */
 .md-typeset .nmd-spot::after {
   content: "";
   position: absolute;
-  inset: -1px;
-  border-radius: inherit;
+  inset: 0;
   padding: 1px;
-  background: linear-gradient(130deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-teal), var(--nmd-pink));
-  background-size: 300% 100%;
+  border-radius: inherit;
+  background: var(--nmd-grad);
+  background-size: 200% 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-  pointer-events: none;
-  z-index: 0;
 }
 .md-typeset .nmd-spot:hover::after {
   opacity: 1;
-  animation: nmd-border-flow 3.5s linear infinite;
+  animation: nmd-border-flow 4s linear infinite;
 }
 @keyframes nmd-border-flow {
-  to { background-position: 300% 0; }
+  to { background-position: 200% 0; }
 }
 .md-typeset .nmd-spot-icon {
-  width: 46px;
-  height: 46px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
-  line-height: 1;
-  margin-bottom: 14px;
-  border-radius: 14px;
-  background: var(--nmd-grad-soft);
+  width: 42px;
+  height: 42px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  background: var(--nmd-card-2);
   border: 1px solid var(--nmd-line);
-}
-.md-typeset .nmd-spot h3,
-.md-typeset .nmd-spot p {
-  position: relative;
-  z-index: 1;
 }
 .md-typeset .nmd-spot h3 {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--nmd-ink);
+  position: relative;
   margin: 0 0 8px;
   font-family: inherit;
+  font-size: 1.04rem;
+  font-weight: 700;
+  color: var(--nmd-ink);
 }
 .md-typeset .nmd-spot p {
-  font-size: 0.92rem;
+  position: relative;
+  margin: 0;
+  font-size: 0.9rem;
   line-height: 1.85;
   color: var(--nmd-body);
-  margin: 0;
 }
+
 .md-typeset .nmd-note {
-  font-size: 0.95rem;
-  color: var(--nmd-muted);
-  line-height: 1.9;
   margin: 0;
-  padding: 14px 20px;
-  border-left: 3px solid var(--nmd-pink);
+  padding: 14px 18px;
+  border-radius: 14px;
+  border: 1px dashed var(--nmd-line);
   background: var(--nmd-card-2);
-  border-radius: 0 12px 12px 0;
+  font-size: 0.84rem;
+  line-height: 1.85;
+  color: var(--nmd-body);
 }
 
-/* ---------- 5. 关于我（图文交替排版） ---------- */
+/* ---------- 8. 关于我：文字块 / 标签 / 相册 ---------- */
 
-/* 一行 = 一张图片 + 一段文字；偶数行图片右置，形成左右交错节奏
-   图片列 auto 精确匹配图片宽度（280px），文字列占满剩余空间自动换行
-   注意：用 nth-of-type 而非 nth-child —— 区块内第一个子元素是 <h2> 标题，
-   若用 nth-child 会把标题计入奇偶，导致图片被排进 1fr 弹性列而被压塌 */
-.md-typeset .nmd-fig-row {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 28px;
-  align-items: center;
-  margin-bottom: 30px;
-}
-.md-typeset .nmd-fig-row:nth-of-type(even) {
-  grid-template-columns: minmax(0, 1fr) auto;
-}
-.md-typeset .nmd-fig-row:nth-of-type(even) .nmd-fig-media { order: 2; }
-.md-typeset .nmd-fig-media {
-  margin: 0;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--nmd-line);
-  background: var(--nmd-card-2);
-  box-shadow: var(--nmd-shadow);
-  aspect-ratio: 4 / 3;
-  width: 280px;
-  max-width: 100%;
-  transition: transform 0.25s ease;
-}
-.md-typeset .nmd-fig-media:hover { transform: scale(1.012); }
-.md-typeset .nmd-fig-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  margin: 0;
-}
-.md-typeset .nmd-fig-copy .nmd-fig-label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 12px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: var(--nmd-purple);
-}
-.md-typeset .nmd-fig-copy .nmd-fig-label::after {
-  content: "";
-  flex: 1;
-  height: 1px;
-  background: var(--nmd-line);
-}
 .md-typeset .nmd-fig-copy p {
   margin: 0 0 12px;
   font-size: 0.98rem;
@@ -550,137 +640,99 @@
 }
 .md-typeset .nmd-fig-copy p:last-child { margin-bottom: 0; }
 .md-typeset .nmd-fig-copy strong { color: var(--nmd-ink); }
+.md-typeset .nmd-fig-copy .nmd-fig-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 10px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--nmd-purple);
+}
+.md-typeset .nmd-fig-copy .nmd-fig-label:first-child { margin-top: 0; }
+.md-typeset .nmd-fig-copy .nmd-fig-label::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--nmd-line), transparent);
+}
 
-/* 兴趣 chip 云 */
+/* 标签云：个人信息标签 + 兴趣标签 */
 .md-typeset .nmd-chip-cloud {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin: 0 0 24px;
+  margin: 0 0 4px;
 }
+.md-typeset .nmd-fig-copy .nmd-chip-cloud { margin: 14px 0 6px; }
 .md-typeset .nmd-chip {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 6px 14px;
+  padding: 7px 14px;
   border-radius: 999px;
-  font-size: 0.84rem;
-  color: var(--nmd-ink);
-  background: var(--nmd-card);
+  font-size: 0.82rem;
+  color: var(--nmd-body);
+  background: var(--nmd-badge-bg);
   border: 1px solid var(--nmd-line);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 }
 .md-typeset .nmd-chip:hover {
-  border-color: var(--nmd-purple);
-  color: var(--nmd-purple);
   transform: translateY(-2px);
-}
-
-/* 特长卡：文字 + 证书缩略图 */
-.md-typeset .nmd-talent {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-  gap: 22px;
-  align-items: center;
-  border-radius: 18px;
-  padding: 22px 24px;
-  background: var(--nmd-grad-soft);
-  border: 1px solid var(--nmd-line);
-  box-shadow: var(--nmd-shadow);
-}
-.md-typeset .nmd-talent h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
   color: var(--nmd-ink);
-  margin: 0 0 8px;
-  font-family: inherit;
-}
-.md-typeset .nmd-talent p {
-  font-size: 0.92rem;
-  line-height: 1.85;
-  color: var(--nmd-body);
-  margin: 0;
-}
-.md-typeset .nmd-talent-media {
-  margin: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--nmd-line);
-  background: var(--nmd-card-2);
-  box-shadow: var(--nmd-shadow);
-  aspect-ratio: 3 / 4;
-  max-height: 240px;
-}
-.md-typeset .nmd-talent-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  display: block;
-  margin: 0;
+  border-color: var(--nmd-pink);
+  box-shadow: 0 8px 20px -12px rgba(255, 42, 109, 0.5);
 }
 
-/* ---------- 5.5 我的照片（Coverflow 轮播） ---------- */
-
-/* 封面流布局：三张照片各带独立循环动画，负延迟错开 1/3 周期，
-   同一时刻中间那张完整展示（opacity 1），左右两侧各露出半透明的
-   前一张 / 后一张（opacity 0.45 + rotateY 倾斜），画面饱满无空白。
-   切换时照片 rotateY 翻转 + 位移，类似「开门/翻牌」的过渡效果。
-   三张总周期 18s（每张停留约 6s），负延迟使三张相位均匀分布 */
+/* 相册：全部照片集中在「关于我」章节，等宽网格 + 悬停轻推近 */
 .md-typeset .nmd-gallery {
-  position: relative;
-  height: 480px;
-  max-width: 980px;
-  margin: 0 auto;
-  perspective: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: start; /* 竖幅照片成行时不被横向照片拉伸 */
+  gap: 14px;
 }
 .md-typeset .nmd-gallery-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  width: 68%;
-  height: 100%;
-  border-radius: 18px;
+  position: relative;
+  width: 100%;
+  margin: 0;
   overflow: hidden;
+  border-radius: 16px;
   border: 1px solid var(--nmd-line);
   background: var(--nmd-card-2);
   box-shadow: var(--nmd-shadow);
-  transform-style: preserve-3d;
-  animation: nmd-gallery-cycle 18s ease-in-out infinite;
+  aspect-ratio: 4 / 3;
 }
-.md-typeset .nmd-gallery-slide:nth-child(1) { animation-delay: 0s; }
-.md-typeset .nmd-gallery-slide:nth-child(2) { animation-delay: -6s; }
-.md-typeset .nmd-gallery-slide:nth-child(3) { animation-delay: -12s; }
 .md-typeset .nmd-gallery-slide img {
+  display: block;
   width: 100%;
   height: 100%;
+  margin: 0;
   object-fit: cover;
   object-position: center;
-  display: block;
-  margin: 0;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
-@keyframes nmd-gallery-cycle {
-  0%   { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
-  20%  { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
-  27%  { transform: translateX(55%) scale(0.8) rotateY(-28deg); opacity: 0.45; z-index: 2; }
-  46%  { transform: translateX(55%) scale(0.8) rotateY(-28deg); opacity: 0.45; z-index: 2; }
-  53%  { transform: translateX(92%) scale(0.72) rotateY(-36deg); opacity: 0; z-index: 1; }
-  60%  { transform: translateX(-92%) scale(0.72) rotateY(36deg); opacity: 0; z-index: 1; }
-  67%  { transform: translateX(-55%) scale(0.8) rotateY(28deg); opacity: 0.45; z-index: 2; }
-  86%  { transform: translateX(-55%) scale(0.8) rotateY(28deg); opacity: 0.45; z-index: 2; }
-  93%  { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
-  100% { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
+.md-typeset .nmd-gallery-slide:hover img { transform: scale(1.05); }
+/* 竖幅照片（人像 / 证书扫描件）改为 3:4 画框 + contain，避免裁掉内容 */
+.md-typeset .nmd-gallery-slide--tall { aspect-ratio: 3 / 4; }
+.md-typeset .nmd-gallery-slide--tall img {
+  object-fit: contain;
+  background: var(--nmd-card-2);
+}
+.md-typeset .nmd-gallery-slide--tall:hover img { transform: none; }
+.md-typeset .nmd-gallery-slide figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 26px 14px 10px;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: linear-gradient(180deg, transparent, rgba(10, 12, 22, 0.78));
 }
 
-/* 关于我：纯文字块（照片已移入上方 Gallery 轮播） */
-.md-typeset .nmd-fig-copy-full {
-  max-width: 42em;
-  margin: 0 0 30px;
-}
-
-/* ---------- 6. 学历时间线 ---------- */
+/* ---------- 9. 学历时间线 ---------- */
 
 .md-typeset .nmd-timeline {
   list-style: none;
@@ -696,7 +748,7 @@
   bottom: 10px;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(var(--nmd-pink), var(--nmd-purple));
+  background: linear-gradient(var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan));
   opacity: 0.7;
 }
 .md-typeset .nmd-tl-item {
@@ -721,7 +773,7 @@
   box-shadow: 0 0 0 5px var(--nmd-purple-soft);
 }
 .md-typeset .nmd-tl-card {
-  background: var(--nmd-card);
+  background: var(--nmd-glass-strong);
   border: 1px solid var(--nmd-line);
   border-radius: 15px;
   padding: 15px 20px;
@@ -734,23 +786,23 @@
 }
 .md-typeset .nmd-tl-year {
   display: inline-block;
-  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  margin-bottom: 4px;
+  font-family: var(--md-code-font-family);
   font-size: 0.8rem;
   letter-spacing: 0.05em;
   color: var(--nmd-pink);
-  margin-bottom: 4px;
 }
 .md-typeset .nmd-tl-card h3 {
+  margin: 0 0 3px;
+  font-family: inherit;
   font-size: 1.02rem;
   font-weight: 700;
   color: var(--nmd-ink);
-  margin: 0 0 3px;
-  font-family: inherit;
 }
 .md-typeset .nmd-tl-card p {
+  margin: 0;
   font-size: 0.88rem;
   color: var(--nmd-muted);
-  margin: 0;
 }
 .md-typeset .nmd-tl-tag {
   display: inline-block;
@@ -764,465 +816,83 @@
   vertical-align: 2px;
 }
 
-/* ---------- 7. 寄语收尾 ---------- */
+/* ---------- 10. 尾声 ---------- */
 
 .md-typeset .nmd-closing-card {
-  position: relative;
   overflow: hidden;
+  padding: clamp(34px, 5vw, 52px) clamp(24px, 4vw, 42px);
   border-radius: 22px;
-  padding: 48px 34px 42px;
   text-align: center;
   background: var(--nmd-grad-soft);
-  border: 1px solid var(--nmd-line);
-  box-shadow: var(--nmd-shadow);
 }
-.md-typeset .nmd-closing-card::before {
+.md-typeset .nmd-closing-card::after {
   content: "";
   position: absolute;
+  top: -110px;
+  right: -60px;
   width: 260px;
   height: 260px;
   border-radius: 50%;
-  background: var(--nmd-aurora-1);
+  background: var(--nmd-shop-2);
   filter: blur(70px);
-  top: -110px;
-  right: -60px;
-  opacity: 0.5;
+  opacity: 0.7;
+  pointer-events: none;
 }
 .md-typeset .nmd-closing-card h2 {
   position: relative;
-  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: var(--nmd-ink);
   margin: 0 0 16px;
+  font-family: Georgia, "Noto Serif SC", "Songti SC", "SimSun", serif;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--nmd-ink);
 }
 .md-typeset .nmd-closing-card p {
   position: relative;
-  font-size: 1.02rem;
+  max-width: 44em;
+  margin: 0 auto;
+  font-size: 1rem;
   line-height: 2;
   color: var(--nmd-body);
-  margin: 0 auto 26px;
-  max-width: 44em;
 }
-.md-typeset .nmd-closing-card .nmd-btn { position: relative; }
+.md-typeset .nmd-closing-card strong { color: var(--nmd-ink); }
 
-/* ---------- 8. 滚动显现 ----------
-   仅在 JS 可用（html.nmd-js 由 homepage.js 添加）时才「先隐藏再显现」，
-   保证任何脚本未执行的情况（禁用 JS / instant 导航未初始化）都不会白屏 */
-
-html.nmd-js .md-typeset .nmd-reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
-}
-html.nmd-js .md-typeset .nmd-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
-
-/* ---------- 9. 响应式 + 无障碍 ---------- */
+/* ---------- 11. 响应式 ---------- */
 
 @media screen and (max-width: 720px) {
-  .md-typeset .nmd-hero { padding: clamp(48px, 8vh, 64px) 20px 0; }
-  /* 图文行窄屏改为单列：图片在上、文字在下，恢复自然阅读顺序 */
-  .md-typeset .nmd-fig-row,
-  .md-typeset .nmd-fig-row:nth-of-type(even) {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .md-typeset .nmd-fig-row:nth-of-type(even) .nmd-fig-media { order: 0; }
-  .md-typeset .nmd-talent { grid-template-columns: 1fr; }
-  .md-typeset .nmd-talent-media { max-height: none; }
+  .md-typeset .nmd-chapter { gap: 14px; padding: 56px 20px; }
+  .md-typeset .nmd-chapter > * { width: 100%; }
+  .md-typeset .nmd-cover-title { letter-spacing: 0.22em; text-indent: 0.22em; }
   .md-typeset .nmd-idioms { grid-template-columns: 1fr; }
-  .md-typeset .nmd-block { margin-top: 56px; }
-  .md-typeset .nmd-quote { padding: 22px 20px; }
-  /* Coverflow 窄屏：压低容器、加宽照片，保持三图同显不溢出 */
-  .md-typeset .nmd-gallery {
-    height: 300px;
-    max-width: 100%;
-  }
-  .md-typeset .nmd-gallery-slide { width: 76%; }
+  .md-typeset .nmd-card-grid { grid-template-columns: 1fr; }
+  .md-typeset .nmd-gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+  .md-typeset .nmd-chip { font-size: 0.78rem; padding: 6px 12px; }
+  /* 移动端降载：弱化模糊与场景动画，保证滚动流畅 */
+  .md-typeset .nmd-scene-glow { filter: blur(22px); }
+  .md-typeset .nmd-scene-city { opacity: 0.5; }
+  .md-typeset .nmd-panel { -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
 
+/* ---------- 12. 无障碍与动效降级 ----------
+   prefers-reduced-motion 下：场景动画停止、章节不做位移与淡出、悬停位移取消 */
+
 @media (prefers-reduced-motion: reduce) {
-  .md-typeset .nmd-blob,
-  .md-typeset .nmd-hero-avatar,
-  .md-typeset .nmd-grad-text,
-  .md-typeset .nmd-caret,
-  .md-typeset .nmd-scroll-hint {
+  .md-typeset .nmd-scene-rain,
+  .md-typeset .nmd-scene-glow {
     animation: none;
   }
-  /* 减弱动态：轮播停为静态封面流，三张同时可见，中间高亮两侧半透明 */
-  .md-typeset .nmd-gallery-slide { animation: none; }
-  .md-typeset .nmd-gallery-slide:nth-child(1) { transform: translateX(0) scale(1) rotateY(0deg); opacity: 1; z-index: 3; }
-  .md-typeset .nmd-gallery-slide:nth-child(2) { transform: translateX(55%) scale(0.8) rotateY(-28deg); opacity: 0.45; z-index: 2; }
-  .md-typeset .nmd-gallery-slide:nth-child(3) { transform: translateX(-55%) scale(0.8) rotateY(28deg); opacity: 0.45; z-index: 2; }
-  html.nmd-js .md-typeset .nmd-reveal {
+  .md-typeset .nmd-scene-layer { transform: none; }
+  html.nmd-js .md-typeset .nmd-story.nmd-fade .nmd-chapter {
     opacity: 1;
     transform: none;
     transition: none;
   }
-  /* 电影片头序列全量降级：隐藏态全部无效化、转场与开门不执行（内容立即可见） */
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-veil,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-doors,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-near,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-skip { display: none; }
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-avatar,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-eyebrow,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-sub,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-title,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-badges,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-hero-cta {
-    opacity: 1;
+  .md-typeset .nmd-idiom:hover,
+  .md-typeset .nmd-spot:hover,
+  .md-typeset .nmd-tl-card:hover,
+  .md-typeset .nmd-chip:hover {
     transform: none;
-    filter: none;
-    pointer-events: auto;
-    transition: none;
   }
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-far,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-mid,
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-layer-near {
-    transform: none;
-    transition: none;
-  }
-  .md-typeset .nmd-hero[data-nmd-seq="running"] .nmd-veil { opacity: 0; }
-}
-
-/* ---------- 10. 电影片头序列（开门转场 / 分层视差 / 冷开场） ----------
-   状态机：.nmd-hero[data-nmd-seq="running"] 内按 data-nmd-phase="a"~"e"
-   分镜推进；非 running（无 JS / 已跳过 / 已结束）时所有隐藏态一律失效，
-   内容默认完整可见。时间轴由 homepage.js 的 initHeroSequence 驱动。 */
-
-.md-typeset .nmd-scene {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 0;
-}
-
-/* 冷开场暗幕：近黑覆盖层（z1，位于极光之下，仅压暗背景） */
-.md-typeset .nmd-veil {
-  position: absolute;
-  inset: -16vh -40px -16vh -40px;
-  z-index: 1;
-  background: rgba(13, 11, 20, 0.92);
-  opacity: 0;
-  pointer-events: none;
-}
-[data-md-color-scheme="slate"] .md-typeset .nmd-veil {
-  background: rgba(5, 4, 9, 0.96);
-}
-
-/* 近景层：轻微暗角 + 扫描线质感（极克制，始终可见） */
-.md-typeset .nmd-layer-near {
-  position: absolute;
-  inset: -16vh -40px -16vh -40px;
-  z-index: 4;
-  pointer-events: none;
-  background:
-    radial-gradient(120% 90% at 50% 40%, transparent 58%, rgba(18, 12, 26, 0.18) 100%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 1px, transparent 1px 4px);
-}
-[data-md-color-scheme="slate"] .md-typeset .nmd-layer-near {
-  background:
-    radial-gradient(120% 90% at 50% 40%, transparent 58%, rgba(0, 0, 0, 0.34) 100%),
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 4px);
-}
-
-/* 开门转场：两块各 50% 宽的玻璃霓虹门板（默认隐藏，仅序列进行中显示） */
-.md-typeset .nmd-doors {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  display: none;
-  pointer-events: none;
-}
-.nmd-hero[data-nmd-seq="running"] .nmd-doors { display: block; }
-.md-typeset .nmd-door {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 50%;
-  will-change: transform;
-  background: linear-gradient(180deg, rgba(26, 21, 38, 0.86), rgba(13, 10, 22, 0.92));
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-[data-md-color-scheme="slate"] .md-typeset .nmd-door {
-  background: linear-gradient(180deg, rgba(10, 8, 16, 0.92), rgba(5, 4, 9, 0.96));
-}
-.md-typeset .nmd-door-left { left: 0; transform: translateX(-102%); }
-.md-typeset .nmd-door-right { right: 0; transform: translateX(102%); }
-/* 中缝霓虹描边（pink/violet/cyan，呼应 --nmd-grad） */
-.md-typeset .nmd-door-left::after,
-.md-typeset .nmd-door-right::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--nmd-grad);
-  box-shadow: 0 0 14px rgba(124, 77, 255, 0.6), 0 0 32px rgba(236, 111, 163, 0.35);
-}
-.md-typeset .nmd-door-left::after { right: -1px; }
-.md-typeset .nmd-door-right::after { left: -1px; }
-/* Phase D：门板关闭；Phase E：门板打开 */
-.nmd-hero[data-nmd-phase="d"] .nmd-door-left {
-  transform: translateX(0);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="d"] .nmd-door-right {
-  transform: translateX(0);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="e"] .nmd-door-left {
-  transform: translateX(-102%);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="e"] .nmd-door-right {
-  transform: translateX(102%);
-  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* 跳过按钮（键盘可达，仅序列进行中显示） */
-.md-typeset .nmd-skip {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  z-index: 6;
-  display: none;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--nmd-muted);
-  background: var(--nmd-glass);
-  border: 1px solid var(--nmd-line);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-.nmd-hero[data-nmd-seq="running"] .nmd-skip { display: inline-flex; }
-.md-typeset .nmd-skip:hover {
-  color: var(--nmd-pink);
-  border-color: var(--nmd-pink);
-  transform: translateY(-1px);
-}
-.md-typeset .nmd-skip:focus-visible {
-  outline: 2px solid var(--nmd-pink);
-  outline-offset: 2px;
-}
-
-/* Phase A：冷开场（无过渡，冷启动直落，避免反向闪现） */
-.nmd-hero[data-nmd-phase="a"] .nmd-veil { opacity: 1; }
-.nmd-hero[data-nmd-phase="a"] .nmd-hero-avatar,
-.nmd-hero[data-nmd-phase="a"] .nmd-hero-sub { opacity: 0; }
-.nmd-hero[data-nmd-phase="a"] .nmd-hero-eyebrow { opacity: 0; transform: translateY(10px); }
-.nmd-hero[data-nmd-phase="a"] .nmd-hero-title { opacity: 0; filter: blur(16px); transform: translateY(18px); }
-.nmd-hero[data-nmd-phase="a"] .nmd-hero-badges,
-.nmd-hero[data-nmd-phase="a"] .nmd-hero-cta {
-  opacity: 0;
-  transform: translateY(14px);
-  pointer-events: none;
-}
-
-/* 进场过渡（仅 phase b~e，phase a 不参与，避免冷启动反向闪现） */
-.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-avatar,
-.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-eyebrow,
-.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-title,
-.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-sub,
-.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-badges,
-.nmd-hero[data-nmd-seq="running"]:not([data-nmd-phase="a"]) .nmd-hero-cta {
-  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
-              filter 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Phase B：显影建立（暗幕淡出、标题显影、头像/副题进入） */
-.nmd-hero[data-nmd-phase="b"] .nmd-veil {
-  opacity: 0;
-  transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="b"] .nmd-hero-avatar { opacity: 1; }
-.nmd-hero[data-nmd-phase="b"] .nmd-hero-eyebrow { opacity: 1; transform: none; }
-.nmd-hero[data-nmd-phase="b"] .nmd-hero-title { opacity: 1; filter: blur(0); transform: none; }
-.nmd-hero[data-nmd-phase="b"] .nmd-hero-sub { opacity: 1; }
-.nmd-hero[data-nmd-phase="b"] .nmd-hero-badges,
-.nmd-hero[data-nmd-phase="b"] .nmd-hero-cta {
-  opacity: 0;
-  transform: translateY(14px);
-  pointer-events: none;
-}
-
-/* Phase C：单镜头推进（分层视差 + 徽章/CTA 恢复完整可见） */
-.nmd-hero[data-nmd-seq="running"] .nmd-layer-far { transform: scale(1.1); }
-.nmd-hero[data-nmd-phase="c"] .nmd-layer-far,
-.nmd-hero[data-nmd-phase="d"] .nmd-layer-far,
-.nmd-hero[data-nmd-phase="e"] .nmd-layer-far {
-  transform: scale(1.04);
-  transition: transform 2.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="c"] .nmd-layer-mid,
-.nmd-hero[data-nmd-phase="d"] .nmd-layer-mid,
-.nmd-hero[data-nmd-phase="e"] .nmd-layer-mid {
-  transform: scale(1.06);
-  transition: transform 2.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="c"] .nmd-layer-near,
-.nmd-hero[data-nmd-phase="d"] .nmd-layer-near,
-.nmd-hero[data-nmd-phase="e"] .nmd-layer-near {
-  transform: scale(1.02);
-  transition: transform 2.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.nmd-hero[data-nmd-phase="c"] .nmd-hero-badges,
-.nmd-hero[data-nmd-phase="c"] .nmd-hero-cta {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
-}
-
-/* 完成态（is-done）：停止 Hero 内全部无限动画，首屏结束后 CPU/GPU 回落 */
-.nmd-hero.is-done .nmd-blob,
-.nmd-hero.is-done .nmd-hero-avatar,
-.nmd-hero.is-done .nmd-grad-text,
-.nmd-hero.is-done .nmd-caret,
-.nmd-hero.is-done .nmd-scroll-hint { animation: none; }
-.nmd-hero.is-done .nmd-grad-text { background-position: 50% 50%; }
-.nmd-hero.is-done .nmd-caret { opacity: 0; }
-
-/* 移动端（电影片头降载：弱化 blur、缩小推进幅度、近景层减弱） */
-@media screen and (max-width: 720px) {
-  .md-typeset .nmd-blob { filter: blur(40px); }
-  .md-typeset .nmd-layer-near { opacity: 0.5; }
-  .md-typeset .nmd-skip { top: 12px; right: 12px; }
-  .nmd-hero[data-nmd-phase="c"] .nmd-layer-far,
-  .nmd-hero[data-nmd-phase="d"] .nmd-layer-far,
-  .nmd-hero[data-nmd-phase="e"] .nmd-layer-far { transform: scale(1.02); }
-  .nmd-hero[data-nmd-phase="c"] .nmd-layer-mid,
-  .nmd-hero[data-nmd-phase="d"] .nmd-layer-mid,
-  .nmd-hero[data-nmd-phase="e"] .nmd-layer-mid { transform: scale(1.03); }
-  .nmd-hero[data-nmd-phase="c"] .nmd-layer-near,
-  .nmd-hero[data-nmd-phase="d"] .nmd-layer-near,
-  .nmd-hero[data-nmd-phase="e"] .nmd-layer-near { transform: scale(1.01); }
-}
-
-/* =============================================================
-   亮色赛博朋克增强层
-   ============================================================= */
-
-/* Hero 透视网格：极淡、内容之后、不可交互 */
-.md-typeset .nmd-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(var(--nmd-grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--nmd-grid-line) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 76%);
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.9) 0%, transparent 76%);
-}
-
-/* Hero 扫描线：单条光带从顶部扫到底部 */
-.md-typeset .nmd-hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 120px;
-  z-index: 4;
-  pointer-events: none;
-  background: linear-gradient(180deg, transparent, var(--nmd-scan-line), transparent);
-  opacity: 0.42;
-  animation: nmd-scan 3.2s linear infinite;
-}
-
-/* 粒子星尘层：纯 CSS，多组 radial-gradient 位移，移动端自动更轻 */
-.md-typeset .nmd-particles {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle at 12% 22%, var(--nmd-pink) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 74% 16%, var(--nmd-cyan) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 38% 68%, var(--nmd-purple) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 84% 76%, var(--nmd-amber) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 20% 86%, var(--nmd-teal) 0 1px, transparent 1.5px),
-    radial-gradient(circle at 56% 38%, var(--nmd-pink) 0 1px, transparent 1.5px);
-  background-size: 180px 180px, 220px 220px, 260px 260px, 200px 200px, 240px 240px, 280px 280px;
-  animation: nmd-particles-drift 26s linear infinite;
-  opacity: 0.7;
-  mix-blend-mode: normal;
-}
-
-@keyframes nmd-scan {
-  0% { transform: translateY(-140px); }
-  100% { transform: translateY(calc(100vh + 160px)); }
-}
-
-@keyframes nmd-particles-drift {
-  0% { background-position: 0 0, 0 0, 0 0, 0 0, 0 0, 0 0; }
-  100% { background-position: 180px 180px, -220px 220px, 260px -260px, -200px -200px, 240px -240px, -280px 280px; }
-}
-
-/* 头像光环改为赛博多色旋转 */
-.md-typeset .nmd-hero-avatar {
-  background: conic-gradient(from 0deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan), var(--nmd-amber), var(--nmd-pink));
-  box-shadow:
-    0 12px 32px -10px rgba(255, 42, 109, 0.42),
-    0 0 18px rgba(5, 217, 232, 0.16);
-}
-
-/* HUD 化的眉题：状态点 + 等宽字距 */
-.md-typeset .nmd-hero-eyebrow {
-  font-family: "SFMono-Regular", "Cascadia Code", "Roboto Mono", monospace;
-  color: var(--nmd-cyan);
-  letter-spacing: 0.28em;
-}
-.md-typeset .nmd-hero-eyebrow::before {
-  content: "";
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: var(--nmd-pink);
-  box-shadow: 0 0 12px var(--nmd-pink);
-}
-
-/* 区块标题增加赛博竖条：沿用原规则，改为亮色霓虹渐变 */
-.md-typeset .nmd-title::before {
-  background: linear-gradient(180deg, var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan));
-  box-shadow: 0 0 14px rgba(255, 42, 109, 0.28);
-}
-
-/* 时间线改为三段霓虹线 */
-.md-typeset .nmd-timeline::before {
-  background: linear-gradient(var(--nmd-pink), var(--nmd-purple), var(--nmd-cyan));
-}
-
-/* 按钮保持渐变，但提升发光 */
-.md-typeset .nmd-btn-primary {
-  box-shadow: 0 10px 28px -10px rgba(255, 42, 109, 0.62);
-}
-.md-typeset .nmd-btn-primary:hover {
-  box-shadow: 0 14px 34px -10px rgba(255, 42, 109, 0.76);
-}
-
-/* reduced-motion：彻底停掉新增粒子、网格和扫描线动画 */
-@media (prefers-reduced-motion: reduce) {
-  .md-typeset .nmd-hero::after,
-  .md-typeset .nmd-particles {
-    animation: none !important;
-  }
-  .md-typeset .nmd-particles {
-    opacity: 0.28;
-  }
+  .md-typeset .nmd-gallery-slide:hover img { transform: none; }
+  .md-typeset .nmd-spot:hover::after { animation: none; }
 }

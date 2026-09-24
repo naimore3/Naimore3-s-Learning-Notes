@@ -271,8 +271,149 @@ function tactileTexture(THREE) {
   return toTexture(THREE, canvas);
 }
 
+/* ---------- 阶段 8：邻栋窗格 512×512（4×4，夜里约 40% 格亮暖黄） ---------- */
+function windowGridTexture(THREE) {
+  const canvas = createCanvas(512, 512);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#dfe5ee";
+  ctx.fillRect(0, 0, 512, 512);
+  // 确定性「夜里亮灯」布局：约 40% 格子填暖黄，其余冷灰玻璃
+  const lit = [false, true, false, false,
+    true, false, false, true,
+    false, false, true, false,
+    false, true, false, false];
+  for (let row = 0; row < 4; row++) {
+    for (let col = 0; col < 4; col++) {
+      const x = 40 + col * 120;
+      const y = 40 + row * 120;
+      ctx.fillStyle = "#1d4e89"; // 深蓝窗框
+      ctx.fillRect(x - 6, y - 6, 96, 96);
+      ctx.fillStyle = lit[row * 4 + col] ? "#ffd9a8" : "#9fb4c8";
+      ctx.fillRect(x, y, 84, 84);
+      ctx.fillStyle = "rgba(255, 255, 255, 0.35)"; // 玻璃高光一条
+      ctx.fillRect(x, y, 84, 10);
+    }
+  }
+  return toTexture(THREE, canvas);
+}
+
+/* ---------- 阶段 8：店面墙砖缝 256×256（近白底 + 极淡横缝，不改大色） ----------
+   必须不透明：MeshToonMaterial 的 map 在 transparent:false 下会取 RGB，
+   透明画布会被采成黑色。白底 × facade 色 = facade 色，砖缝只做微弱减淡。 */
+function facadeTileTexture(THREE) {
+  const canvas = createCanvas(256, 256);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#ffffff";
+  ctx.fillRect(0, 0, 256, 256);
+  ctx.strokeStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.lineWidth = 2;
+  for (let y = 0; y <= 256; y += 32) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(256, y);
+    ctx.stroke();
+  }
+  // 错缝竖向短缝
+  ctx.lineWidth = 1.5;
+  for (let row = 0; row < 8; row++) {
+    const offset = row % 2 === 0 ? 64 : 160;
+    ctx.beginPath();
+    ctx.moveTo(offset, row * 32);
+    ctx.lineTo(offset, row * 32 + 32);
+    ctx.stroke();
+  }
+  return toTexture(THREE, canvas);
+}
+
+/* ---------- 阶段 10：电车侧带 512×44（深蓝底 + 系统衬线字） ---------- */
+function tramLiveryTexture(THREE) {
+  const canvas = createCanvas(512, 44);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#1d4e89";
+  ctx.fillRect(0, 0, 512, 44);
+  text(ctx, "墨海電車  MOHAI TRAM", 256, 24,
+    "bold 26px Georgia, 'Noto Serif SC', 'Songti SC', serif", "#f2e8d8");
+  return toTexture(THREE, canvas);
+}
+
+/* ---------- 阶段 9：单片樱花瓣 64×64（五瓣径向渐变，中心留白点） ---------- */
+function petalTexture(THREE) {
+  const canvas = createCanvas(64, 64);
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, 64, 64);
+  const cx = 32;
+  const cy = 32;
+  for (let i = 0; i < 5; i++) {
+    const angle = (i / 5) * Math.PI * 2 - Math.PI / 2;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+    const gradient = ctx.createRadialGradient(0, -14, 1, 0, -14, 16);
+    gradient.addColorStop(0, "rgba(255, 255, 255, 0.95)");
+    gradient.addColorStop(0.45, "rgba(246, 182, 194, 0.95)");
+    gradient.addColorStop(1, "rgba(246, 182, 194, 0)");
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.ellipse(0, -14, 9, 15, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+  ctx.fillStyle = "rgba(255, 255, 255, 0.95)";
+  ctx.beginPath();
+  ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+  ctx.fill();
+  return toTexture(THREE, canvas);
+}
+
+/* ---------- 阶段 12：波纹 128×128（羽化双环 + 中心落点，白光交材质着色） ---------- */
+function rippleTexture(THREE) {
+  const canvas = createCanvas(128, 128);
+  const ctx = canvas.getContext("2d");
+  const cx = 64;
+  const cy = 64;
+  // 外环：峰 r≈0.68，两侧羽化 → 软环
+  let g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 64);
+  g.addColorStop(0.00, "rgba(255, 255, 255, 0)");
+  g.addColorStop(0.52, "rgba(255, 255, 255, 0)");
+  g.addColorStop(0.68, "rgba(255, 255, 255, 0.95)");
+  g.addColorStop(0.84, "rgba(255, 255, 255, 0)");
+  g.addColorStop(1.00, "rgba(255, 255, 255, 0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 128, 128);
+  // 内环：峰 r≈0.34，更细更淡 → 双圈涟漪
+  g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 64);
+  g.addColorStop(0.00, "rgba(255, 255, 255, 0)");
+  g.addColorStop(0.26, "rgba(255, 255, 255, 0)");
+  g.addColorStop(0.34, "rgba(255, 255, 255, 0.55)");
+  g.addColorStop(0.44, "rgba(255, 255, 255, 0)");
+  g.addColorStop(1.00, "rgba(255, 255, 255, 0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 128, 128);
+  // 中心落点微光
+  g = ctx.createRadialGradient(cx, cy, 0, cx, cy, 18);
+  g.addColorStop(0, "rgba(255, 255, 255, 0.9)");
+  g.addColorStop(1, "rgba(255, 255, 255, 0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, 128, 128);
+  return toTexture(THREE, canvas);
+}
+
+/* ---------- 阶段 10：电车双开门缝 64×256（静态关闭） ---------- */
+function doorSeamTexture(THREE) {
+  const canvas = createCanvas(64, 256);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#f2e8d8";
+  ctx.fillRect(0, 0, 64, 256);
+  ctx.strokeStyle = "#1d4e89";
+  ctx.lineWidth = 4;
+  ctx.strokeRect(2, 2, 60, 252);
+  ctx.fillStyle = "#1d4e89";
+  ctx.fillRect(30, 8, 4, 240); // 中缝
+  return toTexture(THREE, canvas);
+}
+
 /**
- * 生成阶段 4 用到的全部程序化贴图。
+ * 生成阶段 4 + 阶段 8–12 用到的全部程序化贴图。
  * @param {object} THREE 入口模块传入的 three 命名空间
  */
 export function createTextureLibrary(THREE) {
@@ -289,7 +430,14 @@ export function createTextureLibrary(THREE) {
     crosswalk: crosswalkTexture(THREE),
     parking: parkingTexture(THREE),
     drain: drainTexture(THREE),
-    tactile: tactileTexture(THREE)
+    tactile: tactileTexture(THREE),
+    // 阶段 8–12（方案 §4.1.2 / §4.6.3）
+    windowGrid: windowGridTexture(THREE),
+    facadeTile: facadeTileTexture(THREE),
+    tramLivery: tramLiveryTexture(THREE),
+    petal: petalTexture(THREE),
+    ripple: rippleTexture(THREE),
+    doorSeam: doorSeamTexture(THREE)
   };
 
   // 平铺类贴图：沿长度方向重复，避免为一条 4m 长的排水沟生成超宽画布

@@ -37,7 +37,9 @@ export const LIGHT_ANCHORS = {
     [1.0, 2.25, -0.4]
   ],
   // 街灯灯头（与下面的路灯几何同位置）
-  lamp: [3.25, SIDEWALK_TOP + 2.78, 1.75 - 0.6]
+  lamp: [3.25, SIDEWALK_TOP + 2.78, 1.75 - 0.6],
+  // 阶段 9：樱花树下地灯（方案 §4.2.2），夜里低强度暖粉点光
+  sakura: [-3.05, 1.4, 1.15]
 };
 
 /** 屋檐滴水线（阶段 5）：雨丝从雨棚前缘滴到人行道上 */
@@ -84,7 +86,8 @@ export function buildScene(THREE, library) {
     geometries.push(geometry);
     const mesh = new THREE.Mesh(geometry, mat);
     mesh.position.set(cx, cy, cz);
-    if (outlined !== false) library.outline(mesh);
+    // 描边默认关闭（阶段 8–12 draw call 预算 ≤180）：仅显式 outlined === true 的主轮廓描边
+    if (outlined === true) library.outline(mesh);
     target.add(mesh);
     return mesh;
   }
@@ -121,7 +124,6 @@ export function buildScene(THREE, library) {
     geometries.push(geometry);
     const mesh = new THREE.Mesh(geometry, mat);
     mesh.position.set(cx, cy, cz);
-    library.outlineShell(mesh);
     target.add(mesh);
     return mesh;
   }
@@ -180,10 +182,17 @@ export function buildScene(THREE, library) {
     roomH / 2 + EPS,
     (roomZ0 + roomZ1) / 2, mats.interior, false);
   // 后墙、左右侧墙、屋顶：刻意留出面向 +z 的整面开口，阶段 3 往里面放货架
-  box(storeW, STORE.h, STORE.wall, storeCx, STORE.h / 2, STORE.z0 + STORE.wall / 2, mats.building);
-  box(STORE.wall, STORE.h, storeD, STORE.x0 + STORE.wall / 2, STORE.h / 2, storeCz, mats.building);
-  box(STORE.wall, STORE.h, storeD, STORE.x1 - STORE.wall / 2, STORE.h / 2, storeCz, mats.building);
-  slab(storeW, storeD, storeCx, storeCz, STORE.h + 0.16, 0.16, mats.building);
+  // 阶段 8 分色（方案 §4.1.1）：墙体 → facade，屋顶板 → roof
+  box(storeW, STORE.h, STORE.wall, storeCx, STORE.h / 2, STORE.z0 + STORE.wall / 2, mats.facade);
+  box(STORE.wall, STORE.h, storeD, STORE.x0 + STORE.wall / 2, STORE.h / 2, storeCz, mats.facade);
+  box(STORE.wall, STORE.h, storeD, STORE.x1 - STORE.wall / 2, STORE.h / 2, storeCz, mats.facade);
+  slab(storeW, storeD, storeCx, storeCz, STORE.h + 0.16, 0.16, mats.roof);
+
+  // 阶段 8 墙裙分色带（方案 §6.1）：+x 侧墙一条 0.55m 雾蓝裙带，无描边
+  box(0.03, 0.55, storeD, STORE.x1 + 0.01, 0.275, storeCz, mats.facadeBand, false);
+  // +z 正面裙带：设计稿 z1+0.01 会与玻璃(z=z1)、移门(z=z1+0.015) 共面相交，
+  // 改放到店内侧、玻璃之后（z1-0.06..z1-0.03），读作下段实墙裙而不穿模
+  box(storeW + 0.02, 0.55, 0.03, storeCx, 0.275, STORE.z1 - 0.045, mats.facadeBand, false);
 
   /* 店面竖向分层（自下而上）刻意压得比真实便利店矮一点：
      第 5.2 节「街角」机位是 (3.8,1.7,3.2) → (-0.2,1.3,-0.6)、fov 38 的仰视，
@@ -242,8 +251,9 @@ export function buildScene(THREE, library) {
     STORE.z1, mats.trim, false);
 
   // 门头招牌占位（阶段 4 换成 CanvasTexture 文字）+ 屋檐雨棚
+  // 阶段 8：雨棚上表面改 roof 石板色（不再与墙体共用白材质）
   const awningY = glassTop + 0.07;
-  box(storeW + 0.2, 0.1, 0.55, storeCx, awningY, STORE.z1 + 0.26, mats.building);
+  box(storeW + 0.2, 0.1, 0.55, storeCx, awningY, STORE.z1 + 0.26, mats.roof);
   box(storeW, 0.38, 0.12, storeCx, awningY + 0.34, STORE.z1 + 0.07, mats.emissive);
 
   // 店招贴图：贴在招牌体块正面，3.96 × 0.37 对应画布 1024 × 96（10.7:1）
@@ -262,9 +272,19 @@ export function buildScene(THREE, library) {
   /* ---------- 4. 邻栋 + 小巷入口（§2.2 左后方保留狭窄小巷） ---------- */
   const neighborW = NEIGHBOR.x1 - NEIGHBOR.x0;
   const neighborD = NEIGHBOR.z1 - NEIGHBOR.z0;
+  // 阶段 8：邻栋改蓝灰 neighbor 材质，并朝镜头两面贴窗格（夜里透灯）
   box(neighborW, NEIGHBOR.h, neighborD,
     (NEIGHBOR.x0 + NEIGHBOR.x1) / 2, NEIGHBOR.h / 2,
-    (NEIGHBOR.z0 + NEIGHBOR.z1) / 2, mats.building);
+    (NEIGHBOR.z0 + NEIGHBOR.z1) / 2, mats.neighbor);
+  if (library.textures) {
+    uprightPlane(neighborW - 0.3, NEIGHBOR.h - 0.5,
+      (NEIGHBOR.x0 + NEIGHBOR.x1) / 2, NEIGHBOR.h / 2 + 0.1,
+      NEIGHBOR.z1 + 0.01, mats.neighborWin);
+    uprightPlane(neighborD - 0.3, NEIGHBOR.h - 0.5,
+      NEIGHBOR.x1 + 0.01, NEIGHBOR.h / 2 + 0.1,
+      (NEIGHBOR.z0 + NEIGHBOR.z1) / 2, mats.neighborWin)
+      .rotation.y = Math.PI / 2;
+  }
   // 邻栋靠巷口的一侧压一条深色竖边，让 0.6m 宽的小巷在远处也能被认出来
   box(0.08, NEIGHBOR.h, 0.12, NEIGHBOR.x1 + 0.04, NEIGHBOR.h / 2, NEIGHBOR.z1 - 0.06, mats.trim);
 
@@ -383,9 +403,10 @@ export function buildScene(THREE, library) {
   });
 
   // 垃圾桶：店门右侧，进「街角」画面右下角
+  // 阶段 10：原 x=2.75 正压电车轨道，移到灯杆与店墙之间（方案 §4.3.2）
   withGroup("prop:bin", function () {
-  box(0.42, 0.72, 0.42, 2.75, SIDEWALK_TOP + 0.36, 0.95, mats.fixture, true);
-  box(0.46, 0.06, 0.46, 2.75, SIDEWALK_TOP + 0.75, 0.95, mats.trim, false);
+  box(0.42, 0.72, 0.42, 3.32, SIDEWALK_TOP + 0.36, 0.95, mats.fixture, true);
+  box(0.46, 0.06, 0.46, 3.32, SIDEWALK_TOP + 0.75, 0.95, mats.trim, false);
   });
 
   // 路牌：斑马线旁的立杆 + 面板
@@ -412,14 +433,15 @@ export function buildScene(THREE, library) {
   });
 
   // 护栏：立柱走实例化，横杆两根，沿人行道临车行道一侧
+  // 阶段 10：立柱 5→4、横杆缩到 x≤1.475，右端让开左轨 2.27（方案 §4.3.2）
   withGroup("prop:rail", function () {
   const railPosts = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 4; i++) {
     railPosts.push({ p: [-1.2 + i * 0.85, SIDEWALK_TOP + 0.43, 1.74], s: [0.07, 0.86, 0.07] });
   }
   instances(railPosts, mats.trim);
-  box(3.5, 0.06, 0.06, 0.5, SIDEWALK_TOP + 0.82, 1.74, mats.trim, false);
-  box(3.5, 0.05, 0.05, 0.5, SIDEWALK_TOP + 0.5, 1.74, mats.trim, false);
+  box(2.65, 0.06, 0.06, 0.15, SIDEWALK_TOP + 0.82, 1.74, mats.trim, false);
+  box(2.65, 0.05, 0.05, 0.15, SIDEWALK_TOP + 0.5, 1.74, mats.trim, false);
   });
 
   // 电线：从电线杆顶沿街拉三段，用 TubeGeometry 做出垂坠
@@ -441,6 +463,252 @@ export function buildScene(THREE, library) {
   wire([-1.3, SIDEWALK_TOP + 3.2, 1.2], [3.56, SIDEWALK_TOP + 3.0, 2.14], 0.16);
   wire([-1.3, SIDEWALK_TOP + 3.32, 1.2], [-1.0, SIDEWALK_TOP + 2.72, 0.62], 0.06);
   });
+
+  /* ---------- 7. 樱花树（阶段 9，方案 §4.2 / §6.2） ----------
+     位置 (-3.05, 1.15)：全景做左前景、街角贴左缘入画、橱窗机位不入画。
+     与贩卖机 (-2.2,0.85)、路牌 (-1.9,1.55)、信号灯 (-3.2,3.42) 保持 ≥0.6m 净距。 */
+  withGroup("prop:sakura", function () {
+    const SX = -3.05, SZ = 1.15, GROUND = SIDEWALK_TOP;
+
+    // 主干：下粗上细
+    const trunkGeo = new THREE.CylinderGeometry(0.055, 0.09, 1.35, 8);
+    geometries.push(trunkGeo);
+    const trunk = new THREE.Mesh(trunkGeo, mats.trunk);
+    trunk.position.set(SX, GROUND + 0.675, SZ);
+    target.add(trunk);
+
+    // 斜枝 4 根：两点连圆柱（复用 rod）
+    rod([SX, GROUND + 1.1, SZ], [SX - 0.45, GROUND + 1.7, SZ + 0.25], 0.03, mats.trunk, 6);
+    rod([SX, GROUND + 1.2, SZ], [SX + 0.4, GROUND + 1.75, SZ - 0.2], 0.03, mats.trunk, 6);
+    rod([SX, GROUND + 1.0, SZ], [SX + 0.15, GROUND + 1.8, SZ + 0.4], 0.026, mats.trunk, 6);
+    rod([SX, GROUND + 1.25, SZ], [SX - 0.2, GROUND + 1.85, SZ - 0.35], 0.026, mats.trunk, 6);
+
+    // 树冠：8 个二十面体团块，InstancedMesh 压 1 个 draw call
+    const blobGeo = new THREE.IcosahedronGeometry(0.42, 1);
+    geometries.push(blobGeo);
+    const canopy = new THREE.InstancedMesh(blobGeo, mats.blossom, 8);
+    const m = new THREE.Matrix4(), q = new THREE.Quaternion(),
+      p = new THREE.Vector3(), s = new THREE.Vector3(),
+      eul = new THREE.Euler();
+    // 扁球冠布局（局部偏移，中心 y = GROUND + 1.9）
+    const offsets = [
+      [0, 0, 0], [-0.5, -0.1, 0.15], [0.5, -0.05, -0.1],
+      [-0.2, 0.25, -0.4], [0.25, 0.3, 0.35], [0, -0.2, 0.45],
+      [-0.45, 0.2, -0.25], [0.45, 0.15, 0.2]
+    ];
+    for (let i = 0; i < 8; i++) {
+      const o = offsets[i];
+      const rnd = (i * 2654435761 % 1000) / 1000; // 确定性伪随机，截图可复现
+      p.set(SX + o[0], GROUND + 1.9 + o[1], SZ + o[2]);
+      eul.set(0, rnd * Math.PI * 2, 0);
+      q.setFromEuler(eul);
+      s.setScalar(0.75 + rnd * 0.4);
+      m.compose(p, q, s);
+      canopy.setMatrixAt(i, m);
+    }
+    canopy.instanceMatrix.needsUpdate = true;
+    target.add(canopy);
+
+    // 树池：环 + 泥土片
+    const ringGeo = new THREE.TorusGeometry(0.24, 0.035, 6, 18);
+    geometries.push(ringGeo);
+    const ring = new THREE.Mesh(ringGeo, mats.trim);
+    ring.rotation.x = -Math.PI / 2;
+    ring.position.set(SX, GROUND + 0.01, SZ);
+    target.add(ring);
+    const soil = new THREE.Mesh(new THREE.CircleGeometry(0.23, 16), mats.trim);
+    geometries.push(soil.geometry);
+    soil.rotation.x = -Math.PI / 2;
+    soil.position.set(SX, GROUND + 0.008, SZ);
+    target.add(soil);
+
+    // 静止落瓣 7 片 → 1 InstancedMesh（夜里 nightDim 0.9）
+    if (library.textures && library.textures.petal) {
+      const petalGeo = new THREE.PlaneGeometry(0.06, 0.06);
+      geometries.push(petalGeo);
+      const petalMat = library.decal(library.textures.petal, { nightDim: 0.9 });
+      const petalMesh = new THREE.InstancedMesh(petalGeo, petalMat, 7);
+      const pm = new THREE.Matrix4();
+      const pq = new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI / 2, 0, 0));
+      const ps = new THREE.Vector3(1, 1, 1);
+      for (let i = 0; i < 7; i++) {
+        const a = i * 0.9;
+        pm.compose(
+          new THREE.Vector3(
+            SX + Math.cos(a) * (0.3 + (i % 3) * 0.18),
+            GROUND + 0.012,
+            SZ + Math.sin(a) * (0.3 + (i % 2) * 0.22)
+          ),
+          pq,
+          ps
+        );
+        petalMesh.setMatrixAt(i, pm);
+      }
+      petalMesh.instanceMatrix.needsUpdate = true;
+      target.add(petalMesh);
+    }
+
+    // 地灯（夜里亮，配合 LIGHT_ANCHORS.sakura 点光）
+    box(0.06, 0.12, 0.06, SX + 0.42, GROUND + 0.06, SZ + 0.34, mats.emissive, false);
+  });
+
+  /* ---------- 8. 轨道电车（阶段 10，方案 §4.3 / §6.3） ----------
+     轨道中心 x=2.55 沿 z 走向；停靠位中心 z=1.65（方案 §4.3.1 的 1.15 会让
+     车尾 z=0.15 穿进店面 z1=0.6，此处后移保证车身完全在店外）。 */
+  withGroup("prop:tram", function () {
+    const TX = 2.55, TZ = 1.65, RY = ROAD_TOP;
+    const TRACK_X = 2.55, GAUGE = 0.28;
+
+    // 钢轨两根：从店前人行道沿 z 到底座边（避免伸进店面 z<0.6）
+    [-GAUGE, GAUGE].forEach(function (dx) {
+      box(0.05, 0.025, 2.98, TRACK_X + dx, RY + 0.012, 2.11, mats.rail, false);
+    });
+
+    // 枕木 12 块，InstancedMesh
+    const ties = [];
+    for (let i = 0; i < 12; i++) {
+      ties.push({ p: [TRACK_X, RY + 0.006, 0.7 + i * 0.3], s: [0.66, 0.02, 0.12] });
+    }
+    instances(ties, mats.trim);
+
+    // 走行部 + 车轮（无描边，省 draw call）
+    box(0.72, 0.14, 1.9, TX, RY + 0.11, TZ, mats.trim, false);
+    [TZ - 0.6, TZ + 0.6].forEach(function (wz) {
+      [-0.3, 0.3].forEach(function (wx) {
+        const wheelGeo = new THREE.CylinderGeometry(0.14, 0.14, 0.06, 12);
+        geometries.push(wheelGeo);
+        const wheel = new THREE.Mesh(wheelGeo, mats.trim);
+        wheel.rotation.z = Math.PI / 2;
+        wheel.position.set(TX + wx, RY + 0.14, wz);
+        target.add(wheel);
+      });
+    });
+    // 裙板（比车身宽 2cm → 蓝腰线）
+    box(0.80, 0.18, 2.02, TX, RY + 0.27, TZ, mats.tramStripe, false);
+    // 主车身（保留 1 条描边轮廓，预算内）
+    box(0.78, 0.86, 2.0, TX, RY + 0.79, TZ, mats.tramBody, true);
+    // 弧顶（半圆柱横放，平面向上；无描边）
+    const roofGeo = new THREE.CylinderGeometry(0.39, 0.39, 2.0, 14, 1, false, 0, Math.PI);
+    geometries.push(roofGeo);
+    const tramRoof = new THREE.Mesh(roofGeo, mats.tramStripe);
+    tramRoof.rotation.z = Math.PI / 2;
+    tramRoof.rotation.y = Math.PI / 2;
+    tramRoof.position.set(TX, RY + 1.22, TZ);
+    target.add(tramRoof);
+    // 空调盒 + 受电弓
+    box(0.4, 0.1, 0.7, TX, RY + 1.5, TZ, mats.trim, false);
+    rod([TX, RY + 1.55, TZ - 0.2], [TX, RY + 1.85, TZ + 0.1], 0.015, mats.trim, 5);
+    rod([TX, RY + 1.85, TZ + 0.1], [TX, RY + 1.9, TZ + 0.35], 0.015, mats.trim, 5);
+
+    // 侧窗 4 扇 × 2 侧 → 1 个 InstancedMesh（8 实例 1 call）
+    const winGeo = new THREE.PlaneGeometry(0.38, 0.4);
+    geometries.push(winGeo);
+    const winMesh = new THREE.InstancedMesh(winGeo, mats.tramGlass, 8);
+    const winM = new THREE.Matrix4();
+    const winQ = new THREE.Quaternion();
+    const winP = new THREE.Vector3();
+    const winS = new THREE.Vector3(1, 1, 1);
+    const winE = new THREE.Euler();
+    let wi = 0;
+    for (let i = 0; i < 4; i++) {
+      const wz = TZ - 0.72 + i * 0.48;
+      winE.set(0, Math.PI / 2, 0);
+      winQ.setFromEuler(winE);
+      winP.set(TX + 0.401, RY + 0.95, wz);
+      winM.compose(winP, winQ, winS);
+      winMesh.setMatrixAt(wi++, winM);
+      winE.set(0, -Math.PI / 2, 0);
+      winQ.setFromEuler(winE);
+      winP.set(TX - 0.401, RY + 0.95, wz);
+      winM.compose(winP, winQ, winS);
+      winMesh.setMatrixAt(wi++, winM);
+    }
+    winMesh.instanceMatrix.needsUpdate = true;
+    target.add(winMesh);
+    // 车头大窗 + 头灯（朝 +z 路外沿）
+    uprightPlane(0.6, 0.45, TX, RY + 1.0, TZ + 1.01, mats.tramGlass);
+    // 头灯 2 → InstancedMesh
+    const lampGeo = new THREE.CircleGeometry(0.06, 12);
+    geometries.push(lampGeo);
+    const lampMesh = new THREE.InstancedMesh(lampGeo, mats.tramLamp, 2);
+    [-0.22, 0.22].forEach(function (dx, li) {
+      const lm = new THREE.Matrix4();
+      lm.setPosition(TX + dx, RY + 0.45, TZ + 1.015);
+      lampMesh.setMatrixAt(li, lm);
+    });
+    lampMesh.instanceMatrix.needsUpdate = true;
+    target.add(lampMesh);
+
+    // 侧带文字（两面都贴，街角/全景各自能看到一侧）
+    if (library.textures) {
+      uprightPlane(1.9, 0.16, TX + 0.405, RY + 0.52, TZ,
+        library.decal(library.textures.tramLivery, { nightDim: 0.85 }))
+        .rotation.y = Math.PI / 2;
+      uprightPlane(1.9, 0.16, TX - 0.405, RY + 0.52, TZ,
+        library.decal(library.textures.tramLivery, { nightDim: 0.85 }))
+        .rotation.y = -Math.PI / 2;
+      // 车门缝（靠店 +x 面）
+      uprightPlane(0.55, 1.1, TX + 0.403, RY + 0.8, TZ + 0.45,
+        library.decal(library.textures.doorSeam || library.textures.posterNew,
+          { transparent: false, nightDim: 0.9 }))
+        .rotation.y = Math.PI / 2;
+    }
+  });
+
+  /* ---------- 9. 背景天际线（阶段 11，方案 §4.4 / §6.4） ----------
+     底座外 radius 8.5–11m 一圈远景楼宇剪影；颜色/透明度由 materials.update
+     读 --nmd-city 驱动（mats.skyline），此处只摆几何，不吃光、无描边。 */
+  (function buildSkyline() {
+    const isNarrow = window.innerWidth < 900 ||
+      (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
+    const COUNT = isNarrow ? 16 : 32;
+    const buildings = [];
+    for (let i = 0; i < COUNT; i++) {
+      const a = (i / COUNT) * Math.PI * 2;
+      const radius = 8.5 + ((i * 2654435761) % 100) / 100 * 2.5;
+      const w = 0.8 + ((i * 40503) % 100) / 100 * 1.6;
+      const h = 1.2 + ((i * 99991) % 100) / 100 * 3.4;
+      buildings.push({
+        p: [Math.cos(a) * radius, h / 2 - 0.4, Math.sin(a) * radius],
+        s: [w, h, w * 0.8]
+      });
+    }
+    const geo = new THREE.BoxGeometry(1, 1, 1);
+    geometries.push(geo);
+    const mesh = new THREE.InstancedMesh(geo, mats.skyline, buildings.length);
+    const matrix = new THREE.Matrix4();
+    for (let i = 0; i < buildings.length; i++) {
+      const b = buildings[i];
+      matrix.compose(
+        new THREE.Vector3(b.p[0], b.p[1], b.p[2]),
+        new THREE.Quaternion(),
+        new THREE.Vector3(b.s[0], b.s[1], b.s[2])
+      );
+      mesh.setMatrixAt(i, matrix);
+    }
+    mesh.instanceMatrix.needsUpdate = true;
+    mesh.name = "skyline";
+    group.add(mesh);
+  })();
+
+  /* ---------- 10. 底座侧边色带（阶段 11，方案 §6.4） ----------
+     底座立面外圈四条深色薄片 + 上缘一条暖橙细线，强化「手办地台」感。
+     贴在底座外表面之外 5mm，避免与底座侧面共面 Z-Fighting。 */
+  (function buildBaseBand() {
+    const BAND_H = 0.06;
+    const OUT = 0.005; // 比底座面外凸 5mm
+    [0, 1, 2, 3].forEach(function (side) {
+      const isZ = side < 2;
+      const sign = side % 2 === 0 ? 1 : -1;
+      const w = isZ ? BASE : 0.03;
+      const d = isZ ? 0.03 : BASE;
+      const px = isZ ? 0 : sign * (BASE / 2 - 0.015 + OUT);
+      const pz = isZ ? sign * (BASE / 2 - 0.015 + OUT) : 0;
+      box(w, BAND_H, d, px, -BASE_THICKNESS + BAND_H / 2, pz, mats.trim, false);
+      box(isZ ? BASE : 0.032, 0.012, isZ ? 0.032 : BASE,
+        px, -BASE_THICKNESS + BAND_H + 0.006, pz, mats.emissive, false);
+    });
+  })();
 
   function dispose() {
     for (let i = 0; i < geometries.length; i++) geometries[i].dispose();

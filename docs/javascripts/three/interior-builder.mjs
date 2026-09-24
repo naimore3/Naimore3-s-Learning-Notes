@@ -105,7 +105,7 @@ export function buildInterior(THREE, library) {
 
   /* ---------- 1. 饮料柜：左墙的发光灯箱 + 一排排饮料 ---------- */
   withPart("cooler", function () {
-  box(0.5, 2.0, 0.9, -0.63, 1.0, -1.6, mats.fixture, true);
+  box(0.5, 2.0, 0.9, -0.63, 1.0, -1.6, mats.fixture, false);
   box(0.05, 1.8, 0.82, -0.36, 1.06, -1.6, mats.cool, false); // 灯箱正面
   const bottles = [];
   for (let row = 0; row < 3; row++) {
@@ -124,7 +124,7 @@ export function buildInterior(THREE, library) {
   withPart("shelf", function () {
   const gondolaX = 0.7;
   const gondolaZ = -1.5;
-  box(1.6, 0.1, 0.5, gondolaX, 0.05, gondolaZ, mats.trim, true);
+  box(1.6, 0.1, 0.5, gondolaX, 0.05, gondolaZ, mats.trim, false);
   box(0.06, 1.5, 0.5, gondolaX - 0.8, 0.75, gondolaZ, mats.trim, false);
   box(0.06, 1.5, 0.5, gondolaX + 0.8, 0.75, gondolaZ, mats.trim, false);
   const goods = [];
@@ -157,7 +157,7 @@ export function buildInterior(THREE, library) {
 
   /* ---------- 3. 便当区：后墙货架 + 顶部暖色灯带 ---------- */
   withPart("bento", function () {
-  box(1.3, 1.05, 0.38, 1.0, 0.53, -2.28, mats.fixture, true);
+  box(1.3, 1.05, 0.38, 1.0, 0.53, -2.28, mats.fixture, false);
   box(1.2, 0.06, 0.3, 1.0, 1.1, -2.26, mats.emissive, false); // 灯带
   const bento = [];
   for (let i = 0; i < 4; i++) {
@@ -172,14 +172,14 @@ export function buildInterior(THREE, library) {
 
   /* ---------- 4. 收银台：柜台 + 收银机 + 小屏 ---------- */
   withPart("register", function () {
-  box(1.0, 0.9, 0.5, 2.25, 0.45, -0.2, mats.fixture, true);
+  box(1.0, 0.9, 0.5, 2.25, 0.45, -0.2, mats.fixture, false);
   box(0.34, 0.22, 0.3, 2.05, 1.01, -0.2, mats.trim, false);
   box(0.3, 0.2, 0.04, 2.05, 1.16, -0.36, mats.cool, false); // 收银小屏
   });
 
   /* ---------- 5. 关东煮柜台：柜台 + 暖色台面 + 几个锅 ---------- */
   withPart("oden", function () {
-  box(0.9, 0.85, 0.55, 0.0, 0.42, -0.1, mats.fixture, true);
+  box(0.9, 0.85, 0.55, 0.0, 0.42, -0.1, mats.fixture, false);
   box(0.74, 0.06, 0.4, 0.0, 0.88, -0.1, mats.emissive, false);
   for (let i = 0; i < 3; i++) {
     cylinder(0.1, 0.12, -0.26 + i * 0.26, 0.97, -0.1, mats.trim, 10);
@@ -188,7 +188,7 @@ export function buildInterior(THREE, library) {
 
   /* ---------- 6. 后场门：后墙上的一扇门 ---------- */
   withPart("backdoor", function () {
-  box(0.8, 2.0, 0.06, 2.35, 1.0, -2.44, mats.trim, true);
+  box(0.8, 2.0, 0.06, 2.35, 1.0, -2.44, mats.trim, false);
   box(0.9, 2.1, 0.04, 2.35, 1.05, -2.46, mats.fixture, false);
   });
 

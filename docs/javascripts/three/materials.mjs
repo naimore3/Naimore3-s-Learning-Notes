@@ -38,6 +38,11 @@ function cssColor(value, fallback) {
   return raw;
 }
 
+function alphaOf(value, fallback) {
+  const m = /^rgba\(\s*[\d.]+\s*,\s*[\d.]+\s*,\s*[\d.]+\s*,\s*([\d.]+)\s*\)$/i.exec(String(value || ""));
+  return m ? parseFloat(m[1]) : fallback;
+}
+
 function shade(color, factor) {
   return color.clone().multiplyScalar(factor);
 }
@@ -119,7 +124,6 @@ export function createMaterialLibrary(THREE, textures) {
     road: toon("#a5afbd"),
     sidewalk: toon("#d1deef"),
     curb: toon("#dfe4ff"),
-    building: toon("#ffffff"),
     trim: toon("#7d8388"),
     fixture: toon("#ece7dd"),  // 店内货架 / 柜台等固装（阶段 3）
     emissive: toon("#ffe3bd"), // 门头招牌与路灯灯头共用一份
@@ -181,10 +185,70 @@ export function createMaterialLibrary(THREE, textures) {
       gradientMap: ramp,
       emissive: new THREE.Color("#37b24d"),
       emissiveIntensity: 0.08
+    }),
+    /* ---- 阶段 8–11 材质拆分（方案 §4.1.1）----
+       原 building 一人分饰五角 → 按色彩角色拆开；
+       building 暂保留兜底（可能仍有旧调用点），后续集成移除。 */
+    facade: toon("#f4efe4"),     // 店面主墙体：暖奶油
+    facadeBand: toon("#c5d2e0"), // 墙裙分色带：雾蓝
+    roof: toon("#9aa6b5"),       // 店屋顶 + 雨棚上表面：石板
+    neighbor: toon("#b7c3d2"),   // 邻栋：蓝灰
+    neighborWin: new THREE.MeshToonMaterial({ // 邻栋窗格：一张图白天当固有色、夜里当灯箱
+      color: "#ffffff",
+      gradientMap: ramp,
+      map: textures ? textures.windowGrid : null,
+      emissive: new THREE.Color("#ffd9a8"),
+      emissiveMap: textures ? textures.windowGrid : null,
+      emissiveIntensity: 0
+    }),
+    // 阶段 9：樱花树
+    trunk: toon("#6b4a3b"),
+    blossom: new THREE.MeshToonMaterial({
+      color: "#f6b6c2",
+      gradientMap: ramp,
+      emissive: new THREE.Color("#f6b6c2"),
+      emissiveIntensity: 0
+    }),
+    // 阶段 10：轨道电车
+    tramBody: toon("#f2e8d8"),
+    tramStripe: new THREE.MeshToonMaterial({
+      color: "#1d4e89",
+      gradientMap: ramp,
+      emissive: new THREE.Color("#1d4e89"),
+      emissiveIntensity: 0.05
+    }),
+    tramGlass: new THREE.MeshToonMaterial({
+      color: "#eaf0f6",
+      gradientMap: ramp,
+      emissive: new THREE.Color("#ffe3bd"),
+      emissiveIntensity: 0.25
+    }),
+    tramLamp: new THREE.MeshToonMaterial({
+      color: "#ffe3bd",
+      gradientMap: ramp,
+      emissive: new THREE.Color("#ffd9a8"),
+      emissiveIntensity: 0.3
+    }),
+    rail: toon("#5b6472"),
+    // 阶段 11：远景天际线（不吃光、无描边，颜色/透明度读 --nmd-city）
+    skyline: new THREE.MeshBasicMaterial({
+      color: "#3e5270",
+      transparent: true,
+      opacity: 0.2,
+      depthWrite: false
     })
   };
   materials.push(set.cool, set.interior, set.glass, set.sign, set.roadSign,
-    set.signalRed, set.signalAmber, set.signalGreen);
+    set.signalRed, set.signalAmber, set.signalGreen,
+    set.neighborWin, set.blossom, set.tramStripe, set.tramGlass, set.tramLamp,
+    set.skyline);
+
+  // 店面侧墙/后墙淡砖缝：repeat(4,2)，空贴图库时静默跳过
+  if (textures && textures.facadeTile) {
+    textures.facadeTile.repeat.set(4, 2);
+    set.facade.map = textures.facadeTile;
+    set.facade.needsUpdate = true;
+  }
 
   /* 贴片材质工厂（海报、价签、地面标线）：MeshBasicMaterial 不受光照影响，
      直接按主题给一个亮度倍数——白天 1、夜里按 nightDim 压暗。 */
@@ -245,22 +309,54 @@ export function createMaterialLibrary(THREE, textures) {
       set.base.color.copy(mix(ground, nightBase, 0.75));
       set.road.color.copy(mix(ground, nightBase, 0.6));
       set.sidewalk.color.copy(mix(ground, nightLift, 0.8));
-      set.building.color.copy(mix(card, nightLift, 0.72));
       set.curb.color.copy(mix(ground, nightLift, 0.7));
       set.trim.color.copy(mix(card, outlineColor, 0.35));
       set.interior.color.set("#f3e5cd"); // 店内暖白，夜里由暖色点光点亮
       set.fixture.color.set("#e4ded0");
+      // 阶段 8 分色（方案 §4.1.1 夜列）：暗夜 facade 保留 12% 暖底
+      set.facade.color.copy(mix(card, nightLift, 0.72)).lerp(new THREE.Color("#5a4a42"), 0.12);
+      set.facadeBand.color.set("#2f3b52");
+      set.roof.color.set("#39445a");
+      set.neighbor.color.copy(mix(ground, nightBase, 0.7));
+      set.neighborWin.emissiveIntensity = 0.55; // 夜里窗格当灯箱
+      // 阶段 9/10
+      set.trunk.color.set("#4a3226");
+      set.blossom.color.set("#d9879b");
+      set.blossom.emissiveIntensity = 0.15;
+      set.tramBody.color.set("#cfc6b8");
+      set.tramStripe.emissiveIntensity = 0.18;
+      set.tramGlass.emissiveIntensity = 0.9;
+      set.tramLamp.emissiveIntensity = 1.1;
+      set.rail.color.set("#3c4454");
     } else {
       // 白天雨天：同一套地面 token 里用明度拉开底座 / 车行道 / 人行道的层次
       set.base.color.copy(shade(ground, 0.82));
       set.road.color.copy(shade(ground, 0.9));
       set.sidewalk.color.copy(shade(ground, 1.14));
       set.curb.color.set(cssColor(tokens.line, FALLBACK.line));
-      set.building.color.copy(card);
       set.trim.color.copy(mix(card, outlineColor, 0.55));
       set.interior.color.set("#f7efe2");
       set.fixture.color.set("#ece7dd");
+      // 阶段 8 分色（方案 §4.1.1 日列）
+      set.facade.color.set("#f4efe4");
+      set.facadeBand.color.set("#c5d2e0");
+      set.roof.color.set("#9aa6b5");
+      set.neighbor.color.set("#b7c3d2");
+      set.neighborWin.emissiveIntensity = 0; // 白天只靠 map 显示格线
+      // 阶段 9/10
+      set.trunk.color.set("#6b4a3b");
+      set.blossom.color.set("#f6b6c2");
+      set.blossom.emissiveIntensity = 0;
+      set.tramBody.color.set("#f2e8d8");
+      set.tramStripe.emissiveIntensity = 0.05;
+      set.tramGlass.emissiveIntensity = 0.25;
+      set.tramLamp.emissiveIntensity = 0.3;
+      set.rail.color.set("#5b6472");
     }
+
+    // 阶段 11：天际线读 --nmd-city（剥 alpha 当色，alpha 当透明度）
+    set.skyline.color.set(cssColor(tokens.city, dark ? "rgb(120, 165, 255)" : "rgb(62, 82, 112)"));
+    set.skyline.opacity = alphaOf(tokens.city, dark ? 0.12 : 0.2);
 
     // 招牌 / 灯头：白天低强度常亮，夜里抬成自发光焦点（第 4.3 节冷暖对比）
     set.emissive.color.copy(mix(shop, new THREE.Color("#ffffff"), 0.35));
@@ -283,11 +379,13 @@ export function createMaterialLibrary(THREE, textures) {
 
     /* 阶段 5 的招牌闪烁（animation-loop.createAmbientEffects）围绕「当前主题的
        基准亮度」抖动，基准值必须在这里随主题刷新——否则切到夜景后闪烁会把
-       emissiveIntensity 拉回白天的 0.5，店招在夜里就亮不起来了。 */
+       emissiveIntensity 拉回白天的 0.5，店招在夜里就亮不起来了。
+       阶段 10 电车呼吸灯同口径（方案 §4.3.4）。 */
     set.sign.userData.baseEmissiveIntensity = set.sign.emissiveIntensity;
     set.cool.userData.baseEmissiveIntensity = set.cool.emissiveIntensity;
-    // 招牌抖动的基准值：animation-loop 的动效在此基础上做呼吸与小掉电
-    set.sign.userData.baseEmissiveIntensity = set.sign.emissiveIntensity;
+    set.tramGlass.userData.baseEmissiveIntensity = set.tramGlass.emissiveIntensity;
+    set.tramLamp.userData.baseEmissiveIntensity = set.tramLamp.emissiveIntensity;
+    set.tramStripe.userData.baseEmissiveIntensity = set.tramStripe.emissiveIntensity;
 
     for (let i = 0; i < decals.length; i++) {
       const factor = dark ? decals[i].userData.nightDim : 1;
@@ -337,6 +435,14 @@ export function createLighting(THREE, anchors) {
     return light;
   });
 
+  // 阶段 9：樱花树下地灯（方案 §4.2.2）——夜里低强度暖粉，让树仍是暖色主角
+  const sakuraAnchor = anchors && anchors.sakura;
+  const sakura = sakuraAnchor ? new THREE.PointLight(0xffffff, 0, 2.4, 2) : null;
+  if (sakura) {
+    sakura.position.set(sakuraAnchor[0], sakuraAnchor[1], sakuraAnchor[2]);
+    group.add(sakura);
+  }
+
   function update(tokens) {
     const dark = tokens.scheme === "slate";
     if (dark) {
@@ -352,6 +458,10 @@ export function createLighting(THREE, anchors) {
       }
       lamp.color.set("#ffc78a");
       lamp.intensity = 5;
+      if (sakura) {
+        sakura.color.set("#ffc2d4");
+        sakura.intensity = 1.2;
+      }
     } else {
       // 白天雨天：亮灰蓝天光为主，店内暖光仍然亮着
       hemi.color.set(cssColor(tokens.sky2, FALLBACK.sky2));
@@ -365,6 +475,10 @@ export function createLighting(THREE, anchors) {
       }
       lamp.color.set("#ffcf9e");
       lamp.intensity = 1.2;
+      if (sakura) {
+        sakura.color.set("#ffc2d4");
+        sakura.intensity = 0;
+      }
     }
   }
 

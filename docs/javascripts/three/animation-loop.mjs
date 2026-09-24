@@ -129,6 +129,9 @@ export function createAmbientEffects(THREE, scene, library) {
   const doorBaseRight = rightDoor ? rightDoor.position.x : 0;
 
   const signMaterial = library && library.materials ? library.materials.sign : null;
+  // 阶段 10：电车呼吸灯（方案 §4.3.4 / §6.3）——围绕主题基准亮度 ±0.08 正弦
+  const tramGlass = library && library.materials ? library.materials.tramGlass : null;
+  const tramLamp = library && library.materials ? library.materials.tramLamp : null;
   const signalLamps = ["signal:red", "signal:amber", "signal:green"].map(function (name) {
     return scene.getObjectByName(name);
   });
@@ -199,6 +202,16 @@ export function createAmbientEffects(THREE, scene, library) {
       }
     }
 
+    // 电车：车内灯与头灯呼吸（基准由 materials.update 随主题刷新）
+    if (tramGlass) {
+      const glassBase = tramGlass.userData.baseEmissiveIntensity || 0.25;
+      tramGlass.emissiveIntensity = glassBase + Math.sin(elapsed * 1.7) * 0.08;
+    }
+    if (tramLamp) {
+      const lampBase = tramLamp.userData.baseEmissiveIntensity || 0.3;
+      tramLamp.emissiveIntensity = lampBase + Math.sin(elapsed * 1.7) * 0.08;
+    }
+
     // 远处信号灯：绿 → 黄 → 红 缓慢循环
     signalTime = (signalTime + dt) % (SIGNAL_CYCLE.green + SIGNAL_CYCLE.amber + SIGNAL_CYCLE.red);
     const active = signalTime < SIGNAL_CYCLE.green ? 0
@@ -214,6 +227,13 @@ export function createAmbientEffects(THREE, scene, library) {
     applyDoors(0); // 复位成关门状态，供 navigation.instant 重新挂载时使用
     if (signMaterial) {
       signMaterial.emissiveIntensity = signMaterial.userData.baseEmissiveIntensity || 0.5;
+    }
+    // 阶段 10：电车呼吸灯复位到主题基准
+    if (tramGlass) {
+      tramGlass.emissiveIntensity = tramGlass.userData.baseEmissiveIntensity || 0.25;
+    }
+    if (tramLamp) {
+      tramLamp.emissiveIntensity = tramLamp.userData.baseEmissiveIntensity || 0.3;
     }
   }
 

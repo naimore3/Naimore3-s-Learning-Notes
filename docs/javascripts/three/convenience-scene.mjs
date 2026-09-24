@@ -2,18 +2,25 @@
    墨海寻珠 · 首页 Three.js 微缩场景入口
    设计文档：.documents/首页设计方案合集.md 第 13 节（接入）、
              第 14.2 节（阶段 0）、第 14.3 节（阶段 1）、第 14.4 节（阶段 2）、
-             第 14.5 节（阶段 3）、第 14.6 节（阶段 4）、第 14.7 节（阶段 5）、
-             第 14.8 节（阶段 6）
+              第 14.5 节（阶段 3）、第 14.6 节（阶段 4）、第 14.7 节（阶段 5）、
+              第 14.8 节（阶段 6）、第 14.9 节（阶段 7）、
+              .documents/首页美化-模型上色樱花与电车设计方案.md（阶段 8–12）
 
    已完成：
    - 阶段 0：canvas 挂进 #convenience-scene、天空渐变、地台、尺寸自适应、生命周期
    - 阶段 1：白盒街区（scene-builder）+ 三机位滚动镜头（camera-rig）
-             + rAF 主循环与暂停策略（animation-loop）
+              + rAF 主循环与暂停策略（animation-loop）
    - 阶段 2：三渲二材质与描边、昼夜灯光（materials）+ 主题实时换色
    - 阶段 3：街角道具与电线（scene-builder）+ 店内陈列（interior-builder）
    - 阶段 4：程序化贴图（canvas-textures）：店招、路牌、海报、价签、地面标线
    - 阶段 5：雨 / 滴水 / 波纹 / 玻璃雨痕 / 湿地面（rain-system）+ 门、招牌、信号灯（animation-loop）
    - 阶段 6：OrbitControls 拖拽旋转 / 滚轮缩放，松手后缓回滚动镜头（camera-rig）
+   - 阶段 7：像素比上限、页面不可见暂停、移动端降载、减弱动效静态观察
+   - 阶段 8：材质按角色拆分上色（facade/roof/neighbor/skyline）+ 分色带 + 邻栋窗格
+   - 阶段 9：樱花树（trunk/树冠/花瓣贴地）+ 白昼樱吹雪花瓣粒子（createPetalSystem）
+   - 阶段 10：有轨电车 + 轨道/枕木，垂直于道路停放于店侧
+   - 阶段 11：底座外天际线剪影（InstancedMesh）+ 底座侧分色带
+   - 阶段 12：白天落樱 / 夜晚落雨互斥置换（0.35s 淡变）+ 波纹重做（细软冷光环）
 
    边界：
    - 非首页零开销：容器不存在时不加载 three 与任何子模块
@@ -90,7 +97,8 @@
       rain: low ? 54 : 96,
       rainSize: low ? 0.26 : 0.22,
       drips: low ? 4 : 8,
-      ripples: low ? 6 : 12,
+      ripples: low ? 10 : 18,   // 阶段 12：更小更多（方案 §4.6.3）
+      petals: low ? 24 : 48,    // 阶段 9：白昼唯一降水（方案 §4.2.3）
       reflection: !low
     };
   }
@@ -113,7 +121,9 @@
       card: token("--nmd-card", "#ffffff"),
       line: token("--nmd-line", "#dfe4ff"),
       shop: token("--nmd-shop", "rgb(255, 180, 102)"),
-      outline: token("--nmd-outline", "#2b3446")
+      outline: token("--nmd-outline", "#2b3446"),
+      // 阶段 11：远景天际线颜色/透明度（方案 §4.4）
+      city: token("--nmd-city", "rgba(62, 82, 112, 0.2)")
     };
   }
 
@@ -165,14 +175,25 @@
     lighting.update(tokens);
     scene.add(lighting.group);
 
-    // 阶段 5：雨、屋檐滴水、积水波纹、玻璃雨痕
+    // 阶段 5 + 12：雨 / 滴水 / 波纹 / 玻璃雨痕（白天整族隐藏，夜晚淡入）
     var quality = qualityProfile();
     var rain = modules.rainSystem.createRainSystem(THREE, {
       drip: modules.sceneBuilder.DRIP_LINE,
-      quality: quality
+      quality: quality,
+      rippleTexture: textures.textures && textures.textures.ripple,
+      prefersReduced: prefersReduced
     });
     rain.setTheme(tokens);
     scene.add(rain.group);
+
+    // 阶段 9 + 12：白昼樱吹雪（与雨互斥；互斥不变式见方案 §6.2 注释）
+    var petals = modules.rainSystem.createPetalSystem(THREE, {
+      count: quality.petals,
+      map: textures.textures && textures.textures.petal,
+      prefersReduced: prefersReduced
+    });
+    petals.setTheme(tokens);
+    scene.add(petals.points);
 
     // 湿地面：桌面走 Reflector 真反射，移动端/弱设备退化为高光条纹
     var wet = modules.rainSystem.createWetGround(THREE, {
@@ -275,14 +296,48 @@
     /* ---------- 主题实时换色（第 14.4 节） ----------
        切主题时几何、相机、材质数量都不变，只重算 tokens → 材质颜色 / 自发光 /
        分档贴图 / 灯光强度，然后补一帧。主循环在镜头静止时不重绘，所以这里必须
-       主动 render()，否则 reduced-motion 与静止状态下切主题不会更新画面。 */
+       主动 render()，否则 reduced-motion 与静止状态下切主题不会更新画面。
+       阶段 12 互斥（方案 §4.5.2）：先错峰收掉出场族（0.35s），再放出入场族，
+       保证 0.35s 切换窗口内不出现雨 + 花瓣同框。 */
+    var themeEpoch = 0;
+    var themeInTimer = null;
+
     function applyTheme() {
+      var epoch = ++themeEpoch;
+      if (themeInTimer !== null) {
+        clearTimeout(themeInTimer);
+        themeInTimer = null;
+      }
       tokens = readTokens();
       library.update(tokens);
       lighting.update(tokens);
-      rain.setTheme(tokens);
       wet.setTheme(tokens);
       sky.update(tokens);
+
+      var dark = tokens.scheme === "slate";
+
+      if (prefersReduced) {
+        // 减弱动效：两族都直接落定，无交叉窗口
+        rain.setTheme(tokens);
+        petals.setTheme(tokens);
+        render();
+        return;
+      }
+
+      // 阶段 1 互斥（方案 §4.5.2）：双族 fadeTarget 先都压到 0——
+      // 出场族在接下来 0.35s 内淡出，入场族保持隐藏，窗口内绝不两族同框。
+      rain.setThemeTargets(tokens, 0);
+      petals.setThemeTargets(tokens, 0);
+
+      // 阶段 2：0.35s 后出场族已到 0，再按最终主题放出入场族
+      themeInTimer = setTimeout(function () {
+        themeInTimer = null;
+        if (epoch !== themeEpoch || released) return;
+        rain.setThemeTargets(tokens);
+        petals.setThemeTargets(tokens);
+        render();
+      }, 350);
+
       render();
     }
 
@@ -300,12 +355,17 @@
       }
     });
     loop.add(function (dt) { rain.update(dt, prefersReduced); });
+    loop.add(function (dt, elapsed) { petals.update(dt, elapsed, prefersReduced); });
     loop.add(effects.update);
 
     /* ---------- 销毁：初始化失败回滚 + navigation.instant 离开首页 ---------- */
     function release() {
       if (released) return;
       released = true;
+      if (themeInTimer !== null) {
+        clearTimeout(themeInTimer);
+        themeInTimer = null;
+      }
       loop.dispose();
       setInteractive(false);
       if (rig.hasControls) {
@@ -332,6 +392,7 @@
       blockout.dispose();
       interior.dispose();
       rain.dispose();
+      petals.dispose();
       wet.dispose();
       effects.dispose();
       lighting.dispose();

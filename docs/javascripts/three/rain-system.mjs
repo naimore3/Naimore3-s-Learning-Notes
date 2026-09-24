@@ -18,8 +18,9 @@ const RAIN_CENTER = [0.6, 3.4, 0.6];
 const RAIN_AREA = [11, 7, 9];      // 雨区尺寸（x, y, z）
 const RAIN_FALL = 9.5;             // 下落速度 m/s
 const RAIN_DRIFT = 0.5;            // 侧向漂移 m/s
-const RIPPLE_LIFE = 1.25;          // 波纹从出现到消失的秒数
+const RIPPLE_LIFE = 0.9;           // 波纹寿命（阶段 12：1.25 → 0.9s，方案 §4.6.3）
 const DRIP_FALL = 3.2;
+const FADE_TIME = 0.35;            // 昼夜粒子族淡变时长（方案 §4.5.2）
 
 /* 雨丝贴图：8×64 的竖直渐变条，比默认圆点更像雨 */
 function dropTexture(THREE) {
@@ -86,18 +87,25 @@ function alphaOf(value, fallback) {
 
 /**
  * 雨、屋檐滴水、地面积水波纹、玻璃雨痕。
+ * 昼夜置换（阶段 12 / 方案 §4.5）：白天整族淡出隐藏，夜晚淡入；与花瓣互斥。
  * @param {object} THREE 入口模块传入的 three 命名空间
- * @param {object} options { drip: {x:[min,max], y, z}, quality: {...} }
+ * @param {object} options { drip, quality, rippleTexture, prefersReduced }
  */
 export function createRainSystem(THREE, options) {
   const settings = options || {};
   const quality = settings.quality || {};
   const dripLine = settings.drip || { x: [-1.1, 3.1], y: 1.93, z: 1.13 };
+  const prefersReduced = !!settings.prefersReduced;
 
   const group = new THREE.Group();
   group.name = "nmd-rain";
   const disposables = [];
   let elapsed = 0;
+
+  // 昼夜淡变状态（阶段 12）：fade 等声明见 update 段；themeApplied 同段
+  let rainBaseOpacity = 0.34;
+  let dripBaseOpacity = 0.5;
+  let streakBaseOpacity = 0.5;
 
   /* ---------- 1. 雨滴：Points ---------- */
   const rainCount = quality.rain || 96;
@@ -143,27 +151,40 @@ export function createRainSystem(THREE, options) {
   group.add(drips);
   disposables.push(dripGeometry, dripMaterial);
 
-  /* ---------- 3. 地面积水波纹：环形实例，扩散同时淡出 ---------- */
-  const rippleCount = quality.ripples || 12;
-  const rippleGeometry = new THREE.RingGeometry(0.72, 1, 24);
+  /* ---------- 3. 地面积水波纹（阶段 12 / 方案 §4.6）----------
+     PlaneGeometry + 羽化双环 rippleTexture + AdditiveBlending 冷光；
+     确定性 LCG 布点，easeOutQuad 扩散，pow(1-t,1.6) 衰减；只在夜晚出现。 */
+  const rippleCount = quality.ripples || 18;
+  const rippleGeometry = new THREE.PlaneGeometry(1, 1);
+  rippleGeometry.rotateX(-Math.PI / 2);
   const rippleMaterial = new THREE.MeshBasicMaterial({
-    color: "#ffffff",
+    map: settings.rippleTexture || null,
+    color: "#9ec9ff",
     transparent: true,
-    opacity: 0.5,
+    opacity: 1,
+    blending: THREE.AdditiveBlending,
     depthWrite: false,
     side: THREE.DoubleSide
   });
   const ripples = new THREE.InstancedMesh(rippleGeometry, rippleMaterial, rippleCount);
   ripples.name = "rain:ripples";
+  const RIPPLE_Y = 0.038; // ROAD_TOP(0.01) + 0.028，防 Z-Fighting
+  let lcgSeed = 0x9e3779b9;
+  function lcg() {
+    lcgSeed = (Math.imul(lcgSeed, 1664525) + 1013904223) >>> 0;
+    return lcgSeed / 4294967296;
+  }
+  function spawnRipple(state) {
+    state.x = -2.6 + lcg() * 6.0;   // [-2.6, 3.4]
+    state.z = 1.95 + lcg() * 1.55;  // [1.95, 3.5]
+    state.age = 0;
+  }
   const rippleState = [];
-  const flat = new THREE.Quaternion().setFromEuler(new THREE.Euler(-Math.PI / 2, 0, 0));
   for (let i = 0; i < rippleCount; i++) {
-    rippleState.push({
-      x: RAIN_CENTER[0] + (Math.random() - 0.5) * 6.4,
-      z: 1.95 + Math.random() * 1.6,
-      age: Math.random() * RIPPLE_LIFE,
-      scale: 0.2
-    });
+    const state = { x: 0, z: 0, age: 0 };
+    spawnRipple(state);
+    state.age = lcg() * RIPPLE_LIFE;
+    rippleState.push(state);
   }
   group.add(ripples);
   disposables.push(rippleGeometry, rippleMaterial);
@@ -190,15 +211,59 @@ export function createRainSystem(THREE, options) {
   const position = new THREE.Vector3();
   const scale = new THREE.Vector3();
   const color = new THREE.Color();
+  const identityQuat = new THREE.Quaternion();
+  const rainChildren = [rain, drips, ripples, streaks];
+
+  let fade = 1;
+  let fadeTarget = 1;
+  let fadeFrom = 1;
+  let fadeStartedAt = 0;
+  let themeApplied = false;
+
+  function beginFade(next) {
+    // 目标未变则不重启时钟：阶段 2 对已朝 0 淡出的出场族再 beginFade(0)
+    // 会把 fadeFrom 拉回当前中间值，导致与入场族短暂同框
+    if (next === fadeTarget) return;
+    fadeFrom = fade;
+    fadeTarget = next;
+    fadeStartedAt = performance.now();
+  }
+
+  function applyFade() {
+    rainMaterial.opacity = rainBaseOpacity * fade;
+    dripMaterial.opacity = dripBaseOpacity * fade;
+    streakMaterial.opacity = streakBaseOpacity * fade;
+    // 加法混合：material.opacity 同样乘 fade，实例色只负责寿命曲线
+    rippleMaterial.opacity = fade;
+    const show = fade > 0.001;
+    for (let i = 0; i < rainChildren.length; i++) {
+      rainChildren[i].visible = show;
+    }
+    // 方案 §4.6.3-6：reduced-motion 下波纹整族隐藏（含 setTheme 即时落定路径）
+    if (prefersReduced) ripples.visible = false;
+  }
 
   function update(dt, reducedMotion) {
+    // 昼夜淡变：按墙钟推进（0.35s），避免无头/低帧率下被 MAX_DELTA 拖慢
+    if (fade !== fadeTarget) {
+      if (prefersReduced || reducedMotion) {
+        fade = fadeTarget;
+      } else {
+        const u = Math.min(1, (performance.now() - fadeStartedAt) / (FADE_TIME * 1000));
+        fade = fadeFrom + (fadeTarget - fadeFrom) * u;
+      }
+      applyFade();
+    }
+    if (fade < 0.001) return;
     if (!(dt > 0)) return;
     elapsed += dt;
 
-    if (reducedMotion) {
-      // 减弱动效：雨变静态雨丝、波纹停住、雨痕不再下滑
+    if (reducedMotion || prefersReduced) {
+      // 减弱动效：雨变静态雨丝、波纹整族隐藏（方案 §4.6.3-6）
+      ripples.visible = false;
       return;
     }
+    ripples.visible = fade > 0.001;
 
     // 雨：下落 + 侧向漂移，落到地面就从顶部循环
     const positions = rainGeometry.attributes.position.array;
@@ -226,28 +291,25 @@ export function createRainSystem(THREE, options) {
       }
       position.set(state.x, state.y, dripLine.z);
       scale.set(1, 1, 1);
-      matrix.compose(position, new THREE.Quaternion(), scale);
+      matrix.compose(position, identityQuat, scale);
       drips.setMatrixAt(i, matrix);
     }
     drips.instanceMatrix.needsUpdate = true;
 
-    // 积水波纹：扩散 + 淡出
+    // 积水波纹：easeOutQuad 扩散 + pow 非线性衰减（方案 §4.6.3）
     for (let i = 0; i < rippleCount; i++) {
       const state = rippleState[i];
       state.age += dt;
-      if (state.age > RIPPLE_LIFE) {
-        state.age = 0;
-        state.x = RAIN_CENTER[0] + (Math.random() - 0.5) * 6.4;
-        state.z = 1.95 + Math.random() * 1.6;
-      }
+      if (state.age > RIPPLE_LIFE) spawnRipple(state);
       const t = state.age / RIPPLE_LIFE;
-      const radius = 0.12 + t * 0.55;
-      position.set(state.x, 0.03, state.z);
-      scale.set(radius, radius, radius);
-      matrix.compose(position, flat, scale);
+      const e = 1 - (1 - t) * (1 - t);              // easeOutQuad
+      const s = 0.10 + e * 0.24;                    // 最大边长 0.34m
+      const brightness = Math.pow(1 - t, 1.6) * 0.55;
+      position.set(state.x, RIPPLE_Y, state.z);
+      scale.set(s, s, s);
+      matrix.compose(position, identityQuat, scale);
       ripples.setMatrixAt(i, matrix);
-      // 加法混合下，颜色压到 0 就等于消失，正好当淡出用
-      color.setScalar((1 - t) * 0.28);
+      color.setScalar(brightness);
       ripples.setColorAt(i, color);
     }
     ripples.instanceMatrix.needsUpdate = true;
@@ -260,11 +322,44 @@ export function createRainSystem(THREE, options) {
   function setTheme(tokens) {
     const rainToken = tokens.rain || "rgba(74, 100, 138, 0.3)";
     const dark = tokens.scheme === "slate";
+    // 颜色逻辑保持现状；可见性交给 fade（白天 0、夜晚 1）
+    rainBaseOpacity = Math.max(0.18, alphaOf(rainToken, 0.3) * 1.1);
     rainMaterial.color.set(parseColor(rainToken, "#4a648a"));
-    rainMaterial.opacity = Math.max(0.18, alphaOf(rainToken, 0.3) * 1.1);
+    rainMaterial.opacity = rainBaseOpacity * fade;
     dripMaterial.color.set(dark ? "#a8d4ff" : "#bcd4ea");
-    rippleMaterial.color.set(dark ? "#9fe4ff" : "#ffffff");
-    streakMaterial.opacity = dark ? 0.42 : 0.5;
+    dripMaterial.opacity = dripBaseOpacity * fade;
+    // 波纹冷光色固定 #9ec9ff（材质构造已设），此处只跟淡变
+    streakBaseOpacity = dark ? 0.42 : 0.5;
+    streakMaterial.opacity = streakBaseOpacity * fade;
+
+    fadeTarget = dark ? 1 : 0;
+    if (!themeApplied || prefersReduced) {
+      fade = fadeTarget;
+      fadeFrom = fade;
+      themeApplied = true;
+    } else {
+      beginFade(fadeTarget);
+    }
+    applyFade();
+  }
+
+  /** 阶段 12 互斥：更新颜色与 fadeTarget；override 可强制压到 0（错峰第一阶段） */
+  function setThemeTargets(tokens, fadeTargetOverride) {
+    const rainToken = tokens.rain || "rgba(74, 100, 138, 0.3)";
+    const dark = tokens.scheme === "slate";
+    rainBaseOpacity = Math.max(0.18, alphaOf(rainToken, 0.3) * 1.1);
+    rainMaterial.color.set(parseColor(rainToken, "#4a648a"));
+    dripMaterial.color.set(dark ? "#a8d4ff" : "#bcd4ea");
+    streakBaseOpacity = dark ? 0.42 : 0.5;
+    beginFade(fadeTargetOverride !== undefined ? fadeTargetOverride : (dark ? 1 : 0));
+  }
+
+  /** 立即落定当前 fadeTarget（reduced-motion / 验收兜底） */
+  function settleFade() {
+    fade = fadeTarget;
+    fadeFrom = fade;
+    themeApplied = true;
+    applyFade();
   }
 
   function dispose() {
@@ -277,7 +372,148 @@ export function createRainSystem(THREE, options) {
     group: group,
     update: update,
     setTheme: setTheme,
+    setThemeTargets: setThemeTargets,
+    settleFade: settleFade,
     dispose: dispose
+  };
+}
+
+/**
+ * 白昼花瓣粒子（阶段 9 / 方案 §4.2.3、§6.2）。
+ * 与雨互斥：白天 fade→1，夜晚 fade→0；风场把瓣从树冠吹过人行道。
+ * @param {object} THREE
+ * @param {object} options { count, map, center, prefersReduced }
+ */
+export function createPetalSystem(THREE, options) {
+  const config = options || {};
+  const count = config.count || 48;
+  const center = config.center || { x: -3.05, y: 2.0, z: 1.15 };
+  const half = { x: 1.6, y: 1.2, z: 1.3 };
+  const prefersReduced = !!config.prefersReduced;
+
+  const positions = new Float32Array(count * 3);
+  const speeds = new Float32Array(count);
+  const phases = new Float32Array(count);
+  const wind = new Float32Array(count);
+  for (let i = 0; i < count; i++) {
+    positions[i * 3] = center.x + (Math.random() * 2 - 1) * half.x;
+    positions[i * 3 + 1] = center.y + (Math.random() * 2 - 1) * half.y;
+    positions[i * 3 + 2] = center.z + (Math.random() * 2 - 1) * half.z;
+    speeds[i] = 0.24 + Math.random() * 0.16;
+    phases[i] = Math.random() * Math.PI * 2;
+    wind[i] = 0.18 + Math.random() * 0.14;
+  }
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  const material = new THREE.PointsMaterial({
+    map: config.map || null,
+    size: 0.06,
+    sizeAttenuation: true,
+    transparent: true,
+    depthWrite: false,
+    color: "#f6b6c2",
+    opacity: 1
+  });
+  const points = new THREE.Points(geometry, material);
+  points.name = "petals";
+  points.frustumCulled = false;
+  points.visible = true;
+
+  let fade = 1;
+  let fadeTarget = 1;
+  let fadeFrom = 1;
+  let fadeStartedAt = 0;
+  let themeApplied = false;
+
+  function beginFade(next) {
+    // 目标未变则不重启时钟（与雨族一致，避免阶段 2 重置出场族淡出进度）
+    if (next === fadeTarget) return;
+    fadeFrom = fade;
+    fadeTarget = next;
+    fadeStartedAt = performance.now();
+  }
+
+  function setTheme(tokens) {
+    const isDay = tokens.scheme !== "slate";
+    // 夜里即便不可见也同步色，防切换瞬间闪色
+    material.color.set(isDay ? "#f6b6c2" : "#d9879b");
+    const next = isDay ? 1 : 0;
+    if (!themeApplied || prefersReduced) {
+      fade = next;
+      fadeFrom = fade;
+      fadeTarget = next;
+      themeApplied = true;
+      material.opacity = fade;
+      points.visible = fade > 0.001;
+    } else {
+      beginFade(next);
+    }
+  }
+
+  /** 阶段 12 互斥：更新颜色与 fadeTarget；override 可强制压到 0（错峰第一阶段） */
+  function setThemeTargets(tokens, fadeTargetOverride) {
+    const isDay = tokens.scheme !== "slate";
+    material.color.set(isDay ? "#f6b6c2" : "#d9879b");
+    beginFade(fadeTargetOverride !== undefined ? fadeTargetOverride : (isDay ? 1 : 0));
+  }
+
+  /** 立即落定当前 fadeTarget（reduced-motion / 验收兜底） */
+  function settleFade() {
+    fade = fadeTarget;
+    fadeFrom = fade;
+    themeApplied = true;
+    material.opacity = fade;
+    points.visible = fade > 0.001;
+  }
+
+  function update(dt, elapsed, reducedMotion) {
+    // 按墙钟推进 0.35s 淡变（与雨族一致，避免无头低帧率拖慢）
+    if (fade !== fadeTarget) {
+      if (prefersReduced || reducedMotion) {
+        fade = fadeTarget;
+      } else {
+        const u = Math.min(1, (performance.now() - fadeStartedAt) / (FADE_TIME * 1000));
+        fade = fadeFrom + (fadeTarget - fadeFrom) * u;
+      }
+      material.opacity = fade;
+      points.visible = fade > 0.001;
+    }
+    if (!points.visible) return;
+    if (reducedMotion || prefersReduced) return;
+
+    const attr = geometry.attributes.position;
+    for (let i = 0; i < count; i++) {
+      let x = attr.array[i * 3] + wind[i] * dt
+        + Math.sin(elapsed * 1.1 + phases[i]) * dt * 0.18;
+      let y = attr.array[i * 3 + 1] - speeds[i] * dt;
+      let z = attr.array[i * 3 + 2] + Math.cos(elapsed * 0.9 + phases[i]) * dt * 0.14;
+      // z 摇曳越界先钳再写回（方案 §6.2 的写回顺序修正）
+      if (z > center.z + half.z) z = center.z - half.z;
+      else if (z < center.z - half.z) z = center.z + half.z;
+      // 落地或漂出底座边界 → 回树冠顶重生
+      if (y < 0.02 || x > center.x + half.x + 2.5) {
+        y = center.y + half.y;
+        x = center.x + (Math.random() * 2 - 1) * half.x;
+        z = center.z + (Math.random() * 2 - 1) * half.z;
+      }
+      attr.array[i * 3] = x;
+      attr.array[i * 3 + 1] = y;
+      attr.array[i * 3 + 2] = z;
+    }
+    attr.needsUpdate = true;
+  }
+
+  return {
+    points: points,
+    setTheme: setTheme,
+    setThemeTargets: setThemeTargets,
+    settleFade: settleFade,
+    update: update,
+    dispose: function () {
+      geometry.dispose();
+      material.dispose();
+    }
   };
 }
 
@@ -339,7 +575,8 @@ export function createWetGround(THREE, options) {
 
   function setTheme(tokens) {
     const dark = tokens.scheme === "slate";
-    sheenMaterial.opacity = dark ? 0.35 : 0.5;
+    // 白天保留湿痕但降档（方案 §4.5.3 ×0.55 ≈ 0.28），不关 Reflector
+    sheenMaterial.opacity = dark ? 0.35 : 0.28;
     if (reflector && reflector.material.uniforms && reflector.material.uniforms.color) {
       reflector.material.uniforms.color.value.set(dark ? "#2b3446" : "#4a5566");
     }

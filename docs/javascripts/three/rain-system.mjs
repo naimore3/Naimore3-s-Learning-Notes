@@ -387,8 +387,9 @@ export function createRainSystem(THREE, options) {
 export function createPetalSystem(THREE, options) {
   const config = options || {};
   const count = config.count || 48;
-  const center = config.center || { x: -3.05, y: 2.0, z: 1.15 };
-  const half = { x: 1.6, y: 1.2, z: 1.3 };
+  // 阶段 14（方案 §9）：发射盒对齐新树冠，风 −x，落店顶提前重生防穿顶
+  const center = config.center || { x: 2.35, y: 4.0, z: -1.7 };
+  const half = { x: 1.5, y: 1.1, z: 1.3 };
   const prefersReduced = !!config.prefersReduced;
 
   const positions = new Float32Array(count * 3);
@@ -401,7 +402,7 @@ export function createPetalSystem(THREE, options) {
     positions[i * 3 + 2] = center.z + (Math.random() * 2 - 1) * half.z;
     speeds[i] = 0.24 + Math.random() * 0.16;
     phases[i] = Math.random() * Math.PI * 2;
-    wind[i] = 0.18 + Math.random() * 0.14;
+    wind[i] = -(0.18 + Math.random() * 0.12); // 阶段 14：风向 −x，从右后飘过店顶（方案 §9）
   }
 
   const geometry = new THREE.BufferGeometry();
@@ -491,8 +492,9 @@ export function createPetalSystem(THREE, options) {
       // z 摇曳越界先钳再写回（方案 §6.2 的写回顺序修正）
       if (z > center.z + half.z) z = center.z - half.z;
       else if (z < center.z - half.z) z = center.z + half.z;
-      // 落地或漂出底座边界 → 回树冠顶重生
-      if (y < 0.02 || x > center.x + half.x + 2.5) {
+      // 阶段 14：落地 / 漂出左界 / 落店顶（footprint 内 y<2.80）→ 回树冠顶重生
+      const inStore = x >= -1 && x <= 3 && z >= -2.6 && z <= 0.6 && y < 2.80;
+      if (y < 0.02 || x < center.x - half.x - 2.5 || inStore) {
         y = center.y + half.y;
         x = center.x + (Math.random() * 2 - 1) * half.x;
         z = center.z + (Math.random() * 2 - 1) * half.z;

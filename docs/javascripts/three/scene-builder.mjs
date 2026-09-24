@@ -38,9 +38,12 @@ export const LIGHT_ANCHORS = {
   ],
   // 街灯灯头（与下面的路灯几何同位置）
   lamp: [3.25, SIDEWALK_TOP + 2.78, 1.75 - 0.6],
-  // 阶段 9：樱花树下地灯（方案 §4.2.2），夜里低强度暖粉点光
-  sakura: [-3.05, 1.4, 1.15]
+  // 阶段 14（方案 §9）：樱花树迁至商店右后侧的地灯锚点
+  sakura: [3.45, 2.0, -1.4]
 };
+
+/** 阶段 14（方案 §9）：樱花树落位与树冠中心（供花瓣系统复用） */
+export const SAKURA = { x: 3.32, z: -1.60, canopy: [2.35, 3.85, -1.7] };
 
 /** 屋檐滴水线（阶段 5）：雨丝从雨棚前缘滴到人行道上 */
 export const DRIP_LINE = {
@@ -148,7 +151,7 @@ export function buildScene(THREE, library) {
   /* 地面标线（阶段 4）：斑马线 / 停车位 / 排水沟 / 人行道盲道，
      全部用平面叠 CanvasTexture，尺寸与画布宽高比一一对应（不变形） */
   if (library.textures) {
-    flatPlane(1.6, 1.4, -2.3, 2.8, ROAD_TOP + 0.012,
+    flatPlane(1.6, 1.4, -1.30, 2.8, ROAD_TOP + 0.012,
       library.decal(library.textures.crosswalk, { nightDim: 0.78 }));
     flatPlane(2.0, 1.0, 1.3, 2.75, ROAD_TOP + 0.012,
       library.decal(library.textures.parking, { nightDim: 0.78 }));
@@ -352,18 +355,19 @@ export function buildScene(THREE, library) {
   }
 
   // 自动贩卖机：贴在邻栋墙面下，进「街角」机位左侧，且不遮挡橱窗视线
+  // 阶段 13：右移 0.52m 让开左迁后的电车（方案 §9）
   withGroup("prop:vending", function () {
-  box(0.8, 1.9, 0.45, -2.2, SIDEWALK_TOP + 0.95, 0.85, mats.trim, true);
-  box(0.7, 1.05, 0.06, -2.2, SIDEWALK_TOP + 1.25, 1.08, mats.cool, false);
+  box(0.8, 1.9, 0.45, -1.68, SIDEWALK_TOP + 0.95, 0.85, mats.trim, true);
+  box(0.7, 1.05, 0.06, -1.68, SIDEWALK_TOP + 1.25, 1.08, mats.cool, false);
   if (library.textures) {
-    uprightPlane(0.66, 0.165, -2.2, SIDEWALK_TOP + 1.74, 1.115,
+    uprightPlane(0.66, 0.165, -1.68, SIDEWALK_TOP + 1.74, 1.115,
       library.decal(library.textures.vending, { transparent: false, nightDim: 0.92 }));
   }
   const vendingGoods = [];
   for (let row = 0; row < 3; row++) {
     for (let col = 0; col < 4; col++) {
       vendingGoods.push({
-        p: [-2.46 + col * 0.175, SIDEWALK_TOP + 0.85 + row * 0.3, 1.1],
+        p: [-1.94 + col * 0.175, SIDEWALK_TOP + 0.85 + row * 0.3, 1.1],
         s: [0.12, 0.22, 0.04],
         c: ["#ff8a5b", "#ffd166", "#8ecae6", "#b8e986", "#f7a1c4", "#7fd1c1"][(row + col) % 6]
       });
@@ -419,15 +423,16 @@ export function buildScene(THREE, library) {
   });
 
   // 远处交通信号灯：三盏灯的颜色固定在材质里，亮度由 animation-loop 循环切换
+  // 阶段 13：x −3.2 → −2.15，配对右移后的斑马线、让开左轨（方案 §9）
   withGroup("prop:signal", function () {
-    cylinder(0.045, 2.5, -3.2, SIDEWALK_TOP + 1.25, 3.42, mats.trim, 8);
-    box(0.24, 0.68, 0.18, -3.2, SIDEWALK_TOP + 2.34, 3.42, mats.trim, false);
+    cylinder(0.045, 2.5, -2.15, SIDEWALK_TOP + 1.25, 3.42, mats.trim, 8);
+    box(0.24, 0.68, 0.18, -2.15, SIDEWALK_TOP + 2.34, 3.42, mats.trim, false);
     [
       { name: "signal:red", y: 2.58, mat: mats.signalRed },
       { name: "signal:amber", y: 2.34, mat: mats.signalAmber },
       { name: "signal:green", y: 2.10, mat: mats.signalGreen }
     ].forEach(function (lamp) {
-      const mesh = box(0.15, 0.15, 0.06, -3.2, SIDEWALK_TOP + lamp.y, 3.5, lamp.mat, false);
+      const mesh = box(0.15, 0.15, 0.06, -2.15, SIDEWALK_TOP + lamp.y, 3.5, lamp.mat, false);
       mesh.name = lamp.name;
     });
   });
@@ -464,59 +469,62 @@ export function buildScene(THREE, library) {
   wire([-1.3, SIDEWALK_TOP + 3.32, 1.2], [-1.0, SIDEWALK_TOP + 2.72, 0.62], 0.06);
   });
 
-  /* ---------- 7. 樱花树（阶段 9，方案 §4.2 / §6.2） ----------
-     位置 (-3.05, 1.15)：全景做左前景、街角贴左缘入画、橱窗机位不入画。
-     与贩卖机 (-2.2,0.85)、路牌 (-1.9,1.55)、信号灯 (-3.2,3.42) 保持 ≥0.6m 净距。 */
+  /* ---------- 7. 樱花树（阶段 14，方案 §9） ----------
+     商店右后侧 (3.32, -1.60)，GROUND=底座顶 0；干高 2.6m，树冠罩住店顶右段。
+     花瓣发射盒与灯锚点见 SAKURA / LIGHT_ANCHORS.sakura。 */
   withGroup("prop:sakura", function () {
-    const SX = -3.05, SZ = 1.15, GROUND = SIDEWALK_TOP;
+    const SX = 3.32, SZ = -1.60, GROUND = 0;
 
-    // 主干：下粗上细
-    const trunkGeo = new THREE.CylinderGeometry(0.055, 0.09, 1.35, 8);
+    // 主干：下粗上细，高 2.6m
+    const trunkGeo = new THREE.CylinderGeometry(0.065, 0.13, 2.6, 8);
     geometries.push(trunkGeo);
     const trunk = new THREE.Mesh(trunkGeo, mats.trunk);
-    trunk.position.set(SX, GROUND + 0.675, SZ);
+    trunk.position.set(SX, GROUND + 1.3, SZ);
     target.add(trunk);
 
-    // 斜枝 4 根：两点连圆柱（复用 rod）
-    rod([SX, GROUND + 1.1, SZ], [SX - 0.45, GROUND + 1.7, SZ + 0.25], 0.03, mats.trunk, 6);
-    rod([SX, GROUND + 1.2, SZ], [SX + 0.4, GROUND + 1.75, SZ - 0.2], 0.03, mats.trunk, 6);
-    rod([SX, GROUND + 1.0, SZ], [SX + 0.15, GROUND + 1.8, SZ + 0.4], 0.026, mats.trunk, 6);
-    rod([SX, GROUND + 1.25, SZ], [SX - 0.2, GROUND + 1.85, SZ - 0.35], 0.026, mats.trunk, 6);
+    // 斜枝 5 根：朝 −x（店顶方向）伸展
+    rod([SX, GROUND + 1.6, SZ], [SX - 0.7, GROUND + 3.1, SZ + 0.2], 0.035, mats.trunk, 6);
+    rod([SX, GROUND + 1.9, SZ], [SX - 0.5, GROUND + 3.3, SZ - 0.3], 0.03, mats.trunk, 6);
+    rod([SX, GROUND + 2.1, SZ], [SX - 0.9, GROUND + 3.4, SZ + 0.15], 0.03, mats.trunk, 6);
+    rod([SX, GROUND + 1.7, SZ], [SX - 0.3, GROUND + 3.0, SZ - 0.5], 0.026, mats.trunk, 6);
+    rod([SX, GROUND + 2.3, SZ], [SX - 0.6, GROUND + 3.5, SZ + 0.4], 0.026, mats.trunk, 6);
 
-    // 树冠：8 个二十面体团块，InstancedMesh 压 1 个 draw call
-    const blobGeo = new THREE.IcosahedronGeometry(0.42, 1);
+    // 树冠：11 个二十面体团块，1 InstancedMesh；冠心 (2.35, 3.85, -1.7)
+    const blobGeo = new THREE.IcosahedronGeometry(0.55, 1);
     geometries.push(blobGeo);
-    const canopy = new THREE.InstancedMesh(blobGeo, mats.blossom, 8);
+    const canopy = new THREE.InstancedMesh(blobGeo, mats.blossom, 11);
     const m = new THREE.Matrix4(), q = new THREE.Quaternion(),
       p = new THREE.Vector3(), s = new THREE.Vector3(),
       eul = new THREE.Euler();
-    // 扁球冠布局（局部偏移，中心 y = GROUND + 1.9）
+    const CX = 2.35, CY = 3.85, CZ = -1.7;
+    // 扁球冠布局（局部偏移，罩住店顶右段，冠底 ≈ 2.94 > 店顶 2.76）
     const offsets = [
-      [0, 0, 0], [-0.5, -0.1, 0.15], [0.5, -0.05, -0.1],
-      [-0.2, 0.25, -0.4], [0.25, 0.3, 0.35], [0, -0.2, 0.45],
-      [-0.45, 0.2, -0.25], [0.45, 0.15, 0.2]
+      [0, 0, 0], [-0.6, -0.15, 0.2], [0.55, -0.1, -0.15],
+      [-0.25, 0.3, -0.5], [0.3, 0.35, 0.4], [0, -0.25, 0.55],
+      [-0.55, 0.25, -0.3], [0.5, 0.2, 0.25], [-0.9, -0.1, 0.1],
+      [0.85, 0.05, -0.35], [-0.15, 0.5, 0.05]
     ];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 11; i++) {
       const o = offsets[i];
       const rnd = (i * 2654435761 % 1000) / 1000; // 确定性伪随机，截图可复现
-      p.set(SX + o[0], GROUND + 1.9 + o[1], SZ + o[2]);
+      p.set(CX + o[0], CY + o[1], CZ + o[2]);
       eul.set(0, rnd * Math.PI * 2, 0);
       q.setFromEuler(eul);
-      s.setScalar(0.75 + rnd * 0.4);
+      s.setScalar(0.8 + rnd * 0.4);
       m.compose(p, q, s);
       canopy.setMatrixAt(i, m);
     }
     canopy.instanceMatrix.needsUpdate = true;
     target.add(canopy);
 
-    // 树池：环 + 泥土片
-    const ringGeo = new THREE.TorusGeometry(0.24, 0.035, 6, 18);
+    // 树池：环 + 泥土片（r 0.26，不压店墙、不越底座）
+    const ringGeo = new THREE.TorusGeometry(0.26, 0.035, 6, 18);
     geometries.push(ringGeo);
     const ring = new THREE.Mesh(ringGeo, mats.trim);
     ring.rotation.x = -Math.PI / 2;
     ring.position.set(SX, GROUND + 0.01, SZ);
     target.add(ring);
-    const soil = new THREE.Mesh(new THREE.CircleGeometry(0.23, 16), mats.trim);
+    const soil = new THREE.Mesh(new THREE.CircleGeometry(0.25, 16), mats.trim);
     geometries.push(soil.geometry);
     soil.rotation.x = -Math.PI / 2;
     soil.position.set(SX, GROUND + 0.008, SZ);
@@ -552,22 +560,22 @@ export function buildScene(THREE, library) {
     box(0.06, 0.12, 0.06, SX + 0.42, GROUND + 0.06, SZ + 0.34, mats.emissive, false);
   });
 
-  /* ---------- 8. 轨道电车（阶段 10，方案 §4.3 / §6.3） ----------
-     轨道中心 x=2.55 沿 z 走向；停靠位中心 z=1.65（方案 §4.3.1 的 1.15 会让
-     车尾 z=0.15 穿进店面 z1=0.6，此处后移保证车身完全在店外）。 */
+  /* ---------- 8. 轨道电车（阶段 13，方案 §9） ----------
+     轨道中心 x=-2.55 沿 z：面对商店左侧、邻栋门前；停靠位中心 z=1.65 不变
+     （车体完全在店外）。 */
   withGroup("prop:tram", function () {
-    const TX = 2.55, TZ = 1.65, RY = ROAD_TOP;
-    const TRACK_X = 2.55, GAUGE = 0.28;
+    const TX = -2.55, TZ = 1.65, RY = ROAD_TOP;
+    const TRACK_X = -2.55, GAUGE = 0.28;
 
     // 钢轨两根：从店前人行道沿 z 到底座边（避免伸进店面 z<0.6）
     [-GAUGE, GAUGE].forEach(function (dx) {
       box(0.05, 0.025, 2.98, TRACK_X + dx, RY + 0.012, 2.11, mats.rail, false);
     });
 
-    // 枕木 12 块，InstancedMesh
+    // 枕木 10 块（阶段 13 修 z 越界：0.75..3.45 ≤ 底座 3.6），InstancedMesh
     const ties = [];
-    for (let i = 0; i < 12; i++) {
-      ties.push({ p: [TRACK_X, RY + 0.006, 0.7 + i * 0.3], s: [0.66, 0.02, 0.12] });
+    for (let i = 0; i < 10; i++) {
+      ties.push({ p: [TRACK_X, RY + 0.006, 0.75 + i * 0.25], s: [0.66, 0.02, 0.12] });
     }
     instances(ties, mats.trim);
 

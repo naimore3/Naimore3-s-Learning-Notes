@@ -186,9 +186,14 @@
     rain.setTheme(tokens);
     scene.add(rain.group);
 
-    // 阶段 9 + 12：白昼樱吹雪（与雨互斥；互斥不变式见方案 §6.2 注释）
+    // 阶段 9 + 12 + 14：白昼樱吹雪（与雨互斥；阶段 14 迁至新树冠，方案 §9）
     var petals = modules.rainSystem.createPetalSystem(THREE, {
       count: quality.petals,
+      center: {
+        x: modules.sceneBuilder.SAKURA.canopy[0],
+        y: modules.sceneBuilder.SAKURA.canopy[1] + 0.15,
+        z: modules.sceneBuilder.SAKURA.canopy[2]
+      },
       map: textures.textures && textures.textures.petal,
       prefersReduced: prefersReduced
     });

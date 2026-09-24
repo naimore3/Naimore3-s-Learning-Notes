@@ -437,7 +437,7 @@ export function createLighting(THREE, anchors) {
 
   // 阶段 9：樱花树下地灯（方案 §4.2.2）——夜里低强度暖粉，让树仍是暖色主角
   const sakuraAnchor = anchors && anchors.sakura;
-  const sakura = sakuraAnchor ? new THREE.PointLight(0xffffff, 0, 2.4, 2) : null;
+    const sakura = sakuraAnchor ? new THREE.PointLight(0xffffff, 0, 3.5, 2) : null;
   if (sakura) {
     sakura.position.set(sakuraAnchor[0], sakuraAnchor[1], sakuraAnchor[2]);
     group.add(sakura);
@@ -459,8 +459,9 @@ export function createLighting(THREE, anchors) {
       lamp.color.set("#ffc78a");
       lamp.intensity = 5;
       if (sakura) {
-        sakura.color.set("#ffc2d4");
-        sakura.intensity = 1.2;
+      sakura.color.set("#ffc2d4");
+      sakura.intensity = 1.8;
+      // 阶段 14（方案 §9）：树更高更远，distance 3.5 / intensity 1.8
       }
     } else {
       // 白天雨天：亮灰蓝天光为主，店内暖光仍然亮着

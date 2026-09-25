@@ -199,13 +199,24 @@ export function buildScene(THREE, library) {
     (roomZ0 + roomZ1) / 2, mats.interior, false);
   // 后墙、左右侧墙、屋顶：刻意留出面向 +z 的整面开口，阶段 3 往里面放货架
   // 阶段 8 分色（方案 §4.1.1）：墙体 → facade，屋顶板 → roof
-  box(storeW, STORE.h, STORE.wall, storeCx, STORE.h / 2, STORE.z0 + STORE.wall / 2, mats.facade);
+  // 方案 H（Bug 5）：后墙 x 向收进两侧墙厚，端面退到 x = ±(墙外皮 - wall)，
+  // 与右/左墙外面（x = ±3）拉开 12mm。原后墙端面（宽 0.12m）与侧墙外面
+  // 在 x = ±3 精确共面：两面同用 mats.facade，但 BoxGeometry UV 按面各自
+  // 0–1 + repeat(4,2)，后墙端面条纹密度是侧墙外面的 26 倍，深度翻转时
+  // 后侧靠右竖带呈现花纹跳变（Z-Fighting）。收窄后端面落入侧墙实体内侧，
+  // 任意视角都被侧墙遮挡；后墙背面同时与侧墙背面由重叠改为 x 向零面积
+  // 边接（同平面同法线同材质，fill rule 边像素独占）。覆盖无缺口：收窄段
+  // 由左右侧墙（z 贯穿至 -2.6）补满。详见 .documents/首页Bug分析与修复.md 方案 H。
+  box(storeW - STORE.wall * 2, STORE.h, STORE.wall, storeCx, STORE.h / 2, STORE.z0 + STORE.wall / 2, mats.facade);
   box(STORE.wall, STORE.h, storeD, STORE.x0 + STORE.wall / 2, STORE.h / 2, storeCz, mats.facade);
   box(STORE.wall, STORE.h, storeD, STORE.x1 - STORE.wall / 2, STORE.h / 2, storeCz, mats.facade);
   slab(storeW, storeD, storeCx, storeCz, STORE.h + 0.16, 0.16, mats.roof);
 
   // 阶段 8 墙裙分色带（方案 §6.1）：+x 侧墙一条 0.55m 雾蓝裙带，无描边
-  box(0.03, 0.55, storeD, STORE.x1 + 0.01, 0.275, storeCz, mats.facadeBand, false);
+  // 方案 H（Bug 5）：深度收 2*EPS、中心不变，两端各退 2mm——背面 z = -2.598
+  // 脱开后墙背面与右墙背面（z = -2.6 共面，雾蓝 vs 奶油强色闪），正面
+  // z = 0.598 脱开右墙正面（z = 0.6，竖框遮挡后仍露约 2mm 的潜伏共面带）。
+  box(0.03, 0.55, storeD - EPS * 2, STORE.x1 + 0.01, 0.275, storeCz, mats.facadeBand, false);
   // +z 正面裙带：设计稿 z1+0.01 会与玻璃(z=z1)、移门(z=z1+0.015) 共面相交，
   // 改放到店内侧、玻璃之后（z1-0.06..z1-0.03），读作下段实墙裙而不穿模
   box(storeW + 0.02, 0.55, 0.03, storeCx, 0.275, STORE.z1 - 0.045, mats.facadeBand, false);

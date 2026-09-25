@@ -387,9 +387,11 @@ export function createRainSystem(THREE, options) {
 export function createPetalSystem(THREE, options) {
   const config = options || {};
   const count = config.count || 48;
-  // 阶段 14（方案 §9）：发射盒对齐新树冠，风 −x，落店顶提前重生防穿顶
-  const center = config.center || { x: 2.35, y: 4.0, z: -1.7 };
-  const half = { x: 1.5, y: 1.1, z: 1.3 };
+  // 阶段 14（方案 §9）：发射盒对齐树冠，风 −x，落店顶提前重生防穿顶
+  // 阶段 20（《樱花树搭建方案.md》）：半盒对齐新冠（冠 AABB x∈[0.45,3.55]、
+  //  y∈[3.02,4.75]、z∈[−3.60,−1.40]），花瓣从冠内、而非冠外凭空出现
+  const center = config.center || { x: 2.0, y: 3.85, z: -2.5 };
+  const half = { x: 1.55, y: 0.85, z: 1.1 };
   const prefersReduced = !!config.prefersReduced;
 
   const positions = new Float32Array(count * 3);

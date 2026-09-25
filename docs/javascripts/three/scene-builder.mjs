@@ -38,12 +38,25 @@ export const LIGHT_ANCHORS = {
   ],
   // 街灯灯头（与下面的路灯几何同位置）
   lamp: [3.25, SIDEWALK_TOP + 2.78, 1.75 - 0.6],
-  // 阶段 14（方案 §9）：樱花树迁至商店右后侧的地灯锚点
-  sakura: [3.45, 2.0, -1.4]
+  // 阶段 20（《樱花树搭建方案.md》）：樱花树迁至便利店后方靠右侧
+  // 点光放在树冠前下方，夜里照亮冠底与店顶后段
+  sakura: [2.0, 3.0, -2.2]
 };
 
-/** 阶段 14（方案 §9）：樱花树落位与树冠中心（供花瓣系统复用） */
-export const SAKURA = { x: 3.32, z: -1.60, canopy: [2.35, 3.85, -1.7] };
+/** 阶段 20（《樱花树搭建方案.md》）：樱花树落位与树冠规格（供花瓣系统复用）。
+ *  树干落在便利店后方靠右侧；树冠是一个「椭球」，在 prop:sakura 里按
+ *  「1 中心 + 3 层环形 × 8 向 + 1 顶」铺出 26 颗花球 —— 8 向对称，冠大而茂盛、
+ *  左右均匀，避免「只有半棵树」的不对称观感。 */
+export const SAKURA = {
+  x: 2.0,            // 树干 x：便利店右半侧后方
+  z: -2.85,          // 树干 z：便利店后墙 z0 = -2.6 再往后 0.25m（避开墙厚与描边）
+  trunkHeight: 3.6,  // 干高（干顶伸进树冠中心花球）
+  trunkRadius: 0.14, // 干底半径（顶半径取一半）
+  blobR: 0.55,       // 花球基础半径（实际半径 = blobR × scale）
+  // 树冠椭球：中心 + 三轴半径（rx 冠宽 / ry 冠高 / rz 冠深）
+  crown: { x: 2.0, y: 3.85, z: -2.5, rx: 1.0, ry: 0.9, rz: 0.55 },
+  canopy: [2.0, 3.85, -2.5] // 花瓣发射盒中心 = 树冠中心
+};
 
 /** 屋檐滴水线（阶段 5）：雨丝从雨棚前缘滴到人行道上 */
 export const DRIP_LINE = {
@@ -469,68 +482,91 @@ export function buildScene(THREE, library) {
   wire([-1.3, SIDEWALK_TOP + 3.32, 1.2], [-1.0, SIDEWALK_TOP + 2.72, 0.62], 0.06);
   });
 
-  /* ---------- 7. 樱花树（阶段 14，方案 §9） ----------
-     商店右后侧 (3.32, -1.60)，GROUND=底座顶 0；干高 2.6m，树冠罩住店顶右段。
-     花瓣发射盒与灯锚点见 SAKURA / LIGHT_ANCHORS.sakura。 */
+  /* ---------- 7. 樱花树（阶段 20，《樱花树搭建方案.md》） ----------
+     便利店后方靠右侧 (2.0, -2.85)：树冠按「1 中心 + 3 层环形 × 8 向 + 1 顶」
+     在椭球内铺 26 颗花球，8 向对称 → 冠大、茂盛、左右均匀，避免「只有半棵树」。
+     花瓣发射盒与灯锚点见 SAKURA.canopy / LIGHT_ANCHORS.sakura。 */
   withGroup("prop:sakura", function () {
-    const SX = 3.32, SZ = -1.60, GROUND = 0;
+    const S = SAKURA, C = S.crown, GROUND = 0;
 
-    // 主干：下粗上细，高 2.6m
-    const trunkGeo = new THREE.CylinderGeometry(0.065, 0.13, 2.6, 8);
+    // 主干：下粗上细，干顶直接伸进树冠中心花球（不露秃头）
+    const trunkGeo = new THREE.CylinderGeometry(S.trunkRadius * 0.5, S.trunkRadius, S.trunkHeight, 8);
     geometries.push(trunkGeo);
     const trunk = new THREE.Mesh(trunkGeo, mats.trunk);
-    trunk.position.set(SX, GROUND + 1.3, SZ);
+    trunk.position.set(S.x, GROUND + S.trunkHeight / 2, S.z);
     target.add(trunk);
 
-    // 斜枝 5 根：朝 −x（店顶方向）伸展
-    rod([SX, GROUND + 1.6, SZ], [SX - 0.7, GROUND + 3.1, SZ + 0.2], 0.035, mats.trunk, 6);
-    rod([SX, GROUND + 1.9, SZ], [SX - 0.5, GROUND + 3.3, SZ - 0.3], 0.03, mats.trunk, 6);
-    rod([SX, GROUND + 2.1, SZ], [SX - 0.9, GROUND + 3.4, SZ + 0.15], 0.03, mats.trunk, 6);
-    rod([SX, GROUND + 1.7, SZ], [SX - 0.3, GROUND + 3.0, SZ - 0.5], 0.026, mats.trunk, 6);
-    rod([SX, GROUND + 2.3, SZ], [SX - 0.6, GROUND + 3.5, SZ + 0.4], 0.026, mats.trunk, 6);
+    // 树冠花球表：中心 + 3 层环形（每层 8 向，绕 y 均匀分布）+ 顶。
+    // 8 向对称保证左右/前后均匀；椭圆三轴 rx/ry/rz 决定冠宽/冠高/冠深。
+    const blobs = [];
+    blobs.push([C.x, C.y, C.z, 1.15]); // 中心（包住干顶）
+    [
+      { fy: -0.35, k: 0.90, s: 0.95 },
+      { fy: 0.00, k: 1.00, s: 1.00 },
+      { fy: 0.32, k: 0.78, s: 0.90 }
+    ].forEach(function (ring) {
+      for (let i = 0; i < 8; i++) {
+        const a = (i / 8) * Math.PI * 2;
+        blobs.push([
+          C.x + Math.cos(a) * C.rx * ring.k,
+          C.y + ring.fy * C.ry,
+          C.z + Math.sin(a) * C.rz * ring.k,
+          ring.s
+        ]);
+      }
+    });
+    blobs.push([C.x, C.y + 0.50 * C.ry, C.z, 0.82]); // 冠顶
 
-    // 树冠：11 个二十面体团块，1 InstancedMesh；冠心 (2.35, 3.85, -1.7)
-    const blobGeo = new THREE.IcosahedronGeometry(0.55, 1);
+    // 3 根短枝：把干顶接到树冠下沿（只做结构过渡，重点在冠不在枝）。
+    // 端点仍由目标花球中心反推（拉到 0.55r 处），保证枝端埋在花球内。
+    function branchTip(blob, k) {
+      const r = S.blobR * blob[3];
+      const bx = S.x, by = S.trunkHeight - 0.25, bz = S.z;
+      const dx = bx - blob[0], dy = by - blob[1], dz = bz - blob[2];
+      const len = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      const g = r * k / len;
+      return [blob[0] + dx * g, blob[1] + dy * g, blob[2] + dz * g];
+    }
+    // 下环（blobs[1..8]）里朝店顶方向的三颗：45° / 90° / 135°
+    [[2, 0.045], [3, 0.045], [4, 0.040]].forEach(function (spec) {
+      rod([S.x, S.trunkHeight - 0.25, S.z], branchTip(blobs[spec[0]], 0.55),
+        spec[1], mats.trunk, 6);
+    });
+
+    // 树冠：26 颗二十面体团块 → 1 个 InstancedMesh
+    const blobGeo = new THREE.IcosahedronGeometry(S.blobR, 1);
     geometries.push(blobGeo);
-    const canopy = new THREE.InstancedMesh(blobGeo, mats.blossom, 11);
+    const canopy = new THREE.InstancedMesh(blobGeo, mats.blossom, blobs.length);
     const m = new THREE.Matrix4(), q = new THREE.Quaternion(),
       p = new THREE.Vector3(), s = new THREE.Vector3(),
       eul = new THREE.Euler();
-    const CX = 2.35, CY = 3.85, CZ = -1.7;
-    // 扁球冠布局（局部偏移，罩住店顶右段，冠底 ≈ 2.94 > 店顶 2.76）
-    const offsets = [
-      [0, 0, 0], [-0.6, -0.15, 0.2], [0.55, -0.1, -0.15],
-      [-0.25, 0.3, -0.5], [0.3, 0.35, 0.4], [0, -0.25, 0.55],
-      [-0.55, 0.25, -0.3], [0.5, 0.2, 0.25], [-0.9, -0.1, 0.1],
-      [0.85, 0.05, -0.35], [-0.15, 0.5, 0.05]
-    ];
-    for (let i = 0; i < 11; i++) {
-      const o = offsets[i];
+    for (let i = 0; i < blobs.length; i++) {
+      const b = blobs[i];
       const rnd = (i * 2654435761 % 1000) / 1000; // 确定性伪随机，截图可复现
-      p.set(CX + o[0], CY + o[1], CZ + o[2]);
+      p.set(b[0], b[1], b[2]);
       eul.set(0, rnd * Math.PI * 2, 0);
       q.setFromEuler(eul);
-      s.setScalar(0.8 + rnd * 0.4);
+      s.setScalar(b[3]);
       m.compose(p, q, s);
       canopy.setMatrixAt(i, m);
     }
     canopy.instanceMatrix.needsUpdate = true;
     target.add(canopy);
 
-    // 树池：环 + 泥土片（r 0.26，不压店墙、不越底座）
-    const ringGeo = new THREE.TorusGeometry(0.26, 0.035, 6, 18);
+    // 树池：环 + 泥土片（外径 0.235，在便利店后墙 z=-2.6 之外，不压墙、不越底座）
+    const ringGeo = new THREE.TorusGeometry(0.2, 0.035, 6, 20);
     geometries.push(ringGeo);
     const ring = new THREE.Mesh(ringGeo, mats.trim);
     ring.rotation.x = -Math.PI / 2;
-    ring.position.set(SX, GROUND + 0.01, SZ);
+    ring.position.set(S.x, GROUND + 0.01, S.z);
     target.add(ring);
-    const soil = new THREE.Mesh(new THREE.CircleGeometry(0.25, 16), mats.trim);
+    const soil = new THREE.Mesh(new THREE.CircleGeometry(0.2, 16), mats.trim);
     geometries.push(soil.geometry);
     soil.rotation.x = -Math.PI / 2;
-    soil.position.set(SX, GROUND + 0.008, SZ);
+    soil.position.set(S.x, GROUND + 0.008, S.z);
     target.add(soil);
 
-    // 静止落瓣 7 片 → 1 InstancedMesh（夜里 nightDim 0.9）
+    // 静止落瓣 7 片 → 1 InstancedMesh（夜里 nightDim 0.9；贴在干周，不越入店体）
     if (library.textures && library.textures.petal) {
       const petalGeo = new THREE.PlaneGeometry(0.06, 0.06);
       geometries.push(petalGeo);
@@ -543,9 +579,9 @@ export function buildScene(THREE, library) {
         const a = i * 0.9;
         pm.compose(
           new THREE.Vector3(
-            SX + Math.cos(a) * (0.3 + (i % 3) * 0.18),
+            S.x + Math.cos(a) * 0.2,
             GROUND + 0.012,
-            SZ + Math.sin(a) * (0.3 + (i % 2) * 0.22)
+            S.z + Math.sin(a) * 0.2
           ),
           pq,
           ps
@@ -557,7 +593,7 @@ export function buildScene(THREE, library) {
     }
 
     // 地灯（夜里亮，配合 LIGHT_ANCHORS.sakura 点光）
-    box(0.06, 0.12, 0.06, SX + 0.42, GROUND + 0.06, SZ + 0.34, mats.emissive, false);
+    box(0.07, 0.14, 0.07, S.x + 0.38, GROUND + 0.07, S.z + 0.1, mats.emissive, false);
   });
 
   /* ---------- 8. 轨道电车（阶段 13，方案 §9） ----------
